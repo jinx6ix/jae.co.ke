@@ -104,7 +104,7 @@ export default function RootLayout({
     logo: "https://jaetravel.com/logo.png",
     image: "https://jaetravel.com/og-image.jpg",
     telephone: "+1234567890",
-    email: "info@jaetravel.com",
+    email: "info@jaetravel.co.ke",
     address: {
       "@type": "PostalAddress",
       addressCountry: "Kenya",

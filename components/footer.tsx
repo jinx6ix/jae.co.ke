@@ -100,17 +100,17 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <a href="tel:+254123456789" className="text-muted-foreground transition-colors hover:text-primary">
-                  +254 123 456 789
+                <a href="tel:+254726485228" className="text-muted-foreground transition-colors hover:text-primary">
+                  +254 726 485 228
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-muted-foreground" />
                 <a
-                  href="mailto:info@jaetravel.com"
+                  href="mailto:info@jaetravel.co.ke"
                   className="text-muted-foreground transition-colors hover:text-primary"
                 >
-                  info@jaetravel.com
+                  info@jaetravel.co.ke
                 </a>
               </li>
             </ul>

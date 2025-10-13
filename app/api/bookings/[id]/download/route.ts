@@ -16,11 +16,11 @@ Thank you for booking with JaeTravel Expeditions!
 Your booking request has been received and our team will contact you within 24 hours to confirm details and arrange payment.
 
 For immediate assistance, please contact us:
-Phone: +254 712 345 678
-Email: info@jaetravelexpeditions.com
-WhatsApp: +254 712 345 678
+Phone: +254 726 485 228
+Email: info@jaetravel.co.ke
+WhatsApp: +254 726 485 228
 
-Website: www.jaetravelexpeditions.com
+Website: www.jaetravelexpeditions.co.ke
 
 Terms & Conditions:
 - Full payment required 30 days before departure

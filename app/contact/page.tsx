@@ -202,8 +202,8 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 mt-0.5 text-primary" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a href="tel:+254123456789" className="text-sm text-muted-foreground hover:text-primary">
-                      +254 123 456 789
+                    <a href="tel:+254726485228" className="text-sm text-muted-foreground hover:text-primary">
+                      +254 726 485 228
                     </a>
                   </div>
                 </div>
@@ -211,8 +211,8 @@ export default function ContactPage() {
                   <Mail className="h-5 w-5 mt-0.5 text-primary" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:info@jaetravel.com" className="text-sm text-muted-foreground hover:text-primary">
-                      info@jaetravel.com
+                    <a href="mailto:info@jaetravel.co.ke" className="text-sm text-muted-foreground hover:text-primary">
+                      info@jaetravel.co.ke
                     </a>
                   </div>
                 </div>
