@@ -371,7 +371,7 @@ export default function DisabilityToursPage() {
                 variant="outline"
                 className="border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                   WhatsApp Us
                 </a>
               </Button>

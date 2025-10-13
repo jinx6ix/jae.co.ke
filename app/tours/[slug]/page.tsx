@@ -294,7 +294,7 @@ export default async function TourPage(props: TourPageProps) {
                       <Link href="/contact">Contact Us</Link>
                     </Button>
                     <Button asChild variant="outline" className="w-full bg-[#25D366]/10 hover:bg-[#25D366]/20">
-                      <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                         WhatsApp Us
                       </a>
                     </Button>

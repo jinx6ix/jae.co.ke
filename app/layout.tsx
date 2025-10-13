@@ -22,7 +22,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jaetravel.com"),
+  metadataBase: new URL("https://jaetravel.co.ke"),
   title: {
     default: "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
     template: "%s | JaeTravel Expeditions",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jaetravel.com",
+    url: "https://jaetravel.co.ke",
     siteName: "JaeTravel Expeditions",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
     description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
     google: "hFLRkNLTiWW_pvLuqqXe-gZjop_3rJtLqKtpuxkByMc",
   },
   alternates: {
-    canonical: "https://jaetravel.com",
+    canonical: "https://jaetravel.co.ke",
     types: {
-      "application/rss+xml": "https://jaetravel.com/blog/rss.xml",
+      "application/rss+xml": "https://jaetravel.co.ke/blog/rss.xml",
     },
   },
     generator: 'v0.app'
@@ -100,17 +100,17 @@ export default function RootLayout({
     name: "JaeTravel Expeditions",
     description:
       "East Africa safari tours specializing in accessible travel, gorilla trekking, and wildlife adventures across Kenya, Tanzania, Rwanda, and Uganda.",
-    url: "https://jaetravel.com",
-    logo: "https://jaetravel.com/logo.png",
-    image: "https://jaetravel.com/og-image.jpg",
-    telephone: "+1234567890",
+    url: "https://jaetravel.co.ke",
+    logo: "https://jaetravel.co.ke/logo.png",
+    image: "https://jaetravel.co.ke/og-image.jpg",
+    telephone: "+254726485228",
     email: "info@jaetravel.co.ke",
     address: {
       "@type": "PostalAddress",
       addressCountry: "Kenya",
       addressLocality: "Nairobi",
     },
-    sameAs: ["https://facebook.com/jaetravel", "https://instagram.com/jaetravel", "https://twitter.com/jaetravel"],
+    sameAs: ["https://www.facebook.com/JaeTravelExpeditions", "https://www.instagram.com/jaetravelexpeditions/", "https://www.tiktok.com/@jaetravelexpeditions"],
     priceRange: "$$-$$$",
     areaServed: ["Kenya", "Tanzania", "Rwanda", "Uganda"],
     hasOfferCatalog: {
@@ -151,7 +151,6 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
         <Script id="google-analytics" strategy="afterInteractive">
-        <meta name="google-site-verification" content="hFLRkNLTiWW_pvLuqqXe-gZjop_3rJtLqKtpuxkByMc" />
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -161,7 +160,9 @@ export default function RootLayout({
             });
           `}
         </Script>
-        <link rel="canonical" href="https://jaetravel.com" />
+        <meta name="google-site-verification" content="hFLRkNLTiWW_pvLuqqXe-gZjop_3rJtLqKtpuxkByMc" />
+
+        <link rel="canonical" href="https://jaetravel.co.ke" />
       </head>
       <body className="font-sans antialiased">
         <Suspense>

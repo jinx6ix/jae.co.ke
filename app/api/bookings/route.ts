@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       success: true,
       bookingId: bookingData.bookingId,
       message: "Booking request received successfully",
-      whatsappLink: `https://wa.me/254712345678?text=${whatsappMessage}`,
+      whatsappLink: `https://wa.me/+254726485228?text=${whatsappMessage}`,
       emailSent: true,
       downloadUrl: `/api/bookings/${bookingData.bookingId}/download`,
     })

@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     images: ["/masai-mara-migration.jpg"],
   },
   alternates: {
-    canonical: "https://jaetravel.com",
+    canonical: "https://jaetravel.co.ke",
   },
 }
 
@@ -70,7 +70,7 @@ export default function HomePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jaetravel.com",
+        item: "https://jaetravel.co.ke",
       },
     ],
   }
@@ -308,7 +308,7 @@ export default function HomePage() {
               <Link href="/contact">Get in Touch</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                 WhatsApp Us
               </a>
             </Button>

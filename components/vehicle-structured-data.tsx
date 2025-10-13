@@ -36,7 +36,7 @@ export function VehicleStructuredData({ vehicle }: VehicleStructuredDataProps) {
         "@type": "Organization",
         name: "JaeTravel Expeditions",
       },
-      url: `https://jaetravel.com/vehicle-hire/${vehicle.slug}`,
+      url: `https://jaetravel.co.ke/vehicle-hire/${vehicle.slug}`,
     },
     additionalProperty: vehicle.features.map((feature) => ({
       "@type": "PropertyValue",

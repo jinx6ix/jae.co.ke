@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
@@ -13,8 +14,12 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-primary">JaeTravel</span>
-          <span className="text-sm font-medium text-muted-foreground">Expeditions</span>
+          {/* Replace with your logo image if available */}
+          <Image src="/logo.png" alt="JaeTravel Expeditions" width={40} height={40} />
+          <span className="text-2xl font-bold text-primary pl-10">
+            JaeTravel
+            <br/>Expeditions
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -83,7 +88,7 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Button asChild size="sm" className="bg-[#25D366] hover:bg-[#20BA5A]">
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
               WhatsApp Us
             </a>
           </Button>
@@ -138,7 +143,7 @@ export function Header() {
               Contact
             </Link>
             <Button asChild size="sm" className="bg-[#25D366] hover:bg-[#20BA5A]">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                 WhatsApp Us
               </a>
             </Button>

@@ -235,7 +235,7 @@ export default function ContactPage() {
                 Get instant answers to your questions. Chat with our team on WhatsApp.
               </p>
               <Button asChild className="w-full bg-[#25D366] hover:bg-[#20BA5A]">
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                   Chat on WhatsApp
                 </a>
               </Button>

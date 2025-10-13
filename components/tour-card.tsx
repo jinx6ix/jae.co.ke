@@ -65,10 +65,11 @@ export function TourCard({ tour, showOriginalPrice = false }: TourCardProps) {
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Button asChild className="w-full" onClick={handleBookingClick}>
-          <a href={tour.bookingUrl} target="_blank" rel="noopener noreferrer">
+          <a href={tour.bookingUrl} rel="noopener noreferrer">
             Book Now
           </a>
         </Button>
+
       </CardFooter>
     </Card>
   )

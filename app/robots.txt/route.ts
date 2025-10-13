@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://jaetravel.com/sitemap.xml
+Sitemap: https://jaetravel.co.ke/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

@@ -157,7 +157,7 @@ export default function VehicleHirePage() {
               <Link href="/contact">Get a Quote</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                 WhatsApp Us
               </a>
             </Button>

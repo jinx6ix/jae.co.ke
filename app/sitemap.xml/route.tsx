@@ -2,7 +2,7 @@ import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
 
 export async function GET() {
-  const baseUrl = "https://jaetravel.com"
+  const baseUrl = "https://jaetravel.co.ke"
 
   const staticPages = [
     "",
