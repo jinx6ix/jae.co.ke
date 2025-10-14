@@ -50,7 +50,8 @@ export const metadata: Metadata = {
     url: "https://jaetravel.co.ke",
     siteName: "JaeTravel Expeditions",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
+    description:
+      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
     images: [
       {
         url: "/og-image.jpg",
@@ -63,7 +64,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
+    description:
+      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -78,7 +80,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg", 
+    google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
   },
   alternates: {
     canonical: "https://jaetravel.co.ke",
@@ -86,7 +88,7 @@ export const metadata: Metadata = {
       "application/rss+xml": "https://jaetravel.co.ke/blog/rss.xml",
     },
   },
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -110,7 +112,11 @@ export default function RootLayout({
       addressCountry: "Kenya",
       addressLocality: "Nairobi",
     },
-    sameAs: ["https://www.facebook.com/JaeTravelExpeditions", "https://www.instagram.com/jaetravelexpeditions/", "https://www.tiktok.com/@jaetravelexpeditions"],
+    sameAs: [
+      "https://www.facebook.com/JaeTravelExpeditions",
+      "https://www.instagram.com/jaetravelexpeditions/",
+      "https://www.tiktok.com/@jaetravelexpeditions",
+    ],
     priceRange: "$$-$$$",
     areaServed: ["Kenya", "Tanzania", "Rwanda", "Uganda"],
     hasOfferCatalog: {
@@ -138,7 +144,8 @@ export default function RootLayout({
           itemOffered: {
             "@type": "TouristTrip",
             name: "Accessible Safari Tours",
-            description: "Wheelchair-adapted vehicles and inclusive travel experiences",
+            description:
+              "Wheelchair-adapted vehicles and inclusive travel experiences",
           },
         },
       ],
@@ -148,22 +155,61 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-52G2X6L5');
+          `}
+        </Script>
+        {/* End Google Tag Manager */}
+
+        {/* Optional: Google Analytics (if using GA4) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B"
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', {
+            gtag('config', 'G-2YLERP8F8B', {
               page_path: window.location.pathname,
             });
           `}
         </Script>
-        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
+
+        <meta
+          name="google-site-verification"
+          content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg"
+        />
         <link rel="canonical" href="https://jaetravel.co.ke" />
       </head>
+
       <body className="font-sans antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-52G2X6L5"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+
         <Suspense>
           <Header />
           <main className="min-h-screen">{children}</main>
