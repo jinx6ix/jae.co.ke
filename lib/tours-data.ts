@@ -1501,7 +1501,7 @@ export const tours: Tour[] = [
       "Toyota Landcruiser for Wheelchair",
       "Safari Minivan for Physically Challenged",
     ],
-    url: "/wheelchair-vehicle",
+    url: "/tours/wheelchair-accessible-safari-vehicle",
     duration: "Flexible",
     highlights: [
       "Modified Toyota Landcruiser and Safari Minivan",
