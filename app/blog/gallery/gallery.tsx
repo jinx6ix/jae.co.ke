@@ -48,7 +48,7 @@ export default function GalleryP() {
       <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-muted/30">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/gallery/hero-bg.jpg"
+            src="/serengeti-sunset-safari-witness-breathtaking-african-landscape-tanzanias-national-park-experience-awe-inspiring-beauty-382016699.webp"
             alt="Safari Photography"
             fill
             className="object-cover brightness-50"
