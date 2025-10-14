@@ -24,7 +24,7 @@ export function TourCard({ tour, showOriginalPrice = false }: TourCardProps) {
         <Link href={tour.url}>
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
-              src={`/.jpg?height=400&width=600&query=${encodeURIComponent(tour.title)}`}
+              src={tour.image || `/?height=400&width=600&query=${encodeURIComponent(tour.title)}`}
               alt={tour.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface Tour {
+  image: string;
   duration: ReactNode;
   highlights: any;
   included: any;
@@ -33,6 +34,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-masai-mara",
     slug: "masai-mara-luxury-safari",
+    image: "/masai-mara-migration.jpg",
     title: "Masai Mara Luxury Safari",
     description: "Experience the wildlife of Masai Mara with luxury accommodations and expert guides. Includes game drives and meals.",
     price: 3500,
@@ -59,6 +61,7 @@ export const tours: Tour[] = [
   },
   {
     id: "kenya-amboseli",
+    image: "/Amboseli-National-Park-Elephantsssss.jpg",
     slug: "amboseli-safari",
     title: "Amboseli Safari Adventure",
     description: "Explore Amboseli National Park with guided game drives and spectacular views of Mount Kilimanjaro.",
@@ -84,6 +87,8 @@ export const tours: Tour[] = [
   },
   {
     id: "tanzania-serengeti",
+    image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
+
     slug: "serengeti-migration-tour",
     title: "Serengeti Migration Safari",
     description: "Witness the Great Migration in Serengeti with guided tours and comfortable lodges. Includes daily game drives and meals.",
@@ -111,6 +116,8 @@ export const tours: Tour[] = [
   },
   {
     id: "tanzania-ngorongoro",
+    image: "/Ngorongoro-Crater.jpg",
+
     slug: "ngorongoro-crater-safari",
     title: "Ngorongoro Crater Safari",
     description: "Explore the Ngorongoro Crater with guided game drives and luxury accommodation. Ideal for families and photographers.",
@@ -136,6 +143,8 @@ export const tours: Tour[] = [
   },
   {
     id: "uganda-bwindi",
+    image: "/bwindi-forest-uganda-gorilla-safaris.jpg",
+
     slug: "bwindi-gorilla-trek",
     title: "Bwindi Gorilla Trekking",
     description: "Trek the dense forests of Bwindi to see mountain gorillas up close with expert guides. Includes park fees and accommodations.",
@@ -161,6 +170,8 @@ export const tours: Tour[] = [
   },
   {
     id: "rwanda-volcanoes",
+    image: "/Volcanoes-National-Park-Rwanda-Natural-World-Kenya-Safaris.jpg",
+
     slug: "volcanoes-national-park-safari",
     title: "Rwanda Gorilla Safari",
     description: "Explore Volcanoes National Park in Rwanda to trek gorillas and experience local culture.",
@@ -189,6 +200,8 @@ export const tours: Tour[] = [
   {
     id: "1",
     slug: "masai-mara-safari-adventure",
+    image: "/magestic-maasai-serengeti.jpg",
+
     title: "Masai Mara Safari Adventure",
     description: "Experience the great migration and witness the Big Five in Kenya's most iconic national reserve.",
     price: 1200,
@@ -214,6 +227,8 @@ export const tours: Tour[] = [
   {
     id: "2",
     slug: "amboseli-elephant-safari",
+    image: "/amboseli-elephants-00007.jpg",
+
     title: "Amboseli Elephant Safari",
     description: "Get close to elephants with Mount Kilimanjaro backdrop in Amboseli National Park.",
     price: 980,
@@ -239,6 +254,8 @@ export const tours: Tour[] = [
   {
     id: "3",
     slug: "samburu-game-reserve",
+    image: "/Samburu_National_Reserve,_Kenya-26December2012.jpg",
+
     title: "Samburu Game Reserve",
     description: "Discover unique wildlife in the northern frontier.",
     price: 750,
@@ -264,6 +281,8 @@ export const tours: Tour[] = [
   {
     id: "4",
     slug: "lake-nakuru-flamingo-spectacle",
+    image: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg",
+
     title: "Lake Nakuru Flamingo Tour",
     description: "Witness thousands of flamingos in their natural habitat.",
     price: 450,
@@ -291,6 +310,8 @@ export const tours: Tour[] = [
   {
     id: "5",
     slug: "tsavo-east-west-adventure",
+    image: "/tsavo-west-national-park-chyulu-gate.jpg.webp",
+
     title: "Tsavo East & West Safari",
     description: "Explore Kenya's largest national park.",
     price: 1350,
@@ -316,6 +337,8 @@ export const tours: Tour[] = [
   {
     id: "6",
     slug: "mombasa-coastal-safari",
+    image: "/Mombasa-beach-2-1960x800.webp",
+
     title: "Mombasa Beach & Safari",
     description: "Combine safari adventures with beach relaxation.",
     price: 1600,
@@ -341,6 +364,8 @@ export const tours: Tour[] = [
   {
     id: "7",
     slug: "mount-kenya-climbing-expedition",
+    image: "/mt-kenya.jpg",
+
     title: "Mount Kenya Climbing",
     description: "Challenge yourself with Africa's second highest peak.",
     price: 1100,
@@ -366,6 +391,8 @@ export const tours: Tour[] = [
   {
     id: "8",
     slug: "laikipia-conservancy",
+    image: "/laikipia-kenya-photography-safari.jpg",
+
     title: "Laikipia Conservancy",
     description: "Experience conservation in action.",
     price: 1250,
@@ -391,6 +418,8 @@ export const tours: Tour[] = [
   {
     id: "9",
     slug: "hell-gate-lake-naivasha-adventure",
+    image: "/Hells-Gate-National-Park.jpg",
+
     title: "Hell's Gate Adventure",
     description: "Bike and hike through dramatic landscapes.",
     price: 380,
@@ -416,6 +445,8 @@ export const tours: Tour[] = [
   {
     id: "10",
     slug: "maasai-cultural-experience",
+    image: "/magestic-maasai-serengeti.jpg",
+
     title: "Maasai Cultural Experience",
     description: "Immerse yourself in Maasai culture.",
     price: 650,
@@ -441,6 +472,8 @@ export const tours: Tour[] = [
   {
     id: "11",
     slug: "aberdare-national-park-safari",
+    image: "/Aberdare.jpg",
+
     title: "Aberdare National Park",
     description: "Mountain forest safari experience.",
     price: 720,
@@ -466,6 +499,8 @@ export const tours: Tour[] = [
   {
     id: "12",
     slug: "diani-beach-safari-combo",
+    image: "/Kenia-Mombasa-Diani-Beach-Leopard-Beach-Resort-strand-long-beach-LBR_1.jpg",
+
     title: "Diani Beach Safari Combo",
     description: "Ultimate Kenya safari and beach experience.",
     price: 1800,
@@ -491,6 +526,8 @@ export const tours: Tour[] = [
   {
     id: "13",
     slug: "serengeti-wildlife-safari",
+    image: "/serengeti-day-trip.jpeg",
+
     title: "Serengeti Wildlife Safari",
     description: "Explore the endless plains of Serengeti and witness incredible wildlife diversity.",
     price: 1800,
@@ -516,6 +553,8 @@ export const tours: Tour[] = [
   {
     id: "14",
     slug: "ngorongoro-crater-tour",
+    image: "/Ngorongoro-Crater.jpg",
+
     title: "Ngorongoro Crater Tour",
     description: "Visit the world's largest intact caldera.",
     price: 950,
@@ -541,6 +580,8 @@ export const tours: Tour[] = [
   {
     id: "15",
     slug: "kilimanjaro-climbing-expedition",
+    image: "/kilimanjaro-moutain-climbing.jpg",
+
     title: "Kilimanjaro Climbing",
     description: "Conquer Africa's highest peak.",
     price: 2200,
@@ -566,6 +607,8 @@ export const tours: Tour[] = [
   {
     id: "16",
     slug: "tarangire-national-park-safari",
+    image: "/boabab-tarangire-national-park.jpg",
+
     title: "Tarangire Elephant Safari",
     description: "See large herds of elephants.",
     price: 1100,
@@ -591,6 +634,8 @@ export const tours: Tour[] = [
   {
     id: "17",
     slug: "lake-manyara-national-park-safari",
+    image: "/Lake Manyara banner.jpg",
+
     title: "Lake Manyara Tree Climbing Lions",
     description: "Witness unique tree-climbing lions.",
     price: 580,
@@ -616,6 +661,7 @@ export const tours: Tour[] = [
   {
     id: "18",
     slug: "zanzibar-beach-holiday",
+    image: "/zanzibar-stone-town-view-min-800x600.jpg",
     title: "Zanzibar Spice Island",
     description: "Explore the spice island paradise.",
     price: 1300,
@@ -641,6 +687,8 @@ export const tours: Tour[] = [
   {
     id: "19",
     slug: "ruaha-national-park-safari",
+    image: "/ruaha-national-park-featured.jpg",
+
     title: "Ruaha National Park",
     description: "Tanzania's largest national park.",
     price: 1450,
@@ -666,6 +714,8 @@ export const tours: Tour[] = [
   {
     id: "20",
     slug: "selous-game-reserve-safari",
+    image: "/SELOUS-GAME-RESERVE.jpg",
+
     title: "Selous Game Reserve",
     description: "Africa's largest game reserve.",
     price: 1350,
@@ -691,6 +741,8 @@ export const tours: Tour[] = [
   {
     id: "21",
     slug: "mikumi-national-park",
+    image: "/Mikumi2017.jpg",
+
     title: "Mikumi National Park",
     description: "Accessible wildlife viewing.",
     price: 750,
@@ -716,6 +768,8 @@ export const tours: Tour[] = [
   {
     id: "22",
     slug: "arusha-cultural-tour",
+    image: "/Cultural-Heritage-Centre-Arusha-Tanzania.jpg",
+
     title: "Arusha Cultural Tour",
     description: "Experience local Tanzanian culture.",
     price: 420,
@@ -741,6 +795,8 @@ export const tours: Tour[] = [
   {
     id: "23",
     slug: "katavi-national-park-safari",
+    image: "/Katavi-National-Park-600x400.png",
+
     title: "Katavi National Park",
     description: "Remote wilderness experience.",
     price: 1600,
@@ -766,6 +822,8 @@ export const tours: Tour[] = [
   {
     id: "24",
     slug: "mahale-mountains-national-park-chimpanzee-trekking",
+    image: "/Chimp-Group-Mahale-Mountain-JEP_8612.jpg",
+
     title: "Mahale Chimpanzee Trek",
     description: "Trek with wild chimpanzees.",
     price: 2100,
@@ -791,6 +849,8 @@ export const tours: Tour[] = [
   {
     id: "25",
     slug: "pemba-island-diving",
+    image: "/Pemba-Island-15.jpg",
+
     title: "Pemba Island Diving",
     description: "World-class diving experience.",
     price: 980,
@@ -816,6 +876,8 @@ export const tours: Tour[] = [
   {
     id: "26",
     slug: "stone-town-heritage-tour",
+    image: "/31719088_tourists-on-a-typical-narrow-street-in-stone-town-zanzibar-e1713023620250.jpg",
+
     title: "Stone Town Heritage Tour",
     description: "Explore UNESCO World Heritage site.",
     price: 350,
@@ -841,6 +903,8 @@ export const tours: Tour[] = [
   {
     id: "27",
     slug: "northern-circuit-safari",
+    image: "/Game-Drive-north-of-Serengeti-National-Park.jpg",
+
     title: "Northern Circuit Safari",
     description: "Complete northern Tanzania experience.",
     price: 2800,
@@ -866,6 +930,8 @@ export const tours: Tour[] = [
   {
     id: "28",
     slug: "gorilla-trekking-experience",
+    image: "/gorilla-trekking-experience-13.jpg",
+
     title: "Rwanda Gorilla Trekking Experience",
     description: "Get up close with mountain gorillas in Volcanoes National Park, Rwanda.",
     price: 2500,
@@ -891,6 +957,8 @@ export const tours: Tour[] = [
   {
     id: "29",
     slug: "nyungwe-forest-canopy-walk",
+    image: "/nyungwe-forests.jpg",
+
     title: "Nyungwe Forest Canopy Walk",
     description: "Walk among the treetops.",
     price: 450,
@@ -916,6 +984,8 @@ export const tours: Tour[] = [
   {
     id: "30",
     slug: "lake-kivu-relaxation",
+    image: "/Lake-Kivu-Islands.jpg",
+
     title: "Lake Kivu Relaxation",
     description: "Relax by Africa's great lake.",
     price: 380,
@@ -941,6 +1011,8 @@ export const tours: Tour[] = [
   {
     id: "31",
     slug: "akagera-national-park-safari",
+    image: "/Akagera-national-park-1-750x450.jpg",
+
     title: "Akagera National Park",
     description: "Rwanda's only savanna park.",
     price: 520,
@@ -966,6 +1038,8 @@ export const tours: Tour[] = [
   {
     id: "32",
     slug: "kigali-city-tour",
+    image: "/kigali-photo-600x300.jpg",
+
     title: "Kigali City Tour",
     description: "Explore the clean city of Kigali.",
     price: 150,
@@ -991,6 +1065,8 @@ export const tours: Tour[] = [
   {
     id: "33",
     slug: "golden-monkey-tracking",
+    image: "/golden-monkey-trekking.jpg",
+
     title: "Golden Monkey Tracking",
     description: "Track rare golden monkeys.",
     price: 680,
@@ -1016,6 +1092,8 @@ export const tours: Tour[] = [
   {
     id: "34",
     slug: "bwindi-gorilla-trekking",
+    image: "/Magical-encounters-with-the-mountain-gorillas-of-Bwindi.jpg",
+
     title: "Bwindi Gorilla Trekking",
     description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda.",
     price: 2200,
@@ -1041,6 +1119,8 @@ export const tours: Tour[] = [
   {
     id: "35",
     slug: "queen-elizabeth-national-park-safari",
+    image: "/Queen-Elizabeth-National-Park.jpg",
+
     title: "Queen Elizabeth Safari",
     description: "Diverse wildlife in scenic landscapes at Queen Elizabeth National Park.",
     price: 1150,
@@ -1066,6 +1146,8 @@ export const tours: Tour[] = [
   {
     id: "36",
     slug: "murchison-falls-national-park-safari",
+    image: "/murchison-falls.webp",
+
     title: "Murchison Falls Adventure",
     description: "Witness the powerful Murchison Falls.",
     price: 980,
@@ -1091,6 +1173,8 @@ export const tours: Tour[] = [
   {
     id: "37",
     slug: "kibale-national-park-chimpanzee-trekking",
+    image: "/kibale-national-park-chimpanzees-uganda-590x390.jpg",
+
     title: "Kibale Chimpanzee Tracking",
     description: "Track our closest relatives.",
     price: 750,
@@ -1116,6 +1200,8 @@ export const tours: Tour[] = [
   {
     id: "38",
     slug: "lake-mburo-national-park-safari",
+    image: "/lake-mburo-national-park.jpg",
+
     title: "Lake Mburo National Park",
     description: "Compact park with diverse wildlife.",
     price: 420,
@@ -1141,6 +1227,8 @@ export const tours: Tour[] = [
   {
     id: "39",
     slug: "rwenzori-mountains-hiking",
+    image: "/Rwenzori-Mountains-03_1600p.jpg",
+
     title: "Rwenzori Mountains Hiking",
     description: "Hike the Mountains of the Moon.",
     price: 1800,
@@ -1166,6 +1254,8 @@ export const tours: Tour[] = [
   {
     id: "40",
     slug: "jinja-adventure-tour",
+    image: "/6-days-gorilla-tracking-and-rafting-jinja.jpg",
+
     title: "Jinja White Water Rafting",
     description: "Adventure at the source of the Nile.",
     price: 350,
@@ -1191,6 +1281,8 @@ export const tours: Tour[] = [
   {
     id: "41",
     slug: "lake-bunyonyi-relaxation-tour",
+    image: "/lake_bunyonyi__uganda-the-pearl-of-africa.webp",
+
     title: "Lake Bunyonyi Relaxation",
     description: "Relax by Uganda's deepest lake.",
     price: 450,
@@ -1216,6 +1308,8 @@ export const tours: Tour[] = [
   {
     id: "42",
     slug: "ssese-islands-beach-holiday",
+    image: "/Travel-to-Ssese-islands.jpg",
+
     title: "Ssese Islands Beach Holiday",
     description: "Beach paradise on Lake Victoria.",
     price: 650,
@@ -1241,6 +1335,8 @@ export const tours: Tour[] = [
   {
     id: "43",
     slug: "lake-naivasha-boat-safari",
+    image: "/Lake-Naivasha-National-Park-750x450.jpg",
+
     title: "Lake Naivasha Boat Safari",
     description: "Boat safari on freshwater Lake Naivasha with hippos, birds, and Crescent Island walking safari.",
     price: 150,
@@ -1266,6 +1362,8 @@ export const tours: Tour[] = [
   {
     id: "44",
     slug: "kenya-disability-safari",
+    image: "/wheelchair-accessible-tanzania-safari.webp",
+
     title: "Accessible Kenya Safari Experience",
     description: "A fully accessible safari experience designed for travelers with mobility challenges, featuring wheelchair-accessible vehicles, accommodations, and tailored wildlife viewing.",
     price: 2450,
@@ -1291,6 +1389,8 @@ export const tours: Tour[] = [
   {
     id: "45",
     slug: "accessible-masai-mara-safari",
+    image: "/Tineke-in-Kenya.png",
+
     title: "4-Day Accessible Masai Mara Experience",
     description: "A focused accessible safari in the Masai Mara with wheelchair-adapted vehicles, accessible tented camps, and front-row seats to the Great Migration.",
     price: 1450,
@@ -1316,6 +1416,8 @@ export const tours: Tour[] = [
   {
     id: "46",
     slug: "tanzania-accessible-safari",
+    image: "/WhatsApp-Image-2025-01-15-at-12.06.45-PM.webp",
+
     title: "Tanzania Accessible Safari Adventure",
     description: "An inclusive journey through Tanzania's Serengeti and Ngorongoro Crater with adapted safari vehicles, accessible lodges, and unforgettable wildlife encounters.",
     price: 2950,
@@ -1341,6 +1443,8 @@ export const tours: Tour[] = [
   {
     id: "47",
     slug: "rwanda-accessible-gorilla-safari",
+    image: "/WhatsApp Image 2025-09-02 at 11.43.25 AM.jpeg",
+
     title: "Rwanda Accessible Gorilla Experience",
     description: "A rare opportunity to experience Rwanda's mountain gorillas with specially designed accessible trekking routes, adapted viewing platforms, and cultural encounters.",
     price: 3200,
@@ -1366,6 +1470,8 @@ export const tours: Tour[] = [
   {
     id: "48",
     slug: "uganda-accessible-primate-safari",
+    image: "/kibale-national-park-chimpanzees-uganda-590x390.jpg",
+
     title: "Uganda Accessible Primate Safari",
     description: "An accessible primate-focused safari in Uganda with wheelchair-friendly pathways, adapted chimpanzee and gorilla viewing, and a Kazinga Channel boat safari.",
     price: 2200,
@@ -1391,6 +1497,8 @@ export const tours: Tour[] = [
   {
     id: "49",
     slug: "east-africa-grand-accessible-safari",
+    image: "/ngorongoro-header-3.jpg",
+
     title: "East Africa Grand Accessible Safari",
     description: "The ultimate East African accessible safari across Kenya and Tanzania, combining Maasai Mara, Serengeti, and Ngorongoro with premium accessible accommodations.",
     price: 5800,
@@ -1417,6 +1525,58 @@ export const tours: Tour[] = [
     difficulty: undefined,
     groupSize: undefined,
     category: undefined
+  },
+  {
+    id: "50",
+    slug: "wheelchair-accessible-safari-vehicle",
+    image: "/HandicappedConvertedRamp.webp",
+    title: "Wheelchair Accessible Safari Vehicle",
+    description:
+      "Experience the wild in comfort and independence with our specially modified Toyota Landcruiser and Safari Minivan — designed for wheelchair users. Each vehicle is customized in our in-house workshop to ensure safe, easy access and smooth travel across Kenya and East Africa.",
+    price: 2200, // optional — or set an indicative cost if applicable
+    currency: "USD",
+    rating: 5.0,
+    reviewCount: 12,
+    itinerary:
+      "Customizable safari transport option — accessible vehicles available for all East African safari itineraries.",
+    bookingSlug: "wheelchair-accessible-safari-vehicle",
+    region: "East Africa",
+    country: "Kenya",
+    metaTitle:
+      "Wheelchair Accessible Safari Vehicle | Jae Travel Expeditions",
+    metaDescription:
+      "Travel across Kenya and East Africa in comfort with our custom wheelchair-accessible Toyota Landcruiser and Safari Minivan. Built for safety, space, and accessibility.",
+    keywords: [
+      "Wheelchair Accessible Safari",
+      "wheelchair accessible cruiser kenya",
+      "Accessible Travel Kenya",
+      "Disabled Friendly Safari Vehicle",
+      "Toyota Landcruiser for Wheelchair",
+      "Safari Minivan for Physically Challenged",
+    ],
+    url: "/tours/wheelchair-accessible-safari-vehicle",
+    duration: "Flexible",
+    highlights: [
+      "Modified Toyota Landcruiser and Safari Minivan",
+      "Fully wheelchair-accessible entry and seating",
+      "Custom-built in our in-house workshop",
+      "Available for all safari routes and tours",
+      "Comfort, safety, and visibility guaranteed",
+    ],
+    included: [
+      "Accessible vehicle rental with driver-guide",
+      "Wheelchair lift or ramp access",
+      "Spacious interior for easy maneuvering",
+      "Air conditioning and panoramic windows",
+    ],
+    excluded: [
+      "Fuel surcharge (for long-distance safaris)",
+      "Personal travel insurance",
+      "Accommodation and meals (booked separately)",
+    ],
+    difficulty: "Easy",
+    groupSize: "Up to 6 travelers (including wheelchair users)",
+    category: "Accessible Travel",
   },
 ]
 

@@ -67,7 +67,7 @@ export default async function TourPage(props: TourPageProps) {
 
   return (
     <>
-      <TourStructuredData tour={tour} />
+      <TourStructuredData tour={{ ...tour, duration: String(tour.duration || "Not specified") }} />
 
       <div className="pb-16">
         {/* Breadcrumb */}
@@ -281,7 +281,11 @@ export default async function TourPage(props: TourPageProps) {
             <div className="lg:col-span-1">
               <div className="sticky top-20 space-y-6">
                 {/* Booking Card */}
-                <BookingForm tourTitle={tour.title} tourPrice={tour.price} tourDuration={duration} />
+                <BookingForm 
+                  tourTitle={String(tour.title)} 
+                  tourPrice={Number(tour.price)} 
+                  tourDuration={String(duration)} 
+                />
 
                 {/* Contact Card */}
                 <Card>
