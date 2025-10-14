@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "hFLRkNLTiWW_pvLuqqXe-gZjop_3rJtLqKtpuxkByMc",
+    google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg", 
   },
   alternates: {
     canonical: "https://jaetravel.co.ke",
@@ -160,8 +160,7 @@ export default function RootLayout({
             });
           `}
         </Script>
-        <meta name="google-site-verification" content="hFLRkNLTiWW_pvLuqqXe-gZjop_3rJtLqKtpuxkByMc" />
-
+        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
         <link rel="canonical" href="https://jaetravel.co.ke" />
       </head>
       <body className="font-sans antialiased">
