@@ -162,6 +162,7 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" async></script>
 
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
