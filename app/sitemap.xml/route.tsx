@@ -7,6 +7,7 @@ export async function GET() {
   const staticPages = [
     "",
     "/tours",
+    "/toyota-landcruiser",
     "/wheelchair-vehicle",
     "/vehicle-hire",
     "/vehicles",
