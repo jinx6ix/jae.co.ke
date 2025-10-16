@@ -1392,58 +1392,6 @@ export const tours: Tour[] = [
     category: undefined
   },
   {
-    id: "47",
-    slug: "rwanda-accessible-gorilla-safari",
-    image: "/WhatsApp Image 2025-09-02 at 11.43.25 AM.jpeg",
-    title: "Rwanda Accessible Gorilla Experience",
-    description: "A rare opportunity to experience Rwanda's mountain gorillas with specially designed accessible trekking routes, adapted viewing platforms, and cultural encounters.",
-    price: 3200,
-    currency: "USD",
-    rating: 4.9,
-    reviewCount: 24,
-    itinerary: "5-day accessible gorilla experience in Rwanda",
-    bookingUrl: "/booking/rwanda-accessible-gorilla-safari",
-    region: "East Africa",
-    country: "Rwanda",
-    metaTitle: "Rwanda Accessible Gorilla Experience | Jae Travel Expeditions",
-    metaDescription: "A rare opportunity to experience Rwanda's mountain gorillas with specially designed accessible trekking routes.",
-    keywords: ["Accessible Gorilla Trekking Rwanda", "Disability Travel Rwanda", "Wheelchair Gorilla Safari"],
-    url: "/tours/rwanda-accessible-gorilla-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined
-  },
-  {
-    id: "48",
-    slug: "uganda-accessible-primate-safari",
-    image: "/kibale-national-park-chimpanzees-uganda-590x390.jpg",
-    title: "Uganda Accessible Primate Safari",
-    description: "An accessible primate-focused safari in Uganda with wheelchair-friendly pathways, adapted chimpanzee and gorilla viewing, and a Kazinga Channel boat safari.",
-    price: 2200,
-    currency: "USD",
-    rating: 4.6,
-    reviewCount: 31,
-    itinerary: "6-day accessible primate safari in Uganda",
-    bookingUrl: "/booking/uganda-accessible-primate-safari",
-    region: "East Africa",
-    country: "Uganda",
-    metaTitle: "Uganda Accessible Primate Safari | Jae Travel Expeditions",
-    metaDescription: "An accessible primate-focused safari in Uganda with wheelchair-friendly pathways and adapted chimpanzee and gorilla viewing.",
-    keywords: ["Accessible Primate Safari Uganda", "Disability Travel Uganda", "Wheelchair Safari Uganda"],
-    url: "/tours/uganda-accessible-primate-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined
-  },
-  {
     id: "49",
     slug: "east-africa-grand-accessible-safari",
     image: "/ngorongoro-header-3.jpg",
@@ -1474,58 +1422,6 @@ export const tours: Tour[] = [
     groupSize: undefined,
     category: undefined
   },
-  {
-    id: "50",
-    slug: "wheelchair-accessible-safari-vehicle",
-    image: "/HandicappedConvertedRamp.webp",
-    title: "Wheelchair Accessible Safari Vehicle",
-    description:
-      "Experience the wild in comfort and independence with our specially modified Toyota Landcruiser and Safari Minivan — designed for wheelchair users. Each vehicle is customized in our in-house workshop to ensure safe, easy access and smooth travel across Kenya and East Africa.",
-    price: 2200, // optional — or set an indicative cost if applicable
-    currency: "USD",
-    rating: 5.0,
-    reviewCount: 12,
-    itinerary:
-      "Customizable safari transport option — accessible vehicles available for all East African safari itineraries.",
-    bookingUrl: "/booking/wheelchair-accessible-safari-vehicle",
-    region: "East Africa",
-    country: "Kenya",
-    metaTitle:
-      "Wheelchair Accessible Safari Vehicle | Jae Travel Expeditions",
-    metaDescription:
-      "Travel across Kenya and East Africa in comfort with our custom wheelchair-accessible Toyota Landcruiser and Safari Minivan. Built for safety, space, and accessibility.",
-    keywords: [
-      "Wheelchair Accessible Safari",
-      "Accessible Travel Kenya",
-      "Disabled Friendly Safari Vehicle",
-      "Toyota Landcruiser for Wheelchair",
-      "Safari Minivan for Physically Challenged",
-    ],
-    url: "/tours/wheelchair-accessible-safari-vehicle",
-    duration: "Flexible",
-    highlights: [
-      "Modified Toyota Landcruiser and Safari Minivan",
-      "Fully wheelchair-accessible entry and seating",
-      "Custom-built in our in-house workshop",
-      "Available for all safari routes and tours",
-      "Comfort, safety, and visibility guaranteed",
-    ],
-    included: [
-      "Accessible vehicle rental with driver-guide",
-      "Wheelchair lift or ramp access",
-      "Spacious interior for easy maneuvering",
-      "Air conditioning and panoramic windows",
-    ],
-    excluded: [
-      "Fuel surcharge (for long-distance safaris)",
-      "Personal travel insurance",
-      "Accommodation and meals (booked separately)",
-    ],
-    difficulty: "Easy",
-    groupSize: "Up to 6 travelers (including wheelchair users)",
-    category: "Accessible Travel",
-  },
-  
 ]
 
 export const disabilityTours = tours.filter(
