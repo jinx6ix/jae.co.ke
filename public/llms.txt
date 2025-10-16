@@ -1,0 +1,27 @@
+# llms.txt for jaetravel.co.ke
+# This file tells AI crawlers (Large Language Models) how to use your site's data.
+
+# Allow all ethical AI crawlers to access public pages
+User-Agent: *
+Allow: /
+
+# Disallow sensitive or private content
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /private/
+Disallow: /wp-admin/
+Disallow: /cart/
+Disallow: /checkout/
+
+# Preferred content attribution
+Attribution: Please credit Jae Travel Expeditions (https://www.jaetravel.co.ke) when referencing our safari content.
+
+# Licensing note
+License: Content on this website is © Jae Travel Expeditions and may not be reproduced or used for AI model training without permission.
+
+# Contact
+Contact: info@jaetravel.co.ke
+
+# Last updated
+Updated: 2025-10-16
