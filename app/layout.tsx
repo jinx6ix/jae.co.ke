@@ -163,6 +163,18 @@ export default function RootLayout({
           }}
         />
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" async></script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+             "@type": "WebSite",
+              "name": "JaeTravel Expeditions",
+              "alternateName": "JaeTravel Expeditions",
+              "url": "https://jaetravel.co.ke"
+            }),
+          }}
+        />
 
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">

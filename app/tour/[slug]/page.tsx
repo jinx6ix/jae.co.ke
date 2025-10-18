@@ -2,14 +2,16 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { tours } from "@/lib/tours-data"
+import { Tour, tours } from "@/lib/tours-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { TourCard } from "@/components/tour-card"
 import { TourReviews } from "@/components/tour-reviews"
+import fs from "fs/promises"
 import { BookingForm } from "@/components/booking-form"
 import { TourStructuredData } from "@/components/tour-structured-data"
 import { Star, MapPin, Clock, Users, Check, ArrowRight, ChevronRight } from "lucide-react"
+import path from "path"
 
 interface TourPageProps {
   params: Promise<{ slug: string }>
@@ -19,6 +21,14 @@ export async function generateStaticParams() {
   return tours.map((tour) => ({
     slug: tour.slug,
   }))
+}
+
+// Read the JSON file from the /data/ directory
+async function getTourData(slug: string): Promise<Tour | undefined> {
+  const filePath = path.join(process.cwd(), 'data', 'query_based_posts.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const tours: Tour[] = JSON.parse(jsonData);
+  return tours.find((tour) => tour.slug === slug);
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
