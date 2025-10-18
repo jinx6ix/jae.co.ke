@@ -6,20 +6,30 @@ import { Tour } from '@/types/tour';
 
 // Read the JSON file from the /data/ directory
 async function getTourData(slug: string): Promise<Tour | undefined> {
-  const filePath = path.join(process.cwd(), 'data', 'french_tour_pages.json');
-  const jsonData = await fs.readFile(filePath, 'utf8');
-  const tours: Tour[] = JSON.parse(jsonData);
-  return tours.find((tour) => tour.slug === slug);
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'french_tour_pages.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const tours: Tour[] = JSON.parse(jsonData);
+    return tours.find((tour) => tour.slug === slug);
+  } catch (error) {
+    console.error('Error reading tour data:', error);
+    return undefined;
+  }
 }
 
 // Generate static paths for each tour
 export async function generateStaticParams() {
-  const filePath = path.join(process.cwd(), 'data', 'french_tour_pages.json');
-  const jsonData = await fs.readFile(filePath, 'utf8');
-  const tours: Tour[] = JSON.parse(jsonData);
-  return tours.map((tour) => ({
-    slug: tour.slug,
-  }));
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'french_tour_pages.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const tours: Tour[] = JSON.parse(jsonData);
+    return tours.map((tour) => ({
+      slug: tour.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 // Generate metadata for SEO

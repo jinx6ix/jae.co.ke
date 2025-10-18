@@ -25,10 +25,15 @@ export async function generateStaticParams() {
 
 // Read the JSON file from the /data/ directory
 async function getTourData(slug: string): Promise<Tour | undefined> {
-  const filePath = path.join(process.cwd(), 'data', 'query_based_posts.json');
-  const jsonData = await fs.readFile(filePath, 'utf8');
-  const tours: Tour[] = JSON.parse(jsonData);
-  return tours.find((tour) => tour.slug === slug);
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'query_based_posts.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const tours: Tour[] = JSON.parse(jsonData);
+    return tours.find((tour) => tour.slug === slug);
+  } catch (error) {
+    console.error('Error reading tour data:', error);
+    return undefined;
+  }
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
