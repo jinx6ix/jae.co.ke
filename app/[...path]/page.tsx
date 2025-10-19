@@ -1,39 +1,38 @@
-import { notFound } from 'next/navigation';
-import fs from 'fs/promises';
-import path from 'path';
-import { Tour } from '@/types/tour';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from "next/navigation"
+import fs from "fs/promises"
+import path from "path"
+import { Tour } from "@/types/tour"
 
-// Read the JSON file
+// Helper function: reads JSON and finds the tour by postId
 async function getTourByPostId(postId: string): Promise<Tour | undefined> {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'query_based_posts.json');
-    const jsonData = await fs.readFile(filePath, 'utf8');
-    const tours: Tour[] = JSON.parse(jsonData);
-    return tours.find((tour) => tour.postId === postId);
+    const filePath = path.join(process.cwd(), "data", "query_based_posts.json")
+    const jsonData = await fs.readFile(filePath, "utf8")
+    const tours: Tour[] = JSON.parse(jsonData)
+    return tours.find((tour) => tour.postId === postId)
   } catch (error) {
-    console.error('Error reading tour data:', error);
-    return undefined;
+    console.error("Error reading tour data:", error)
+    return undefined
   }
 }
 
-// Dynamic page component
-export default async function QueryPage({
-  searchParams,
-}: {
-  searchParams: { p?: string; post_type?: string };
-}) {
-  const postId = searchParams.p;
-  const postType = searchParams.post_type;
+// ✅ Fix: `searchParams` is now asynchronous
+type Props = {
+  searchParams: Promise<{ p?: string; post_type?: string }>
+}
+
+// ✅ Make page async and await searchParams
+export default async function QueryPage({ searchParams }: Props) {
+  const { p: postId, post_type: postType } = await searchParams
 
   // Redirect if post_type=ht_tour or handle post IDs
-  if (postId && (!postType || postType === 'ht_tour')) {
-    const tour = await getTourByPostId(postId);
+  if (postId && (!postType || postType === "ht_tour")) {
+    const tour = await getTourByPostId(postId)
     if (tour) {
-      redirect(tour.url);
+      redirect(tour.url)
     }
   }
 
   // If no valid post ID or post_type, return 404
-  notFound();
+  notFound()
 }

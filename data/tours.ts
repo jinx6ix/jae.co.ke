@@ -1578,6 +1578,56 @@ export const tours: Tour[] = [
     groupSize: "Up to 6 travelers (including wheelchair users)",
     category: "Accessible Travel",
   },
+  {
+    id: "51",
+    slug: "rwanda-accessible-gorilla-safari",
+    image: "/AccessibleGorillaSafari.webp",
+    title: "Rwanda Accessible Gorilla Safari",
+    description: "Embark on an unforgettable gorilla trekking adventure in Rwanda, designed for accessibility. Our specially modified vehicles and trained guides ensure a safe, comfortable, and inclusive experience for wheelchair users in Volcanoes National Park.",
+    price: 3500,
+    currency: "USD",
+    rating: 4.8,
+    reviewCount: 8,
+    itinerary: "Customizable gorilla trekking tour with accessible transport and support, tailored to your needs in Rwanda’s Volcanoes National Park.",
+    bookingSlug: "rwanda-accessible-gorilla-safari",
+    region: "East Africa",
+    country: "Rwanda",
+    metaTitle: "Rwanda Accessible Gorilla Safari | Jae Travel Expeditions",
+    metaDescription: "Experience gorilla trekking in Rwanda with our wheelchair-accessible safari vehicles and expert guides, ensuring comfort and safety in Volcanoes National Park.",
+    keywords: [
+      "Accessible Gorilla Trekking",
+      "Wheelchair Accessible Safari Rwanda",
+      "Rwanda Gorilla Safari",
+      "Disabled Friendly Gorilla Tour",
+      "Volcanoes National Park Accessible",
+      "Inclusive Safari Rwanda"
+    ],
+    url: "/tours/rwanda-accessible-gorilla-safari",
+    duration: "3-5 Days",
+    highlights: [
+      "Wheelchair-accessible transport to Volcanoes National Park",
+      "Expert guides trained in accessible travel",
+      "Customized gorilla trekking experience",
+      "Comfortable and safe vehicle modifications",
+      "Stunning views of Rwanda’s landscapes"
+    ],
+    included: [
+      "Accessible vehicle with driver-guide",
+      "Gorilla trekking permit",
+      "Wheelchair lift or ramp access",
+      "Support staff for trekking assistance",
+      "Park entrance fees"
+    ],
+    excluded: [
+      "International flights",
+      "Personal travel insurance",
+      "Accommodation and meals (unless specified)",
+      "Optional activities outside trekking"
+    ],
+    difficulty: "Moderate",
+    groupSize: "Up to 4 travelers (including wheelchair users)",
+    category: "Accessible Travel"
+  },
 ]
 
 export const disabilityTours = tours.filter(
