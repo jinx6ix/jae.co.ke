@@ -48,7 +48,7 @@ export default function BlogPage() {
             </p>
           </div>
           <Button asChild size="lg" variant="secondary" className="shrink-0">
-            <Link href="/blog/gallery">
+            <Link href="/blog/blog-gallery">
               View Gallery <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>

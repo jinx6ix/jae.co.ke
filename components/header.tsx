@@ -67,7 +67,7 @@ export function Header() {
                 <Link href="/blog">Blog Posts</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/blog/gallery">Photo & Video Gallery</Link>
+                <Link href="/blog/blog-gallery">Photo & Video Gallery</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -136,7 +136,7 @@ export function Header() {
             <Link href="/blog" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Blog
             </Link>
-            <Link href="/blog/gallery" className="pl-4 text-sm" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/blog/blog-gallery" className="pl-4 text-sm" onClick={() => setMobileMenuOpen(false)}>
               Photo & Video Gallery
             </Link>
             <Link href="/contact" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>

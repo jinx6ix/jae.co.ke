@@ -26,14 +26,17 @@ export const metadata: Metadata = {
     title: "Safari Photo & Video Gallery | JaeTravel Expeditions",
     description:
       "Explore stunning safari photos and videos from East Africa. Wildlife, landscapes, and cultural experiences.",
-    images: ["/.jpg?height=630&width=1200&query=african safari wildlife photography gallery"],
+    images: [
+      {
+        url: "/serengeti-sunset-safari-witness-breathtaking-african-landscape-tanzanias-national-park-experience-awe-inspiring-beauty-382016699.webp",
+        width: 1200,
+        height: 630,
+        alt: "African Safari Wildlife Photography Gallery",
+      },
+    ],
   },
 }
 
 export default function GalleryPage() {
-  return (
-    <>
-      <GalleryP />
-    </>
-  )
+  return <GalleryP />
 }

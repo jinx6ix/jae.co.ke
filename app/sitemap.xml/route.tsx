@@ -20,7 +20,7 @@ export async function GET() {
     "/disability-tours",
     "/about",
     "/blog",
-    "/blog/gallery",
+    "/blog/blog-gallery",
     "/contact",
   ]
 
