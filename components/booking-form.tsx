@@ -429,3 +429,5 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     </form>
   )
 }
+
+export { BookingForm }
