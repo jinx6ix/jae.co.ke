@@ -1,243 +1,277 @@
-// app/api/bookings/[id]/download/route.ts
-import { NextRequest, NextResponse } from "next/server";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { NextRequest, NextResponse } from 'next/server';
+import PDFDocument from 'pdfkit';
+import fs from 'fs';
+import path from 'path';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+function extractPhoneNumber(phone: string): string {
+  let cleanNumber = phone.replace(/[^\d+]/g, '');
+  if (cleanNumber.startsWith('0')) cleanNumber = '+254' + cleanNumber.substring(1);
+  if (!cleanNumber.startsWith('+') && cleanNumber.length === 10 && cleanNumber.startsWith('7')) {
+    cleanNumber = '+254' + cleanNumber;
+  }
+  return cleanNumber;
+}
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
-    const bookingId = params.id;
     const { searchParams } = new URL(request.url);
+    const name = searchParams.get('name') || 'Customer';
+    const email = searchParams.get('email') || '';
+    const phone = searchParams.get('phone') || '';
+    const service = searchParams.get('service') || 'Booking';
+    const startDate = searchParams.get('startDate') || '';
+    const travelers = searchParams.get('travelers') || '1';
+    const total = parseFloat(searchParams.get('total') || '0');
+
+    const doc = new PDFDocument({ 
+      layout: 'portrait',
+      size: 'A4',
+      margin: 50
+    });
     
-    // Mock booking data (in production, fetch from database)
-    const bookingData = {
-      id: bookingId,
-      customerName: searchParams.get("name") || "Customer Name",
-      email: searchParams.get("email") || "customer@example.com",
-      phone: searchParams.get("phone") || "+254 700 000 000",
-      serviceName: searchParams.get("service") || "Masai Mara Safari",
-      startDate: searchParams.get("startDate") || "2025-01-15",
-      travelers: parseInt(searchParams.get("travelers") || "2"),
-      totalPrice: parseFloat(searchParams.get("total") || "2500"),
-      submittedAt: new Date().toLocaleString("en-US", { timeZone: "Africa/Nairobi" })
-    };
+    const chunks: Uint8Array[] = [];
 
-    // ✅ FIXED: Create PDF with explicit page size
-    const pdfDoc = await PDFDocument.create();
-    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
-    
-    // ✅ Use standard A4 size: [595.28, 841.89]
-    const page = pdfDoc.addPage([595.28, 841.89]); // A4 size
-    const { width: pageWidth, height: pageHeight } = page.getSize();
+    return new Promise((resolve, reject) => {
+      doc.on('data', (chunk: Uint8Array) => chunks.push(chunk));
+      doc.on('end', () => {
+        const pdfBuffer = Buffer.concat(chunks);
+        
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/pdf');
+        headers.set('Content-Disposition', `attachment; filename="Booking_Confirmation_${params.id}.pdf"`);
+        headers.set('Content-Length', pdfBuffer.length.toString());
+        headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
 
-    // Header
-    page.drawText("JAE TRAVEL EXPEDITIONS", {
-      x: 50,
-      y: pageHeight - 80,
-      size: 24,
-      font: timesRomanFont,
-      color: rgb(0.2, 0.2, 0.8),
-    });
+        resolve(NextResponse.json(pdfBuffer, { 
+          status: 200, 
+          headers 
+        }));
+      });
+      doc.on('error', reject);
 
-    page.drawText("BOOKING CONFIRMATION", {
-      x: 50,
-      y: pageHeight - 110,
-      size: 18,
-      font: timesRomanFont,
-      color: rgb(0, 0.6, 0),
-    });
+      // Header Section
+      try {
+        const logoPath = path.join(process.cwd(), 'public', 'logo.png');
+        if (fs.existsSync(logoPath)) {
+          doc.image(logoPath, 50, 30, { width: 80, height: 80 });
+        }
+      } catch (logoError) {
+        console.warn('[PDF] Logo not found, continuing without logo');
+      }
 
-    // Booking ID Box
-    page.drawRectangle({
-      x: 50,
-      y: pageHeight - 140,
-      width: 200,
-      height: 25,
-      color: rgb(0.9, 0.95, 1),
-      borderWidth: 1,
-      borderColor: rgb(0.2, 0.4, 0.8),
-    });
-    page.drawText(`Booking ID: ${bookingId}`, {
-      x: 55,
-      y: pageHeight - 135,
-      size: 12,
-      font: timesRomanFont,
-      color: rgb(0.2, 0.4, 0.8),
-    });
+      // Title
+      doc.fontSize(24)
+        .fillColor('#1e40af')
+        .text('Booking Confirmation', 160, 50, { 
+          align: 'left',
+          lineGap: 5 
+        });
 
-    // Customer Info
-    let yPosition = pageHeight - 200;
-    page.drawText("CUSTOMER INFORMATION", {
-      x: 50,
-      y: yPosition,
-      size: 14,
-      font: timesRomanFont,
-      color: rgb(0, 0, 0),
-    });
-    yPosition -= 25;
+      // Company Info
+      doc.fontSize(10)
+        .fillColor('#666')
+        .text('Jae Travel Expeditions', 160, 85);
+      doc.text('Nairobi, Kenya', 160, 100);
+      doc.text('+254 726 485 228 | info@jaetravel.co.ke', 160, 115);
+      doc.text('Licensed Tour Operator | TTA/0036', 160, 130);
 
-    page.drawText(`Name: ${bookingData.customerName}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 20;
+      // Horizontal Line
+      doc.moveTo(50, 160)
+        .lineTo(550, 160)
+        .strokeColor('#e5e7eb')
+        .lineWidth(2)
+        .stroke();
 
-    page.drawText(`Email: ${bookingData.email}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 20;
+      let yPosition = 190;
 
-    page.drawText(`Phone: ${bookingData.phone}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 40;
+      // Booking ID Section
+      doc.fontSize(16)
+        .fillColor('#dc2626')
+        .text('Booking ID:', 50, yPosition);
+      doc.fontSize(14)
+        .fillColor('#b91c1c')
+        .text(params.id, 120, yPosition);
+      
+      yPosition += 40;
 
-    // Booking Details
-    page.drawText("BOOKING DETAILS", {
-      x: 50,
-      y: yPosition,
-      size: 14,
-      font: timesRomanFont,
-      color: rgb(0, 0, 0),
-    });
-    yPosition -= 25;
+      // Customer Information Section
+      doc.fontSize(16)
+        .fillColor('#1e40af')
+        .text('Customer Information', 50, yPosition);
+      
+      yPosition += 30;
+      
+      // Name
+      doc.fontSize(12)
+        .fillColor('#374151')
+        .text('Name:', 70, yPosition);
+      doc.fillColor('#059669')
+        .text(name, 120, yPosition);
+      
+      yPosition += 20;
+      
+      // Email
+      doc.fillColor('#374151')
+        .text('Email:', 70, yPosition);
+      doc.fillColor('#3b82f6')
+        .text(email, 120, yPosition);
+      
+      yPosition += 20;
+      
+      // Phone
+      doc.fillColor('#374151')
+        .text('Phone:', 70, yPosition);
+      doc.fillColor('#059669')
+        .text(phone, 120, yPosition);
+      
+      yPosition += 25;
 
-    page.drawText(`Tour: ${bookingData.serviceName}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 20;
+      // WhatsApp Section with LINK ANNOTATION
+      // Determine recipient based on email in query (simplified check for admin)
+      const recipientEmail = searchParams.get('recipient') || email;
+      const isAdmin = recipientEmail === 'info@jaetravel.co.ke';
+      
+      doc.fillColor('#059669')
+        .text('Contact WhatsApp:', 70, yPosition);
+      
+      const whatsappTextX = 160;
+      const whatsappTextY = yPosition;
+      let whatsappNumber = '';
+      let whatsappMessage = '';
+      let whatsappUrl = '';
 
-    page.drawText(`Start Date: ${bookingData.startDate}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 20;
+      if (isAdmin) {
+        // Admin PDF: Link to client's number
+        whatsappNumber = extractPhoneNumber(phone);
+        whatsappMessage = `Hi, this is regarding ${name}'s booking (${params.id}) for ${service}`;
+        whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        doc.text(phone, whatsappTextX, whatsappTextY); // Show client's number
+      } else {
+        // Client PDF: Link to admin's number
+        whatsappNumber = '+254726485228';
+        whatsappMessage = `Hi, this is ${name} regarding my booking (${params.id}) for ${service}`;
+        whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        doc.text('+254 726 485 228', whatsappTextX, whatsappTextY); // Show admin's number
+      }
+      
+      // Calculate text width and height for link rectangle
+      const textWidth = doc.widthOfString(isAdmin ? phone : '+254 726 485 228');
+      const textHeight = doc.currentLineHeight();
+      const linkRect = [whatsappTextX, whatsappTextY - textHeight, whatsappTextX + textWidth, whatsappTextY];
+      
+      // Add link annotation to PDF using simplified approach
+      doc.annotate(
+        linkRect[0], // x
+        linkRect[1], // y
+        linkRect[2] - linkRect[0], // width
+        linkRect[3] - linkRect[1], // height
+        {
+          Type: 'Link',
+          Border: [0, 0, 0],
+          A: {
+            Type: 'Action',
+            S: 'URI',
+            URI: whatsappUrl
+          }
+        }
+      );
 
-    page.drawText(`Travelers: ${bookingData.travelers}`, {
-      x: 70,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-    });
-    yPosition -= 20;
+      yPosition += 40;
 
-    // Total Price (Highlighted)
-    page.drawRectangle({
-      x: 50,
-      y: yPosition - 5,
-      width: pageWidth - 100,
-      height: 30,
-      color: rgb(0.95, 1, 0.95),
-      borderWidth: 2,
-      borderColor: rgb(0, 0.6, 0),
-    });
-    page.drawText("TOTAL PRICE: $", {
-      x: 70,
-      y: yPosition,
-      size: 14,
-      font: timesRomanFont,
-      color: rgb(0, 0.6, 0),
-    });
-    page.drawText(bookingData.totalPrice.toLocaleString(), {
-      x: 200,
-      y: yPosition,
-      size: 20,
-      font: timesRomanFont,
-      color: rgb(0, 0.6, 0),
-    });
-    yPosition -= 50;
+      // Booking Details Section
+      doc.fontSize(16)
+        .fillColor('#1e40af')
+        .text('Booking Details', 50, yPosition);
+      
+      yPosition += 30;
+      
+      // Service
+      doc.fontSize(12)
+        .fillColor('#374151')
+        .text('Service:', 70, yPosition);
+      doc.fillColor('#059669')
+        .text(service, 120, yPosition);
+      
+      yPosition += 20;
+      
+      // Start Date
+      doc.fillColor('#374151')
+        .text('Start Date:', 70, yPosition);
+      doc.fillColor('#dc2626')
+        .text(startDate, 120, yPosition);
+      
+      yPosition += 20;
+      
+      // Travelers
+      doc.fillColor('#374151')
+        .text('Travelers:', 70, yPosition);
+      doc.fillColor('#059669')
+        .text(`${travelers} person${parseInt(travelers) > 1 ? 's' : ''}`, 120, yPosition);
+      
+      yPosition += 20;
+      
+      // Total Amount
+      doc.fillColor('#374151')
+        .text('Total Amount:', 70, yPosition);
+      doc.fillColor('#059669')
+        .fontSize(14)
+        .font('Helvetica-Bold')
+        .text(`$${total.toLocaleString()}`, 120, yPosition);
+      
+      yPosition += 60;
 
-    // Footer Line
-    page.drawLine({
-      start: { x: 50, y: yPosition },
-      end: { x: pageWidth - 50, y: yPosition },
-      thickness: 1,
-      color: rgb(0.7, 0.7, 0.7),
+      // Terms & Next Steps
+      doc.fontSize(12)
+        .fillColor('#1e40af')
+        .text('Next Steps:', 50, yPosition);
+      
+      yPosition += 20;
+      
+      const terms = [
+        '• Your booking is confirmed and secured',
+        '• Full payment due 30 days before departure',
+        '• Contact us for detailed itinerary',
+        '• Travel insurance recommended'
+      ];
+      
+      terms.forEach((term) => {
+        doc.fillColor('#374151')
+          .fontSize(10)
+          .text(term, 70, yPosition);
+        yPosition += 15;
+      });
+
+      // Footer
+      yPosition = 720;
+      
+      doc.moveTo(50, yPosition - 20)
+        .lineTo(550, yPosition - 20)
+        .strokeColor('#e5e7eb')
+        .lineWidth(1)
+        .stroke();
+      
+      doc.fontSize(9)
+        .fillColor('#6b7280')
+        .text('Jae Travel Expeditions', 50, yPosition, { align: 'left' });
+      doc.text('Licensed Tour Operator | TTA/0036', 50, yPosition + 15, { align: 'left' });
+      doc.text('Nairobi, Kenya • +254 726 485 228 • info@jaetravel.co.ke', 50, yPosition + 30, { align: 'left' });
+      doc.text('This is an official booking confirmation document', 50, yPosition + 45, { 
+        align: 'center',
+        width: 500
+      });
+
+      doc.end();
     });
-    yPosition -= 20;
-
-    page.drawText("Next Steps:", {
-      x: 50,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-      color: rgb(0.3, 0.3, 0.3),
-    });
-    yPosition -= 15;
-
-    page.drawText("• Our team will contact you within 24 hours", {
-      x: 70,
-      y: yPosition,
-      size: 11,
-      font: timesRomanFont,
-      color: rgb(0.3, 0.3, 0.3),
-    });
-    yPosition -= 15;
-
-    page.drawText("• Full payment required 30 days before departure", {
-      x: 70,
-      y: yPosition,
-      size: 11,
-      font: timesRomanFont,
-      color: rgb(0.3, 0.3, 0.3),
-    });
-    yPosition -= 30;
-
-    page.drawText("Contact Information:", {
-      x: 50,
-      y: yPosition,
-      size: 12,
-      font: timesRomanFont,
-      color: rgb(0, 0, 0),
-    });
-    yPosition -= 15;
-
-    page.drawText("📞 +254 726 485 228", {
-      x: 70,
-      y: yPosition,
-      size: 11,
-      font: timesRomanFont,
-      color: rgb(0, 0.5, 0),
-    });
-    yPosition -= 15;
-
-    page.drawText("✉️ info@jaetravel.co.ke", {
-      x: 70,
-      y: yPosition,
-      size: 11,
-      font: timesRomanFont,
-      color: rgb(0, 0.5, 0),
-    });
-
-    // Generate PDF bytes
-    const pdfBytes = await pdfDoc.save();
-
-    return new NextResponse(pdfBytes, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="booking-confirmation-${bookingId}.pdf"`,
-        "Cache-Control": "public, max-age=3600",
-      },
-    });
-
   } catch (error) {
-    console.error("[PDF Download] Error:", error);
+    console.error('[PDF Download] Error:', error);
     return NextResponse.json(
       { 
-        success: false, 
-        message: "Failed to generate PDF. Please try again or contact support." 
-      }, 
+        error: 'Failed to generate PDF',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }
