@@ -25,4 +25,6 @@ export interface Tour {
   groupSize?: number;
   category?: string;
   postId?: string;
+  images?: string[]; // ✅ Multiple images array (alternative)
+  // ... other fields
 }
