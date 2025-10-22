@@ -88,7 +88,6 @@ export const tours: Tour[] = [
   {
     id: "tanzania-serengeti",
     image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
-
     slug: "serengeti-migration-tour",
     title: "Serengeti Migration Safari",
     description: "Witness the Great Migration in Serengeti with guided tours and comfortable lodges. Includes daily game drives and meals.",
