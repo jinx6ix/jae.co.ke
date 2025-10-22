@@ -1,124 +1,274 @@
+// app/about/page.tsx
+"use client"
+
 import type { Metadata } from "next"
-import Link from "next/link"
 import Image from "next/image"
-import { blogPosts } from "@/lib/blog-data"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import Link from "next/link"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Calendar, User, ArrowRight, Camera, Video } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Award, Heart, Shield, Users, Globe, Leaf, ChevronDown } from "lucide-react"
+import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Safari Travel Blog | Tips, Guides & Stories | JaeTravel Expeditions",
+  title:
+    "About JaeTravel Expeditions | East Africa Safari Experts & Accessible Travel Specialists",
   description:
-    "Read our safari travel blog for expert tips, destination guides, wildlife stories, and accessible travel advice for East Africa. Plan your perfect safari adventure.",
+    "Learn about JaeTravel Expeditions, your trusted partner for East African safaris since 2008. Specializing in accessible travel, conservation tourism, and unforgettable wildlife experiences across Kenya, Tanzania, Rwanda, and Uganda.",
   keywords: [
-    "Safari Blog",
-    "Travel Tips",
-    "East Africa Travel",
-    "Safari Guide",
-    "Wildlife Stories",
-    "Accessible Travel Blog",
-    "Kenya Travel Tips",
-    "Tanzania Safari Guide",
+    "about jaetravel expeditions",
+    "safari company east africa",
+    "accessible safari experts",
+    "conservation tourism",
+    "safari specialists kenya",
+    "tanzania tour operator",
+    "rwanda gorilla trekking company",
+    "uganda safari operator",
+    "sustainable safari tourism",
+    "inclusive travel company",
+    "african safari experts",
+    "wildlife tour specialists",
+    "east africa travel company",
+    "trusted safari operator",
+    "award winning safari company",
   ],
 }
 
-export default function BlogPage() {
-  return (
-    <div className="container mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Safari Travel Blog</h1>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
-          Expert tips, destination guides, and inspiring stories from our East African safari adventures. Learn
-          everything you need to know to plan your perfect trip.
-        </p>
-      </div>
+export default function AboutPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-      <div className="mb-12 overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary/80 p-8 text-primary-foreground md:p-12">
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-          <div className="flex-1 text-center md:text-left">
-            <div className="mb-3 flex items-center justify-center gap-2 md:justify-start">
-              <Camera className="h-6 w-6" />
-              <Video className="h-6 w-6" />
+  const faqs = [
+    {
+      question: "What makes JaeTravel Expeditions unique?",
+      answer:
+        "We specialize in accessible and sustainable safaris across East Africa, ensuring travelers of all abilities can enjoy authentic wildlife experiences while supporting local communities and conservation.",
+    },
+    {
+      question: "Do you offer customized safari packages?",
+      answer:
+        "Yes! Every trip we organize is fully customizable to match your interests, travel dates, accessibility needs, and budget.",
+    },
+    {
+      question: "Are your safaris suitable for travelers with disabilities?",
+      answer:
+        "Absolutely. We’re pioneers in accessible safaris, offering wheelchair-friendly vehicles, lodges, and expert support staff to ensure comfort and safety.",
+    },
+    {
+      question: "Which countries do you operate in?",
+      answer:
+        "We currently operate across Kenya, Tanzania, Rwanda, and Uganda — offering everything from classic safaris to gorilla trekking adventures.",
+    },
+    {
+      question: "How do you support local communities?",
+      answer:
+        "We work with local guides, artisans, and conservation projects, ensuring tourism directly benefits the communities that make East Africa so special.",
+    },
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  }
+
+  return (
+    <div className="pb-16">
+      {/* Hero Section */}
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/african-safari-team-with-tourists.jpg"
+            alt="JaeTravel Team"
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+        </div>
+        <div className="container relative z-10 mx-auto px-4 text-center text-white">
+          <h1 className="mb-6 font-serif text-5xl font-bold leading-tight text-balance md:text-6xl">
+            About JaeTravel Expeditions
+          </h1>
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-white/90 text-pretty">
+            Creating unforgettable safari experiences across East Africa since 2008. Your trusted partner for
+            accessible, sustainable, and authentic African adventures.
+          </p>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="mb-6 font-serif text-4xl font-bold">Our Story</h2>
+              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  JaeTravel Expeditions was founded in 2008 with a simple mission: to share the magic of East Africa
+                  with travelers from around the world while making safari adventures accessible to everyone.
+                </p>
+                <p>
+                  What started as a small family-run operation has grown into one of East Africa's most trusted safari
+                  companies, known for our commitment to accessibility, sustainability, and exceptional service. We've
+                  helped thousands of travelers experience the wonder of African wildlife, from witnessing the Great
+                  Migration to trekking with mountain gorillas.
+                </p>
+                <p>
+                  Our pioneering work in accessible tourism has opened up safari experiences to travelers with
+                  disabilities, proving that adventure knows no boundaries. We're proud to be leaders in inclusive
+                  travel across Kenya, Tanzania, Rwanda, and Uganda.
+                </p>
+              </div>
             </div>
-            <h2 className="mb-3 font-serif text-3xl font-bold text-balance">Explore Our Photo & Video Gallery</h2>
-            <p className="text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-              Browse stunning safari photos and videos from Kenya, Tanzania, Rwanda, and Uganda. See the Great
-              Migration, mountain gorillas, and breathtaking landscapes.
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image src="/safari-guides-with-tourists-in-africa.jpg" alt="Our Story" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="border-t border-border bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">Our Values</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: Heart, title: "Accessibility for All", text: "We believe everyone deserves to experience the wonder of an African safari, regardless of physical ability." },
+              { icon: Leaf, title: "Conservation First", text: "We're committed to sustainable tourism that protects wildlife and supports local conservation efforts." },
+              { icon: Users, title: "Community Support", text: "We partner with local communities, ensuring tourism benefits the people who call East Africa home." },
+              { icon: Shield, title: "Safety & Quality", text: "Your safety and comfort are our top priorities, with rigorous standards for all our services." },
+              { icon: Award, title: "Excellence", text: "We strive for excellence in every detail, from planning to execution, ensuring unforgettable experiences." },
+              { icon: Globe, title: "Cultural Respect", text: "We honor and celebrate the diverse cultures of East Africa, promoting authentic cultural exchanges." },
+            ].map((item, i) => (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                    <item.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Meet Our Team</h2>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              Our experienced guides and support staff are passionate about East Africa and dedicated to creating
+              exceptional safari experiences.
             </p>
           </div>
-          <Button asChild size="lg" variant="secondary" className="shrink-0">
-            <Link href="/blog/blog-gallery">
-              View Gallery <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                name: "James Kimani",
+                role: "Founder & Lead Guide",
+                bio: "With over 20 years of safari experience, James founded JaeTravel to share his love of East African wildlife.",
+              },
+              {
+                name: "Sarah Mwangi",
+                role: "Accessibility Specialist",
+                bio: "Sarah pioneered our accessible safari program, ensuring every traveler can experience the magic of Africa.",
+              },
+              {
+                name: "David Ochieng",
+                role: "Conservation Director",
+                bio: "David leads our conservation initiatives, working with local communities and wildlife organizations.",
+              },
+            ].map((member, index) => (
+              <Card key={index}>
+                <CardContent className="p-6 text-center">
+                  <div className="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full bg-muted">
+                    <Image
+                      src={`/ceholder-svg-key-team.jpg?key=team${index}&height=200&width=200&query=${member.name}`}
+                      alt={member.name}
+                      width={200}
+                      height={200}
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="mb-1 text-xl font-semibold">{member.name}</h3>
+                  <p className="mb-3 text-sm text-primary">{member.role}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Blog Posts Grid */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {blogPosts.map((post) => (
-          <Card key={post.id} className="flex flex-col">
-            <CardHeader className="p-0">
-              <Link href={`/blog/${post.slug}`}>
-                <div className="relative aspect-[16/9] overflow-hidden rounded-t-lg">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-105"
+      {/* FAQ Section */}
+      <section className="border-t border-border bg-muted/30 py-16">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="mb-10 text-center font-serif text-4xl font-bold text-balance">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="rounded-xl border bg-background p-5 shadow-sm transition-all hover:shadow-md"
+              >
+                <button
+                  className="flex w-full items-center justify-between text-left text-lg font-medium"
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                >
+                  {faq.question}
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform ${
+                      openIndex === index ? "rotate-180 text-primary" : ""
+                    }`}
                   />
-                </div>
-              </Link>
-            </CardHeader>
-            <CardContent className="flex-1 p-6">
-              <div className="mb-3 flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <User className="h-4 w-4" />
-                  <span>{post.author}</span>
-                </div>
+                </button>
+                {openIndex === index && (
+                  <p className="mt-3 text-muted-foreground leading-relaxed">{faq.answer}</p>
+                )}
               </div>
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className="mb-3 text-xl font-bold leading-tight transition-colors hover:text-primary">
-                  {post.title}
-                </h2>
-              </Link>
-              <p className="mb-3 text-sm text-muted-foreground leading-relaxed">{post.excerpt}</p>
-              <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                {post.category}
-              </div>
-            </CardContent>
-            <CardFooter className="p-6 pt-0">
-              <Button asChild variant="ghost" className="w-full">
-                <Link href={`/blog/${post.slug}`}>
-                  Read More <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SEO Structured Data */}
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </section>
 
       {/* CTA Section */}
-      <div className="mt-16 rounded-2xl bg-muted/50 p-8 text-center md:p-12">
-        <h2 className="mb-4 font-serif text-3xl font-bold text-balance">Ready to Start Your Safari?</h2>
-        <p className="mx-auto mb-6 max-w-2xl text-muted-foreground leading-relaxed text-pretty">
-          Turn your safari dreams into reality. Browse our tours or contact us to plan your perfect East African
-          adventure.
-        </p>
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button asChild size="lg">
-            <Link href="/tours">Explore Tours</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+      <section className="border-t border-border bg-primary py-16 text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="mb-4 font-serif text-3xl font-bold text-balance">Join Us on an Adventure</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
+            Experience the difference that passion, expertise, and commitment to accessibility make. Let us create your
+            perfect East African safari.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild size="lg" variant="secondary">
+              <Link href="/tours">Explore Our Tours</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
