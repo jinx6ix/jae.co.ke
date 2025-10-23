@@ -165,7 +165,7 @@ export const vehicles: Vehicle[] = [
   {
     id: 5,
     slug: "wheelchair-accessible-vehicle",
-    name: "Wheelchair Accessible Vehicle",
+    name: "Wheel chair acessible safari landcruiser",
     image:
       "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-09-02%20at%2011.43.25%20AM.jpeg?updatedAt=1756810077606",
     description:
@@ -189,9 +189,9 @@ export const vehicles: Vehicle[] = [
     },
     gallery: [
       "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-09-02%20at%2011.43.25%20AM.jpeg?updatedAt=1756810077606",
-      "/accessible-safari-wheelchair.jpg",
-      "/wheelchair-accessible-vehicle-ramp.jpg",
-      "/accessible-safari-vehicle-interior-wheelchair-spac.jpg",
+      "/WhatsApp Image 2025-10-23 at 11.02.34 AM.jpeg",
+      "/WhatsApp Image 2025-10-23 at 11.02.33 AM.jpeg",
+      "/WhatsApp Image 2025-10-23 at 11.02.32 AM.jpeg",
     ],
     metaTitle: "Wheelchair Accessible Safari Vehicle | Disability-Friendly Car Rental",
     metaDescription:
