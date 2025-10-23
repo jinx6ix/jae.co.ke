@@ -41,33 +41,54 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
   const totalPrice = calculateDays() * pricePerDay
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Track vehicle booking with Google Analytics
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ;(window as any).gtag("event", "begin_checkout", {
-        event_category: "Vehicle Booking",
-        event_label: vehicleName,
-        value: totalPrice,
-        currency: "USD",
-      })
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    try {
+      // Track vehicle booking with Google Analytics
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "begin_checkout", {
+          event_category: "Vehicle Booking",
+          event_label: vehicleName,
+          value: totalPrice,
+          currency: "USD",
+        });
+      }
+  
+      // Send form data to the API route
+      const response = await fetch(`/vehicle-hire/${vehicleId}/api`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          vehicleName,
+          vehicleId,
+          ...formData,
+          totalPrice,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
+  
+      // Track successful purchase
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "purchase", {
+          event_category: "Vehicle Booking",
+          event_label: vehicleName,
+          value: totalPrice,
+          currency: "USD",
+        });
+      }
+  
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Optionally show an error message to the user
+    } finally {
+      setIsSubmitting(false);
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ;(window as any).gtag("event", "purchase", {
-        event_category: "Vehicle Booking",
-        event_label: vehicleName,
-        value: totalPrice,
-        currency: "USD",
-      })
-    }
-
-    setIsSubmitting(false)
-    setSubmitted(true)
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
