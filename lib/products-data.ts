@@ -3,7 +3,7 @@ export const products = [
       id: "1",
       slug: "best-of-kenya-tanzania",
       name: "Best of Kenya & Tanzania",
-      heroImage: "/images/kenya-tanzania-sunset.jpg",
+      heroImage: "/4-Days-Masai-Mara-Wildebeest-safari.jpg",
       description: "Embark on an epic safari odyssey across Kenya and Tanzania, where thundering herds of wildebeest and majestic lions await in the legendary Maasai Mara and Serengeti.",
       details: "Feel the pulse of the wild on this 10-day journey through East Africa’s iconic landscapes. Chase the Great Migration in the Maasai Mara, marvel at Ngorongoro Crater’s wildlife haven, and connect with Maasai and Hadzabe communities. From golden savannas to starlit nights, this adventure blends luxury lodges and authentic cultural experiences for an unforgettable safari.",
       highlights: [
@@ -52,7 +52,7 @@ export const products = [
       id: "2",
       slug: "safari-simba",
       name: "Safari Simba",
-      heroImage: "/images/safari-simba-elephants.jpg",
+      heroImage: "/images.jpeg",
       description: "Roar into adventure with Safari Simba, where Kenya’s Amboseli and Tsavo National Parks unveil elephants grazing beneath Kilimanjaro’s snow-capped peak.",
       details: "This 7-day thrill ride takes you to Amboseli, where elephant herds roam against the backdrop of Africa’s highest peak, and Tsavo’s untamed wilderness, alive with lions and leopards. Stay in eco-friendly lodges, enjoy guided game drives, and capture the magic of Kenya’s diverse ecosystems.",
       highlights: [
@@ -99,7 +99,7 @@ export const products = [
       id: "3",
       slug: "safari-twiga",
       name: "Safari Twiga",
-      heroImage: "/images/safari-twiga-giraffes.jpg",
+      heroImage: "/images (1).jpeg",
       description: "Get up close with graceful giraffes and Kenya’s vibrant wildlife on this unforgettable journey through Nairobi’s wild heart.",
       details: "This 5-day adventure sweeps you into Nairobi National Park’s urban wilderness and the Giraffe Centre’s serene sanctuary. Feed giraffes by hand, spot rhinos against a city skyline, and visit the David Sheldrick Wildlife Trust to learn about elephant conservation. Perfect for families and first-time safari-goers.",
       highlights: [
@@ -145,7 +145,7 @@ export const products = [
       id: "4",
       slug: "golden-monkey-gorilla-trekking-safari",
       name: "Golden Monkey & Gorilla Trekking",
-      heroImage: "/images/gorilla-trekking-mist.jpg",
+      heroImage: "/gorilla-trekking-difficulty.jpg",
       description: "Trek into Rwanda’s misty volcanoes to meet playful golden monkeys and awe-inspiring mountain gorillas in their lush forest home.",
       details: "This 6-day quest through Volcanoes National Park is a soul-stirring adventure. Hike through emerald forests, lock eyes with a silverback gorilla, and watch golden monkeys leap through the canopy. Stay in eco-lodges and support Rwanda’s conservation efforts with expert guides by your side.",
       highlights: [
@@ -192,7 +192,7 @@ export const products = [
       id: "5",
       slug: "luxury-roof-top-camping",
       name: "Luxury Roof-Top Camping",
-      heroImage: "/images/luxury-camping-stars.jpg",
+      heroImage: "/safari-vehicle-extended-roof-for-photography.jpg",
       description: "Sleep under a blanket of stars in Kenya’s wilderness, where luxury roof-top tents blend adventure with indulgence.",
       details: "This 4-day escape redefines camping with plush roof-top tents, gourmet campfire meals, and guided game drives through Kenya’s untamed landscapes. Wake to the call of the wild in Amboseli or Maasai Mara, and drift off to the glow of a savanna sunset in unparalleled comfort.",
       highlights: [
@@ -237,7 +237,7 @@ export const products = [
       id: "6",
       slug: "6-sustainable-travel-tips",
       name: "6 Sustainable Travel Tips",
-      heroImage: "/images/sustainable-travel-eco.jpg",
+      heroImage: "/amboseli-elephants-00007.jpg",
       description: "Transform your East African adventure with six eco-conscious tips to travel responsibly and leave a positive impact.",
       details: "Discover how to explore East Africa sustainably with our expert guide. From supporting local artisans to choosing eco-lodges, these six tips will help you travel with purpose, preserving the region’s beauty and wildlife for generations to come. Perfect for eco-conscious travelers.",
       highlights: [
@@ -273,7 +273,7 @@ export const products = [
       id: "7",
       slug: "toyota-prado",
       name: "Toyota Prado Rental",
-      heroImage: "/images/toyota-prado-dust.jpg",
+      heroImage: "/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg",
       description: "Conquer East Africa’s rugged terrains with a Toyota Prado, your trusty steed for an epic self-drive safari.",
       details: "Hit the open road with our reliable Toyota Prado rentals, built for Kenya and Tanzania’s wild trails. Equipped with 4x4 capability, GPS, and modern comforts, this vehicle offers the freedom to explore at your own pace, from Amboseli’s plains to Serengeti’s vast savannas.",
       highlights: [
@@ -316,7 +316,7 @@ export const products = [
       id: "8",
       slug: "kevin",
       name: "Meet Ian, Your Safari Storyteller",
-      heroImage: "/images/author-ian-adventure.jpg",
+      heroImage: "/favicon.ico",
       description: "Join Ian, our passionate guide, as he shares the heart and soul of East Africa’s wild landscapes and cultures.",
       details: "With a decade of guiding safaris, Ian’s stories bring East Africa to life. From tracking lions in the Maasai Mara to sharing campfire tales with local communities, his passion for adventure and conservation inspires every journey. Meet Ian and let his expertise guide your safari.",
       highlights: [
@@ -350,7 +350,7 @@ export const products = [
       id: "9",
       slug: "rwanda-accessible-gorilla-safari",
       name: "Rwanda Accessible Gorilla Safari",
-      heroImage: "/images/accessible-gorilla-safari.jpg",
+      heroImage: "/gorilla-trekking-experience-13.jpg",
       description: "Embark on an unforgettable gorilla trekking adventure in Rwanda, designed for accessibility. Our specially modified vehicles and trained guides ensure a safe, comfortable, and inclusive experience for wheelchair users in Volcanoes National Park.",
       details: "This 5-day accessible safari brings you face-to-face with Rwanda’s mountain gorillas in Volcanoes National Park. Travel in our custom wheelchair-accessible vehicles, stay in eco-friendly lodges, and enjoy tailored support from expert guides to make your gorilla trekking dream a reality.",
       highlights: [

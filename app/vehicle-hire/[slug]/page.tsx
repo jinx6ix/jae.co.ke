@@ -16,6 +16,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = await params;
   const vehicle = vehicles.find((v) => v.slug === params.slug)
 
   if (!vehicle) {

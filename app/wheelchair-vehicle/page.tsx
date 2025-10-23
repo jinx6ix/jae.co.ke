@@ -87,7 +87,7 @@ const vehicles = [
     type: "Work & Transport",
     capacity: "1 wheelchair + 3 passengers",
     features: ["Luxury interior", "WiFi connectivity", "Leather seats", "Conference setup", "Privacy partition"],
-    image: "/vehicles/executive-van.jpg", 
+    image: "/car-van-1536x776 (1).webp", 
     price: "$180/day",
     bestFor: ["Business meetings", "Corporate events", "Executive transport"]
   },
@@ -97,7 +97,7 @@ const vehicles = [
     type: "Work & Transport",
     capacity: "1-2 wheelchairs + flexible seating",
     features: ["Convertible interior", "Removable seats", "Large storage", "Versatile configuration", "All-purpose use"],
-    image: "/vehicles/multi-purpose.jpg",
+    image: "/cd.jpg",
     price: "$95/day",
     bestFor: ["Various needs", "Group transport", "Flexible requirements"]
   }
