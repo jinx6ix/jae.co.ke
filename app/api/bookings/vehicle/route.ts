@@ -1,3 +1,4 @@
+// app/api/booking/route.ts
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import PDFDocument from 'pdfkit';
@@ -15,7 +16,6 @@ async function generatePDF(data: any): Promise<Buffer> {
     });
     doc.on('error', reject);
 
-    // Add PDF content
     doc.fontSize(20).text('Booking Confirmation', { align: 'center' });
     doc.moveDown();
     doc.fontSize(14).text(`Vehicle: ${data.vehicleName}`);
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
 
-    // Calculate days and total (redundantly, in case not sent)
+    // Calculate days and total
     const pickup = new Date(data.pickupDate);
     const returnDate = new Date(data.returnDate);
     const days = Math.ceil((returnDate.getTime() - pickup.getTime()) / (1000 * 60 * 60 * 24));
@@ -53,11 +53,10 @@ export async function POST(request: Request) {
       totalPrice,
     });
 
-    // SMTP configuration from env (configure in .env: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: 465,
-      secure: true, // Use SSL for port 465
+      secure: true,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
