@@ -165,7 +165,7 @@ export const vehicles: Vehicle[] = [
   {
     id: 5,
     slug: "wheelchair-accessible-vehicle",
-    name: "Wheel chair acessible safari landcruiser",
+    name: "Wheel chair accessible safari landcruiser",
     image:
       "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-09-02%20at%2011.43.25%20AM.jpeg?updatedAt=1756810077606",
     description:
@@ -201,6 +201,7 @@ export const vehicles: Vehicle[] = [
       "disability safari car",
       "accessible vehicle rental",
       "inclusive safari transport",
+      "wheelchair accessible safari",
     ],
   },
   {

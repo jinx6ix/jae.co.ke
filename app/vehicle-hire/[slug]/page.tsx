@@ -80,30 +80,35 @@ export default function VehicleDetailPage({ params }: { params: { slug: string }
 
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Gallery */}
-              <div className="space-y-4">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image
-                    src={vehicle.image || "/placeholder.svg"}
-                    alt={vehicle.name}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="grid grid-cols-4 gap-2">
-                  {vehicle.gallery.slice(1, 5).map((img, index) => (
-                    <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
-                      <Image
-                        src={img || "/placeholder.svg"}
-                        alt={`${vehicle.name} ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <div className="space-y-6">
+  {/* Main image */}
+  <div className="relative aspect-[16/9] md:h-[450px] overflow-hidden rounded-xl shadow-lg">
+    <Image
+      src={vehicle.image || "/placeholder.svg"}
+      alt={vehicle.name}
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
 
+  {/* Gallery grid */}
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    {vehicle.gallery.slice(1, 5).map((img, index) => (
+      <div
+        key={index}
+        className="relative aspect-square md:aspect-[4/3] overflow-hidden rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+      >
+        <Image
+          src={img || "/placeholder.svg"}
+          alt={`${vehicle.name} ${index + 1}`}
+          fill
+          className="object-cover"
+        />
+      </div>
+    ))}
+  </div>
+</div>
               {/* Vehicle Info */}
               <div>
                 <h1 className="mb-4 font-serif text-4xl font-bold">{vehicle.name}</h1>
