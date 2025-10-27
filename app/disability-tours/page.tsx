@@ -48,6 +48,7 @@ const schema = {
       ],
       "areaServed": ["China", "Japan", "United States", "Germany"]
     },
+    
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -91,7 +92,66 @@ const schema = {
       "datePublished": "2025-08-01",
       "reviewBody": "As a wheelchair user, I never thought I'd experience an African safari. JaeTravel made it not only possible but absolutely incredible.",
       "reviewRating": { "@type": "Rating", "ratingValue": 5 }
-    }
+    },
+    // --- Kenya Disability Safari ---
+{
+  "@type": "TouristTrip",
+  "name": "Accessible Masai Mara Safari",
+  "description": "4-day accessible Masai Mara safari featuring adapted vehicles, inclusive accommodations, and guided game drives for travelers with disabilities.",
+  "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
+  "touristType": ["Wheelchair users", "Mobility impaired travelers"],
+  "offers": {
+    "@type": "Offer",
+    "price": "2500-5000",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "JaeTravel Expeditions",
+    "url": "https://www.jaetravel.co.ke"
+  },
+  "areaServed": ["US", "DE", "JP", "CN"],
+  "startLocation": {
+    "@type": "Place",
+    "name": "Nairobi, Kenya"
+  },
+  "hasPart": [
+    { "@type": "TouristAttraction", "name": "Masai Mara National Reserve" }
+  ]
+},
+
+
+// --- Tanzania Accessible Safari ---
+{
+"@type": "TouristTrip",
+"name": "Tanzania Accessible Safari",
+"description": "8-day accessible Tanzania safari exploring Serengeti and Ngorongoro Crater with wheelchair-adapted vehicles and inclusive lodges.",
+"image": "https://www.jaetravel.co.ke/images/tours/tanzania-accessible-safari.jpg",
+"touristType": ["Wheelchair users", "Travelers with disabilities"],
+"offers": {
+"@type": "Offer",
+"price": "2500-5000",
+"priceCurrency": "USD",
+"availability": "https://schema.org/InStock",
+"url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari"
+},
+"provider": {
+"@type": "Organization",
+"name": "JaeTravel Expeditions",
+"url": "https://www.jaetravel.co.ke"
+},
+"areaServed": ["US", "DE", "JP", "CN"],
+"startLocation": {
+"@type": "Place",
+"name": "Arusha, Tanzania"
+},
+"hasPart": [
+{"@type": "TouristAttraction", "name": "Serengeti National Park"},
+{"@type": "TouristAttraction", "name": "Ngorongoro Crater"}
+]
+},
   ]
 }
 
