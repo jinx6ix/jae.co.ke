@@ -118,7 +118,7 @@ export default function RootLayout({
       "https://www.tiktok.com/@jaetravelexpeditions",
     ],
     priceRange: "$$-$$$",
-    areaServed: ["Kenya", "Tanzania", "Rwanda", "Uganda"],
+    areaServed: ["Kenya", "Tanzania", "Rwanda", "Uganda", "South Africa", "UAE", "USA", "UK"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Safari Tours",
