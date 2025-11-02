@@ -1,4 +1,4 @@
-// app/api/bookings/route.ts
+// app/api/transfers/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,13 +14,9 @@ const transporter = nodemailer.createTransport({
   tls: { rejectUnauthorized: false },
 });
 
-// Verify SMTP on startup
-transporter.verify((err, success) => {
-  if (err) {
-    console.error('SMTP Connection FAILED:', err.message);
-  } else {
-    console.log('SMTP READY – Emails will send!');
-  }
+transporter.verify((err) => {
+  if (err) console.error('SMTP FAILED:', err.message);
+  else console.log('SMTP READY – Transfer emails will send!');
 });
 
 export async function POST(request: NextRequest) {
@@ -28,48 +24,55 @@ export async function POST(request: NextRequest) {
 
   try {
     bookingData = await request.json();
-    const bookingId = `BK${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`;
+    const bookingId = `TR${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`; // TR = Transfer
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
+    const totalPrice = parseFloat(bookingData.totalPrice || bookingData.price);
+
     // === PDF URLs ===
-    const clientPdfUrl = `${baseUrl}/api/bookings/${bookingId}/download?${new URLSearchParams({
-      name: encodeURIComponent(bookingData.name || 'Customer'),
+    const clientPdfUrl = `${baseUrl}/api/transfers/download?${new URLSearchParams({
+      bookingId,
+      name: encodeURIComponent(bookingData.name),
       email: encodeURIComponent(bookingData.email),
       phone: encodeURIComponent(bookingData.phone),
       service: encodeURIComponent(bookingData.serviceName),
-      startDate: encodeURIComponent(bookingData.startDate),
+      date: encodeURIComponent(bookingData.date),
+      pickup: encodeURIComponent(bookingData.pickupLocation),
+      dropoff: encodeURIComponent(bookingData.dropoffLocation),
       travelers: bookingData.travelers.toString(),
-      total: bookingData.totalPrice.toString(),
+      total: totalPrice.toString(),
       recipient: bookingData.email,
     })}`;
 
-    const adminPdfUrl = `${baseUrl}/api/bookings/${bookingId}/download?${new URLSearchParams({
-      name: encodeURIComponent(bookingData.name || 'Customer'),
+    const adminPdfUrl = `${baseUrl}/api/transfers/download?${new URLSearchParams({
+      bookingId,
+      name: encodeURIComponent(bookingData.name),
       email: encodeURIComponent(bookingData.email),
       phone: encodeURIComponent(bookingData.phone),
       service: encodeURIComponent(bookingData.serviceName),
-      startDate: encodeURIComponent(bookingData.startDate),
+      date: encodeURIComponent(bookingData.date),
+      pickup: encodeURIComponent(bookingData.pickupLocation),
+      dropoff: encodeURIComponent(bookingData.dropoffLocation),
       travelers: bookingData.travelers.toString(),
-      total: bookingData.totalPrice.toString(),
+      total: totalPrice.toString(),
       recipient: 'info@jaetravel.co.ke',
     })}`;
 
-    // === WhatsApp Links ===
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
-    // === CUSTOMER EMAIL ===
+    // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {
       from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
       to: bookingData.email,
-      subject: `Booking Confirmed #${bookingId} – ${bookingData.serviceName}`,
+      subject: `Transfer Booking #${bookingId} – ${bookingData.serviceName}`,
       html: `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmed #${bookingId}</title>
+  <title>Transfer #${bookingId}</title>
   <style>
     body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9fafb; color: #1f2937; }
     .container { max-width: 600px; margin: 20px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -95,34 +98,32 @@ export async function POST(request: NextRequest) {
     </div>
     <div class="content">
       <p style="font-size: 18px; margin-bottom: 25px;">Dear <strong>${bookingData.name}</strong>,</p>
-      <p>Your booking for <strong>${bookingData.serviceName}</strong> is confirmed! Our team will contact you within <strong>24 hours</strong>.</p>
+      <p>Your <strong>${bookingData.serviceName}</strong> transfer is confirmed! We’ll contact you within <strong>1 hour</strong>.</p>
 
       <div class="card">
-        <h2 style="margin: 0 0 15px; color: #92400e; font-size: 20px; border-bottom: 2px solid #fbbf24; padding-bottom: 8px;">Booking Summary</h2>
+        <h2 style="margin: 0 0 15px; color: #92400e; font-size: 20px; border-bottom: 2px solid #fbbf24; padding-bottom: 8px;">Transfer Summary</h2>
         <table>
           <tr><td class="label">Booking ID:</td><td class="value"><span class="highlight">${bookingId}</span></td></tr>
-          <tr><td class="label">Tour:</td><td class="value">${bookingData.serviceName}</td></tr>
-          <tr><td class="label">Date:</td><td class="value">${bookingData.startDate}</td></tr>
-          <tr><td class="label">Travelers:</td><td class="value">${bookingData.travelers} person${bookingData.travelers > 1 ? 's' : ''}</td></tr>
-          <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#dc2626; font-size:18px;">$${parseFloat(bookingData.totalPrice).toLocaleString()}</td></tr>
-          <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.specialRequirements || 'None'}</td></tr>
+          <tr><td class="label">Service:</td><td class="value">${bookingData.serviceName}</td></tr>
+          <tr><td class="label">Date:</td><td class="value">${bookingData.date}</td></tr>
+          <tr><td class="label">Pickup:</td><td class="value">${bookingData.pickupLocation}</td></tr>
+          <tr><td class="label">Drop-off:</td><td class="value">${bookingData.dropoffLocation}</td></tr>
+          <tr><td class="label">Travelers:</td><td class="value">${bookingData.travelers}</td></tr>
+          <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#dc2626; font-size:18px;">$${totalPrice.toLocaleString()}</td></tr>
+          <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.message || 'None'}</td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${clientPdfUrl}" class="btn">Download PDF Confirmation</a>
+        <a href="${clientPdfUrl}" class="btn">Download PDF</a>
       </div>
 
       <div style="background:#ecfdf5; border:1px solid #bbf7d0; border-radius:12px; padding:25px; text-align:center;">
         <h3 style="margin:0 0 15px; color:#059669; font-size:18px;">Need Help?</h3>
-        <p>Chat with us instantly on WhatsApp:</p>
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have a booking #${bookingId}`)}" class="btn btn-wa" target="_blank">
+        <p>Chat with us:</p>
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have transfer #${bookingId}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
-      </div>
-
-      <div style="margin-top:30px; padding-top:20px; border-top:1px dashed #e5e7eb; font-size:14px; color:#6b7280;">
-        <p>Full payment due 30 days before departure. Travel insurance recommended.</p>
       </div>
     </div>
     <div class="footer">
@@ -138,18 +139,18 @@ export async function POST(request: NextRequest) {
       `,
     };
 
-    // === ADMIN EMAIL ===
+    // === ADMIN EMAIL (Green) ===
     const adminEmail = {
-      from: `"Booking System" <${process.env.SMTP_USER}>`,
+      from: `"Transfer Booking" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
-      subject: `New Booking #${bookingId} – ${bookingData.name}`,
+      subject: `New Transfer #${bookingId} – ${bookingData.name}`,
       html: `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Booking #${bookingId}</title>
+  <title>New Transfer #${bookingId}</title>
   <style>
     body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9fafb; color: #1f2937; }
     .container { max-width: 600px; margin: 20px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -171,11 +172,11 @@ export async function POST(request: NextRequest) {
 <body>
   <div class="container">
     <div class="header">
-      <h1>New Booking!</h1>
+      <h1>New Transfer!</h1>
       <p style="margin: 8px 0 0; opacity: 0.95;">JaeTravel Expeditions</p>
     </div>
     <div class="content">
-      <h2 style="margin:0 0 20px; color:#059669; font-size:24px;">Customer Details</h2>
+      <h2 style="margin:0 0 20px; color:#059669; font-size:24px;">Customer</h2>
       <div class="card">
         <table>
           <tr><td class="label">Name:</td><td class="value"><strong>${bookingData.name}</strong></td></tr>
@@ -184,32 +185,29 @@ export async function POST(request: NextRequest) {
         </table>
       </div>
 
-      <h2 style="margin:0 0 20px; color:#059669; font-size:24px;">Booking Summary</h2>
+      <h2 style="margin:0 0 20px; color:#059669; font-size:24px;">Transfer Details</h2>
       <div class="card">
         <table>
           <tr><td class="label">ID:</td><td class="value"><span class="highlight">${bookingId}</span></td></tr>
-          <tr><td class="label">Tour:</td><td class="value"><strong>${bookingData.serviceName}</strong></td></tr>
-          <tr><td class="label">Date:</td><td class="value">${bookingData.startDate}</td></tr>
+          <tr><td class="label">Service:</td><td class="value"><strong>${bookingData.serviceName}</strong></td></tr>
+          <tr><td class="label">Date:</td><td class="value">${bookingData.date}</td></tr>
+          <tr><td class="label">Pickup:</td><td class="value">${bookingData.pickupLocation}</td></tr>
+          <tr><td class="label">Drop-off:</td><td class="value">${bookingData.dropoffLocation}</td></tr>
           <tr><td class="label">Travelers:</td><td class="value">${bookingData.travelers}</td></tr>
-          <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#059669; font-size:18px;">$${parseFloat(bookingData.totalPrice).toLocaleString()}</td></tr>
-          <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.specialRequirements || 'None'}</td></tr>
+          <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#059669; font-size:18px;">$${totalPrice.toLocaleString()}</td></tr>
+          <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.message || 'None'}</td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download Admin PDF</a>
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your booking #${bookingId} is confirmed!`)}" class="btn btn-wa" target="_blank">
-          Contact Customer on WhatsApp
+        <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download PDF</a>
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your transfer #${bookingId} is confirmed!`)}" class="btn btn-wa" target="_blank">
+          Contact Customer
         </a>
       </div>
-
-      <p style="font-size:14px; color:#6b7280; text-align:center; font-style:italic;">
-        Submitted: ${new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' })}
-      </p>
     </div>
     <div class="footer">
-      <p>JaeTravel Expeditions Booking System</p>
-      <p style="margin:8px 0 0; opacity:0.8;">Licensed Tour Operator | TTA/0036</p>
+      <p>JaeTravel Transfer System</p>
     </div>
   </div>
 </body>
@@ -218,7 +216,6 @@ export async function POST(request: NextRequest) {
     };
 
     // === SEND EMAILS ===
-    console.log(`Sending emails for ${bookingId}...`);
     const [custRes, adminRes] = await Promise.allSettled([
       transporter.sendMail(customerEmail),
       transporter.sendMail(adminEmail),
@@ -227,25 +224,20 @@ export async function POST(request: NextRequest) {
     const customerSent = custRes.status === 'fulfilled';
     const adminSent = adminRes.status === 'fulfilled';
 
-    if (!customerSent) console.error('Customer email failed:', (custRes as any).reason?.message);
-    if (!adminSent) console.error('Admin email failed:', (adminRes as any).reason?.message);
-
-    console.log(`Booking ${bookingId} COMPLETE → Customer: ${customerSent ? 'SENT' : 'FAILED'}, Admin: ${adminSent ? 'SENT' : 'FAILED'}`);
-
     return NextResponse.json({
       success: true,
       bookingId,
       message: customerSent ? 'Check your email!' : 'Booking saved!',
       customerEmailSent: customerSent,
       adminEmailSent: adminSent,
-      pdfUrl: `/api/bookings/${bookingId}/download?...`, // same as clientPdfUrl
+      pdfUrl: clientPdfUrl,
       whatsappLink: adminWhatsApp,
     });
 
   } catch (error: any) {
-    console.error('[Booking API] ERROR:', error);
+    console.error('[Transfer API] ERROR:', error);
     return NextResponse.json(
-      { success: false, message: 'Booking failed. Contact us.' },
+      { success: false, message: 'Booking failed.' },
       { status: 500 }
     );
   }

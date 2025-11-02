@@ -1,321 +1,395 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import { Tour } from '@/data/tours';
-import { useRouter } from 'next/navigation';
+import type React from "react"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
 
 interface BookingFormProps {
-  tour: Tour;
+  tourTitle: string
+  tourPrice: number
+  tourDuration: string
+  serviceType?: string
 }
 
 interface BookingResponse {
-  success: boolean;
-  bookingId: string;
-  message: string;
-  emailsSent?: boolean;
-  whatsappLink?: string;
-  pdfUrl?: string;
+  success: boolean
+  bookingId: string
+  message: string
+  emailsSent?: boolean
+  customerEmailSent?: boolean
+  adminEmailSent?: boolean
+  whatsappLink?: string
+  pdfUrl?: string
+  downloadUrl?: string
 }
 
-export default function BookingForm({ tour }: BookingFormProps) {
+export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour" }: BookingFormProps) {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    travelers: 1,
-    startDate: '',
-    specialRequirements: '',
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-  const router = useRouter();
+    name: "",
+    email: "",
+    phone: "",
+    travelers: "2",
+    date: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [bookingResult, setBookingResult] = useState<BookingResponse | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setMessage(null);
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitted(false)
 
     try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
+      const response = await fetch("/api/bookings", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...formData,
-          serviceName: tour.title,
-          serviceSlug: tour.bookingSlug,
-          totalPrice: tour.price * formData.travelers,
-          currency: tour.currency,
-          country: tour.country,
-          duration: tour.duration,
+          serviceName: tourTitle,
+          serviceType,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          travelers: formData.travelers,
+          startDate: formData.date,
+          specialRequirements: formData.message,
+          totalPrice: tourPrice * Number.parseInt(formData.travelers || "1"),
+          currency: "$",
+          country: "Kenya",
+          duration: tourDuration,
         }),
-      });
+      })
 
-      const result: BookingResponse = await response.json();
+      const result: BookingResponse = await response.json()
+
+      console.log("[Booking] API Response:", result)
 
       if (result.success) {
-        setMessage({
-          type: 'success',
-          text: result.message,
-        });
-
-        // Auto-redirect to confirmation page after 2 seconds
-        setTimeout(() => {
-          router.push(`/booking-confirmation/${result.bookingId}`);
-        }, 2000);
-
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          travelers: 1,
-          startDate: '',
-          specialRequirements: '',
-        });
+        setBookingResult(result)
+        setSubmitted(true)
       } else {
-        throw new Error('Booking failed');
+        throw new Error(result.message || "Booking failed")
       }
-    } catch (error) {
-      console.error('Booking error:', error);
-      setMessage({
-        type: 'error',
-        text: 'Booking failed. Please try again or contact us directly.',
-      });
-    } finally {
-      setIsLoading(false);
+    } catch (error: any) {
+      console.error("[Booking] Submission error:", error)
+      alert(`Booking failed: ${error.message || "Please try again or contact us directly."}`)
     }
-  };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
+    setIsSubmitting(false)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
-  };
+    }))
+  }
 
-  const totalPrice = tour.price * formData.travelers;
-  const isFormValid = formData.firstName && formData.lastName && formData.email && 
-                     formData.phone && formData.startDate && formData.travelers > 0;
+  const handleDownload = () => {
+    if (bookingResult?.pdfUrl) {
+      const downloadUrl = `${window.location.origin}${bookingResult.pdfUrl}`
+      window.open(downloadUrl, "_blank")?.focus()
+      return
+    }
+    
+    if (bookingResult?.downloadUrl) {
+      window.open(bookingResult.downloadUrl, "_blank")?.focus()
+      return
+    }
+
+    const directUrl = `${window.location.origin}/api/bookings/${bookingResult?.bookingId}/download?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}&service=${encodeURIComponent(tourTitle)}&startDate=${encodeURIComponent(formData.date)}&travelers=${formData.travelers}&total=${tourPrice * Number.parseInt(formData.travelers || "1")}`
+    window.open(directUrl, "_blank")?.focus()
+  }
+
+  const handleWhatsApp = () => {
+    if (bookingResult?.whatsappLink) {
+      window.open(bookingResult.whatsappLink, "_blank")?.focus()
+      return
+    }
+
+    const message = `🆕 *New Booking Confirmation*\n\n👤 ${formData.name}\n📧 ${formData.email}\n📞 ${formData.phone}\n\n🎫 *Booking ID:* ${bookingResult?.bookingId}\n🏕️ *Tour:* ${tourTitle}\n👥 *Travelers:* ${formData.travelers}\n💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n📅 *Date:* ${formData.date}\n\nPlease confirm details and arrange payment.`
+    
+    const whatsappUrl = `https://wa.me/+254726485228?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, "_blank")?.focus()
+  }
+
+  if (submitted && bookingResult) {
+    return (
+      <div className="rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
+          <CheckCircle className="h-12 w-12 text-orange-600" />
+        </div>
+        
+        <h3 className="mb-3 text-3xl font-bold text-orange-700">Booking Confirmed! 🎉</h3>
+        <p className="mb-2 text-lg font-semibold text-orange-800">
+          Booking ID: <code className="bg-orange-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
+        </p>
+        
+        <p className="mb-6 text-orange-700 text-sm leading-relaxed max-w-md mx-auto">
+          Thank you for booking <strong>${tourTitle}</strong>! 
+          <br />
+          ✅ Confirmation email sent to {formData.email}
+          <br />
+          📱 Our team will contact you within 24 hours
+        </p>
+
+        {/* Status Indicators */}
+        <div className="mb-8 grid grid-cols-2 gap-4 max-w-md mx-auto">
+          <div className={`flex items-center justify-center gap-2 p-3 rounded-lg text-sm font-medium ${
+            bookingResult.customerEmailSent 
+              ? 'bg-green-50 text-green-700 border border-green-200' 
+              : 'bg-yellow-50 text-yellow-700 border border-yellow-200'
+          }`}>
+            <Mail className="h-4 w-4" />
+            {bookingResult.customerEmailSent ? 'Email Sent' : 'Email Sending...'}
+          </div>
+          <div className={`flex items-center justify-center gap-2 p-3 rounded-lg text-sm font-medium ${
+            bookingResult.adminEmailSent 
+              ? 'bg-green-50 text-green-700 border border-green-200' 
+              : 'bg-yellow-50 text-yellow-700 border border-yellow-200'
+          }`}>
+            <Users className="h-4 w-4" />
+            {bookingResult.adminEmailSent ? 'Admin Notified' : 'Admin Notifying...'}
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-3 max-w-md mx-auto">
+          <Button 
+            onClick={handleDownload} 
+            className="w-full justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white"
+            size="lg"
+          >
+            <Download className="h-5 w-5" />
+            Download PDF Confirmation
+          </Button>
+          
+          <Button 
+            onClick={handleWhatsApp} 
+            className="w-full justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white"
+            size="lg"
+          >
+            <Send className="h-5 w-5" />
+            Share on WhatsApp
+          </Button>
+          
+          <Button 
+            onClick={() => {
+              setSubmitted(false)
+              setBookingResult(null)
+              setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                travelers: "2",
+                date: "",
+                message: "",
+              })
+            }} 
+            variant="outline" 
+            className="w-full border-orange-300 text-orange-700 hover:bg-orange-50"
+            size="lg"
+          >
+            📝 Book Another Tour
+          </Button>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-orange-200">
+          <p className="text-xs text-orange-600 mb-2">Need immediate help?</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
+            <a 
+              href="tel:+254726485228" 
+              className="flex items-center gap-2 text-orange-700 hover:text-orange-800 font-medium"
+            >
+              📞 +254 726 485 228
+            </a>
+            <a 
+              href="mailto:info@jaetravel.co.ke" 
+              className="flex items-center gap-2 text-orange-700 hover:text-orange-800 font-medium"
+            >
+              ✉️ info@jaetravel.co.ke
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {message && (
-        <div
-          className={`rounded-lg p-4 ${
-            message.type === 'success'
-              ? 'bg-green-50 border border-green-200 text-green-800'
-              : 'bg-red-50 border border-red-200 text-red-800'
-          }`}
-        >
-          {message.text}
-          {message.type === 'success' && (
-            <div className="mt-2 text-sm">
-              <a
-                href="https://wa.me/+254726485228"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-600 hover:underline font-medium"
-              >
-                📱 Contact us on WhatsApp
-              </a>
-            </div>
-          )}
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-            First Name *
-          </label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            required
-            value={formData.firstName}
-            onChange={handleChange}
-            disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-            Last Name *
-          </label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            required
-            value={formData.lastName}
-            onChange={handleChange}
-            disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-            Phone Number *
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            disabled={isLoading}
-            placeholder="+254 7xx xxx xxx"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="travelers" className="block text-sm font-medium text-gray-700 mb-1">
-            Number of Travelers *
-          </label>
-          <select
-            name="travelers"
-            id="travelers"
-            required
-            value={formData.travelers}
-            onChange={handleChange}
-            disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-              <option key={num} value={num}>
-                {num} {num === 1 ? 'person' : 'people'}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-1">
-            Preferred Start Date *
-          </label>
-          <input
-            type="date"
-            name="startDate"
-            id="startDate"
-            required
-            value={formData.startDate}
-            onChange={handleChange}
-            disabled={isLoading}
-            min={new Date().toISOString().split('T')[0]}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          />
-        </div>
-      </div>
-
+    <form onSubmit={handleSubmit} className="space-y-6 rounded-lg border border-orange-200 bg-white p-6 shadow-sm">
       <div>
-        <label htmlFor="specialRequirements" className="block text-sm font-medium text-gray-700 mb-1">
-          Special Requirements (Optional)
-        </label>
-        <textarea
-          name="specialRequirements"
-          id="specialRequirements"
-          rows={3}
-          value={formData.specialRequirements}
-          onChange={handleChange}
-          disabled={isLoading}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:cursor-not-allowed"
-          placeholder="Dietary restrictions, accessibility needs, room preferences, etc..."
-        />
+        <h3 className="mb-2 text-2xl font-bold text-orange-700">Book This {serviceType === "vehicle" ? "Vehicle" : "Tour"}</h3>
+        <p className="text-sm text-orange-600">
+          Fill out the form below. You'll receive instant confirmation via email and WhatsApp.
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="name" className="flex items-center gap-2 mb-1 text-orange-700">
+              <User className="h-4 w-4" />
+              Full Name *
+            </Label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="John Doe"
+              className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="flex items-center gap-2 mb-1 text-orange-700">
+              <Mail className="h-4 w-4" />
+              Email *
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="john@example.com"
+              className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="phone" className="flex items-center gap-2 mb-1 text-orange-700">
+              <Phone className="h-4 w-4" />
+              Phone *
+            </Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              placeholder="+254 7xx xxx xxx"
+              className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="travelers" className="flex items-center gap-2 mb-1 text-orange-700">
+              <Users className="h-4 w-4" />
+              {serviceType === "vehicle" ? "Days" : "Travelers"} *
+            </Label>
+            <Input
+              id="travelers"
+              name="travelers"
+              type="number"
+              min="1"
+              max={serviceType === "vehicle" ? "30" : "20"}
+              value={formData.travelers}
+              onChange={handleChange}
+              required
+              className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="date" className="flex items-center gap-2 mb-1 text-orange-700">
+            <Calendar className="h-4 w-4" />
+            Preferred Start Date *
+          </Label>
+          <Input
+            id="date"
+            name="date"
+            type="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+            className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+            disabled={isSubmitting}
+            min={new Date().toISOString().split("T")[0]}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="message" className="flex items-center gap-2 mb-1 text-orange-700">
+            <MessageSquare className="h-4 w-4" />
+            Special Requests
+          </Label>
+          <Textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Dietary requirements, accessibility needs, room preferences..."
+            className="min-h-[100px] border-orange-300 focus:border-orange-500 focus:ring-orange-500"
+            disabled={isSubmitting}
+          />
+        </div>
       </div>
 
       {/* Price Summary */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-        <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-          <span className="text-2xl">💰</span> Price Summary
-        </h3>
+      <div className="rounded-xl bg-gradient-to-r from-orange-50 to-yellow-50 p-6 border border-orange-200">
         <div className="space-y-3">
-          <div className="flex justify-between items-center py-2">
-            <span className="text-gray-700 font-medium">{tour.title}</span>
-            <span className="text-lg font-semibold text-gray-900">
-              {tour.currency} {tour.price.toLocaleString()}
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-orange-700">
+              ${tourTitle}
             </span>
+            <span className="font-semibold text-orange-800">${tourPrice.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center py-2 border-t border-gray-200">
-            <span className="text-gray-600">Travelers × {formData.travelers}</span>
-            <span className="text-gray-700">× {tour.currency} {tour.price.toLocaleString()}</span>
+          <div className="flex items-center justify-between py-2 border-t border-orange-200">
+            <span className="text-sm text-orange-700">
+              {serviceType === "vehicle" ? "Days" : "Travelers"}: {formData.travelers}
+            </span>
+            <span className="font-semibold text-orange-800">× ${tourPrice.toLocaleString()}</span>
           </div>
-          <div className="border-t-2 border-blue-200 pt-3">
-            <div className="flex justify-between items-center">
-              <span className="text-2xl font-bold text-gray-900">Total</span>
-              <span className="text-3xl font-extrabold text-blue-600">
-                {tour.currency} {totalPrice.toLocaleString()}
-              </span>
-            </div>
-            {tour.isOnOffer && tour.originalPrice && (
-              <p className="text-sm text-green-600 mt-1">
-                💸 You save {tour.currency} {(tour.originalPrice - tour.price).toLocaleString()}
-              </p>
-            )}
+          <div className="flex items-center justify-between pt-3 border-t-2 border-orange-300">
+            <span className="text-xl font-bold text-orange-900">Total Estimate</span>
+            <span className="text-3xl font-extrabold text-orange-600">
+              ${(tourPrice * Number.parseInt(formData.travelers || "1")).toLocaleString()}
+            </span>
           </div>
         </div>
       </div>
 
-      <button
-        type="submit"
-        disabled={!isFormValid || isLoading}
-        className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-200 flex items-center justify-center gap-2 ${
-          isFormValid && !isLoading
-            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
-            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-        }`}
+      <Button 
+        type="submit" 
+        size="lg" 
+        className="w-full h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white"
+        disabled={isSubmitting || !formData.name || !formData.email || !formData.phone || !formData.date}
       >
-        {isLoading ? (
+        {isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             Processing Booking...
           </>
         ) : (
-          <>
-            <span className="text-xl">✈️</span>
-            Complete Booking - Secure & Fast
-          </>
+          `Confirm Booking - $${(tourPrice * Number.parseInt(formData.travelers || "1")).toLocaleString()}`
         )}
-      </button>
+      </Button>
 
-      <div className="text-center">
-        <p className="text-xs text-gray-500">
-          🔒 Secure booking powered by JaeTravel Expeditions
-        </p>
-        <p className="text-xs text-gray-400 mt-1">
-          You'll receive a confirmation email and PDF within minutes
-        </p>
-      </div>
+      <p className="text-center text-xs text-orange-600 leading-relaxed">
+        🔒 Secure • 📧 Instant Email Confirmation • 📱 WhatsApp Updates
+        <br />
+        No payment required now - Full payment 30 days before departure
+      </p>
     </form>
-  );
+  )
 }
+
+export { BookingForm }

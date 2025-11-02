@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { tours } from '@/data/tours';
+import { toPlainString } from '@/lib/util';
 import BookingForm from '@/components/BookingForm';
 import TourDetails from '@/components/TourDetails';
 import { Metadata } from 'next';
@@ -105,7 +106,13 @@ export default async function BookingPage({ params }: BookingPageProps) {
                 </div>
               </div>
 
-              <BookingForm tour={tour} />
+              {/* Pass individual props, NOT the whole tour object */}
+              <BookingForm 
+                tourTitle={tour.title}
+                tourPrice={tour.price}
+                tourDuration={toPlainString(tour.duration)}   // Fixed!
+                serviceType="tour"
+              />
             </div>
           </div>
 
