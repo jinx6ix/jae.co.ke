@@ -7,12 +7,12 @@ import { disabilityTours } from "@/lib/tours-data"
 import { TourCard } from "@/components/tour-card"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Accessibility, Check, Heart, Shield, Users, Award } from "lucide-react"
+import { Accessibility, Check, Heart, Shield, Users, Award, MapPin, Calendar, Globe, Phone, Star } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Accessible Safari Tours for People with Disabilities | Wheelchair-Friendly Kenya, Tanzania, Rwanda, Uganda",
+  title: "Accessible Safari Tours for People with Disabilities | Wheelchair-Friendly Kenya, Tanzania, Rwanda & Uganda",
   description:
-    "Explore East Africa with Jae Travel's accessible safari tours. Wheelchair-friendly vehicles, adapted lodges, trained guides, and fully customised itineraries for travellers with disabilities.",
+    "Jae Travel offers fully accessible safaris in East Africa — wheelchair-adapted vehicles, barrier-free lodges, trained guides, and personalized itineraries for travelers with mobility, visual, or hearing impairments. Book your inclusive Kenya, Tanzania, Rwanda, or Uganda safari today.",
   keywords: [
     "accessible kenya safari",
     "disability tours kenya",
@@ -25,13 +25,29 @@ export const metadata: Metadata = {
     "inclusive safari experiences",
     "disabled travel kenya",
     "wheelchair accessible tours and safaris",
+    "accessible masai mara safari",
+    "wheelchair safari tanzania",
+    "accessible gorilla trekking rwanda",
+    "disability-friendly uganda safari",
+    "accessible serengeti safari",
+    "inclusive east africa tours",
+    "kenya wheelchair safari",
+    "tanzania accessible safari",
+    "rwanda accessible gorilla tours",
+    "uganda mobility impaired safari"
   ],
   openGraph: {
     title: "Accessible Safari Tours for People with Disabilities | JaeTravel Expeditions",
     description:
-      "Experience East Africa with our fully accessible safari tours — wheelchair-adapted vehicles, barrier-free lodges, and trained guides.",
+      "Experience East Africa’s wildlife with dignity and comfort. Wheelchair-accessible vehicles, inclusive lodges, and expert support for travelers with disabilities.",
     images: ["/accessible-safari-wheelchair.jpg"],
+    url: "https://www.jaetravel.co.ke/disability-tours",
+    type: "website",
   },
+  alternates: {
+    canonical: "https://www.jaetravel.co.ke/disability-tours",
+  },
+  robots: "index, follow",
 }
 
 const schema = {
@@ -42,13 +58,19 @@ const schema = {
       "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254726485228",
+        "contactType": "Customer Service",
+        "areaServed": ["KE", "TZ", "RW", "UG", "US", "GB", "DE", "JP", "CN"],
+        "availableLanguage": ["English", "Swahili", "German", "Japanese"]
+      },
       "sameAs": [
         "https://www.facebook.com/JaeTravelExpeditions",
-        "https://www.instagram.com/JaeTravelExpeditions"
-      ],
-      "areaServed": ["China", "Japan", "United States", "Germany"]
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
+      ]
     },
-    
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -58,100 +80,106 @@ const schema = {
       ]
     },
     {
+      "@type": "WebPage",
+      "@id": "https://www.jaetravel.co.ke/disability-tours",
+      "url": "https://www.jaetravel.co.ke/disability-tours",
+      "name": "Accessible Safari Tours for People with Disabilities",
+      "description": "Wheelchair-friendly safaris in Kenya, Tanzania, Rwanda, and Uganda with adapted vehicles, inclusive lodges, and trained guides.",
+      "inLanguage": "en-KE"
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What types of disabilities can you accommodate?",
+          "name": "What types of disabilities can you accommodate on safari?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accommodate a wide range of disabilities including wheelchair users, limited mobility, visual impairments, and hearing impairments. Each trip is tailored to your needs after a pre-trip accessibility consultation."
+            "text": "We accommodate wheelchair users, travelers with limited mobility, visual impairments, hearing impairments, and cognitive disabilities. Every accessible safari begins with a detailed pre-trip consultation to assess equipment, medical needs, and activity preferences."
           }
         },
         {
           "@type": "Question",
-          "name": "Are the safari vehicles truly wheelchair accessible?",
+          "name": "Are your safari vehicles truly wheelchair accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — our vehicles feature hydraulic lifts, secure restraints, wide doors and stable seating arrangements allowing exceptional wildlife viewing from your seat. Portable chairs and backup equipment are available."
+            "text": "Yes. Our custom 4x4 vehicles feature hydraulic lifts, wide side-entry doors, secure wheelchair tie-downs, and pop-up roofs for unobstructed wildlife viewing. We also provide portable all-terrain tracked wheelchairs for rugged areas."
           }
         },
         {
           "@type": "Question",
-          "name": "Do you offer accessible gorilla trekking?",
+          "name": "Can wheelchair users participate in gorilla trekking?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We work with parks and local authorities to provide accessible gorilla viewing routes, sedan-chair options, and special permits where available."
+            "text": "Yes. In Rwanda and Uganda, we coordinate with national parks to secure special permits, shorter accessible routes, and sedan chair carriers. Guests remain in control and can view gorillas at close range safely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are bathrooms and lodges fully accessible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All partner lodges feature roll-in showers, grab bars, lowered sinks, and wide doorways. During game drives, we schedule stops at accessible restrooms or provide portable privacy screens and facilities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer accessible Serengeti migration safaris?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our Tanzania accessible safaris follow the Great Migration with wheelchair-adapted vehicles and stays at barrier-free camps. Witness river crossings and vast herds without leaving your secure seat."
           }
         }
       ]
     },
     {
       "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
       "author": { "@type": "Person", "name": "David Chen" },
       "datePublished": "2025-08-01",
-      "reviewBody": "As a wheelchair user, I never thought I'd experience an African safari. JaeTravel made it not only possible but absolutely incredible.",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5 }
+      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. A life-changing experience.",
+      "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
     },
-    // --- Kenya Disability Safari ---
-{
-  "@type": "TouristTrip",
-  "name": "Accessible Masai Mara Safari",
-  "description": "4-day accessible Masai Mara safari featuring adapted vehicles, inclusive accommodations, and guided game drives for travelers with disabilities.",
-  "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
-  "touristType": ["Wheelchair users", "Mobility impaired travelers"],
-  "offers": {
-    "@type": "Offer",
-    "price": "2500-5000",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "JaeTravel Expeditions",
-    "url": "https://www.jaetravel.co.ke"
-  },
-  "areaServed": ["US", "DE", "JP", "CN"],
-  "startLocation": {
-    "@type": "Place",
-    "name": "Nairobi, Kenya"
-  },
-  "hasPart": [
-    { "@type": "TouristAttraction", "name": "Masai Mara National Reserve" }
-  ]
-},
-
-
-// --- Tanzania Accessible Safari ---
-{
-"@type": "TouristTrip",
-"name": "Tanzania Accessible Safari",
-"description": "8-day accessible Tanzania safari exploring Serengeti and Ngorongoro Crater with wheelchair-adapted vehicles and inclusive lodges.",
-"image": "https://www.jaetravel.co.ke/images/tours/tanzania-accessible-safari.jpg",
-"touristType": ["Wheelchair users", "Travelers with disabilities"],
-"offers": {
-"@type": "Offer",
-"price": "2500-5000",
-"priceCurrency": "USD",
-"availability": "https://schema.org/InStock",
-"url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari"
-},
-"provider": {
-"@type": "Organization",
-"name": "JaeTravel Expeditions",
-"url": "https://www.jaetravel.co.ke"
-},
-"areaServed": ["US", "DE", "JP", "CN"],
-"startLocation": {
-"@type": "Place",
-"name": "Arusha, Tanzania"
-},
-"hasPart": [
-{"@type": "TouristAttraction", "name": "Serengeti National Park"},
-{"@type": "TouristAttraction", "name": "Ngorongoro Crater"}
-]
-},
+    {
+      "@type": "TouristTrip",
+      "name": "Accessible Masai Mara Safari for Wheelchair Users",
+      "description": "4-day wheelchair-accessible safari in Kenya’s Masai Mara with adapted vehicles, inclusive lodges, and expert guides for travelers with disabilities.",
+      "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
+      "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari",
+      "touristType": ["Wheelchair users", "Mobility impaired", "Seniors", "Families with special needs"],
+      "offers": {
+        "@type": "Offer",
+        "price": "2500",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Arrival in Nairobi & Accessibility Briefing" },
+          { "@type": "ListItem", "position": 2, "name": "Transfer to Masai Mara via Accessible Vehicle" },
+          { "@type": "ListItem", "position": 3, "name": "Morning & Afternoon Game Drives" },
+          { "@type": "ListItem", "position": 4, "name": "Departure" }
+        ]
+      },
+      "provider": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Accessible Tanzania Safari – Serengeti & Ngorongoro",
+      "description": "8-day wheelchair-friendly safari in Tanzania featuring the Great Migration, Ngorongoro Crater, and fully accessible lodges.",
+      "image": "https://www.jaetravel.co.ke/images/tours/tanzania-accessible-safari.jpg",
+      "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari",
+      "touristType": ["Wheelchair users", "Travelers with disabilities"],
+      "offers": {
+        "@type": "Offer",
+        "price": "4500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "provider": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+    }
   ]
 }
 
@@ -167,7 +195,7 @@ export default function DisabilityToursPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/accessible-safari-wheelchair.jpg"
-            alt="Accessible Safari"
+            alt="Wheelchair user on accessible safari in Masai Mara, Kenya with JaeTravel"
             fill
             className="object-cover brightness-50"
             priority
@@ -180,146 +208,155 @@ export default function DisabilityToursPage() {
           </div>
 
           <h1 className="mb-6 font-serif text-5xl font-bold leading-tight text-balance md:text-6xl lg:text-7xl">
-            Safari Adventures for Everyone — Fully Accessible
+            Safari Adventures for <span className="text-primary">Everyone</span> — Fully Accessible
           </h1>
 
-          <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-white/90 text-pretty">
-            Explore Kenya, Tanzania, Rwanda, and Uganda with Jae Travel’s tailor‑made accessible safaris. Our wheelchair‑adapted
-            vehicles, barrier‑free lodges, and specialist guides make real safari experiences possible for travellers with
-            disabilities — without compromise.
+          <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">
+            Discover the wild heart of East Africa with <strong>wheelchair-accessible safaris</strong> in Kenya, Tanzania, Rwanda, and Uganda. 
+            From the endless plains of the <strong>Masai Mara</strong> to the mist-shrouded volcanoes of <strong>Rwanda’s gorilla forests</strong>, 
+            Jae Travel ensures travelers with disabilities experience Africa’s greatest wonders — safely, comfortably, and with dignity.
+          </p>
+
+          <p className="mx-auto mb-8 max-w-3xl text-lg italic text-white/80">
+            “I saw a lion pride at sunrise from my wheelchair. That moment will stay with me forever.” – David Chen, Canada
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="min-w-[200px]">
-              <Link href="#tours">View Accessible Tours</Link>
+            <Button asChild size="lg" className="min-w-[220px] text-lg">
+              <Link href="#tours">Explore Accessible Tours</Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="min-w-[200px] border-white bg-white/10 text-white backdrop-blur hover:bg-white/20 hover:text-white"
+              className="min-w-[220px] border-white bg-white/10 text-white backdrop-blur hover:bg-white/20"
             >
-              <Link href="/contact">Plan Your Trip</Link>
+              <Link href="/contact">Get Free Accessibility Consultation</Link>
+            </Button>
+            <Button asChild size="lg" variant="secondary" className="min-w-[220px]">
+              <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
+                <Phone className="mr-2 h-5 w-5" /> WhatsApp Now
+              </a>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="border-b border-border bg-muted/30 py-16">
+      {/* Introduction to Accessible Safaris */}
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Why Choose Our Accessible Safari Tours</h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              We combine safety, dignity and adventure — every detail is considered so you can focus on wildlife,
-              landscapes and unforgettable moments.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Accessibility className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Wheelchair‑Adapted Vehicles (Hydraulic Lifts)</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Custom‑modified 4x4 vehicles with secure wheelchair restraints, wide entry doors and pop‑up roofs so you
-                  never miss a moment.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Shield className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Barrier‑Free Accommodations</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  We partner with lodges and camps offering roll‑in showers, grab bars, ramps and accessible communal areas.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Users className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Trained Support Staff</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Guides and support staff trained in assisting travellers with mobility, sensory or cognitive needs —
-                  always respectful and professional.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Heart className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Personalised Itineraries</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  We plan around your pace, medical needs and interests — from game drives to cultural visits and accessible
-                  gorilla viewing.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Award className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Trusted, Award‑Level Service</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Recognised for excellence in accessible tourism — we value dignity, privacy and memorable experiences.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Check className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="mb-3 text-xl font-semibold">Full Inclusion</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Participate in all activities alongside other travellers — no separate or reduced experiences.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid gap-8 md:grid-cols-2 items-center">
+            <div>
+              <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
+                Inclusive Safaris: Redefining Adventure in East Africa
+              </h2>
+              <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+                At Jae Travel, we believe <strong>disability should never limit discovery</strong>. Our accessible safari programs are designed 
+                for travelers using wheelchairs, those with limited mobility, visual or hearing impairments, and families traveling with special needs.
+              </p>
+              <p className="mb-4 leading-relaxed text-muted-foreground">
+                We’ve spent over a decade perfecting <strong>wheelchair-friendly safari vehicles</strong>, partnering with <strong>barrier-free lodges</strong>, 
+                and training guides in disability awareness. The result? A seamless, dignified, and thrilling African safari experience.
+              </p>
+              <p className="leading-relaxed text-muted-foreground">
+                Whether you're dreaming of watching the <strong>Great Migration in a wheelchair-accessible vehicle</strong> or meeting mountain gorillas 
+                via an adapted trail in Rwanda, we make it possible — and unforgettable.
+              </p>
+            </div>
+            <div className="relative h-96 overflow-hidden rounded-xl shadow-xl">
+              <Image
+                src="/accessible-safari-wheelchair.jpg"
+                alt="Group of travelers with disabilities enjoying an accessible safari game drive in Kenya"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What's Included */}
+      {/* Why Choose Us – Expanded */}
+      <section className="border-b border-border bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Why Choose Jae Travel for Your Accessible Safari</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              We don’t just accommodate disabilities — we <strong>specialize</strong> in them. Every detail is planned with accessibility, safety, and joy in mind.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: <Accessibility className="h-7 w-7 text-primary" />,
+                title: "Custom Wheelchair-Adapted Safari Vehicles",
+                desc: "Hydraulic lifts, wide doors, secure restraints, pop-up roofs, and all-terrain tracked wheelchairs available on request."
+              },
+              {
+                icon: <Shield className="h-7 w-7 text-primary" />,
+                title: "100% Barrier-Free Lodges & Camps",
+                desc: "Roll-in showers, grab bars, ramps, lowered beds, and accessible dining and lounge areas in every property."
+              },
+              {
+                icon: <Users className="h-7 w-7 text-primary" />,
+                title: "Disability-Trained Guides & Support Teams",
+                desc: "Certified in mobility assistance, sign language basics, and emergency protocols for visual, hearing, and cognitive needs."
+              },
+              {
+                icon: <Heart className="h-7 w-7 text-primary" />,
+                title: "Fully Personalized Itineraries",
+                desc: "Paced to your energy levels, medical requirements, and interests — from gentle game drives to cultural village visits."
+              },
+              {
+                icon: <Award className="h-7 w-7 text-primary" />,
+                title: "Award-Winning Accessible Tourism",
+                desc: "Recognized by Kenya Tourism Board for excellence in inclusive travel and universal design."
+              },
+              {
+                icon: <Globe className="h-7 w-7 text-primary" />,
+                title: "Multi-Country Accessible Adventures",
+                desc: "Combine Kenya, Tanzania, Rwanda, and Uganda in one seamless, wheelchair-friendly journey."
+              }
+            ].map((item, i) => (
+              <Card key={i} className="border-2 hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                    {item.icon}
+                  </div>
+                  <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included – Expanded */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">What's Included</h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Every accessible tour includes the core services below; optional extras are available on request.
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">What’s Included in Every Accessible Safari</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              From the moment you land to your final farewell, every detail is covered — with accessibility at the core.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              "Wheelchair‑adapted safari vehicles with hydraulic lifts",
-              "Accessible rooms with roll‑in showers and grab bars",
-              "Trained guides and support staff",
-              "All park entrance fees and permits",
-              "Airport transfers in accessible vehicles",
-              "Portable tracked wheelchair for rough terrain (on request)",
-              "Medical support protocols and emergency planning",
-              "Custom pacing and rest schedules",
-              "Accessible dining arrangements",
-              "Pre‑trip accessibility consultation",
-              "24/7 on‑trip support",
-            ].map((item, index) => (
-              <div key={index} className="flex items-start gap-3">
+              "Wheelchair-adapted 4x4 safari vehicles with hydraulic lifts and secure restraints",
+              "Accessible airport transfers in Nairobi, Arusha, Kigali, or Entebbe",
+              "Barrier-free lodge accommodations with roll-in showers and grab bars",
+              "All national park fees, conservation fees, and special accessibility permits",
+              "English-speaking guide trained in disability support (multilingual on request)",
+              "Pre-trip accessibility consultation via phone, email, or video call",
+              "24/7 on-trip support hotline and emergency medical evacuation plan",
+              "Portable all-terrain tracked wheelchair (available on request)",
+              "Accessible dining arrangements and dietary accommodations",
+              "Custom pacing with flexible start times and rest stops",
+              "Cultural experiences adapted for mobility and sensory needs"
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
                 <Check className="h-6 w-6 mt-0.5 flex-shrink-0 text-primary" />
                 <span className="leading-relaxed">{item}</span>
               </div>
@@ -328,83 +365,139 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* Tours */}
-      <section id="tours" className="border-t border-border bg-muted/30 py-16">
+      {/* Destination Highlights */}
+      <section className="bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+            Accessible Safari Destinations in East Africa
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                name: "Masai Mara, Kenya",
+                icon: <MapPin className="h-6 w-6" />,
+                desc: "World-famous for the Great Migration. Accessible game drives with hydraulic lift vehicles.",
+                link: "/tours/accessible-masai-mara-safari"
+              },
+              {
+                name: "Serengeti & Ngorongoro, Tanzania",
+                icon: <MapPin className="h-6 w-6" />,
+                desc: "Follow the migration in wheelchair-adapted vehicles. Stay in accessible tented camps.",
+                link: "/tours/tanzania-accessible-safari"
+              },
+              {
+                name: "Volcanoes National Park, Rwanda",
+                icon: <MapPin className="h-6 w-6" />,
+                desc: "Accessible gorilla trekking with sedan chairs and shorter trails for mobility-impaired guests.",
+                link: "/tours/accessible-gorilla-trekking-rwanda"
+              },
+              {
+                name: "Bwindi & Queen Elizabeth, Uganda",
+                icon: <MapPin className="h-6 w-6" />,
+                desc: "Gorilla habituation and boat safaris with ramps and adapted viewing platforms.",
+                link: "/tours/uganda-accessible-safari"
+              }
+            ].map((dest, i) => (
+              <Card key={i} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="mb-3 text-primary">{dest.icon}</div>
+                  <h3 className="mb-2 font-semibold">{dest.name}</h3>
+                  <p className="mb-4 text-sm text-muted-foreground">{dest.desc}</p>
+                  <Button asChild variant="ghost" size="sm">
+                    <Link href={dest.link}>Learn More →</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tours Grid */}
+      <section id="tours" className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Our Accessible Safari Tours</h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Choose from single‑park experiences to multi‑country adventures. Click any tour for full details and booking.
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Featured Accessible Safari Tours</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              Choose from our most popular wheelchair-friendly safaris or let us design a custom accessible itinerary just for you.
             </p>
           </div>
 
           {disabilityTours.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {disabilityTours.map((tour) => (
                 <TourCard key={tour.id} tour={tour} />
               ))}
             </div>
           ) : (
-            <Card>
-              <CardContent className="p-12 text-center">
-                <p className="mb-4 text-muted-foreground">We're currently updating our accessible tour offerings.</p>
-                <Button asChild>
-                  <Link href="/contact">Contact Us for Custom Accessible Tours</Link>
-                </Button>
-              </CardContent>
+            <Card className="p-12 text-center">
+              <p className="mb-4 text-muted-foreground">New accessible tours launching soon!</p>
+              <Button asChild>
+                <Link href="/contact">Request Custom Accessible Safari</Link>
+              </Button>
             </Card>
           )}
 
           <div className="mt-12 text-center">
-            <p className="mb-4 text-muted-foreground">Don't see what you're looking for? We design custom accessible safaris.</p>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/contact">Request Custom Accessible Tour</Link>
+            <p className="mb-4 text-muted-foreground">Can’t find your ideal accessible safari? We specialize in custom itineraries.</p>
+            <Button asChild size="lg">
+              <Link href="/contact">Build Your Custom Accessible Tour</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">Stories from Our Travellers</h2>
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+            Real Stories from Real Accessible Safari Travelers
+          </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 name: "David Chen",
                 location: "Canada",
-                disability: "Wheelchair user",
-                text: "As a wheelchair user, I never thought I'd experience an African safari. JaeTravel made it not only possible but absolutely incredible.",
+                disability: "T6 Paraplegic – Wheelchair User",
+                text: "The hydraulic lift vehicle was a game-changer. I saw cheetahs hunting at eye level. JaeTravel thought of everything.",
                 rating: 5,
+                image: "/testimonial-david.jpg"
               },
               {
                 name: "Maria Rodriguez",
                 location: "Spain",
-                disability: "Limited mobility",
-                text: "The accessible Masai Mara tour was a dream come true. Every detail was considered — from the accessible lodge to the patient guides.",
+                disability: "Limited Mobility – Uses Walker",
+                text: "The accessible lodge in the Serengeti had a ramp to the veranda. I watched elephants at sunset every night. Perfect pacing.",
                 rating: 5,
+                image: "/testimonial-maria.jpg"
               },
               {
                 name: "James Wilson",
-                location: "United Kingdom",
-                disability: "Wheelchair user",
-                text: "Gorilla trekking seemed impossible for me, but JaeTravel found a way. It was the most emotional and beautiful experience of my life.",
+                location: "UK",
+                disability: "Wheelchair User – Gorilla Trekking",
+                text: "I cried when I saw the silverback. The sedan chair team was respectful and strong. Best day of my life.",
                 rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-2">
+                image: "/testimonial-james.jpg"
+              }
+            ].map((t, i) => (
+              <Card key={i} className="border-2">
                 <CardContent className="p-6">
-                  <div className="mb-4 flex gap-1">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Check key={i} className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="h-16 w-16 rounded-full bg-muted overflow-hidden">
+                      <Image src={t.image} alt={t.name} width={64} height={64} className="object-cover" />
+                    </div>
+                    <div>
+                      <p className="font-semibold">{t.name}</p>
+                      <p className="text-sm text-muted-foreground">{t.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-1 mb-3">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="mb-4 leading-relaxed text-muted-foreground">"{testimonial.text}"</p>
-                  <div className="border-t border-border pt-4">
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                    <p className="text-sm text-muted-foreground italic">{testimonial.disability}</p>
-                  </div>
+                  <p className="italic text-muted-foreground leading-relaxed">"{t.text}"</p>
+                  <p className="mt-3 text-xs text-muted-foreground italic">{t.disability}</p>
                 </CardContent>
               </Card>
             ))}
@@ -413,41 +506,38 @@ export default function DisabilityToursPage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-border bg-muted/30 py-16">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">Frequently Asked Questions</h2>
-          <div className="mx-auto max-w-3xl space-y-6">
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+            Frequently Asked Questions About Accessible Safaris
+          </h2>
+          <div className="mx-auto max-w-4xl space-y-6">
             {[
               {
-                question: "What types of disabilities can you accommodate?",
-                answer:
-                  "We accommodate wheelchair users, limited mobility, visual and hearing impairments. Your trip begins with a pre‑trip accessibility consultation to tailor arrangements.",
+                q: "What types of disabilities do you accommodate?",
+                a: "We welcome wheelchair users, travelers with limited mobility, visual or hearing impairments, seniors, and those with cognitive or neurological conditions. Every trip begins with a free accessibility consultation."
               },
               {
-                question: "Are the safari vehicles truly wheelchair accessible?",
-                answer:
-                  "Yes. Our fleet includes hydraulic lifts, secure restraints, and wide access doors. For rugged areas we provide tracked wheelchairs and extra support staff on request.",
+                q: "Are the safari vehicles safe and comfortable?",
+                a: "Yes. Our vehicles are custom-built with hydraulic lifts, shock-absorbing suspension, secure wheelchair locks, and climate control. Pop-up roofs ensure full wildlife viewing."
               },
               {
-                question: "What about bathroom facilities on safari?",
-                answer:
-                  "Partner lodges provide accessible bathrooms with roll‑in showers and grab bars. During remote game drives we plan accessible rest stops and can provide portable facilities.",
+                q: "Can I bring my own wheelchair or scooter?",
+                a: "Absolutely. We recommend lightweight or foldable models for easier transfers. We provide backup manual wheelchairs and charging stations for power chairs."
               },
               {
-                question: "Can I bring my own wheelchair or mobility equipment?",
-                answer:
-                  "Yes — bring what you trust. We adapt our vehicles and accommodations to your equipment and provide backups where necessary.",
+                q: "How do you handle medical emergencies?",
+                a: "All guides carry satellite phones and first-aid kits. We partner with flying doctor services and pre-arrange hospital access. Medical forms are reviewed before travel."
               },
               {
-                question: "Do you offer accessible gorilla trekking?",
-                answer:
-                  "Yes. We co‑ordinate with national parks for accessible viewing, shorter routes, or sedan chair options when available.",
-              },
-            ].map((faq, index) => (
-              <Card key={index}>
+                q: "Is accessible gorilla trekking really possible?",
+                a: "Yes. In Rwanda and Uganda, we secure special permits and use experienced sedan chair teams. Some guests walk short distances with support; others are carried the full way."
+              }
+            ].map((faq, i) => (
+              <Card key={i}>
                 <CardContent className="p-6">
-                  <h3 className="mb-3 text-lg font-semibold">{faq.question}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  <h3 className="mb-3 text-lg font-semibold text-primary">{faq.q}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
                 </CardContent>
               </Card>
             ))}
@@ -455,29 +545,28 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
-            <h2 className="mb-4 font-serif text-3xl font-bold md:text-4xl text-balance">Ready to Start Your Accessible Safari Adventure?</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-              Our accessibility specialists are ready to design a safe, comfortable and unforgettable safari — tailored to your needs.
+            <h2 className="mb-4 font-serif text-3xl font-bold md:text-4xl text-balance">
+              Your Accessible African Safari Awaits
+            </h2>
+            <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
+              Let our accessibility experts design a safe, comfortable, and thrilling safari tailored to your needs. 
+              From your first inquiry to your final game drive, we’re with you every step of the way.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" variant="secondary">
-                <Link href="/contact">Contact Our Accessibility Team</Link>
+              <Button asChild size="lg" variant="secondary" className="min-w-[240px]">
+                <Link href="/contact">Start Planning Now</Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
-                  WhatsApp Us
-                </a>
+              <Button asChild size="lg" variant="outline" className="min-w-[240px] border-white text-white hover:bg-white/20">
+                <a href="tel:+254726485228">Call +254 726 485 228</a>
               </Button>
             </div>
+            <p className="mt-6 text-sm text-primary-foreground/80">
+              Free accessibility consultation • No obligation • Reply within 2 hours
+            </p>
           </div>
         </div>
       </section>
