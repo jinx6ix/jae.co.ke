@@ -1,125 +1,167 @@
+// app/vehicle-hire/toyota-landcruiser/page.tsx
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
+import { Phone, Mail, ArrowRight } from "lucide-react"
+import CruiserHero from "./CruiserHero"
+import CruiserFeatures from "./CruiserFeatures"
+import CruiserSpecs from "./CruiserSpecs"
+import { faqSchema } from "./faq-schema"
 
-export const metadata: Metadata = {
-  title: "Toyota Land Cruiser | Safari & Off-Road Vehicle Hire",
-  description:
-    "Hire a Toyota Land Cruiser for your safari or off-road adventure. Perfect for national parks, game reserves, and rugged terrain across East Africa.",
-  keywords: [
-    "Toyota Land Cruiser hire",
-    "safari vehicle rental",
-    "4x4 car hire Kenya",
-    "off-road vehicles Africa",
-    "tour transport Land Cruiser",
-  ],
+// ————————————————————————
+// Metadata + JSON-LD
+// ————————————————————————
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Toyota Land Cruiser Hire Kenya & Tanzania | Safari 4x4 | JAE Travel",
+    description:
+      "Hire a Toyota Land Cruiser for safari in Kenya, Tanzania, Uganda & Rwanda. Pop-up roof, 7 seats, 4x4, driver optional. From $120/day. Book now!",
+    keywords: [
+      "Toyota Land Cruiser hire Kenya",
+      "safari vehicle rental",
+      "4x4 car hire Tanzania",
+      "Land Cruiser safari Maasai Mara",
+      "off-road vehicle hire Uganda",
+      "pop up roof Land Cruiser",
+      "7 seater safari car rental",
+      "Nairobi Land Cruiser hire",
+      "Arusha 4x4 rental",
+      "cross border safari vehicle",
+      "Land Cruiser with driver",
+      "East Africa overland vehicle",
+    ],
+    openGraph: {
+      title: "Toyota Land Cruiser Safari Hire | Kenya & Tanzania",
+      description: "Rent a rugged 7-seater Toyota Land Cruiser with pop-up roof for your East Africa safari. Self-drive or with driver.",
+      images: ["/vehicles/landcruiser-hero.jpg"],
+    },
+    alternates: {
+      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
+    },
+    other: {
+      "script:ld+json": JSON.stringify(faqSchema),
+    },
+  }
 }
 
+// ————————————————————————
+// Server Component: Main Page
+// ————————————————————————
 export default function ToyotaLandCruiserPage() {
-  const features = [
-    "Pop-up roof for game viewing",
-    "Spacious seating (up to 7 passengers)",
-    "Air conditioning and cooler box",
-    "4x4 all-terrain capability",
-    "Professional driver-guide (optional)",
-    "Unlimited mileage on safaris",
-  ]
-
-  const specs = [
-    { label: "Transmission", value: "Automatic / Manual" },
-    { label: "Fuel Type", value: "Diesel" },
-    { label: "Seating Capacity", value: "7 Passengers" },
-    { label: "Drive Type", value: "4WD" },
-    { label: "Daily Rate", value: "From $120/day" },
-  ]
-
   return (
     <div className="container mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Toyota Land Cruiser Hire</h1>
-        <p className="mx-auto max-w-2xl text-muted-foreground text-lg leading-relaxed">
-          Experience ultimate comfort and reliability on your East African adventure. The Toyota Land Cruiser is built
-          for safaris, off-road expeditions, and long-distance travel across all terrains.
-        </p>
-      </div>
+      {/* Hero – Client */}
+      <CruiserHero />
 
-      {/* Image Showcase */}
-      <div className="mb-16 grid gap-6 md:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <Image
-            src="/IMG-20240807-WA0023.jpeg.340x255_q85_crop.jpg"
-            alt="Toyota Land Cruiser exterior"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <Image
-            src="/toyota-prado-seats-comfort.jpg"
-            alt="Toyota Land Cruiser interior"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </div>
+      {/* Features – Client */}
+      <CruiserFeatures />
 
-      {/* Vehicle Info */}
-      <div className="grid gap-12 md:grid-cols-2">
-        {/* Features */}
-        <div>
-          <h2 className="mb-4 font-serif text-3xl font-bold">Key Features</h2>
-          <ul className="space-y-3">
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-1" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Specs – Client */}
+      <CruiserSpecs />
 
-        {/* Specifications */}
-        <div>
-          <h2 className="mb-4 font-serif text-3xl font-bold">Vehicle Specifications</h2>
-          <div className="overflow-hidden rounded-xl border bg-card">
-            <table className="w-full border-collapse text-sm">
-              <tbody>
-                {specs.map((spec, index) => (
-                  <tr
-                    key={index}
-                    className="border-b last:border-none odd:bg-muted/30 even:bg-background transition-colors"
-                  >
-                    <td className="px-4 py-3 font-medium">{spec.label}</td>
-                    <td className="px-4 py-3 text-muted-foreground">{spec.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {/* Rental Options */}
+      <section className="mb-16">
+        <h2 className="mb-8 text-center font-serif text-4xl font-bold">
+          Rental Plans & Pricing
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border bg-card p-6">
+            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">Self-Drive</h3>
+            <p className="mb-4 text-3xl font-bold">$120 <span className="text-lg text-muted-foreground">/ day</span></p>
+            <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2">Check Unlimited mileage</li>
+              <li className="flex items-center gap-2">Check Full insurance</li>
+              <li className="flex items-center gap-2">Check GPS & cooler box</li>
+              <li className="flex items-center gap-2">Check Free pickup (Nairobi/Arusha)</li>
+            </ul>
+            <Button asChild className="w-full">
+              <Link href="/book-now?vehicle=landcruiser-self">Book Self-Drive</Link>
+            </Button>
+          </div>
+          <div className="rounded-xl border bg-card p-6">
+            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">With Driver-Guide</h3>
+            <p className="mb-4 text-3xl font-bold">$180 <span className="text-lg text-muted-foreground">/ day</span></p>
+            <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2">Check Expert local guide</li>
+              <li className="flex items-center gap-2">Check All fuel included</li>
+              <li className="flex items-center gap-2">Check Park entry assistance</li>
+              <li className="flex items-center gap-2">Check Custom safari route</li>
+            </ul>
+            <Button asChild className="w-full">
+              <Link href="/book-now?vehicle=landcruiser-driver">Book With Driver</Link>
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="mt-16 rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
+      {/* Testimonials */}
+      <section className="mb-16">
+        <h2 className="mb-8 text-center font-serif text-4xl font-bold">
+          What Travelers Say
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { name: "Michael T.", location: "Nairobi → Tsavo", text: "The Land Cruiser never missed a beat. Perfect for long safaris." },
+            { name: "Emma & Family", location: "Arusha → Ngorongoro", text: "7 seats + pop-up roof = best family safari ever!" },
+            { name: "Alex P.", location: "Entebbe → Queen Elizabeth", text: "Driver knew every animal track. Worth every penny." }
+          ].map((t, i) => (
+            <div key={i} className="rounded-xl bg-muted/50 p-6">
+              <p className="mb-3 italic text-muted-foreground">"{t.text}"</p>
+              <p className="text-sm font-semibold">{t.name}</p>
+              <p className="text-xs text-muted-foreground">{t.location}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mb-16">
+        <h2 className="mb-8 text-center font-serif text-4xl font-bold">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6 max-w-4xl mx-auto">
+          {faqSchema.mainEntity.map((faq, i) => (
+            <div key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 itemProp="name" className="mb-2 text-xl font-bold">{faq.name}</h3>
+              <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                {faq.acceptedAnswer && (
+                  <p itemProp="text" className="text-muted-foreground leading-relaxed">{faq.acceptedAnswer.text}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
         <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
-          Ready for Your Safari Adventure?
+          Ready for the Ultimate Safari?
         </h2>
         <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-pretty text-primary-foreground/90">
-          Book your Toyota Land Cruiser today for an unforgettable experience across Kenya, Tanzania, Uganda, and Rwanda.
-          Enjoy the best off-road performance with comfort and safety.
+          Hire the <strong>Toyota Land Cruiser</strong> — the gold standard for <strong>East Africa safaris</strong>. 
+          From <strong>Maasai Mara</strong> to <strong>Serengeti</strong>, this 4x4 conquers all.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/book-now?vehicle=toyota-landcruiser">Book This Vehicle</Link>
+          <Button asChild size="lg" variant="secondary" className="group">
+            <Link href="/contact">
+              Get Quote Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground">
-            <Link href="/contact">Contact for Custom Quote</Link>
+            <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <Phone className="h-4 w-4" /> WhatsApp
+            </a>
           </Button>
         </div>
-      </div>
+        <p className="mt-6 text-sm">
+          <Mail className="inline h-4 w-4 mr-1" />
+          <a href="mailto:info@jaetravelexpeditions.com" className="underline">info@jaetravelexpeditions.com</a>
+          {' '}|{' '}
+          <Phone className="inline h-4 w-4 mr-1" />
+          <a href="tel:+254726485228" className="underline">+254 726 485 228</a>
+        </p>
+      </section>
     </div>
   )
 }
