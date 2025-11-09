@@ -17,7 +17,7 @@ type Destination = {
 export default function DestinationCard({ destination }: { destination: Destination }) {
   return (
     <Link
-      href={`/destinations/${destination.slug}`}
+      href={`/destination/${destination.slug}`}
       className="group relative aspect-[16/10] overflow-hidden rounded-2xl shadow-lg transition-all hover:shadow-xl"
     >
       <Image
