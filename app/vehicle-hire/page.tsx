@@ -175,7 +175,7 @@ export default function VehicleHirePage() {
             <div className="relative h-96 overflow-hidden rounded-xl shadow-2xl">
               <Image
                 src="/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg"
-                alt="Interior of professional safari vehicle showing pop-up roof and comfortable seating for game viewing"
+                alt="Interiors of professional safari vehicle showing pop-up roof and comfortable seating for game viewing"
                 fill
                 className="object-cover"
               />
