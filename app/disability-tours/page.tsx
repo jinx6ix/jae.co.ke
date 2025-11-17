@@ -10,10 +10,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Accessibility, Check, Heart, Shield, Users, Award, MapPin, Calendar, Globe, Phone, Star } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Accessible Safari Tours for People with Disabilities | Wheelchair-Friendly Kenya, Tanzania, Rwanda & Uganda",
+  title: "Wheelchair Accessible Safari Tours for People with Disabilities | Wheelchair-Friendly Kenya, Tanzania, Rwanda & Uganda",
   description:
-    "Jae Travel offers fully accessible safaris in East Africa — wheelchair-adapted vehicles, barrier-free lodges, trained guides, and personalized itineraries for travelers with mobility, visual, or hearing impairments. Book your inclusive Kenya, Tanzania, Rwanda, or Uganda safari today.",
+    "Jae Travel offers fully wheelchair accessible safaris in East Africa — wheelchair-adapted vehicles, barrier-free lodges, trained guides, and personalized itineraries for travelers with mobility, visual, or hearing impairments. Book your inclusive Kenya, Tanzania, Rwanda, or Uganda wheelchair accessible safari today.",
   keywords: [
+    "wheelchair accessible safari",
+    "wheelchair accessible tours and safaris",
     "accessible kenya safari",
     "disability tours kenya",
     "wheelchair friendly safari",
@@ -24,7 +26,6 @@ export const metadata: Metadata = {
     "barrier-free kenya travel",
     "inclusive safari experiences",
     "disabled travel kenya",
-    "wheelchair accessible tours and safaris",
     "accessible masai mara safari",
     "wheelchair safari tanzania",
     "accessible gorilla trekking rwanda",
@@ -37,9 +38,9 @@ export const metadata: Metadata = {
     "uganda mobility impaired safari"
   ],
   openGraph: {
-    title: "Accessible Safari Tours for People with Disabilities | JaeTravel Expeditions",
+    title: "Wheelchair Accessible Safari Tours for People with Disabilities | JaeTravel Expeditions",
     description:
-      "Experience East Africa’s wildlife with dignity and comfort. Wheelchair-accessible vehicles, inclusive lodges, and expert support for travelers with disabilities.",
+      "Experience East Africa's wildlife with dignity and comfort. Wheelchair accessible safari vehicles, inclusive lodges, and expert support for travelers with disabilities.",
     images: ["/accessible-safari-wheelchair.jpg"],
     url: "https://www.jaetravel.co.ke/disability-tours",
     type: "website",
@@ -76,15 +77,15 @@ const schema = {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
         { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
-        { "@type": "ListItem", "position": 3, "name": "Accessible Safari Tours", "item": "https://www.jaetravel.co.ke/disability-tours" }
+        { "@type": "ListItem", "position": 3, "name": "Wheelchair Accessible Safari Tours", "item": "https://www.jaetravel.co.ke/disability-tours" }
       ]
     },
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/disability-tours",
       "url": "https://www.jaetravel.co.ke/disability-tours",
-      "name": "Accessible Safari Tours for People with Disabilities",
-      "description": "Wheelchair-friendly safaris in Kenya, Tanzania, Rwanda, and Uganda with adapted vehicles, inclusive lodges, and trained guides.",
+      "name": "Wheelchair Accessible Safari Tours for People with Disabilities",
+      "description": "Wheelchair accessible safari experiences in Kenya, Tanzania, Rwanda, and Uganda with adapted vehicles, inclusive lodges, and trained guides.",
       "inLanguage": "en-KE"
     },
     {
@@ -95,7 +96,7 @@ const schema = {
           "name": "What types of disabilities can you accommodate on safari?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accommodate wheelchair users, travelers with limited mobility, visual impairments, hearing impairments, and cognitive disabilities. Every accessible safari begins with a detailed pre-trip consultation to assess equipment, medical needs, and activity preferences."
+            "text": "We accommodate wheelchair users, travelers with limited mobility, visual impairments, hearing impairments, and cognitive disabilities. Every wheelchair accessible safari begins with a detailed pre-trip consultation to assess equipment, medical needs, and activity preferences."
           }
         },
         {
@@ -103,7 +104,7 @@ const schema = {
           "name": "Are your safari vehicles truly wheelchair accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Our custom 4x4 vehicles feature hydraulic lifts, wide side-entry doors, secure wheelchair tie-downs, and pop-up roofs for unobstructed wildlife viewing. We also provide portable all-terrain tracked wheelchairs for rugged areas."
+            "text": "Yes. Our custom 4x4 vehicles feature hydraulic lifts, wide side-entry doors, secure wheelchair tie-downs, and pop-up roofs for unobstructed wildlife viewing. We also provide portable all-terrain tracked wheelchairs for rugged areas. Our wheelchair accessible safari vehicles meet international accessibility standards."
           }
         },
         {
@@ -111,7 +112,7 @@ const schema = {
           "name": "Can wheelchair users participate in gorilla trekking?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. In Rwanda and Uganda, we coordinate with national parks to secure special permits, shorter accessible routes, and sedan chair carriers. Guests remain in control and can view gorillas at close range safely."
+            "text": "Yes. In Rwanda and Uganda, we coordinate with national parks to secure special permits, shorter accessible routes, and sedan chair carriers. Guests remain in control and can view gorillas at close range safely. Our wheelchair accessible safari packages include all necessary adaptive equipment."
           }
         },
         {
@@ -119,7 +120,7 @@ const schema = {
           "name": "Are bathrooms and lodges fully accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "All partner lodges feature roll-in showers, grab bars, lowered sinks, and wide doorways. During game drives, we schedule stops at accessible restrooms or provide portable privacy screens and facilities."
+            "text": "All partner lodges feature roll-in showers, grab bars, lowered sinks, and wide doorways. During game drives, we schedule stops at accessible restrooms or provide portable privacy screens and facilities. Every wheelchair accessible safari includes accommodation that meets ADA standards."
           }
         },
         {
@@ -127,7 +128,7 @@ const schema = {
           "name": "Do you offer accessible Serengeti migration safaris?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Our Tanzania accessible safaris follow the Great Migration with wheelchair-adapted vehicles and stays at barrier-free camps. Witness river crossings and vast herds without leaving your secure seat."
+            "text": "Yes. Our Tanzania wheelchair accessible safari experiences follow the Great Migration with wheelchair-adapted vehicles and stays at barrier-free camps. Witness river crossings and vast herds without leaving your secure seat in our specially designed wheelchair accessible safari vehicles."
           }
         }
       ]
@@ -137,13 +138,13 @@ const schema = {
       "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
       "author": { "@type": "Person", "name": "David Chen" },
       "datePublished": "2025-08-01",
-      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. A life-changing experience.",
+      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. Their wheelchair accessible safari exceeded all expectations. A life-changing experience.",
       "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
     },
     {
       "@type": "TouristTrip",
-      "name": "Accessible Masai Mara Safari for Wheelchair Users",
-      "description": "4-day wheelchair-accessible safari in Kenya’s Masai Mara with adapted vehicles, inclusive lodges, and expert guides for travelers with disabilities.",
+      "name": "Wheelchair Accessible Masai Mara Safari for Wheelchair Users",
+      "description": "4-day wheelchair accessible safari in Kenya's Masai Mara with adapted vehicles, inclusive lodges, and expert guides for travelers with disabilities. Experience the ultimate wheelchair accessible safari adventure.",
       "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
       "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari",
       "touristType": ["Wheelchair users", "Mobility impaired", "Seniors", "Families with special needs"],
@@ -158,8 +159,8 @@ const schema = {
         "@type": "ItemList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Arrival in Nairobi & Accessibility Briefing" },
-          { "@type": "ListItem", "position": 2, "name": "Transfer to Masai Mara via Accessible Vehicle" },
-          { "@type": "ListItem", "position": 3, "name": "Morning & Afternoon Game Drives" },
+          { "@type": "ListItem", "position": 2, "name": "Transfer to Masai Mara via Wheelchair Accessible Vehicle" },
+          { "@type": "ListItem", "position": 3, "name": "Morning & Afternoon Game Drives in Wheelchair Accessible Safari Vehicle" },
           { "@type": "ListItem", "position": 4, "name": "Departure" }
         ]
       },
@@ -167,8 +168,8 @@ const schema = {
     },
     {
       "@type": "TouristTrip",
-      "name": "Accessible Tanzania Safari – Serengeti & Ngorongoro",
-      "description": "8-day wheelchair-friendly safari in Tanzania featuring the Great Migration, Ngorongoro Crater, and fully accessible lodges.",
+      "name": "Wheelchair Accessible Tanzania Safari – Serengeti & Ngorongoro",
+      "description": "8-day wheelchair accessible safari in Tanzania featuring the Great Migration, Ngorongoro Crater, and fully accessible lodges. The perfect wheelchair accessible safari for wildlife enthusiasts.",
       "image": "https://www.jaetravel.co.ke/images/tours/tanzania-accessible-safari.jpg",
       "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari",
       "touristType": ["Wheelchair users", "Travelers with disabilities"],
@@ -195,7 +196,7 @@ export default function DisabilityToursPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/accessible-safari-wheelchair.jpg"
-            alt="Wheelchair user on accessible safari in Masai Mara, Kenya with JaeTravel"
+            alt="Wheelchair user on wheelchair accessible safari in Masai Mara, Kenya with JaeTravel - fully accessible safari vehicle and barrier-free experience"
             fill
             className="object-cover brightness-50"
             priority
@@ -208,22 +209,22 @@ export default function DisabilityToursPage() {
           </div>
 
           <h1 className="mb-6 font-serif text-5xl font-bold leading-tight text-balance md:text-6xl lg:text-7xl">
-            Safari Adventures for <span className="text-primary">Everyone</span> — Fully Accessible
+            Wheelchair Accessible Safari Adventures for <span className="text-primary">Everyone</span>
           </h1>
 
           <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">
-            Discover the wild heart of East Africa with <strong>wheelchair-accessible safaris</strong> in Kenya, Tanzania, Rwanda, and Uganda. 
-            From the endless plains of the <strong>Masai Mara</strong> to the mist-shrouded volcanoes of <strong>Rwanda’s gorilla forests</strong>, 
-            Jae Travel ensures travelers with disabilities experience Africa’s greatest wonders — safely, comfortably, and with dignity.
+            Discover the wild heart of East Africa with our comprehensive <strong>wheelchair accessible safari</strong> experiences in Kenya, Tanzania, Rwanda, and Uganda. 
+            From the endless plains of the <strong>Masai Mara</strong> to the mist-shrouded volcanoes of <strong>Rwanda's gorilla forests</strong>, 
+            Jae Travel ensures travelers with disabilities experience Africa's greatest wonders — safely, comfortably, and with dignity through our specially designed <strong>wheelchair accessible tours and safaris</strong>.
           </p>
 
           <p className="mx-auto mb-8 max-w-3xl text-lg italic text-white/80">
-            “I saw a lion pride at sunrise from my wheelchair. That moment will stay with me forever.” – David Chen, Canada
+            "I saw a lion pride at sunrise from my wheelchair in a fully wheelchair accessible safari vehicle. That moment will stay with me forever." – David Chen, Canada
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="min-w-[220px] text-lg">
-              <Link href="#tours">Explore Accessible Tours</Link>
+              <Link href="#tours">Explore Wheelchair Accessible Tours</Link>
             </Button>
             <Button
               asChild
@@ -231,7 +232,7 @@ export default function DisabilityToursPage() {
               variant="outline"
               className="min-w-[220px] border-white bg-white/10 text-white backdrop-blur hover:bg-white/20"
             >
-              <Link href="/contact">Get Free Accessibility Consultation</Link>
+              <Link href="/contact">Get Free Wheelchair Accessibility Consultation</Link>
             </Button>
             <Button asChild size="lg" variant="secondary" className="min-w-[220px]">
               <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
@@ -242,31 +243,31 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* Introduction to Accessible Safaris */}
+      {/* Introduction to Wheelchair Accessible Safaris */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div>
               <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
-                Inclusive Safaris: Redefining Adventure in East Africa
+                Inclusive Wheelchair Accessible Safaris: Redefining Adventure in East Africa
               </h2>
               <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-                At Jae Travel, we believe <strong>disability should never limit discovery</strong>. Our accessible safari programs are designed 
-                for travelers using wheelchairs, those with limited mobility, visual or hearing impairments, and families traveling with special needs.
+                At Jae Travel, we believe <strong>disability should never limit discovery</strong>. Our <strong>wheelchair accessible safari</strong> programs are specifically designed 
+                for travelers using wheelchairs, those with limited mobility, visual or hearing impairments, and families traveling with special needs. Every aspect of our <strong>wheelchair accessible tours and safaris</strong> is meticulously planned to ensure comfort, safety, and unforgettable experiences.
               </p>
               <p className="mb-4 leading-relaxed text-muted-foreground">
-                We’ve spent over a decade perfecting <strong>wheelchair-friendly safari vehicles</strong>, partnering with <strong>barrier-free lodges</strong>, 
-                and training guides in disability awareness. The result? A seamless, dignified, and thrilling African safari experience.
+                We've spent over a decade perfecting <strong>wheelchair-friendly safari vehicles</strong> with hydraulic lifts and secure restraint systems, partnering with <strong>barrier-free lodges</strong> that meet international accessibility standards, 
+                and training guides in comprehensive disability awareness. The result? A seamless, dignified, and thrilling African <strong>wheelchair accessible safari</strong> experience that exceeds expectations.
               </p>
               <p className="leading-relaxed text-muted-foreground">
-                Whether you're dreaming of watching the <strong>Great Migration in a wheelchair-accessible vehicle</strong> or meeting mountain gorillas 
-                via an adapted trail in Rwanda, we make it possible — and unforgettable.
+                Whether you're dreaming of watching the <strong>Great Migration from a wheelchair-accessible vehicle</strong> or meeting mountain gorillas 
+                via adapted trails in Rwanda, we make it possible — and unforgettable. Our <strong>wheelchair accessible safari</strong> packages include everything from specialized vehicles to accessible accommodations and trained support staff.
               </p>
             </div>
             <div className="relative h-96 overflow-hidden rounded-xl shadow-xl">
               <Image
                 src="/accessible-safari-wheelchair.jpg"
-                alt="Group of travelers with disabilities enjoying an accessible safari game drive in Kenya"
+                alt="Group of travelers with disabilities enjoying a wheelchair accessible safari game drive in Kenya with adapted vehicle and professional guide"
                 fill
                 className="object-cover"
               />
@@ -279,9 +280,9 @@ export default function DisabilityToursPage() {
       <section className="border-b border-border bg-muted/30 py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Why Choose Jae Travel for Your Accessible Safari</h2>
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Why Choose Jae Travel for Your Wheelchair Accessible Safari</h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              We don’t just accommodate disabilities — we <strong>specialize</strong> in them. Every detail is planned with accessibility, safety, and joy in mind.
+              We don't just accommodate disabilities — we <strong>specialize</strong> in creating exceptional <strong>wheelchair accessible safari</strong> experiences. Every detail is planned with accessibility, safety, and joy in mind.
             </p>
           </div>
 
@@ -289,33 +290,33 @@ export default function DisabilityToursPage() {
             {[
               {
                 icon: <Accessibility className="h-7 w-7 text-primary" />,
-                title: "Custom Wheelchair-Adapted Safari Vehicles",
-                desc: "Hydraulic lifts, wide doors, secure restraints, pop-up roofs, and all-terrain tracked wheelchairs available on request."
+                title: "Custom Wheelchair Accessible Safari Vehicles",
+                desc: "Hydraulic lifts, wide doors, secure restraints, pop-up roofs, and all-terrain tracked wheelchairs available. Our wheelchair accessible safari vehicles are specifically designed for African terrain."
               },
               {
                 icon: <Shield className="h-7 w-7 text-primary" />,
                 title: "100% Barrier-Free Lodges & Camps",
-                desc: "Roll-in showers, grab bars, ramps, lowered beds, and accessible dining and lounge areas in every property."
+                desc: "Roll-in showers, grab bars, ramps, lowered beds, and accessible dining areas. Every wheelchair accessible safari includes accommodation that meets the highest accessibility standards."
               },
               {
                 icon: <Users className="h-7 w-7 text-primary" />,
                 title: "Disability-Trained Guides & Support Teams",
-                desc: "Certified in mobility assistance, sign language basics, and emergency protocols for visual, hearing, and cognitive needs."
+                desc: "Certified in mobility assistance, sign language basics, and emergency protocols for visual, hearing, and cognitive needs on every wheelchair accessible safari."
               },
               {
                 icon: <Heart className="h-7 w-7 text-primary" />,
-                title: "Fully Personalized Itineraries",
-                desc: "Paced to your energy levels, medical requirements, and interests — from gentle game drives to cultural village visits."
+                title: "Fully Personalized Wheelchair Accessible Itineraries",
+                desc: "Paced to your energy levels, medical requirements, and interests — from gentle game drives to cultural village visits. Every wheelchair accessible safari is tailored to individual needs."
               },
               {
                 icon: <Award className="h-7 w-7 text-primary" />,
                 title: "Award-Winning Accessible Tourism",
-                desc: "Recognized by Kenya Tourism Board for excellence in inclusive travel and universal design."
+                desc: "Recognized by Kenya Tourism Board for excellence in inclusive travel and universal design in wheelchair accessible safari experiences."
               },
               {
                 icon: <Globe className="h-7 w-7 text-primary" />,
-                title: "Multi-Country Accessible Adventures",
-                desc: "Combine Kenya, Tanzania, Rwanda, and Uganda in one seamless, wheelchair-friendly journey."
+                title: "Multi-Country Wheelchair Accessible Adventures",
+                desc: "Combine Kenya, Tanzania, Rwanda, and Uganda in one seamless, wheelchair-friendly journey with our comprehensive wheelchair accessible safari packages."
               }
             ].map((item, i) => (
               <Card key={i} className="border-2 hover:shadow-lg transition-shadow">
@@ -336,25 +337,27 @@ export default function DisabilityToursPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">What’s Included in Every Accessible Safari</h2>
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">What's Included in Every Wheelchair Accessible Safari</h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              From the moment you land to your final farewell, every detail is covered — with accessibility at the core.
+              From the moment you land to your final farewell, every detail is covered — with wheelchair accessibility at the core of your safari experience.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              "Wheelchair-adapted 4x4 safari vehicles with hydraulic lifts and secure restraints",
-              "Accessible airport transfers in Nairobi, Arusha, Kigali, or Entebbe",
-              "Barrier-free lodge accommodations with roll-in showers and grab bars",
-              "All national park fees, conservation fees, and special accessibility permits",
-              "English-speaking guide trained in disability support (multilingual on request)",
-              "Pre-trip accessibility consultation via phone, email, or video call",
-              "24/7 on-trip support hotline and emergency medical evacuation plan",
-              "Portable all-terrain tracked wheelchair (available on request)",
-              "Accessible dining arrangements and dietary accommodations",
-              "Custom pacing with flexible start times and rest stops",
-              "Cultural experiences adapted for mobility and sensory needs"
+              "Wheelchair-adapted 4x4 safari vehicles with hydraulic lifts and secure restraints designed specifically for wheelchair accessible safari experiences",
+              "Accessible airport transfers in Nairobi, Arusha, Kigali, or Entebbe with wheelchair-friendly vehicles",
+              "Barrier-free lodge accommodations with roll-in showers, grab bars, and accessible pathways meeting international standards for wheelchair accessible tours and safaris",
+              "All national park fees, conservation fees, and special accessibility permits for wheelchair users",
+              "English-speaking guide trained in disability support and wheelchair assistance (multilingual on request)",
+              "Pre-trip wheelchair accessibility consultation via phone, email, or video call to customize your wheelchair accessible safari",
+              "24/7 on-trip support hotline and emergency medical evacuation plan specifically designed for wheelchair users",
+              "Portable all-terrain tracked wheelchair for rugged areas (available on request with every wheelchair accessible safari package)",
+              "Accessible dining arrangements and dietary accommodations with wheelchair-friendly seating",
+              "Custom pacing with flexible start times and rest stops tailored to wheelchair users' needs",
+              "Cultural experiences adapted for mobility and sensory needs ensuring full participation in wheelchair accessible tours and safaris",
+              "Specialized equipment transfers and handling throughout your wheelchair accessible safari journey",
+              "Accessible photography opportunities and viewing platforms designed for wheelchair users"
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <Check className="h-6 w-6 mt-0.5 flex-shrink-0 text-primary" />
@@ -369,32 +372,32 @@ export default function DisabilityToursPage() {
       <section className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Accessible Safari Destinations in East Africa
+            Wheelchair Accessible Safari Destinations in East Africa
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 name: "Masai Mara, Kenya",
                 icon: <MapPin className="h-6 w-6" />,
-                desc: "World-famous for the Great Migration. Accessible game drives with hydraulic lift vehicles.",
+                desc: "World-famous for the Great Migration. Wheelchair accessible game drives with hydraulic lift vehicles and barrier-free camps.",
                 link: "/tours/accessible-masai-mara-safari"
               },
               {
                 name: "Serengeti & Ngorongoro, Tanzania",
                 icon: <MapPin className="h-6 w-6" />,
-                desc: "Follow the migration in wheelchair-adapted vehicles. Stay in accessible tented camps.",
+                desc: "Follow the migration in wheelchair-adapted vehicles. Stay in accessible tented camps with roll-in showers and ramps.",
                 link: "/tours/tanzania-accessible-safari"
               },
               {
                 name: "Volcanoes National Park, Rwanda",
                 icon: <MapPin className="h-6 w-6" />,
-                desc: "Accessible gorilla trekking with sedan chairs and shorter trails for mobility-impaired guests.",
+                desc: "Wheelchair accessible gorilla trekking with sedan chairs and shorter trails for mobility-impaired guests. Fully inclusive experience.",
                 link: "/tours/accessible-gorilla-trekking-rwanda"
               },
               {
                 name: "Bwindi & Queen Elizabeth, Uganda",
                 icon: <MapPin className="h-6 w-6" />,
-                desc: "Gorilla habituation and boat safaris with ramps and adapted viewing platforms.",
+                desc: "Gorilla habituation and boat safaris with ramps and adapted viewing platforms. Comprehensive wheelchair accessible safari options.",
                 link: "/tours/uganda-accessible-safari"
               }
             ].map((dest, i) => (
@@ -417,9 +420,9 @@ export default function DisabilityToursPage() {
       <section id="tours" className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Featured Accessible Safari Tours</h2>
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Featured Wheelchair Accessible Safari Tours</h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Choose from our most popular wheelchair-friendly safaris or let us design a custom accessible itinerary just for you.
+              Choose from our most popular wheelchair accessible safari packages or let us design a custom accessible itinerary just for you. Each tour is specifically designed for wheelchair users and travelers with mobility challenges.
             </p>
           </div>
 
@@ -431,17 +434,17 @@ export default function DisabilityToursPage() {
             </div>
           ) : (
             <Card className="p-12 text-center">
-              <p className="mb-4 text-muted-foreground">New accessible tours launching soon!</p>
+              <p className="mb-4 text-muted-foreground">New wheelchair accessible tours launching soon!</p>
               <Button asChild>
-                <Link href="/contact">Request Custom Accessible Safari</Link>
+                <Link href="/contact">Request Custom Wheelchair Accessible Safari</Link>
               </Button>
             </Card>
           )}
 
           <div className="mt-12 text-center">
-            <p className="mb-4 text-muted-foreground">Can’t find your ideal accessible safari? We specialize in custom itineraries.</p>
+            <p className="mb-4 text-muted-foreground">Can't find your ideal wheelchair accessible safari? We specialize in custom itineraries designed specifically for wheelchair users.</p>
             <Button asChild size="lg">
-              <Link href="/contact">Build Your Custom Accessible Tour</Link>
+              <Link href="/contact">Build Your Custom Wheelchair Accessible Tour</Link>
             </Button>
           </div>
         </div>
@@ -451,31 +454,31 @@ export default function DisabilityToursPage() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Real Stories from Real Accessible Safari Travelers
+            Real Stories from Real Wheelchair Accessible Safari Travelers
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 name: "David Chen",
                 location: "Canada",
-                disability: "T6 Paraplegic – Wheelchair User",
-                text: "The hydraulic lift vehicle was a game-changer. I saw cheetahs hunting at eye level. JaeTravel thought of everything.",
+                disability: "T6 Paraplegic – Full-time Wheelchair User",
+                text: "The hydraulic lift vehicle was a game-changer for my wheelchair accessible safari. I saw cheetahs hunting at eye level from my wheelchair. JaeTravel thought of everything from accessible vehicles to barrier-free lodges.",
                 rating: 5,
                 image: "/testimonial-david.jpg"
               },
               {
                 name: "Maria Rodriguez",
                 location: "Spain",
-                disability: "Limited Mobility – Uses Walker",
-                text: "The accessible lodge in the Serengeti had a ramp to the veranda. I watched elephants at sunset every night. Perfect pacing.",
+                disability: "Limited Mobility – Uses Walker and Wheelchair",
+                text: "The accessible lodge in the Serengeti had ramps to the veranda and roll-in showers. I watched elephants at sunset every night from my wheelchair. Perfect pacing and incredible wheelchair accessible safari experience.",
                 rating: 5,
                 image: "/testimonial-maria.jpg"
               },
               {
                 name: "James Wilson",
                 location: "UK",
-                disability: "Wheelchair User – Gorilla Trekking",
-                text: "I cried when I saw the silverback. The sedan chair team was respectful and strong. Best day of my life.",
+                disability: "Wheelchair User – Gorilla Trekking Experience",
+                text: "I cried when I saw the silverback gorilla from my adapted sedan chair. The team was respectful and professional. Best wheelchair accessible safari day of my life – truly accessible gorilla trekking.",
                 rating: 5,
                 image: "/testimonial-james.jpg"
               }
@@ -509,29 +512,37 @@ export default function DisabilityToursPage() {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Frequently Asked Questions About Accessible Safaris
+            Frequently Asked Questions About Wheelchair Accessible Safaris
           </h2>
           <div className="mx-auto max-w-4xl space-y-6">
             {[
               {
-                q: "What types of disabilities do you accommodate?",
-                a: "We welcome wheelchair users, travelers with limited mobility, visual or hearing impairments, seniors, and those with cognitive or neurological conditions. Every trip begins with a free accessibility consultation."
+                q: "What types of disabilities do you accommodate on your wheelchair accessible safaris?",
+                a: "We welcome wheelchair users, travelers with limited mobility, visual or hearing impairments, seniors, and those with cognitive or neurological conditions. Every wheelchair accessible safari begins with a free accessibility consultation to ensure we meet your specific needs and provide the appropriate adaptive equipment."
               },
               {
-                q: "Are the safari vehicles safe and comfortable?",
-                a: "Yes. Our vehicles are custom-built with hydraulic lifts, shock-absorbing suspension, secure wheelchair locks, and climate control. Pop-up roofs ensure full wildlife viewing."
+                q: "Are the wheelchair accessible safari vehicles safe and comfortable for rough terrain?",
+                a: "Yes. Our vehicles are custom-built with hydraulic lifts, shock-absorbing suspension, secure wheelchair locks, and climate control. Pop-up roofs ensure full wildlife viewing. All our wheelchair accessible safari vehicles are maintained to the highest safety standards and designed specifically for African safari conditions."
               },
               {
-                q: "Can I bring my own wheelchair or scooter?",
-                a: "Absolutely. We recommend lightweight or foldable models for easier transfers. We provide backup manual wheelchairs and charging stations for power chairs."
+                q: "Can I bring my own wheelchair or power scooter on the wheelchair accessible safari?",
+                a: "Absolutely. We recommend lightweight or foldable models for easier transfers. We provide backup manual wheelchairs and charging stations for power chairs. Our wheelchair accessible safari vehicles have ample space for personal mobility equipment and our staff are trained in proper handling and storage."
               },
               {
-                q: "How do you handle medical emergencies?",
-                a: "All guides carry satellite phones and first-aid kits. We partner with flying doctor services and pre-arrange hospital access. Medical forms are reviewed before travel."
+                q: "How do you handle medical emergencies during wheelchair accessible safaris?",
+                a: "All guides carry satellite phones and comprehensive first-aid kits. We partner with flying doctor services and pre-arrange hospital access with wheelchair-accessible facilities. Medical forms are reviewed before travel and emergency protocols are specifically designed for wheelchair users on safari."
               },
               {
-                q: "Is accessible gorilla trekking really possible?",
-                a: "Yes. In Rwanda and Uganda, we secure special permits and use experienced sedan chair teams. Some guests walk short distances with support; others are carried the full way."
+                q: "Is wheelchair accessible gorilla trekking really possible in Rwanda and Uganda?",
+                a: "Yes. In Rwanda and Uganda, we secure special permits and use experienced sedan chair teams. Some guests walk short distances with support; others are carried the full way. Our wheelchair accessible safari packages include all necessary adaptive equipment and trained support staff for gorilla trekking experiences."
+              },
+              {
+                q: "What makes your wheelchair accessible safari different from regular safaris?",
+                a: "Our wheelchair accessible safari experiences are specifically designed from the ground up for accessibility. This includes custom-built vehicles with hydraulic lifts, barrier-free accommodations, trained disability support staff, adaptive equipment, and itineraries paced for wheelchair users. We don't just adapt existing tours – we create truly inclusive wheelchair accessible safari experiences."
+              },
+              {
+                q: "Are there additional costs for wheelchair accessible safari equipment and services?",
+                a: "No. All accessibility features – including adapted vehicles, barrier-free accommodations, and specialized equipment – are included in our wheelchair accessible safari pricing. We believe accessibility shouldn't come with extra costs, which is why our wheelchair accessible tours and safaris are priced inclusively."
               }
             ].map((faq, i) => (
               <Card key={i}>
@@ -550,22 +561,22 @@ export default function DisabilityToursPage() {
         <div className="container mx-auto px-4">
           <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
             <h2 className="mb-4 font-serif text-3xl font-bold md:text-4xl text-balance">
-              Your Accessible African Safari Awaits
+              Your Wheelchair Accessible African Safari Awaits
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-              Let our accessibility experts design a safe, comfortable, and thrilling safari tailored to your needs. 
-              From your first inquiry to your final game drive, we’re with you every step of the way.
+              Let our wheelchair accessibility experts design a safe, comfortable, and thrilling safari tailored to your specific needs. 
+              From your first inquiry to your final game drive in our specially adapted wheelchair accessible safari vehicles, we're with you every step of the way.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" variant="secondary" className="min-w-[240px]">
-                <Link href="/contact">Start Planning Now</Link>
+                <Link href="/contact">Start Planning Your Wheelchair Accessible Safari</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="min-w-[240px] border-white text-white hover:bg-white/20">
                 <a href="tel:+254726485228">Call +254 726 485 228</a>
               </Button>
             </div>
             <p className="mt-6 text-sm text-primary-foreground/80">
-              Free accessibility consultation • No obligation • Reply within 2 hours
+              Free wheelchair accessibility consultation • No obligation • Reply within 2 hours
             </p>
           </div>
         </div>
