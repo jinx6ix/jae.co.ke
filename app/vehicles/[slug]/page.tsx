@@ -265,7 +265,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: vehicle.description,
       images: [vehicle.image],
       type: "website",
-      siteName: "JAE Travel - Accessible Kenya Safaris"
+      siteName: "JaeTrave Expeditions"
     },
     alternates: {
       canonical: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
@@ -342,7 +342,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
             award: "Kenya Tourism Board Gold Level Accessible Operator 2024",
             provider: {
               "@type": "Organization",
-              name: "JAE Travel Kenya",
+              name: "JaeTravel Expeditions",
               description: "Kenya's leading accessible safari operator specializing in wheelchair friendly wildlife experiences"
             }
           }),
