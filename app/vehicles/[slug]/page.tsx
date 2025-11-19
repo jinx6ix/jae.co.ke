@@ -153,7 +153,7 @@ const vehicles: Vehicles = {
     type: "Luxury Accessible Group Tours",
     capacity: "2 wheelchair users + 4 companions (6 total)",
     price: "$280-350 per day (group safari package)",
-    image: "/vehicles/premium-accessible.jpg",
+    image: "/11.jpeg",
     altImage: "Luxury accessible safari van with dual wheelchair capacity in Kenya wilderness",
     description: "East Africa's only dual-wheelchair accessible luxury safari vehicle featuring individual hydraulic lifts, premium accessibility features, and executive-class comfort for group travel and family safaris.",
     
@@ -214,7 +214,174 @@ const vehicles: Vehicles = {
       "Luxury Travel Advisor Certified",
       "International Accessibility Standards Certified"
     ]
-  }
+  },
+
+   /* -----------------------------------------------------------
+     NEW VEHICLE 1 — Safari Land Cruiser (Wheelchair Accessible)
+     ----------------------------------------------------------- */
+     "safari-land-cruiser": {
+      name: "Safari Wheelchair Accessible Land Cruiser – Kenya's #1",
+      type: "Premium Safari Land Cruiser",
+      capacity: "1 wheelchair user + 5 companions (6 total)",
+      price: "$195-350/day",
+      image: "/WhatsApp Image 2025-09-02 at 11.43.25 AM.jpeg",
+      altImage:
+        "Wheelchair accessible Toyota Land Cruiser Kenya with hydraulic lift in Masai Mara national park",
+      description:
+        "Kenya's premier wheelchair accessible Land Cruiser featuring German-engineered hydraulic lift system, medical-grade wheelchair restraints, and professional disability-trained guides. Experience Masai Mara, Amboseli, and Tsavo in complete accessibility with our certified Toyota Land Cruiser.",
+  
+      specifications: {
+        vehicle: "Toyota Land Cruiser V8 4.5L",
+        liftCapacity: "400kg German hydraulic lift",
+        dimensions: "Wheelchair station 120cm × 150cm (adjustable height 95–110cm viewing)",
+        rampAngle: "Hydraulic vertical lift (0° angle)",
+        restraint: "Q'Straint 4-point wheelchair restraints (medical grade)",
+        suspension: "Reinforced suspension for African terrain",
+        fuelCapacity: "180L extended range",
+        warranty: "Certified Toyota modification + Q’Straint certification"
+      },
+  
+      features: [
+        "German hydraulic lift system (400kg capacity)",
+        "Medical-grade Q'Straint 4-point wheelchair restraints",
+        "Full pop-up roof – wheelchair-height game viewing",
+        "Camera hatches at wheelchair height (95–110cm)",
+        "Toyota Land Cruiser 4×4 with differential lock",
+        "Reinforced suspension for rough terrain",
+        "3kW power inverter for medical equipment",
+        "Dual-zone climate control with HEPA filtration",
+        "Starlink satellite internet",
+        "Integrated 45L medical refrigerator",
+        "Extended 180L fuel tank",
+        "Professional safari guide included"
+      ],
+  
+      included: [
+        "Professional guide",
+        "All park fees",
+        "Medical equipment power supply",
+        "Satellite internet",
+        "Emergency support",
+        "Safari equipment"
+      ],
+  
+      seoContent: {
+        overview:
+          "This advanced wheelchair-adapted Toyota Land Cruiser is engineered for comfort, safety, and rugged 4×4 performance. Ideal for Masai Mara, Amboseli, Tsavo, and private conservancies.",
+  
+        benefits: [
+          "Hydraulic lift supports all power wheelchairs up to 400kg",
+          "High-stability reinforced suspension for off-road comfort",
+          "Pop-up roof offers perfect wheelchair-height photography",
+          "Medical-grade Q’Straint safety restraints",
+          "Starlink internet for remote connectivity"
+        ],
+  
+        safariDestinations: [
+          { name: "Masai Mara", highlights: "Great Migration, Big Cats" },
+          { name: "Amboseli", highlights: "Elephants and Mt. Kilimanjaro views" },
+          { name: "Tsavo", highlights: "Red elephants and vast landscapes" },
+          { name: "Samburu", highlights: "Unique wildlife species" },
+          { name: "Lake Nakuru", highlights: "Flamingoes and rhinos" }
+        ],
+  
+        accessibilityDetails: {
+          transfer: "Remain in wheelchair throughout safari",
+          ramp: "Hydraulic lift system — no ramp required",
+          space: "Large wheelchair bay with secure locking system",
+          safety: "Medical-grade Q'Straint 4-point restraint system",
+          medical: "3kW inverter supports hospital-grade devices"
+        }
+      },
+  
+      certifications: [
+        "Toyota Certified Modification",
+        "ISO 9001:2015",
+        "Q'Straint Restraint Certified",
+        "Kenya Safari Certified"
+      ]
+    },
+  
+    /* -----------------------------------------------------------
+       NEW VEHICLE 2 — Premium Dual Wheelchair Land Cruiser
+       ----------------------------------------------------------- */
+    "premium-land-cruiser": {
+      name: "Premium Accessible Land Cruiser – Dual Wheelchair",
+      type: "Luxury Safari Land Cruiser",
+      capacity: "2 wheelchair users + 4 companions (6 total)",
+      price: "$280-450/day",
+      image: "/WhatsApp Image 2025-10-14 at 21.12.12_ac59cc2c.jpg",
+      altImage:
+        "Dual wheelchair accessible Toyota Land Cruiser Kenya luxury safari vehicle",
+      description:
+        "East Africa's only dual-wheelchair accessible Land Cruiser featuring individual hydraulic lifts, premium accessibility amenities, and executive-class comfort for families, corporate groups, and luxury travel.",
+  
+      specifications: {
+        vehicle: "Toyota Land Cruiser Premium",
+        liftCapacity: "Dual 300kg hydraulic lifts (600kg total)",
+        dimensions: "Two wheelchair bays 120cm × 140cm each",
+        rampAngle: "Dual hydraulic vertical lifts",
+        restraint: "Two independent Q'Straint medical systems",
+        suspension: "Luxury reinforced suspension with leveling",
+        fuelCapacity: "200L extended range",
+        warranty: "Platinum Toyota modification warranty"
+      },
+  
+      features: [
+        "Dual independent hydraulic lift systems",
+        "Executive leather seating with extra legroom",
+        "Advanced climate control with separate zones",
+        "4G LTE WiFi + entertainment system",
+        "Accessible restroom with privacy screen",
+        "Professional guide station with dual communications",
+        "Onboard refreshment center",
+        "Night vision and spotlight for nocturnal viewing",
+        "Premium sound system",
+        "Conference table setup"
+      ],
+  
+      included: [
+        "Dual driver team",
+        "Luxury amenities",
+        "Premium insurance",
+        "Concierge service"
+      ],
+  
+      seoContent: {
+        overview:
+          "This premium dual-wheelchair Land Cruiser is designed for ultimate accessibility and luxury, ideal for corporate groups, families, and multi-generational travel across Kenya.",
+  
+        benefits: [
+          "Accommodates two wheelchair users with independent lifts",
+          "Ultra-luxury comfort for long-distance safaris",
+          "Advanced safety and medical support systems",
+          "Executive-class features for premium travel"
+        ],
+  
+        safariDestinations: [
+          { name: "Private Conservancies", highlights: "Exclusive wildlife access" },
+          { name: "Luxury Amboseli Lodges", highlights: "Premium accommodations" },
+          { name: "Samburu Luxury Camps", highlights: "High-end tented safaris" },
+          { name: "Executive Airports", highlights: "VIP transfers" }
+        ],
+  
+        accessibilityDetails: {
+          transfer: "No transfers — both users remain in their chairs",
+          ramp: "Dual hydraulic lifts",
+          space: "Two independent wheelchair bays",
+          safety: "Dual Q’Straint systems",
+          medical: "4kW medical-grade power system"
+        }
+      },
+  
+      certifications: [
+        "Toyota Platinum Certified",
+        "Luxury Travel Certified",
+        "Executive Transport Certified"
+      ]
+    },
+  
+  
 }
 
 interface PageProps {
