@@ -282,7 +282,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     },
     verification: {
-      google: 'your-google-verification-code',
+      google: 'KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg',
     }
   }
 }
@@ -352,7 +352,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
       <div className="container mx-auto px-4 py-12 md:py-20">
         {/* Enhanced Back Link */}
         <Button asChild variant="ghost" className="mb-8 group">
-          <Link href="/vehicles" className="flex items-center gap-2">
+          <Link href="/vehicle-hire" className="flex items-center gap-2">
             <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
             Back to All Accessible Safari Vehicles
           </Link>
