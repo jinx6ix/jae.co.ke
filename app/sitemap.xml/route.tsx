@@ -11,6 +11,7 @@ export async function GET() {
     "/wheelchair-vehicle",
     "/vehicle-hire",
     "/vehicles",
+    "/wheelchair-accessible-safari-landcruiser",
     "/destinations",
     "/destinations/kenya",
     "/destinations/tanzania",

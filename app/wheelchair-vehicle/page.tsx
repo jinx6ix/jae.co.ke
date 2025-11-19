@@ -67,7 +67,7 @@ export const generateMetadata = (): Metadata => {
       locale: "en_KE"
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/vehicles",
+      canonical: "https://www.jaetravel.co.ke/wheelchair-vehicle",
     },
     robots: {
       index: true,
@@ -81,7 +81,7 @@ export const generateMetadata = (): Metadata => {
       },
     },
     verification: {
-      google: 'your-google-search-console-verification',
+      google: 'KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg',
     },
     other: {
       'ahrefs-site-verification': 'your-ahrefs-verification',
