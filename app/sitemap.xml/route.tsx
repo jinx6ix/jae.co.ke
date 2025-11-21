@@ -19,6 +19,7 @@ export async function GET() {
     "/destinations/uganda",
     "/vehicle-hire",
     "/disability-tours",
+    "/maasai-mara-great-migration",
     "/about",
     "/blog",
     "/blog/blog-gallery",
