@@ -57,7 +57,7 @@ export const generateMetadata = (): Metadata => {
         }
       ],
       type: "website",
-      siteName: "JAE Travel - Kenya's #1 Accessible Safari Company",
+      siteName: "JAETravel Expeditions",
       locale: "en_KE"
     },
     alternates: {
