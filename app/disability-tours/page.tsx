@@ -388,7 +388,7 @@ export default function DisabilityToursPage() {
                     </div>
                     
                     <div className="bg-muted/30 rounded-lg p-4">
-                      <h4 className="font-semibold mb-3 text-center">Detailed Itinerary</h4>
+                      <h4 className="font-semibold mb-3 text-center">Sketched Itinerary</h4>
                       <div className="space-y-3">
                         {itinerary.details.map((detail) => (
                           <div key={detail.day} className="flex gap-3 p-2 rounded bg-background">
