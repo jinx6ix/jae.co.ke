@@ -7,7 +7,7 @@ import { disabilityTours } from "@/lib/tours-data"
 import { TourCard } from "@/components/tour-card"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Accessibility, Check, Heart, Shield, Users, Award, MapPin, Calendar, Globe, Phone, Star } from "lucide-react"
+import { Accessibility, Check, Heart, Shield, Users, Award, MapPin, Calendar, Globe, Phone, Star, Clock, Map } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Wheelchair Accessible Safari Tours for People with Disabilities | Wheelchair-Friendly Kenya, Tanzania, Rwanda & Uganda",
@@ -184,6 +184,89 @@ const schema = {
   ]
 }
 
+// Itinerary data structure
+const accessibleItineraries = [
+  {
+    id: 1,
+    name: "Masai Mara Express",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi → Masai Mara → Nairobi",
+    description: "Perfect for wheelchair users seeking a quick but comprehensive wildlife experience in Kenya's most famous reserve",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing at wheelchair-accessible hotel" },
+      { day: 2, location: "Masai Mara", description: "Full day game drives in wheelchair-adapted vehicle with hydraulic lift" },
+      { day: 3, location: "Masai Mara", description: "Morning and afternoon game drives, accessible cultural visit" },
+      { day: 4, location: "Nairobi", description: "Return transfer and departure" }
+    ],
+    highlights: ["Wheelchair-accessible game drives", "Barrier-free tented camp", "Great Migration viewing (seasonal)", "Accessible cultural experience"],
+    accessibility: ["Hydraulic lift vehicles", "Roll-in shower tents", "Wide pathways", "Adapted viewing areas"]
+  },
+  {
+    id: 2,
+    name: "Lakes & Mara Adventure",
+    duration: "5 Days / 4 Nights",
+    route: "Nairobi → Lake Nakuru → Masai Mara → Nairobi",
+    description: "Combining flamingo-filled lakes with the iconic Masai Mara for a diverse wheelchair-accessible safari",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible accommodation" },
+      { day: 2, location: "Lake Nakuru", description: "Transfer to Nakuru, afternoon wheelchair-accessible game drive" },
+      { day: 3, location: "Masai Mara", description: "Travel to Mara, evening game drive in adapted vehicle" },
+      { day: 4, location: "Masai Mara", description: "Full day of accessible wildlife viewing and photography" },
+      { day: 5, location: "Nairobi", description: "Return journey with lunch stop at accessible facility" }
+    ],
+    highlights: ["Flamingo watching at Lake Nakuru", "Rhino sanctuary visit", "Big Five safari experience", "Accessible photography opportunities"],
+    accessibility: ["Ramp access viewpoints", "Adapted vehicles throughout", "Accessible lodges", "Trained support staff"]
+  },
+  {
+    id: 3,
+    name: "Classic Kenya Circuit",
+    duration: "6 Days / 5 Nights",
+    route: "Nairobi → Lake Nakuru → Masai Mara → Lake Naivasha → Nairobi",
+    description: "The ultimate wheelchair-accessible Kenya safari covering top destinations with full accessibility",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility orientation" },
+      { day: 2, location: "Lake Nakuru", description: "Pink flamingo spectacle and rhino tracking" },
+      { day: 3, location: "Masai Mara", description: "Transfer to Mara, extensive game viewing" },
+      { day: 4, location: "Masai Mara", description: "Full day exploring the reserve in wheelchair-adapted vehicle" },
+      { day: 5, location: "Lake Naivasha", description: "Boat safari with wheelchair ramp access" },
+      { day: 6, location: "Nairobi", description: "Return to Nairobi for departure" }
+    ],
+    highlights: ["Lake Nakuru flamingos", "Masai Mara wildlife", "Lake Naivasha boat safari", "Multiple accessible accommodations"],
+    accessibility: ["Boat with wheelchair ramp", "Multiple adapted vehicles", "Variety of barrier-free lodges", "Comprehensive support"]
+  },
+  {
+    id: 4,
+    name: "Amboseli Kilimanjaro Views",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi → Amboseli → Nairobi",
+    description: "Elephant encounters with breathtaking views of Mount Kilimanjaro in fully accessible settings",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible hotel" },
+      { day: 2, location: "Amboseli", description: "Transfer to Amboseli, afternoon game drive with Kilimanjaro views" },
+      { day: 3, location: "Amboseli", description: "Full day elephant watching and photography from adapted vehicle" },
+      { day: 4, location: "Nairobi", description: "Morning game drive, return to Nairobi" }
+    ],
+    highlights: ["Mount Kilimanjaro views", "Large elephant herds", "Swamp observation points", "Big Five sightings"],
+    accessibility: ["Elevated viewing platforms", "Wheelchair-adapted swamp access", "Accessible lodge with ramps", "Specialized photography support"]
+  },
+  {
+    id: 5,
+    name: "Rift Valley Explorer",
+    duration: "5 Days / 4 Nights",
+    route: "Nairobi → Lake Naivasha → Amboseli → Nairobi",
+    description: "Combining Rift Valley lakes with Amboseli's elephants for a diverse accessible experience",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing" },
+      { day: 2, location: "Lake Naivasha", description: "Wheelchair-accessible boat safari and crescent island visit" },
+      { day: 3, location: "Amboseli", description: "Transfer to Amboseli, sunset game drive" },
+      { day: 4, location: "Amboseli", description: "Full day elephant conservation experience" },
+      { day: 5, location: "Nairobi", description: "Return journey with accessible lunch stop" }
+    ],
+    highlights: ["Lake Naivasha boat safari", "Amboseli elephants", "Kilimanjaro photography", "Rift Valley scenery"],
+    accessibility: ["Adapted boat with ramp", "Multiple wheelchair vehicles", "Barrier-free lodges", "Trained guides"]
+  }
+]
+
 export default function DisabilityToursPage() {
   return (
     <div className="pb-16">
@@ -191,7 +274,7 @@ export default function DisabilityToursPage() {
         {JSON.stringify(schema)}
       </Script>
 
-      {/* Hero Section */}
+      {/* Hero Section with Itineraries */}
       <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -224,7 +307,7 @@ export default function DisabilityToursPage() {
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="min-w-[220px] text-lg">
-              <Link href="#tours">Explore Wheelchair Accessible Tours</Link>
+              <Link href="#itineraries">View Accessible Itineraries</Link>
             </Button>
             <Button
               asChild
@@ -243,6 +326,106 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
+      {/* Accessible Itineraries Section */}
+      <section id="itineraries" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Wheelchair Accessible Safari Itineraries</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              Choose from our most popular wheelchair accessible safari routes, each carefully designed with accessibility at the forefront. 
+              All itineraries feature wheelchair-adapted vehicles, barrier-free accommodations, and trained support staff.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {accessibleItineraries.map((itinerary) => (
+              <Card key={itinerary.id} className="overflow-hidden border-2 hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-3 gap-6 p-6">
+                    <div className="md:col-span-2">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground mb-2">{itinerary.name}</h3>
+                          <div className="flex flex-wrap gap-4 mb-3">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Clock className="h-4 w-4" />
+                              {itinerary.duration}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Map className="h-4 w-4" />
+                              {itinerary.route}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-4 leading-relaxed">{itinerary.description}</p>
+                      
+                      <div className="grid gap-4 sm:grid-cols-2 mb-4">
+                        <div>
+                          <h4 className="font-semibold mb-2 text-primary">Tour Highlights</h4>
+                          <ul className="space-y-1 text-sm">
+                            {itinerary.highlights.map((highlight, index) => (
+                              <li key={index} className="flex items-center gap-2">
+                                <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                                {highlight}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2 text-primary">Accessibility Features</h4>
+                          <ul className="space-y-1 text-sm">
+                            {itinerary.accessibility.map((feature, index) => (
+                              <li key={index} className="flex items-center gap-2">
+                                <Accessibility className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-muted/30 rounded-lg p-4">
+                      <h4 className="font-semibold mb-3 text-center">Detailed Itinerary</h4>
+                      <div className="space-y-3">
+                        {itinerary.details.map((detail) => (
+                          <div key={detail.day} className="flex gap-3 p-2 rounded bg-background">
+                            <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                              {detail.day}
+                            </div>
+                            <div>
+                              <p className="font-medium text-sm">{detail.location}</p>
+                              <p className="text-xs text-muted-foreground">{detail.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <Button asChild className="w-full mt-4">
+                        <Link href={`/contact?itinerary=${itinerary.id}`}>
+                          Customize This Itinerary
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="mb-4 text-muted-foreground">
+              Don't see your perfect wheelchair accessible safari itinerary? We specialize in custom routes designed specifically for your accessibility needs.
+            </p>
+            <Button asChild size="lg">
+              <Link href="/contact">Design Your Custom Accessible Safari</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Rest of your existing sections remain exactly the same */}
       {/* Introduction to Wheelchair Accessible Safaris */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
