@@ -15,8 +15,7 @@ import { breadcrumbSchema } from "./breadcrumb-schema"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title:
-      "JaeTravel Expeditions | East Africa Safari Tours, Accessible Travel, Kenya Tanzania Rwanda Uganda Wildlife Adventures",
+    title: "Wheelchair Accessible Safari Kenya | JaeTravel Expeditions - East Africa Safari Tours & Accessible Travel",
     description:
       "Discover unforgettable African safari experiences in Kenya, Tanzania, Rwanda, and Uganda. Specializing in accessible tours for travelers with disabilities, gorilla trekking, Masai Mara, Serengeti Great Migration, and luxury wildlife safaris. Book your dream safari with wheelchair-friendly vehicles and expert guides.",
     keywords: [
@@ -66,9 +65,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "safari vehicles",
       "wheelchair accessible",
       "wheelchair accessible safari",
+      "wheelchair accessible tours in kenya",
     ],
     openGraph: {
-      title: "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
+      title: "Wheelchair Accessible Safari Kenya | JaeTravel Expeditions - East Africa Safari Tours & Accessible Travel",
       description:
         "Unforgettable African safaris in Kenya, Tanzania, Rwanda & Uganda. Accessible tours, gorilla trekking, Masai Mara, Serengeti, and luxury wildlife adventures.",
       images: ["/og-masai-mara-migration.jpg"],
@@ -110,9 +110,9 @@ export default function HomePage() {
       {/* Why Choose Us — enriched */}
       <section className="border-b border-border bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Why Choose JaeTravel Expeditions for Your African Safari Experience
-          </h2>
+          <h1 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+            Wheelchair Accessible Safari Kenya - Premier Accessible Tours & Wildlife Adventures
+          </h1>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
@@ -212,6 +212,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Wheelchair Accessible Tours Kenya - New Section */}
+      <section className="py-16 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              Wheelchair Accessible Tours in Kenya - Barrier-Free Safari Adventures
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              Experience the ultimate <strong>wheelchair accessible safari Kenya</strong> has to offer with our specially designed tours. 
+              We provide comprehensive <strong>wheelchair accessible tours in Kenya</strong> that ensure every traveler can witness Africa's magnificent wildlife 
+              without limitations. Our fleet of adapted vehicles and accessible accommodations make us the leading choice for <strong>wheelchair accessible safari Kenya</strong> adventures.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">Fully Adapted Vehicles</h3>
+              <p className="text-muted-foreground">
+                Our wheelchair accessible safari vehicles feature hydraulic lifts, securement systems, and spacious interiors designed specifically for <strong>wheelchair accessible tours in Kenya</strong>.
+              </p>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">Accessible Accommodations</h3>
+              <p className="text-muted-foreground">
+                Stay in premium lodges and camps with roll-in showers, widened doorways, and accessible pathways throughout your <strong>wheelchair accessible safari Kenya</strong> journey.
+              </p>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">Expert Accessible Guides</h3>
+              <p className="text-muted-foreground">
+                Our guides receive specialized training in accessibility needs, ensuring your <strong>wheelchair accessible tours in Kenya</strong> are safe, comfortable, and unforgettable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Destinations — unchanged */}
       <section className="border-t border-border bg-muted/30 py-16">
         {/* ... existing code unchanged ... */}
@@ -236,6 +272,7 @@ export default function HomePage() {
               <p className="mb-6 text-lg leading-relaxed text-primary-foreground/90 text-pretty">
                 We specialize in <strong>wheelchair accessible tours and safaris</strong> across East Africa using specially adapted <strong>wheelchair accessible safari vehicles</strong>. 
                 Stay in <strong>wheelchair accessible camps and lodges</strong>, enjoy thrilling <strong>game drives</strong>, and create lifelong memories — no barriers.
+                Discover why we're the top choice for <strong>wheelchair accessible safari Kenya</strong> experiences and comprehensive <strong>wheelchair accessible tours in Kenya</strong>.
               </p>
               <p className="mb-8 text-lg">
                 Learn more about our{" "}
@@ -299,7 +336,7 @@ export default function HomePage() {
               {
                 name: "David Chen",
                 location: "Canada",
-                text: "As a wheelchair user, I never thought I'd go on safari. JaeTravel made it possible and unforgettable.",
+                text: "As a wheelchair user, I never thought I'd go on safari. JaeTravel made it possible and unforgettable. Their wheelchair accessible safari Kenya program is exceptional.",
                 rating: 5,
               },
               {
@@ -333,7 +370,7 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
             Whether you're dreaming of classic <strong>game drives</strong> in luxury <strong>camps and lodges</strong> or a fully <strong>wheelchair accessible safari</strong>, 
-            let us craft your perfect East African adventure.
+            let us craft your perfect East African adventure. Contact us today to book your <strong>wheelchair accessible tours in Kenya</strong> and experience the best <strong>wheelchair accessible safari Kenya</strong> has to offer.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg">
