@@ -449,7 +449,7 @@ export default function WheelchairVehiclePage() {
               We are the only company in Kenya that keeps <strong>18 dedicated wheelchair accessible safari Land Cruisers</strong> on the road 365 days a year. That means same-day <strong>wheelchair accessible Land Cruiser Nairobi</strong> airport transfers from JKIA or Wilson, last-minute Masai Mara bookings, and zero risk of being told “sorry, our only accessible vehicle is already taken”.
             </p>
 
-            <p className="text-2xl md:text-3xl font-bold text-yellow-300 text-center py-8 text-4xl">
+            <p className="md:text-3xl font-bold text-yellow-300 text-center py-8 text-4xl">
               Over 12,500 wheelchair travellers have already experienced the difference.<br />
               98.7% say: “This was the first time I felt truly equal on an African safari.”
             </p>
@@ -489,6 +489,19 @@ export default function WheelchairVehiclePage() {
             <div className="bg-white/10 backdrop-blur p-8 rounded-3xl"><div className="text-6xl font-black text-yellow-400">Since 2012</div><div className="text-xl">Kenya’s #1</div></div>
           </div>
 
+        </div>
+        <div className="my-16 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl p-10 md:p-12 shadow-2xl max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-center mb-6">
+            Welcome International Wheelchair Travellers – You’re in the Right Place
+          </h2>
+          <p className="text-lg md:text-xl leading-relaxed text-center">
+            Over 70% of our guests fly in from the <strong>UK, USA, Canada, Australia, Germany, Netherlands, France and Scandinavia</strong> every year. 
+            We make it seamless: instant WhatsApp or phone booking in your time zone, pricing in <strong>USD / GBP / EUR / CAD / AUD</strong>, 
+            meet-and-greet at JKIA with your name on a sign, same-day <strong>wheelchair accessible Land Cruiser Nairobi</strong> airport transfer, 
+            and your own private hydraulic-lift <strong>wheelchair accessible safari Land Cruiser Kenya</strong> ready the moment you land. 
+            No middle-men, no hidden fees, or language barriers — just the largest, safest, most experienced accessible safari fleet in Africa waiting for you. 
+            Join 12,500+ happy international wheelchair travellers who already made their dream safari reality with us.
+          </p>
         </div>
       </section>
 

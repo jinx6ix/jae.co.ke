@@ -28,13 +28,13 @@ export function Footer() {
               Specializing in accessible and inclusive travel.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+              <a href="#" title="Follow Us" className="text-muted-foreground transition-colors hover:text-primary">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+              <a href="#" title="Follow Us" className="text-muted-foreground transition-colors hover:text-primary">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+              <a href="#" title="Email Us" className="text-muted-foreground transition-colors hover:text-primary">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>
@@ -131,6 +131,7 @@ export function Footer() {
           <h3 className="mb-6 text-center text-lg font-semibold">Official Partners & Affiliations</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-items-center">
             <a
+              title="Kenya Wildlife Service"
               href="https://www.kws.go.ke/"
               target="_blank"
               rel="noopener noreferrer"
@@ -145,6 +146,7 @@ export function Footer() {
               />
             </a>
             <a
+              title="Tourism Authority Kenya"
               href="https://www.tourismauthority.go.ke/"
               target="_blank"
               rel="noopener noreferrer"
@@ -159,6 +161,7 @@ export function Footer() {
               />
             </a>
             <a
+              title="SafariBookings"
               href="https://www.safaribookings.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -186,6 +189,7 @@ export function Footer() {
                 <p className="text-xs text-gray-400 mt-1">Customer Reviews</p>
               </div>
             <a
+              title="SafariGo"
               href="https://www.safarigo.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -200,6 +204,7 @@ export function Footer() {
               />
             </a>
             <a
+              title="SafariBookings Widget"
               href="https://www.safaribookings.com/p6888?utm_source=jaetravel.com&utm_medium=reviewwidget"
               target="_blank"
               rel="noopener noreferrer"

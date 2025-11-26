@@ -22,7 +22,7 @@ export const generateMetadata = (): Metadata => ({
   alternates: { canonical: "https://www.jaetravelexpeditions.co.ke/maasai-mara-great-migration" },
   robots: "index, follow, max-image-preview:large",
   authors: [{ name: "JaeTravel Expeditions Accessibility Team" }],
-  publisher: "JaeTravel Expeditions Kenya",
+  publisher: "JaeTravel Expeditions ",
   category: "Accessible Travel",
 })
 
