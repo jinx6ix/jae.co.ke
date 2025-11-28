@@ -5,46 +5,41 @@ import { Button } from "@/components/ui/button"
 import { Car, Map, Plane, Building, Mountain, Palmtree } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Transportation Services | Vehicle Hire & Tour Transport",
+  title: "Transportation Services Kenya Tanzania | Vehicle Hire & Safari Transport East Africa",
   description:
-    "Reliable vehicle hiring and transportation services across East Africa. Self-drive cars, chauffeur services, and tour transport to all major destinations.",
+    "Reliable vehicle hiring and transportation services across East Africa. Self-drive cars, chauffeur services, airport transfers, and safari tour transport to Kenya, Tanzania, Rwanda & Uganda destinations.",
   keywords: [
     "car hire Kenya",
     "Tanzania tour transport",
     "vehicle rental Africa",
-    "airport transfers",
-    "safari transportation",
+    "airport transfers Nairobi",
+    "safari transportation Kenya",
+    "4x4 rental Tanzania",
+    "self drive car hire Nairobi",
+    "chauffeur services Kenya",
+    "airport transfer Mombasa",
+    "safari vehicle rental",
+    "tour transport Rwanda",
+    "Uganda gorilla trekking transport",
+    "luxury car hire East Africa",
+    "group transportation Tanzania",
+    "Maasai Mara safari vehicles",
+    "Serengeti tour transport",
+    "Kigali airport transfers",
+    "Bwindi transport services",
+    "East Africa vehicle rental",
+    "safari land cruiser hire",
   ],
 }
 
 const services = [
   {
-    id: "self-drive",
-    icon: Car,
-    title: "Self-Drive Car Hire",
-    description: "Rent well-maintained vehicles for your independent travel adventures",
-    features: ["Comprehensive insurance", "24/7 road assistance", "Unlimited mileage", "Easy pickup/dropoff"],
-    image: "/services/self-drive.jpg",
-    price: "From $45/day",
-    vehicles: ["Economy Cars", "SUVs", "4x4 Vehicles", "Luxury Cars"]
-  },
-  {
-    id: "chauffeur-services",
-    icon: Building,
-    title: "Chauffeur Services",
-    description: "Professional drivers for business meetings, events, and city tours",
-    features: ["Professional drivers", "Time punctuality", "Multi-language support", "Luxury vehicles"],
-    image: "/services/chauffeur.jpg",
-    price: "From $60/day",
-    vehicles: ["Sedans", "Luxury Cars", "Executive Vans", "SUVs"]
-  },
-  {
     id: "airport-transfers",
     icon: Plane,
     title: "Airport Transfers",
-    description: "Reliable pickup and dropoff services from all major airports",
+    description: "Reliable pickup and dropoff services from all major airports in Kenya, Tanzania, Rwanda and Uganda",
     features: ["Flight monitoring", "Meet & greet", "Luggage assistance", "24/7 service"],
-    image: "/services/airport-transfer.jpg",
+    image: "/1WhatsApp Image 2025-11-18 at 4.42.53 PM.jpeg",
     price: "From $35/trip",
     vehicles: ["Sedans", "Vans", "Minibuses", "Luxury Cars"]
   },
@@ -52,9 +47,9 @@ const services = [
     id: "safari-transport",
     icon: Mountain,
     title: "Safari Tour Transport",
-    description: "Specialized vehicles for national parks and game reserves",
+    description: "Specialized vehicles for national parks and game reserves across East Africa",
     features: ["Pop-up roof vehicles", "Experienced guides", "Cooler boxes", "All-terrain capability"],
-    image: "/services/safari-transport.jpg",
+    image: "/14.jpeg",
     price: "From $120/day",
     vehicles: ["4x4 Land Cruisers", "Safari Vans", "Custom Safari Vehicles"]
   },
@@ -62,9 +57,9 @@ const services = [
     id: "group-transport",
     icon: Palmtree,
     title: "Group Transportation",
-    description: "Comfortable transport for large groups and tour packages",
+    description: "Comfortable transport for large groups and tour packages throughout East Africa",
     features: ["Spacious seating", "Luggage capacity", "AC throughout", "Entertainment systems"],
-    image: "/services/group-transport.jpg",
+    image: "/WhatsApp Image 2025-10-14 at 21.12.10_aa6b5d49.jpg",
     price: "From $150/day",
     vehicles: ["Minibuses", "Coaches", "Custom Buses"]
   },
@@ -72,9 +67,9 @@ const services = [
     id: "city-tours",
     icon: Map,
     title: "City Tour Transport",
-    description: "Explore urban attractions with knowledgeable local drivers",
+    description: "Explore urban attractions with knowledgeable local drivers across East African cities",
     features: ["Local guides", "Flexible itineraries", "Multiple stops", "Cultural insights"],
-    image: "/services/city-tours.jpg",
+    image: "/WhatsApp Image 2025-11-18 at 4.42.53 PM (2).jpeg",
     price: "From $50/half-day",
     vehicles: ["Comfortable Sedans", "Spacious SUVs", "Luxury Vans"]
   }
@@ -84,24 +79,23 @@ const destinations = [
   {
     name: "Kenya",
     trips: "Safari Tours",
-    image: "/destinations/maasai-mara.jpg"
+    image: "/kenya-safari-landscape.jpg"
   },
   {
     name: "Tanzania", 
     trips: "Wildlife Safaris",
-    image: "/destinations/serengeti.jpg"
+    image: "/tanzania-serengeti.jpg"
   },
   {
     name: "Rwanda",
     trips: "City & Cultural Tours",
-    image: "/destinations/kigali.jpg"
+    image: "/rwanda-mountain-gorillas.jpg"
   },
   {
     name: "Uganda",
     trips: "Gorilla Trekking",
-    image: "/destinations/bwindi.jpg"
+    image: "/uganda-wildlife.jpg"
   },
-
 ]
 
 export default function OtherServicesPage() {
@@ -109,12 +103,59 @@ export default function OtherServicesPage() {
     <div className="container mx-auto px-4 py-16">
       {/* Header */}
       <div className="mb-16 text-center">
-        <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Transportation Services</h1>
+        <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Transportation Services Across East Africa</h1>
         <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
           Your reliable transportation partner across East Africa. From self-drive car rentals to comprehensive tour 
-          transport solutions, we ensure safe and comfortable journeys to all major destinations.
+          transport solutions, we ensure safe and comfortable journeys to all major destinations in Kenya, Tanzania, Rwanda, and Uganda.
         </p>
       </div>
+
+      {/* Introduction Paragraphs */}
+      <section className="mb-16 max-w-4xl mx-auto">
+        <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
+          <p>
+            <strong>Car hire Kenya</strong> services form the backbone of East African travel, providing the freedom 
+            to explore at your own pace while ensuring reliability and safety. Our comprehensive 
+            <strong>vehicle rental Africa</strong> solutions cater to every type of traveler, from budget-conscious 
+            backpackers to luxury safari enthusiasts seeking premium <strong>4x4 rental Tanzania</strong> options 
+            for navigating the rugged terrain of the Serengeti and Ngorongoro Crater.
+          </p>
+          
+          <p>
+            For business travelers and tourists alike, our <strong>airport transfers Nairobi</strong> and 
+            <strong>chauffeur services Kenya</strong> offer seamless connectivity between major hubs and city centers. 
+            Whether you're arriving at Jomo Kenyatta International Airport or Kilimanjaro International Airport, 
+            our professional drivers ensure timely and comfortable transfers to your destination. Our 
+            <strong>airport transfer Mombasa</strong> services also provide convenient access to Kenya's stunning 
+            coastal resorts and historical sites.
+          </p>
+
+          <p>
+            The heart of our operation lies in <strong>safari transportation Kenya</strong> and 
+            <strong>Tanzania tour transport</strong> services. We specialize in providing rugged 
+            <strong>safari vehicle rental</strong> options equipped for East Africa's challenging terrain. 
+            Our fleet includes custom-built <strong>safari land cruiser hire</strong> vehicles with pop-up roofs 
+            for optimal game viewing in the <strong>Maasai Mara safari vehicles</strong> and 
+            <strong>Serengeti tour transport</strong> circuits.
+          </p>
+
+          <p>
+            Beyond the classic safari destinations, we provide essential <strong>tour transport Rwanda</strong> 
+            services for exploring Kigali and accessing Volcanoes National Park for gorilla trekking. Similarly, 
+            our <strong>Uganda gorilla trekking transport</strong> solutions ensure comfortable journeys to 
+            Bwindi Impenetrable Forest. These <strong>Bwindi transport services</strong> are specially designed 
+            to handle the mountainous terrain while providing maximum comfort for this once-in-a-lifetime adventure.
+          </p>
+
+          <p>
+            Our commitment to <strong>East Africa vehicle rental</strong> excellence extends to 
+            <strong>luxury car hire East Africa</strong> options for discerning travelers and 
+            <strong>group transportation Tanzania</strong> solutions for larger parties. Whether you're planning 
+            a corporate retreat, family reunion, or educational tour, our diverse fleet and experienced team 
+            can accommodate groups of any size while maintaining the highest standards of safety and comfort.
+          </p>
+        </div>
+      </section>
 
       {/* Services Grid */}
       <section className="mb-16">
@@ -126,11 +167,42 @@ export default function OtherServicesPage() {
         </div>
       </section>
 
+      {/* Regional Coverage Section */}
+      <section className="mb-16 py-12 bg-muted/30 rounded-2xl">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-serif font-bold text-center mb-8">
+            Comprehensive East Africa Coverage
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Transport</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                From <strong>self drive car hire Nairobi</strong> to <strong>Kigali airport transfers</strong>, 
+                we cover all major East African destinations. Our <strong>safari transportation Kenya</strong> 
+                services include specialized vehicles for the Masai Mara, Amboseli, Tsavo, and Samburu ecosystems, 
+                while our <strong>Tanzania tour transport</strong> solutions serve the Serengeti, Ngorongoro, 
+                Tarangire, and Lake Manyara circuits with equal expertise.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Rwanda & Uganda Services</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Our <strong>tour transport Rwanda</strong> network connects Kigali with Volcanoes National Park 
+                and Nyungwe Forest, while <strong>Uganda gorilla trekking transport</strong> services provide 
+                reliable access to Bwindi and Mgahinga gorilla parks. We understand the unique requirements of 
+                primate tracking adventures and provide vehicles suited to the challenging terrain of these 
+                precious conservation areas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Popular Destinations */}
       <section className="mb-16">
         <div className="mb-8 text-center">
           <h2 className="font-serif text-4xl font-bold">Popular Destinations</h2>
-          <p className="mt-2 text-muted-foreground">We provide transportation to all major tourist destinations</p>
+          <p className="mt-2 text-muted-foreground">We provide transportation to all major tourist destinations across East Africa</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {destinations.map((destination, index) => (
@@ -189,7 +261,9 @@ export default function OtherServicesPage() {
         <h2 className="mb-4 font-serif text-3xl font-bold text-balance">Ready to Explore East Africa?</h2>
         <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-pretty text-primary-foreground/90">
           Book your transportation today and experience seamless travel across Kenya, Tanzania, Rwanda, and Uganda. 
-          We offer competitive rates and reliable service for all your travel needs.
+          We offer competitive rates and reliable service for all your travel needs, from <strong>car hire Kenya</strong> 
+          to comprehensive <strong>safari transportation Kenya</strong> packages and efficient 
+          <strong>airport transfers Nairobi</strong> services.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Button asChild size="lg" variant="secondary">

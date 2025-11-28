@@ -83,7 +83,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
     },
     "award": [
       "Kenya Tourism Award – Accessible Tourism 2023",
-      "World Travel Awards – Africa’s Responsible Tourism 2024"
+      "World Travel Awards – Africa's Responsible Tourism 2024"
     ],
     "sameAs": [
       "https://www.facebook.com/JaeTravelExpeditions",
@@ -117,7 +117,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
             About <span className="text-primary">JaeTravel</span> Expeditions
           </h1>
           <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">
-            <strong>Since 2008</strong>, we’ve been East Africa’s most trusted name in <strong>accessible</strong>, 
+            <strong>Since 2008</strong>, we've been East Africa's most trusted name in <strong>accessible</strong>, 
             <strong> sustainable</strong>, and <strong>authentic safaris</strong> — helping over <strong>15,000 travelers</strong> 
             experience Kenya, Tanzania, Rwanda, and Uganda with dignity, joy, and purpose.
           </p>
@@ -152,6 +152,56 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
         </div>
       </section>
 
+      {/* Introduction Paragraphs */}
+      <section className="py-16 bg-muted/20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
+            <p>
+              <strong>JaeTravel Expeditions</strong> stands as East Africa's premier safari operator, 
+              specializing in creating unforgettable wildlife experiences across <strong>Kenya, Tanzania, Rwanda, and Uganda</strong>. 
+              Founded in 2008 by James Kimani, our company has grown from a small family operation into 
+              a respected leader in <strong>accessible tourism</strong> and <strong>sustainable safari practices</strong>. 
+              Our commitment to excellence has earned us recognition as one of the most trusted 
+              <strong> safari tour operators in East Africa</strong>.
+            </p>
+            
+            <p>
+              What sets <strong>JaeTravel</strong> apart is our unwavering dedication to 
+              <strong> accessible travel solutions</strong>. We pioneered wheelchair-friendly safaris in 
+              East Africa, developing specialized vehicles and training our guides in inclusive tourism practices. 
+              Our fleet of <strong>hydraulic-lift 4x4 vehicles</strong> and partnerships with 
+              <strong> barrier-free lodges</strong> ensure that travelers of all abilities can experience 
+              the magic of African wildlife in comfort and safety.
+            </p>
+
+            <p>
+              Beyond accessibility, we are deeply committed to <strong>sustainable tourism</strong> and 
+              <strong> conservation efforts</strong> throughout East Africa. Each safari with JaeTravel 
+              contributes to local community development, wildlife protection programs, and environmental 
+              conservation initiatives. We've planted over 18,000 trees, supported numerous community 
+              projects, and maintained <strong>carbon-neutral operations</strong> since 2015.
+            </p>
+
+            <p>
+              Our team of <strong>professional safari guides</strong> represents the heart of JaeTravel. 
+              Each guide undergoes extensive training in wildlife behavior, photography techniques, 
+              first aid, and cultural interpretation. Many of our guides come from local communities 
+              and have generations of knowledge about East Africa's ecosystems, ensuring authentic 
+              and insightful safari experiences for our guests.
+            </p>
+
+            <p>
+              As we continue to grow, our mission remains unchanged: to provide 
+              <strong> exceptional safari experiences</strong> that are accessible to all, beneficial 
+              to local communities, and protective of East Africa's precious wildlife and habitats. 
+              Whether you're seeking a classic <strong>Masai Mara safari</strong>, a 
+              <strong> gorilla trekking adventure</strong> in Uganda, or a customized multi-country 
+              itinerary, JaeTravel delivers unforgettable journeys that respect both people and planet.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Our Story – Expanded */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -166,10 +216,10 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                   Founder <strong>James Kimani</strong>, a Maasai guide with 20+ years in the bush, saw travelers with disabilities turned away from safaris. He refused to accept that. So he built a company that says <strong>yes</strong> — to wheelchair users, seniors, families, and everyone in between.
                 </p>
                 <p>
-                  Today, we’re proud to be <strong>East Africa’s leading accessible safari operator</strong>, with a fleet of <strong>hydraulic-lift 4x4s</strong>, partnerships with <strong>barrier-free lodges</strong>, and a team trained in <strong>inclusive guiding</strong>.
+                  Today, we're proud to be <strong>East Africa's leading accessible safari operator</strong>, with a fleet of <strong>hydraulic-lift 4x4s</strong>, partnerships with <strong>barrier-free lodges</strong>, and a team trained in <strong>inclusive guiding</strong>.
                 </p>
                 <p>
-                  But we’re more than accessibility. We’re <strong>carbon-neutral</strong>, <strong>community-powered</strong>, and <strong>conservation-driven</strong>. Every safari plants trees, funds schools, and protects wildlife.
+                  But we're more than accessibility. We're <strong>carbon-neutral</strong>, <strong>community-powered</strong>, and <strong>conservation-driven</strong>. Every safari plants trees, funds schools, and protects wildlife.
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -185,6 +235,46 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                 fill
                 className="object-cover"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Regional Expertise Section */}
+      <section className="py-16 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+            East Africa Safari Expertise
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Specialists</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                As leading <strong>safari tour operators in East Africa</strong>, we have deep expertise 
+                in Kenya's Masai Mara, Amboseli, and Tsavo ecosystems, as well as Tanzania's Serengeti, 
+                Ngorongoro, and Tarangire circuits. Our knowledge of migration patterns, animal behavior, 
+                and hidden viewing spots ensures exceptional wildlife experiences for our guests.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We maintain strong relationships with conservancy managers and park authorities, 
+                giving our guests access to exclusive areas and special experiences beyond typical 
+                tourist routes. Our cross-border operations between Kenya and Tanzania are seamless, 
+                with all necessary documentation handled efficiently.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Rwanda & Uganda Primate Experts</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Our specialized <strong>gorilla trekking safaris</strong> in Uganda and Rwanda are 
+                led by guides with extensive experience in primate behavior and conservation. 
+                We understand the permit systems, trekking requirements, and best practices for 
+                responsible gorilla and chimpanzee viewing in Bwindi, Volcanoes, and Kibale national parks.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Beyond primates, we offer comprehensive cultural and wildlife experiences in both 
+                countries, including lake adventures, bird watching, and community visits that 
+                provide authentic insights into East African life while supporting local economies.
+              </p>
             </div>
           </div>
         </div>
@@ -219,8 +309,8 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Meet Your Safari Family</h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Our team isn’t just experienced — they’re <strong>passionate locals</strong> who live and breathe East Africa. 
-              From Maasai warriors to conservation PhDs, they’re here to make your safari unforgettable.
+              Our team isn't just experienced — they're <strong>passionate locals</strong> who live and breathe East Africa. 
+              From Maasai warriors to conservation PhDs, they're here to make your safari unforgettable.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -290,7 +380,9 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
             Ready for Your East African Adventure?
           </h2>
           <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-            Join thousands of happy travelers who’ve discovered Africa with <strong>JaeTravel</strong> — where accessibility, sustainability, and magic meet.
+            Join thousands of happy travelers who've discovered Africa with <strong>JaeTravel</strong> — where accessibility, sustainability, and magic meet. 
+            Experience the best of <strong>Kenya wildlife safaris</strong>, <strong>Tanzania migration tours</strong>, 
+            <strong>Rwanda gorilla trekking</strong>, and <strong>Uganda adventure travel</strong> with East Africa's most trusted safari operator.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
             <Button asChild size="lg" variant="secondary" className="min-w-[220px]">

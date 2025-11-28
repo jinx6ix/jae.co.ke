@@ -10,8 +10,8 @@ export interface Destination {
   metaDescription: string
   keywords: string[]
   heroImage: string
-  bestFor: string[]        // ← Added
-  popularTours: number     // ← Added
+  bestFor: string[]
+  popularTours: number
 }
 
 export const destinations: Destination[] = [
@@ -40,10 +40,25 @@ export const destinations: Destination[] = [
       "Kenya Travel",
       "Great Migration",
       "Kenya Beach Holiday",
+      "East Africa Destinations",
+      "Kenya Tanzania Rwanda Uganda Tours",
+      "African Safari Kenya",
+      "Masai Mara Kenya",
+      "Kenya National Parks",
+      "Luxury Kenya Safari",
+      "Family Safari Kenya",
+      "Kenya Cultural Tours",
     ],
     heroImage: "/kenya-safari-landscape.jpg",
-    bestFor: [],
-    popularTours: 0
+    bestFor: [
+      "First-time safari travelers",
+      "Wildlife photography enthusiasts",
+      "Family safari adventures",
+      "Luxury travel experiences",
+      "Cultural immersion trips",
+      "Beach and bush combinations"
+    ],
+    popularTours: 12
   },
   {
     name: "Tanzania",
@@ -69,10 +84,25 @@ export const destinations: Destination[] = [
       "Kilimanjaro Climbing",
       "Zanzibar Holiday",
       "Tanzania Wildlife",
+      "East Africa Destinations",
+      "Serengeti Tanzania",
+      "Tanzania Northern Circuit",
+      "Luxury Tanzania Safari",
+      "Tanzania Beach Safari",
+      "Great Migration Tanzania",
+      "Tanzania Family Safari",
+      "Kilimanjaro Trekking Packages",
     ],
     heroImage: "/tanzania-serengeti.jpg",
-    bestFor: [],
-    popularTours: 0
+    bestFor: [
+      "Adventure seekers and climbers",
+      "Migration safari enthusiasts",
+      "Beach and safari combinations",
+      "Luxury wildlife experiences",
+      "Cultural and historical tours",
+      "Honeymoon and romantic getaways"
+    ],
+    popularTours: 15
   },
   {
     name: "Rwanda",
@@ -98,10 +128,25 @@ export const destinations: Destination[] = [
       "Mountain Gorillas",
       "Rwanda Travel",
       "Golden Monkey Tracking",
+      "East Africa Destinations",
+      "Rwanda Gorillas",
+      "Primate Safaris Rwanda",
+      "Luxury Rwanda Tours",
+      "Rwanda Cultural Tours",
+      "Gorilla Permits Rwanda",
+      "Rwanda Adventure Travel",
+      "Conservation Tourism Rwanda",
     ],
     heroImage: "/rwanda-mountain-gorillas.jpg",
-    bestFor: [],
-    popularTours: 0
+    bestFor: [
+      "Primate and wildlife enthusiasts",
+      "Conservation-focused travelers",
+      "Luxury eco-tourism",
+      "Cultural and historical tours",
+      "Adventure trekking",
+      "Short break safari trips"
+    ],
+    popularTours: 8
   },
   {
     name: "Uganda",
@@ -127,10 +172,25 @@ export const destinations: Destination[] = [
       "Chimpanzee Tracking",
       "Uganda Travel",
       "Queen Elizabeth National Park",
+      "East Africa Destinations",
+      "Uganda Gorilla Tours",
+      "Adventure Travel Uganda",
+      "Budget Uganda Safari",
+      "Uganda National Parks",
+      "Source of the Nile",
+      "Uganda Primate Safaris",
+      "Family Safari Uganda",
     ],
     heroImage: "/uganda-wildlife.jpg",
-    bestFor: [],
-    popularTours: 0
+    bestFor: [
+      "Adventure and activity travelers",
+      "Budget-conscious safari goers",
+      "Primate tracking enthusiasts",
+      "Multi-activity vacations",
+      "Off-the-beaten-path experiences",
+      "Combination safari and adventure trips"
+    ],
+    popularTours: 10
   },
 ]
 

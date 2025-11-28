@@ -30,6 +30,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "4x4 hire Arusha",
       "cross border car rental East Africa",
       "Prado rental with GPS",
+      "Toyota Prado safari vehicle",
+      "self drive 4x4 rental Nairobi",
+      "Prado hire Tanzania safari",
+      "luxury safari car rental",
+      "Uganda self drive Prado",
+      "Rwanda car hire 4x4",
+      "game viewing vehicle rental",
+      "East Africa self drive tours",
+      "Prado VX rental Kenya",
     ],
     openGraph: {
       title: "Toyota Prado Self-Drive Safari Rental | Kenya & Tanzania",
@@ -57,6 +66,56 @@ export default function ToyotaPradoPage() {
       {/* Hero – Client Component */}
       <PradoHero product={product} />
 
+      {/* Introduction Paragraphs */}
+      <section className="mb-16 max-w-4xl mx-auto">
+        <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
+          <p>
+            The <strong>Toyota Prado rental Kenya</strong> experience offers the perfect balance of luxury, 
+            comfort, and off-road capability for your <strong>self drive safari Kenya</strong> adventure. 
+            As one of the most popular <strong>safari vehicle rental</strong> choices in East Africa, 
+            the Prado combines rugged reliability with premium amenities, making it ideal for exploring 
+            everything from the savannahs of the <strong>Maasai Mara</strong> to the mountainous terrain 
+            of Rwanda and Uganda.
+          </p>
+          
+          <p>
+            Our <strong>4x4 rental Tanzania</strong> fleet features the latest Toyota Prado models 
+            equipped with advanced four-wheel drive systems and terrain response technology. Whether 
+            you're navigating the dusty tracks of the Serengeti or the muddy trails of Bwindi Forest, 
+            the Prado's sophisticated traction control and hill descent systems ensure a smooth and 
+            secure journey. The <strong>pop up roof safari car</strong> configuration provides 
+            exceptional game viewing opportunities while maintaining passenger comfort.
+          </p>
+
+          <p>
+            For travelers seeking independence and flexibility, our <strong>Landcruiser Prado self drive</strong> 
+            options provide complete freedom to explore East Africa at your own pace. Alternatively, 
+            our <strong>car hire Nairobi with driver</strong> service offers the expertise of local 
+            guides who know the best wildlife viewing spots and hidden gems. Both options include 
+            comprehensive insurance, GPS navigation, and 24/7 roadside assistance throughout your 
+            <strong>cross border car rental East Africa</strong> adventure.
+          </p>
+
+          <p>
+            The Toyota Prado's versatility makes it perfect for various East African adventures. 
+            Our <strong>Toyota Prado Uganda rental</strong> vehicles are specially prepared for 
+            gorilla trekking expeditions, with comfortable seating for the journey to Bwindi and 
+            ample space for camping gear. Similarly, our <strong>4x4 hire Arusha</strong> operations 
+            provide reliable transportation for climbing Mount Kilimanjaro or exploring the 
+            Ngorongoro Crater.
+          </p>
+
+          <p>
+            Each <strong>Prado rental with GPS</strong> comes equipped with pre-loaded maps of all 
+            major national parks, conservancies, and border crossings. Our vehicles undergo 
+            rigorous maintenance checks and are serviced according to Toyota's strict standards, 
+            ensuring your <strong>self drive safari Kenya</strong> experience is both safe and 
+            memorable. Whether you choose the V6 diesel or V8 petrol variant, you'll enjoy 
+            excellent fuel efficiency and powerful performance across all East African terrains.
+          </p>
+        </div>
+      </section>
+
       {/* Why Choose Prado */}
       <section className="mb-16">
         <h2 className="mb-8 text-center font-serif text-4xl font-bold">
@@ -72,6 +131,50 @@ export default function ToyotaPradoPage() {
               <p className="text-muted-foreground leading-relaxed">{highlight}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Regional Coverage */}
+      <section className="mb-16 py-12 bg-muted/30 rounded-2xl">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-serif font-bold text-center mb-8">
+            Toyota Prado Coverage Across East Africa
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Circuits</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Perfect for <strong>Prado hire Maasai Mara</strong> adventures and 
+                <strong>self drive safari Kenya</strong> expeditions. Our vehicles are 
+                equipped with all necessary permits for national parks and private 
+                conservancies, making them ideal for both first-time visitors and 
+                experienced safari enthusiasts exploring the Great Migration routes.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                From <strong>4x4 hire Arusha</strong> to <strong>car hire Nairobi with driver</strong>, 
+                we provide seamless cross-border solutions with comprehensive documentation 
+                and border crossing support. The Prado's fuel efficiency makes it economical 
+                for long-distance travel between Kenya and Tanzania's premier wildlife destinations.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Uganda & Rwanda Adventures</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Essential for <strong>Toyota Prado Uganda rental</strong> needs and 
+                <strong>Rwanda car hire 4x4</strong> requirements. The Prado's comfortable 
+                interior and advanced suspension system make it perfect for long drives 
+                to remote primate habitats, while its compact size compared to larger 
+                Land Cruisers provides better maneuverability on narrow mountain roads.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Our <strong>cross border car rental East Africa</strong> services include 
+                all necessary documentation for traveling between Uganda and Rwanda, 
+                with dedicated support for gorilla trekking permits and park entry 
+                procedures. The Prado's reliability ensures you never miss your 
+                scheduled primate tracking experiences.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -160,7 +263,10 @@ export default function ToyotaPradoPage() {
         </h2>
         <p className="mx-auto mb-6 max-w-2xl text-muted-foreground leading-relaxed">
           Whether you're planning a <strong>self-drive safari in Maasai Mara</strong>, a <strong>family trip to Serengeti</strong>, 
-          or a <strong>cross-border adventure</strong>, the Toyota Prado is your perfect companion.
+          or a <strong>cross-border adventure</strong>, the Toyota Prado is your perfect companion. Experience the ultimate 
+          in <strong>safari vehicle rental</strong> with our premium <strong>Toyota Prado rental Kenya</strong> and 
+          <strong>Tanzania 4x4 rental</strong> services. Choose between <strong>self drive safari Kenya</strong> independence 
+          or the expertise of our professional driver-guides for an unforgettable East African journey.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Button asChild size="lg" className="group">
@@ -176,7 +282,7 @@ export default function ToyotaPradoPage() {
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
           <Mail className="inline h-4 w-4 mr-1" />
-          <a href="mailto:info@jaetravelexpeditions.com" className="underline">info@jaetravelexpeditions.com</a>
+          <a href="mailto:info@jaetravelexpeditions.co.ke" className="underline">info@jaetravelexpeditions.co.ke</a>
           {' '}|{' '}
           <Phone className="inline h-4 w-4 mr-1" />
           <a href="tel:+254726485228" className="underline">+254 726 485 228</a>

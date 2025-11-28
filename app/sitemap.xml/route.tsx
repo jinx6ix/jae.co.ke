@@ -1,5 +1,6 @@
 import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
+import { destinations} from "@/lib/destinations-data"
 
 export async function GET() {
   const baseUrl = "https://jaetravel.co.ke"
@@ -7,6 +8,7 @@ export async function GET() {
   const staticPages = [
     "",
     "/tours",
+    "toyota-prado",
     "/toyota-landcruiser",
     "/wheelchair-vehicle",
     "/vehicle-hire",
@@ -18,19 +20,23 @@ export async function GET() {
     "/destinations/tanzania",
     "/destinations/rwanda",
     "/destinations/uganda",
+    "/6-sustainable-travel-tips-2",
     "/vehicle-hire",
+    "/luxury-roof-top-camping",
     "/disability-tours",
     "/maasai-mara-great-migration",
     "/about",
     "/blog",
+    "/other-services",
     "/blog/blog-gallery",
     "/contact",
   ]
 
   const tourPages = tours.map((tour) => `/tours/${tour.slug}`)
   const vehiclePages = vehicles.map((vehicle) => `/vehicle-hire/${vehicle.slug}`)
+  const destinationPages = destinations.map((destination) => `/destinations/${destination.country}`)
 
-  const allPages = [...staticPages, ...tourPages, ...vehiclePages]
+  const allPages = [...staticPages, ...tourPages, ...vehiclePages, ...destinationPages]
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

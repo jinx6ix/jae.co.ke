@@ -29,11 +29,20 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "cross border safari vehicle",
       "Land Cruiser with driver",
       "East Africa overland vehicle",
+      "safari Land Cruiser rental Kenya",
+      "4x4 hire Tanzania safari",
+      "Uganda gorilla trekking vehicle",
+      "Rwanda safari car hire",
+      "luxury safari vehicle rental",
+      "Land Cruiser Prado hire",
+      "game drive vehicle rental",
+      "off road safari transport",
+      "East Africa expedition vehicle",
     ],
     openGraph: {
       title: "Toyota Land Cruiser Safari Hire | Kenya & Tanzania",
       description: "Rent a rugged 7-seater Toyota Land Cruiser with pop-up roof for your East Africa safari. Self-drive or with driver.",
-      images: ["/vehicles/landcruiser-hero.jpg"],
+      images: ["/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg"],
     },
     alternates: {
       canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
@@ -56,8 +65,94 @@ export default function ToyotaLandCruiserPage() {
       {/* Features – Client */}
       <CruiserFeatures />
 
+      {/* Introduction Paragraphs */}
+      <section className="mb-16 max-w-4xl mx-auto">
+        <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
+          <p>
+            The <strong>Toyota Land Cruiser hire Kenya</strong> experience represents the pinnacle of 
+            <strong>safari vehicle rental</strong> in East Africa. Renowned for its rugged reliability and 
+            exceptional off-road capabilities, the Land Cruiser is the preferred choice for serious safari 
+            enthusiasts exploring the challenging terrain of the <strong>Maasai Mara</strong>, 
+            <strong>Serengeti</strong>, and other iconic wildlife destinations. Our fleet of well-maintained 
+            <strong>4x4 car hire Tanzania</strong> options ensures you can tackle any adventure with confidence.
+          </p>
+          
+          <p>
+            Whether you're planning a <strong>Land Cruiser safari Maasai Mara</strong> expedition or 
+            navigating the volcanic landscapes of Rwanda, our <strong>pop up roof Land Cruiser</strong> 
+            vehicles provide unparalleled game viewing opportunities. The <strong>7 seater safari car rental</strong> 
+            configuration makes it ideal for families and small groups, while the spacious interior 
+            accommodates all your gear for extended <strong>East Africa overland vehicle</strong> adventures 
+            across multiple countries.
+          </p>
+
+          <p>
+            Our <strong>Nairobi Land Cruiser hire</strong> service offers convenient pickup from Jomo Kenyatta 
+            International Airport, while <strong>Arusha 4x4 rental</strong> options serve travelers starting 
+            their Tanzanian safari adventures. For those exploring Uganda's primate parks, our 
+            <strong>off-road vehicle hire Uganda</strong> solutions provide the perfect transportation for 
+            gorilla trekking in Bwindi or chimpanzee tracking in Kibale Forest.
+          </p>
+
+          <p>
+            The versatility of our <strong>cross border safari vehicle</strong> fleet allows seamless travel 
+            between Kenya, Tanzania, Rwanda, and Uganda. Whether you choose <strong>Land Cruiser with driver</strong> 
+            for a guided experience or prefer the freedom of self-drive, our vehicles come equipped with 
+            all necessary documentation and permits for international travel. This makes your 
+            <strong>Rwanda safari car hire</strong> experience completely hassle-free from start to finish.
+          </p>
+
+          <p>
+            Each <strong>safari Land Cruiser rental Kenya</strong> vehicle in our fleet undergoes rigorous 
+            maintenance checks and is equipped with essential safari accessories including pop-up roofs, 
+            refrigerator boxes, power inverters, and comprehensive emergency kits. Our commitment to 
+            vehicle quality and customer safety ensures that your <strong>4x4 hire Tanzania safari</strong> 
+            adventure is not only memorable but also completely secure and reliable throughout your journey.
+          </p>
+        </div>
+      </section>
+
       {/* Specs – Client */}
       <CruiserSpecs />
+
+      {/* Regional Coverage */}
+      <section className="mb-16 py-12 bg-muted/30 rounded-2xl">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-serif font-bold text-center mb-8">
+            East Africa Land Cruiser Coverage
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Routes</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Perfect for <strong>Land Cruiser safari Maasai Mara</strong> adventures and 
+                <strong>Serengeti tour transport</strong>. Our vehicles are specially equipped for 
+                the Great Migration circuit, with experienced drivers who know the best game viewing 
+                spots and crossing points for wildebeest and zebra herds.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                From <strong>Nairobi Land Cruiser hire</strong> to <strong>Arusha 4x4 rental</strong>, 
+                we provide seamless cross-border solutions for exploring both countries in one epic 
+                safari journey, complete with all necessary documentation and border crossing assistance.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Uganda & Rwanda Primate Adventures</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Essential for <strong>Uganda gorilla trekking vehicle</strong> requirements and 
+                <strong>Rwanda safari car hire</strong> needs. The Land Cruiser's robust suspension 
+                and four-wheel drive capability make it ideal for navigating the mountainous terrain 
+                of Bwindi Impenetrable Forest and Volcanoes National Park.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Our <strong>off-road vehicle hire Uganda</strong> services ensure comfortable access 
+                to remote primate habitats, while our Rwanda operations provide reliable transportation 
+                for cultural tours and wildlife viewing in Nyungwe Forest and Akagera National Park.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Rental Options */}
       <section className="mb-16">
@@ -140,7 +235,9 @@ export default function ToyotaLandCruiserPage() {
         </h2>
         <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-pretty text-primary-foreground/90">
           Hire the <strong>Toyota Land Cruiser</strong> — the gold standard for <strong>East Africa safaris</strong>. 
-          From <strong>Maasai Mara</strong> to <strong>Serengeti</strong>, this 4x4 conquers all.
+          From <strong>Maasai Mara</strong> to <strong>Serengeti</strong>, this 4x4 conquers all. Experience the best in 
+          <strong>safari vehicle rental</strong> with our premium <strong>Land Cruiser hire Kenya</strong> and 
+          <strong>Tanzania 4x4 rental</strong> services, available with or without professional driver-guides.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Button asChild size="lg" variant="secondary" className="group">
@@ -156,7 +253,7 @@ export default function ToyotaLandCruiserPage() {
         </div>
         <p className="mt-6 text-sm">
           <Mail className="inline h-4 w-4 mr-1" />
-          <a href="mailto:info@jaetravelexpeditions.com" className="underline">info@jaetravelexpeditions.com</a>
+          <a href="mailto:info@jaetravelexpeditions.co.ke" className="underline">info@jaetravelexpeditions.co.ke</a>
           {' '}|{' '}
           <Phone className="inline h-4 w-4 mr-1" />
           <a href="tel:+254726485228" className="underline">+254 726 485 228</a>

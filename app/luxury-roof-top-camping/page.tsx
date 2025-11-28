@@ -31,6 +31,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "safari camping equipment",
       "Amboseli luxury camping",
       "private conservancy glamping",
+      "Kenya adventure travel",
+      "safari camping tours",
+      "luxury tented safari",
+      "roof top camping Maasai Mara",
+      "glamping Amboseli National Park",
+      "Kenya wildlife camping",
+      "eco friendly safari camping",
+      "premium camping equipment hire",
     ],
     openGraph: {
       title: "Luxury Roof-Top Camping Safari | Kenya Glamping",
@@ -61,6 +69,54 @@ export default function LuxuryCampingPage() {
       {/* Highlights – Client */}
       <CampingHighlights product={product} />
 
+      {/* Introduction Paragraphs */}
+      <section className="mb-16 max-w-4xl mx-auto">
+        <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
+          <p>
+            <strong>Luxury roof-top camping Kenya</strong> represents the ultimate fusion of adventure and comfort, 
+            allowing you to experience the wild heart of Africa while enjoying premium amenities. Our 
+            <strong>glamping safari Kenya</strong> packages are designed for travelers who want to immerse themselves 
+            in nature without sacrificing the comforts of modern living. Wake up to breathtaking sunrises over 
+            the savannah and fall asleep under a canopy of stars, all from the safety and comfort of our 
+            state-of-the-art <strong>rooftop tent safari</strong> setups.
+          </p>
+          
+          <p>
+            Our <strong>4x4 camping Kenya</strong> adventures take you to the most spectacular locations across 
+            East Africa, from the world-famous <strong>Maasai Mara glamping</strong> sites where you can witness 
+            the Great Migration, to the iconic plains of <strong>Amboseli luxury camping</strong> with Mount 
+            Kilimanjaro as your backdrop. Each <strong>overland camping East Africa</strong> experience is 
+            carefully curated to provide intimate wildlife encounters while maintaining the highest standards 
+            of safety and comfort in our premium camping equipment.
+          </p>
+
+          <p>
+            Whether you choose our <strong>self drive camping Kenya</strong> option for complete independence 
+            or opt for our <strong>luxury camping with driver</strong> package for a fully-guided experience, 
+            every detail is meticulously planned. Our <strong>roof top tent rental</strong> includes everything 
+            from memory foam mattresses to professional kitchen setups, ensuring your <strong>safari camping equipment</strong> 
+            meets the demands of the African wilderness while providing exceptional comfort throughout your journey.
+          </p>
+
+          <p>
+            The magic of <strong>private conservancy glamping</strong> lies in the exclusive access to pristine 
+            wilderness areas where wildlife roams freely and tourist numbers are strictly limited. These 
+            conservancies offer night game drives, walking safaris, and intimate wildlife viewing opportunities 
+            that aren't available in the main national parks. Our carefully selected <strong>private conservancy</strong> 
+            locations provide the perfect setting for an authentic African adventure with unparalleled privacy 
+            and luxury.
+          </p>
+
+          <p>
+            Our commitment to sustainable tourism means that every <strong>luxury roof-top camping</strong> 
+            experience is designed to minimize environmental impact while maximizing your connection with 
+            nature. We partner with local communities, use eco-friendly products, and follow strict 
+            leave-no-trace principles to ensure that the beautiful landscapes of Kenya remain pristine 
+            for future generations of adventurers to enjoy.
+          </p>
+        </div>
+      </section>
+
       {/* Details */}
       <section className="mb-16">
         <h2 className="mb-8 text-center font-serif text-4xl font-bold">
@@ -68,7 +124,7 @@ export default function LuxuryCampingPage() {
         </h2>
         <div className="prose mx-auto max-w-3xl text-muted-foreground leading-relaxed space-y-4">
           <p>
-            Immerse yourself in Kenya’s wilderness with <strong>luxury roof-top camping</strong>. 
+            Immerse yourself in Kenya's wilderness with <strong>luxury roof-top camping</strong>. 
             Our 4x4 vehicles come equipped with premium rooftop tents, memory foam mattresses, 
             and panoramic views of the savanna.
           </p>
@@ -86,7 +142,7 @@ export default function LuxuryCampingPage() {
       {/* Included Gear */}
       <section className="mb-16">
         <h2 className="mb-8 text-center font-serif text-4xl font-bold">
-          What’s Included in Your Camping Package
+          What's Included in Your Camping Package
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
@@ -110,6 +166,37 @@ export default function LuxuryCampingPage() {
 
       {/* Testimonials – Client */}
       <CampingTestimonials />
+
+      {/* Regional Destinations */}
+      <section className="mb-16 py-12 bg-muted/30 rounded-2xl">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-serif font-bold text-center mb-8">
+            Premier Roof-Top Camping Destinations
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Maasai Mara & Southern Kenya</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Experience the ultimate <strong>Maasai Mara glamping</strong> adventure during the Great Migration 
+                (July-October) or enjoy year-round wildlife viewing in private conservancies. Our 
+                <strong>luxury roof-top camping Kenya</strong> packages in this region offer front-row seats 
+                to some of Africa's most spectacular wildlife dramas, with comfortable accommodations 
+                just meters away from the action.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Amboseli & Northern Tanzania</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Discover the magic of <strong>Amboseli luxury camping</strong> with unparalleled views of 
+                Mount Kilimanjaro and massive elephant herds. This region is perfect for 
+                <strong>overland camping East Africa</strong> enthusiasts who want to combine multiple 
+                destinations in one epic journey, crossing borders while maintaining the highest 
+                standards of comfort and safety.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Pricing */}
       <section className="mb-16">

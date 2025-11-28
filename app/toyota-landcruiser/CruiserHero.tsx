@@ -30,7 +30,7 @@ export default function CruiserHero() {
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
           <Image
-            src="/vehicles/landcruiser-exterior.jpg"
+            src="/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg"
             alt="Toyota Land Cruiser 4x4 on safari in Tsavo National Park, Kenya"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -39,7 +39,7 @@ export default function CruiserHero() {
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
           <Image
-            src="/vehicles/landcruiser-interior.jpg"
+            src="/WhatsApp Image 2025-10-14 at 21.12.10_aa6b5d49.jpg"
             alt="Spacious 7-seat interior of Toyota Land Cruiser with pop-up roof open"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
