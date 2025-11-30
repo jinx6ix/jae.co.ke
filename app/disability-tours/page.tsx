@@ -446,6 +446,14 @@ export default function DisabilityToursPage() {
                 Whether you're dreaming of watching the <strong>Great Migration from a wheelchair-accessible vehicle</strong> or meeting mountain gorillas 
                 via adapted trails in Rwanda, we make it possible — and unforgettable. Our <strong>wheelchair accessible safari</strong> packages include everything from specialized vehicles to accessible accommodations and trained support staff.
               </p>
+              <p className="leading-relaxed text-muted-foreground">When you choose us for your <strong>accessible Kenya safari</strong>, 
+                you are selecting the only operator in Kenya that guarantees a seamless, 
+                vehicle-based game viewing experience without the need for a transfer. 
+                Our vehicles feature patented, integrated wheelchair lift systems that provide safe and dignified access directly into the heart of the action, 
+                eliminating the unreliable and often undignified use of portable ramps. 
+                This core innovation, combined with our unwavering commitment to safety and expertise, 
+                ensures your focus remains entirely on the breathtaking wildlife and creating unforgettable memories, making us the definitive choice for a truly premier <strong>accessible Kenya safari</strong>.
+              </p>
             </div>
             <div className="relative h-96 overflow-hidden rounded-xl shadow-xl">
               <Image
