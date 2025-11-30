@@ -432,7 +432,7 @@ export default function DisabilityToursPage() {
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div>
               <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
-                Inclusive Wheelchair Accessible Safaris: Redefining Adventure in East Africa
+                Inclusive Wheelchair Accessible Safaris: Redefining Adventure in East Africa with Accessible Kenya Safari
               </h2>
               <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
                 At Jae Travel, we believe <strong>disability should never limit discovery</strong>. Our <strong>wheelchair accessible safari</strong> programs are specifically designed 
