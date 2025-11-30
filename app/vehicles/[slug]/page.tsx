@@ -111,7 +111,7 @@ const vehicles: Vehicles = {
 
     // SEO Content Blocks
     seoContent: {
-      overview: `As Kenya's premier accessible safari operator since 2018, we've pioneered wheelchair-friendly wildlife experiences that set the industry standard. Our custom-built Land Cruisers represent the pinnacle of accessible safari technology in East Africa, combining rugged 4×4 capability with medical-grade accessibility features. Each vehicle undergoes rigorous monthly safety inspections and our guides complete comprehensive disability awareness training.`,
+      overview: `As Kenya's premier accessible safari operator since 2018, we've pioneered wheelchair-friendly wildlife experiences that set the industry standard. Our custom-built Land Cruisers represent the pinnacle of accessible safari technology in East Africa, combining rugged 4×4 capability with medical-grade accessibility features. Each vehicle undergoes rigorous monthly safety inspections and our guides complete comprehensive disability awareness training. When you choose us for your accessible Kenya safari, you are selecting the only operator in Kenya that guarantees a seamless, vehicle-based game viewing experience without the need for a transfer. Our vehicles feature patented, integrated wheelchair lift systems that provide safe and dignified access directly into the heart of the action, eliminating the unreliable and often undignified use of portable ramps. This core innovation, combined with our unwavering commitment to safety and expertise, ensures your focus remains entirely on the breathtaking wildlife and creating unforgettable memories, making us the definitive choice for a truly premier accessible Kenya safari.`,
 
       benefits: [
         "Stay securely in your own wheelchair throughout the entire safari experience - no transfers required",
@@ -432,7 +432,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: vehicle.description,
       images: [vehicle.image],
       type: "website",
-      siteName: "JaeTrave Expeditions"
+      siteName: "JaeTravel Expeditions"
     },
     alternates: {
       canonical: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
