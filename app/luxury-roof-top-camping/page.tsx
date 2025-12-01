@@ -46,7 +46,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/camping/rooftop-tent-sunset.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping",
+      canonical: "https://jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping",
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

@@ -46,7 +46,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/vehicles/toyota-prado-hero.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado",
+      canonical: "https://jaetravelexpeditions.com/vehicle-hire/toyota-prado",
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

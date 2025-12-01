@@ -61,7 +61,7 @@ export const generateMetadata = (): Metadata => {
       locale: "en_KE"
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser",
+      canonical: "https://jaetravel.co.ke/wheelchair-accessible-safari-landcruiser",
     },
     robots: {
       index: true,

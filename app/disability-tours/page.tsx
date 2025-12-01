@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/disability-tours",
+    canonical: "https://jaetravel.co.ke/disability-tours",
   },
   robots: "index, follow",
 }

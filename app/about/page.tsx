@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/about",
+    canonical: "https://jaetravel.co.ke/about",
   },
   robots: "index, follow",
 }

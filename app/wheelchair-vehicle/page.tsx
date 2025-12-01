@@ -61,7 +61,7 @@ export const generateMetadata = (): Metadata => {
       locale: "en_KE"
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/wheelchair-vehicle",
+      canonical: "https://jaetravel.co.ke/wheelchair-vehicle",
     },
     robots: {
       index: true,

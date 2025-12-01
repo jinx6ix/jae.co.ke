@@ -435,7 +435,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "JaeTravel Expeditions"
     },
     alternates: {
-      canonical: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+      canonical: `https://jaetravel.co.ke/vehicles/${params.slug}`,
     },
     robots: {
       index: true,
