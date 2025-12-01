@@ -1,33 +1,37 @@
+// app/robots.txt/route.ts   (or wherever you have it)
 export async function GET() {
-  const robotsTxt = `# JaeTravel Expeditions - Robots.txt
+  const robotsTxt = `# JAE Travel Expeditions – robots.txt
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://jaetravel.co.ke/sitemap.xml
+# Explicitly allow all Next.js static assets (THIS IS REQUIRED)
+Allow: /_next/static/
+Allow: /_next/image
+Allow: /favicon.ico
 
-# Crawl-delay
-Crawl-delay: 1
-
-# Disallow admin and private areas
+# Only block truly private areas
 Disallow: /api/
 Disallow: /admin/
-Disallow: /_next/
+Disallow: /private/
 
-# Allow all tours and pages
+# Optional: keep your marketing paths explicit if you want
 Allow: /tours/
 Allow: /destinations/
-Allow: /vehicle-hire/
-Allow: /disability-tours/
 Allow: /blog/
 Allow: /about/
 Allow: /contact/
+
+# Sitemap
+Sitemap: https://www.jaetravel.co.ke/sitemap.xml
+
+# Remove crawl-delay (Google ignores it anyway and it can hurt crawl budget)
+# Crawl-delay: 1
 `
 
   return new Response(robotsTxt, {
     headers: {
       "Content-Type": "text/plain",
-      "Cache-Control": "public, max-age=86400",
+      "Cache-Control": "s-maxage=3600, stale-while-revalidate=60", // 1 hour cache is enough
     },
   })
 }
