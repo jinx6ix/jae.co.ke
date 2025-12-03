@@ -12,7 +12,7 @@ interface BookingPageProps {
 }
 
 // DYNAMIC RICH RESULTS SCHEMA — FULLY COMPATIBLE WITH generateStaticParams
-async function generateTourSchema(tour: typeof tours[0]) {
+function generateTourSchema(tour: typeof tours[0]) {
   const resolvedSlug = tour.bookingSlug
   const pageUrl = `https://jaetravel.co.ke/${resolvedSlug}/book`
 
@@ -152,7 +152,7 @@ export default async function BookingPage({ params }: BookingPageProps) {
       {/* DYNAMIC RICH RESULTS SCHEMA */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateTourSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateTourSchema(tour)) }}
       />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {/* Header */}
