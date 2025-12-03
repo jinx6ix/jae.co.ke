@@ -56,7 +56,7 @@ const schema = {
   "@graph": [
     {
       "@type": "Organization",
-      "name": "Jae Travel Expeditions",
+      "name": "JaeTravel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "contactPoint": {
@@ -136,7 +136,7 @@ const schema = {
     {
       "@type": "Review",
       "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-      "author": { "@type": "Person", "name": "David Chen" },
+      "author": { "@type": "Person", "name": "Ian Iraya" },
       "datePublished": "2025-08-01",
       "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. Their wheelchair accessible safari exceeded all expectations. A life-changing experience.",
       "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" },
