@@ -139,7 +139,13 @@ const schema = {
       "author": { "@type": "Person", "name": "David Chen" },
       "datePublished": "2025-08-01",
       "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. Their wheelchair accessible safari exceeded all expectations. A life-changing experience.",
-      "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+      "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" },
+      "itemReviewed": 
+      {
+        "@type": "TouristTrip",
+        "name": "Wheelchair Accessible Safari Experience",
+        "url": "https://jaetravel.co.ke/disability-tours"
+      }
     },
     {
       "@type": "TouristTrip",
