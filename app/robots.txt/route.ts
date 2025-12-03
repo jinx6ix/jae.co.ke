@@ -1,37 +1,48 @@
-// app/robots.txt/route.ts   (or wherever you have it)
+// app/robots.txt/route.ts
+export const dynamic = "force-dynamic"  // optional – removes it from static rendering if you prefer
+export const revalidate = 3600          // re-generate every hour (good enough)
+
 export async function GET() {
-  const robotsTxt = `# JAE Travel Expeditions – robots.txt
+  const baseUrl = "https://jaetravel.co.ke"
+
+  const robotsTxt = `# JAETravel Expeditions – robots.txt
+# Updated: ${new Date().toISOString().split("T")[0]}
+
 User-agent: *
 Allow: /
 
-# Explicitly allow all Next.js static assets (THIS IS REQUIRED)
-Allow: /_next/static/
-Allow: /_next/image
+# Essential Next.js assets (must be allowed)
+Allow: /_next/
 Allow: /favicon.ico
+Allow: /images/
 
-# Only block truly private areas
+# Block truly private or unnecessary paths
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /draft/
+Disallow: /temp/
 
-# Optional: keep your marketing paths explicit if you want
+# (Optional but nice) Explicitly encourage crawling of important sections
 Allow: /tours/
+Allow: /vehicle-hire/
 Allow: /destinations/
 Allow: /blog/
 Allow: /about/
 Allow: /contact/
+Allow: /disability-tours/
 
-# Sitemap
-Sitemap: https://www.jaetravel.co.ke/sitemap.xml
+# Sitemap – correct domain!
+Sitemap: ${baseUrl}/sitemap.xml
 
-# Remove crawl-delay (Google ignores it anyway and it can hurt crawl budget)
-# Crawl-delay: 1
+# Host directive (only needed for very old Googlebot versions – harmless to keep)
+Host: ${baseUrl}
 `
 
   return new Response(robotsTxt, {
     headers: {
-      "Content-Type": "text/plain",
-      "Cache-Control": "s-maxage=3600, stale-while-revalidate=60", // 1 hour cache is enough
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   })
 }
