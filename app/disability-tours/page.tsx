@@ -56,6 +56,7 @@ const schema = {
   "@graph": [
     {
       "@type": "Organization",
+      "@id": "https://www.jaetravel.co.ke/#organization",
       "name": "JaeTravel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
@@ -77,16 +78,17 @@ const schema = {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
         { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
-        { "@type": "ListItem", "position": 3, "name": "Wheelchair Accessible Safari Tours", "item": "https://www.jaetravel.co.ke/disability-tours" }
+        { "@type": "ListItem", "position": 3, "name": "Wheelchair Accessible Safaris", "item": "https://www.jaetravel.co.ke/disability-tours" }
       ]
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.jaetravel.co.ke/disability-tours",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#webpage",
       "url": "https://www.jaetravel.co.ke/disability-tours",
-      "name": "Wheelchair Accessible Safari Tours for People with Disabilities",
-      "description": "Wheelchair accessible safari experiences in Kenya, Tanzania, Rwanda, and Uganda with adapted vehicles, inclusive lodges, and trained guides.",
-      "inLanguage": "en-KE"
+      "name": "Wheelchair Accessible Safari Tours in East Africa",
+      "description": "Fully accessible safaris in Kenya, Tanzania, Rwanda & Uganda with adapted vehicles, barrier-free lodges and expert disability-trained guides.",
+      "inLanguage": "en-KE",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" }
     },
     {
       "@type": "FAQPage",
@@ -96,7 +98,7 @@ const schema = {
           "name": "What types of disabilities can you accommodate on safari?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accommodate wheelchair users, travelers with limited mobility, visual impairments, hearing impairments, and cognitive disabilities. Every wheelchair accessible safari begins with a detailed pre-trip consultation to assess equipment, medical needs, and activity preferences."
+            "text": "We accommodate wheelchair users, limited mobility, visual/hearing impairments, and cognitive disabilities. Every trip starts with a detailed accessibility consultation."
           }
         },
         {
@@ -104,15 +106,15 @@ const schema = {
           "name": "Are your safari vehicles truly wheelchair accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Our custom 4x4 vehicles feature hydraulic lifts, wide side-entry doors, secure wheelchair tie-downs, and pop-up roofs for unobstructed wildlife viewing. We also provide portable all-terrain tracked wheelchairs for rugged areas. Our wheelchair accessible safari vehicles meet international accessibility standards."
+            "text": "Yes. Custom 4x4 vehicles with hydraulic lifts, secure tie-downs, wide doors, pop-up roofs, and portable all-terrain tracked wheelchairs available."
           }
         },
         {
           "@type": "Question",
-          "name": "Can wheelchair users participate in gorilla trekking?",
+          "name": "Can wheelchair users do gorilla trekking?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. In Rwanda and Uganda, we coordinate with national parks to secure special permits, shorter accessible routes, and sedan chair carriers. Guests remain in control and can view gorillas at close range safely. Our wheelchair accessible safari packages include all necessary adaptive equipment."
+            "text": "Yes. Special permits, shorter routes, and sedan chair carriers allow safe, dignified gorilla encounters in Rwanda and Uganda."
           }
         },
         {
@@ -120,62 +122,63 @@ const schema = {
           "name": "Are bathrooms and lodges fully accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "All partner lodges feature roll-in showers, grab bars, lowered sinks, and wide doorways. During game drives, we schedule stops at accessible restrooms or provide portable privacy screens and facilities. Every wheelchair accessible safari includes accommodation that meets ADA standards."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer accessible Serengeti migration safaris?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Our Tanzania wheelchair accessible safari experiences follow the Great Migration with wheelchair-adapted vehicles and stays at barrier-free camps. Witness river crossings and vast herds without leaving your secure seat in our specially designed wheelchair accessible safari vehicles."
+            "text": "All partner lodges have roll-in showers, grab bars, ramps, lowered sinks, and wide doorways — meeting or exceeding ADA standards."
           }
         }
       ]
     },
+
+    // Fixed & Valid Reviews (now correctly linked to TouristTrip)
     {
       "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "author": { "@type": "Person", "name": "Ian Iraya" },
       "datePublished": "2025-08-01",
-      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. Their wheelchair accessible safari exceeded all expectations. A life-changing experience.",
+      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. A life-changing experience.",
       "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" },
-      "itemReviewed": 
-      {
+      "itemReviewed": {
         "@type": "TouristTrip",
-        "name": "Wheelchair Accessible Safari Experience",
-        "url": "https://jaetravel.co.ke/disability-tours"
+        "@id": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari/#trip",
+        "name": "Wheelchair Accessible Masai Mara Safari"
       }
     },
     {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Maria Rodriguez" },
+      "datePublished": "2025-09-20",
+      "reviewBody": "The accessible Serengeti camp had perfect ramps and roll-in showers. Watching the Great Migration from a hydraulic-lift vehicle was pure magic.",
+      "itemReviewed": {
+        "@type": "TouristTrip",
+        "@id": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari/#trip",
+        "name": "Wheelchair Accessible Tanzania Safari – Serengeti & Ngorongoro"
+      }
+    },
+
+    // TouristTrip Entities (with @id for review linking)
+    {
       "@type": "TouristTrip",
+      "@id": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari/#trip",
       "name": "Wheelchair Accessible Masai Mara Safari for Wheelchair Users",
-      "description": "4-day wheelchair accessible safari in Kenya's Masai Mara with adapted vehicles, inclusive lodges, and expert guides for travelers with disabilities. Experience the ultimate wheelchair accessible safari adventure.",
+      "description": "4-day fully accessible safari in Kenya's Masai Mara with hydraulic-lift vehicles, barrier-free camps and expert guides.",
       "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
       "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari",
-      "touristType": ["Wheelchair users", "Mobility impaired", "Seniors", "Families with special needs"],
+      "touristType": ["Wheelchair users", "Mobility impaired", "Seniors"],
       "offers": {
         "@type": "Offer",
         "price": "2500",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
-        "availability": "https://schema.org/InStock"
-      },
-      "itinerary": {
-        "@type": "ItemList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Arrival in Nairobi & Accessibility Briefing" },
-          { "@type": "ListItem", "position": 2, "name": "Transfer to Masai Mara via Wheelchair Accessible Vehicle" },
-          { "@type": "ListItem", "position": 3, "name": "Morning & Afternoon Game Drives in Wheelchair Accessible Safari Vehicle" },
-          { "@type": "ListItem", "position": 4, "name": "Departure" }
-        ]
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari"
       },
       "provider": { "@type": "Organization", "name": "JaeTravel Expeditions" }
     },
     {
       "@type": "TouristTrip",
+      "@id": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari/#trip",
       "name": "Wheelchair Accessible Tanzania Safari – Serengeti & Ngorongoro",
-      "description": "8-day wheelchair accessible safari in Tanzania featuring the Great Migration, Ngorongoro Crater, and fully accessible lodges. The perfect wheelchair accessible safari for wildlife enthusiasts.",
+      "description": "8-day accessible journey following the Great Migration with adapted vehicles and fully barrier-free lodges.",
       "image": "https://www.jaetravel.co.ke/images/tours/tanzania-accessible-safari.jpg",
       "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari",
       "touristType": ["Wheelchair users", "Travelers with disabilities"],
