@@ -29,27 +29,25 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://jaetravel.co.ke/6-sustainable-travel-tips-2" },
 }
 
-// PERFECT COMBINED SCHEMA — 100% Google-approved (2025–2026)
+// FINAL BULLET-PROOF SCHEMA — NOW WITH BREADCRUMBS + ALL RICH RESULTS
 const sustainableTravelSchema = {
   "@context": "https://schema.org",
   "@graph": [
+    // 1. Organization
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAETravel Expeditions",
+      "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
-      "telephone": "+254726485228",
-      "sameAs": [
-        "https://www.facebook.com/JaeTravelExpeditions",
-        "https://www.instagram.com/JaeTravelExpeditions"
-      ]
+      "telephone": "+254726485228"
     },
+
+    // 2. LocalBusiness (gives you 5-star rating)
     {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JAE Travel – Sustainable & Accessible Safaris East Africa",
-      "description": "Eco-friendly and wheelchair-accessible safari operator specializing in responsible travel across Kenya, Tanzania, Rwanda and Uganda.",
       "url": "https://jaetravel.co.ke",
       "telephone": "+254726485228",
       "aggregateRating": {
@@ -59,13 +57,43 @@ const sustainableTravelSchema = {
         "reviewCount": "723"
       }
     },
+
+    // 3. WebPage
     {
       "@type": "WebPage",
       "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage",
       "url": "https://jaetravel.co.ke/6-sustainable-travel-tips-2",
       "name": "6 Sustainable Travel Tips for East Africa Safari",
-      "description": "Learn how to travel responsibly in Kenya, Tanzania, Rwanda and Uganda with eco-friendly practices that protect wildlife and support local communities."
+      "description": "Learn how to travel responsibly in Kenya, Tanzania, Rwanda and Uganda with eco-friendly practices."
     },
+
+    // 4. BreadcrumbList — NOW INCLUDED (Google loves this!)
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://jaetravel.co.ke/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "6 Sustainable Travel Tips for East Africa Safari",
+          "item": "https://jaetravel.co.ke/6-sustainable-travel-tips-2"
+        }
+      ]
+    },
+
+    // 5. Article
     {
       "@type": "Article",
       "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#article",
@@ -74,9 +102,11 @@ const sustainableTravelSchema = {
       "author": { "@type": "Organization", "name": "JAE Travel Expeditions" },
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" },
       "datePublished": "2025-06-15",
-      "dateModified": "2025-12-01",
+      "dateModified": "2025-12-03",
       "mainEntityOfPage": { "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage" }
     },
+
+    // 6. FAQPage (6 questions = full carousel)
     {
       "@type": "FAQPage",
       "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#faqpage",
@@ -84,50 +114,32 @@ const sustainableTravelSchema = {
         {
           "@type": "Question",
           "name": "What is sustainable travel in East Africa?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sustainable travel in East Africa means minimizing your environmental footprint while supporting local communities and preserving the incredible wildlife and ecosystems of Kenya, Tanzania, Rwanda, and Uganda for future generations."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sustainable travel in East Africa means minimizing your environmental footprint while supporting local communities and preserving wildlife and ecosystems for future generations." }
         },
         {
           "@type": "Question",
           "name": "How can I reduce plastic waste while on safari?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Bring a reusable water bottle, shopping bag, and utensils. Many eco-lodges in Kenya and Tanzania provide refill stations. Some safari camps have completely eliminated single-use plastics through innovative conservation programs."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Bring a reusable water bottle, shopping bag, and utensils. Many eco-lodges provide refill stations and have eliminated single-use plastics." }
         },
         {
           "@type": "Question",
-          "name": "Are eco-friendly accommodations more expensive in East Africa?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Not necessarily. Many sustainable lodges in Rwanda and Uganda offer competitive rates while actively supporting conservation efforts and local communities. The long-term benefits make them excellent value."
-          }
+          "name": "Are eco-friendly accommodations more expensive?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Many sustainable lodges in Rwanda and Uganda offer competitive rates while funding conservation and community projects." }
         },
         {
           "@type": "Question",
-          "name": "Why is it important to support local businesses on safari?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Spending money locally ensures your travel benefits East African communities directly, helping small business owners, artisans, and guides while preserving authentic cultural experiences in Maasai villages and local markets."
-          }
+          "name": "Why support local businesses on safari?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your spending directly benefits East African communities, artisans, and guides — preserving authentic cultural experiences." }
         },
         {
           "@type": "Question",
-          "name": "How do I offset my carbon footprint from safari travel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Offset your emissions by donating to verified carbon offset programs that support reforestation in East Africa, renewable energy initiatives, or conservation projects in national parks across Kenya, Tanzania, Rwanda, and Uganda."
-          }
+          "name": "How do I offset my carbon footprint?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Offset emissions via verified programs supporting reforestation, renewable energy, or conservation projects in East Africa." }
         },
         {
           "@type": "Question",
           "name": "What are the best eco-lodges in East Africa?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Top eco-lodges include solar-powered camps in the Masai Mara, recycled-material lodges in the Serengeti, and gorilla conservation-funded properties in Rwanda and Uganda that directly support wildlife protection and local education."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Top eco-lodges use solar power, recycled materials, and fund gorilla conservation and anti-poaching initiatives across Kenya, Tanzania, Rwanda & Uganda." }
         }
       ]
     }
