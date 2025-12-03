@@ -94,7 +94,7 @@ const vehicles = [
       "Conference table setup"
     ],
     description: "Kenya's only dual-wheelchair accessible luxury Land Cruiser featuring individual hydraulic lifts, premium accessibility features, and executive-class comfort for group travel and family safaris across Kenya's premium parks.",
-    image: "/WhatsApp Image 2025-10-14 at 21.12.10_aa6b5d49.jpg",
+    image: "/waaa.jpg",
     alt: "Luxury wheelchair accessible Land Cruiser with dual wheelchair capacity in Kenya",
     price: "$280-450/day", 
     bestFor: ["Family group Kenya safaris", "Luxury Masai Mara tours", "Corporate accessible travel", "Multi-generational Kenya trips", "Special event transport"],

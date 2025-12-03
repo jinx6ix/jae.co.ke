@@ -99,7 +99,7 @@ const services = {
     title: "Group Transportation",
     description: "Comfortable transport for large groups and tour packages throughout East Africa",
     features: ["Spacious seating", "Luggage capacity", "AC throughout", "Entertainment systems"],
-    image: "/WhatsApp Image 2025-10-14 at 21.12.10_aa6b5d49.jpg",
+    image: "/waaa.jpg",
     price: "From $150/day",
     vehicles: ["Minibuses", "Coaches", "Custom Buses"],
     details: "Perfect for group tours, family vacations, and corporate events.",

@@ -246,6 +246,23 @@ const schema = {
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock"
       }
+    },
+
+    // 3. ImageGallery — THIS IS WHAT MAKES YOUR PHOTOS APPEAR IN GOOGLE IMAGE SEARCH!
+    {
+      "@type": "ImageGallery",
+      "@id": "https://jaetravel.co.ke/disability-tours/#imagegallery",
+      "name": "JAETravel Safari, wheelchair accessible Photos",
+      "description": "Professional wildlife photography and safari videos from Masai Mara, Serengeti, gorilla trekking, and accessible East Africa adventures.",
+      "url": "https://jaetravel.co.ke/disability-tours",
+      "associatedMedia": [
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
+          "name": "Wheelchair Accessible Safari - Lion Sighting",
+          "description": "Guest in wheelchair enjoying lion viewing from hydraulic-lift safari vehicle"
+        },
+      ]
     }
   ]
 }

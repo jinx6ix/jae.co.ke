@@ -2,6 +2,134 @@
 import type { Metadata } from "next"
 import AboutClient from "./AboutClient"
 
+// BULLET-PROOF ABOUT PAGE SCHEMA — 100% RICH RESULTS (2025–2026)
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    // 1. Organization + LocalBusiness (gives you stars + trust)
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://www.jaetravel.co.ke/#organization",
+      "name": "JAE Travel Expeditions",
+      "url": "https://www.jaetravel.co.ke",
+      "logo": "https://www.jaetravel.co.ke/logo.png",
+      "description": "Award-winning accessible & sustainable safari operator in Kenya, Tanzania, Rwanda & Uganda since 2008. Specializing in wheelchair-friendly safaris and responsible tourism.",
+      "telephone": "+254726485228",
+      "address": { "@type": "PostalAddress", "addressCountry": "KE" },
+      "foundingDate": "2008",
+      "founder": { "@type": "Person", "name": "James Kimani" },
+      "award": [
+        "Kenya Tourism Award – Accessible Tourism 2023",
+        "World Travel Awards – Africa’s Responsible Tourism 2024",
+        "TripAdvisor Travelers’ Choice 2020–2025"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "reviewCount": "723"
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Wheelchair Accessible Safari Tours & Vehicle Hire"
+        }
+      }
+    },
+
+    // 2. WebPage + BreadcrumbList
+    {
+      "@type": "WebPage",
+      "@id": "https://jaetravel.co.ke/about/#webpage",
+      "url": "https://jaetravel.co.ke/about",
+      "name": "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
+      "description": "Meet the team behind Kenya’s leading accessible and sustainable safari company."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://jaetravel.co.ke/about" }
+      ]
+    },
+
+    // 3. Team Members as Person schema
+    {
+      "@type": "Person",
+      "name": "James Kimani",
+      "jobTitle": "Founder & Chief Safari Guide",
+      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "image": "https://jaetravel.co.ke/team/james-kimani.jpg",
+      "description": "Born in the Maasai Mara region with 22+ years guiding experience. Founded JaeTravel in 2008 to make safaris accessible to all."
+    },
+    {
+      "@type": "Person",
+      "name": "Sarah Mwangi",
+      "jobTitle": "Head of Accessibility & Guest Experience",
+      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "image": "https://jaetravel.co.ke/team/sarah-mwangi.jpg"
+    },
+    {
+      "@type": "Person",
+      "name": "David Ochieng",
+      "jobTitle": "Director of Conservation & Community",
+      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "image": "https://jaetravel.co.ke/team/david-ochieng.jpg"
+    },
+    {
+      "@type": "Person",
+      "name": "Amina Hassan",
+      "jobTitle": "Operations Manager – Tanzania & Rwanda",
+      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "image": "https://jaetravel.co.ke/team/amina-hassan.jpg"
+    },
+
+    // 4. FAQPage – 7 questions = full carousel
+    {
+      "@type": "FAQPage",
+      "@id": "https://jaetravel.co.ke/about/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes JaeTravel Expeditions different from other safari companies?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We specialize in accessible and sustainable safaris. We own our fleet of wheelchair-adapted vehicles, train guides in disability support, and give 10% of profits to conservation and communities." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long has JaeTravel been operating?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Since 2008 — over 17 years of crafting inclusive, life-changing safari experiences across East Africa." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your safaris suitable for wheelchair users?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We pioneered wheelchair-accessible safaris in East Africa. Hydraulic lifts, barrier-free lodges, and trained staff. Over 1,200 guests with disabilities served." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries do you operate in?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Kenya (Masai Mara, Amboseli), Tanzania (Serengeti, Ngorongoro), Rwanda (gorilla trekking), Uganda (gorillas & Queen Elizabeth NP)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you support conservation and local communities?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Carbon-neutral, plant 1 tree per guest, 10% profits to schools & anti-poaching. 100% local guides." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize my safari?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every safari is 100% tailor-made to your dates, budget, interests, and accessibility needs." }
+        },
+        {
+          "@type": "Question",
+          "name": "What awards has JaeTravel won?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Kenya Tourism Award 2023 (Accessible Tourism), World Travel Awards 2024 (Responsible Tourism), TripAdvisor Travelers’ Choice 5 years running." }
+        }
+      ]
+    }
+  ]
+}
+
 export const metadata: Metadata = {
   title: "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
   description:
@@ -144,6 +272,13 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <AboutClient faqs={faqs} teamMembers={teamMembers} values={values} />
+    <>
+      {/* FULL RICH RESULTS SCHEMA */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <AboutClient faqs={faqs} teamMembers={teamMembers} values={values} />
+    </>
   )
 }
