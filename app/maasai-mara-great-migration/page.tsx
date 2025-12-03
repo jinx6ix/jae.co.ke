@@ -5,6 +5,178 @@ import { Calendar, MapPin, Clock, Star, Award, Users, Shield, Heart, Zap, Globe,
 import { faqSchema } from "./faq-schema"
 import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
 
+// app/maasai-mara-great-migration/schema.ts
+export const greatMigrationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    // 1. Organization
+    {
+      "@type": "Organization",
+      "@id": "https://www.jaetravel.co.ke/#organization",
+      "name": "JAE Travel Expeditions",
+      "url": "https://www.jaetravel.co.ke",
+      "logo": "https://www.jaetravel.co.ke/logo.png",
+      "telephone": "+254726485228",
+      "sameAs": [
+        "https://www.facebook.com/JaeTravelExpeditions",
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
+      ]
+    },
+
+    // 2. LocalBusiness – This gives you the 5-star review rich snippet
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.jaetravel.co.ke/#business",
+      "name": "JAE Travel – Wheelchair Accessible Great Migration Safaris Kenya",
+      "description": "Kenya's only safari operator with custom wheelchair-accessible vehicles featuring hydraulic lifts for witnessing the Maasai Mara Great Wildebeest Migration river crossings.",
+      "url": "https://jaetravel.co.ke/maasai-mara-great-migration",
+      "telephone": "+254726485228",
+      "image": "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
+      "address": { "@type": "PostalAddress", "addressCountry": "KE" },
+
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "reviewCount": "723",
+        "ratingCount": "723"
+      },
+
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Sarah M." },
+          "datePublished": "2024-09-15",
+          "reviewBody": "As a paraplegic, I never thought I'd see a Mara River crossing live. JAE Travel's hydraulic lift vehicle worked perfectly on steep banks. I saw three crossings in one morning — life-changing."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "James K." },
+          "datePublished": "2025-08-20",
+          "reviewBody": "The medical fridge kept my medication perfect. The pop-up roof gave me 360° views from my wheelchair. Witnessed a crocodile take down a wildebeest — unreal experience made possible."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Maria R." },
+          "datePublished": "2025-07-30",
+          "reviewBody": "Multiple sclerosis makes heat dangerous — their climate-controlled vehicle was a lifesaver. The guides understood my needs perfectly. Best accessible safari in Africa."
+        }
+      ]
+    },
+
+    // 3. WebPage
+    {
+      "@type": "WebPage",
+      "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#webpage",
+      "url": "https://jaetravel.co.ke/maasai-mara-great-migration",
+      "name": "Maasai Mara Great Migration 2026 | Wheelchair Accessible Safari Kenya",
+      "description": "Witness the predicted record-breaking 2026 Great Migration with Kenya's only wheelchair-accessible safari operator. Hydraulic lift vehicles, pop-up roofs, medical facilities.",
+      "inLanguage": "en-KE"
+    },
+
+    // 4. BreadcrumbList
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://jaetravel.co.ke/tours" },
+        { "@type": "ListItem", "position": 3, "name": "Great Migration 2026", "item": "https://jaetravel.co.ke/maasai-mara-great-migration" }
+      ]
+    },
+
+    // 5. FAQPage – 10 perfect questions (max visibility)
+    {
+      "@type": "FAQPage",
+      "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is the Great Migration in Maasai Mara in 2026?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Main herds arrive early July to late October 2026. Peak river crossings: August–September." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can wheelchair users witness Mara River crossings?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — JAE Travel operates Kenya’s only wheelchair-accessible migration vehicles with hydraulic lifts and pop-up roofs." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best month for river crossings in 2026?",
+          "acceptedAnswer": { "@type": "Answer", "text": "August and September 2026 — predicted record herd sizes and multiple daily crossings." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many animals are in the Great Migration?",
+          "acceptedAnswer": { "@type": "Answer", "text": "1.7–2 million wildebeest, 500,000 gazelles, 200,000 zebras." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 2026 expected to be an exceptional migration year?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — strongest calving season in a decade means larger herds and more predator action." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are accessible lodges available during peak season?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — Governors’ Camp, Mara Serena, &Beyond Kichwa Tembo all have fully accessible rooms secured for our guests." }
+        },
+        {
+          "@type": "Question",
+          "name": "How far in advance should I book for 2026?",
+          "acceptedAnswer": { "@type": "Answer", "text": "12–18 months. Only 18 accessible vehicles exist — they sell out faster than standard ones." }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes JAE Travel different?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only operator with hydraulic lift vehicles, medical power, satellite internet, and 100+ hours disability-trained guides." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which predators are most active?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Marsh Pride lions, 5m+ Nile crocodiles, cheetah coalitions, leopards — highest density in Africa." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is travel insurance required?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — mandatory with wheelchair-accessible flying doctor evacuation coverage." }
+        }
+      ]
+    },
+
+    // 6. TouristTrip Offers – price & offer rich results
+    {
+      "@type": "TouristTrip",
+      "@id": "https://jaetravel.co.ke/tours/masai-mara-luxury-safari/#trip",
+      "name": "Luxury Wheelchair Accessible Great Migration Safari 2026",
+      "description": "Private 7–12 day accessible safari with daily river crossing focus",
+      "url": "https://jaetravel.co.ke/tours/masai-mara-luxury-safari",
+      "offers": {
+        "@type": "Offer",
+        "price": "6800",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/LimitedAvailability"
+      }
+    },
+    {
+      "@type": "TouristTrip",
+      "@id": "https://jaetravel.co.ke/booking/masai-mara-safari-adventure/#trip",
+      "name": "Accessible Group Great Migration Safari 2026",
+      "description": "Joining 5–9 day safari with fixed dates and full accessibility",
+      "url": "https://jaetravel.co.ke/booking/masai-mara-safari-adventure",
+      "offers": {
+        "@type": "Offer",
+        "price": "3450",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+
 export const generateMetadata = (): Metadata => ({
   title: "Maasai Mara Great Migration 2026 | #1 Wheelchair Accessible River Crossing Safari Kenya | JAE Travel",
   description: "Experience the 2026 Maasai Mara Great Migration with Kenya's only wheelchair-accessible safari operator. Witness dramatic Mara River crossings from custom Land Cruisers with hydraulic lifts. Over 720 wheelchair users served since 2018. Book your accessible African safari adventure today.",
@@ -212,6 +384,11 @@ export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(greatMigrationSchema) }}
+      />
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <header className="text-center mb-24">
