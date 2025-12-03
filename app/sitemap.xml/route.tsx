@@ -1,13 +1,19 @@
-// app/sitemap.xml/route.ts  (or api/sitemap.xml/route.ts)
+// app/sitemap.xml/route.ts
 import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
 import { destinations } from "@/lib/destinations-data"
 
-export const dynamic = "force-dynamic" // or remove if you want static
-export const revalidate = 3600 // revalidate every hour
+export const dynamic = "force-dynamic"
+export const revalidate = 3600
 
 export async function GET() {
-  const baseUrl = "https://jaetravel.co.ke"
+  try {
+    const baseUrl = "https://jaetravel.co.ke"
+
+    // Safety: fallback to empty arrays if data is missing
+    const safeTours = Array.isArray(tours) ? tours : []
+    const safeVehicles = Array.isArray(vehicles) ? vehicles : []
+    const safeDestinations = Array.isArray(destinations) ? destinations : []
 
   // Fixed: All paths now start with /
   const staticPages = [
@@ -36,39 +42,42 @@ export async function GET() {
     "/contact",
   ]
 
-  const tourPages = tours.map((tour) => `/tours/${tour.slug}`)
-  const vehiclePages = vehicles.map((vehicle) => `/vehicle-hire/${vehicle.slug}`)
-  const destinationPages = destinations.map((destination) => `/destinations/${destination.country}`)
+    const dynamicPages = [
+      ...safeTours.map(t => `/tours/${t?.slug}`).filter(Boolean),
+      ...safeVehicles.map(v => `/vehicle-hire/${v?.slug}`).filter(Boolean),
+      ...safeDestinations.map(d => `/destinations/${d?.country}`).filter(Boolean),
+    ]
 
-  // Combine and remove duplicates
-  const allPages = Array.from(new Set([...staticPages, ...tourPages, ...vehiclePages, ...destinationPages]))
+    const allPages = Array.from(new Set([...staticPages, ...dynamicPages]))
 
-  const now = new Date().toISOString()
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${allPages
-  .map((page) => {
-    const isHome = page === "/"
-    const isTour = page.startsWith("/tours/")
-    const isVehicle = page.startsWith("/vehicle-hire/")
-    const isDisabilityTour = page.includes("/disability-tours") || page.includes("wheelchair")
-
-    return `  <url>
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allPages.map(page => `  <url>
     <loc>${baseUrl}${page}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>${isHome ? "daily" : isTour || isVehicle ? "weekly" : "monthly"}</changefreq>
-    <priority>${isHome ? "1.0" : isTour || isDisabilityTour ? "0.9" : "0.8"}</priority>
-  </url>`
-  })
-  .join("\n")}
-</urlset>`.trim()
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <changefreq>${page === "/" ? "daily" : page.startsWith("/tours/") || page.startsWith("/vehicle-hire/") ? "weekly" : "monthly"}</changefreq>
+    <priority>${page === "/" ? "1.0" : page.startsWith("/tours/") || page.startsWith("/vehicle-hire/") ? "0.9" : "0.8"}</priority>
+  </url>`).join("\n")}
+</urlset>`
 
-  return new Response(sitemap, {
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=3600",
-    },
-  })
+    return new Response(xml, {
+      headers: {
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=3600, s-maxage=3600",
+      },
+    })
+  } catch (error) {
+    // If anything crashes, return valid empty sitemap instead of HTML error page
+    return new Response(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://jaetravel.co.ke/</loc>
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <priority>1.0</priority>
+  </url>
+</urlset>`, {
+      status: 200,
+      headers: { "Content-Type": "application/xml" },
+    })
+  }
 }
