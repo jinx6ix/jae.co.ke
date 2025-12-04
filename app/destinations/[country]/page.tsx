@@ -16,7 +16,7 @@ interface DestinationPageProps {
 }
 
 // DYNAMIC RICH RESULTS SCHEMA — IMAGE + FULL RICHNESS
-async function generateDestinationSchema(destination: typeof destinations[0]) {
+function generateDestinationSchema(destination: typeof destinations[0]) {
   const pageUrl = `https://jaetravel.co.ke/destinations/${destination.slug}`
 
   return {
@@ -159,7 +159,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
       {/* DYNAMIC RICH RESULTS SCHEMA */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateDestinationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateDestinationSchema(destination)) }}
       />
       <div className="pb-16">
         {/* Hero Section */}
