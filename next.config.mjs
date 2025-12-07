@@ -2,7 +2,7 @@
 const nextConfig = {
   // CRUCIAL FIX #1: Stop adding trailing slashes
   // Your current trailingSlash: true was creating redirect loops
-  trailingSlash: false,
+  trailingSlash: true,
 
   // CRUCIAL FIX #2: Force www (or non-www) with proper 301s
   async redirects() {
