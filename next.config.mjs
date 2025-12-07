@@ -1,17 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ─────────────────────────────────────────────────────────────
-  // CORE FIXES – These eliminate redirect loops & Googlebot errors
-  // ─────────────────────────────────────────────────────────────
-  trailingSlash: false,                    // No trailing slashes anywhere
-  skipTrailingSlashRedirect: true,         // THIS IS CRUCIAL – disables Next.js default trailing-slash behavior
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,        // This kills all trailing-slash issues forever
 
-  // ─────────────────────────────────────────────────────────────
-  // CLEAN & SAFE REDIRECTS (order matters!)
-  // ─────────────────────────────────────────────────────────────
   async redirects() {
     return [
-      // 1. Force WWW (non-www → www)
+      // 1. Non-www → www (works perfectly on Vercel)
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'jaetravel.co.ke' }],
@@ -19,17 +13,10 @@ const nextConfig = {
         permanent: true,
       },
 
-      // 2. Force HTTPS (if someone still hits http)
-      {
-        source: '/:path*',
-        has: [{ type: 'protocol', value: 'http' }],
-        destination: 'https://www.jaetravel.co.ke/:path*',
-        permanent: true,
-      },
+      // 2. HTTP → HTTPS is handled automatically by Vercel
+      //    → No need for a redirect rule anymore (and it breaks the build if you try)
 
-      // ─────────────────────────────
-      // Your legacy tour redirects (keep these forever)
-      // ─────────────────────────────
+      // Your legacy tour redirects (keep these)
       {
         source: '/:path*',
         has: [{ type: 'query', key: 'p', value: '2056' }],
@@ -60,20 +47,9 @@ const nextConfig = {
     ];
   },
 
-  // ─────────────────────────────────────────────────────────────
-  // Optional but recommended settings for production
-  // ─────────────────────────────────────────────────────────────
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,        // Common for WordPress → Next.js migrations or external hosts
-  },
-
-  // Optional: Improve performance
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true },
   poweredByHeader: false,
   reactStrictMode: true,
 };
