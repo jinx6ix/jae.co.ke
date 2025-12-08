@@ -22,7 +22,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jaetravel.co.ke"),
+  // CRITICAL: Force www as the official domain
+  metadataBase: new URL("https://www.jaetravel.co.ke"),
+
   title: {
     default: "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
     template: "%s | JaeTravel Expeditions",
@@ -44,17 +46,18 @@ export const metadata: Metadata = {
   authors: [{ name: "JaeTravel Expeditions" }],
   creator: "JaeTravel Expeditions",
   publisher: "JaeTravel Expeditions",
+
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jaetravel.co.ke",
+    url: "https://www.jaetravel.co.ke",
     siteName: "JaeTravel Expeditions",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
     description:
       "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://www.jaetravel.co.ke/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "JaeTravel Expeditions",
@@ -66,7 +69,7 @@ export const metadata: Metadata = {
     title: "JaeTravel Expeditions | East Africa Safari Tours",
     description:
       "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
-    images: ["/og-image.jpg"],
+    images: ["https://www.jaetravel.co.ke/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -83,9 +86,9 @@ export const metadata: Metadata = {
     google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
   },
   alternates: {
-    canonical: "https://jaetravel.co.ke",
+    canonical: "https://www.jaetravel.co.ke",
     types: {
-      "application/rss+xml": "https://jaetravel.co.ke/blog/rss.xml",
+      "application/rss+xml": "https://www.jaetravel.co.ke/blog/rss.xml",
     },
   },
   generator: "v0.app",
@@ -96,15 +99,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // All schema URLs now point to www
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
     name: "JaeTravel Expeditions",
     description:
       "East Africa safari tours specializing in accessible travel, gorilla trekking, and wildlife adventures across Kenya, Tanzania, Rwanda, and Uganda.",
-    url: "https://jaetravel.co.ke",
-    logo: "https://jaetravel.co.ke/logo.png",
-    image: "https://jaetravel.co.ke/og-image.jpg",
+    url: "https://www.jaetravel.co.ke",
+    logo: "https://www.jaetravel.co.ke/logo.png",
+    image: "https://www.jaetravel.co.ke/og-image.jpg",
     telephone: "+254726485228",
     email: "info@jaetravel.co.ke",
     address: {
@@ -144,37 +148,46 @@ export default function RootLayout({
           itemOffered: {
             "@type": "TouristTrip",
             name: "Accessible Safari Tours",
-            description:
-              "Wheelchair-adapted vehicles and inclusive travel experiences",
+            description: "Wheelchair-adapted vehicles and inclusive travel experiences",
           },
         },
       ],
     },
   }
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "JaeTravel Expeditions",
+    alternateName: "JaeTravel Expeditions",
+    url: "https://www.jaetravel.co.ke",
+  }
+
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        {/* Organization Schema */}
+        {/* Dynamic canonical tag — works perfectly on every page */}
+        <link
+          rel="canonical"
+          href={
+            typeof window === "undefined"
+              ? "https://www.jaetravel.co.ke"
+              : `${window.location.protocol}//www.jaetravel.co.ke${window.location.pathname}${window.location.search}`
+          }
+        />
+
+        {/* Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" async></script>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-             "@type": "WebSite",
-              "name": "JaeTravel Expeditions",
-              "alternateName": "JaeTravel Expeditions",
-              "url": "https://jaetravel.co.ke"
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+
+        {/* Ahrefs Analytics */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" async />
 
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
@@ -186,42 +199,31 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-52G2X6L5');
           `}
         </Script>
-        {/* End Google Tag Manager */}
 
-        {/* Optional: Google Analytics (if using GA4) */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B"
-        />
+        {/* Google Analytics GA4 */}
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-2YLERP8F8B', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', 'G-2YLERP8F8B', { page_path: window.location.pathname });
           `}
         </Script>
 
-        <meta
-          name="google-site-verification"
-          content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg"
-        />
-        <link rel="canonical" href="https://jaetravel.co.ke" />
+        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
       </head>
 
       <body className="font-sans antialiased">
-        {/* Google Tag Manager (noscript) */}
+        {/* GTM Noscript */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-52G2X6L5"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+          />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
         <Suspense>
           <Header />
