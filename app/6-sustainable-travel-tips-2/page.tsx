@@ -23,10 +23,10 @@ export const metadata: Metadata = {
     title: "6 Sustainable Travel Tips for East Africa Safari",
     description: "Travel responsibly in Kenya, Tanzania, Rwanda & Uganda. Eco-friendly tips that protect wildlife and support local communities.",
     images: ["/blog/sustainable-travel-tips.jpg"],
-    url: "https://jaetravel.co.ke/6-sustainable-travel-tips-2",
+    url: "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2",
     type: "article"
   },
-  alternates: { canonical: "https://jaetravel.co.ke/6-sustainable-travel-tips-2" },
+  alternates: { canonical: "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2" },
 }
 
 // FINAL BULLET-PROOF SCHEMA — NOW WITH BREADCRUMBS + ALL RICH RESULTS
@@ -48,7 +48,7 @@ const sustainableTravelSchema = {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JAE Travel – Sustainable & Accessible Safaris East Africa",
-      "url": "https://jaetravel.co.ke",
+      "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -61,8 +61,8 @@ const sustainableTravelSchema = {
     // 3. WebPage
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage",
-      "url": "https://jaetravel.co.ke/6-sustainable-travel-tips-2",
+      "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage",
+      "url": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2",
       "name": "6 Sustainable Travel Tips for East Africa Safari",
       "description": "Learn how to travel responsibly in Kenya, Tanzania, Rwanda and Uganda with eco-friendly practices."
     },
@@ -70,25 +70,25 @@ const sustainableTravelSchema = {
     // 4. BreadcrumbList — NOW INCLUDED (Google loves this!)
     {
       "@type": "BreadcrumbList",
-      "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#breadcrumb",
+      "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://jaetravel.co.ke"
+          "item": "https://www.jaetravel.co.ke"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://jaetravel.co.ke/blog"
+          "item": "https://www.jaetravel.co.ke/blog"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "6 Sustainable Travel Tips for East Africa Safari",
-          "item": "https://jaetravel.co.ke/6-sustainable-travel-tips-2"
+          "item": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2"
         }
       ]
     },
@@ -96,20 +96,20 @@ const sustainableTravelSchema = {
     // 5. Article
     {
       "@type": "Article",
-      "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#article",
+      "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#article",
       "headline": "6 Sustainable Travel Tips for East Africa Safari Adventures",
-      "image": "https://jaetravel.co.ke/blog/sustainable-travel-tips.jpg",
+      "image": "https://www.jaetravel.co.ke/blog/sustainable-travel-tips.jpg",
       "author": { "@type": "Organization", "name": "JAE Travel Expeditions" },
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" },
       "datePublished": "2025-06-15",
       "dateModified": "2025-12-03",
-      "mainEntityOfPage": { "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage" }
+      "mainEntityOfPage": { "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage" }
     },
 
     // 6. FAQPage (6 questions = full carousel)
     {
       "@type": "FAQPage",
-      "@id": "https://jaetravel.co.ke/6-sustainable-travel-tips-2/#faqpage",
+      "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",

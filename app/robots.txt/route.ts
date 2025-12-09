@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic"  // optional – removes it from static r
 export const revalidate = 3600          // re-generate every hour (good enough)
 
 export async function GET() {
-  const baseUrl = "https://jaetravel.co.ke"
+  const baseUrl = "https://www.jaetravel.co.ke"
 
   const robotsTxt = `# JAETravel Expeditions – robots.txt
 # Updated: ${new Date().toISOString().split("T")[0]}

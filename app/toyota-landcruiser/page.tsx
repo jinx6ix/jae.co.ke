@@ -45,7 +45,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg"],
     },
     alternates: {
-      canonical: "https://jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
+      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

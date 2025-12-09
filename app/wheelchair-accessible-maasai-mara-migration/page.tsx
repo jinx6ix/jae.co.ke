@@ -19,7 +19,7 @@ export const generateMetadata = (): Metadata => ({
       alt: "JaeTravel Expeditions wheelchair accessible safari vehicle at 2026 Maasai Mara Great Migration river crossing with wildebeest herds" 
     }]
   },
-  alternates: { canonical: "https://jaetravelexpeditions.co.ke/maasai-mara-great-migration" },
+  alternates: { canonical: "https://www.jaetravelexpeditions.co.ke/maasai-mara-great-migration" },
   robots: "index, follow, max-image-preview:large",
   authors: [{ name: "JaeTravel Expeditions Accessibility Team" }],
   publisher: "JaeTravel Expeditions ",

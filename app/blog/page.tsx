@@ -25,31 +25,31 @@ const blogPageSchema = {
     // 2. WebPage + BreadcrumbList
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/blog/#webpage",
-      "url": "https://jaetravel.co.ke/blog",
+      "@id": "https://www.jaetravel.co.ke/blog/#webpage",
+      "url": "https://www.jaetravel.co.ke/blog",
       "name": "Safari Travel Blog | Tips, Guides & Stories | JaeTravel Expeditions",
       "description": "Expert safari tips, destination guides, wildlife stories, and accessible travel advice from East Africa’s leading inclusive safari operator."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jaetravel.co.ke/blog" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.jaetravel.co.ke/blog" }
       ]
     },
 
     // 3. Blog (main entity)
     {
       "@type": "Blog",
-      "@id": "https://jaetravel.co.ke/blog/#blog",
-      "url": "https://jaetravel.co.ke/blog",
+      "@id": "https://www.jaetravel.co.ke/blog/#blog",
+      "url": "https://www.jaetravel.co.ke/blog",
       "name": "JAETravel Safari Blog",
       "description": "Weekly insights, safari tips, wildlife stories, and accessible travel guides from East Africa.",
       "blogPost": blogPosts.slice(0, 10).map(post => ({
         "@type": "BlogPosting",
         "headline": post.title,
         "image": post.image,
-        "url": `https://jaetravel.co.ke/blog/${post.slug}`,
+        "url": `https://www.jaetravel.co.ke/blog/${post.slug}`,
         "datePublished": post.publishedAt,
         "dateModified": post.publishedAt,
         "author": { "@type": "Person", "name": post.author },
@@ -62,7 +62,7 @@ const blogPageSchema = {
     // 4. FAQPage — 5 questions = full carousel
     {
       "@type": "FAQPage",
-      "@id": "https://jaetravel.co.ke/blog/#faqpage",
+      "@id": "https://www.jaetravel.co.ke/blog/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",

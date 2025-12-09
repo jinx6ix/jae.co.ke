@@ -30,7 +30,7 @@ export const greatMigrationSchema = {
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JAE Travel – Wheelchair Accessible Great Migration Safaris Kenya",
       "description": "Kenya's only safari operator with custom wheelchair-accessible vehicles featuring hydraulic lifts for witnessing the Maasai Mara Great Wildebeest Migration river crossings.",
-      "url": "https://jaetravel.co.ke/maasai-mara-great-migration",
+      "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
       "telephone": "+254726485228",
       "image": "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
       "address": { "@type": "PostalAddress", "addressCountry": "KE" },
@@ -71,8 +71,8 @@ export const greatMigrationSchema = {
     // 3. WebPage
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#webpage",
-      "url": "https://jaetravel.co.ke/maasai-mara-great-migration",
+      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#webpage",
+      "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
       "name": "Maasai Mara Great Migration 2026 | Wheelchair Accessible Safari Kenya",
       "description": "Witness the predicted record-breaking 2026 Great Migration with Kenya's only wheelchair-accessible safari operator. Hydraulic lift vehicles, pop-up roofs, medical facilities.",
       "inLanguage": "en-KE"
@@ -82,16 +82,16 @@ export const greatMigrationSchema = {
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://jaetravel.co.ke/tours" },
-        { "@type": "ListItem", "position": 3, "name": "Great Migration 2026", "item": "https://jaetravel.co.ke/maasai-mara-great-migration" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
+        { "@type": "ListItem", "position": 3, "name": "Great Migration 2026", "item": "https://www.jaetravel.co.ke/maasai-mara-great-migration" }
       ]
     },
 
     // 5. FAQPage – 10 perfect questions (max visibility)
     {
       "@type": "FAQPage",
-      "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
+      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
@@ -149,10 +149,10 @@ export const greatMigrationSchema = {
     // 6. TouristTrip Offers – price & offer rich results
     {
       "@type": "TouristTrip",
-      "@id": "https://jaetravel.co.ke/tours/masai-mara-luxury-safari/#trip",
+      "@id": "https://www.jaetravel.co.ke/tours/masai-mara-luxury-safari/#trip",
       "name": "Luxury Wheelchair Accessible Great Migration Safari 2026",
       "description": "Private 7–12 day accessible safari with daily river crossing focus",
-      "url": "https://jaetravel.co.ke/tours/masai-mara-luxury-safari",
+      "url": "https://www.jaetravel.co.ke/tours/masai-mara-luxury-safari",
       "offers": {
         "@type": "Offer",
         "price": "6800",
@@ -163,10 +163,10 @@ export const greatMigrationSchema = {
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://jaetravel.co.ke/booking/masai-mara-safari-adventure/#trip",
+      "@id": "https://www.jaetravel.co.ke/booking/masai-mara-safari-adventure/#trip",
       "name": "Accessible Group Great Migration Safari 2026",
       "description": "Joining 5–9 day safari with fixed dates and full accessibility",
-      "url": "https://jaetravel.co.ke/booking/masai-mara-safari-adventure",
+      "url": "https://www.jaetravel.co.ke/booking/masai-mara-safari-adventure",
       "offers": {
         "@type": "Offer",
         "price": "3450",
@@ -191,7 +191,7 @@ export const generateMetadata = (): Metadata => ({
       alt: "Wheelchair accessible safari vehicle at 2026 Maasai Mara Great Migration river crossing with wildebeest herds" 
     }]
   },
-  alternates: { canonical: "https://jaetravel.co.ke/maasai-mara-great-migration" },
+  alternates: { canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration" },
   robots: "index, follow, max-image-preview:large",
   authors: [{ name: "JAE Travel Accessibility Team" }],
   publisher: "JAE Travel Kenya",

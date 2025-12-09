@@ -41,16 +41,16 @@ const aboutPageSchema = {
     // 2. WebPage + BreadcrumbList
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/about/#webpage",
-      "url": "https://jaetravel.co.ke/about",
+      "@id": "https://www.jaetravel.co.ke/about/#webpage",
+      "url": "https://www.jaetravel.co.ke/about",
       "name": "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
       "description": "Meet the team behind Kenya’s leading accessible and sustainable safari company."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://jaetravel.co.ke/about" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.jaetravel.co.ke/about" }
       ]
     },
 
@@ -60,7 +60,7 @@ const aboutPageSchema = {
       "name": "James Kimani",
       "jobTitle": "Founder & Chief Safari Guide",
       "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://jaetravel.co.ke/team/james-kimani.jpg",
+      "image": "https://www.jaetravel.co.ke/team/james-kimani.jpg",
       "description": "Born in the Maasai Mara region with 22+ years guiding experience. Founded JaeTravel in 2008 to make safaris accessible to all."
     },
     {
@@ -68,27 +68,27 @@ const aboutPageSchema = {
       "name": "Sarah Mwangi",
       "jobTitle": "Head of Accessibility & Guest Experience",
       "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://jaetravel.co.ke/team/sarah-mwangi.jpg"
+      "image": "https://www.jaetravel.co.ke/team/sarah-mwangi.jpg"
     },
     {
       "@type": "Person",
       "name": "David Ochieng",
       "jobTitle": "Director of Conservation & Community",
       "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://jaetravel.co.ke/team/david-ochieng.jpg"
+      "image": "https://www.jaetravel.co.ke/team/david-ochieng.jpg"
     },
     {
       "@type": "Person",
       "name": "Amina Hassan",
       "jobTitle": "Operations Manager – Tanzania & Rwanda",
       "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://jaetravel.co.ke/team/amina-hassan.jpg"
+      "image": "https://www.jaetravel.co.ke/team/amina-hassan.jpg"
     },
 
     // 4. FAQPage – 7 questions = full carousel
     {
       "@type": "FAQPage",
-      "@id": "https://jaetravel.co.ke/about/#faqpage",
+      "@id": "https://www.jaetravel.co.ke/about/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
@@ -164,7 +164,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://jaetravel.co.ke/about",
+    canonical: "https://www.jaetravel.co.ke/about",
   },
   robots: "index, follow",
 }

@@ -207,8 +207,8 @@ export default function HeroCarousel() {
                 "@type": "TouristAttraction",
                 name: slide.title,
                 description: slide.subtitle,
-                image: `https://jaetravel.co.ke${slide.image}`,
-                url: `https://jaetravel.co.ke${slide.ctaLink}`,
+                image: `https://www.jaetravel.co.ke${slide.image}`,
+                url: `https://www.jaetravel.co.ke${slide.ctaLink}`,
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: slide.destination.split(",")[0].trim(),

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://jaetravel.co.ke/disability-tours",
+    canonical: "https://www.jaetravel.co.ke/disability-tours",
   },
   robots: "index, follow",
 }
@@ -179,8 +179,8 @@ const schema = {
     // 4. WebPage
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/disability-tours/#webpage",
-      "url": "https://jaetravel.co.ke/disability-tours",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#webpage",
+      "url": "https://www.jaetravel.co.ke/disability-tours",
       "name": "Wheelchair Accessible Safari Tours | Kenya, Tanzania, Rwanda & Uganda",
       "description": "Fully accessible East Africa safaris with hydraulic-lift vehicles, barrier-free lodges and expert disability-trained guides.",
       "inLanguage": "en-KE"
@@ -220,11 +220,11 @@ const schema = {
     // 6. TouristTrip objects (keep these — great for Offer & price snippets!)
     {
       "@type": "TouristTrip",
-      "@id": "https://jaetravel.co.ke/tours/accessible-masai-mara-safari/#trip",
+      "@id": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari/#trip",
       "name": "4-Day Wheelchair Accessible Masai Mara Safari",
       "description": "Fully accessible Masai Mara safari with hydraulic-lift vehicle and barrier-free camp.",
-      "url": "https://jaetravel.co.ke/tours/accessible-masai-mara-safari",
-      "image": "https://jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
+      "url": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari",
+      "image": "https://www.jaetravel.co.ke/images/tours/accessible-masai-mara-safari.jpg",
       "offers": {
         "@type": "Offer",
         "price": "2500",
@@ -236,10 +236,10 @@ const schema = {
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://jaetravel.co.ke/tours/tanzania-accessible-safari/#trip",
+      "@id": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari/#trip",
       "name": "8-Day Wheelchair Accessible Serengeti & Ngorongoro Safari",
       "description": "Follow the Great Migration with fully adapted vehicles and accessible tented camps.",
-      "url": "https://jaetravel.co.ke/tours/tanzania-accessible-safari",
+      "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari",
       "offers": {
         "@type": "Offer",
         "price": "4500",
@@ -251,14 +251,14 @@ const schema = {
     // 3. ImageGallery — THIS IS WHAT MAKES YOUR PHOTOS APPEAR IN GOOGLE IMAGE SEARCH!
     {
       "@type": "ImageGallery",
-      "@id": "https://jaetravel.co.ke/disability-tours/#imagegallery",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#imagegallery",
       "name": "JAETravel Safari, wheelchair accessible Photos",
       "description": "Professional wildlife photography and safari videos from Masai Mara, Serengeti, gorilla trekking, and accessible East Africa adventures.",
-      "url": "https://jaetravel.co.ke/disability-tours",
+      "url": "https://www.jaetravel.co.ke/disability-tours",
       "associatedMedia": [
         {
           "@type": "ImageObject",
-          "contentUrl": "https://jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
+          "contentUrl": "https://www.jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
           "name": "Wheelchair Accessible Safari - Lion Sighting",
           "description": "Guest in wheelchair enjoying lion viewing from hydraulic-lift safari vehicle"
         },

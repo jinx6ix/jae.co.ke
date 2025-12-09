@@ -7,7 +7,7 @@ export const breadcrumbSchema = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://jaetravel.co.ke"
+        "item": "https://www.jaetravel.co.ke"
       }
     ]
   }

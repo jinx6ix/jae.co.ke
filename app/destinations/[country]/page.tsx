@@ -17,7 +17,7 @@ interface DestinationPageProps {
 
 // DYNAMIC RICH RESULTS SCHEMA — IMAGE + FULL RICHNESS
 function generateDestinationSchema(destination: typeof destinations[0]) {
-  const pageUrl = `https://jaetravel.co.ke/destinations/${destination.slug}`
+  const pageUrl = `https://www.jaetravel.co.ke/destinations/${destination.slug}`
 
   return {
     "@context": "https://schema.org",
@@ -71,8 +71,8 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-          { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://jaetravel.co.ke/destinations" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+          { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://www.jaetravel.co.ke/destinations" },
           { "@type": "ListItem", "position": 3, "name": destination.name, "item": pageUrl }
         ]
       },
@@ -107,7 +107,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
           "@type": "Offer",
           "price": tour.price,
           "priceCurrency": tour.currency || "USD",
-          "url": `https://jaetravel.co.ke${tour.url || `/tours/${tour.slug}/book`}`
+          "url": `https://www.jaetravel.co.ke${tour.url || `/tours/${tour.slug}/book`}`
         }
       }))
     ]

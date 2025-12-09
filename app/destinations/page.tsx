@@ -29,29 +29,29 @@ const destinationsSchema = {
     // 2. WebPage + Breadcrumb
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/destinations/#webpage",
-      "url": "https://jaetravel.co.ke/destinations",
+      "@id": "https://www.jaetravel.co.ke/destinations/#webpage",
+      "url": "https://www.jaetravel.co.ke/destinations",
       "name": "Top East Africa Safari Destinations | Kenya, Tanzania, Rwanda, Uganda",
       "description": "Explore the best safari destinations: Masai Mara, Serengeti, gorilla trekking in Rwanda & Uganda, Zanzibar beaches, and more."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://jaetravel.co.ke/destinations" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://www.jaetravel.co.ke/destinations" }
       ]
     },
 
     // 3. CollectionPage with ImageObject for every destination
     {
       "@type": "CollectionPage",
-      "@id": "https://jaetravel.co.ke/destinations/#collection",
+      "@id": "https://www.jaetravel.co.ke/destinations/#collection",
       "name": "East Africa Safari Destinations",
       "description": "Discover the best places to visit in East Africa: Kenya, Tanzania, Rwanda, Uganda.",
       "hasPart": destinations.map((dest) => ({
         "@type": "Place",
         "name": dest.name,
-        "url": `https://jaetravel.co.ke/destinations/${dest.slug}`,
+        "url": `https://www.jaetravel.co.ke/destinations/${dest.slug}`,
         "image": {
           "@type": "ImageObject",
           "url": dest.heroImage,
@@ -128,7 +128,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/og-east-africa-destinations.jpg"],
     },
     alternates: {
-      canonical: "https://jaetravel.co.ke/destinations",
+      canonical: "https://www.jaetravel.co.ke/destinations",
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

@@ -59,24 +59,24 @@ const contactPageSchema = {
     // 2. WebPage + Breadcrumb
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/contact/#webpage",
-      "url": "https://jaetravel.co.ke/contact",
+      "@id": "https://www.jaetravel.co.ke/contact/#webpage",
+      "url": "https://www.jaetravel.co.ke/contact",
       "name": "Contact Us | JaeTravel Expeditions",
       "description": "Get in touch for safari bookings, vehicle hire, or custom accessible tours. 24/7 support."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://jaetravel.co.ke/contact" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.jaetravel.co.ke/contact" }
       ]
     },
 
     // 3. ContactPage
     {
       "@type": "ContactPage",
-      "@id": "https://jaetravel.co.ke/contact/#contactpage",
-      "url": "https://jaetravel.co.ke/contact",
+      "@id": "https://www.jaetravel.co.ke/contact/#contactpage",
+      "url": "https://www.jaetravel.co.ke/contact",
       "name": "Contact JaeTravel Expeditions",
       "description": "Book your safari, inquire about wheelchair-accessible tours, or hire vehicles. We reply within 24 hours."
     },

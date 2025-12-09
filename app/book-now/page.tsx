@@ -12,7 +12,7 @@ const vehicleHireSchema = {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
       "name": "JAE Travel Expeditions – Vehicle Hire & Transfers",
-      "url": "https://jaetravel.co.ke/vehicle-hire",
+      "url": "https://www.jaetravel.co.ke/vehicle-hire",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
       "description": "Luxury vehicle rental and private transfers in Kenya. Airport transfers, 4x4 safari vehicles, minivans, and executive cars with professional drivers. 24/7 service.",
@@ -34,7 +34,7 @@ const vehicleHireSchema = {
     // 2. Car Rental Service — THIS IS THE MONEY MAKER
     {
       "@type": "Service",
-      "@id": "https://jaetravel.co.ke/vehicle-hire/#service",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#service",
       "serviceType": "Car Rental & Private Transfers",
       "provider": { "@id": "https://www.jaetravel.co.ke/#organization" },
       "areaServed": ["Kenya", "Nairobi", "Mombasa", "Masai Mara", "Amboseli"],
@@ -93,16 +93,16 @@ const vehicleHireSchema = {
     // 3. WebPage + Breadcrumb
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/vehicle-hire/#webpage",
-      "url": "https://jaetravel.co.ke/vehicle-hire",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#webpage",
+      "url": "https://www.jaetravel.co.ke/vehicle-hire",
       "name": "Vehicle Rental & Airport Transfers | JaeTravel Kenya",
       "description": "Luxury car hire and private transfers in Nairobi and across Kenya. 24/7 service with professional drivers."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Vehicle Hire", "item": "https://jaetravel.co.ke/vehicle-hire" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Vehicle Hire", "item": "https://www.jaetravel.co.ke/vehicle-hire" }
       ]
     },
 

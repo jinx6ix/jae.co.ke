@@ -3,15 +3,15 @@ export const faqSchema = {
   "@graph": [
     {
       "@type": "FAQPage",
-      "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
-      "url": "https://jaetravel.co.ke/maasai-mara-great-migration",
+      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
+      "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
       "name": "Great Migration 2026 FAQs | Wheelchair Accessible Safaris | JaeTravel Expeditions",
       "description": "Everything you need to know about witnessing the 2026 Great Wildebeest Migration in Masai Mara with full wheelchair accessibility.",
       "inLanguage": "en-KE",
       "mainEntity": [
         {
           "@type": "Question",
-          "@id": "https://jaetravel.co.ke/maasai-mara-great-migration/#q1",
+          "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#q1",
           "name": "When is the Great Migration in Masai Mara in 2026?",
           "acceptedAnswer": {
             "@type": "Answer",

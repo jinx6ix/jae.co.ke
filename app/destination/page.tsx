@@ -40,7 +40,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/og-east-africa-destinations.jpg"],
     },
     alternates: {
-      canonical: "https://jaetravel.co.ke/destination",
+      canonical: "https://www.jaetravel.co.ke/destination",
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

@@ -14,7 +14,7 @@ interface BookingPageProps {
 // DYNAMIC RICH RESULTS SCHEMA — FULLY COMPATIBLE WITH generateStaticParams
 function generateTourSchema(tour: typeof tours[0]) {
   const resolvedSlug = tour.bookingSlug
-  const pageUrl = `https://jaetravel.co.ke/${resolvedSlug}/book`
+  const pageUrl = `https://www.jaetravel.co.ke/${resolvedSlug}/book`
 
   return {
     "@context": "https://schema.org",
@@ -75,9 +75,9 @@ function generateTourSchema(tour: typeof tours[0]) {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-          { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://jaetravel.co.ke/tours" },
-          { "@type": "ListItem", "position": 3, "name": tour.title, "item": `https://jaetravel.co.ke/tours/${tour.slug}` },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+          { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
+          { "@type": "ListItem", "position": 3, "name": tour.title, "item": `https://www.jaetravel.co.ke/tours/${tour.slug}` },
           { "@type": "ListItem", "position": 4, "name": "Book Now", "item": pageUrl }
         ]
       },
@@ -134,7 +134,7 @@ export async function generateMetadata({ params }: BookingPageProps): Promise<Me
       title: `Book ${tour.title} | JaeTravel Expeditions`,
       description: `Secure your ${tour.title} adventure in ${tour.country}`,
       images: [tour.image?.[0] || '/api/placeholder/1200/630'],
-      url: `https://jaetravel.co.ke/${resolvedParams.slug}/book`,
+      url: `https://www.jaetravel.co.ke/${resolvedParams.slug}/book`,
     },
   };
 }

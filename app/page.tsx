@@ -42,7 +42,7 @@ const homepageSchema = {
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JAE Travel Expeditions – Wheelchair Accessible Safaris & Vehicle Hire Kenya",
       "description": "East Africa's leading wheelchair-accessible safari operator offering adapted Land Cruisers with hydraulic lifts, pop-up roofs, and full medical facilities. Also providing private safari vehicle hire.",
-      "url": "https://jaetravel.co.ke",
+      "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
       "image": "https://www.jaetravel.co.ke/accessible-safari-wheelchair.jpg",
       "address": { "@type": "PostalAddress", "addressCountry": "KE" },
@@ -80,7 +80,7 @@ const homepageSchema = {
           "@type": "Offer",
           "name": "Wheelchair Accessible Safari Vehicle Hire Kenya",
           "description": "Rent fully adapted 4x4 Land Cruisers with hydraulic wheelchair lifts, pop-up roofs, medical facilities, and experienced drivers.",
-          "url": "https://jaetravel.co.ke/vehicle-hire",
+          "url": "https://www.jaetravel.co.ke/vehicle-hire",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "offeredBy": { "@id": "https://www.jaetravel.co.ke/#business" }
@@ -91,15 +91,15 @@ const homepageSchema = {
     // 3. WebPage + BreadcrumbList
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/#webpage",
-      "url": "https://jaetravel.co.ke",
+      "@id": "https://www.jaetravel.co.ke/#webpage",
+      "url": "https://www.jaetravel.co.ke",
       "name": "JAE Travel Expeditions - Wheelchair Accessible Safaris East Africa",
-      "isPartOf": { "@type": "WebSite", "url": "https://jaetravel.co.ke", "name": "JAE Travel" }
+      "isPartOf": { "@type": "WebSite", "url": "https://www.jaetravel.co.ke", "name": "JAE Travel" }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" }
       ]
     },
 
@@ -205,7 +205,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       locale: "en_KE",
     },
     alternates: {
-      canonical: "https://jaetravel.co.ke",
+      canonical: "https://www.jaetravel.co.ke",
     },
     robots: {
       index: true,

@@ -38,7 +38,7 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
       validFrom: new Date().toISOString(),
-      url: `https://jaetravel.co.ke/tours/${tour.slug}`,
+      url: `https://www.jaetravel.co.ke/tours/${tour.slug}`,
       priceSpecification: {
         "@type": "PriceSpecification",
         price: tour.price,
@@ -49,7 +49,7 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
     provider: {
       "@type": "TravelAgency",
       name: "JaeTravel Expeditions",
-      url: "https://jaetravel.co.ke",
+      url: "https://www.jaetravel.co.ke",
     },
     aggregateRating: {
       "@type": "AggregateRating",

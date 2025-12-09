@@ -27,16 +27,16 @@ const transportSchema = {
     // 2. WebPage + Breadcrumb
     {
       "@type": "WebPage",
-      "@id": "https://jaetravel.co.ke/other-services/#webpage",
-      "url": "https://jaetravel.co.ke/other-services",
+      "@id": "https://www.jaetravel.co.ke/other-services/#webpage",
+      "url": "https://www.jaetravel.co.ke/other-services",
       "name": "Transportation Services Kenya & East Africa | Vehicle Hire",
       "description": "Airport transfers, safari vehicles, group transport across Kenya, Tanzania, Rwanda & Uganda."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Transportation", "item": "https://jaetravel.co.ke/other-services" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+        { "@type": "ListItem", "position": 2, "name": "Transportation", "item": "https://www.jaetravel.co.ke/other-services" }
       ]
     },
 
@@ -57,7 +57,7 @@ const transportSchema = {
               "description": "24/7 airport pickup & drop-off with meet & greet",
               "image": {
                 "@type": "ImageObject",
-                "url": "https://jaetravel.co.ke/waaa.jpg",
+                "url": "https://www.jaetravel.co.ke/waaa.jpg",
                 "name": "Nairobi Airport Transfer Service",
                 "description": "Professional driver waiting at JKIA with name sign"
               }
@@ -73,7 +73,7 @@ const transportSchema = {
               "description": "4x4 Land Cruisers with pop-up roof for game viewing",
               "image": {
                 "@type": "ImageObject",
-                "url": "https://jaetravel.co.ke/14.jpeg",
+                "url": "https://www.jaetravel.co.ke/14.jpeg",
                 "name": "Safari Vehicle Maasai Mara",
                 "description": "Custom 4x4 safari vehicle with pop-up roof"
               }
@@ -90,7 +90,7 @@ const transportSchema = {
               "description": "Minibuses and coaches for large groups",
               "image": {
                 "@type": "ImageObject",
-                "url": "https://jaetravel.co.ke/waaa.jpg",
+                "url": "https://www.jaetravel.co.ke/waaa.jpg",
                 "name": "Group Transport Minibus Kenya"
               }
             },

@@ -8,7 +8,7 @@ export const revalidate = 3600
 
 export async function GET() {
   try {
-    const baseUrl = "https://jaetravel.co.ke"
+    const baseUrl = "https://www.jaetravel.co.ke"
 
     // Safety: fallback to empty arrays if data is missing
     const safeTours = Array.isArray(tours) ? tours : []
@@ -71,7 +71,7 @@ ${allPages.map(page => `  <url>
     return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jaetravel.co.ke/</loc>
+    <loc>https://www.jaetravel.co.ke/</loc>
     <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
     <priority>1.0</priority>
   </url>
