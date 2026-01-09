@@ -86,47 +86,6 @@ const aboutPageSchema = {
     },
 
     // 4. FAQPage – 7 questions = full carousel
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.jaetravel.co.ke/about/#faqpage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What makes JaeTravel Expeditions different from other safari companies?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We specialize in accessible and sustainable safaris. We own our fleet of wheelchair-adapted vehicles, train guides in disability support, and give 10% of profits to conservation and communities." }
-        },
-        {
-          "@type": "Question",
-          "name": "How long has JaeTravel been operating?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Since 2008 — over 17 years of crafting inclusive, life-changing safari experiences across East Africa." }
-        },
-        {
-          "@type": "Question",
-          "name": "Are your safaris suitable for wheelchair users?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We pioneered wheelchair-accessible safaris in East Africa. Hydraulic lifts, barrier-free lodges, and trained staff. Over 1,200 guests with disabilities served." }
-        },
-        {
-          "@type": "Question",
-          "name": "Which countries do you operate in?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Kenya (Masai Mara, Amboseli), Tanzania (Serengeti, Ngorongoro), Rwanda (gorilla trekking), Uganda (gorillas & Queen Elizabeth NP)." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you support conservation and local communities?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Carbon-neutral, plant 1 tree per guest, 10% profits to schools & anti-poaching. 100% local guides." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I customize my safari?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Every safari is 100% tailor-made to your dates, budget, interests, and accessibility needs." }
-        },
-        {
-          "@type": "Question",
-          "name": "What awards has JaeTravel won?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Kenya Tourism Award 2023 (Accessible Tourism), World Travel Awards 2024 (Responsible Tourism), TripAdvisor Travelers’ Choice 5 years running." }
-        }
-      ]
-    }
   ]
 }
 
