@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Car, Map, Plane, Building, Mountain, Palmtree } from "lucide-react"
 
-// BULLET-PROOF TRANSPORTATION SCHEMA — FULL RICH RESULTS + IMAGEOBJECT
+// ENHANCED SEO-OPTIMIZED TRANSPORTATION SCHEMA — FULL RICH RESULTS + IMAGEOBJECT + UPDATED URLS
 const transportSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -12,10 +12,17 @@ const transportSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions – Transportation Services",
+      "name": "JAE Travel Expeditions – Transportation Services Kenya & East Africa",
       "url": "https://www.jaetravel.co.ke",
+      "logo": "https://www.jaetravel.co.ke/logo.png",
+      "image": "https://www.jaetravel.co.ke/14.jpeg",
       "telephone": "+254726485228",
-      "description": "Reliable vehicle hire, airport transfers, safari transport, and group transfers across Kenya, Tanzania, Rwanda & Uganda.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE",
+        "addressRegion": "Nairobi"
+      },
+      "description": "Professional vehicle hire, airport transfers, safari transport, and group transportation services in Kenya, Tanzania, Rwanda & Uganda.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -24,42 +31,47 @@ const transportSchema = {
       }
     },
 
-    // 2. WebPage + Breadcrumb
+    // 2. WebPage + Breadcrumb (corrected URL)
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/other-services/#webpage",
       "url": "https://www.jaetravel.co.ke/other-services",
-      "name": "Transportation Services Kenya & East Africa | Vehicle Hire",
-      "description": "Airport transfers, safari vehicles, group transport across Kenya, Tanzania, Rwanda & Uganda."
+      "name": "Transportation Services Kenya & East Africa | Vehicle Hire, Airport Transfers & Safari Transport",
+      "description": "Reliable car hire, airport transfers, safari vehicles and group transport across Kenya, Tanzania, Rwanda and Uganda. Book 4x4 safari Land Cruisers and chauffeur services.",
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/other-services/#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/other-services/#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Transportation", "item": "https://www.jaetravel.co.ke/other-services" }
+        { "@type": "ListItem", "position": 2, "name": "Transportation Services", "item": "https://www.jaetravel.co.ke/other-services" }
       ]
     },
 
-    // 3. Service Catalog with Offers + ImageObject
+    // 3. Service Catalog with Offers + Enhanced ImageObject
     {
       "@type": "Service",
-      "serviceType": "Transportation & Vehicle Hire",
+      "serviceType": "Transportation & Vehicle Hire Services",
       "provider": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "areaServed": ["Kenya", "Tanzania", "Rwanda", "Uganda"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "East Africa Transportation Services",
+        "name": "East Africa Transportation & Vehicle Rental Services",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Airport Transfers Kenya & East Africa",
-              "description": "24/7 airport pickup & drop-off with meet & greet",
+              "name": "Airport Transfers Kenya, Tanzania, Rwanda & Uganda",
+              "description": "24/7 airport pickup and drop-off with flight monitoring and meet & greet service",
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/waaa.jpg",
-                "name": "Nairobi Airport Transfer Service",
-                "description": "Professional driver waiting at JKIA with name sign"
+                "width": "1200",
+                "height": "800",
+                "name": "Nairobi Airport Transfer Service JKIA",
+                "description": "Professional driver waiting at Jomo Kenyatta International Airport with name sign"
               }
             },
             "priceCurrency": "USD",
@@ -70,12 +82,14 @@ const transportSchema = {
             "itemOffered": {
               "@type": "Service",
               "name": "Safari Tour Transport Kenya & Tanzania",
-              "description": "4x4 Land Cruisers with pop-up roof for game viewing",
+              "description": "4x4 Land Cruisers with pop-up roof ideal for game drives in Maasai Mara and Serengeti",
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/14.jpeg",
-                "name": "Safari Vehicle Maasai Mara",
-                "description": "Custom 4x4 safari vehicle with pop-up roof"
+                "width": "1200",
+                "height": "800",
+                "name": "Safari Vehicle Maasai Mara Kenya",
+                "description": "Custom 4x4 safari Land Cruiser with pop-up roof for optimal wildlife viewing"
               }
             },
             "priceCurrency": "USD",
@@ -86,11 +100,13 @@ const transportSchema = {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Group & Corporate Transport",
-              "description": "Minibuses and coaches for large groups",
+              "name": "Group & Corporate Transport East Africa",
+              "description": "Minibuses and coaches for large groups, conferences and tour packages",
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/waaa.jpg",
+                "width": "1200",
+                "height": "800",
                 "name": "Group Transport Minibus Kenya"
               }
             },
@@ -102,7 +118,7 @@ const transportSchema = {
       }
     },
 
-    // 4. FAQ
+    // 4. FAQPage (optimized questions for search intent)
     {
       "@type": "FAQPage",
       "mainEntity": [
@@ -132,31 +148,48 @@ const transportSchema = {
 }
 
 export const metadata: Metadata = {
-  title: "Transportation Services Kenya Tanzania | Vehicle Hire & Safari Transport East Africa",
+  title: "Transportation Services Kenya & East Africa | Car Hire, Airport Transfers & Safari Vehicles",
   description:
-    "Reliable vehicle hiring and transportation services across East Africa. Self-drive cars, chauffeur services, airport transfers, and safari tour transport to Kenya, Tanzania, Rwanda & Uganda destinations.",
+    "Professional vehicle hire and transportation services in Kenya, Tanzania, Rwanda & Uganda. Airport transfers Nairobi, 4x4 safari Land Cruiser rental, self-drive cars, chauffeur services and group transport across East Africa.",
   keywords: [
     "car hire Kenya",
-    "Tanzania tour transport",
-    "vehicle rental Africa",
     "airport transfers Nairobi",
-    "safari transportation Kenya",
+    "safari vehicle rental Kenya",
     "4x4 rental Tanzania",
     "self drive car hire Nairobi",
     "chauffeur services Kenya",
+    "airport transfer JKIA",
     "airport transfer Mombasa",
-    "safari vehicle rental",
-    "tour transport Rwanda",
-    "Uganda gorilla trekking transport",
-    "luxury car hire East Africa",
-    "group transportation Tanzania",
-    "Maasai Mara safari vehicles",
+    "safari land cruiser hire",
+    "Maasai Mara safari transport",
     "Serengeti tour transport",
     "Kigali airport transfers",
+    "gorilla trekking transport Rwanda",
+    "Uganda gorilla trekking transport",
+    "group transport Kenya",
+    "luxury car hire East Africa",
+    "vehicle rental East Africa",
+    "tour transport Tanzania",
     "Bwindi transport services",
-    "East Africa vehicle rental",
-    "safari land cruiser hire",
+    "East Africa transportation services",
   ],
+  alternates: {
+    canonical: "https://www.jaetravel.co.ke/other-services",
+  },
+  openGraph: {
+    title: "Transportation Services Kenya & East Africa | JAE Travel Expeditions",
+    description: "Reliable car hire, airport transfers and safari transport across Kenya, Tanzania, Rwanda & Uganda.",
+    url: "https://www.jaetravel.co.ke/other-services",
+    type: "website",
+    images: [
+      {
+        url: "https://www.jaetravel.co.ke/14.jpeg",
+        width: 1200,
+        height: 800,
+        alt: "Safari Land Cruiser in Maasai Mara Kenya",
+      },
+    ],
+  },
 }
 
 const services = [
@@ -228,7 +261,7 @@ const destinations = [
 export default function OtherServicesPage() {
   return (
     <>
-      {/* FULL RICH RESULTS SCHEMA */}
+      {/* ENHANCED RICH RESULTS SCHEMA */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(transportSchema) }}
@@ -243,7 +276,7 @@ export default function OtherServicesPage() {
           </p>
         </div>
 
-        {/* Introduction Paragraphs */}
+        {/* Introduction Paragraphs - Keyword-optimized content */}
         <section className="mb-16 max-w-4xl mx-auto">
           <div className="prose prose-lg mx-auto text-muted-foreground leading-relaxed space-y-6">
             <p>
@@ -346,7 +379,7 @@ export default function OtherServicesPage() {
               >
                 <Image
                   src={destination.image || "/placeholder.svg"}
-                  alt={destination.name}
+                  alt={`${destination.name} ${destination.trips} - Transportation Services`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -418,9 +451,10 @@ function ServiceCard({ service }: { service: any }) {
       <div className="relative aspect-[16/10]">
         <Image
           src={service.image || "/placeholder.svg"}
-          alt={service.title}
+          alt={`${service.title} in East Africa - ${service.description}`}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
+          priority={service.id === "airport-transfers"}
         />
         <div className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-sm font-medium backdrop-blur-sm">
           {service.price}
