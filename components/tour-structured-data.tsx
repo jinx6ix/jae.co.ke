@@ -10,6 +10,7 @@ interface TourStructuredDataProps {
     highlights: string[]
     included: string[]
     slug: string
+    image: string
   }
 }
 
@@ -35,6 +36,8 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
     offers: {
       "@type": "Offer",
       price: tour.price.toString(),
+      shipingDetails: "Free airport transfers and in-country transport included",
+      hasMechantReturnPolicy: "Free cancellation up to 30 days before departure",
       priceCurrency: "USD",
       priceValidUntil: "2027-12-31",
       availability: "https://schema.org/InStock",
@@ -51,6 +54,14 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
       "@type": "TravelAgency",
       name: "JaeTravel Expeditions",
       url: "https://www.jaetravel.co.ke",
+      telephone: "+254726485228",
+      image: "https://www.jaetravel.co.ke/logo.png",
+      priceRange: "$200-$3000",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "KE",
+        addressLocality: "Nairobi",
+      },
     },
     duration: tour.duration,
     location: {

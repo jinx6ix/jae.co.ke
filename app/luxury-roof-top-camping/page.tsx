@@ -58,7 +58,10 @@ const campingSchema = {
           "description": "Private chef-prepared meals in the wilderness"
         }
       ],
-      "brand": { "@type": "Organization", "name": "JAE Travel Expeditions" },
+      "brand": { 
+        "@type": "TravelAgency",  // ✅ Fixed: Valid type for travel products
+        "name": "JAE Travel Expeditions" 
+      },
       "offers": [
         {
           "@type": "Offer",
@@ -67,7 +70,46 @@ const campingSchema = {
           "priceCurrency": "USD",
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
-          "url": "https://www.jaetravel.co.ke/book-now?package=camping-self"
+          "url": "https://www.jaetravel.co.ke/book-now?package=camping-self",
+          
+          // ✅ Fixed: Proper MerchantReturnPolicy object
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "KE",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          
+          // ✅ Fixed: Proper OfferShippingDetails object
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "KE"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitText": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 7,
+                "unitText": "DAY"
+              }
+            }
+          }
         },
         {
           "@type": "Offer",
@@ -76,7 +118,45 @@ const campingSchema = {
           "priceCurrency": "USD",
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/LimitedAvailability",
-          "url": "https://www.jaetravel.co.ke/book-now?package=camping-guided"
+          "url": "https://www.jaetravel.co.ke/book-now?package=camping-guided",
+          
+          // ✅ Same policy structure for consistency
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "KE",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "KE"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitText": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 7,
+                "unitText": "DAY"
+              }
+            }
+          }
         }
       ],
       "review": [
