@@ -1,6 +1,7 @@
 // app/sitemap.xml/route.ts
 import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
+import { budgetTours } from "@/lib/budget-tours-data";
 import { destinations } from "@/lib/destinations-data"
 
 export const dynamic = "force-dynamic"
@@ -12,6 +13,7 @@ export async function GET() {
 
     // Safety: fallback to empty arrays if data is missing
     const safeTours = Array.isArray(tours) ? tours : []
+    const budgetSafeTours = Array.isArray(budgetTours) ? budgetTours : []
     const safeVehicles = Array.isArray(vehicles) ? vehicles : []
     const safeDestinations = Array.isArray(destinations) ? destinations : []
 
@@ -36,6 +38,7 @@ export async function GET() {
     "/disability-tours",
     "/maasai-mara-great-migration",
     "/about",
+    "/budget-tours",
     "/blog",
     "/other-services",
     "/blog/blog-gallery",
@@ -44,6 +47,7 @@ export async function GET() {
 
     const dynamicPages = [
       ...safeTours.map(t => `/tours/${t?.slug}`).filter(Boolean),
+      ...budgetSafeTours.map(t => `/budget-tours/${t?.slug}`).filter(Boolean),
       ...safeVehicles.map(v => `/vehicle-hire/${v?.slug}`).filter(Boolean),
       ...safeDestinations.map(d => `/destinations/${d?.country}`).filter(Boolean),
     ]
