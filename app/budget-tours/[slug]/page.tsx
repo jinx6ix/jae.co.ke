@@ -15,14 +15,17 @@ import TourFAQs from "./components/TourFAQs";
 import TourCTA from "./components/TourCTA";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata(
-  { params }: Props,
+  props: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  // Await the params promise before accessing its properties
+  const params = await props.params;
   const tour = getTourBySlug(params.slug);
+  
   if (!tour) return {};
 
   const absoluteImageUrl = `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`;
@@ -55,9 +58,8 @@ export async function generateMetadata(
       title: tour.title,
       description: tour.metaDescription,
       images: [absoluteImageUrl],
-      creator: "@jaetravelke", // optional - add your twitter handle if available
+      creator: "@jaetravelke",
     },
-    // Helps Google understand this is a product/tour for rich results
     other: {
       "og:price:amount": tour.price.toString(),
       "og:price:currency": "USD",
@@ -71,8 +73,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function TourDetailPage({ params }: Props) {
+export default async function TourDetailPage(props: Props) {
+  // Await the params promise before accessing its properties
+  const params = await props.params;
   const tour = getTourBySlug(params.slug);
+  
   if (!tour) notFound();
 
   const absoluteUrl = `https://www.jaetravel.co.ke${tour.url}`;
