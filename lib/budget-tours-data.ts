@@ -1320,7 +1320,122 @@ Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experienc
         answer: "Excellent for first-timers with sufficient time (10 days). The comprehensive coverage provides complete Kenya introduction. However, shorter 5-7 day safaris might be better for those testing safari interest or with limited time. This extended version is ideal for serious wildlife enthusiasts or those wanting thorough exposure." 
       }
     ]
-  }
+  },
+  {
+    id: "12",
+    slug: "3-day-masai-mara-budget-safari",
+    title: "3-Day Masai Mara Budget Safari 2026 - Affordable Wildlife Adventure from $790",
+    description: "An unforgettable 3-day budget safari to Kenya's most famous wildlife reserve, Masai Mara. Witness the Big Five, stunning savannah landscapes, and incredible wildlife diversity. Shared group experience with budget accommodations, professional guides, and comprehensive game drives starting from $790.",
+    shortDescription: "Affordable 3-day Masai Mara safari featuring Big Five game drives, budget camp accommodation, shared group experience. Perfect short wildlife adventure from Nairobi. From $790.",
+    longDescription: `Experience the magic of Africa's most iconic wildlife reserve with our 3-Day Masai Mara Budget Safari 2026. Starting from just $790 per person, this condensed yet comprehensive safari delivers maximum wildlife experiences in minimal time, perfect for travelers with limited schedules or those wanting to add a safari component to a broader Kenyan itinerary. Masai Mara National Reserve, Kenya's crown jewel of wildlife destinations, offers unparalleled game viewing with its vast savannah landscapes, abundant predator populations, and the famous seasonal Great Migration (July-October). Our carefully crafted 3-day itinerary optimizes your limited time with strategic game drives, comfortable budget accommodations, and professional guiding that ensures you experience the essence of the Mara.
+
+Your adventure begins with an early departure from Nairobi, traveling through Kenya's scenic Great Rift Valley with panoramic views that provide your first taste of Africa's dramatic landscapes. The journey to Masai Mara itself becomes part of the experience, passing through traditional Maasai villages and witnessing the transition from urban to wilderness environments. Arriving at your budget camp by midday, you'll have time to settle in before embarking on your first afternoon game drive - strategically timed for optimal wildlife viewing when temperatures cool and animals become more active. This initial game drive introduces you to the Mara's ecosystem, with opportunities to spot elephants, giraffes, zebras, and potentially predators beginning their evening hunts.
+
+Day two represents the core of your Masai Mara experience with a full day of game viewing in the reserve. Unlike shorter safaris that rush through the experience, our full-day approach allows for comprehensive exploration of different sectors of the vast reserve. With packed lunches, you can venture further from tourist circuits, increasing your chances of unique wildlife sightings and undisturbed photographic opportunities. Your guide's expertise becomes particularly valuable today as they track animal movements, interpret behaviors, and position your vehicle for optimal viewing of potential predator-prey interactions. The extended time also allows for patient observation at waterholes or known lion territories - experiences impossible on rushed itineraries.
+
+Our 3-day format provides balanced safari experience: enough time for meaningful wildlife encounters without overwhelming first-time safari-goers. The itinerary includes approximately 12-15 hours of dedicated game drives across multiple sessions (afternoon, full day, morning), providing comprehensive exposure to the Mara's wildlife diversity. This concentrated approach ensures you experience the reserve's key highlights - from the Big Five (lion, leopard, elephant, buffalo, rhino) to abundant herbivores, predators, and over 450 bird species that call the Mara home.
+
+Budget accommodations at Rhino Tourist Camp or similar offer comfortable safari experience without luxury frills. These camps provide essential amenities - secure accommodations, hot showers, proper beds, and dining facilities - while maintaining authentic safari atmosphere. The shared group model (4-7 travelers per vehicle) makes this safari exceptionally affordable while fostering social travel experiences. Despite the budget pricing, we maintain quality standards with well-maintained 4x4 vehicles featuring pop-up roofs for optimal viewing and photography.
+
+This safari represents exceptional value at $790, approximately 30% below typical 3-day Masai Mara tours. Cost savings come from strategic partnerships with budget camps, efficient group sizes, and eliminating unnecessary inclusions. Yet we preserve the essential safari experiences: extensive game drives, professional guiding, comfortable accommodations, and comprehensive park access. The price includes all major expenses (transport, accommodation, meals, park fees, guiding), providing transparent budgeting without hidden costs.
+
+Practical advantages include weekly departures year-round (with best wildlife viewing July-October during migration), seamless Nairobi pickup/dropoff, and minimal pre-travel preparation requirements. The condensed timeline makes this safari accessible to business travelers, stopover visitors, or those combining safari with beach holidays. Despite the short duration, the itinerary delivers concentrated wildlife experiences that often exceed expectations.
+
+Photography opportunities abound even on this brief safari. The Mara's open landscapes provide excellent lighting conditions, while abundant wildlife offers diverse subjects. Our vehicles' pop-up roofs allow for stable photography from elevated positions. The full-day game drive provides multiple lighting conditions (morning golden hour, midday brightness, afternoon warmth) for varied photographic results.
+
+For first-time safari-goers, this 3-day introduction provides manageable exposure to determine if longer safaris suit your interests. For experienced travelers, it offers a cost-effective Masai Mara fix between other adventures. For all visitors, it delivers the quintessential African wildlife experience in accessible, affordable format.
+
+Booking is straightforward with immediate confirmation for most departure dates. We recommend booking 2-3 months in advance for peak season (July-October) or 2-4 weeks for other periods. Solo travelers benefit from shared accommodation arrangements (same-gender room sharing) avoiding single supplements.
+
+Don't miss this opportunity to experience Africa's most famous wildlife reserve at unprecedented budget pricing. Whether seeking introductory safari experience, photographic opportunities, or simply the thrill of witnessing wild animals in their natural habitat, our 3-Day Masai Mara Budget Safari delivers unforgettable experiences at accessible cost. Book now for 2026 departure and discover why Masai Mara remains the world's premier safari destination.`,
+    metaDescription: "Book 3-Day Masai Mara Budget Safari 2026 from Nairobi starting at $790. Affordable wildlife adventure with Big Five game drives, budget camp accommodation, shared group experience. Weekly departures.",
+    keywords: [
+      "3 day Masai Mara budget safari",
+      "Masai Mara affordable safari 3 days", 
+      "short Masai Mara tour budget",
+      "Nairobi to Masai Mara 3 day safari",
+      "budget Masai Mara safari package",
+      "cheap Masai Mara tour 3 days",
+      "Masai Mara budget camping safari"
+    ],
+    price: 790,
+    originalPrice: 950,
+    image: "/masai-mara-safari.jpg", // You'll need to add this image
+    url: "/budget-tours/3-day-masai-mara-budget-safari",
+    bookingUrl: "/budget-tours/3-day-masai-mara-budget-safari#booking-form",
+    country: "Kenya",
+    rating: 4.8,
+    reviewCount: 89,
+    duration: "3 Days / 2 Nights",
+    groupSize: "4-7 people",
+    departure: "Weekly from Nairobi (Mon, Wed, Fri)",
+    itinerary: [
+      { 
+        day: 1, 
+        title: "Nairobi to Masai Mara - Afternoon Game Drive", 
+        content: "Early morning pickup from your Nairobi hotel or airport (by 7:00 AM). Depart for Masai Mara via the scenic Great Rift Valley, with a stop at the viewpoint for breathtaking photos. Continue to Narok town for a brief refreshment stop. Arrive at your budget camp in Masai Mara by early afternoon for check-in and lunch. After settling in, embark on your first afternoon game drive at 4:00 PM, exploring the reserve's eastern sectors. Return to camp before dusk for dinner and overnight stay at Rhino Tourist Camp or similar budget accommodation." 
+      },
+      { 
+        day: 2, 
+        title: "Full Day Masai Mara Game Drives", 
+        content: "Early morning game drive starting at 6:30 AM to catch predators at their most active. Return to camp for breakfast around 9:00 AM. After breakfast, depart with packed lunches for a full day of game viewing in the reserve. Your guide will take you to prime wildlife areas, potentially including the Mara River (depending on season and animal movements). Spend the day searching for the Big Five and observing the Mara's diverse ecosystem. Enjoy your picnic lunch at a scenic spot within the reserve. Continue game viewing throughout the afternoon, returning to camp around 5:30 PM. Dinner and overnight at your camp." 
+      },
+      { 
+        day: 3, 
+        title: "Morning Game Drive & Return to Nairobi", 
+        content: "Early breakfast at the camp followed by a final morning game drive (7:00 AM - 10:00 AM), giving you last opportunities for wildlife sightings and photography. Return to camp for check-out by 10:30 AM. Depart Masai Mara for Nairobi, with a lunch stop in Narok town. Arrive in Nairobi by late afternoon (approximately 4:00-5:00 PM). Drop-off at your hotel or Jomo Kenyatta International Airport for your onward travel." 
+      }
+    ],
+    highlights: [
+      "Three extensive game drives (afternoon, full day, morning) totaling 12-15 hours",
+      "Big Five viewing opportunities in Africa's most famous wildlife reserve",
+      "Budget camp accommodation with authentic safari atmosphere",
+      "Shared 4x4 vehicle with pop-up roof for optimal viewing",
+      "Professional English-speaking safari guide",
+      "Great Rift Valley scenic stop with panoramic views",
+      "Weekly departures for flexible scheduling",
+      "All-inclusive pricing with no hidden costs"
+    ],
+    included: [
+      "Return transport from Nairobi in shared 4x4 safari vehicle",
+      "Professional English-speaking driver/guide",
+      "All Masai Mara National Reserve entrance fees",
+      "Game drives as per itinerary",
+      "2 nights accommodation in budget safari camp",
+      "All meals (2 breakfasts, 3 lunches, 2 dinners)",
+      "Bottled drinking water throughout the safari",
+      "Nairobi hotel/airport pickup and dropoff",
+      "All government taxes and service charges"
+    ],
+    excluded: [
+      "International flights to/from Kenya",
+      "Kenya visa fees (approximately $50)",
+      "Travel insurance (highly recommended)",
+      "Tips for guide and camp staff",
+      "Optional Maasai village visit ($20 per person)",
+      "Alcoholic beverages and premium drinks",
+      "Personal expenses and souvenirs",
+      "Items of personal nature"
+    ],
+    faqs: [
+      { 
+        question: "Is 3 days enough for Masai Mara safari?", 
+        answer: "Yes, 3 days provides a comprehensive Masai Mara experience. While longer stays allow more wildlife sightings, our optimized itinerary includes 12-15 hours of game drives across different times of day, covering key areas of the reserve. Most travelers see the Big Five (except sometimes rhino) and abundant other wildlife. It's perfect for those with limited time wanting essential Mara experience." 
+      },
+      { 
+        question: "What is the best time for this 3-day Masai Mara safari?", 
+        answer: "Masai Mara offers excellent wildlife viewing year-round. July-October is peak for witnessing the Great Migration river crossings. January-March is dry season with good game viewing and fewer crowds. April-June and November are low season with potential rain but lush landscapes and lower prices. Our safari operates weekly throughout the year." 
+      },
+      { 
+        question: "What type of accommodation is included in the budget camp?", 
+        answer: "Budget camps like Rhino Tourist Camp offer comfortable permanent tents or basic bandas with proper beds, mosquito nets, and en-suite bathrooms with hot showers. Facilities include dining area, campfire place, and secure surroundings. While not luxury, they provide authentic safari experience with essential comforts at affordable pricing." 
+      },
+      { 
+        question: "Can solo travelers book this safari?", 
+        answer: "Absolutely! Solo travelers are welcome. We arrange same-gender room sharing to avoid single supplements. If you prefer private room, single supplement of $120 applies (subject to availability). The shared group experience makes this safari social and cost-effective for solo travelers." 
+      }
+    ]
+  },
 ];
 
 export function getTourBySlug(slug: string): Tour | undefined {
