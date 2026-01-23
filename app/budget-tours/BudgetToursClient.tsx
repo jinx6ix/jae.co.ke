@@ -24,7 +24,7 @@ export default function BudgetToursClient() {
             <TourCard 
               key={tour.id} 
               tour={tour}
-              // showOriginalPrice={true} // Uncomment if you want to show strikethrough original prices
+              //showOriginalPrice={true} // Uncomment if you want to show strikethrough original prices
             />
           ))}
         </div>

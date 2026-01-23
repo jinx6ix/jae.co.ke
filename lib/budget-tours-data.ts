@@ -59,7 +59,7 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
     keywords: ["3-day Masai Mara budget safari", "cheap Masai Mara safari Kenya 2026", "affordable Masai Mara group tour", "budget Kenya safari packages", "Masai Mara wildlife tour from $450", "cheap group safari Kenya", "budget camping Masai Mara", "Kenya safari deals 2026"],
     price: 450,
     originalPrice: 550,
-    image: "/tours/masai-mara-3days.jpg",
+    image: "/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",
     url: "/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara%203%20Days%20Budget%20Land%20Cruiser%20Safari%20$450",
     country: "Kenya",
@@ -71,18 +71,18 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara - Afternoon Game Drive", 
-        content: "Depart from Nairobi at 7:00 AM in a shared 4x4 Land Cruiser with pop-up roof for your cheap Masai Mara safari Kenya 2026. Enjoy scenic views of the Great Rift Valley en route, stopping at viewpoints for photographs. Arrive at Masai Mara National Reserve by midday and check into your budget tented camp with shared facilities. After lunch, embark on your first afternoon game drive, entering the reserve through Sekenani Gate. Spot lions, elephants, cheetahs, and various antelope species in their natural habitat. Your experienced guide will explain animal behaviors, tracking techniques, and conservation efforts. Learn about the ecosystem as you traverse different habitats. Return to camp before sunset for dinner around the campfire, sharing stories with fellow travelers. Overnight in comfortable safari tents with mosquito nets, listening to the sounds of the African wilderness." 
+        title: "Pick up at Hotel and drive to Masai Mara National Reserve", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return at dusk for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration with Extended Game Drives", 
-        content: "Wake up early at 6:00 AM for a sunrise game drive when predators are most active and temperatures are cooler. Enjoy packed breakfast in the bush while watching wildlife activities and morning behaviors. Spend the full day on extensive game drives in Masai Mara, tracking the Big Five and witnessing the Great Migration (July-October). Your guide will take you to prime viewing areas like the Mara River for possible crossing sightings, exploring both Talek and Sekenani regions. Picnic lunch served in a scenic location with continuous wildlife viewing opportunities. Optional activities include a visit to a Maasai village ($25-30 per person) to learn about local culture, traditional dances, and lifestyle. Return to camp in the late afternoon for relaxation, followed by dinner. Evening campfire with wildlife sounds creates unforgettable memories under the African stars." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Morning Game Drive and Return to Nairobi with Scenic Stops", 
-        content: "Early morning game drive at 6:30 AM for final wildlife sightings on your affordable Kenya safari. Search for any Big Five species you may have missed, with excellent morning light for photography. Observe predator-prey interactions as animals are active in the cool morning. Return to camp by 9:00 AM for a full breakfast and final packing. Check out of camp by 10:00 AM and begin your journey back to Nairobi. Stop at the Great Rift Valley viewpoint for panoramic photos and souvenir shopping at local markets. Visit a curio shop for authentic African crafts. Arrive in Nairobi by 4:00-5:00 PM, with drop-off at your hotel or Jomo Kenyatta International Airport for onward travel. End of your memorable 3-day Masai Mara budget safari experience with photos and stories to share." 
+        title: "Drive to Nairobi", 
+        content: "After breakfast check out and you may opt for an optional Maasai village visit, where you will interact with the Maasai community and learn about their way of life and culture at an extra cost of 30 USD per person. Later on commence drive to Nairobi with lunch on the way. Upon arrival you will be dropped off at Nairobi CBD." 
       }
     ],
     highlights: [
@@ -162,7 +162,7 @@ Don't miss this opportunity to experience Masai Mara with enhanced comfort at st
     keywords: ["Masai Mara superior budget safari", "upgraded budget safari Kenya 2026", "better budget camps Masai Mara", "affordable comfort safari", "Masai Mara improved budget tour", "quality budget safari Kenya", "enhanced budget experience Mara"],
     price: 730,
     originalPrice: 850,
-    image: "/tours/masai-mara-superior-3days.jpg",
+    image: "/pexels-gil-daix-2046153486-29339542-scaled.jpg",
     url: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara%203%20Days%20Superior%20Budget%20Shared%20Land%20Cruiser%20Safari%20$730",
     country: "Kenya",
@@ -174,18 +174,18 @@ Don't miss this opportunity to experience Masai Mara with enhanced comfort at st
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara - Superior Camp Check-in & Afternoon Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in a superior shared 4x4 Land Cruiser with enhanced comfort features. Enjoy the scenic drive through the Great Rift Valley with comfort stops. Arrive at your superior budget camp by midday - notice immediate upgrades in facilities and service. Check into your upgraded tent with proper beds, quality bedding, and better ensuite facilities. Enjoy a quality lunch at the camp's improved dining area. Afternoon game drive from 3:00 PM to 6:30 PM in Masai Mara National Reserve, entering through preferred gates. Experience excellent wildlife viewing with your senior guide. Return to camp for evening relaxation, superior dinner service, and overnight in comfort with reliable amenities." 
+        title: "Pick up at Hotel and drive to Masai Mara National Reserve", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return at dusk for dinner and overnight stay at Mara Olodare Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration with Enhanced Services", 
-        content: "Early morning wake-up with quality coffee/tea service. Sunrise game drive from 6:30 AM to 10:00 AM for optimal predator viewing. Enjoy a superior packed breakfast in the bush with better food variety and presentation. Full day of game drives with your experienced senior guide, exploring different sectors of Masai Mara. Search for the Big Five, cheetahs, and seasonal migration herds. Quality picnic lunch at a scenic location with comfortable setup. Optional activities available with better coordination. Afternoon game drive with photography focus. Return to superior camp by 6:30 PM for relaxation, enhanced dinner experience, and comfortable overnight stay." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Mara Olodare Camp." 
       },
       { 
         day: 3, 
-        title: "Morning Game Drive and Return to Nairobi with Superior Service", 
-        content: "Final morning game drive from 6:30 AM to 9:00 AM, searching for any missed species in excellent morning light. Return to camp for a full superior breakfast with variety and quality. Check out by 10:00 AM with assistance from camp staff. Begin return journey to Nairobi in comfortable Land Cruiser. Stop at Great Rift Valley viewpoint for photos and quality souvenir shopping opportunities. Enjoy a good lunch at a selected restaurant en route. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or airport. End of superior budget safari experience with enhanced comfort memories." 
+        title: "Drive to Nairobi", 
+        content: "After breakfast check out and you may opt for an optional Maasai village visit, where you will interact with the Maasai community and learn about their way of life and culture at an extra cost of 30 USD per person. Later on commence drive to Nairobi with lunch on the way. Upon arrival you will be dropped off at Nairobi CBD." 
       }
     ],
     highlights: [
@@ -267,7 +267,7 @@ Don't miss this opportunity to experience Kenya's unique northern wilderness on 
     keywords: ["Samburu private safari", "3 days private safari Kenya", "Samburu Special Five tour", "exclusive northern Kenya safari", "private budget safari Kenya", "Samburu National Reserve private", "customized Kenya safari affordable"],
     price: 690,
     originalPrice: 850,
-    image: "/tours/samburu-private-3days.jpg",
+    image: "/sutirta-budiman-E8JdyPcSA8o-unsplash-5-scaled.jpg",
     url: "/budget-tours/samburu-3-days-private-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Samburu%203%20Days%20Private%20Safari%20$690",
     country: "Kenya",
@@ -279,18 +279,18 @@ Don't miss this opportunity to experience Kenya's unique northern wilderness on 
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Samburu - Private Journey & Afternoon Game Drive", 
-        content: "Flexible morning departure from your Nairobi hotel in private 4x4 vehicle (typically 7:00-8:00 AM based on your preference). Drive north through changing landscapes from central highlands to northern semi-desert. Stop at scenic viewpoints and local towns at your preferred pace. Arrive at Samburu National Reserve by early afternoon. Check into your private accommodation at a budget lodge or camp. After lunch, embark on your first private afternoon game drive along the Ewaso Nyiro River. Search for Samburu's Special Five: Grevy's zebra, Somali ostrich, reticulated giraffe, gerenuk, and Beisa oryx. Your private guide explains unique adaptations of northern wildlife. Return to accommodation before sunset for dinner and overnight, discussing next day's priorities with your guide." 
+        title: "Drive from Nairobi to Samburu", 
+        content: "Your driver guide will pick you up at the airport or your hotel in Nairobi. After meet and greet, he will escort you to your car and commence drive to Samburu National Reserve arriving for lunch at the camp. After check in and lunch, you will embark on an afternoon game drive or an optional visit to a local Samburu village and return to the camp at dusk for dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 2, 
-        title: "Full Day Samburu Exploration - Private Customized Safari", 
-        content: "Early morning private game drive at your preferred time (typically 6:30 AM for best wildlife activity). Focus on predator sightings along the river and Special Five tracking in different reserve sectors. Enjoy flexible breakfast either packed in the bush or back at lodge based on your preference. Full day of private game drives with itinerary completely tailored to your interests. Want to focus on birdwatching? Photography? Specific animal tracking? Your guide adjusts accordingly. Flexible picnic lunch at scenic location you choose. Optional cultural visit to Samburu village arranged based on your interest and timing. Afternoon game drive concentrating on areas missed or revisiting productive spots. Return to accommodation at your preferred time for dinner and overnight." 
+        title: "Full day Game drives in Samburu National Reserve", 
+        content: "After early breakfast at the camp, join your safari driver guide and depart for full day game viewing drive with picnic lunch boxes to Samburu National Reserve, famous for its truly wild semi-arid landscape, and the large concentration of wild animals and bird-life. Together with the adjoining Shaba and Buffalo Springs national reserves, Samburu is popular for hosting the rare Northern-Kenya animal species (Gerenuk, Reticulated Giraffe, Grevy’s zebra, Beisa Oryx and Somali Ostrich) which are not found in the other popular parks and reserves in Kenya. It is also home to all the African big cats (lion, cheetah and leopard), alongside other big game including elephants, buffaloes, warthogs, hippos, impala, water-buck and many others. Samburu is also a renowned bird watching haven, with hundreds of bird species resident here. These include kingfisher, bee-eaters, tawny eagle, guinea-fowl, yellow throated spur-fowl, lilac-breasted roller, red-billed hornbill, secretary bird, Verreaux’s eagle, superb starling, yellow-billed hornbill and vultures. Dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 3, 
-        title: "Morning Game Drive & Private Return to Nairobi", 
-        content: "Final morning private game drive in Samburu at your chosen time. Search for any missed Special Five species or revisit favorite sightings for photography. Return to accommodation for breakfast at your leisure. Check out and begin private return journey to Nairobi. Stop at selected viewpoints, craft markets, or lunch spots based on your preferences. Visit the Equator crossing for photos if route permits. Arrive Nairobi at your preferred time (typically 4:00-5:00 PM) with drop-off at your hotel or airport. End of exclusive private Samburu safari experience with personalized memories." 
+        title: "Samburu to Nairobi", 
+        content: "After breakfast, check out and onward departure back to Nairobi. Arrive Nairobi in the afternoon where you will be dropped off at your hotel or free onward transfer to the airport for your flight home." 
       }
     ],
     highlights: [
@@ -368,7 +368,7 @@ Don't miss this opportunity to experience Kenya's wildlife highlights at excepti
     keywords: ["Masai Mara Nakuru 4 days budget safari", "cheap two-park Kenya safari 2026", "affordable Mara and Nakuru tour", "budget shared safari Kenya", "Kenya wildlife combo from $610", "flamingos and Big Five safari", "4-day budget Kenya adventure"],
     price: 610,
     originalPrice: 750,
-    image: "/tours/mara-nakuru-4days.jpg",
+    image: "/1000025509-1.jpg",
     url: "/budget-tours/masai-mara-nakuru-4-days-budget-shared-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara%20-%20Nakuru%204%20Days%20Budget%20Shared%20Safari%20$610",
     country: "Kenya",
@@ -380,23 +380,23 @@ Don't miss this opportunity to experience Kenya's wildlife highlights at excepti
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara National Reserve - First Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 Land Cruiser with pop-up roof. Drive through the scenic Great Rift Valley with photo stops at viewpoints overlooking this geological wonder. Arrive at Masai Mara National Reserve by midday and check into budget tented camp with shared facilities. Enjoy lunch at camp with views of the savannah. Afternoon game drive from 3:00 PM to 6:30 PM entering through Sekenani or Talek Gate. Initial wildlife sightings including elephants, giraffes, zebras, and various antelope species. Learn about the ecosystem from your professional guide. Return to camp before sunset for dinner and overnight. Evening campfire with introductions to fellow travelers and stories under African stars." 
+        title: "Drive Nairobi to Masai Mara", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration - Big Five Tracking", 
-        content: "Early morning wake-up at 6:00 AM with coffee/tea. Sunrise game drive from 6:30 AM to 10:00 AM when predators are most active. Search for lions, leopards, and cheetahs in optimal morning light. Enjoy packed breakfast in the bush while watching wildlife activities. Return to camp briefly before continuing full day game drives. Explore different sectors of Masai Mara including Mara River area for possible migration crossings (seasonal July-October). Picnic lunch at scenic location with continuous wildlife viewing. Optional visit to Maasai village ($25-30) to learn about traditional culture. Afternoon game drive focusing on photography and tracking any missed Big Five species. Return to camp by 6:30 PM for dinner sharing experiences with group." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara to Lake Nakuru National Park - Ecosystem Transition", 
-        content: "Morning game drive in Masai Mara from 6:30 AM to 9:30 AM for final wildlife sightings. Search for any missed species in excellent morning light. Return to camp for full breakfast and check out by 10:30 AM. Drive north to Lake Nakuru National Park (approximately 5-6 hours) through changing landscapes. Lunch en route at local restaurant. Arrive at Lake Nakuru by mid-afternoon and check into budget lodge with views of flamingo-lined lake. Afternoon game drive in Lake Nakuru from 4:00 PM to 6:30 PM focusing on rhino sanctuary (both black and white rhino) and flamingo spectacle along alkaline shores. Birdwatching opportunities with over 450 species. Dinner and overnight at lodge." 
+        title: "Drive to Naivasha", 
+        content: "After breakfast check out and proceed to drive to Naivasha with lunch on the way. ‘Lake Naivasha offers an accessible and captivating safari experience in Kenya’s Rift Valley. Known for its tranquil waters and abundant wildlife, this freshwater lake provides a unique adventure for nature enthusiasts and travelers seeking a serene escape.’ Arrive at Naivasha in the evening for dinner and overnight at Chambai Safari Hotel." 
       },
       { 
         day: 4, 
-        title: "Lake Nakuru Game Drives & Return to Nairobi", 
-        content: "Early morning game drive in Lake Nakuru from 6:30 AM to 9:30 AM for best wildlife viewing. Search for leopards in yellow acacia forests and visit Baboon Cliff viewpoint for panoramic lake views. Observe different bird species and possible hippo sightings. Return to lodge for full breakfast and check out by 10:30 AM. Depart Lake Nakuru for Nairobi (approximately 3-4 hours drive). Stop at Equator crossing for photo opportunity and souvenir shopping at local markets. Lunch en route at selected restaurant. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or Jomo Kenyatta International Airport. End of memorable 4-day budget safari combining Masai Mara savannahs and Lake Nakuru lake ecosystems." 
+        title: "Lake Naivasha Boat Ride & Crescent Island Visit – Drive to Nairobi", 
+        content: "After breakfast, depart for Lake Naivasha for a scenic boat ride, offering excellent views of hippos and diverse birdlife. Continue with a guided walking safari at Crescent Island, where you can walk among giraffes, zebras, wildebeest and antelopes in a beautiful, predator-free setting. Thereafter, begin your drive to Nairobi. Upon arrival you will be dropped off at Nairobi CBD." 
       }
     ],
     highlights: [
@@ -476,7 +476,7 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across ecos
     keywords: ["Masai Mara Naivasha 4 days budget safari", "cheap Mara and Naivasha tour 2026", "affordable boat safari Kenya", "budget shared safari with hippos", "Kenya land and water safari from $610", "game drives and boat ride combo", "4-day budget Kenya lake adventure"],
     price: 610,
     originalPrice: 750,
-    image: "/tours/mara-naivasha-4days.jpg",
+    image: "/436772123_840707984764076_1007538712348891897_n.jpg",
     url: "/budget-tours/masai-mara-naivasha-4-days-budget-shared-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara%20-%20Naivasha%204%20Days%20Budget%20Shared%20Safari%20$610",
     country: "Kenya",
@@ -488,23 +488,23 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across ecos
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara National Reserve - Afternoon Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 Land Cruiser with pop-up roof. Drive through Great Rift Valley with photo stops at viewpoints. Arrive at Masai Mara National Reserve by midday and check into budget tented camp. After lunch, embark on afternoon game drive from 3:00 PM to 6:30 PM entering through Sekenani Gate. Initial wildlife sightings including elephants, lions, buffalo, and various antelope species. Learn about savannah ecosystem from your guide. Return to camp before sunset for dinner and overnight. Evening campfire with fellow travelers discussing first safari experiences." 
+        title: "Drive Nairobi to Masai Mara", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration - Big Five Focus", 
-        content: "Early morning wake-up at 6:00 AM. Sunrise game drive from 6:30 AM to 10:00 AM for optimal predator viewing. Search for leopards, cheetahs, and lion prides in morning light. Enjoy packed breakfast in the bush while observing wildlife. Return to camp briefly before continuing full day game drives. Explore different sectors of Masai Mara including possible migration areas (seasonal July-October). Picnic lunch at scenic location. Optional visit to Maasai village ($25-30) for cultural experience. Afternoon game drive tracking any missed Big Five species. Return to camp by 6:30 PM for dinner sharing sightings with group." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara to Lake Naivasha - Ecosystem Transition", 
-        content: "Morning game drive in Masai Mara from 6:30 AM to 9:30 AM for final wildlife sightings. Search for any missed species in excellent morning light. Return to camp for full breakfast and check out by 10:30 AM. Drive to Lake Naivasha (approximately 5-6 hours) through scenic landscapes. Lunch en route at local restaurant. Arrive at Lake Naivasha by mid-afternoon and check into budget lakeside accommodation. Afternoon boat ride on Lake Naivasha from 4:00 PM to 5:30 PM seeing hippo pods, fish eagles, and diverse birdlife. Learn about freshwater ecosystem from boat captain. Dinner and overnight at Naivasha accommodation." 
+        title: "Drive to Nakuru", 
+        content: "After breakfast check out and you may opt to visit the Maasai village, where you will interact with the Maasai community and learn about their way of life and culture at 30 USD per person. Later on, proceed drive to Nakuru with lunch on the way. Arrive at Nakuru in the evening for dinner and overnight at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 4, 
-        title: "Lake Naivasha Activities & Return to Nairobi", 
-        content: "Optional early morning bird walk around Lake Naivasha (6:30-8:00 AM). After breakfast, optional walking safari on Crescent Island ($20 extra) to walk among giraffes, zebras, and antelopes in predator-free environment. Alternatively, enjoy relaxation at lakeside. Check out by 11:00 AM and begin return journey to Nairobi. Stop at Great Rift Valley viewpoint for final photos and souvenir shopping. Lunch en route at selected restaurant. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or airport. End of memorable 4-day budget safari combining Masai Mara savannahs and Lake Naivasha freshwater experiences." 
+        title: "Morning Game drive in Lake Nakuru National Park and transfer to Nairobi", 
+        content: "After an early breakfast, depart for a morning game drive at Lake Nakuru National Park where we hope you will have the sight of flamingos. Have your cameras ready as here you will see lots of rhinos. Later on exit the park with lunch on the way. Continue drive to Nairobi and you will be dropped off at Nairobi CBD on arrival." 
       }
     ],
     highlights: [
@@ -583,7 +583,7 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across mult
     keywords: ["Masai Mara Nakuru Naivasha 5 days safari", "cheap three-park Kenya safari 2026", "affordable Mara Nakuru Naivasha tour", "budget shared Land Cruiser safari", "Kenya three-park combo from $680", "Big Five flamingos hippos safari", "5-day budget Kenya adventure"],
     price: 680,
     originalPrice: 850,
-    image: "/tours/mara-nakuru-naivasha-5days.jpg",
+    image: "/grace-nandi-KzxdgYVkSdY-unsplash-1-scaled.jpg",
     url: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara%20-%20Nakuru%20%26%20Naivasha%205%20Days%20Shared%20Land%20Cruiser%20Safari%20$680",
     country: "Kenya",
@@ -595,28 +595,28 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across mult
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara National Reserve - Afternoon Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 Land Cruiser with pop-up roof. Drive through Great Rift Valley with photo stops at viewpoints. Arrive at Masai Mara National Reserve by midday and check into budget tented camp. After lunch, embark on afternoon game drive from 3:00 PM to 6:30 PM entering through Sekenani Gate. Initial wildlife sightings including elephants, lions, buffalo, and various antelope species. Learn about savannah ecosystem from your guide. Return to camp before sunset for dinner and overnight. Evening campfire with fellow travelers discussing safari expectations." 
+        title: "Pick up at Hotel and drive to Masai Mara National Reserve", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return at dusk for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration - Big Five Focus", 
-        content: "Early morning wake-up at 6:00 AM. Sunrise game drive from 6:30 AM to 10:00 AM for optimal predator viewing. Search for leopards, cheetahs, and lion prides in morning light. Enjoy packed breakfast in the bush while observing wildlife. Return to camp briefly before continuing full day game drives. Explore different sectors of Masai Mara including possible migration areas (seasonal July-October). Picnic lunch at scenic location. Optional visit to Maasai village ($25-30) for cultural experience. Afternoon game drive tracking any missed Big Five species. Return to camp by 6:30 PM for dinner sharing sightings with group." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara to Lake Nakuru National Park - Ecosystem Change", 
-        content: "Morning game drive in Masai Mara from 6:30 AM to 9:30 AM for final savannah wildlife sightings. Return to camp for full breakfast and check out by 10:30 AM. Drive to Lake Nakuru National Park (approximately 5-6 hours) through changing landscapes. Lunch en route at local restaurant. Arrive at Lake Nakuru by mid-afternoon and check into budget lodge. Afternoon game drive from 4:00 PM to 6:30 PM focusing on rhino sanctuary (both black and white rhino) and flamingo spectacle along alkaline shores. Birdwatching opportunities with over 450 species. Dinner and overnight at lodge with lake views." 
+        title: "Optional Maasai village visit and drive to Nakuru", 
+        content: "After breakfast, check out of the camp and you may decide to engage in the optional visit of the Maasai village at an extra cost of 30 USD and here interact with Maasai community and learn about their way of life. Thereafter depart for Nakuru enjoying lunch on the way. Arrive for dinner and overnight at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 4, 
-        title: "Lake Nakuru to Lake Naivasha - Freshwater Transition", 
-        content: "Early morning game drive in Lake Nakuru from 6:30 AM to 9:30 AM for best wildlife viewing. Search for leopards in acacia forests and visit Baboon Cliff for panoramic lake views. Return to lodge for full breakfast and check out by 10:30 AM. Short drive to Lake Naivasha (approximately 2-3 hours). Check into lakeside budget accommodation. Afternoon boat ride on Lake Naivasha from 3:00 PM to 4:30 PM seeing hippo pods, fish eagles, and diverse birdlife. Learn about freshwater ecosystem from boat captain. Optional walking safari on Crescent Island ($20 extra). Dinner and overnight at Naivasha accommodation." 
+        title: "Morning Game drive in Nakuru National Park and depart for Naivasha", 
+        content: "After breakfast depart for a morning game drive in Lake Nakuru National Park. Exit the park at around noon and proceed drive to Naivasha with lunch on the way. Arrive in Naivasha and you can enjoy an optional boat ride at an extra cost of 40 USD per person which your driver guide will assist to organize for you. Dinner and overnight at Chambai Safari Hotel." 
       },
       { 
         day: 5, 
-        title: "Lake Naivasha Activities & Return to Nairobi", 
-        content: "Optional early morning bird walk around Lake Naivasha (6:30-8:00 AM). After breakfast, optional activities: walking safari on Crescent Island ($20) or relaxation at lakeside. Check out by 11:00 AM and begin return journey to Nairobi. Stop at Great Rift Valley viewpoint for final photos and souvenir shopping. Lunch en route at selected restaurant. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or airport. End of comprehensive 5-day budget safari covering three distinct ecosystems: Masai Mara savannahs, Lake Nakuru alkaline lake, and Lake Naivasha freshwater environment." 
+        title: "Lake Naivasha Boat Ride & Crescent Island Visit – Drive to Nairobi", 
+        content: "After breakfast, depart for Lake Naivasha for a scenic boat ride, offering excellent views of hippos and diverse birdlife. Continue with a guided walking safari at Crescent Island, where you can walk among giraffes, zebras, wildebeests, and antelopes in a beautiful, predator-free setting. Thereafter, begin your drive to Nairobi with lunch en route. Upon arrival in Nairobi you will be dropped off at Nairobi CBD." 
       }
     ],
     highlights: [
@@ -696,7 +696,7 @@ Don't miss this comprehensive opportunity to experience Kenya's premier wildlife
     keywords: ["Masai Mara Nakuru Amboseli 6 days safari", "cheap three-park Kenya tour 2026", "affordable comprehensive Kenya safari", "budget shared safari three parks", "Kenya wildlife circuit from $850", "Big Five flamingos elephants safari", "6-day budget Kenya experience"],
     price: 850,
     originalPrice: 1050,
-    image: "/tours/mara-nakuru-amboseli-6days.jpg",
+    image: "/hongbin-qSSQ98ziK2Y-unsplash-scaled.jpg",
     url: "/budget-tours/masai-mara-nakuru-amboseli-6-days-shared-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Masai%20Mara-Nakuru-Amboseli%206%20Days%20Shared%20Safari%20$850",
     country: "Kenya",
@@ -708,33 +708,33 @@ Don't miss this comprehensive opportunity to experience Kenya's premier wildlife
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara National Reserve - First Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 vehicle. Drive through Great Rift Valley with photo stops at viewpoints. Arrive at Masai Mara National Reserve by midday and check into budget tented camp. After lunch, embark on afternoon game drive from 3:00 PM to 6:30 PM entering through Sekenani Gate. Initial wildlife sightings including elephants, lions, buffalo, and various antelope species. Learn about savannah ecosystem from your guide. Return to camp before sunset for dinner and overnight. Evening campfire with fellow travelers discussing safari expectations and wildlife hopes." 
+        title: "Pick up at Hotel and drive to Masai Mara National Reserve", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return at dusk for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration - Big Five Tracking", 
-        content: "Early morning wake-up at 6:00 AM. Sunrise game drive from 6:30 AM to 10:00 AM for optimal predator viewing. Search for leopards, cheetahs, and lion prides in morning light. Enjoy packed breakfast in the bush while observing wildlife. Return to camp briefly before continuing full day game drives. Explore different sectors of Masai Mara including possible migration areas (seasonal July-October). Picnic lunch at scenic location. Optional visit to Maasai village ($25-30) for cultural experience. Afternoon game drive tracking any missed Big Five species. Return to camp by 6:30 PM for dinner sharing sightings with group." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara to Lake Nakuru National Park - Ecosystem Transition", 
-        content: "Morning game drive in Masai Mara from 6:30 AM to 9:30 AM for final savannah wildlife sightings. Return to camp for full breakfast and check out by 10:30 AM. Drive to Lake Nakuru National Park (approximately 5-6 hours) through changing landscapes. Lunch en route at local restaurant. Arrive at Lake Nakuru by mid-afternoon and check into budget lodge. Afternoon game drive from 4:00 PM to 6:30 PM focusing on rhino sanctuary (both black and white rhino) and flamingo spectacle along alkaline shores. Birdwatching opportunities with over 450 species. Dinner and overnight at lodge with lake views." 
+        title: "Drive to Nakuru", 
+        content: "After breakfast check out and you may opt to visit the Maasai village, where you will interact with the Maasai community and learn about their way of life and culture at 30 USD per person. Later on, proceed drive to Nakuru with lunch on the way. Arrive at Nakuru in the evening for dinner and overnight at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 4, 
-        title: "Lake Nakuru to Amboseli National Park - Long Distance Travel", 
-        content: "Early morning game drive in Lake Nakuru from 6:30 AM to 9:30 AM for best wildlife viewing. Search for leopards in acacia forests and visit Baboon Cliff for panoramic lake views. Return to lodge for full breakfast and check out by 10:30 AM. Long drive to Amboseli National Park (approximately 7-8 hours) through diverse landscapes. Lunch en route at selected restaurant. Arrive at Amboseli by late afternoon with possible short game drive en route to lodge. Check into budget accommodation with views of Mount Kilimanjaro (weather permitting). Dinner and overnight, anticipating next day's elephant viewing." 
+        title: "Morning Game drive in Lake Nakuru National Park and drive to Amboseli", 
+        content: "After an early breakfast, depart for a morning game drive at Lake Nakuru National Park where we hope you will have the sight of flamingos. Have your cameras ready as here you will see lots of rhinos. Exit the park at around noon and you will continue drive to Amboseli arriving for dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 5, 
-        title: "Full Day Amboseli Exploration - Elephants & Kilimanjaro", 
-        content: "Early morning game drive in Amboseli from 6:30 AM to 10:00 AM when elephants are most active against Kilimanjaro backdrop. Excellent photography opportunities with morning light. Search for large elephant herds, buffalo, lions, and other wildlife. Return to lodge for full breakfast. Mid-day relaxation or optional visit to observation hill for panoramic views. Afternoon game drive from 3:00 PM to 6:30 PM focusing on swamp areas for hippos, water birds, and different elephant groups. Sunset photography opportunities with Kilimanjaro silhouette. Dinner and overnight at lodge sharing elephant experiences." 
+        title: "Explore Amboseli National Park", 
+        content: "You will wake up to amazing views of Mount Kilimanjaro if the weather permits. On this day, you will embark on morning and afternoon game drives in this wonderful park where Mount Kilimanjaro’s background offers good photographic scenery. It is coupled with an abundant of wildlife zebras, the Big 5, herds of elephant tusks and the prolific birdlife in this African wilderness park. Return for dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 6, 
-        title: "Morning Game Drive & Return to Nairobi", 
-        content: "Final morning game drive in Amboseli from 6:30 AM to 9:30 AM. Search for any missed species and final elephant photography opportunities. Return to lodge for full breakfast and check out by 10:30 AM. Begin return journey to Nairobi (approximately 4-5 hours). Stop at souvenir markets for last-minute shopping. Lunch en route at selected restaurant. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or airport. End of comprehensive 6-day budget safari covering three iconic Kenyan parks: Masai Mara savannahs, Lake Nakuru lake ecosystem, and Amboseli elephants with Kilimanjaro views." 
+        title: "Drive to Nairobi", 
+        content: "After breakfast, check out and embark on your journey back to Nairobi and upon arrival you will be dropped off at Nairobi City Market or your hotel in Nairobi CBD (Central Business District)." 
       }
     ],
     highlights: [
@@ -816,7 +816,7 @@ Don't miss this ultimate opportunity to experience Kenya's complete wildlife cir
     keywords: ["Best of Kenya 7 days budget safari", "complete Kenya circuit 2026", "affordable four-park Kenya tour", "budget shared safari comprehensive", "Kenya wildlife adventure from $980", "Mara Nakuru Naivasha Amboseli safari", "7-day budget Kenya experience"],
     price: 980,
     originalPrice: 1200,
-    image: "/tours/best-of-kenya-7days.jpg",
+    image: "/harshil-gudka-aKcVSSDotgo-unsplash-8-scaled.jpg",
     url: "/budget-tours/best-of-kenya-7-days-budget-shared-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Best%20of%20Kenya%207%20Days%20Budget%20Shared%20Safari%20$980",
     country: "Kenya",
@@ -828,38 +828,38 @@ Don't miss this ultimate opportunity to experience Kenya's complete wildlife cir
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara National Reserve - First Game Drive", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 vehicle. Drive through Great Rift Valley with photo stops at viewpoints. Arrive at Masai Mara National Reserve by midday and check into budget tented camp. After lunch, embark on afternoon game drive from 3:00 PM to 6:30 PM entering through Sekenani Gate. Initial wildlife sightings including elephants, lions, buffalo, and various antelope species. Learn about savannah ecosystem from your guide. Return to camp before sunset for dinner and overnight. Evening campfire with fellow travelers discussing safari expectations." 
+        title: "Drive Nairobi to Masai Mara", 
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara Exploration - Big Five Focus", 
-        content: "Early morning wake-up at 6:00 AM. Sunrise game drive from 6:30 AM to 10:00 AM for optimal predator viewing. Search for leopards, cheetahs, and lion prides in morning light. Enjoy packed breakfast in the bush while observing wildlife. Return to camp briefly before continuing full day game drives. Explore different sectors of Masai Mara including possible migration areas (seasonal July-October). Picnic lunch at scenic location. Optional visit to Maasai village ($25-30) for cultural experience. Afternoon game drive tracking any missed Big Five species. Return to camp by 6:30 PM for dinner sharing sightings with group." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara to Lake Nakuru National Park - Ecosystem Transition", 
-        content: "Morning game drive in Masai Mara from 6:30 AM to 9:30 AM for final savannah wildlife sightings. Return to camp for full breakfast and check out by 10:30 AM. Drive to Lake Nakuru National Park (approximately 5-6 hours) through changing landscapes. Lunch en route at local restaurant. Arrive at Lake Nakuru by mid-afternoon and check into budget lodge. Afternoon game drive from 4:00 PM to 6:30 PM focusing on rhino sanctuary (both black and white rhino) and flamingo spectacle along alkaline shores. Birdwatching opportunities with over 450 species. Dinner and overnight at lodge with lake views." 
+        title: "Drive to Nakuru", 
+        content: "After breakfast check out and you may opt to visit the Maasai village, where you will interact with the Maasai community and learn about their way of life and culture at 30 USD per person. Later on, proceed drive to Nakuru with lunch on the way. Arrive at Nakuru in the evening for dinner and overnight at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 4, 
-        title: "Lake Nakuru to Lake Naivasha - Freshwater Transition", 
-        content: "Early morning game drive in Lake Nakuru from 6:30 AM to 9:30 AM for best wildlife viewing. Search for leopards in acacia forests and visit Baboon Cliff for panoramic lake views. Return to lodge for full breakfast and check out by 10:30 AM. Short drive to Lake Naivasha (approximately 2-3 hours). Check into lakeside budget accommodation. Afternoon boat ride on Lake Naivasha from 3:00 PM to 4:30 PM seeing hippo pods, fish eagles, and diverse birdlife. Learn about freshwater ecosystem from boat captain. Optional walking safari on Crescent Island ($20 extra). Dinner and overnight at Naivasha accommodation." 
+        title: "Morning Game drive at Lake Nakuru National Park and drive to Naivasha", 
+        content: "Enjoy a morning game drive at the great Lake Nakuru National Park. Thereafter check out and enjoy lunch on the way. Drive to Naivasha for dinner and overnight at Chambai Safari Hotel." 
       },
       { 
         day: 5, 
-        title: "Lake Naivasha to Amboseli National Park - Long Distance Travel", 
-        content: "Optional early morning bird walk around Lake Naivasha (6:30-8:00 AM). After breakfast, check out by 9:00 AM. Long drive to Amboseli National Park (approximately 6-7 hours) through diverse landscapes. Lunch en route at selected restaurant. Arrive at Amboseli by late afternoon with possible short game drive en route to lodge. Check into budget accommodation with views of Mount Kilimanjaro (weather permitting). Dinner and overnight, anticipating next day's elephant viewing against mountain backdrop." 
+        title: "Lake Naivasha Boat Ride & Crescent Island Visit – Drive to Amboseli National Park", 
+        content: "After breakfast, depart for Lake Naivasha for a scenic boat ride, offering excellent views of hippos and diverse birdlife. Continue with a guided walking safari at Crescent Island, where you can walk among giraffes, zebras, wildebeest and antelopes in a beautiful, predator-free setting. Thereafter, begin your drive to Amboseli National Park, with lunch en route. Arrive in the evening for dinner and an overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 6, 
-        title: "Full Day Amboseli Exploration - Elephants & Kilimanjaro", 
-        content: "Early morning game drive in Amboseli from 6:30 AM to 10:00 AM when elephants are most active against Kilimanjaro backdrop. Excellent photography opportunities with morning light. Search for large elephant herds, buffalo, lions, and other wildlife. Return to lodge for full breakfast. Mid-day relaxation or optional visit to observation hill for panoramic views. Afternoon game drive from 3:00 PM to 6:30 PM focusing on swamp areas for hippos, water birds, and different elephant groups. Sunset photography opportunities with Kilimanjaro silhouette. Dinner and overnight at lodge sharing elephant experiences." 
+        title: "Game drive in Amboseli National Park", 
+        content: "Very early in the morning, weather permitting you should be able to see the spectacular views of the snowcapped Mt Kilimanjaro towering at a distance. Proceed for a morning game drive in the park where you will enjoy Amboseli Jumbos among other wildlife. You will also visit the observation point and have a look at the park from here. Dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 7, 
-        title: "Morning Game Drive & Return to Nairobi", 
-        content: "Final morning game drive in Amboseli from 6:30 AM to 9:30 AM. Search for any missed species and final elephant photography opportunities. Return to lodge for full breakfast and check out by 10:30 AM. Begin return journey to Nairobi (approximately 4-5 hours). Stop at souvenir markets for last-minute shopping. Lunch en route at selected restaurant. Arrive Nairobi by 4:00-5:00 PM with drop-off at your hotel or airport. End of comprehensive 7-day Best of Kenya budget safari covering four iconic ecosystems: Masai Mara savannahs, Lake Nakuru alkaline lake, Lake Naivasha freshwater environment, and Amboseli elephants with Kilimanjaro views." 
+        title: "Drive to Nairobi", 
+        content: "After breakfast, check out and commence drive to Nairobi with lunch on the way. Upon arrival you will be dropped off at Nairobi CBD." 
       }
     ],
     highlights: [
@@ -947,7 +947,7 @@ Don't miss this specialized opportunity for comprehensive Big Five experiences a
     keywords: ["Kenya Big 5 safari budget", "7 days Big Five focused safari", "affordable Big Five tour Kenya 2026", "lion leopard elephant buffalo rhino safari", "Big Five tracking budget", "specialized wildlife safari Kenya", "7-day Big Five experience"],
     price: 2530,
     originalPrice: 2950,
-    image: "/tours/big5-7days.jpg",
+    image: "/david-clode-zsalJqyCY8M-unsplash-1-scaled.jpg",
     url: "/budget-tours/kenya-big-5-7-days-budget-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Kenya%20Big%205%207%20Days%20Budget%20Safari%20$2530",
     country: "Kenya",
@@ -959,38 +959,38 @@ Don't miss this specialized opportunity for comprehensive Big Five experiences a
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara - Big Five Introduction", 
-        content: "Depart Nairobi at 7:00 AM in shared 4x4 vehicle with Big Five focused guide. Drive to Masai Mara with discussion of Big Five history and modern significance. Arrive by midday and check into camp. After lunch, orientation on Big Five tracking techniques. Afternoon game drive from 3:00 PM to 6:30 PM focusing on initial Big Five sightings, particularly lions and buffalo commonly seen. Learn tracking signs and behavior indicators. Return to camp for dinner and Big Five briefing for next day's strategy." 
+        title: "Pick up from JKIA Airport and drive to Samburu", 
+        content: "Upon arrival and after you are done with the immigration procedures, your driver guide will pick you up at the airport. After meet and greet, he will escort you to your car and commence drive to Samburu National Reserve arriving for lunch at Lion’s Cave Camp Samburu. After check in and lunch, you will go for an afternoon game drive at 16:00hrs and return to the camp at dusk for dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 2, 
-        title: "Full Day Masai Mara - Lion & Leopard Focus", 
-        content: "Early departure at 6:00 AM for sunrise game drive targeting predators. Specialized leopard tracking in riverine areas with guide explaining signs and behaviors. Extended time at lion prides observing social dynamics. Packed breakfast in field to maximize tracking time. Communication with other guides for recent sightings. Afternoon focus on buffalo herds and elephant family groups. Photography sessions with optimal positioning. Return by 6:30 PM for dinner and daily Big Five checklist review." 
+        title: "Full day Game drives in Samburu National Reserve", 
+        content: "After early breakfast at the lodge at 07:00 am, join your safari driver guide and depart for full day game viewing drive with picnic lunch boxes to Samburu National Reserve. You will explore the park and its special beautiful sceneries with lots of animals and birds. Dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 3, 
-        title: "Masai Mara Continued - Comprehensive Big Five Search", 
-        content: "Full day dedicated to any missed Big Five species in Mara. Strategic planning based on previous days' sightings and guide network information. Possible focus on specific leopard territories or lion prides. Extended waiting at productive locations for behavioral observations. Educational sessions on each species' conservation status. Flexible picnic lunch timing based on animal activity. Return by 6:30 PM for final Mara Big Five assessment and transition preparation." 
+        title: "Drive from Samburu to Olpejeta", 
+        content: "After breakfast depart for Olpejeta. “Located between the Aberdares and Mount Kenya, Ol Pejeta hosts 2 of the planet’s last remaining northern white rhinos. It’s also home to southern white rhinos, black rhinos, scavengers and the only place in Kenya where you can see chimpanzees. There is an equator marker within the conservation area where you can take photos and you may engage in additional activities such as lion tracking, bush and bird walks and rhino rides.” Later on return for dinner and overnight stay at Comfort Garden Sweet Waters." 
       },
       { 
         day: 4, 
-        title: "Masai Mara to Lake Nakuru - Rhino Focus Transition", 
-        content: "Morning game drive in Mara for any final Big Five opportunities. Depart for Lake Nakuru after breakfast. Arrive by early afternoon with immediate focus on rhino sanctuary. Specialized rhino tracking with guide explaining identification differences between black and white rhino. Afternoon game drive dedicated to rhino sightings and photography. Learn about rhino conservation efforts and anti-poaching strategies. Dinner with rhino education focus." 
+        title: "Ol Pejeta to Naivasha", 
+        content: "After early breakfast at the lodge at 07:00 am, check out and join your safari driver guide and depart for Naivasha arriving in time for lunch and check in. In the afternoon, you will enjoy a boat ride in Lake Naivasha in search for hippos and the birdlife. Dinner and overnight stay at Eseriani The Resort." 
       },
       { 
         day: 5, 
-        title: "Lake Nakuru Full Day - Rhino & Leopard Intensive", 
-        content: "Early morning for best rhino viewing in optimal light. Extended observation of rhino behaviors and social interactions. After breakfast, focus on leopard tracking in acacia forests (Lake Nakuru has good leopard populations). Possible buffalo sightings to complement Mara experiences. Birdwatching breaks between Big Five tracking. Afternoon review of rhino conservation successes. Dinner with Big Five progress assessment." 
+        title: "Lake Naivasha Hell’s Gate Tour & drive to Maasai Mara", 
+        content: "After breakfast, check out and drive to Hell’s Gate National Park. Upon arrival, you will enjoy bike rides cycling to the gorges and back as you explore the park. Exit the park and proceed drive to Maasai Mara through the scenic Rift Valley with amazing views of Mt. Longonot with lunch on the way. Arrive at the camp in the evening for check in, dinner and overnight stay at Rhino Tourist Camp." 
       },
       { 
         day: 6, 
-        title: "Lake Nakuru to Amboseli - Elephant Focus Transition", 
-        content: "Morning rhino viewing if any aspects missed. Depart for Amboseli after breakfast. Long drive with Big Five discussion and strategy planning. Arrive Amboseli late afternoon with immediate elephant-focused game drive. Observe elephant herds against Kilimanjaro backdrop (weather permitting). Learn elephant identification and social structure. Dinner with elephant conservation focus." 
+        title: "Full day exploring Maasai Mara Reserve", 
+        content: "This day you will depart after an early breakfast to Maasai Mara Reserve for full day game viewing drives. Picnic lunches will be served as you relax under a tree as you see the vast landscape and its beauty. Spend the whole day looking for the big five and we are hopeful you will see almost all if not all of the big five among many animals. Thereafter you will return to the camp for dinner and overnight at Rhino Tourist Camp." 
       },
       { 
         day: 7, 
-        title: "Amboseli Elephant Focus & Return to Nairobi", 
-        content: "Early morning game drive for elephant photography in best light. Final Big Five checklist review and any missing species strategy. Possible lion or buffalo sightings in Amboseli to complement previous parks. Return to lodge for breakfast and Big Five completion celebration. Depart for Nairobi after checkout. Arrive Nairobi by late afternoon with drop-off. Final Big Five certificate presentation for successful sightings." 
+        title: "Maasai Mara to Nairobi", 
+        content: "After breakfast, check out and drive to Nairobi and upon arrival, you will be dropped at Jomo Kenyatta International Airport (Nairobi) for your flight home." 
       }
     ],
     highlights: [
@@ -1078,7 +1078,7 @@ Don't miss this ultimate opportunity for comprehensive Big Five experiences at b
     keywords: ["Kenya 8 days Big 5 safari budget", "extended Big Five safari Kenya", "affordable comprehensive Big Five tour", "lion leopard tracking extended", "Big Five photography safari", "8-day wildlife focused Kenya", "extended Big Five experience 2026"],
     price: 2930,
     originalPrice: 3450,
-    image: "/tours/big5-8days.jpg",
+    image: "/eileen-flynn-bu4BF_ZUmXI-unsplash-2-scaled.jpg",
     url: "/budget-tours/kenya-8-days-budget-big-5-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Kenya%208%20Days%20Budget%20Big%205%20Safari%20$2930",
     country: "Kenya",
@@ -1090,43 +1090,43 @@ Don't miss this ultimate opportunity for comprehensive Big Five experiences at b
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Masai Mara - Big Five Orientation", 
-        content: "Depart Nairobi at 7:00 AM with specialized Big Five guide. Drive to Masai Mara with in-depth Big Five discussion. Arrive by midday and check into camp. After lunch, comprehensive orientation on Big Five tracking, identification, and photography. Afternoon game drive from 3:00 PM to 6:30 PM focusing on initial lion and buffalo sightings. Evening briefing on extended tracking strategies for coming days." 
+        title: "Nairobi to Masai Mara", 
+        content: "Depart Nairobi early in the morning (around 7:00 am) from your hotel/place of stay. Your driver-guide will meet you, escort you to the vehicle and begin the drive southwest towards the Masai Mara. En route, stop at the Great Rift Valley viewpoint for stunning panoramic views of the Rift Valley floor. Arrive in the Mara in time for lunch and check-in. After lunch, enjoy relaxation at the camp. In the evening you can embark on an optional visit to the Maasai village where you will interact with the Maasai community as you learn about their way of life and culture. Dinner and overnight stay at Veilscape Mara Camp." 
       },
       { 
         day: 2, 
-        title: "Masai Mara Full Day - Lion & Leopard Intensive", 
-        content: "Early departure at 5:45 AM for extended predator tracking. Full day dedicated to lion prides and leopard territories. Packed breakfast and lunch in field to maximize tracking time. Communication network with other guides for movement patterns. Behavioral observation sessions rather than brief sightings. Return by 6:30 PM for review and next day planning." 
+        title: "Full day exploring Masai Mara National Reserve", 
+        content: "A full day spent exploring Masai Mara National Reserve. Depart after an early breakfast for morning game drive, followed by a picnic lunch under a tree in the reserve. In the afternoon, continue game viewing drives. Keep an eye out for the Big 5 as well as other wild animals such as zebras, giraffes and an abundant of birdlife. Return to the camp at dusk for dinner and overnight stay at Veilscape Mara Camp." 
       },
       { 
         day: 3, 
-        title: "Masai Mara Continued - Pattern Recognition", 
-        content: "Second full day in Mara focusing on patterns learned from previous days. Return to productive locations at different times for behavioral comparisons. Individual animal identification sessions. Extended photography opportunities with different lighting. Educational focus on social structures and territorial behaviors. Flexible schedule based on animal movements." 
+        title: "Big 5 Game viewing drives in Masai Mara", 
+        content: "Another full day in Masai Mara. After breakfast, embark on morning and afternoon game drives, further exploring different areas of the Mara. Between drives enjoy picnic lunch and rest. Return to the camp at dusk for dinner and overnight stay at Veilscape Mara Camp." 
       },
       { 
         day: 4, 
-        title: "Masai Mara to Lake Nakuru - Rhino Transition", 
-        content: "Morning game drive focusing on any missed Mara opportunities. Depart for Lake Nakuru after late breakfast. Arrive by early afternoon with immediate rhino sanctuary focus. Extended rhino observation for individual identification and behavior study. Learn black vs white rhino differences in detail. Evening rhino conservation discussion." 
+        title: "Drive to Nakuru", 
+        content: "After breakfast, check out and depart toward Nakuru. Continue drive, with lunch along the way. Arrive in Nakuru in the evening for dinner and overnight stay at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 5, 
-        title: "Lake Nakuru Full Day - Rhino & Leopard Focus", 
-        content: "Early morning for rhino photography in optimal light. Extended behavioral observation sessions. After breakfast, leopard tracking in acacia forests with patient approach. Possible buffalo sightings for comparison with Mara. Birdwatching breaks between Big Five focus. Afternoon review of conservation strategies in practice." 
+        title: "Morning game drive at Lake Nakuru National Park and drive to Naivasha", 
+        content: "Morning game drive at Lake Nakuru National Park. After exploring Nakuru, check out and drive toward Naivasha. Lunch en route. Arrive at Naivasha for dinner and overnight stay at Chambai Safari Hotel." 
       },
       { 
         day: 6, 
-        title: "Lake Nakuru to Amboseli - Elephant Transition", 
-        content: "Final morning rhino viewing if behavioral aspects missed. Depart for Amboseli after breakfast. Long drive with Big Five strategy discussion. Arrive Amboseli late afternoon with immediate elephant-focused game drive. Observe multiple herds for comparison. Evening elephant behavior and conservation education." 
+        title: "Hell's Gate visit and drive to Amboseli National Park", 
+        content: "After breakfast, proceed with a visit to Hell's Gate National Park for a walking safari. There is also an optional boat ride on Lake Naivasha at an extra cost of 40 USD per person. After these activities, depart toward Amboseli National Park, with lunch along the way. Arrive in Amboseli in the evening for dinner and overnight at Manjaro Tented Camp." 
       },
       { 
         day: 7, 
-        title: "Amboseli Full Day - Elephant Intensive", 
-        content: "Early morning for extended elephant observation and photography. Full day following herd movements and behaviors. Study family structures and individual relationships. Possible lion or buffalo sightings for Big Five complement. Sunset photography with Kilimanjaro backdrop. Final Big Five assessment dinner." 
+        title: "Game drive in Amboseli National Park", 
+        content: "Very early morning, wake up (weather permitting) to amazing views of snowcapped Mount Kilimanjaro glowing in the sunrise light. Then go on a morning game drive in Amboseli, including a visit to the observation point for panoramic views of the park and its wildlife (especially elephants). Return at dusk for dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 8, 
-        title: "Amboseli Final Focus & Return to Nairobi", 
-        content: "Final morning game drive for any missing Big Five aspects or exceptional photography. Return to lodge for breakfast and comprehensive Big Five review. Celebration of successful sightings and experiences. Depart for Nairobi after checkout. Arrive Nairobi by late afternoon with drop-off and certificate presentation." 
+        title: "Drive to Nairobi", 
+        content: "After breakfast, check out and commence the drive back to Nairobi. Lunch along the way. Upon arrival in Nairobi, you will be dropped off at your hotel/place of stay or JKIA International Airport for your flight back home." 
       }
     ],
     highlights: [
@@ -1212,7 +1212,7 @@ Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experienc
     keywords: ["Kenya's best 10 days safari budget", "ultimate Kenya safari comprehensive", "10-day budget Kenya circuit", "five-park Kenya adventure affordable", "extended Kenya wildlife tour", "complete Kenya experience budget", "10-day safari Mara Samburu Amboseli"],
     price: 3190,
     originalPrice: 3850,
-    image: "/tours/ultimate-kenya-10days.jpg",
+    image: "/pexels-gil-daix-2046153486-29435757-1-scaled.jpg",
     url: "/budget-tours/kenyas-best-10-days-budget-safari",
     bookingUrl: "https://wa.me/+254726485228?text=Book%20Kenya's%20Best%2010%20Days%20Budget%20Safari%20$3190",
     country: "Kenya",
@@ -1224,53 +1224,53 @@ Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experienc
     itinerary: [
       { 
         day: 1, 
-        title: "Nairobi to Samburu National Reserve - Northern Adventure Begins", 
-        content: "Depart Nairobi at 7:00 AM for drive north to Samburu National Reserve (5-6 hours). Observe landscape changes from highlands to semi-desert. Arrive by early afternoon and check into lodge. After lunch, afternoon game drive along Ewaso Nyiro River searching for Special Five: Grevy's zebra, Somali ostrich, reticulated giraffe, gerenuk, Beisa oryx. Learn about northern adaptations. Dinner and overnight at lodge." 
+        title: "Pick up from JKIA airport and drive to Samburu", 
+        content: "Upon arrival and after you are done with the immigration procedures, your driver guide will pick you up at the airport. After meet and greet, he will escort you to your car and commence drive to Samburu national Reserve arriving for lunch at Lion’s Cave Camp Samburu. After check in and lunch, you will go for an afternoon game drive at 16:00hrs and return to the camp before dusk for dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 2, 
-        title: "Samburu Full Day - Special Five Focus", 
-        content: "Early morning game drive for optimal wildlife activity in cooler temperatures. Full day exploring Samburu's unique ecosystem with focus on Special Five tracking. Visit different reserve sectors including river areas for elephants and crocodiles. Learn about desert adaptations and conservation challenges. Afternoon cultural interaction with Samburu community (optional). Dinner and overnight with northern experience discussion." 
+        title: "Full day Game drives in Samburu National Reserve", 
+        content: "After early breakfast at the camp, join your safari driver guide and depart for full day game viewing drive with picnic lunch boxes to Samburu National Reserve. You will explore the park and its special beautiful sceneries with lots of animals and birds. Dinner and overnight stay at Lion’s Cave Camp Samburu." 
       },
       { 
         day: 3, 
-        title: "Samburu to Lake Nakuru - Ecosystem Transition", 
-        content: "Morning game drive in Samburu for final Special Five sightings. Depart for Lake Nakuru after breakfast (6-7 hours drive). Arrive by mid-afternoon and check into lodge. Late afternoon game drive focusing on rhino sanctuary and flamingo spectacle. Contrast northern and Rift Valley ecosystems. Dinner and overnight at lakeside lodge." 
+        title: "Drive from Samburu to Olpejeta", 
+        content: "After breakfast depart for Olpejeta. “Located between the Aberdares and Mount Kenya, Ol Pejeta hosts 2 of the planet’s last remaining northern white rhinos. It’s also home to southern white rhinos, black rhinos, scavengers and the only place in Kenya where you can see chimpanzees. There is an equator marker within the conservation area where you can take photos.” Dinner and overnight stay at Comfort Gardens Sweetwaters." 
       },
       { 
         day: 4, 
-        title: "Lake Nakuru Full Day - Flamingos & Rhinos", 
-        content: "Early morning for optimal flamingo photography and rhino viewing. Full day exploring Lake Nakuru National Park including Baboon Cliff viewpoints, acacia forests for leopards, and lake shoreline for birdwatching. Learn about alkaline lake ecology and rhino conservation success. Afternoon game drive covering different park sectors. Dinner and overnight at lodge." 
+        title: "Drive to Lake Nakuru National Park", 
+        content: "After breakfast check out and proceed drive to Nakuru with lunches on the way. Lake Nakuru is “A beautiful wildlife haven”. On the floor of the Great Rift Valley, surrounded by wooded and bushy grassland, lies the beautiful. Arrive at Nakuru for an afternoon game drive in Lake Nakuru National Park where we hope you will have the sight of flamingos. Have your cameras ready as here you will see lots of Rhinos. Later on exit the park for dinner and overnight stay at Buraha Zenoni Hotel & Resort." 
       },
       { 
         day: 5, 
-        title: "Lake Nakuru to Masai Mara - Savannah Transition", 
-        content: "Morning game drive in Lake Nakuru. Depart for Masai Mara after breakfast (5-6 hours drive). Arrive by mid-afternoon and check into tented camp. Afternoon game drive in Masai Mara introducing savannah wildlife after northern and lake experiences. Dinner and overnight at camp with ecosystem comparison discussion." 
+        title: "Nakuru to Amboseli National Park", 
+        content: "After breakfast, depart Nakuru for Amboseli National Park with lunch on the way arriving for dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 6, 
-        title: "Masai Mara Full Day - Big Five Focus", 
-        content: "Early morning game drive for predator activity. Full day exploring Masai Mara with Big Five tracking. Visit different habitats including Mara River areas for possible migration crossings (seasonal). Extended photography opportunities. Optional Maasai village visit. Return to camp for dinner sharing southern experiences after northern contrast." 
+        title: "Full day exploring Amboseli National Park", 
+        content: "You will wake up to amazing views of Mount Kilimanjaro if the weather permits. On this day, you will embark on a full day game drive in this wonderful park where Mount Kilimanjaro’s background offers good photographic scenery. It is coupled with animals on the ground, the Big Five, herds of elephants, and the prolific birdlife in this African wilderness park. Return for dinner and overnight stay at Manjaro Tented Camp." 
       },
       { 
         day: 7, 
-        title: "Masai Mara to Lake Naivasha - Freshwater Transition", 
-        content: "Morning game drive in Masai Mara. Depart for Lake Naivasha after breakfast (5-6 hours drive). Arrive by early afternoon and check into lakeside accommodation. Afternoon boat ride on Lake Naivasha seeing hippos and diverse birdlife. Learn about freshwater ecosystem differences from alkaline Nakuru. Optional walking safari on Crescent Island. Dinner and overnight at Naivasha." 
+        title: "Drive to Naivasha", 
+        content: "After breakfast, enjoy a morning game drive in Amboseli National Park and later on depart for Naivasha arriving for lunch. In the afternoon enjoy a boat ride in Naivasha in search for hippos and the birdlife as well as a guided walk at the Crescent Island where you will spot animals roaming at close proximity. Dinner and overnight stay at Chambai Safari Hotel." 
       },
       { 
         day: 8, 
-        title: "Lake Naivasha to Amboseli - Final Ecosystem", 
-        content: "Optional morning activities at Naivasha. Depart for Amboseli after breakfast (6-7 hours drive). Arrive by late afternoon with game drive en route to lodge. Check into accommodation with Kilimanjaro views (weather permitting). Evening orientation to Amboseli's elephant-focused ecosystem. Dinner and overnight." 
+        title: "Drive Naivasha to Masai Mara", 
+        content: "After breakfast, check out and commence drive to Masai Mara. Have a stopover at the great Rift Valley view point where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, visit Maasai village where you will interact with Maasai and learn their way of life and culture. Dinner and overnight stay will be at Rhino Tourist Camp." 
       },
       { 
         day: 9, 
-        title: "Amboseli Full Day - Elephants & Kilimanjaro", 
-        content: "Early morning game drive for elephant photography against Kilimanjaro backdrop. Full day exploring Amboseli's swamps, plains, and observation points. Study elephant behaviors and social structures. Afternoon photography in different lighting. Sunset views of Kilimanjaro. Dinner and final safari night reflections." 
+        title: "Masai Mara full day exploring the reserve", 
+        content: "This day you will depart after an early breakfast to Maasai Mara Reserve for full day game viewing drives. Picnic lunches will be served as you relax under a tree as you see the vast landscape and its beauty. Spend the whole day looking for the big 5 and we are hopeful you will see almost all if not all of the big five among many animals. Thereafter you will return to the camp for dinner and overnight at Rhino Tourist Camp." 
       },
       { 
         day: 10, 
-        title: "Amboseli to Nairobi - Journey Completion", 
-        content: "Final morning game drive in Amboseli. Return to lodge for breakfast and comprehensive safari experience review. Check out and depart for Nairobi (4-5 hours drive). Stop for souvenir shopping and final photos. Arrive Nairobi by late afternoon with drop-off at hotel or airport. End of ultimate 10-day Kenya's Best budget safari covering five premier ecosystems." 
+        title: "Masai Mara to Nairobi", 
+        content: "After breakfast, check out and depart for Nairobi with lunch on the way. Upon arrival you will be dropped off at the airport or your hotel in Nairobi." 
       }
     ],
     highlights: [
