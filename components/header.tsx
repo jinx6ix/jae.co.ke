@@ -30,6 +30,9 @@ export function Header() {
           <Link href="/tours" className="text-sm font-medium transition-colors hover:text-primary">
             Tours
           </Link>
+          <Link href="/budget-tours" className="text-sm font-medium transition-colors hover:text-primary">
+            Budget Tours
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary">
               Destinations <ChevronDown className="h-4 w-4" />
@@ -109,6 +112,9 @@ export function Header() {
             </Link>
             <Link href="/tours" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Tours
+            </Link>
+            <Link href="/budget-tours" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Budget Tours
             </Link>
             <div className="flex flex-col gap-2 pl-4">
               <Link href="/destinations/kenya" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
