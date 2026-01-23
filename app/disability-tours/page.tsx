@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "wheelchair accessible tours and safaris",
     "accessible kenya safari",
     "disability tours kenya",
+    "disability tours in kenya",
     "wheelchair friendly safari",
     "accessible travel africa",
     "special needs safari",
@@ -384,6 +385,8 @@ export default function DisabilityToursPage() {
             Jae Travel ensures travelers with disabilities experience Africa's greatest wonders — safely, comfortably, and with dignity through our specially designed <strong>wheelchair accessible tours and safaris</strong>.
           </p>
 
+          <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">Disability tours in Kenya provide fully accessible safaris with adapted vehicles, accessible lodges, and expert support. Experience the Big Five and Maasai culture comfortably and safely through these inclusive adventures designed for all abilities.</p>
+
           <p className="mx-auto mb-8 max-w-3xl text-lg italic text-white/80">
             "I saw a lion pride at sunrise from my wheelchair in a fully wheelchair accessible safari vehicle. That moment will stay with me forever." – David Chen, Canada
           </p>
@@ -418,6 +421,8 @@ export default function DisabilityToursPage() {
               Choose from our most popular wheelchair accessible safari routes, each carefully designed with accessibility at the forefront. 
               All itineraries feature wheelchair-adapted vehicles, barrier-free accommodations, and trained support staff.
             </p>
+
+            <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">Disability tours in Kenya offer customized accessible safaris featuring wheelchair-friendly vehicles and lodges, trained assistance teams, and tailored game drives. Enjoy the Masai Mara and Amboseli's wildlife with dignity through these specially designed inclusive experiences.</p>
           </div>
 
           <div className="space-y-8">
@@ -501,6 +506,8 @@ export default function DisabilityToursPage() {
             <p className="mb-4 text-muted-foreground">
               Don't see your perfect wheelchair accessible safari itinerary? We specialize in custom routes designed specifically for your accessibility needs.
             </p>
+
+            <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">Disability tours in Kenya deliver inclusive safari adventures with adapted 4x4 vehicles, accessible accommodations, and professional support staff. Witness the Big Five and engage with Maasai culture through these thoughtfully designed experiences that ensure comfort and accessibility for all travelers.</p>
             <Button asChild size="lg">
               <Link href="/contact">Design Your Custom Accessible Safari</Link>
             </Button>
