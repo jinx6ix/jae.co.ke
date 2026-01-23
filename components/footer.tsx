@@ -155,23 +155,23 @@ export function Footer() {
               <Image
                 src="/download.png"
                 alt="Tourism Authority Kenya"
-                width={100}
+                width={150}
                 height={60}
                 className="object-contain grayscale hover:grayscale-0 transition-all"
               />
             </a>
             <a
-              title="SafariBookings"
-              href="https://www.safaribookings.com/"
+              title="Bison Safaris"
+              href="https://bisonsafaris.co.ke/tour/7-days-kenya-budget-shared-safari/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform hover:scale-105"
             >
               <Image
-                src="/download (1).png"
+                src="/bison.jpeg"
                 alt="SafariBookings"
-                width={100}
-                height={60}
+                width={150}
+                height={80}
                 className="object-contain grayscale hover:grayscale-0 transition-all"
               />
             </a>
