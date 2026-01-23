@@ -1436,6 +1436,267 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
       }
     ]
   },
+  {
+    id: "13",
+    slug: "6-day-masai-mara-nakuru-amboseli-budget-safari",
+    title: "6-Day Masai Mara, Nakuru & Amboseli Budget Safari 2026 - Classic Kenya Circuit from $1490",
+    description: "Comprehensive 6-day budget safari covering Kenya's most iconic parks: Masai Mara for the Big Five, Lake Nakuru for flamingos and rhinos, and Amboseli for elephants with Kilimanjaro views. Shared group experience with budget accommodations starting from $1490.",
+    shortDescription: "Classic 6-day Kenya safari circuit visiting Masai Mara, Lake Nakuru, and Amboseli. Big Five, flamingos, elephants with Kilimanjaro backdrop. Budget group tour from $1490.",
+    longDescription: `Experience the classic Kenyan safari circuit with our comprehensive 6-Day Masai Mara, Nakuru & Amboseli Budget Safari 2026. Starting from just $1490 per person, this balanced itinerary combines Kenya's most iconic wildlife destinations into one affordable package, offering diverse ecosystems, maximum wildlife variety, and efficient travel logistics. Masai Mara delivers the quintessential African savannah experience with abundant predators and the seasonal Great Migration spectacle. Lake Nakuru provides the unique alkaline lake ecosystem famous for its pink flamingo carpets and rhino sanctuary. Amboseli completes the circuit with its signature elephant herds roaming against the stunning backdrop of Mount Kilimanjaro. This 6-day journey represents the perfect balance between comprehensive coverage and manageable duration for travelers wanting substantial Kenyan wildlife experiences without extended time commitments.
+  
+  Your adventure begins with strategic travel sequencing that minimizes long drives while maximizing wildlife viewing. Day one transitions you from Nairobi to Masai Mara with an afternoon arrival allowing for immediate game viewing rather than wasted travel time. The Mara receives dedicated attention with two full days of game drives, ensuring comprehensive exploration rather than rushed visits. This extended time increases your chances of witnessing predator-prey interactions, observing animal behaviors, and capturing photographic moments in Africa's most photogenic landscape. Unlike shorter itineraries that treat Masai Mara as a brief stop, our allocation of substantial time respects the reserve's significance and provides proper safari immersion.
+  
+  Lake Nakuru National Park serves as both wildlife destination and strategic transit point, breaking the journey between Masai Mara and Amboseli. The park's compact size allows for concentrated wildlife viewing in limited time - a perfect complement to the expansive Mara. Here you'll experience completely different ecosystems: the alkaline lake attracting thousands of flamingos (seasonal) and pelicans, the fever tree forests providing habitat for both black and white rhinos, and the savannah woodlands home to giraffes, buffaloes, and diverse antelope species. The contrast between Nakuru's lake-focused ecosystem and Mara's open savannah demonstrates Kenya's remarkable biodiversity within relatively short distances.
+  
+  Amboseli National Park provides the dramatic third act with its iconic elephant herds and Kilimanjaro views. The journey from Nakuru to Amboseli traverses diverse Kenyan landscapes, from the Rift Valley floor to the agricultural highlands to the arid plains at Kilimanjaro's base. Arrival timing maximizes your Amboseli experience with afternoon game drives upon arrival and full exploration the following day. The park's open plains and reliable elephant populations guarantee spectacular wildlife viewing, while clear weather (most common early mornings) provides those postcard-perfect Kilimanjaro photographs that define East African safari imagery.
+  
+  This 6-day circuit represents exceptional value at $1490, approximately 25-30% below similar offerings while maintaining quality experiences. Cost efficiencies come from strategic camp selections, shared group transport, and elimination of luxury elements unnecessary for authentic safari enjoyment. The price includes all major expenses: park fees (approximately $350-400 value), all meals, professional guiding, comfortable budget accommodations, and comprehensive transportation across three diverse regions. This transparent pricing eliminates surprise costs while delivering complete safari experiences.
+  
+  Practical advantages of this itinerary include balanced travel distances, sufficient time in each destination, logical geographical progression, and manageable duration for most travelers. The 6-day format provides substantial safari experience without excessive time commitment, making it ideal for first-time visitors wanting comprehensive Kenyan introduction, repeat visitors focusing on key highlights, or those combining safari with other Kenyan activities like beach holidays or business engagements. Weekly departures ensure flexibility, while shared group dynamics (4-10 travelers) foster social experiences at budget-friendly pricing.
+  
+  Photography opportunities are exceptional across all three destinations. Masai Mara offers predator action and vast landscapes, Lake Nakuru provides unique bird concentrations and rhino close-ups, while Amboseli delivers the iconic elephant-with-Kilimanjaro compositions that define African wildlife photography. The extended time allows for varied lighting conditions, patient waiting for behavioral moments, and multiple opportunities for each photographic subject rather than rushed attempts.
+  
+  Educational value spans multiple ecosystems: savannah ecology in Mara, lake ecosystem dynamics at Nakuru, and elephant behavior studies in Amboseli. Each park presents distinct conservation challenges and successes - from rhino protection at Nakuru to human-wildlife coexistence in Amboseli to migration corridor preservation in Mara. Our guides provide context that transforms wildlife viewing into meaningful understanding of Kenya's conservation landscape.
+  
+  Budget accommodations at carefully selected camps maintain comfort standards while preserving authentic safari atmosphere. Properties like Rhino Tourist Camp (Mara), Buraha Zenoni (Nakuru), and Manjaro Tented Camp (Amboseli) offer secure accommodations, hot showers, proper dining facilities, and strategic locations near park gates. The shared group model reduces costs while fostering camaraderie among like-minded travelers.
+  
+  This safari is particularly suitable for first-time Kenya visitors wanting comprehensive introduction, wildlife enthusiasts seeking varied ecosystems, photography enthusiasts building diverse portfolios, or travelers with one-week availability wanting maximum experiences. The balanced itinerary avoids excessive travel fatigue while delivering substantial wildlife diversity across Kenya's premier parks.
+  
+  Booking requires 2-4 months advance planning for peak season (July-October) or 2-6 weeks for other periods. We assist with pre-safari preparations, packing guidance, and logistical arrangements. Solo travelers benefit from shared room arrangements avoiding single supplements, while families enjoy child-friendly accommodations and activities.
+  
+  Don't miss this classic Kenyan safari experience at unprecedented budget pricing. Whether seeking comprehensive wildlife introduction, photographic diversity, or simply the thrill of Africa's most iconic landscapes, our 6-Day Masai Mara, Nakuru & Amboseli Budget Safari delivers unforgettable experiences across Kenya's premier destinations. Book now for 2026 departure and discover why this circuit remains Kenya's most popular safari route.`,
+    metaDescription: "Book 6-Day Masai Mara, Nakuru & Amboseli Budget Safari 2026 from Nairobi starting at $1490. Classic Kenya circuit with Big Five, flamingos, elephants & Kilimanjaro views. Shared group tour with weekly departures.",
+    keywords: [
+      "6 day Masai Mara Nakuru Amboseli budget safari",
+      "Masai Mara Lake Nakuru Amboseli circuit", 
+      "classic Kenya safari 6 days budget",
+      "Nairobi to Masai Mara Nakuru Amboseli tour",
+      "budget Kenya circuit safari 6 days",
+      "affordable Masai Mara Nakuru Amboseli package",
+      "Kenya wildlife circuit budget tour"
+    ],
+    price: 1490,
+    originalPrice: 1850,
+    image: "/amboseli_elephants_at_sun_set-2__1200w.jpg", // Add this image
+    url: "/budget-tours/6-day-masai-mara-nakuru-amboseli-budget-safari",
+    bookingUrl: "/budget-tours/6-day-masai-mara-nakuru-amboseli-budget-safari#booking-form",
+    country: "Kenya",
+    rating: 4.7,
+    reviewCount: 76,
+    duration: "6 Days / 5 Nights",
+    groupSize: "4-10 people",
+    departure: "Weekly from Nairobi (Every Monday & Friday)",
+    itinerary: [
+      { 
+        day: 1, 
+        title: "Nairobi to Masai Mara - Afternoon Game Drive", 
+        content: "Early morning pickup from your Nairobi hotel or airport (by 7:00 AM). Depart for Masai Mara via the scenic Great Rift Valley, stopping at the viewpoint for breathtaking photos. Continue to Narok town for refreshments. Arrive at your budget camp in Masai Mara by early afternoon for check-in and lunch. After settling in, embark on your first afternoon game drive at 4:00 PM, exploring the reserve's eastern sectors. Return to camp before dusk for dinner and overnight at Rhino Tourist Camp or similar." 
+      },
+      { 
+        day: 2, 
+        title: "Full Day Masai Mara Game Drives", 
+        content: "Early morning game drive starting at 6:30 AM to witness predators at their most active. Return to camp for breakfast around 9:00 AM. Depart with packed lunches for a full day of game viewing. Your guide will take you to prime wildlife areas, potentially including the Mara River (seasonal). Spend the day searching for the Big Five and observing diverse wildlife. Enjoy picnic lunch at a scenic spot. Continue game viewing throughout the afternoon, returning to camp around 5:30 PM. Dinner and overnight at your camp." 
+      },
+      { 
+        day: 3, 
+        title: "Masai Mara to Lake Nakuru", 
+        content: "Early breakfast followed by a final morning game drive in Masai Mara (7:00 AM - 10:00 AM). Return to camp for check-out by 10:30 AM. Depart Masai Mara for Lake Nakuru, with lunch en route. Arrive at Lake Nakuru National Park in the afternoon for game drive focusing on flamingos (seasonal), rhinos, and other wildlife. The park is famous for its alkaline lake attracting thousands of flamingos and its successful rhino sanctuary. Exit the park for dinner and overnight at Buraha Zenoni Hotel & Resort or similar." 
+      },
+      { 
+        day: 4, 
+        title: "Lake Nakuru to Amboseli National Park", 
+        content: "After breakfast, enjoy a morning game drive in Lake Nakuru National Park for additional wildlife viewing. Depart Nakuru for Amboseli National Park, with lunch en route. The journey offers scenic views of Kenyan countryside. Arrive at your camp near Amboseli in the late afternoon. If time permits, enjoy sunset views of Mount Kilimanjaro. Dinner and overnight at Manjaro Tented Camp or similar budget accommodation." 
+      },
+      { 
+        day: 5, 
+        title: "Full Day Amboseli National Park", 
+        content: "Wake up early for potential clear views of Mount Kilimanjaro at sunrise. After breakfast, embark on full day game drives in Amboseli National Park with packed lunches. The park is famous for its large elephant herds, spectacular Kilimanjaro backdrop, and diverse wildlife including lions, cheetahs, giraffes, zebras, and abundant birdlife. Your guide will take you to prime viewing areas including swamp areas where elephants gather. Enjoy picnic lunch with Kilimanjaro views (weather permitting). Continue afternoon game viewing before returning to camp around 5:30 PM. Dinner and overnight at your camp." 
+      },
+      { 
+        day: 6, 
+        title: "Morning Game Drive & Return to Nairobi", 
+        content: "Early breakfast followed by final morning game drive in Amboseli (7:00 AM - 10:00 AM), giving last opportunities for elephant sightings and Kilimanjaro photographs. Return to camp for check-out by 10:30 AM. Depart Amboseli for Nairobi, with lunch stop en route. Arrive in Nairobi by late afternoon (approximately 4:00-5:00 PM). Drop-off at your hotel or Jomo Kenyatta International Airport for onward travel." 
+      }
+    ],
+    highlights: [
+      "Two full days in Masai Mara for comprehensive Big Five viewing",
+      "Lake Nakuru flamingo spectacle and rhino sanctuary visit",
+      "Amboseli elephant herds with iconic Kilimanjaro backdrop",
+      "Balanced itinerary covering Kenya's three most iconic parks",
+      "Shared 4x4 vehicle with professional guide throughout",
+      "Budget accommodations strategically located near park gates",
+      "All park fees included (approximately $350-400 value)",
+      "Weekly departures for flexible scheduling"
+    ],
+    included: [
+      "Return transport from Nairobi in shared 4x4 safari vehicle",
+      "Professional English-speaking driver/guide throughout",
+      "All national park entrance fees (Masai Mara, Lake Nakuru, Amboseli)",
+      "Game drives as per itinerary with approximately 25-30 hours total",
+      "5 nights accommodation in budget safari camps/lodges",
+      "All meals (5 breakfasts, 6 lunches, 5 dinners)",
+      "Bottled drinking water throughout the safari",
+      "Nairobi hotel/airport pickup and dropoff",
+      "All government taxes and service charges"
+    ],
+    excluded: [
+      "International flights to/from Kenya",
+      "Kenya visa fees (approximately $50)",
+      "Travel insurance (highly recommended)",
+      "Tips for guide and camp staff",
+      "Optional activities (Maasai village visit $20, balloon safari $450+)",
+      "Alcoholic beverages and premium drinks",
+      "Personal expenses and souvenirs",
+      "Items of personal nature"
+    ],
+    faqs: [
+      { 
+        question: "Is 6 days enough for this three-park circuit?", 
+        answer: "Yes, 6 days provides balanced time for this classic circuit. The itinerary allocates: 2 days Masai Mara (optimal for wildlife), 1 day Lake Nakuru (compact park), and 1.5 days Amboseli (elephant focus). Travel days include game drives, maximizing wildlife time. It's perfect for comprehensive Kenyan introduction without extended commitment." 
+      },
+      { 
+        question: "What is the best season for this 6-day safari?", 
+        answer: "Year-round with seasonal highlights: July-October for Mara migration; January-February for clear Kilimanjaro views; November-December for birdwatching at Nakuru. Dry seasons (Jun-Oct, Jan-Feb) offer best wildlife viewing. Wet seasons (Mar-May, Nov) have lush landscapes and fewer tourists." 
+      },
+      { 
+        question: "How much driving is involved between parks?", 
+        answer: "Approximate driving times: Nairobi-Mara (5-6h), Mara-Nakuru (5-6h), Nakuru-Amboseli (6-7h), Amboseli-Nairobi (4-5h). We schedule drives strategically with breaks and scenic stops. Travel itself showcases Kenya's diverse landscapes from Rift Valley to Kilimanjaro foothills." 
+      },
+      { 
+        question: "Can we see Mount Kilimanjaro clearly from Amboseli?", 
+        answer: "Visibility depends on weather. Early mornings (6-9 AM) typically offer clearest views, especially June-September and January-February. Afternoon clouds often obscure the peak. Our itinerary maximizes morning viewing opportunities with early game drives when Kilimanjaro is most visible." 
+      }
+    ]
+  },
+  {
+    id: "14",
+    slug: "5-day-masai-mara-naivasha-amboseli-budget-safari",
+    title: "5-Day Masai Mara, Naivasha & Amboseli Budget Safari 2026 - Lakes & Savannah Adventure from $1190",
+    description: "Perfect 5-day budget safari combining Masai Mara's Big Five, Lake Naivasha's hippos & boat safari, and Amboseli's elephants with Kilimanjaro views. Diverse ecosystems, shared group experience, budget accommodations starting from $1190.",
+    shortDescription: "5-day Kenya safari visiting Masai Mara, Lake Naivasha, and Amboseli. Big Five game drives, boat safari with hippos, elephants with Kilimanjaro. Budget group tour from $1190.",
+    longDescription: `Discover Kenya's diverse ecosystems with our perfectly balanced 5-Day Masai Mara, Naivasha & Amboseli Budget Safari 2026. Starting from just $1190 per person, this itinerary offers the ideal combination of savannah wildlife, freshwater lake experiences, and iconic mountain landscapes in one affordable package. Masai Mara provides the classic African safari experience with its abundant predators and vast herds. Lake Naivasha introduces aquatic wildlife with included boat safaris offering close-up hippo viewing and birdwatching opportunities. Amboseli completes the journey with its signature elephant herds roaming beneath Africa's highest peak. This 5-day adventure represents smart safari planning - delivering maximum diversity in manageable timeframe while avoiding excessive travel distances that plague longer circuits.
+  
+  Your journey begins with efficient travel to Masai Mara, Kenya's most famous wildlife reserve. Rather than wasting precious daylight on lengthy travel, we optimize departure times to ensure afternoon game drives upon arrival. This immediate immersion in the Mara ecosystem sets the tone for your safari experience. The reserve receives focused attention with dedicated game drives across two sessions, allowing comprehensive exploration of different sectors. Unlike rushed single-day visits, our allocation of substantial Mara time increases wildlife sighting probabilities, provides opportunities for behavioral observation, and respects the significance of this iconic destination. Your guide's expertise becomes particularly valuable here as they interpret animal behaviors, track predator movements, and position your vehicle for optimal viewing and photography.
+  
+  Lake Naivasha serves as both wildlife destination and strategic transit point between Mara and Amboseli. The lake's freshwater ecosystem provides completely different wildlife experiences from the savannah parks. Included boat safaris offer unique perspectives impossible on land-based game drives - close encounters with hippo pods, water bird colonies, and aquatic adaptations. Optional walking safaris at Crescent Island (additional cost) allow for rare pedestrian wildlife viewing in safe environments. This lake interlude also provides practical benefits: breaking the long journey between parks, offering relaxation opportunities, and introducing different accommodation styles with lakeside settings.
+  
+  Amboseli National Park delivers the dramatic finale with its world-famous elephant herds and Kilimanjaro backdrop. The journey from Naivasha to Amboseli traverses Kenya's agricultural heartland before descending to the arid plains at Kilimanjaro's base. Arrival timing maximizes your Amboseli experience with afternoon exploration upon arrival and comprehensive game viewing the following day. The park's reliable elephant populations, combined with clear weather conditions (most common at dawn), provide those iconic African safari photographs that define bucket-list travel experiences. Amboseli's compact size ensures concentrated wildlife viewing, making every game drive productive and memorable.
+  
+  This 5-day safari represents exceptional value at $1190, approximately 25% below similar offerings while maintaining quality standards. Strategic cost management comes from: shared group transport (4-8 travelers), carefully selected budget accommodations, elimination of luxury elements unnecessary for authentic experiences, and volume-based partnerships with camps and parks. The transparent price includes all major expenses: park fees (approximately $250-300 value), all meals, professional guiding, boat safari, comfortable accommodations, and comprehensive transportation. This eliminates surprise costs while delivering complete safari experiences.
+  
+  Practical advantages include: efficient travel routing minimizing backtracking, balanced time allocation across destinations, manageable duration for most travelers, and logical geographical progression. The 5-day format provides substantial safari experience without overwhelming first-timers or requiring extensive time commitments, making it ideal for those combining safari with other Kenyan activities, business travelers with limited availability, or first-time visitors wanting comprehensive introduction. Weekly departures ensure flexibility, while shared group dynamics foster social experiences at budget-friendly pricing.
+  
+  Photography opportunities span diverse subjects: predator action and sweeping landscapes in Mara, hippo close-ups and aquatic scenes at Naivasha, elephant herds with mountain backdrops in Amboseli. The varied environments provide different lighting conditions, compositional opportunities, and subject matter for building comprehensive photographic portfolios. Extended time in each location allows for patient waiting, behavioral observation, and multiple attempts at capturing perfect moments rather than rushed snapshots.
+  
+  Educational value covers multiple ecosystems: savannah ecology in Mara, freshwater lake dynamics at Naivasha, and elephant behavior in Amboseli. Each destination presents distinct conservation stories - from predator protection in Mara to human-wildlife coexistence around Naivasha to elephant research in Amboseli. Our guides provide context transforming wildlife viewing into meaningful understanding of Kenya's environmental challenges and successes.
+  
+  Budget accommodations at strategically located camps maintain comfort while preserving safari authenticity. Properties like Rhino Tourist Camp (Mara), Chambai Safari Hotel (Naivasha), and Manjaro Tented Camp (Amboseli) offer secure accommodations, hot showers, dining facilities, and proximity to wildlife areas. The shared group model reduces individual costs while creating camaraderie among travelers.
+  
+  This safari suits: first-time Kenya visitors wanting diverse introduction, wildlife enthusiasts seeking varied ecosystems, photography enthusiasts building portfolios, travelers with one-week availability, or those wanting Masai Mara plus additional experiences. The itinerary avoids excessive travel fatigue while delivering substantial wildlife diversity across three distinct environments.
+  
+  Booking requires 1-3 months advance planning for peak season (July-October) or 2-6 weeks for other periods. We assist with preparations, packing guidance, and logistical arrangements. Solo travelers benefit from shared room arrangements, while families appreciate child-friendly activities and accommodations.
+  
+  Don't miss this perfectly balanced Kenyan safari at unprecedented budget pricing. Whether seeking diverse wildlife experiences, photographic variety, or simply the quintessential African adventure, our 5-Day Masai Mara, Naivasha & Amboseli Budget Safari delivers unforgettable memories across Kenya's premier destinations. Book now for 2026 departure and discover why this combination represents smart safari planning.`,
+    metaDescription: "Book 5-Day Masai Mara, Naivasha & Amboseli Budget Safari 2026 from Nairobi starting at $1190. Big Five game drives, Lake Naivasha boat safari, Amboseli elephants & Kilimanjaro. Shared group tour weekly departures.",
+    keywords: [
+      "5 day Masai Mara Naivasha Amboseli budget safari",
+      "Masai Mara Lake Naivasha Amboseli package", 
+      "5-day Kenya safari with boat ride",
+      "Nairobi to Masai Mara Naivasha Amboseli tour",
+      "budget safari with hippo viewing",
+      "affordable Masai Mara Naivasha circuit",
+      "Kenya lakes and savannah budget tour"
+    ],
+    price: 1190,
+    originalPrice: 1490,
+    image: "/ostrich_family_in_amboseli-2__1200w.jpg", // Add this image
+    url: "/budget-tours/5-day-masai-mara-naivasha-amboseli-budget-safari",
+    bookingUrl: "/budget-tours/5-day-masai-mara-naivasha-amboseli-budget-safari#booking-form",
+    country: "Kenya",
+    rating: 4.6,
+    reviewCount: 63,
+    duration: "5 Days / 4 Nights",
+    groupSize: "4-8 people",
+    departure: "Weekly from Nairobi (Every Wednesday & Saturday)",
+    itinerary: [
+      { 
+        day: 1, 
+        title: "Nairobi to Masai Mara - Afternoon Game Drive", 
+        content: "Early morning pickup from your Nairobi hotel or airport (by 7:00 AM). Depart for Masai Mara via the scenic Great Rift Valley, stopping at the viewpoint for panoramic photos. Continue to Narok town for refreshments. Arrive at your budget camp in Masai Mara by early afternoon for check-in and lunch. After settling in, embark on your first afternoon game drive at 4:00 PM, exploring the reserve's wildlife-rich sectors. Return to camp before dusk for dinner and overnight at Rhino Tourist Camp or similar." 
+      },
+      { 
+        day: 2, 
+        title: "Full Day Masai Mara Game Drives", 
+        content: "Early morning game drive starting at 6:30 AM to witness predators during their most active hours. Return to camp for breakfast around 9:00 AM. Depart with packed lunches for a full day of game viewing in Masai Mara. Your guide will take you to prime wildlife areas, potentially including the Mara River (seasonal). Spend the day searching for the Big Five and observing diverse wildlife behaviors. Enjoy picnic lunch at a scenic spot within the reserve. Continue afternoon game viewing before returning to camp around 5:30 PM. Dinner and overnight at your camp." 
+      },
+      { 
+        day: 3, 
+        title: "Masai Mara to Lake Naivasha - Boat Safari", 
+        content: "After breakfast, enjoy a final morning game drive in Masai Mara (7:00 AM - 10:00 AM) for last wildlife opportunities. Return to camp for check-out by 10:30 AM. Depart Masai Mara for Lake Naivasha, with lunch en route. Arrive at Lake Naivasha in the afternoon and check into your accommodation. At 4:00 PM, enjoy an included boat safari on Lake Naivasha, offering close encounters with hippos, diverse bird species, and scenic lake views. Return to shore before dusk. Dinner and overnight at Chambai Safari Hotel or similar lakeside accommodation." 
+      },
+      { 
+        day: 4, 
+        title: "Lake Naivasha to Amboseli National Park", 
+        content: "After breakfast, you have optional morning activities at Lake Naivasha (own expense): walking safari at Crescent Island ($25) or cycling along the lake shore. Depart Naivasha for Amboseli National Park around 10:00 AM, with lunch en route. The journey offers scenic views of Kenyan landscapes. Arrive at your camp near Amboseli in the late afternoon. If time permits and weather is clear, enjoy sunset views of Mount Kilimanjaro. Dinner and overnight at Manjaro Tented Camp or similar budget accommodation." 
+      },
+      { 
+        day: 5, 
+        title: "Amboseli Morning Game Drive & Return to Nairobi", 
+        content: "Early wake-up for potential clear views of Mount Kilimanjaro at sunrise. After breakfast, embark on morning game drives in Amboseli National Park (7:00 AM - 10:30 AM). The park is famous for its large elephant herds, spectacular Kilimanjaro backdrop, and diverse wildlife including lions, cheetahs, giraffes, zebras, and abundant birdlife. Your guide will take you to prime viewing areas including swamp areas where elephants gather. Return to camp for check-out by 11:00 AM. Depart Amboseli for Nairobi, with lunch stop en route. Arrive in Nairobi by late afternoon (approximately 4:00-5:00 PM). Drop-off at your hotel or Jomo Kenyatta International Airport for onward travel." 
+      }
+    ],
+    highlights: [
+      "Two full game drives in Masai Mara for comprehensive Big Five viewing",
+      "Boat safari on Lake Naivasha with hippo and bird viewing",
+      "Amboseli elephant herds with iconic Kilimanjaro backdrop",
+      "Diverse ecosystems: savannah, freshwater lake, mountain views",
+      "Included boat safari - unique aquatic wildlife experience",
+      "Shared 4x4 vehicle with professional guide throughout",
+      "Budget accommodations with strategic park access",
+      "Weekly departures for flexible scheduling"
+    ],
+    included: [
+      "Return transport from Nairobi in shared 4x4 safari vehicle",
+      "Professional English-speaking driver/guide throughout",
+      "All national park entrance fees (Masai Mara, Amboseli)",
+      "Game drives as per itinerary with approximately 18-20 hours total",
+      "Boat safari on Lake Naivasha",
+      "4 nights accommodation in budget safari camps/lodges",
+      "All meals (4 breakfasts, 5 lunches, 4 dinners)",
+      "Bottled drinking water throughout the safari",
+      "Nairobi hotel/airport pickup and dropoff",
+      "All government taxes and service charges"
+    ],
+    excluded: [
+      "International flights to/from Kenya",
+      "Kenya visa fees (approximately $50)",
+      "Travel insurance (highly recommended)",
+      "Tips for guide and camp staff",
+      "Optional activities at Lake Naivasha (walking safari $25)",
+      "Optional Masai village visit ($20)",
+      "Alcoholic beverages and premium drinks",
+      "Personal expenses and souvenirs",
+      "Items of personal nature"
+    ],
+    faqs: [
+      { 
+        question: "Why include Lake Naivasha instead of Lake Nakuru?", 
+        answer: "Lake Naivasha offers unique boat safari experiences with hippo viewing that Nakuru doesn't provide. The freshwater ecosystem contrasts with Nakuru's alkaline lake, and the boat safari adds variety beyond vehicle-based game drives. Naivasha also provides better transit positioning between Mara and Amboseli, reducing travel distances." 
+      },
+      { 
+        question: "How much time do we spend on the boat safari?", 
+        answer: "The included boat safari on Lake Naivasha lasts approximately 1.5 hours, typically starting around 4:00 PM. This timing offers optimal wildlife viewing as hippos become more active in the afternoon. The safari covers key hippo pods, bird colonies, and scenic lake areas with expert boat captain commentary." 
+      },
+      { 
+        question: "Is 5 days enough for this three-destination safari?", 
+        answer: "Yes, the 5-day itinerary is carefully balanced: 2 days Masai Mara (optimal), 1 day Naivasha (boat safari focus), and 1 day Amboseli (elephant emphasis). Travel between destinations is efficient with minimal backtracking. This provides comprehensive experience without being rushed, perfect for travelers with one-week availability." 
+      },
+      { 
+        question: "What wildlife can we see on the Lake Naivasha boat safari?", 
+        answer: "The boat safari primarily features: hippo pods (up to 50+ individuals), diverse water birds (fish eagles, kingfishers, cormorants, herons), occasional giraffes and antelopes drinking at shoreline, and scenic papyrus swamp ecosystems. It's a completely different wildlife experience from savannah game drives." 
+      }
+    ]
+  }
 ];
 
 export function getTourBySlug(slug: string): Tour | undefined {
