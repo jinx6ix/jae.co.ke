@@ -103,6 +103,11 @@ const schema = {
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE",
+        "addressLocality": "Nairobi"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+254726485228",
