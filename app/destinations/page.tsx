@@ -18,6 +18,15 @@ const destinationsSchema = {
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE",
+        "addressLocality": "Nairobi",
+        "postalCode": "00100",
+        "streetAddress": "123 Safari Lane",
+        "email": "info@jaetravel.co.ke",
+        "telephone": "+254726485228"
+      },
       "description": "East Africa’s leading operator of wheelchair-accessible, sustainable safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -90,6 +99,7 @@ const destinationsSchema = {
       "description": "Explore the best safari destinations: Masai Mara, Serengeti, gorilla trekking in Rwanda & Uganda, Zanzibar beaches, and more.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "breadcrumb": { "@id": "https://www.jaetravel.co.ke/destinations/#breadcrumb" },
+      "inLanguage": "en-US",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://www.jaetravel.co.ke/destinations/east-africa-safari-destinations-hero.jpg",
