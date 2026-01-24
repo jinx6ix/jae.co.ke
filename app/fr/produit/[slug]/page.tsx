@@ -32,8 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://www.jaetravel.co.ke/fr/produit/${params.slug}`,
       languages: {
+        'en': `https://www.jaetravel.co.ke/product/${params.slug}`,
         'fr-FR': `https://www.jaetravel.co.ke/fr/produit/${params.slug}`,
         'en-US': `https://www.jaetravel.co.ke/product/${params.slug}`,
+        'en-GB': `https://www.jaetravel.co.ke/product/${params.slug}`,
+        'en-AU': `https://www.jaetravel.co.ke/product/${params.slug}`,
+        'en-CA': `https://www.jaetravel.co.ke/product/${params.slug}`,
+        'en-IE': `https://www.jaetravel.co.ke/product/${params.slug}`,
         'x-default': `https://www.jaetravel.co.ke/product/${params.slug}`,
       },
     },

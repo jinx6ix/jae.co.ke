@@ -202,10 +202,18 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "Unforgettable African safaris in Kenya, Tanzania, Rwanda & Uganda. Accessible tours, gorilla trekking, Masai Mara, Serengeti, and luxury wildlife adventures.",
       images: ["/og-masai-mara-migration.jpg"],
       type: "website",
-      locale: "en_KE",
+      locale: "en_US",
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke",
+      languages: {
+        'en': 'https://www.jaetravel.co.ke',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke',       // US
+        'en-GB': 'https://www.jaetravel.co.ke',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke',   // Fallback
+      },
     },
     robots: {
       index: true,
@@ -754,6 +762,34 @@ export default function HomePage() {
               JaeTravel Expeditions experience. Read their stories below and imagine yourself on your own <strong>East Africa safari</strong> adventure.
             </p>
           </div>
+
+          <section className="mb-8 scroll-mt-32">
+            <h2 className="font-serif text-2xl md:text-6xl font-bold mb-12 text-balance">
+              Why JAE Travel Offers the Kenya Best Safari Experience
+            </h2>
+            <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
+              <p>
+                When it comes to the <strong>Kenya best safari</strong>, JAE Travel stands out as the premier choice for travelers seeking authenticity, luxury, and accessibility. Our expert guides, custom vehicles, and deep knowledge of the Masai Mara ecosystem ensure you experience the Great Migration like never before.
+              </p>
+              <p>
+                Whether you're planning your first African adventure or returning for more, our packages deliver unforgettable moments in one of the world's most iconic wildlife destinations — making us the go-to operator for the true <strong>Kenya best safari</strong>.
+              </p>
+            </div>
+          </section>
+
+          <section className="mb-8 scroll-mt-32">
+            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-12 text-balance">
+              Discover the Best Safari in Africa for 2026
+            </h2>
+            <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
+              <p>
+                The Masai Mara Great Migration is widely regarded as the <strong>best safari in Africa</strong>, and 2026 promises to be one of the most spectacular years yet. With record herd sizes and dramatic river crossings, this is the ultimate wildlife spectacle on the continent.
+              </p>
+              <p>
+                At JAE Travel, we make the <strong>best safari in Africa</strong> accessible to everyone — including wheelchair users — through our pioneering hydraulic lift vehicles, specialist guides, and wheelchair-friendly lodges. Book your 2026 adventure today and witness nature at its most extraordinary.
+              </p>
+            </div>
+          </section>
 
           <div className="grid gap-8 md:grid-cols-3">
             {[

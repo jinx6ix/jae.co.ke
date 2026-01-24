@@ -175,6 +175,14 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://www.jaetravel.co.ke/other-services",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/other-services',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/other-services',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/other-services',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/other-services',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/other-services',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/other-services',   // Fallback
+    },
   },
   openGraph: {
     title: "Transportation Services Kenya & East Africa | JAE Travel Expeditions",

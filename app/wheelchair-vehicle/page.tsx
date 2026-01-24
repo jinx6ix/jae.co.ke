@@ -58,10 +58,18 @@ export const generateMetadata = (): Metadata => {
       ],
       type: "website",
       siteName: "JAETravel Expeditions",
-      locale: "en_KE"
+      locale: "en_US"
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/wheelchair-vehicle",
+      languages: {
+        'en': 'https://www.jaetravel.co.ke/wheelchair-vehicle',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/wheelchair-vehicle',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/wheelchair-vehicle',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/wheelchair-vehicle',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/wheelchair-vehicle',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/wheelchair-vehicle',   // Fallback
+      },
     },
     robots: {
       index: true,

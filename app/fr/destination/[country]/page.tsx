@@ -165,6 +165,14 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
     keywords: destination.keywords,
     alternates: {
       canonical: `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,
+      languages: {
+        'en': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,           // Main English/global
+        'en-US': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // US
+        'en-GB': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // UK (optional)
+        'en-AU': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // Australia (optional)
+        'en-CA': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,      // Canada (optional)
+        'x-default': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,   // Fallback
+      },
     },
     openGraph: {
       title: destination.metaTitle,

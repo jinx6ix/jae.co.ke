@@ -46,6 +46,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
+      languages: {
+        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',           // Main English/global
+        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // US
+        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // UK (optional)
+        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // Australia (optional)
+        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // Canada (optional)
+        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',   // Fallback
+      },
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

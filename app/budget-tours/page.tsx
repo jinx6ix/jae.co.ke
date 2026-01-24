@@ -34,6 +34,14 @@ export const metadata: Metadata = {
   ].join(", "),
   alternates: {
     canonical: "https://www.jaetravel.co.ke/budget-tours/",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/budget-tours/',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/budget-tours/',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/budget-tours/',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/budget-tours/',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/budget-tours/',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/budget-tours/',   // Fallback
+    },
   },
   openGraph: {
     title: "Budget Safaris Kenya 2026 | Masai Mara Wildebeest Migration from $450",

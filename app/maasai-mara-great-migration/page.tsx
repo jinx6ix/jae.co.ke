@@ -191,7 +191,15 @@ export const generateMetadata = (): Metadata => ({
       alt: "Wheelchair accessible safari vehicle at 2026 Masai Mara Great Migration river crossing - Premium Masai Mara Packages" 
     }]
   },
-  alternates: { canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration" },
+  alternates: { canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+   languages: {
+    'en': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',           // Main English/global
+    'en-US': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // US
+    'en-GB': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // UK (optional)
+    'en-AU': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Australia (optional)
+    'en-CA': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Canada (optional)
+    'x-default': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',   // Fallback
+  }, },
   robots: "index, follow, max-image-preview:large",
   authors: [{ name: "JAE Travel Accessibility Team" }],
   publisher: "JAE Travel Kenya",

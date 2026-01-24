@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://www.jaetravel.co.ke/terms",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/terms',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/terms',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/terms',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/terms',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/terms',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/terms',   // Fallback
+    },
   },
 }
 

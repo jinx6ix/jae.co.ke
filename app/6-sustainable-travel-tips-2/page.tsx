@@ -26,7 +26,17 @@ export const metadata: Metadata = {
     url: "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2",
     type: "article"
   },
-  alternates: { canonical: "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2" },
+  alternates: { 
+    canonical: "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/6-sustainable-travel-tips-2',   // Fallback
+    },
+   },
 }
 
 // FINAL BULLET-PROOF SCHEMA — NOW WITH BREADCRUMBS + ALL RICH RESULTS

@@ -87,6 +87,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.jaetravel.co.ke",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke',       // US
+      'en-GB': 'https://www.jaetravel.co.ke',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke',   // Fallback
+    },
     types: {
       "application/rss+xml": "https://www.jaetravel.co.ke/blog/rss.xml",
     },

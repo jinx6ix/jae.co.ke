@@ -436,6 +436,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     alternates: {
       canonical: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+      languages: {
+        'en': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,           // Main English/global
+        'en-US': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // US
+        'en-GB': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // UK (optional)
+        'en-AU': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // Australia (optional)
+        'en-CA': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // Canada (optional)
+        'x-default': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,   // Fallback
+      },
     },
     robots: {
       index: true,

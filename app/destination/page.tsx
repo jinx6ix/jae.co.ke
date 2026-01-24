@@ -41,6 +41,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/destination",
+      languages: {
+        'en': 'https://www.jaetravel.co.ke/destination',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/destination',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/destination',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/destination',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/destination',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/destination',   // Fallback
+      },
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

@@ -48,6 +48,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.jaetravel.co.ke/disability-tours",
+    languages: {
+      'en': "https://www.jaetravel.co.ke/disability-tours",           // Main English/global
+      'en-US': "https://www.jaetravel.co.ke/disability-tours",       // US
+      'en-GB': "https://www.jaetravel.co.ke/disability-tours",       // UK (optional)
+      'en-AU': "https://www.jaetravel.co.ke/disability-tours",       // Australia (optional)
+      'en-CA': "https://www.jaetravel.co.ke/disability-tours",       // Canada (optional)
+      'x-default': "https://www.jaetravel.co.ke/disability-tours",   // Fallback
+    },
   },
   robots: "index, follow",
 }

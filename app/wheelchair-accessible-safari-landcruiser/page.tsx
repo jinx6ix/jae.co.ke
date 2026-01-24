@@ -58,10 +58,18 @@ export const generateMetadata = (): Metadata => {
       ],
       type: "website",
       siteName: "JaeTravel Expeditions", 
-      locale: "en_KE"
+      locale: "en_US"
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser",
+      languages: {
+        'en': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/wheelchair-accessible-safari-landcruiser',   // Fallback
+      },
     },
     robots: {
       index: true,

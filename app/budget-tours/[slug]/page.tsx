@@ -36,6 +36,14 @@ export async function generateMetadata(
     keywords: tour.keywords.join(", "),
     alternates: {
       canonical: `https://www.jaetravel.co.ke${tour.url}`,
+      languages: {
+        'en': `https://www.jaetravel.co.ke${tour.url}`,           // Main English/global
+        'en-US': `https://www.jaetravel.co.ke${tour.url}`,       // US
+        'en-GB': `https://www.jaetravel.co.ke${tour.url}`,       // UK (optional)
+        'en-AU': `https://www.jaetravel.co.ke${tour.url}`,       // Australia (optional)
+        'en-CA': `https://www.jaetravel.co.ke${tour.url}`,       // Canada (optional)
+        'x-default': `https://www.jaetravel.co.ke${tour.url}`,   // Fallback
+      },
     },
     openGraph: {
       title: tour.title,

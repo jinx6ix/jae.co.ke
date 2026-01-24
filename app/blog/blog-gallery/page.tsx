@@ -139,7 +139,17 @@ export const metadata: Metadata = {
     ],
     type: "website"
   },
-  alternates: { canonical: "https://www.jaetravel.co.ke/gallery" }
+  alternates: { 
+    canonical: "https://www.jaetravel.co.ke/gallery",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/gallery',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/gallery',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/gallery',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/gallery',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/gallery',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/gallery',   // Fallback
+    },
+   }
 }
 
 export default function GalleryPage() {

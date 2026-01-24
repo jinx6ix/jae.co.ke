@@ -47,6 +47,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravelexpeditions.com/fr/toyota-prado",
+      languages: {
+        'en': 'https://www.jaetravel.co.ke/fr/toyota-prado',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/fr/toyota-prado',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/fr/toyota-prado',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/fr/toyota-prado',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/fr/toyota-prado',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/fr/toyota-prado',   // Fallback
+      },
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

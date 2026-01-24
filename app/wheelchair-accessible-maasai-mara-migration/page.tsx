@@ -19,7 +19,17 @@ export const generateMetadata = (): Metadata => ({
       alt: "JaeTravel Expeditions wheelchair accessible safari vehicle at 2026 Maasai Mara Great Migration river crossing with wildebeest herds" 
     }]
   },
-  alternates: { canonical: "https://www.jaetravelexpeditions.co.ke/maasai-mara-great-migration" },
+  alternates: { 
+    canonical: "https://www.jaetravelexpeditions.co.ke/maasai-mara-great-migration",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',   // Fallback
+    },
+   },
   robots: "index, follow, max-image-preview:large",
   authors: [{ name: "JaeTravel Expeditions Accessibility Team" }],
   publisher: "JaeTravel Expeditions ",

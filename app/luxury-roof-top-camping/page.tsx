@@ -252,6 +252,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping",
+      languages: {
+        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',           // Main English/global
+        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // US
+        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // UK (optional)
+        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // Australia (optional)
+        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // Canada (optional)
+        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',   // Fallback
+      },
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),

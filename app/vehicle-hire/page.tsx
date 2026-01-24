@@ -48,6 +48,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravelexpeditions.com/vehicle-hire",
+      languages: {
+        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire',           // Main English/global
+        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // US
+        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // UK (optional)
+        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // Australia (optional)
+        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // Canada (optional)
+        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire',   // Fallback
+      },
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),
@@ -197,7 +205,7 @@ export default function VehicleHirePage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {vehicles.map((vehicle) => (
-              <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              <VehicleCard key={vehicle.id} vehicle={{ ...vehicle, pricePerDay: vehicle.pricePerDay.toString() }} />
             ))}
           </div>
         </div>
