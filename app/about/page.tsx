@@ -144,68 +144,6 @@ const aboutPageSchema = {
     },
 
     // 6. FAQPage – 7 questions (optimized for rich FAQ carousel)
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.jaetravel.co.ke/about/#faqpage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "When was JaeTravel Expeditions founded?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "JaeTravel Expeditions was founded in 2008 by James Kimani with the mission to make East African safaris accessible and sustainable for everyone."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes JaeTravel different from other safari operators?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We specialize in wheelchair-accessible safaris with custom-adapted vehicles, while maintaining a strong commitment to sustainable and responsible tourism practices."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer wheelchair accessible safaris?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — we are East Africa’s leading operator of wheelchair-friendly safaris, with hydraulic-lift Land Cruisers and fully accessible accommodations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which countries do you operate in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We offer safaris and vehicle hire in Kenya, Tanzania, Rwanda, and Uganda, including iconic destinations like Masai Mara, Serengeti, and Volcanoes National Park."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are your tours eco-friendly?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely. We prioritize low-impact travel, support local communities, fund conservation projects, and partner with eco-lodges across East Africa."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who leads your team?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our founder James Kimani leads the team, supported by experts in accessibility, conservation, operations, and guest experience."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What awards has JaeTravel received?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We have won the Kenya Tourism Award for Accessible Tourism (2023), World Travel Awards for Africa’s Responsible Tourism (2024), and TripAdvisor Travelers’ Choice every year from 2020 to 2025."
-          }
-        }
-      ]
-    }
   ]
 };
 
