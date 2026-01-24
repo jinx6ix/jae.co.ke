@@ -105,7 +105,10 @@ const schema = {
       "telephone": "+254726485228",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Nairobi",
+        "postalCode": "00100",
         "addressCountry": "KE",
+        "country code": "KE",
         "addressLocality": "Nairobi"
       },
       "contactPoint": {
