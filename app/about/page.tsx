@@ -6,7 +6,7 @@ import AboutClient from "./AboutClient"
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness (gives you stars + trust)
+    // 1. Organization + LocalBusiness (combined for rich results + stars + trust signals)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -15,9 +15,15 @@ const aboutPageSchema = {
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "Award-winning accessible & sustainable safari operator in Kenya, Tanzania, Rwanda & Uganda since 2008. Specializing in wheelchair-friendly safaris and responsible tourism.",
       "telephone": "+254726485228",
-      "address": { "@type": "PostalAddress", "addressCountry": "KE" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE"
+      },
       "foundingDate": "2008",
-      "founder": { "@type": "Person", "name": "James Kimani" },
+      "founder": {
+        "@type": "Person",
+        "name": "James Kimani"
+      },
       "award": [
         "Kenya Tourism Award – Accessible Tourism 2023",
         "World Travel Awards – Africa’s Responsible Tourism 2024",
@@ -33,61 +39,175 @@ const aboutPageSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Wheelchair Accessible Safari Tours & Vehicle Hire"
+          "name": "Wheelchair Accessible Safari Tours & Vehicle Hire",
+          "description": "Customized accessible safaris and adapted 4x4 vehicle rentals across East Africa."
         }
       }
     },
 
-    // 2. WebPage + BreadcrumbList
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+
+    // 3. WebPage
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/about/#webpage",
       "url": "https://www.jaetravel.co.ke/about",
       "name": "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
-      "description": "Meet the team behind Kenya’s leading accessible and sustainable safari company."
+      "description": "Meet the team behind Kenya’s leading accessible and sustainable safari company.",
+      "isPartOf": {
+        "@id": "https://www.jaetravel.co.ke/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.jaetravel.co.ke/about/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/team/team-group-photo.jpg",
+        "width": 1200,
+        "height": 630
+      }
     },
+
+    // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/about/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.jaetravel.co.ke/about" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://www.jaetravel.co.ke/about"
+        }
       ]
     },
 
-    // 3. Team Members as Person schema
+    // 5. Team Members as Person schema (properly linked)
     {
       "@type": "Person",
+      "@id": "https://www.jaetravel.co.ke/team/james-kimani/#person",
       "name": "James Kimani",
       "jobTitle": "Founder & Chief Safari Guide",
-      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "worksFor": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
       "image": "https://www.jaetravel.co.ke/team/james-kimani.jpg",
       "description": "Born in the Maasai Mara region with 22+ years guiding experience. Founded JaeTravel in 2008 to make safaris accessible to all."
     },
     {
       "@type": "Person",
+      "@id": "https://www.jaetravel.co.ke/team/sarah-mwangi/#person",
       "name": "Sarah Mwangi",
       "jobTitle": "Head of Accessibility & Guest Experience",
-      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://www.jaetravel.co.ke/team/sarah-mwangi.jpg"
+      "worksFor": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "image": "https://www.jaetravel.co.ke/team/sarah-mwangi.jpg",
+      "description": "Expert in inclusive tourism design, ensuring every guest enjoys a seamless and memorable safari experience."
     },
     {
       "@type": "Person",
+      "@id": "https://www.jaetravel.co.ke/team/david-ochieng/#person",
       "name": "David Ochieng",
       "jobTitle": "Director of Conservation & Community",
-      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://www.jaetravel.co.ke/team/david-ochieng.jpg"
+      "worksFor": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "image": "https://www.jaetravel.co.ke/team/david-ochieng.jpg",
+      "description": "Leads our responsible tourism initiatives, partnering with local communities and conservation projects."
     },
     {
       "@type": "Person",
+      "@id": "https://www.jaetravel.co.ke/team/amina-hassan/#person",
       "name": "Amina Hassan",
       "jobTitle": "Operations Manager – Tanzania & Rwanda",
-      "worksFor": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "image": "https://www.jaetravel.co.ke/team/amina-hassan.jpg"
+      "worksFor": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "image": "https://www.jaetravel.co.ke/team/amina-hassan.jpg",
+      "description": "Oversees flawless operations and guest experiences in Tanzania and Rwanda."
     },
 
-    // 4. FAQPage – 7 questions = full carousel
+    // 6. FAQPage – 7 questions (optimized for rich FAQ carousel)
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/about/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When was JaeTravel Expeditions founded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JaeTravel Expeditions was founded in 2008 by James Kimani with the mission to make East African safaris accessible and sustainable for everyone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes JaeTravel different from other safari operators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We specialize in wheelchair-accessible safaris with custom-adapted vehicles, while maintaining a strong commitment to sustainable and responsible tourism practices."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer wheelchair accessible safaris?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we are East Africa’s leading operator of wheelchair-friendly safaris, with hydraulic-lift Land Cruisers and fully accessible accommodations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries do you operate in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer safaris and vehicle hire in Kenya, Tanzania, Rwanda, and Uganda, including iconic destinations like Masai Mara, Serengeti, and Volcanoes National Park."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your tours eco-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We prioritize low-impact travel, support local communities, fund conservation projects, and partner with eco-lodges across East Africa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who leads your team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our founder James Kimani leads the team, supported by experts in accessibility, conservation, operations, and guest experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What awards has JaeTravel received?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We have won the Kenya Tourism Award for Accessible Tourism (2023), World Travel Awards for Africa’s Responsible Tourism (2024), and TripAdvisor Travelers’ Choice every year from 2020 to 2025."
+          }
+        }
+      ]
+    }
   ]
-}
+};
 
 export const metadata: Metadata = {
   title: "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",

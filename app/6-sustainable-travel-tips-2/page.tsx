@@ -43,23 +43,41 @@ export const metadata: Metadata = {
 const sustainableTravelSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization
+    // 1. Organization (main entity)
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
       "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
-      "telephone": "+254726485228"
+      "telephone": "+254726485228",
+      "sameAs": [
+        "https://www.facebook.com/JaeTravelExpeditions",
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254726485228",
+        "contactType": "Customer Service",
+        "areaServed": ["KE", "TZ", "RW", "UG", "US", "GB", "AU", "CA", "EU"],
+        "availableLanguage": ["English"]
+      }
     },
 
-    // 2. LocalBusiness (gives you 5-star rating)
+    // 2. LocalBusiness (with aggregateRating for star ratings in search results)
     {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JAE Travel – Sustainable & Accessible Safaris East Africa",
+      "description": "Leading operator of sustainable, eco-friendly, and wheelchair-accessible safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
+      "image": "https://www.jaetravel.co.ke/blog/sustainable-travel-tips.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE"
+      },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -68,16 +86,42 @@ const sustainableTravelSchema = {
       }
     },
 
-    // 3. WebPage
+    // 3. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+
+    // 4. WebPage
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage",
       "url": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2",
       "name": "6 Sustainable Travel Tips for East Africa Safari",
-      "description": "Learn how to travel responsibly in Kenya, Tanzania, Rwanda and Uganda with eco-friendly practices."
+      "description": "Learn how to travel responsibly in Kenya, Tanzania, Rwanda and Uganda with eco-friendly practices.",
+      "isPartOf": {
+        "@id": "https://www.jaetravel.co.ke/#website"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/blog/sustainable-travel-tips.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "breadcrumb": {
+        "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#article"
+      }
     },
 
-    // 4. BreadcrumbList — NOW INCLUDED (Google loves this!)
+    // 5. BreadcrumbList
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#breadcrumb",
@@ -103,20 +147,29 @@ const sustainableTravelSchema = {
       ]
     },
 
-    // 5. Article
+    // 6. Article (fully connected and SEO-optimized)
     {
       "@type": "Article",
       "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#article",
       "headline": "6 Sustainable Travel Tips for East Africa Safari Adventures",
+      "description": "Discover practical ways to make your safari in Kenya, Tanzania, Rwanda, and Uganda more eco-friendly and responsible.",
       "image": "https://www.jaetravel.co.ke/blog/sustainable-travel-tips.jpg",
-      "author": { "@type": "Organization", "name": "JAE Travel Expeditions" },
-      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://www.jaetravel.co.ke/#organization",
+        "name": "JAE Travel Expeditions"
+      },
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
       "datePublished": "2025-06-15",
       "dateModified": "2025-12-03",
-      "mainEntityOfPage": { "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage" }
+      "mainEntityOfPage": {
+        "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#webpage"
+      }
     },
 
-    // 6. FAQPage (6 questions = full carousel)
+    // 7. FAQPage (6 questions – optimized for rich FAQ carousel)
     {
       "@type": "FAQPage",
       "@id": "https://www.jaetravel.co.ke/6-sustainable-travel-tips-2/#faqpage",
@@ -124,37 +177,55 @@ const sustainableTravelSchema = {
         {
           "@type": "Question",
           "name": "What is sustainable travel in East Africa?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sustainable travel in East Africa means minimizing your environmental footprint while supporting local communities and preserving wildlife and ecosystems for future generations." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sustainable travel in East Africa means minimizing your environmental footprint while supporting local communities and preserving wildlife and ecosystems for future generations."
+          }
         },
         {
           "@type": "Question",
           "name": "How can I reduce plastic waste while on safari?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Bring a reusable water bottle, shopping bag, and utensils. Many eco-lodges provide refill stations and have eliminated single-use plastics." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bring a reusable water bottle, shopping bag, and utensils. Many eco-lodges provide refill stations and have eliminated single-use plastics."
+          }
         },
         {
           "@type": "Question",
           "name": "Are eco-friendly accommodations more expensive?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Many sustainable lodges in Rwanda and Uganda offer competitive rates while funding conservation and community projects." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Many sustainable lodges in Rwanda and Uganda offer competitive rates while funding conservation and community projects."
+          }
         },
         {
           "@type": "Question",
           "name": "Why support local businesses on safari?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Your spending directly benefits East African communities, artisans, and guides — preserving authentic cultural experiences." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your spending directly benefits East African communities, artisans, and guides — preserving authentic cultural experiences."
+          }
         },
         {
           "@type": "Question",
           "name": "How do I offset my carbon footprint?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Offset emissions via verified programs supporting reforestation, renewable energy, or conservation projects in East Africa." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Offset emissions via verified programs supporting reforestation, renewable energy, or conservation projects in East Africa."
+          }
         },
         {
           "@type": "Question",
           "name": "What are the best eco-lodges in East Africa?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Top eco-lodges use solar power, recycled materials, and fund gorilla conservation and anti-poaching initiatives across Kenya, Tanzania, Rwanda & Uganda." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Top eco-lodges use solar power, recycled materials, and fund gorilla conservation and anti-poaching initiatives across Kenya, Tanzania, Rwanda & Uganda."
+          }
         }
       ]
     }
   ]
-}
+};
 
 export default function SustainableTravelTips() {
   const faqs = [

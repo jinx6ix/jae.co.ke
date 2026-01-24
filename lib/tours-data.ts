@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface Tour {
+  shortDescription: string;
   image: string;
   duration: ReactNode;
   highlights: any;
@@ -58,7 +59,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "kenya-amboseli",
@@ -84,7 +86,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "tanzania-serengeti",
@@ -112,7 +115,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "tanzania-ngorongoro",
@@ -138,7 +142,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "uganda-bwindi",
@@ -164,7 +169,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "rwanda-volcanoes",
@@ -192,7 +198,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "1",
@@ -218,7 +225,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "2",
@@ -244,7 +252,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "3",
@@ -270,7 +279,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "4",
@@ -298,7 +308,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "5",
@@ -324,7 +335,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "6",
@@ -350,7 +362,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "7",
@@ -376,7 +389,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "8",
@@ -402,7 +416,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "9",
@@ -428,7 +443,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "10",
@@ -454,7 +470,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "11",
@@ -480,7 +497,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "12",
@@ -506,7 +524,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "13",
@@ -532,7 +551,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "14",
@@ -558,7 +578,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "15",
@@ -584,7 +605,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "16",
@@ -610,7 +632,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "17",
@@ -636,7 +659,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "18",
@@ -662,7 +686,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "19",
@@ -688,7 +713,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "20",
@@ -714,7 +740,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "21",
@@ -740,7 +767,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "22",
@@ -766,7 +794,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "23",
@@ -792,7 +821,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "24",
@@ -818,7 +848,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "25",
@@ -844,7 +875,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "26",
@@ -870,7 +902,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "27",
@@ -896,7 +929,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "28",
@@ -922,7 +956,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "29",
@@ -948,7 +983,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "30",
@@ -974,7 +1010,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "31",
@@ -1000,7 +1037,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "32",
@@ -1026,7 +1064,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "33",
@@ -1052,7 +1091,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "34",
@@ -1078,7 +1118,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "35",
@@ -1104,7 +1145,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "36",
@@ -1130,7 +1172,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "37",
@@ -1156,7 +1199,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "38",
@@ -1182,7 +1226,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "39",
@@ -1208,7 +1253,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "40",
@@ -1234,7 +1280,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "41",
@@ -1260,7 +1307,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "42",
@@ -1286,7 +1334,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "43",
@@ -1312,7 +1361,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "44",
@@ -1338,7 +1388,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "45",
@@ -1364,7 +1415,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "46",
@@ -1390,7 +1442,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     id: "49",
@@ -1421,7 +1474,8 @@ export const tours: Tour[] = [
     excluded: undefined,
     difficulty: undefined,
     groupSize: undefined,
-    category: undefined
+    category: undefined,
+    shortDescription: ""
   },
   {
     "id": "50",
@@ -1452,7 +1506,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "51",
@@ -1483,7 +1538,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "52",
@@ -1514,7 +1570,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "53",
@@ -1545,7 +1602,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "54",
@@ -1576,7 +1634,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "55",
@@ -1607,7 +1666,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "56",
@@ -1638,7 +1698,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "57",
@@ -1669,7 +1730,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
   {
     "id": "58",
@@ -1700,7 +1762,8 @@ export const tours: Tour[] = [
     "excluded": undefined,
     "difficulty": undefined,
     "groupSize": undefined,
-    "category": undefined
+    "category": undefined,
+    shortDescription: ""
   },
 ]
 

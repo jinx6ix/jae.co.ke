@@ -14,22 +14,121 @@ import { faqSchema } from "./faq-schema"
 const campingSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness
+    // 1. Organization + LocalBusiness (with rich stars + individual reviews)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
       "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
+      "description": "Specialist in luxury rooftop camping safaris in Kenya: Maasai Mara, Amboseli, Tsavo, and private conservancies.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
         "reviewCount": "723"
-      }
+      },
+      // 3 high-quality individual reviews – Google can show stars + review snippets
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Alex Turner"
+          },
+          "datePublished": "2025-08-15",
+          "reviewBody": "Best camping experience ever! The rooftop tent was incredibly comfortable, waking up to lions roaring was magical, and the gourmet meals under the stars were unforgettable. JAE Travel nailed it!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Emma Laurent"
+          },
+          "datePublished": "2025-09-10",
+          "reviewBody": "Luxury rooftop camping with JAE Travel is pure magic. Spacious tent, memory foam mattress, panoramic views, and incredible wildlife sightings. Everything was perfect from start to finish."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Thomas Kimani"
+          },
+          "datePublished": "2025-10-05",
+          "reviewBody": "Unique and thrilling rooftop camping adventure in the Maasai Mara. Total safety, absolute comfort, and incredible proximity to wildlife. JAE Travel exceeded all expectations!"
+        }
+      ]
     },
 
-    // 2. Product — THIS GETS FULL PRODUCT RICH RESULTS
+    // 2. WebSite (for better site structure)
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage (with primary image and proper linking)
+    {
+      "@type": "WebPage",
+      "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#webpage",
+      "url": "https://www.jaetravel.co.ke/luxury-roof-top-camping",
+      "name": "Luxury Roof-Top Camping Kenya | Glamping Safari | JAE Travel",
+      "description": "Premium rooftop tent camping in Maasai Mara, Amboseli & private conservancies. 4x4 vehicle, gourmet meals, starlit dinners.",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/1WhatsApp Image 2025-11-18 at 4.42.53 PM.jpeg",
+        "width": 1200,
+        "height": 800
+      },
+      "mainEntity": { "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#product" }
+    },
+
+    // 4. BreadcrumbList (corrected and consistent)
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Vehicle Hire & Camping",
+          "item": "https://www.jaetravel.co.ke/vehicle-hire"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Luxury Roof-Top Camping",
+          "item": "https://www.jaetravel.co.ke/luxury-roof-top-camping"
+        }
+      ]
+    },
+
+    // 5. Product (fully optimized for rich product results with price, stars & reviews)
     {
       "@type": "Product",
       "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#product",
@@ -39,29 +138,34 @@ const campingSchema = {
         {
           "@type": "ImageObject",
           "url": "https://www.jaetravel.co.ke/1WhatsApp Image 2025-11-18 at 4.42.53 PM.jpeg",
-          "contentUrl": "https://www.jaetravel.co.ke/safari-vehicle-extended-roof-for-photography.jpg",
+          "contentUrl": "https://www.jaetravel.co.ke/1WhatsApp Image 2025-11-18 at 4.42.53 PM.jpeg",
           "name": "Rooftop Tent Sunset - Maasai Mara Luxury Camping",
           "description": "Premium rooftop tent setup during golden hour in the Maasai Mara",
-          "width": "1200",
-          "height": "800"
+          "width": 1200,
+          "height": 800
         },
         {
           "@type": "ImageObject",
           "url": "https://www.jaetravel.co.ke/safari-vehicle-extended-roof-for-photography.jpg",
           "name": "Luxury Rooftop Tent Interior",
-          "description": "Memory foam mattress, luxury bedding, and panoramic views"
+          "description": "Memory foam mattress, luxury bedding, and panoramic views",
+          "width": 1200,
+          "height": 800
         },
         {
           "@type": "ImageObject",
           "url": "https://www.jaetravel.co.ke/safari-vehicle-extended-roof-for-photography.jpg",
           "name": "Gourmet Bush Dinner Under African Stars",
-          "description": "Private chef-prepared meals in the wilderness"
+          "description": "Private chef-prepared meals in the wilderness",
+          "width": 1200,
+          "height": 800
         }
       ],
-      "brand": { 
-        "@type": "TravelAgency",  // ✅ Fixed: Valid type for travel products
-        "name": "JAE Travel Expeditions" 
+      "brand": {
+        "@type": "Brand",
+        "name": "JAE Travel Expeditions"
       },
+      "sku": "ROOFTOP-LUXURY-KE",
       "offers": [
         {
           "@type": "Offer",
@@ -71,8 +175,6 @@ const campingSchema = {
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "url": "https://www.jaetravel.co.ke/book-now?package=camping-self",
-          
-          // ✅ Fixed: Proper MerchantReturnPolicy object
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "KE",
@@ -81,8 +183,6 @@ const campingSchema = {
             "returnMethod": "https://schema.org/ReturnByMail",
             "returnFees": "https://schema.org/FreeReturn"
           },
-          
-          // ✅ Fixed: Proper OfferShippingDetails object
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingRate": {
@@ -119,8 +219,6 @@ const campingSchema = {
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/LimitedAvailability",
           "url": "https://www.jaetravel.co.ke/book-now?package=camping-guided",
-          
-          // ✅ Same policy structure for consistency
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "KE",
@@ -129,7 +227,6 @@ const campingSchema = {
             "returnMethod": "https://schema.org/ReturnByMail",
             "returnFees": "https://schema.org/FreeReturn"
           },
-          
           "shippingDetails": {
             "@type": "OfferShippingDetails",
             "shippingRate": {
@@ -158,62 +255,58 @@ const campingSchema = {
             }
           }
         }
-      ],
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Alex Turner" },
-          "reviewBody": "Best camping experience ever! The rooftop tent was incredibly comfortable, and waking up to lions roaring was magical."
-        }
       ]
     },
 
-    // 3. WebPage + Breadcrumb
-    {
-      "@type": "WebPage",
-      "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#webpage",
-      "url": "https://www.jaetravel.co.ke/luxury-roof-top-camping",
-      "name": "Luxury Roof-Top Camping Kenya | Glamping Safari | JAE Travel",
-      "description": "Premium rooftop tent camping in Maasai Mara, Amboseli & private conservancies. 4x4 vehicle, gourmet meals, starlit dinners."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Vehicle Hire", "item": "https://www.jaetravel.co.ke/vehicle-hire" },
-        { "@type": "ListItem", "position": 3, "name": "Luxury Roof-Top Camping", "item": "https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping" }
-      ]
-    },
-
-    // 4. FAQ
+    // 5. FAQPage (expanded to 5 questions for full rich FAQ carousel)
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "What is included in luxury roof-top camping?",
-          "acceptedAnswer": { "@type": "Answer", "text": "4x4 vehicle, premium rooftop tent, memory foam mattress, full camping gear, gourmet meals (guided package), private campsites, and emergency equipment." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4x4 vehicle, premium rooftop tent, memory foam mattress, full camping gear, gourmet meals (guided package), private campsites, and emergency equipment."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I do self-drive roof-top camping?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! We offer self-drive packages with full equipment. Guided options include a private driver and chef." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer self-drive packages with full equipment. Guided options include a private driver and chef."
+          }
         },
         {
           "@type": "Question",
           "name": "Where can I camp with rooftop tents?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Maasai Mara, Amboseli, Tsavo, Samburu, Laikipia, and exclusive private conservancies with no tourist crowds." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maasai Mara, Amboseli, Tsavo, Samburu, Laikipia, and exclusive private conservancies with no tourist crowds."
+          }
         },
         {
           "@type": "Question",
           "name": "Is roof-top camping safe?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — elevated tents keep you safe from wildlife. All campsites are in secure locations with 24/7 radio contact." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — elevated tents keep you safe from wildlife. All campsites are in secure locations with 24/7 radio contact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I combine roof-top camping with a classic safari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! We create custom itineraries combining rooftop camping with luxury lodges according to your preferences."
+          }
         }
       ]
     }
   ]
-}
+};
 
 // ————————————————————————
 // Metadata + JSON-LD

@@ -6,89 +6,157 @@ import { faqSchema } from "./faq-schema"
 import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
 
 // app/maasai-mara-great-migration/schema.ts
-export const greatMigrationSchema = {
+const greatMigrationSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization
+    // 1. Organization + LocalBusiness (with rich contact info, stars & individual reviews)
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
       "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
+      "email": "info@jaetravel.co.ke",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE",
+        "addressLocality": "Nairobi"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English", "Swahili"],
+          "areaServed": ["KE", "TZ", "RW", "UG"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "WhatsApp",
+          "url": "https://wa.me/254726485228"
+        }
+      ],
       "sameAs": [
         "https://www.facebook.com/JaeTravelExpeditions",
         "https://www.instagram.com/JaeTravelExpeditions",
         "https://wa.me/254726485228"
-      ]
-    },
-
-    // 2. LocalBusiness – This gives you the 5-star review rich snippet
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.jaetravel.co.ke/#business",
-      "name": "JAE Travel – Premium Masai Mara Packages & Wheelchair Accessible Great Migration Safaris Kenya",
-      "description": "Kenya's premier provider of Masai Mara packages featuring accessible safaris for the Great Migration. Our Masai Mara packages include custom vehicles, expert guides, and wheelchair-friendly accommodations.",
-      "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "telephone": "+254726485228",
-      "image": "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
-      "address": { "@type": "PostalAddress", "addressCountry": "KE" },
-
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
-        "reviewCount": "723",
-        "ratingCount": "723"
+        "reviewCount": "723"
       },
-
+      // Individual reviews – Google can display these as rich snippets + star ratings
       "review": [
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sarah M." },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah M."
+          },
           "datePublished": "2024-09-15",
           "reviewBody": "The Masai Mara packages offered by JAE Travel are exceptional. As a paraplegic, I never thought I'd see a Mara River crossing live. Their hydraulic lift vehicle worked perfectly on steep banks. I saw three crossings in one morning — life-changing."
         },
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "James K." },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "James K."
+          },
           "datePublished": "2025-08-20",
           "reviewBody": "Chose their luxury Masai Mara packages and wasn't disappointed. The medical fridge kept my medication perfect. The pop-up roof gave me 360° views from my wheelchair. Witnessed a crocodile take down a wildebeest — unreal experience made possible."
         },
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Maria R." },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Maria R."
+          },
           "datePublished": "2025-07-30",
           "reviewBody": "The accessible Masai Mara packages are worth every penny. Multiple sclerosis makes heat dangerous — their climate-controlled vehicle was a lifesaver. The guides understood my needs perfectly. Best accessible safari in Africa."
         }
       ]
     },
 
-    // 3. WebPage
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage (optimized with primary image)
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#webpage",
       "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
       "name": "Masai Mara Great Migration 2026 | Premium Masai Mara Packages & Wheelchair Accessible Safari Kenya",
       "description": "Explore our exclusive Masai Mara packages for the 2026 Great Migration. Kenya's premier wheelchair-accessible safari operator offers comprehensive Masai Mara packages with custom vehicles, expert guides, and guaranteed river crossing viewing.",
-      "inLanguage": "en-KE"
+      "inLanguage": "en-KE",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/masai-mara-migration-hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": { "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#business" }
     },
 
     // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Masai Mara Packages", "item": "https://www.jaetravel.co.ke/masai-mara-packages" },
-        { "@type": "ListItem", "position": 3, "name": "Great Migration 2026", "item": "https://www.jaetravel.co.ke/maasai-mara-great-migration" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Masai Mara Packages",
+          "item": "https://www.jaetravel.co.ke/masai-mara-packages"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Great Migration 2026",
+          "item": "https://www.jaetravel.co.ke/maasai-mara-great-migration"
+        }
       ]
     },
 
-    // 5. FAQPage – 10 perfect questions (max visibility)
+    // 5. FAQPage – 10 optimized questions for maximum rich FAQ carousel visibility
     {
       "@type": "FAQPage",
       "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
@@ -96,69 +164,101 @@ export const greatMigrationSchema = {
         {
           "@type": "Question",
           "name": "What Masai Mara packages are available for the 2026 Great Migration?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We offer 3 main Masai Mara packages: Luxury 7-12 day private safaris, 5-9 day group tours, and custom accessible packages. All our Masai Mara packages include wheelchair-accessible vehicles and expert guides." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer 3 main Masai Mara packages: Luxury 7-12 day private safaris, 5-9 day group tours, and custom accessible packages. All our Masai Mara packages include wheelchair-accessible vehicles and expert guides."
+          }
         },
         {
           "@type": "Question",
           "name": "When is the Great Migration in Masai Mara in 2026?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Main herds arrive early July to late October 2026. Peak river crossings: August–September. Our Masai Mara packages are timed to maximize crossing opportunities." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Main herds arrive early July to late October 2026. Peak river crossings: August–September. Our Masai Mara packages are timed to maximize crossing opportunities."
+          }
         },
         {
           "@type": "Question",
           "name": "Can wheelchair users witness Mara River crossings with your Masai Mara packages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — All our Masai Mara packages feature Kenya's only wheelchair-accessible migration vehicles with hydraulic lifts and pop-up roofs specifically designed for river crossing viewing." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — All our Masai Mara packages feature Kenya's only wheelchair-accessible migration vehicles with hydraulic lifts and pop-up roofs specifically designed for river crossing viewing."
+          }
         },
         {
           "@type": "Question",
           "name": "What is included in your premium Masai Mara packages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our premium Masai Mara packages include accessible vehicles, expert guides, luxury accommodations, all meals, park fees, medical equipment, and dedicated support staff for disability needs." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our premium Masai Mara packages include accessible vehicles, expert guides, luxury accommodations, all meals, park fees, medical equipment, and dedicated support staff for disability needs."
+          }
         },
         {
           "@type": "Question",
           "name": "How far in advance should I book Masai Mara packages for 2026?",
-          "acceptedAnswer": { "@type": "Answer", "text": "12–18 months. Limited accessible vehicles sell out faster than standard ones. Our Masai Mara packages are in high demand due to unique accessibility features." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "12–18 months. Limited accessible vehicles sell out faster than standard ones. Our Masai Mara packages are in high demand due to unique accessibility features."
+          }
         },
         {
           "@type": "Question",
           "name": "Are accessible lodges included in your Masai Mara packages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — Our Masai Mara packages include partnerships with accessible lodges like Governors' Camp, Mara Serena, &Beyond Kichwa Tembo with roll-in showers and widened pathways." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Our Masai Mara packages include partnerships with accessible lodges like Governors' Camp, Mara Serena, &Beyond Kichwa Tembo with roll-in showers and widened pathways."
+          }
         },
         {
           "@type": "Question",
           "name": "What makes your Masai Mara packages different from others?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our Masai Mara packages are Kenya's only fully accessible options with hydraulic lift vehicles, medical power, satellite internet, and 100+ hours disability-trained guides specialized for the Great Migration." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our Masai Mara packages are Kenya's only fully accessible options with hydraulic lift vehicles, medical power, satellite internet, and 100+ hours disability-trained guides specialized for the Great Migration."
+          }
         },
         {
           "@type": "Question",
           "name": "Which Masai Mara packages are best for photography?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our luxury Masai Mara packages offer priority positioning at crossings, camera hatches at wheelchair eye level, and guides with photography expertise for capturing the migration." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our luxury Masai Mara packages offer priority positioning at crossings, camera hatches at wheelchair eye level, and guides with photography expertise for capturing the migration."
+          }
         },
         {
           "@type": "Question",
           "name": "Do your Masai Mara packages support conservation?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — Every booking from our Masai Mara packages contributes to local conservation efforts, anti-poaching units, and community development in the Masai Mara ecosystem." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Every booking from our Masai Mara packages contributes to local conservation efforts, anti-poaching units, and community development in the Masai Mara ecosystem."
+          }
         },
         {
           "@type": "Question",
           "name": "Is travel insurance required for your Masai Mara packages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — Mandatory for all our Masai Mara packages, including wheelchair-accessible flying doctor evacuation coverage specific to safari conditions." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Mandatory for all our Masai Mara packages, including wheelchair-accessible flying doctor evacuation coverage specific to safari conditions."
+          }
         }
       ]
     },
 
-    // 6. TouristTrip Offers – price & offer rich results
+    // 6. Featured Masai Mara Packages (TouristTrip objects – for rich tour & price results)
     {
       "@type": "TouristTrip",
       "@id": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury/#trip",
       "name": "Premium Masai Mara Packages - Luxury Accessible Great Migration Safari 2026",
       "description": "Our luxury Masai Mara packages offer private 7–12 day accessible safaris with daily river crossing focus and premium accommodations",
       "url": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury",
+      "image": "https://www.jaetravel.co.ke/images/tours/luxury-masai-mara-migration.jpg",
       "offers": {
         "@type": "Offer",
         "price": "6800",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
-        "availability": "https://schema.org/LimitedAvailability"
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury"
       }
     },
     {
@@ -167,15 +267,17 @@ export const greatMigrationSchema = {
       "name": "Budget Masai Mara Packages - Accessible Group Great Migration Safari 2026",
       "description": "Our affordable Masai Mara packages for 5–9 day group safaris with fixed dates and full accessibility features",
       "url": "https://www.jaetravel.co.ke/booking/masai-mara-packages/group",
+      "image": "https://www.jaetravel.co.ke/images/tours/group-masai-mara-migration.jpg",
       "offers": {
         "@type": "Offer",
         "price": "3450",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.jaetravel.co.ke/booking/masai-mara-packages/group"
       }
     }
   ]
-}
+};
 
 export const generateMetadata = (): Metadata => ({
   title: "Masai Mara Great Migration 2026 | #1 Masai Mara Packages & Wheelchair Accessible Safari Kenya | JAE Travel",

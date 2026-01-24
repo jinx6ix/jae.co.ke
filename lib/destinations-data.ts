@@ -1,4 +1,5 @@
 export interface Destination {
+  wildlifeHighlights: string
   name: string
   slug: string
   country: string
@@ -58,7 +59,8 @@ export const destinations: Destination[] = [
       "Cultural immersion trips",
       "Beach and bush combinations"
     ],
-    popularTours: 12
+    popularTours: 12,
+    wildlifeHighlights: ""
   },
   {
     name: "Tanzania",
@@ -102,7 +104,8 @@ export const destinations: Destination[] = [
       "Cultural and historical tours",
       "Honeymoon and romantic getaways"
     ],
-    popularTours: 15
+    popularTours: 15,
+    wildlifeHighlights: ""
   },
   {
     name: "Rwanda",
@@ -146,7 +149,8 @@ export const destinations: Destination[] = [
       "Adventure trekking",
       "Short break safari trips"
     ],
-    popularTours: 8
+    popularTours: 8,
+    wildlifeHighlights: ""
   },
   {
     name: "Uganda",
@@ -190,7 +194,8 @@ export const destinations: Destination[] = [
       "Off-the-beaten-path experiences",
       "Combination safari and adventure trips"
     ],
-    popularTours: 10
+    popularTours: 10,
+    wildlifeHighlights: ""
   },
 ]
 

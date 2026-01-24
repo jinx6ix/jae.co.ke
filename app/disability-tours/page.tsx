@@ -63,37 +63,16 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization
+    // 1. Organization + LocalBusiness (with rich contact info, stars & individual reviews)
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JaeTravel Expeditions",
+      "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
-      "telephone": "+254726485228",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254726485228",
-        "contactType": "Customer Service",
-        "areaServed": ["KE", "TZ", "RW", "UG"],
-        "availableLanguage": ["English", "Swahili"]
-      },
-      "sameAs": [
-        "https://www.facebook.com/JaeTravelExpeditions",
-        "https://www.instagram.com/JaeTravelExpeditions",
-        "https://wa.me/254726485228"
-      ]
-    },
-
-    // 2. LocalBusiness – This is what Google accepts for reviews + stars
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.jaetravel.co.ke/#business",
-      "name": "JaeTravel Expeditions – Wheelchair Accessible Safaris East Africa",
       "description": "East Africa's leading specialist in fully wheelchair-accessible safaris in Kenya, Tanzania, Rwanda and Uganda. Hydraulic-lift vehicles, barrier-free lodges, disability-trained guides.",
-      "url": "https://www.jaetravel.co.ke/disability-tours",
       "telephone": "+254726485228",
-      "image": "https://www.jaetravel.co.ke/accessible-safari-wheelchair.jpg",
+      "email": "info@jaetravel.co.ke",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "KE"
@@ -112,8 +91,31 @@ const schema = {
         "opens": "08:00",
         "closes": "18:00"
       },
-
-      // This gives you the 5-star rich snippet
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English", "Swahili"],
+          "areaServed": ["KE", "TZ", "RW", "UG"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "WhatsApp",
+          "url": "https://wa.me/254726485228"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "info@jaetravel.co.ke",
+          "contactType": "Customer Support"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/JaeTravelExpeditions",
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -121,8 +123,7 @@ const schema = {
         "reviewCount": "142",
         "ratingCount": "142"
       },
-
-      // Individual reviews (Google loves 3–10 of these)
+      // Individual reviews (Google can show these as rich snippets + star ratings)
       "review": [
         {
           "@type": "Review",
@@ -131,10 +132,12 @@ const schema = {
             "ratingValue": "5",
             "bestRating": "5"
           },
-          "author": { "@type": "Person", "name": "Ian Iraya" },
+          "author": {
+            "@type": "Person",
+            "name": "Ian Iraya"
+          },
           "datePublished": "2025-08-01",
-          "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. A life-changing experience.",
-          "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+          "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. JaeTravel made it seamless — from the hydraulic lift vehicle to the accessible tented camp. A life-changing experience."
         },
         {
           "@type": "Review",
@@ -143,10 +146,12 @@ const schema = {
             "ratingValue": "5",
             "bestRating": "5"
           },
-          "author": { "@type": "Person", "name": "Maria Rodriguez" },
+          "author": {
+            "@type": "Person",
+            "name": "Maria Rodriguez"
+          },
           "datePublished": "2025-09-20",
-          "reviewBody": "Watching the Great Migration from a hydraulic-lift vehicle in the Serengeti was pure magic. Perfect ramps, roll-in showers — everything was truly accessible and dignified.",
-          "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+          "reviewBody": "Watching the Great Migration from a hydraulic-lift vehicle in the Serengeti was pure magic. Perfect ramps, roll-in showers — everything was truly accessible and dignified."
         },
         {
           "@type": "Review",
@@ -155,10 +160,12 @@ const schema = {
             "ratingValue": "5",
             "bestRating": "5"
           },
-          "author": { "@type": "Person", "name": "James Wilson" },
+          "author": {
+            "@type": "Person",
+            "name": "James Wilson"
+          },
           "datePublished": "2025-10-05",
-          "reviewBody": "Gorilla trekking in Rwanda as a wheelchair user? Yes — and unforgettable. The sedan chair team and planning were flawless.",
-          "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+          "reviewBody": "Gorilla trekking in Rwanda as a wheelchair user? Yes — and unforgettable. The sedan chair team and planning were flawless."
         },
         {
           "@type": "Review",
@@ -167,44 +174,122 @@ const schema = {
             "ratingValue": "5",
             "bestRating": "5"
           },
-          "author": { "@type": "Person", "name": "Sarah Thompson" },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Thompson"
+          },
           "datePublished": "2025-11-12",
-          "reviewBody": "From airport pickup to every game drive — everything was perfectly adapted. Best accessible safari operator in Africa.",
-          "publisher": { "@type": "Organization", "name": "JaeTravel Expeditions" }
+          "reviewBody": "From airport pickup to every game drive — everything was perfectly adapted. Best accessible safari operator in Africa."
         }
       ]
     },
 
-    // 3. BreadcrumbList
+    // 2. WebSite
     {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
-        { "@type": "ListItem", "position": 3, "name": "Wheelchair Accessible Safaris", "item": "https://www.jaetravel.co.ke/disability-tours" }
-      ]
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
-    // 4. WebPage
+    // 3. WebPage
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/disability-tours/#webpage",
       "url": "https://www.jaetravel.co.ke/disability-tours",
       "name": "Wheelchair Accessible Safari Tours | Kenya, Tanzania, Rwanda & Uganda",
       "description": "Fully accessible East Africa safaris with hydraulic-lift vehicles, barrier-free lodges and expert disability-trained guides.",
-      "inLanguage": "en-KE"
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/disability-tours/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/disability-tours/accessible-safari-wheelchair-hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": [
+        { "@id": "https://www.jaetravel.co.ke/disability-tours/#business" },
+        { "@id": "https://www.jaetravel.co.ke/disability-tours/#imagegallery" }
+      ]
     },
 
-    // 5. FAQPage (keeps FAQ rich results)
+    // 4. BreadcrumbList
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tours",
+          "item": "https://www.jaetravel.co.ke/tours"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Wheelchair Accessible Safaris",
+          "item": "https://www.jaetravel.co.ke/disability-tours"
+        }
+      ]
+    },
+
+    // 5. ImageGallery (optimized for Google Image Search rich results)
+    {
+      "@type": "ImageGallery",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#imagegallery",
+      "name": "Wheelchair Accessible Safari Photos",
+      "description": "Professional photography of accessible safaris: hydraulic-lift vehicles, adapted camps, and unforgettable wildlife experiences in East Africa.",
+      "url": "https://www.jaetravel.co.ke/disability-tours",
+      "associatedMedia": [
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
+          "url": "https://www.jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
+          "name": "Wheelchair Accessible Safari - Lion Sighting",
+          "description": "Guest in wheelchair enjoying lion viewing from hydraulic-lift safari vehicle in Masai Mara",
+          "width": 1200,
+          "height": 800,
+          "creator": { "@id": "https://www.jaetravel.co.ke/#organization" }
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.jaetravel.co.ke/images/accessible-safari-wheelchair.jpg",
+          "name": "Accessible Safari Vehicle - Hydraulic Lift",
+          "description": "Custom 4x4 Land Cruiser with hydraulic wheelchair lift and pop-up roof",
+          "width": 1200,
+          "height": 800,
+          "creator": { "@id": "https://www.jaetravel.co.ke/#organization" }
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.jaetravel.co.ke/images/accessible-gorilla-trekking.jpg",
+          "name": "Wheelchair Accessible Gorilla Trekking Rwanda",
+          "description": "Guest in wheelchair with sedan chair carriers during gorilla trekking",
+          "width": 1200,
+          "height": 800,
+          "creator": { "@id": "https://www.jaetravel.co.ke/#organization" }
+        }
+      ]
+    },
+
+    // 6. FAQPage (optimized for rich FAQ carousel)
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/disability-tours/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Are your safari vehicles truly wheelchair accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Custom 4x4 vehicles with hydraulic lifts, secure tie-downs, wide doors and pop-up roofs for full viewing."
+            "text": "Yes. Custom 4x4 vehicles with hydraulic lifts, secure tie-downs, wide doors and pop-up roofs for full viewing. All vehicles meet international accessibility standards."
           }
         },
         {
@@ -212,7 +297,7 @@ const schema = {
           "name": "Can wheelchair users participate in gorilla trekking?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We secure special permits and use experienced sedan chair carriers in Rwanda and Uganda."
+            "text": "Yes. We secure special permits and use experienced sedan chair carriers in Rwanda and Uganda, ensuring a safe and dignified gorilla trekking experience."
           }
         },
         {
@@ -220,13 +305,29 @@ const schema = {
           "name": "Are lodges and bathrooms fully accessible?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "All partner lodges have roll-in showers, grab bars, ramps and wide doorways — meeting international standards."
+            "text": "All partner lodges have roll-in showers, grab bars, ramps and wide doorways — meeting international standards for wheelchair accessibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer accessible tours in all East African countries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we provide fully accessible safaris in Kenya (Masai Mara), Tanzania (Serengeti), Rwanda (Volcanoes NP), and Uganda (Bwindi & Queen Elizabeth)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book an accessible safari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact us via WhatsApp (+254726485228), email (info@jaetravel.co.ke), or the form on this page. We'll create a 100% customized accessible itinerary."
           }
         }
       ]
     },
 
-    // 6. TouristTrip objects (keep these — great for Offer & price snippets!)
+    // 7. Featured Accessible Tours (TouristTrip objects – great for rich tour listings)
     {
       "@type": "TouristTrip",
       "@id": "https://www.jaetravel.co.ke/tours/accessible-masai-mara-safari/#trip",
@@ -249,32 +350,17 @@ const schema = {
       "name": "8-Day Wheelchair Accessible Serengeti & Ngorongoro Safari",
       "description": "Follow the Great Migration with fully adapted vehicles and accessible tented camps.",
       "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari",
+      "image": "https://www.jaetravel.co.ke/images/tours/accessible-serengeti.jpg",
       "offers": {
         "@type": "Offer",
         "price": "4500",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.jaetravel.co.ke/tours/tanzania-accessible-safari"
       }
-    },
-
-    // 3. ImageGallery — THIS IS WHAT MAKES YOUR PHOTOS APPEAR IN GOOGLE IMAGE SEARCH!
-    {
-      "@type": "ImageGallery",
-      "@id": "https://www.jaetravel.co.ke/disability-tours/#imagegallery",
-      "name": "JAETravel Safari, wheelchair accessible Photos",
-      "description": "Professional wildlife photography and safari videos from Masai Mara, Serengeti, gorilla trekking, and accessible East Africa adventures.",
-      "url": "https://www.jaetravel.co.ke/disability-tours",
-      "associatedMedia": [
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://www.jaetravel.co.ke/7dd878ab-e7e6-4aa4-bcef-54a611fbdf01.jpg",
-          "name": "Wheelchair Accessible Safari - Lion Sighting",
-          "description": "Guest in wheelchair enjoying lion viewing from hydraulic-lift safari vehicle"
-        },
-      ]
     }
   ]
-}
+};
 
 // Itinerary data structure
 const accessibleItineraries = [

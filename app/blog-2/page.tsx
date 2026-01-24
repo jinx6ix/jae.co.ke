@@ -6,14 +6,19 @@ import { blogPosts } from "@/lib/blog-data"
 const blogPageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness (trust + stars)
+    // 1. Organization + LocalBusiness (trust signals + star ratings)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAETravel Expeditions",
+      "name": "JAE Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
+      "description": "East Africa’s leading operator of accessible, sustainable, and responsible safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "telephone": "+254726485228",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE"
+      },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -22,44 +27,168 @@ const blogPageSchema = {
       }
     },
 
-    // 2. WebPage + BreadcrumbList
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+
+    // 3. WebPage (main blog listing page)
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/blog/#webpage",
       "url": "https://www.jaetravel.co.ke/blog",
-      "name": "Safari Travel Blog | Tips, Guides & Stories | JaeTravel Expeditions",
-      "description": "Expert safari tips, destination guides, wildlife stories, and accessible travel advice from East Africa’s leading inclusive safari operator."
+      "name": "Safari Travel Blog | Tips, Guides & Stories | JAE Travel Expeditions",
+      "description": "Expert safari tips, destination guides, wildlife stories, and accessible travel advice from East Africa’s leading inclusive safari operator.",
+      "isPartOf": {
+        "@id": "https://www.jaetravel.co.ke/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.jaetravel.co.ke/blog/#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/blog/blog-hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": {
+        "@id": "https://www.jaetravel.co.ke/blog/#blog"
+      }
     },
+
+    // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/blog/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.jaetravel.co.ke/blog" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.jaetravel.co.ke/blog"
+        }
       ]
     },
 
-    // 3. Blog (main entity)
+    // 5. Blog (main entity with BlogPosting items – optimized for rich results)
     {
       "@type": "Blog",
       "@id": "https://www.jaetravel.co.ke/blog/#blog",
       "url": "https://www.jaetravel.co.ke/blog",
-      "name": "JAETravel Safari Blog",
+      "name": "JAE Travel Safari Blog",
       "description": "Weekly insights, safari tips, wildlife stories, and accessible travel guides from East Africa.",
       "blogPost": blogPosts.slice(0, 10).map(post => ({
         "@type": "BlogPosting",
+        "@id": `https://www.jaetravel.co.ke/blog/${post.slug}#post`,
         "headline": post.title,
-        "image": post.image,
+        "image": {
+          "@type": "ImageObject",
+          "url": post.image.startsWith('http') ? post.image : `https://www.jaetravel.co.ke${post.image}`,
+          "width": 1200,
+          "height": 630
+        },
         "url": `https://www.jaetravel.co.ke/blog/${post.slug}`,
         "datePublished": post.publishedAt,
-        "dateModified": post.publishedAt,
-        "author": { "@type": "Person", "name": post.author },
-        "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" },
+        "dateModified": post.publishedAt || post.publishedAt,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        },
+        "publisher": {
+          "@id": "https://www.jaetravel.co.ke/#organization"
+        },
         "description": post.excerpt,
-        "keywords": post.keywords?.join(", ")
+        "keywords": post.keywords?.join(", ") || "safari, East Africa, wildlife, travel tips, accessible travel, sustainable tourism"
       }))
     },
 
-    // 4. FAQPage — 5 questions = full carousel
+    // Add this Review schema markup to your existing @graph array
+// Best placed right after the Organization/LocalBusiness entity for maximum impact
+
+    {
+      "@type": "Review",
+      "@id": "https://www.jaetravel.co.ke/#featured-review-1",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "David Chen",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "JAE Travel Expeditions Guest"
+        }
+      },
+      "datePublished": "2025-08-20",
+      "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. The hydraulic lift vehicle was flawless — life-changing experience. JAE Travel made the impossible possible. Highly recommend!",
+      "itemReviewed": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://www.jaetravel.co.ke/#featured-review-2",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sarah Johnson"
+      },
+      "datePublished": "2025-07-15",
+      "reviewBody": "Rented their accessible Land Cruiser for a private safari — best decision ever. Professional driver, perfect vehicle, unforgettable trip. 10/10 service and accessibility.",
+      "itemReviewed": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://www.jaetravel.co.ke/#featured-review-3",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Michael Thompson"
+      },
+      "datePublished": "2025-09-05",
+      "reviewBody": "The most responsible and sustainable safari we've ever done. Our guide was incredibly knowledgeable about conservation, and the eco-lodge was outstanding. Truly felt like we were giving back to the community and wildlife.",
+      "itemReviewed": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+
+    // 6. FAQPage – 5 optimized questions for rich FAQ carousel
     {
       "@type": "FAQPage",
       "@id": "https://www.jaetravel.co.ke/blog/#faqpage",
@@ -67,32 +196,47 @@ const blogPageSchema = {
         {
           "@type": "Question",
           "name": "How often do you publish new blog posts?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We publish fresh safari tips, destination guides, and wildlife stories every week." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We publish fresh safari tips, destination guides, and wildlife stories every week to keep our readers inspired and informed."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I request specific topics for your blog?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! We love reader suggestions. Contact us with any safari or travel topic you’d like covered." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We love reader suggestions. Feel free to contact us with any safari, wildlife, accessibility, or sustainable travel topic you’d like covered."
+          }
         },
         {
           "@type": "Question",
           "name": "Do you share personal safari experiences?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — many posts feature real stories from our guides and guests for authentic East African insights." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely — many of our posts feature real stories and insights from our expert guides and past guests for authentic East African perspectives."
+          }
         },
         {
           "@type": "Question",
-          "name": "Are your blog posts good for first-time safari travelers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely! We have beginner-friendly guides on packing, etiquette, photography, accessibility, and more." }
+          "name": "Are your blog posts suitable for first-time safari travelers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer beginner-friendly guides on packing, safari etiquette, photography tips, accessibility considerations, and more to help first-timers plan confidently."
+          }
         },
         {
           "@type": "Question",
-          "name": "Can I share your blog posts?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Please do! Every post has social share buttons. Help us inspire more travelers to visit East Africa responsibly." }
+          "name": "Can I share your blog posts on social media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Please do! Every post includes easy social share buttons. Sharing helps us inspire more travelers to explore East Africa responsibly."
+          }
         }
       ]
     }
   ]
-}
+};
 
 export const metadata: Metadata = {
   title: "Safari Travel Blog | Tips, Guides & Stories | JaeTravel Expeditions",

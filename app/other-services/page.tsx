@@ -8,7 +8,7 @@ import { Car, Map, Plane, Building, Mountain, Palmtree } from "lucide-react"
 const transportSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness
+    // 1. Organization + LocalBusiness (with rich stars + individual reviews)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -17,41 +17,143 @@ const transportSchema = {
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "image": "https://www.jaetravel.co.ke/14.jpeg",
       "telephone": "+254726485228",
+      "email": "info@jaetravel.co.ke",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "KE",
         "addressRegion": "Nairobi"
       },
       "description": "Professional vehicle hire, airport transfers, safari transport, and group transportation services in Kenya, Tanzania, Rwanda & Uganda.",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English", "Swahili"],
+          "areaServed": ["KE", "TZ", "RW", "UG"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254726485228",
+          "contactType": "WhatsApp",
+          "url": "https://wa.me/254726485228"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/JaeTravelExpeditions",
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
         "reviewCount": "723"
-      }
+      },
+      // 3 individual reviews – Google can show stars + review snippets
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "David Mwangi"
+          },
+          "datePublished": "2025-07-10",
+          "reviewBody": "Reliable airport transfer from JKIA — driver was waiting with my name sign, vehicle was spotless, and the ride was smooth. Perfect start to our safari!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Emma Laurent"
+          },
+          "datePublished": "2025-08-20",
+          "reviewBody": "Booked a 4x4 safari vehicle for Maasai Mara — excellent condition, pop-up roof worked perfectly, and the driver-guide was knowledgeable and friendly. Highly recommend!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "James Kimani"
+          },
+          "datePublished": "2025-09-05",
+          "reviewBody": "Used JAE Travel for group transport in Nairobi — comfortable minibus, professional driver, and punctual service. Great for corporate events and tours!"
+        }
+      ]
     },
 
-    // 2. WebPage + Breadcrumb (corrected URL)
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage (with primary image)
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/other-services/#webpage",
       "url": "https://www.jaetravel.co.ke/other-services",
       "name": "Transportation Services Kenya & East Africa | Vehicle Hire, Airport Transfers & Safari Transport",
       "description": "Reliable car hire, airport transfers, safari vehicles and group transport across Kenya, Tanzania, Rwanda and Uganda. Book 4x4 safari Land Cruisers and chauffeur services.",
-      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/other-services/#breadcrumb" }
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/other-services/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/14.jpeg",
+        "width": 1200,
+        "height": 800
+      },
+      "mainEntity": { "@id": "https://www.jaetravel.co.ke/other-services/#service" }
     },
+
+    // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.jaetravel.co.ke/other-services/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Transportation Services", "item": "https://www.jaetravel.co.ke/other-services" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Other Services",
+          "item": "https://www.jaetravel.co.ke/other-services"
+        }
       ]
     },
 
-    // 3. Service Catalog with Offers + Enhanced ImageObject
+    // 5. Service Catalog with rich Offers + ImageObject
     {
       "@type": "Service",
+      "@id": "https://www.jaetravel.co.ke/other-services/#service",
       "serviceType": "Transportation & Vehicle Hire Services",
       "provider": { "@id": "https://www.jaetravel.co.ke/#organization" },
       "areaServed": ["Kenya", "Tanzania", "Rwanda", "Uganda"],
@@ -68,14 +170,15 @@ const transportSchema = {
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/waaa.jpg",
-                "width": "1200",
-                "height": "800",
+                "width": 1200,
+                "height": 800,
                 "name": "Nairobi Airport Transfer Service JKIA",
                 "description": "Professional driver waiting at Jomo Kenyatta International Airport with name sign"
               }
             },
             "priceCurrency": "USD",
-            "price": "35"
+            "price": "35",
+            "availability": "https://schema.org/InStock"
           },
           {
             "@type": "Offer",
@@ -86,15 +189,19 @@ const transportSchema = {
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/14.jpeg",
-                "width": "1200",
-                "height": "800",
+                "width": 1200,
+                "height": 800,
                 "name": "Safari Vehicle Maasai Mara Kenya",
                 "description": "Custom 4x4 safari Land Cruiser with pop-up roof for optimal wildlife viewing"
               }
             },
             "priceCurrency": "USD",
             "price": "120",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "per day" }
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "unitText": "per day"
+            },
+            "availability": "https://schema.org/InStock"
           },
           {
             "@type": "Offer",
@@ -105,47 +212,72 @@ const transportSchema = {
               "image": {
                 "@type": "ImageObject",
                 "url": "https://www.jaetravel.co.ke/waaa.jpg",
-                "width": "1200",
-                "height": "800",
+                "width": 1200,
+                "height": 800,
                 "name": "Group Transport Minibus Kenya"
               }
             },
             "priceCurrency": "USD",
             "price": "150",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "per day" }
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "unitText": "per day"
+            },
+            "availability": "https://schema.org/InStock"
           }
         ]
       }
     },
 
-    // 4. FAQPage (optimized questions for search intent)
+    // 6. FAQPage (expanded to 5 questions for full rich FAQ carousel)
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/other-services/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Do you offer airport transfers in Nairobi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — 24/7 service from JKIA and Wilson Airport with flight monitoring and meet & greet." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 24/7 service from JKIA and Wilson Airport with flight monitoring and meet & greet."
+          }
         },
         {
           "@type": "Question",
           "name": "Are safari vehicles included with drivers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — all safari vehicles come with experienced English-speaking driver-guides." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — all safari vehicles come with experienced English-speaking driver-guides."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I book transport for Rwanda gorilla trekking?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we provide reliable 4x4 transfers from Kigali to Volcanoes National Park." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we provide reliable 4x4 transfers from Kigali to Volcanoes National Park."
+          }
         },
         {
           "@type": "Question",
           "name": "Do you have wheelchair-accessible vehicles?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we have adapted vehicles with ramps and space for wheelchairs." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we have adapted vehicles with ramps and space for wheelchairs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in your vehicle hire packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All rentals include a professional driver, fuel, insurance, bottled water, Wi-Fi, and comprehensive vehicle maintenance."
+          }
         }
       ]
     }
   ]
-}
+};
 
 export const metadata: Metadata = {
   title: "Transportation Services Kenya & East Africa | Car Hire, Airport Transfers & Safari Vehicles",

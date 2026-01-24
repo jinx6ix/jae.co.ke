@@ -15,7 +15,7 @@ import { breadcrumbSchema } from "./breadcrumb-schema"
 const homepageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization
+    // 1. Organization (main entity)
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -32,11 +32,12 @@ const homepageSchema = {
         "@type": "ContactPoint",
         "telephone": "+254726485228",
         "contactType": "Customer Service",
-        "areaServed": ["KE", "TZ", "RW", "UG"]
+        "areaServed": ["KE", "TZ", "RW", "UG"],
+        "availableLanguage": ["English"]
       }
     },
 
-    // 2. LocalBusiness — gives you 5-star reviews + car hire service
+    // 2. LocalBusiness (with aggregateRating, reviews & car hire offers – fully valid)
     {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
@@ -45,10 +46,21 @@ const homepageSchema = {
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
       "image": "https://www.jaetravel.co.ke/accessible-safari-wheelchair.jpg",
-      "address": { "@type": "PostalAddress", "addressCountry": "KE" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE"
+      },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
         "opens": "08:00",
         "closes": "18:00"
       },
@@ -61,20 +73,34 @@ const homepageSchema = {
       "review": [
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "David Chen" },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "David Chen"
+          },
           "datePublished": "2025-08-20",
           "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. The hydraulic lift vehicle was flawless — life-changing experience."
         },
         {
           "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sarah Johnson" },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
           "datePublished": "2025-07-15",
           "reviewBody": "Rented their accessible Land Cruiser for a private safari — best decision ever. Professional driver, perfect vehicle, unforgettable trip."
         }
       ],
-      // CAR HIRE SERVICE — NEW & FULLY MARKED UP
+      // CAR HIRE SERVICE — fully valid Offer structure
       "makesOffer": [
         {
           "@type": "Offer",
@@ -83,62 +109,104 @@ const homepageSchema = {
           "url": "https://www.jaetravel.co.ke/vehicle-hire",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "offeredBy": { "@id": "https://www.jaetravel.co.ke/#business" }
+          "offeredBy": {
+            "@id": "https://www.jaetravel.co.ke/#business"
+          }
         }
       ]
     },
 
-    // 3. WebPage + BreadcrumbList
+    // 3. WebSite (recommended to connect everything)
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": {
+        "@id": "https://www.jaetravel.co.ke/#organization"
+      }
+    },
+
+    // 4. WebPage + BreadcrumbList
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/#webpage",
       "url": "https://www.jaetravel.co.ke",
       "name": "JAE Travel Expeditions - Wheelchair Accessible Safaris East Africa",
-      "isPartOf": { "@type": "WebSite", "url": "https://www.jaetravel.co.ke", "name": "JAE Travel" }
+      "description": "East Africa's leading operator of wheelchair-accessible safaris and adapted safari vehicle hire in Kenya, Tanzania, Rwanda, and Uganda.",
+      "isPartOf": {
+        "@id": "https://www.jaetravel.co.ke/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.jaetravel.co.ke/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        }
       ]
     },
 
-    // 4. FAQPage (kept from your original)
+    // 5. FAQPage
     {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Do you offer wheelchair accessible safari vehicles?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we operate Kenya’s only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade restraints." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we operate Kenya’s only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade restraints."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I rent a wheelchair accessible safari vehicle?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! We offer private hire of our fully adapted safari vehicles with experienced drivers — perfect for independent travelers or photographers." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer private hire of our fully adapted safari vehicles with experienced drivers — perfect for independent travelers or photographers."
+          }
         },
         {
           "@type": "Question",
           "name": "What destinations do you cover?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We operate in Kenya, Tanzania, Rwanda, and Uganda — including Masai Mara, Serengeti, Volcanoes National Park, and Bwindi." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We operate in Kenya, Tanzania, Rwanda, and Uganda — including Masai Mara, Serengeti, Volcanoes National Park, and Bwindi."
+          }
         }
       ]
     },
 
-    // 5. Featured Tour Offers (TouristTrip)
+    // 6. Featured Tour Offer – using TouristTrip (valid and clean)
     {
       "@type": "TouristTrip",
+      "@id": "https://www.jaetravel.co.ke/#featured-tour",
       "name": "7-Day Luxury Wheelchair Accessible Masai Mara Safari",
+      "description": "Experience the Masai Mara in complete comfort and accessibility with our specially adapted luxury safari vehicle and expert guides.",
+      "image": "https://www.jaetravel.co.ke/accessible-masai-mara-safari.jpg",
       "offers": {
         "@type": "Offer",
+        "url": "https://www.jaetravel.co.ke/tours/7-day-wheelchair-accessible-masai-mara-safari",
         "price": "4850",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-01-01",
+        "validThrough": "2026-12-31",
+        "seller": {
+          "@id": "https://www.jaetravel.co.ke/#organization"
+        }
       }
     }
   ]
-}
-
+};
 // ————————————————————————
 // Metadata + JSON-LD (keywords already strong — left unchanged)
 // ————————————————————————

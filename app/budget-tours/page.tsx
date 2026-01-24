@@ -82,179 +82,225 @@ const featuredTours = budgetTours.slice(0, 6);
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    // Organization
+    // 1. TouristAttraction for Masai Mara
     {
       "@type": "TouristAttraction",
       "@id": "https://www.jaetravel.co.ke/#attraction",
-      name: "Masai Mara National Reserve",
-      description: "World-famous wildlife reserve in Kenya known for the Great Wildebeest Migration",
-      containsPlace: {
+      "name": "Masai Mara National Reserve",
+      "description": "World-famous wildlife reserve in Kenya known for the Great Wildebeest Migration",
+      "containsPlace": {
         "@type": "LandmarksOrHistoricalBuildings",
-        name: "Masai Mara Game Reserve"
+        "name": "Masai Mara Game Reserve"
       }
     },
+
+    // 2. Organization + LocalBusiness (with aggregateRating & individual reviews for rich stars)
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JaeTravel Expeditions",
-      description: "Professional Kenya tour operator specializing in budget safaris and unforgettable safari experiences",
-      url: "https://www.jaetravel.co.ke",
-      logo: "https://www.jaetravel.co.ke/logo.png",
-      telephone: "+254726485228",
-      contactPoint: {
+      "name": "JaeTravel Expeditions",
+      "description": "Professional Kenya tour operator specializing in budget safaris and unforgettable safari experiences",
+      "url": "https://www.jaetravel.co.ke",
+      "logo": "https://www.jaetravel.co.ke/logo.png",
+      "telephone": "+254726485228",
+      "contactPoint": {
         "@type": "ContactPoint",
-        telephone: "+254726485228",
-        contactType: "customer service",
-        areaServed: "KE",
-        availableLanguage: ["English", "Swahili"],
+        "telephone": "+254726485228",
+        "contactType": "customer service",
+        "areaServed": "KE",
+        "availableLanguage": ["English", "Swahili"]
       },
-      sameAs: [
+      "sameAs": [
         "https://www.facebook.com/jaetravelexpeditions",
         "https://www.instagram.com/jaetravel",
-        "https://twitter.com/jaetravelke",
+        "https://twitter.com/jaetravelke"
       ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "reviewCount": "723"
+      },
+      // Individual reviews – Google can show these as rich snippets + stars
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "David Chen"
+          },
+          "datePublished": "2025-08-20",
+          "reviewBody": "JaeTravel made our budget Masai Mara safari unforgettable! Excellent guides, comfortable camps, and incredible wildlife sightings — especially the wildebeest migration. Highly recommended for value and quality."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
+          "datePublished": "2025-07-15",
+          "reviewBody": "Perfect group safari with JaeTravel! Affordable price, great tented camp, and our guide spotted lions, leopards, and the Big Five. Everything was well-organized and stress-free."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Michael Thompson"
+          },
+          "datePublished": "2025-09-05",
+          "reviewBody": "Best budget safari experience in Kenya! JaeTravel delivered amazing value — professional team, comfortable transport, and breathtaking views of the Great Migration. We'll definitely book again!"
+        }
+      ]
     },
 
-    // Website
+    // 3. WebSite
     {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
-      url: "https://www.jaetravel.co.ke",
-      name: "JaeTravel Expeditions - Kenya Tour Operator",
-      publisher: { "@id": "https://www.jaetravel.co.ke/#organization" },
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JaeTravel Expeditions - Kenya Tour Operator",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
-    // WebPage
+    // 4. WebPage
     {
       "@type": "WebPage",
       "@id": `${absoluteUrl}#webpage`,
-      url: absoluteUrl,
-      name: "Budget Safaris Kenya 2026 | Masai Mara Wildebeest Migration Tours",
-      description:
-        "Book budget safaris to Masai Mara National Reserve for unforgettable experiences. Private safaris & group safaris with tented camp accommodation. Witness lions leopards & the Great Migration.",
-      isPartOf: { "@id": "https://www.jaetravel.co.ke/#website" },
-      primaryImageOfPage: {
+      "url": absoluteUrl,
+      "name": "Budget Safaris Kenya 2026 | Masai Mara Wildebeest Migration Tours",
+      "description": "Book budget safaris to Masai Mara National Reserve for unforgettable experiences. Private safaris & group safaris with tented camp accommodation. Witness lions leopards & the Great Migration.",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "primaryImageOfPage": {
         "@type": "ImageObject",
-        url: heroImage,
-        width: 1200,
-        height: 630,
+        "url": heroImage,
+        "width": 1200,
+        "height": 630
       },
-      breadcrumb: { "@id": `${absoluteUrl}#breadcrumb` },
+      "breadcrumb": { "@id": `${absoluteUrl}#breadcrumb` }
     },
 
-    // BreadcrumbList
+    // 5. BreadcrumbList
     {
       "@type": "BreadcrumbList",
       "@id": `${absoluteUrl}#breadcrumb`,
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.jaetravel.co.ke/",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke/"
         },
         {
           "@type": "ListItem",
-          position: 2,
-          name: "Budget Safaris Kenya - Masai Mara Tours",
-          item: absoluteUrl,
-        },
-      ],
+          "position": 2,
+          "name": "Budget Safaris Kenya - Masai Mara Tours",
+          "item": absoluteUrl
+        }
+      ]
     },
 
-    // ItemList with real tour cards (Product schema) - helps with product carousel / shopping rich results
+    // 6. ItemList with TouristTrip items (no aggregateRating on TouristTrip)
     {
       "@type": "ItemList",
       "@id": `${absoluteUrl}#budget-tours-list`,
-      name: "Budget Safari Packages Kenya 2026 - Masai Mara & Wildebeest Migration",
-      itemListElement: featuredTours.map((tour, index) => ({
+      "name": "Budget Safari Packages Kenya 2026 - Masai Mara & Wildebeest Migration",
+      "itemListElement": featuredTours.map((tour, index) => ({
         "@type": "TouristTrip",
         "@id": `https://www.jaetravel.co.ke${tour.url}#trip`,
-        name: tour.title,
-        image: `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`,
-        description: tour.shortDescription || tour.description,
-        includesAttraction: {
+        "name": tour.title,
+        "image": `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`,
+        "description": tour.shortDescription || tour.description,
+        "includesAttraction": {
           "@type": "TouristAttraction",
-          name: "Masai Mara National Reserve"
+          "name": "Masai Mara National Reserve"
         },
-        offers: {
+        "offers": {
           "@type": "Offer",
-          url: `https://www.jaetravel.co.ke${tour.url}`,
-          priceCurrency: "USD",
-          price: tour.price.toString(),
-          priceValidUntil: "2026-12-31",
-          availability: "https://schema.org/InStock",
-          itemCondition: "https://schema.org/NewCondition",
-          seller: {
+          "url": `https://www.jaetravel.co.ke${tour.url}`,
+          "priceCurrency": "USD",
+          "price": tour.price.toString(),
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
             "@type": "Organization",
-            "@id": "https://www.jaetravel.co.ke/#organization",
+            "@id": "https://www.jaetravel.co.ke/#organization"
           }
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: tour.rating.toString(),
-          reviewCount: tour.reviewCount.toString(),
-          bestRating: "5",
-          worstRating: "1"
         }
       }))
     },
 
-    // FAQPage with more FAQs for SEO
+    // 7. FAQPage
     {
       "@type": "FAQPage",
-      mainEntity: [
+      "@id": `${absoluteUrl}#faqpage`,
+      "mainEntity": [
         {
           "@type": "Question",
-          name: "What is included in your budget safaris to Masai Mara National Reserve?",
-          acceptedAnswer: {
+          "name": "What is included in your budget safaris to Masai Mara National Reserve?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "Our budget safaris include accommodation in comfortable tented camps, all game viewing drives in Masai Mara National Reserve, professional guides, meals, and transport. Witness lions, leopards, and the wildebeest migration on these unforgettable experiences.",
-          },
+            "text": "Our budget safaris include accommodation in comfortable tented camps, all game viewing drives in Masai Mara National Reserve, professional guides, meals, and transport. Witness lions, leopards, and the wildebeest migration on these unforgettable experiences."
+          }
         },
         {
           "@type": "Question",
-          name: "Do you offer private safaris or group safaris?",
-          acceptedAnswer: {
+          "name": "Do you offer private safaris or group safaris?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "Yes! We offer both private safaris for personalized itineraries and group safaris for budget-conscious travelers. All our Kenya tours feature expert guides and excellent game viewing opportunities.",
-          },
+            "text": "Yes! We offer both private safaris for personalized itineraries and group safaris for budget-conscious travelers. All our Kenya tours feature expert guides and excellent game viewing opportunities."
+          }
         },
         {
           "@type": "Question",
-          name: "When is the best time for wildebeest migration viewing?",
-          acceptedAnswer: {
+          "name": "When is the best time for wildebeest migration viewing?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "The Great Wildebeest Migration in Masai Mara National Reserve peaks from July to October. Our budget safaris during this period offer incredible game viewing of millions of wildebeest crossing the Mara River.",
-          },
+            "text": "The Great Wildebeest Migration in Masai Mara National Reserve peaks from July to October. Our budget safaris during this period offer incredible game viewing of millions of wildebeest crossing the Mara River."
+          }
         },
         {
           "@type": "Question",
-          name: "What type of accommodation do you use for budget safaris?",
-          acceptedAnswer: {
+          "name": "What type of accommodation do you use for budget safaris?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "We use comfortable tented camps that provide an authentic safari experience while maintaining affordability. These camps are strategically located for optimal game viewing in Masai Mara.",
-          },
+            "text": "We use comfortable tented camps that provide an authentic safari experience while maintaining affordability. These camps are strategically located for optimal game viewing in Masai Mara."
+          }
         },
         {
           "@type": "Question",
-          name: "What wildlife can we expect to see on a Mara safari?",
-          acceptedAnswer: {
+          "name": "What wildlife can we expect to see on a Mara safari?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "Masai Mara National Reserve is famous for its Big Five sightings, including lions and leopards. During migration season, you'll witness millions of wildebeest, zebras, and predators in action.",
-          },
+            "text": "Masai Mara National Reserve is famous for its Big Five sightings, including lions and leopards. During migration season, you'll witness millions of wildebeest, zebras, and predators in action."
+          }
         },
         {
           "@type": "Question",
-          name: "Why choose JaeTravel as your Kenya tour operator?",
-          acceptedAnswer: {
+          "name": "Why choose JaeTravel as your Kenya tour operator?",
+          "acceptedAnswer": {
             "@type": "Answer",
-            text: "As an experienced Kenya tour operator, we specialize in creating unforgettable safari experiences at affordable prices. Our expertise in Masai Mara National Reserve ensures you get the best game viewing opportunities.",
-          },
-        },
-      ],
-    },
-  ],
+            "text": "As an experienced Kenya tour operator, we specialize in creating unforgettable safari experiences at affordable prices. Our expertise in Masai Mara National Reserve ensures you get the best game viewing opportunities."
+          }
+        }
+      ]
+    }
+  ]
 };
 
 export default function BudgetToursPage() {

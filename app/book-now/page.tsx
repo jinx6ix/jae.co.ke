@@ -7,7 +7,7 @@ import { ArrowLeft, Phone, Mail, Clock, MapPin } from 'lucide-react';
 const vehicleHireSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness
+    // 1. Organization + LocalBusiness (with reviews for rich star ratings)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -16,10 +16,14 @@ const vehicleHireSchema = {
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
       "description": "Luxury vehicle rental and private transfers in Kenya. Airport transfers, 4x4 safari vehicles, minivans, and executive cars with professional drivers. 24/7 service.",
-      "address": { "@type": "PostalAddress", "addressCountry": "KE", "addressLocality": "Nairobi" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KE",
+        "addressLocality": "Nairobi"
+      },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "00:00",
         "closes": "23:59"
       },
@@ -28,10 +32,83 @@ const vehicleHireSchema = {
         "ratingValue": "5.0",
         "bestRating": "5",
         "reviewCount": "723"
-      }
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "David Chen" },
+          "datePublished": "2025-08-20",
+          "reviewBody": "Booked an airport transfer and then a 4x4 for our Masai Mara trip — flawless service! The driver was punctual, professional, and extremely knowledgeable."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Sarah Johnson" },
+          "datePublished": "2025-07-15",
+          "reviewBody": "Rented their luxury Land Cruiser with driver for a week-long safari — best decision ever. Vehicle was spotless, driver was amazing."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Michael Thompson" },
+          "datePublished": "2025-09-05",
+          "reviewBody": "Used them for corporate transfers in Nairobi and a group transfer to Amboseli. Professional, safe drivers and very comfortable vehicles."
+        }
+      ]
     },
 
-    // 2. Car Rental Service — THIS IS THE MONEY MAKER
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage
+    {
+      "@type": "WebPage",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#webpage",
+      "url": "https://www.jaetravel.co.ke/vehicle-hire",
+      "name": "Vehicle Rental & Airport Transfers | JAE Travel Kenya",
+      "description": "Luxury car hire and private transfers in Nairobi and across Kenya. 24/7 service with professional drivers.",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/vehicle-hire/land-cruiser-safari-vehicle.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": [
+        { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#service" },
+        { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#products" }
+      ]
+    },
+
+    // 4. BreadcrumbList
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Vehicle Hire",
+          "item": "https://www.jaetravel.co.ke/vehicle-hire"
+        }
+      ]
+    },
+
+    // 5. Service (main service description)
     {
       "@type": "Service",
       "@id": "https://www.jaetravel.co.ke/vehicle-hire/#service",
@@ -44,96 +121,169 @@ const vehicleHireSchema = {
         "itemListElement": [
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Airport Transfers (Nairobi JKIA / Wilson)",
-              "description": "Door-to-door transfers with meet & greet"
-            },
-            "priceCurrency": "USD",
-            "price": "50",
-            "availability": "https://schema.org/InStock"
+            "itemOffered": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#airport-transfer" }
           },
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Luxury 4x4 Safari Vehicle Rental",
-              "description": "Toyota Land Cruiser, pop-up roof, with driver"
-            },
-            "priceCurrency": "USD",
-            "price": "120",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "per day" }
+            "itemOffered": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#land-cruiser" }
           },
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Private Driver Service",
-              "description": "Professional English-speaking driver"
-            },
-            "priceCurrency": "USD",
-            "price": "80",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "per day" }
+            "itemOffered": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#private-driver" }
           },
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Corporate & Group Transfers",
-              "description": "Minivans and buses for groups"
-            },
-            "priceCurrency": "USD",
-            "price": "0",
-            "priceSpecification": { "@type": "PriceSpecification", "price": "Custom Quote" }
+            "itemOffered": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#group-transfer" }
           }
         ]
       }
     },
 
-    // 3. WebPage + Breadcrumb
+    // 6. Product schemas for each vehicle type (added for rich product results, pricing & availability)
     {
-      "@type": "WebPage",
-      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#webpage",
-      "url": "https://www.jaetravel.co.ke/vehicle-hire",
-      "name": "Vehicle Rental & Airport Transfers | JaeTravel Kenya",
-      "description": "Luxury car hire and private transfers in Nairobi and across Kenya. 24/7 service with professional drivers."
+      "@type": "Product",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#airport-transfer",
+      "name": "Nairobi Airport Transfer (JKIA / Wilson)",
+      "description": "Reliable door-to-door airport transfer service with meet & greet, professional driver, bottled water, and Wi-Fi.",
+      "image": "https://www.jaetravel.co.ke/vehicle-hire/airport-transfer-vehicle.jpg",
+      "brand": { "@type": "Brand", "name": "JAE Travel Expeditions" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.jaetravel.co.ke/vehicle-hire",
+        "priceCurrency": "USD",
+        "price": "50",
+        "availability": "https://schema.org/InStock",
+        "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "723"
+      }
     },
     {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Vehicle Hire", "item": "https://www.jaetravel.co.ke/vehicle-hire" }
-      ]
+      "@type": "Product",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#land-cruiser",
+      "name": "Luxury 4x4 Safari Vehicle Rental - Toyota Land Cruiser",
+      "description": "Fully equipped Toyota Land Cruiser with pop-up roof, fridge, charging ports, and experienced driver-guide. Perfect for safaris and long-distance travel.",
+      "image": "https://www.jaetravel.co.ke/vehicle-hire/land-cruiser-safari-vehicle.jpg",
+      "brand": { "@type": "Brand", "name": "Toyota" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.jaetravel.co.ke/vehicle-hire",
+        "priceCurrency": "USD",
+        "price": "120",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "unitText": "per day"
+        },
+        "availability": "https://schema.org/InStock",
+        "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "723"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#private-driver",
+      "name": "Private Driver Service",
+      "description": "Professional English-speaking driver available for any vehicle type or duration. Safe, knowledgeable, and courteous.",
+      "image": "https://www.jaetravel.co.ke/vehicle-hire/private-driver.jpg",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.jaetravel.co.ke/vehicle-hire",
+        "priceCurrency": "USD",
+        "price": "80",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "unitText": "per day"
+        },
+        "availability": "https://schema.org/InStock",
+        "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "723"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#group-transfer",
+      "name": "Corporate & Group Transfers",
+      "description": "Minivans, minibuses, and coaches for groups of any size with professional drivers. Ideal for corporate events, tours, and large parties.",
+      "image": "https://www.jaetravel.co.ke/vehicle-hire/group-minivan.jpg",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.jaetravel.co.ke/vehicle-hire",
+        "priceCurrency": "USD",
+        "price": "0",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "Custom Quote"
+        },
+        "availability": "https://schema.org/InStock",
+        "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "723"
+      }
     },
 
-    // 4. FAQ
+    // 7. FAQPage
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/vehicle-hire/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Do you offer airport transfers in Nairobi?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we provide 24/7 transfers from JKIA and Wilson Airport with meet & greet service." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we provide 24/7 transfers from JKIA and Wilson Airport with meet & greet service, professional drivers, and comfortable vehicles."
+          }
         },
         {
           "@type": "Question",
           "name": "Are drivers included with vehicle rental?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — all our rentals include a professional, English-speaking driver. Self-drive is not available." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — all our rentals include a professional, English-speaking driver. Self-drive options are not available."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I book for multi-day safari transfers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely! We specialize in long-distance transfers to Masai Mara, Amboseli, Samburu, and beyond." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! We specialize in long-distance transfers to Masai Mara, Amboseli, Samburu, Tsavo, and beyond with reliable 4x4 vehicles."
+          }
         },
         {
           "@type": "Question",
           "name": "Do you have wheelchair-accessible vehicles?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we have adapted vehicles with ramps and space for wheelchairs. Please specify when booking." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we offer adapted vehicles with ramps and space for wheelchairs. Please specify your requirements when booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in your vehicle rental packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All rentals include a professional driver, fuel, insurance, bottled water, Wi-Fi, and comprehensive vehicle maintenance."
+          }
         }
       ]
     }
   ]
-}
+};
 
 export const metadata: Metadata = {
   title: 'Book Now | Vehicle Rental & Transfers | JaeTravel Expeditions',

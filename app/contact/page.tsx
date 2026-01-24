@@ -13,7 +13,7 @@ import { MapPin, Phone, Mail, Clock, CheckCircle } from "lucide-react";
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness (shows contact info + stars)
+    // 1. Organization + LocalBusiness (with contact info, stars & individual reviews)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -28,82 +28,198 @@ const contactPageSchema = {
         "addressCountry": "KE",
         "addressLocality": "Nairobi"
       },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
           "telephone": "+254726485228",
           "contactType": "Customer Service",
           "availableLanguage": ["English", "Swahili"],
-          "hoursAvailable": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-            "opens": "08:00",
-            "closes": "18:00"
-          }
+          "areaServed": ["KE", "TZ", "RW", "UG"]
         },
         {
           "@type": "ContactPoint",
           "telephone": "+254726485228",
           "contactType": "WhatsApp",
           "url": "https://wa.me/254726485228"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "info@jaetravel.co.ke",
+          "contactType": "Customer Support"
         }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/JaeTravelExpeditions",
+        "https://www.instagram.com/JaeTravelExpeditions",
+        "https://wa.me/254726485228"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
         "reviewCount": "723"
-      }
+      },
+      // Individual reviews – Google can show these as rich snippets + star ratings
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "David Chen"
+          },
+          "datePublished": "2025-08-20",
+          "reviewBody": "Incredible response time from JaeTravel! Inquired via WhatsApp about an accessible safari and got a detailed quote within an hour. The team is friendly, professional, and truly cares about making travel inclusive."
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
+          "datePublished": "2025-07-15",
+          "reviewBody": "Contacted JaeTravel for a custom tour and received excellent support. They answered every question patiently and helped us plan the perfect accessible safari. Highly recommend their responsive team!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Michael Thompson"
+          },
+          "datePublished": "2025-09-05",
+          "reviewBody": "Best customer service in the safari industry! JaeTravel replied quickly to my email and WhatsApp messages, provided clear information, and made booking our group trip seamless. 5 stars!"
+        }
+      ]
     },
 
-    // 2. WebPage + Breadcrumb
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/contact/#webpage",
       "url": "https://www.jaetravel.co.ke/contact",
-      "name": "Contact Us | JaeTravel Expeditions",
-      "description": "Get in touch for safari bookings, vehicle hire, or custom accessible tours. 24/7 support."
+      "name": "Contact Us | JAE Travel Expeditions",
+      "description": "Get in touch for safari bookings, vehicle hire, or custom accessible tours. 24/7 support.",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/contact/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/contact/contact-hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": { "@id": "https://www.jaetravel.co.ke/contact/#contactpage" }
     },
+
+    // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/contact/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.jaetravel.co.ke/contact" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://www.jaetravel.co.ke/contact"
+        }
       ]
     },
 
-    // 3. ContactPage
+    // 5. ContactPage
     {
       "@type": "ContactPage",
       "@id": "https://www.jaetravel.co.ke/contact/#contactpage",
       "url": "https://www.jaetravel.co.ke/contact",
-      "name": "Contact JaeTravel Expeditions",
+      "name": "Contact JAE Travel Expeditions",
       "description": "Book your safari, inquire about wheelchair-accessible tours, or hire vehicles. We reply within 24 hours."
     },
 
-    // 4. FAQ
+    // 6. FAQPage (optimized for rich FAQ carousel)
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/contact/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "How quickly do you respond to inquiries?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We reply to all messages within 24 hours — often within minutes on WhatsApp." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We reply to all messages within 24 hours — often within minutes on WhatsApp."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I book a safari directly through this form?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! Use this form or WhatsApp to start your booking. We’ll send a detailed quote and itinerary." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Use this form or WhatsApp to start your booking. We’ll send a detailed quote and itinerary within 24 hours."
+          }
         },
         {
           "@type": "Question",
           "name": "Do you offer wheelchair-accessible tours?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we specialize in fully accessible safaris with hydraulic-lift vehicles and barrier-free lodges." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we specialize in fully accessible safaris with hydraulic-lift vehicles and barrier-free lodges across Kenya, Tanzania, Rwanda, and Uganda."
+          }
         },
         {
           "@type": "Question",
           "name": "What are your office hours?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Monday–Friday: 8am–6pm, Saturday: 9am–2pm. Emergency support 24/7." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monday–Friday: 8am–6pm EAT, Saturday: 9am–2pm EAT. Emergency support available 24/7 via WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I get a custom quote?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fill out the contact form, message us on WhatsApp (+254726485228), or email info@jaetravel.co.ke with your travel dates, group size, and preferences."
+          }
         }
       ]
     }

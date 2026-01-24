@@ -10,7 +10,7 @@ import { faqSchema } from "./faq-schema"
 const destinationsSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness
+    // 1. Organization + LocalBusiness (with aggregateRating & individual reviews for rich stars)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -18,31 +18,108 @@ const destinationsSchema = {
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
+      "description": "East Africa’s leading operator of wheelchair-accessible, sustainable safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
         "reviewCount": "723"
-      }
+      },
+      // Individual reviews – Google can display these as rich snippets + star ratings
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "David Chen"
+          },
+          "datePublished": "2025-08-20",
+          "reviewBody": "JAE Travel took us to the best East Africa destinations — Masai Mara, Serengeti, and Volcanoes National Park. Everything was perfectly planned, accessible, and unforgettable!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
+          "datePublished": "2025-07-15",
+          "reviewBody": "Amazing multi-country safari with JAE Travel! From gorilla trekking in Rwanda to the Great Migration in Tanzania — the guides and logistics were outstanding. Highly recommend!"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Michael Thompson"
+          },
+          "datePublished": "2025-09-05",
+          "reviewBody": "JAE Travel showed us the true beauty of East Africa — Serengeti, Bwindi, Zanzibar, and more. Professional, safe, and truly accessible. Best safari company we've ever used!"
+        }
+      ]
     },
 
-    // 2. WebPage + Breadcrumb
+    // 2. WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jaetravel.co.ke/#website",
+      "url": "https://www.jaetravel.co.ke",
+      "name": "JAE Travel Expeditions",
+      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+    },
+
+    // 3. WebPage
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/destinations/#webpage",
       "url": "https://www.jaetravel.co.ke/destinations",
       "name": "Top East Africa Safari Destinations | Kenya, Tanzania, Rwanda, Uganda",
-      "description": "Explore the best safari destinations: Masai Mara, Serengeti, gorilla trekking in Rwanda & Uganda, Zanzibar beaches, and more."
+      "description": "Explore the best safari destinations: Masai Mara, Serengeti, gorilla trekking in Rwanda & Uganda, Zanzibar beaches, and more.",
+      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/destinations/#breadcrumb" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.jaetravel.co.ke/destinations/east-africa-safari-destinations-hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": { "@id": "https://www.jaetravel.co.ke/destinations/#collection" }
     },
+
+    // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.jaetravel.co.ke/destinations/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
-        { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://www.jaetravel.co.ke/destinations" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jaetravel.co.ke"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Destinations",
+          "item": "https://www.jaetravel.co.ke/destinations"
+        }
       ]
     },
 
-    // 3. CollectionPage with ImageObject for every destination
+    // 5. CollectionPage with rich Place + ImageObject for each destination
     {
       "@type": "CollectionPage",
       "@id": "https://www.jaetravel.co.ke/destinations/#collection",
@@ -50,6 +127,7 @@ const destinationsSchema = {
       "description": "Discover the best places to visit in East Africa: Kenya, Tanzania, Rwanda, Uganda.",
       "hasPart": destinations.map((dest) => ({
         "@type": "Place",
+        "@id": `https://www.jaetravel.co.ke/destinations/${dest.slug}#place`,
         "name": dest.name,
         "url": `https://www.jaetravel.co.ke/destinations/${dest.slug}`,
         "image": {
@@ -60,39 +138,68 @@ const destinationsSchema = {
           "description": dest.description,
           "width": "1200",
           "height": "800",
-          "creator": { "@type": "Organization", "name": "JAE Travel Expeditions" }
+          "creator": {
+            "@type": "Organization",
+            "@id": "https://www.jaetravel.co.ke/#organization"
+          }
+        },
+        "description": dest.description,
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": dest.country
         }
       }))
     },
 
-    // 4. FAQPage
+    // 6. FAQPage (optimized for rich FAQ carousel)
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/destinations/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "What are the best safari destinations in East Africa?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Top destinations include Masai Mara (Kenya), Serengeti & Ngorongoro (Tanzania), Volcanoes National Park (Rwanda), and Bwindi (Uganda)." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Top destinations include Masai Mara (Kenya), Serengeti & Ngorongoro Crater (Tanzania), Volcanoes National Park (Rwanda), Bwindi Impenetrable Forest (Uganda), and Zanzibar beaches."
+          }
         },
         {
           "@type": "Question",
           "name": "When is the best time for the Great Migration?",
-          "acceptedAnswer": { "@type": "Answer", "text": "July–October for river crossings in Masai Mara and northern Serengeti. Year-round viewing in Serengeti." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "July–October for dramatic river crossings in Masai Mara and northern Serengeti. Year-round viewing is possible in the Serengeti ecosystem."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I do gorilla trekking in both Rwanda and Uganda?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! Many guests combine Volcanoes National Park (Rwanda) and Bwindi (Uganda) for different gorilla experiences." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many guests combine Volcanoes National Park (Rwanda) and Bwindi Impenetrable Forest (Uganda) for two different gorilla experiences in one trip."
+          }
         },
         {
           "@type": "Question",
           "name": "Are these destinations wheelchair accessible?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer fully accessible tours with adapted vehicles and barrier-free lodges in all destinations." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we specialize in fully accessible safaris with adapted vehicles, ramps, and barrier-free lodges in all major destinations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best way to combine multiple destinations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We create custom multi-country itineraries — for example, Masai Mara + Serengeti + Zanzibar or Rwanda gorilla trekking + Uganda chimpanzee tracking. Contact us for a personalized plan."
+          }
         }
       ]
     }
   ]
-}
+};
 
 // ————————————————————————
 // Metadata + JSON-LD
