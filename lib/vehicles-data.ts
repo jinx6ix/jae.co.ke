@@ -29,7 +29,7 @@ export const vehicles: Vehicle[] = [
     id: 1,
     slug: "toyota-landcruiser",
     name: "Toyota Landcruiser",
-    image: "https://ik.imagekit.io/jinx/travel/6-1536x776%20(2).png?updatedAt=1750087071508",
+    image: "/1b436e43-e979-4d81-93e1-972fbee500dd.jpg",
     description:
       "The ultimate safari vehicle with exceptional off-road capabilities and reliability. Perfect for navigating the rugged terrain of East Africa's national parks and reserves.",
     capacity: "7 passengers",
@@ -43,11 +43,11 @@ export const vehicles: Vehicle[] = [
       luggage: "Large capacity",
     },
     gallery: [
-      "https://ik.imagekit.io/jinx/travel/6-1536x776%20(2).png?updatedAt=1750087071508",
-      "https://ik.imagekit.io/jinx/travel/safari-vehicle-on-african-savanna.jpg",
-      "/landcruiser-interior-dashboard.jpg",
-      "/landcruiser-pop-up-roof-open.jpg",
-      "/landcruiser-luggage-space.jpg",
+      "/42376dae-b77d-4c57-bfb9-9168f3095936.jpg",
+      "/42376dae-b77d-4c57-bfb9-9168f3095936.jpg",
+      "/a72177d7-cdb1-405c-9c8e-0f6def7d3912.jpg",
+      "/bc797b77-1554-4a2f-9b17-6112454c25bd.jpg",
+      "/20f1264b-98e2-41ea-8086-5dbada80fea4.jpg",
     ],
     metaTitle: "Toyota Landcruiser Hire | 4x4 Safari Vehicle Rental East Africa",
     metaDescription:
@@ -126,7 +126,7 @@ export const vehicles: Vehicle[] = [
     slug: "photography-converted-vehicle",
     name: "Photography Converted Vehicle",
     image:
-      "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-07-07%20at%2018.28.17_94668579.jpg?updatedAt=1751902480309",
+      "/39c2510c-fb4c-4246-95c6-c2df54fb0e94.jpg",
     description:
       "Specially modified vehicle with photography equipment and optimal viewing angles. Designed for professional photographers and serious wildlife enthusiasts.",
     capacity: "6 passengers",
@@ -147,10 +147,11 @@ export const vehicles: Vehicle[] = [
       luggage: "Photography gear storage",
     },
     gallery: [
-      "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-07-07%20at%2018.28.17_94668579.jpg?updatedAt=1751902480309",
-      "/photography-safari-vehicle-camera-mounts.jpg",
+      "/db958401-6169-4947-a0f0-bbca4bfc716e.jpg",
+      "/f8730438-2fbd-4dcb-a628-d1980d6be96d.jpg",
       "/safari-vehicle-extended-roof-for-photography.jpg",
-      "/vehicle-interior-camera-equipment-storage.jpg",
+      "/db958401-6169-4947-a0f0-bbca4bfc716e.jpg",
+      "/ef39caf7-09ec-41e2-8811-20cf0b6b15d3 (1).jpg",
     ],
     metaTitle: "Photography Safari Vehicle | Specialized Camera Car Rental",
     metaDescription:
