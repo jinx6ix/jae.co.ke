@@ -160,21 +160,6 @@ export function Footer() {
                 className="object-contain grayscale hover:grayscale-0 transition-all"
               />
             </a>
-            <a
-              title="Bison Safaris"
-              href="https://bisonsafaris.co.ke/tour/7-days-kenya-budget-shared-safari/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-transform hover:scale-105"
-            >
-              <Image
-                src="/bison.jpeg"
-                alt="SafariBookings"
-                width={150}
-                height={80}
-                className="object-contain grayscale hover:grayscale-0 transition-all"
-              />
-            </a>
             {/* Your African Safari Widget */}
               <div className="flex flex-col items-center">
                 <div className="bg-white p-1 rounded hover:shadow-md transition-shadow">
@@ -196,7 +181,7 @@ export function Footer() {
               className="transition-transform hover:scale-105"
             >
               <Image
-                src="/images (2).jpeg"
+                src="/images.png"
                 alt="SafariGo"
                 width={100}
                 height={60}
