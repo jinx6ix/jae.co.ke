@@ -3,33 +3,33 @@ import { ReactNode } from "react";
 export interface Tour {
   shortDescription: string;
   image: string;
-  duration: ReactNode;
-  highlights: any;
-  included: any;
-  excluded: any;
-  difficulty: any;
-  groupSize: ReactNode;
-  category: ReactNode;
-  internalLinks?: Array<{ url: string; label: string }>
-  metaTitle: string
-  metaDescription?: string
-  keywords?: string | string[]
-  url: string
-  id: string
-  slug: string
-  title: string
-  description: string
-  price: number
-  currency: string
-  rating: number
-  reviewCount: number
-  itinerary: string
-  bookingUrl: string
-  region: string
-  country: string
-  isOnOffer?: boolean
-  originalPrice?: number
-  postId?: string; // Added for query-based posts
+  duration: string;
+  highlights: string[];
+  included: string[];
+  excluded: string[];
+  difficulty: "Easy" | "Moderate" | "Challenging" | "Difficult";
+  groupSize: string;
+  category: string;
+  internalLinks?: Array<{ url: string; label: string }>;
+  metaTitle: string;
+  metaDescription?: string;
+  keywords?: string | string[];
+  url: string;
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  price: number;
+  currency: string;
+  rating: number;
+  reviewCount: number;
+  itinerary: string;
+  bookingUrl: string;
+  region: string;
+  country: string;
+  isOnOffer?: boolean;
+  originalPrice?: number;
+  postId?: string;
 }
 
 export const tours: Tour[] = [
@@ -39,6 +39,7 @@ export const tours: Tour[] = [
     image: "/masai-mara-migration.jpg",
     title: "Masai Mara Luxury Safari",
     description: "Experience the wildlife of Masai Mara with luxury accommodations and expert guides. Includes game drives and meals.",
+    shortDescription: "5-day luxury safari in Kenya's most famous wildlife reserve",
     price: 3500,
     currency: "USD",
     rating: 4.8,
@@ -53,14 +54,31 @@ export const tours: Tour[] = [
     url: "/tours/masai-mara-luxury-safari",
     isOnOffer: true,
     originalPrice: 4200,
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Game drives in Masai Mara National Reserve",
+      "Luxury tented camp accommodation",
+      "Optional hot air balloon safari",
+      "Professional wildlife guide",
+      "All meals included"
+    ],
+    included: [
+      "Accommodation in luxury lodges",
+      "All meals and drinks",
+      "Game drives in 4x4 vehicles",
+      "Professional guide services",
+      "Park entry fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Gratuities",
+      "Personal expenses",
+      "Visa fees"
+    ],
+    difficulty: "Easy",
+    groupSize: "Small groups (2-8 people)",
+    category: "Luxury Safari"
   },
   {
     id: "kenya-amboseli",
@@ -68,6 +86,7 @@ export const tours: Tour[] = [
     image: "/Amboseli-National-Park-Elephantsssss.jpg",
     title: "Amboseli Safari Adventure",
     description: "Explore Amboseli National Park with guided game drives and spectacular views of Mount Kilimanjaro.",
+    shortDescription: "4-day safari with Mount Kilimanjaro views",
     price: 2800,
     currency: "USD",
     rating: 4.7,
@@ -80,14 +99,29 @@ export const tours: Tour[] = [
     metaDescription: "Discover Amboseli Safari with breathtaking views of Mount Kilimanjaro. Guided game drives and luxury stays included.",
     keywords: ["Amboseli Safari", "Kenya Tours", "Kilimanjaro Safari"],
     url: "/tours/amboseli-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Stunning views of Mount Kilimanjaro",
+      "Large elephant herds",
+      "Game drives in Amboseli National Park",
+      "Photography opportunities",
+      "Cultural interactions"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "Small groups (2-8 people)",
+    category: "Classic Safari"
   },
   {
     id: "tanzania-serengeti",
@@ -95,6 +129,7 @@ export const tours: Tour[] = [
     image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
     title: "Serengeti Migration Safari",
     description: "Witness the Great Migration in Serengeti with guided tours and comfortable lodges. Includes daily game drives and meals.",
+    shortDescription: "7-day migration viewing in Serengeti",
     price: 4200,
     currency: "USD",
     rating: 4.9,
@@ -109,14 +144,29 @@ export const tours: Tour[] = [
     url: "/tours/serengeti-migration-tour",
     isOnOffer: true,
     originalPrice: 5000,
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "7 Days",
+    highlights: [
+      "Witness the Great Migration",
+      "River crossing viewing",
+      "Big Five sightings",
+      "Luxury accommodation",
+      "Expert safari guides"
+    ],
+    included: [
+      "Luxury lodge accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Professional guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Visa fees"
+    ],
+    difficulty: "Moderate",
+    groupSize: "Small groups (4-10 people)",
+    category: "Migration Safari"
   },
   {
     id: "tanzania-ngorongoro",
@@ -124,6 +174,7 @@ export const tours: Tour[] = [
     image: "/Ngorongoro-Crater.jpg",
     title: "Ngorongoro Crater Safari",
     description: "Explore the Ngorongoro Crater with guided game drives and luxury accommodation. Ideal for families and photographers.",
+    shortDescription: "3-day crater exploration safari",
     price: 2800,
     currency: "USD",
     rating: 4.7,
@@ -136,14 +187,29 @@ export const tours: Tour[] = [
     metaDescription: "Book your Ngorongoro Crater Safari with Jae Travel. A perfect adventure for families, photographers, and nature lovers.",
     keywords: ["Ngorongoro Safari", "Tanzania Wildlife Tours", "Family Safari"],
     url: "/tours/ngorongoro-crater-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Game drive in UNESCO World Heritage site",
+      "High density of wildlife",
+      "Bird watching opportunities",
+      "Crater floor exploration",
+      "Family-friendly activities"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Crater fees",
+      "Game drives",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "Small groups (2-8 people)",
+    category: "Family Safari"
   },
   {
     id: "uganda-bwindi",
@@ -151,6 +217,7 @@ export const tours: Tour[] = [
     image: "/bwindi-forest-uganda-gorilla-safaris.jpg",
     title: "Bwindi Gorilla Trekking",
     description: "Trek the dense forests of Bwindi to see mountain gorillas up close with expert guides. Includes park fees and accommodations.",
+    shortDescription: "3-day mountain gorilla trekking experience",
     price: 3200,
     currency: "USD",
     rating: 4.8,
@@ -163,14 +230,29 @@ export const tours: Tour[] = [
     metaDescription: "Embark on a Bwindi Gorilla Trekking safari. See mountain gorillas up close and explore Uganda's lush forests.",
     keywords: ["Bwindi Gorilla Trek", "Uganda Safari", "Gorilla Trekking Tours"],
     url: "/tours/bwindi-gorilla-trek",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Mountain gorilla tracking",
+      "Up to 1 hour with gorillas",
+      "Bwindi Impenetrable Forest",
+      "Cultural village visits",
+      "Professional trackers"
+    ],
+    included: [
+      "Gorilla permit",
+      "Accommodation",
+      "All meals",
+      "Guide services",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Tips for guides"
+    ],
+    difficulty: "Challenging",
+    groupSize: "Maximum 8 per gorilla group",
+    category: "Primate Trekking"
   },
   {
     id: "rwanda-volcanoes",
@@ -178,6 +260,7 @@ export const tours: Tour[] = [
     image: "/Volcanoes-National-Park-Rwanda-Natural-World-Kenya-Safaris.jpg",
     title: "Rwanda Gorilla Safari",
     description: "Explore Volcanoes National Park in Rwanda to trek gorillas and experience local culture.",
+    shortDescription: "3-day gorilla trekking in Rwanda",
     price: 3800,
     currency: "USD",
     rating: 4.9,
@@ -192,14 +275,29 @@ export const tours: Tour[] = [
     url: "/tours/volcanoes-national-park-safari",
     isOnOffer: true,
     originalPrice: 4500,
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Mountain gorilla trekking",
+      "Volcanoes National Park",
+      "Golden monkey tracking (optional)",
+      "Cultural experiences",
+      "Luxury lodge accommodation"
+    ],
+    included: [
+      "Gorilla permit",
+      "Accommodation",
+      "All meals",
+      "Guide services",
+      "Transportation"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Visa fees"
+    ],
+    difficulty: "Moderate",
+    groupSize: "Maximum 8 per gorilla group",
+    category: "Luxury Primate Trekking"
   },
   {
     id: "1",
@@ -207,6 +305,7 @@ export const tours: Tour[] = [
     image: "/magestic-maasai-serengeti.jpg",
     title: "Masai Mara Safari Adventure",
     description: "Experience the great migration and witness the Big Five in Kenya's most iconic national reserve.",
+    shortDescription: "5-day classic Masai Mara safari",
     price: 1200,
     currency: "USD",
     rating: 4.9,
@@ -219,14 +318,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience the great migration and witness the Big Five in Masai Mara. 5-day safari with expert guides, luxury lodges, and unforgettable wildlife encounters.",
     keywords: ["Masai Mara", "Kenya Safari", "Big Five", "Great Migration", "Wildlife Safari"],
     url: "/tours/masai-mara-safari-adventure",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Big Five game viewing",
+      "Great Migration (seasonal)",
+      "Maasai cultural experience",
+      "Game drives in open-roof vehicles",
+      "Professional photography guidance"
+    ],
+    included: [
+      "Accommodation in safari lodges",
+      "All meals",
+      "Game drives",
+      "Park entry fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Classic Safari"
   },
   {
     id: "2",
@@ -234,6 +348,7 @@ export const tours: Tour[] = [
     image: "/amboseli-elephants-00007.jpg",
     title: "Amboseli Elephant Safari",
     description: "Get close to elephants with Mount Kilimanjaro backdrop in Amboseli National Park.",
+    shortDescription: "4-day elephant-focused safari",
     price: 980,
     currency: "USD",
     rating: 4.7,
@@ -246,14 +361,29 @@ export const tours: Tour[] = [
     metaDescription: "Get close to elephants with Mount Kilimanjaro backdrop. 4-day Amboseli safari with spectacular views and abundant wildlife.",
     keywords: ["Amboseli", "Elephant Safari", "Kilimanjaro", "Kenya Wildlife"],
     url: "/tours/amboseli-elephant-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Elephant herds up close",
+      "Mount Kilimanjaro views",
+      "Game drives in Amboseli",
+      "Swamp bird watching",
+      "Photography opportunities"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Wildlife Photography"
   },
   {
     id: "3",
@@ -261,6 +391,7 @@ export const tours: Tour[] = [
     image: "/Samburu_National_Reserve,_Kenya-26December2012.jpg",
     title: "Samburu Game Reserve",
     description: "Discover unique wildlife in the northern frontier.",
+    shortDescription: "3-day northern Kenya safari",
     price: 750,
     currency: "USD",
     rating: 4.6,
@@ -273,14 +404,29 @@ export const tours: Tour[] = [
     metaDescription: "Discover unique wildlife in the northern frontier of Kenya at Samburu Game Reserve. See rare species like Grevy's zebra and reticulated giraffe.",
     keywords: ["Samburu", "Game Reserve", "Northern Kenya", "Unique Wildlife"],
     url: "/tours/samburu-game-reserve",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Special Five species viewing",
+      "Ewaso Ng'iro river game viewing",
+      "Cultural interactions with Samburu tribe",
+      "Unique desert-adapted wildlife",
+      "Bird watching"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Tips"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Specialty Safari"
   },
   {
     id: "4",
@@ -288,6 +434,7 @@ export const tours: Tour[] = [
     image: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg",
     title: "Lake Nakuru Flamingo Tour",
     description: "Witness thousands of flamingos in their natural habitat.",
+    shortDescription: "2-day bird watching safari",
     price: 450,
     currency: "USD",
     rating: 4.5,
@@ -302,14 +449,29 @@ export const tours: Tour[] = [
     url: "/tours/lake-nakuru-flamingo-spectacle",
     isOnOffer: true,
     originalPrice: 550,
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Thousands of flamingos",
+      "Rhino sanctuary",
+      "Bird watching paradise",
+      "Game drives",
+      "Photography opportunities"
+    ],
+    included: [
+      "Accommodation",
+      "Meals as indicated",
+      "Game drives",
+      "Park fees",
+      "Guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Bird Watching"
   },
   {
     id: "5",
@@ -317,6 +479,7 @@ export const tours: Tour[] = [
     image: "/tsavo-west-national-park-chyulu-gate.jpg.webp",
     title: "Tsavo East & West Safari",
     description: "Explore Kenya's largest national park.",
+    shortDescription: "6-day Tsavo wilderness adventure",
     price: 1350,
     currency: "USD",
     rating: 4.8,
@@ -329,14 +492,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore Kenya's largest national park with our Tsavo East & West Safari. See red elephants, diverse landscapes, and abundant wildlife.",
     keywords: ["Tsavo", "National Park", "Kenya Safari", "Red Elephants"],
     url: "/tours/tsavo-east-west-adventure",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "6 Days",
+    highlights: [
+      "Red elephants of Tsavo",
+      "Mzima Springs",
+      "Shetani lava flows",
+      "Diverse landscapes",
+      "Bird watching"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-10 people",
+    category: "Wilderness Safari"
   },
   {
     id: "6",
@@ -344,6 +522,7 @@ export const tours: Tour[] = [
     image: "/Mombasa-beach-2-1960x800.webp",
     title: "Mombasa Beach & Safari",
     description: "Combine safari adventures with beach relaxation.",
+    shortDescription: "7-day safari and beach combo",
     price: 1600,
     currency: "USD",
     rating: 4.7,
@@ -356,14 +535,29 @@ export const tours: Tour[] = [
     metaDescription: "Combine safari adventures with beach relaxation on our Mombasa Beach & Safari package. Perfect blend of wildlife and coastal paradise.",
     keywords: ["Mombasa", "Beach Safari", "Coastal Kenya", "Safari and Beach"],
     url: "/tours/mombasa-coastal-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "7 Days",
+    highlights: [
+      "Tsavo East safari",
+      "Beach relaxation in Mombasa",
+      "Optional water sports",
+      "Cultural tours",
+      "Historical sites"
+    ],
+    included: [
+      "Accommodation",
+      "Most meals",
+      "Game drives",
+      "Beach hotel stay",
+      "Transfer services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Water sports activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Beach & Safari Combo"
   },
   {
     id: "7",
@@ -371,6 +565,7 @@ export const tours: Tour[] = [
     image: "/mt-kenya.jpg",
     title: "Mount Kenya Climbing",
     description: "Challenge yourself with Africa's second highest peak.",
+    shortDescription: "5-day mountain climbing expedition",
     price: 1100,
     currency: "USD",
     rating: 4.4,
@@ -383,14 +578,29 @@ export const tours: Tour[] = [
     metaDescription: "Challenge yourself with Africa's second highest peak on our Mount Kenya climbing expedition. Reach Point Lenana with expert guides.",
     keywords: ["Mount Kenya", "Climbing", "Trekking", "Mountain Expedition"],
     url: "/tours/mount-kenya-climbing-expedition",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Summit Point Lenana (4,985m)",
+      "Alpine vegetation zones",
+      "Mountain wildlife",
+      "Scenic views",
+      "Experienced mountain guides"
+    ],
+    included: [
+      "Mountain guides",
+      "Porters",
+      "All meals on mountain",
+      "Park fees",
+      "Accommodation in huts"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal climbing gear"
+    ],
+    difficulty: "Difficult",
+    groupSize: "2-8 people",
+    category: "Mountain Climbing"
   },
   {
     id: "8",
@@ -398,6 +608,7 @@ export const tours: Tour[] = [
     image: "/laikipia-kenya-photography-safari.jpg",
     title: "Laikipia Conservancy",
     description: "Experience conservation in action.",
+    shortDescription: "4-day conservation safari",
     price: 1250,
     currency: "USD",
     rating: 4.8,
@@ -410,14 +621,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience conservation in action at Laikipia Conservancy. Engage with wildlife protection efforts and community development.",
     keywords: ["Laikipia", "Conservancy", "Conservation", "Community Tourism"],
     url: "/tours/laikipia-conservancy",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Conservation activities",
+      "Community visits",
+      "Game drives",
+      "Rare species viewing",
+      "Educational experiences"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Conservation activities",
+      "Game drives",
+      "Community visits"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Donations to projects"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Conservation Safari"
   },
   {
     id: "9",
@@ -425,6 +651,7 @@ export const tours: Tour[] = [
     image: "/Hells-Gate-National-Park.jpg",
     title: "Hell's Gate Adventure",
     description: "Bike and hike through dramatic landscapes.",
+    shortDescription: "2-day biking and hiking adventure",
     price: 380,
     currency: "USD",
     rating: 4.3,
@@ -437,14 +664,29 @@ export const tours: Tour[] = [
     metaDescription: "Bike and hike through dramatic landscapes at Hell's Gate National Park. Unique safari experience with cycling and gorge exploration.",
     keywords: ["Hell's Gate", "Adventure", "Biking", "Lake Naivasha"],
     url: "/tours/hell-gate-lake-naivasha-adventure",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Cycling through Hell's Gate",
+      "Gorge hiking",
+      "Boat safari on Lake Naivasha",
+      "Geothermal features",
+      "Rock climbing opportunities"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "Bike rental",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal gear"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-12 people",
+    category: "Adventure Safari"
   },
   {
     id: "10",
@@ -452,6 +694,7 @@ export const tours: Tour[] = [
     image: "/magestic-maasai-serengeti.jpg",
     title: "Maasai Cultural Experience",
     description: "Immerse yourself in Maasai culture.",
+    shortDescription: "3-day cultural immersion",
     price: 650,
     currency: "USD",
     rating: 4.6,
@@ -464,14 +707,29 @@ export const tours: Tour[] = [
     metaDescription: "Immerse yourself in Maasai culture with our authentic cultural experience. Learn traditions, participate in ceremonies, and stay in a Maasai village.",
     keywords: ["Maasai", "Cultural Experience", "Kenya Culture", "Traditional Village"],
     url: "/tours/maasai-cultural-experience",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Traditional Maasai ceremonies",
+      "Village homestay",
+      "Cultural workshops",
+      "Traditional dances",
+      "Craft making"
+    ],
+    included: [
+      "Accommodation in village",
+      "All meals",
+      "Cultural activities",
+      "Local guide",
+      "Transportation"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Gifts for hosts"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Cultural Tourism"
   },
   {
     id: "11",
@@ -479,6 +737,7 @@ export const tours: Tour[] = [
     image: "/Aberdare.jpg",
     title: "Aberdare National Park",
     description: "Mountain forest safari experience.",
+    shortDescription: "3-day mountain forest safari",
     price: 720,
     currency: "USD",
     rating: 4.5,
@@ -491,14 +750,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience a mountain forest safari in Aberdare National Park. See rare bongo antelopes, elephants, and stunning waterfalls.",
     keywords: ["Aberdare", "National Park", "Mountain Safari", "Forest Wildlife"],
     url: "/tours/aberdare-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Treetop lodges",
+      "Forest game viewing",
+      "Waterfall visits",
+      "Bird watching",
+      "Mountain scenery"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Mountain Safari"
   },
   {
     id: "12",
@@ -506,6 +780,7 @@ export const tours: Tour[] = [
     image: "/Kenia-Mombasa-Diani-Beach-Leopard-Beach-Resort-strand-long-beach-LBR_1.jpg",
     title: "Diani Beach Safari Combo",
     description: "Ultimate Kenya safari and beach experience.",
+    shortDescription: "8-day luxury safari and beach",
     price: 1800,
     currency: "USD",
     rating: 4.9,
@@ -518,14 +793,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience the ultimate Kenya safari and beach experience at Diani Beach. Perfect combination of wildlife adventures and tropical paradise.",
     keywords: ["Diani Beach", "Beach Safari", "Kenya Coast", "Safari Beach Combo"],
     url: "/tours/diani-beach-safari-combo",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "8 Days",
+    highlights: [
+      "Tsavo West safari",
+      "White sand beach relaxation",
+      "Water sports",
+      "Marine activities",
+      "Coastal culture"
+    ],
+    included: [
+      "Accommodation in safari lodge and beach hotel",
+      "Most meals",
+      "Game drives",
+      "Beach activities",
+      "Transfers"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Marine park fees"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Luxury Beach & Safari"
   },
   {
     id: "13",
@@ -533,6 +823,7 @@ export const tours: Tour[] = [
     image: "/serengeti-day-trip.jpeg",
     title: "Serengeti Wildlife Safari",
     description: "Explore the endless plains of Serengeti and witness incredible wildlife diversity.",
+    shortDescription: "7-day Serengeti exploration",
     price: 1800,
     currency: "USD",
     rating: 4.8,
@@ -545,14 +836,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore the endless plains of Serengeti on a 7-day wildlife safari. Experience incredible biodiversity and stunning landscapes.",
     keywords: ["Serengeti", "Wildlife Safari", "Tanzania", "African Safari", "Big Five"],
     url: "/tours/serengeti-wildlife-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "7 Days",
+    highlights: [
+      "Game drives in Serengeti",
+      "Big Five viewing",
+      "Bird watching",
+      "Landscape photography",
+      "Cultural interactions"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Visa fees"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-10 people",
+    category: "Wildlife Safari"
   },
   {
     id: "14",
@@ -560,6 +866,7 @@ export const tours: Tour[] = [
     image: "/Ngorongoro-Crater.jpg",
     title: "Ngorongoro Crater Tour",
     description: "Visit the world's largest intact caldera.",
+    shortDescription: "3-day crater exploration",
     price: 950,
     currency: "USD",
     rating: 4.9,
@@ -572,14 +879,29 @@ export const tours: Tour[] = [
     metaDescription: "Visit the world's largest intact caldera at Ngorongoro Crater. Witness dense wildlife populations in this natural wonder.",
     keywords: ["Ngorongoro", "Crater", "Caldera", "Tanzania Safari"],
     url: "/tours/ngorongoro-crater-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Descend into crater floor",
+      "High density wildlife viewing",
+      "Lunch at hippo pool",
+      "Bird watching",
+      "UNESCO site visit"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Crater tour",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Geological Safari"
   },
   {
     id: "15",
@@ -587,6 +909,7 @@ export const tours: Tour[] = [
     image: "/kilimanjaro-moutain-climbing.jpg",
     title: "Kilimanjaro Climbing",
     description: "Conquer Africa's highest peak.",
+    shortDescription: "9-day summit expedition",
     price: 2200,
     currency: "USD",
     rating: 4.7,
@@ -599,14 +922,29 @@ export const tours: Tour[] = [
     metaDescription: "Conquer Africa's highest peak on our Mount Kilimanjaro climbing expedition. Reach Uhuru Peak with experienced guides.",
     keywords: ["Kilimanjaro", "Climbing", "Trekking", "Summit", "Machame Route"],
     url: "/tours/kilimanjaro-climbing-expedition",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "9 Days",
+    highlights: [
+      "Summit Uhuru Peak (5,895m)",
+      "Machame Route ascent",
+      "Five climate zones",
+      "Glacier views",
+      "Certified mountain guides"
+    ],
+    included: [
+      "Mountain guides and porters",
+      "All meals on mountain",
+      "Accommodation in tents",
+      "Park fees",
+      "Emergency oxygen"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal climbing gear"
+    ],
+    difficulty: "Difficult",
+    groupSize: "2-10 people",
+    category: "Mountain Climbing"
   },
   {
     id: "16",
@@ -614,6 +952,7 @@ export const tours: Tour[] = [
     image: "/boabab-tarangire-national-park.jpg",
     title: "Tarangire Elephant Safari",
     description: "See large herds of elephants.",
+    shortDescription: "4-day elephant-focused safari",
     price: 1100,
     currency: "USD",
     rating: 4.6,
@@ -626,14 +965,29 @@ export const tours: Tour[] = [
     metaDescription: "See large herds of elephants in Tarangire National Park. Famous for its elephant population and ancient baobab trees.",
     keywords: ["Tarangire", "Elephant Safari", "Tanzania", "Baobab Trees"],
     url: "/tours/tarangire-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Elephant herds up close",
+      "Ancient baobab trees",
+      "River game viewing",
+      "Bird watching",
+      "Photography opportunities"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Elephant Safari"
   },
   {
     id: "17",
@@ -641,6 +995,7 @@ export const tours: Tour[] = [
     image: "/Lake Manyara banner.jpg",
     title: "Lake Manyara Tree Climbing Lions",
     description: "Witness unique tree-climbing lions.",
+    shortDescription: "2-day lake and forest safari",
     price: 580,
     currency: "USD",
     rating: 4.4,
@@ -653,14 +1008,29 @@ export const tours: Tour[] = [
     metaDescription: "Witness unique tree-climbing lions in Lake Manyara National Park. Compact park with diverse ecosystems and abundant birdlife.",
     keywords: ["Lake Manyara", "Tree Climbing Lions", "Tanzania Safari", "Bird Watching"],
     url: "/tours/lake-manyara-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Tree-climbing lion sightings",
+      "Lake Manyara bird watching",
+      "Game drives",
+      "Forest walk",
+      "Photography"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "Game drives",
+      "Park fees",
+      "Guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Bird & Wildlife Safari"
   },
   {
     id: "18",
@@ -668,6 +1038,7 @@ export const tours: Tour[] = [
     image: "/zanzibar-stone-town-view-min-800x600.jpg",
     title: "Zanzibar Spice Island",
     description: "Explore the spice island paradise.",
+    shortDescription: "5-day beach and culture holiday",
     price: 1300,
     currency: "USD",
     rating: 4.8,
@@ -680,14 +1051,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore the spice island paradise of Zanzibar. White sand beaches, historic Stone Town, and aromatic spice plantations.",
     keywords: ["Zanzibar", "Spice Island", "Beach Holiday", "Stone Town", "Tanzania Coast"],
     url: "/tours/zanzibar-beach-holiday",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Stone Town UNESCO tour",
+      "Spice plantation visit",
+      "Beach relaxation",
+      "Snorkeling/diving",
+      "Local cuisine"
+    ],
+    included: [
+      "Beach resort accommodation",
+      "Most meals",
+      "Spice tour",
+      "Stone Town tour",
+      "Airport transfers"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Water sports activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Beach Holiday"
   },
   {
     id: "19",
@@ -695,6 +1081,7 @@ export const tours: Tour[] = [
     image: "/ruaha-national-park-featured.jpg",
     title: "Ruaha National Park",
     description: "Tanzania's largest national park.",
+    shortDescription: "6-day remote wilderness safari",
     price: 1450,
     currency: "USD",
     rating: 4.5,
@@ -707,14 +1094,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore Tanzania's largest national park at Ruaha. Remote wilderness with large elephant populations and diverse predators.",
     keywords: ["Ruaha", "National Park", "Tanzania Safari", "Wilderness"],
     url: "/tours/ruaha-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "6 Days",
+    highlights: [
+      "Remote wilderness experience",
+      "Large elephant herds",
+      "Predator sightings",
+      "Bird watching",
+      "Walking safaris (optional)"
+    ],
+    included: [
+      "Accommodation in bush camps",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Walking safari fees"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-6 people",
+    category: "Wilderness Safari"
   },
   {
     id: "20",
@@ -722,6 +1124,7 @@ export const tours: Tour[] = [
     image: "/SELOUS-GAME-RESERVE.jpg",
     title: "Selous Game Reserve",
     description: "Africa's largest game reserve.",
+    shortDescription: "5-day boat and walking safari",
     price: 1350,
     currency: "USD",
     rating: 4.7,
@@ -734,14 +1137,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore Africa's largest game reserve at Selous. Boat safaris on the Rufiji River and walking safaris available.",
     keywords: ["Selous", "Game Reserve", "Tanzania", "Boat Safari", "Walking Safari"],
     url: "/tours/selous-game-reserve-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Boat safaris on Rufiji River",
+      "Walking safaris",
+      "Game drives",
+      "Bird watching",
+      "Fishing (optional)"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives and boat safaris",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Fishing permits"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Multi-Activity Safari"
   },
   {
     id: "21",
@@ -749,6 +1167,7 @@ export const tours: Tour[] = [
     image: "/Mikumi2017.jpg",
     title: "Mikumi National Park",
     description: "Accessible wildlife viewing.",
+    shortDescription: "3-day easy-access safari",
     price: 750,
     currency: "USD",
     rating: 4.3,
@@ -761,14 +1180,29 @@ export const tours: Tour[] = [
     metaDescription: "Enjoy accessible wildlife viewing in Mikumi National Park. Close to Dar es Salaam with abundant wildlife.",
     keywords: ["Mikumi", "National Park", "Wildlife Viewing", "Tanzania"],
     url: "/tours/mikumi-national-park",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Easy access from Dar es Salaam",
+      "Game drives",
+      "Bird watching",
+      "Wildlife photography",
+      "Relaxed pace"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "City transfers"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Accessible Safari"
   },
   {
     id: "22",
@@ -776,6 +1210,7 @@ export const tours: Tour[] = [
     image: "/Cultural-Heritage-Centre-Arusha-Tanzania.jpg",
     title: "Arusha Cultural Tour",
     description: "Experience local Tanzanian culture.",
+    shortDescription: "2-day cultural immersion",
     price: 420,
     currency: "USD",
     rating: 4.2,
@@ -788,14 +1223,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience local Tanzanian culture in Arusha. Visit markets, cultural centers, and traditional Maasai villages.",
     keywords: ["Arusha", "Cultural Tour", "Tanzania Culture", "Maasai Village"],
     url: "/tours/arusha-cultural-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Cultural Heritage Centre",
+      "Local markets",
+      "Maasai village visit",
+      "Traditional crafts",
+      "Local cuisine"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "Cultural activities",
+      "Guide services",
+      "Transportation"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Souvenirs"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Cultural Tourism"
   },
   {
     id: "23",
@@ -803,6 +1253,7 @@ export const tours: Tour[] = [
     image: "/Katavi-National-Park-600x400.png",
     title: "Katavi National Park",
     description: "Remote wilderness experience.",
+    shortDescription: "4-day remote park safari",
     price: 1600,
     currency: "USD",
     rating: 4.6,
@@ -815,14 +1266,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience remote wilderness in Katavi National Park. One of Tanzania's most untouched safari destinations.",
     keywords: ["Katavi", "National Park", "Wilderness", "Remote Safari", "Tanzania"],
     url: "/tours/katavi-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Extreme remoteness",
+      "Large buffalo herds",
+      "Seasonal flooding plains",
+      "Bird watching",
+      "Isolation experience"
+    ],
+    included: [
+      "Accommodation in remote camps",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Guide services"
+    ],
+    excluded: [
+      "International flights to remote airstrip",
+      "Travel insurance",
+      "Additional transfers"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-6 people",
+    category: "Remote Safari"
   },
   {
     id: "24",
@@ -830,6 +1296,7 @@ export const tours: Tour[] = [
     image: "/Chimp-Group-Mahale-Mountain-JEP_8612.jpg",
     title: "Mahale Chimpanzee Trek",
     description: "Trek with wild chimpanzees.",
+    shortDescription: "6-day chimpanzee trekking",
     price: 2100,
     currency: "USD",
     rating: 4.9,
@@ -842,14 +1309,29 @@ export const tours: Tour[] = [
     metaDescription: "Trek with wild chimpanzees in Mahale Mountains National Park. Remote paradise on Lake Tanganyika shores.",
     keywords: ["Mahale", "Chimpanzee Trek", "Tanzania", "Lake Tanganyika", "Primate Trekking"],
     url: "/tours/mahale-mountains-national-park-chimpanzee-trekking",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "6 Days",
+    highlights: [
+      "Chimpanzee trekking",
+      "Lake Tanganyika activities",
+      "Remote beach relaxation",
+      "Forest walks",
+      "Bird watching"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Chimpanzee permits",
+      "Guide services",
+      "Lake transfers"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Lake activities equipment"
+    ],
+    difficulty: "Challenging",
+    groupSize: "2-8 people",
+    category: "Primate Trekking"
   },
   {
     id: "25",
@@ -857,6 +1339,7 @@ export const tours: Tour[] = [
     image: "/Pemba-Island-15.jpg",
     title: "Pemba Island Diving",
     description: "World-class diving experience.",
+    shortDescription: "4-day diving expedition",
     price: 980,
     currency: "USD",
     rating: 4.5,
@@ -869,14 +1352,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience world-class diving in Pemba Island. Pristine coral reefs, diverse marine life, and crystal-clear waters.",
     keywords: ["Pemba Island", "Diving", "Scuba Diving", "Tanzania", "Coral Reefs"],
     url: "/tours/pemba-island-diving",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Scuba diving in pristine waters",
+      "Coral reef exploration",
+      "Marine life viewing",
+      "Beach relaxation",
+      "Island culture"
+    ],
+    included: [
+      "Accommodation",
+      "Most meals",
+      "Diving equipment",
+      "Dive master",
+      "Marine park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "PADI certification (if needed)"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Diving Safari"
   },
   {
     id: "26",
@@ -884,6 +1382,7 @@ export const tours: Tour[] = [
     image: "/31719088_tourists-on-a-typical-narrow-street-in-stone-town-zanzibar-e1713023620250.jpg",
     title: "Stone Town Heritage Tour",
     description: "Explore UNESCO World Heritage site.",
+    shortDescription: "2-day heritage exploration",
     price: 350,
     currency: "USD",
     rating: 4.4,
@@ -896,14 +1395,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore UNESCO World Heritage site in Stone Town, Zanzibar. Historic architecture, spice markets, and Swahili culture.",
     keywords: ["Stone Town", "Heritage Tour", "UNESCO", "Zanzibar", "Cultural Tour"],
     url: "/tours/stone-town-heritage-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "UNESCO World Heritage site",
+      "Historical architecture",
+      "Spice market visit",
+      "Cultural insights",
+      "Local cuisine"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "Guided tours",
+      "Entrance fees",
+      "Local guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Souvenirs"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-12 people",
+    category: "Heritage Tour"
   },
   {
     id: "27",
@@ -911,6 +1425,7 @@ export const tours: Tour[] = [
     image: "/Game-Drive-north-of-Serengeti-National-Park.jpg",
     title: "Northern Circuit Safari",
     description: "Complete northern Tanzania experience.",
+    shortDescription: "10-day comprehensive safari",
     price: 2800,
     currency: "USD",
     rating: 4.9,
@@ -923,14 +1438,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience the complete northern Tanzania safari circuit. Visit Serengeti, Ngorongoro, Tarangire, and Lake Manyara.",
     keywords: ["Northern Circuit", "Tanzania Safari", "Comprehensive Safari", "Multi-Park Safari"],
     url: "/tours/northern-circuit-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "10 Days",
+    highlights: [
+      "Four national parks",
+      "Big Five viewing",
+      "Crater descent",
+      "Migration (seasonal)",
+      "Cultural experiences"
+    ],
+    included: [
+      "All accommodation",
+      "All meals",
+      "All game drives",
+      "All park fees",
+      "Professional guide"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Comprehensive Safari"
   },
   {
     id: "28",
@@ -938,6 +1468,7 @@ export const tours: Tour[] = [
     image: "/gorilla-trekking-experience-13.jpg",
     title: "Rwanda Gorilla Trekking Experience",
     description: "Get up close with mountain gorillas in Volcanoes National Park, Rwanda.",
+    shortDescription: "3-day gorilla encounter",
     price: 2500,
     currency: "USD",
     rating: 5.0,
@@ -950,14 +1481,29 @@ export const tours: Tour[] = [
     metaDescription: "Get up close with mountain gorillas in Volcanoes National Park. 3-day gorilla trekking experience with expert guides and luxury accommodations.",
     keywords: ["Gorilla Trekking", "Rwanda", "Mountain Gorillas", "Volcanoes National Park"],
     url: "/tours/gorilla-trekking-experience",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Gorilla trekking permit",
+      "1 hour with gorillas",
+      "Cultural village visit",
+      "Volcanoes National Park",
+      "Luxury lodge stay"
+    ],
+    included: [
+      "Gorilla permit",
+      "Luxury accommodation",
+      "All meals",
+      "Guide services",
+      "Transfers"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Tips"
+    ],
+    difficulty: "Challenging",
+    groupSize: "Maximum 8 per group",
+    category: "Luxury Gorilla Trekking"
   },
   {
     id: "29",
@@ -965,6 +1511,7 @@ export const tours: Tour[] = [
     image: "/nyungwe-forests.jpg",
     title: "Nyungwe Forest Canopy Walk",
     description: "Walk among the treetops.",
+    shortDescription: "2-day forest adventure",
     price: 450,
     currency: "USD",
     rating: 4.6,
@@ -977,14 +1524,29 @@ export const tours: Tour[] = [
     metaDescription: "Walk among the treetops in Nyungwe Forest, Rwanda. Experience the canopy walk and track chimpanzees in ancient rainforest.",
     keywords: ["Nyungwe Forest", "Canopy Walk", "Rwanda", "Chimpanzee Tracking"],
     url: "/tours/nyungwe-forest-canopy-walk",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Canopy walkway",
+      "Chimpanzee tracking",
+      "Ancient rainforest",
+      "Bird watching",
+      "Nature walks"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "Canopy walk fee",
+      "Guide services",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Chimpanzee permit (optional)"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Forest Adventure"
   },
   {
     id: "30",
@@ -992,6 +1554,7 @@ export const tours: Tour[] = [
     image: "/Lake-Kivu-Islands.jpg",
     title: "Lake Kivu Relaxation",
     description: "Relax by Africa's great lake.",
+    shortDescription: "3-day lake retreat",
     price: 380,
     currency: "USD",
     rating: 4.4,
@@ -1004,14 +1567,29 @@ export const tours: Tour[] = [
     metaDescription: "Relax by Africa's great lake at Lake Kivu, Rwanda. Pristine beaches, island hopping, and stunning mountain views.",
     keywords: ["Lake Kivu", "Relaxation", "Rwanda", "Beach Holiday"],
     url: "/tours/lake-kivu-relaxation",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Lake Kivu beaches",
+      "Island hopping",
+      "Boat tours",
+      "Relaxation time",
+      "Local cuisine"
+    ],
+    included: [
+      "Lakefront accommodation",
+      "Most meals",
+      "Boat tour",
+      "Guide services",
+      "Transfers"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Lake Retreat"
   },
   {
     id: "31",
@@ -1019,6 +1597,7 @@ export const tours: Tour[] = [
     image: "/Akagera-national-park-1-750x450.jpg",
     title: "Akagera National Park",
     description: "Rwanda's only savanna park.",
+    shortDescription: "2-day savanna safari",
     price: 520,
     currency: "USD",
     rating: 4.5,
@@ -1031,14 +1610,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore Rwanda's only savanna park at Akagera National Park. Big Five safari with boat cruises on Lake Ihema.",
     keywords: ["Akagera", "National Park", "Rwanda Safari", "Big Five"],
     url: "/tours/akagera-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Big Five viewing",
+      "Boat safari on Lake Ihema",
+      "Game drives",
+      "Bird watching",
+      "Savanna landscape"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Boat safari",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Savanna Safari"
   },
   {
     id: "32",
@@ -1046,6 +1640,7 @@ export const tours: Tour[] = [
     image: "/kigali-photo-600x300.jpg",
     title: "Kigali City Tour",
     description: "Explore the clean city of Kigali.",
+    shortDescription: "1-day city exploration",
     price: 150,
     currency: "USD",
     rating: 4.3,
@@ -1058,14 +1653,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore the clean city of Kigali, Rwanda. Visit the Genocide Memorial, vibrant markets, and modern cultural centers.",
     keywords: ["Kigali", "City Tour", "Rwanda", "Genocide Memorial"],
     url: "/tours/kigali-city-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "1 Day",
+    highlights: [
+      "Genocide Memorial",
+      "Local markets",
+      "Cultural centers",
+      "City viewpoints",
+      "Modern architecture"
+    ],
+    included: [
+      "Guided tour",
+      "Transportation",
+      "Entrance fees",
+      "Local guide",
+      "Lunch"
+    ],
+    excluded: [
+      "Accommodation",
+      "International flights",
+      "Travel insurance"
+    ],
+    difficulty: "Easy",
+    groupSize: "1-12 people",
+    category: "City Tour"
   },
   {
     id: "33",
@@ -1073,6 +1683,7 @@ export const tours: Tour[] = [
     image: "/golden-monkey-trekking.jpg",
     title: "Golden Monkey Tracking",
     description: "Track rare golden monkeys.",
+    shortDescription: "2-day primate tracking",
     price: 680,
     currency: "USD",
     rating: 4.7,
@@ -1085,14 +1696,29 @@ export const tours: Tour[] = [
     metaDescription: "Track rare golden monkeys in Rwanda. Unique primate experience in Volcanoes National Park's bamboo forests.",
     keywords: ["Golden Monkey", "Tracking", "Rwanda", "Primate Trekking"],
     url: "/tours/golden-monkey-tracking",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Golden monkey tracking",
+      "Bamboo forest trek",
+      "Cultural visit",
+      "Volcanoes National Park",
+      "Photography opportunities"
+    ],
+    included: [
+      "Tracking permit",
+      "Accommodation",
+      "Meals",
+      "Guide services",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Primate Tracking"
   },
   {
     id: "34",
@@ -1100,6 +1726,7 @@ export const tours: Tour[] = [
     image: "/Magical-encounters-with-the-mountain-gorillas-of-Bwindi.jpg",
     title: "Bwindi Gorilla Trekking",
     description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda.",
+    shortDescription: "4-day gorilla trekking adventure",
     price: 2200,
     currency: "USD",
     rating: 4.9,
@@ -1112,14 +1739,29 @@ export const tours: Tour[] = [
     metaDescription: "Trek mountain gorillas in Bwindi Impenetrable Forest. 4-day Uganda gorilla trekking with expert guides and comfortable accommodations.",
     keywords: ["Bwindi", "Gorilla Trekking", "Uganda", "Mountain Gorillas"],
     url: "/tours/bwindi-gorilla-trekking",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Gorilla trekking permits",
+      "Bwindi Impenetrable Forest",
+      "Cultural encounters",
+      "Forest biodiversity",
+      "Professional trackers"
+    ],
+    included: [
+      "Gorilla permits",
+      "Accommodation",
+      "All meals",
+      "Guide services",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Tips for guides"
+    ],
+    difficulty: "Challenging",
+    groupSize: "Maximum 8 per group",
+    category: "Gorilla Trekking"
   },
   {
     id: "35",
@@ -1127,6 +1769,7 @@ export const tours: Tour[] = [
     image: "/Queen-Elizabeth-National-Park.jpg",
     title: "Queen Elizabeth Safari",
     description: "Diverse wildlife in scenic landscapes at Queen Elizabeth National Park.",
+    shortDescription: "5-day diverse wildlife safari",
     price: 1150,
     currency: "USD",
     rating: 4.6,
@@ -1139,14 +1782,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience diverse wildlife in scenic landscapes at Queen Elizabeth National Park. 5-day safari with game drives and boat cruises.",
     keywords: ["Queen Elizabeth", "National Park", "Uganda Safari", "Wildlife", "Kazinga Channel"],
     url: "/tours/queen-elizabeth-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "5 Days",
+    highlights: [
+      "Kazinga Channel boat cruise",
+      "Game drives",
+      "Tree-climbing lions",
+      "Bird watching",
+      "Crater lakes"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Boat cruise",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Classic Uganda Safari"
   },
   {
     id: "36",
@@ -1154,6 +1812,7 @@ export const tours: Tour[] = [
     image: "/murchison-falls.webp",
     title: "Murchison Falls Adventure",
     description: "Witness the powerful Murchison Falls.",
+    shortDescription: "4-day falls and wildlife safari",
     price: 980,
     currency: "USD",
     rating: 4.7,
@@ -1166,14 +1825,29 @@ export const tours: Tour[] = [
     metaDescription: "Witness the powerful Murchison Falls in Uganda. Game drives, boat safaris, and spectacular waterfall views.",
     keywords: ["Murchison Falls", "Adventure", "Uganda", "Waterfall Safari"],
     url: "/tours/murchison-falls-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Murchison Falls boat cruise",
+      "Game drives",
+      "Nile river exploration",
+      "Bird watching",
+      "Rhino tracking (optional)"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Boat cruise",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Rhino tracking fee"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Waterfall Safari"
   },
   {
     id: "37",
@@ -1181,6 +1855,7 @@ export const tours: Tour[] = [
     image: "/kibale-national-park-chimpanzees-uganda-590x390.jpg",
     title: "Kibale Chimpanzee Tracking",
     description: "Track our closest relatives.",
+    shortDescription: "3-day chimpanzee tracking",
     price: 750,
     currency: "USD",
     rating: 4.5,
@@ -1193,14 +1868,29 @@ export const tours: Tour[] = [
     metaDescription: "Track our closest relatives in Kibale National Park, Uganda. Primate capital of the world with 13 primate species.",
     keywords: ["Kibale", "Chimpanzee Tracking", "Uganda", "Primate Safari"],
     url: "/tours/kibale-national-park-chimpanzee-trekking",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Chimpanzee tracking",
+      "Bigodi wetland walk",
+      "Primate diversity",
+      "Bird watching",
+      "Community tourism"
+    ],
+    included: [
+      "Chimpanzee permit",
+      "Accommodation",
+      "All meals",
+      "Guide services",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-8 people",
+    category: "Primate Safari"
   },
   {
     id: "38",
@@ -1208,6 +1898,7 @@ export const tours: Tour[] = [
     image: "/lake-mburo-national-park.jpg",
     title: "Lake Mburo National Park",
     description: "Compact park with diverse wildlife.",
+    shortDescription: "2-day compact safari",
     price: 420,
     currency: "USD",
     rating: 4.3,
@@ -1220,14 +1911,29 @@ export const tours: Tour[] = [
     metaDescription: "Explore a compact park with diverse wildlife at Lake Mburo National Park, Uganda. Zebras, impalas, and boat safaris.",
     keywords: ["Lake Mburo", "National Park", "Uganda Safari", "Boat Safari"],
     url: "/tours/lake-mburo-national-park-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "Boat safari on Lake Mburo",
+      "Game drives",
+      "Walking safari (optional)",
+      "Zebra viewing",
+      "Bird watching"
+    ],
+    included: [
+      "Accommodation",
+      "All meals",
+      "Game drives",
+      "Boat safari",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Walking safari fee"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Compact Safari"
   },
   {
     id: "39",
@@ -1235,6 +1941,7 @@ export const tours: Tour[] = [
     image: "/Rwenzori-Mountains-03_1600p.jpg",
     title: "Rwenzori Mountains Hiking",
     description: "Hike the Mountains of the Moon.",
+    shortDescription: "7-day mountain trekking",
     price: 1800,
     currency: "USD",
     rating: 4.8,
@@ -1247,14 +1954,29 @@ export const tours: Tour[] = [
     metaDescription: "Hike the Mountains of the Moon in Rwenzori Mountains, Uganda. Challenging trek through unique alpine vegetation.",
     keywords: ["Rwenzori", "Mountains", "Hiking", "Uganda", "Mountains of the Moon"],
     url: "/tours/rwenzori-mountains-hiking",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "7 Days",
+    highlights: [
+      "Mountain trekking",
+      "Unique vegetation zones",
+      "Glacial lakes",
+      "Mountain wildlife",
+      "Professional guides"
+    ],
+    included: [
+      "Mountain guides and porters",
+      "All meals on trek",
+      "Accommodation in huts",
+      "Park fees",
+      "Camping equipment"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal hiking gear"
+    ],
+    difficulty: "Difficult",
+    groupSize: "2-8 people",
+    category: "Mountain Trekking"
   },
   {
     id: "40",
@@ -1262,6 +1984,7 @@ export const tours: Tour[] = [
     image: "/6-days-gorilla-tracking-and-rafting-jinja.jpg",
     title: "Jinja White Water Rafting",
     description: "Adventure at the source of the Nile.",
+    shortDescription: "2-day adventure activities",
     price: 350,
     currency: "USD",
     rating: 4.6,
@@ -1274,14 +1997,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience adventure at the source of the Nile in Jinja, Uganda. World-class white water rafting and adrenaline activities.",
     keywords: ["Jinja", "White Water Rafting", "Nile River", "Adventure", "Uganda"],
     url: "/tours/jinja-adventure-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "2 Days",
+    highlights: [
+      "White water rafting",
+      "Source of the Nile visit",
+      "Adventure activities",
+      "River Nile exploration",
+      "Adrenaline experiences"
+    ],
+    included: [
+      "Accommodation",
+      "Meals",
+      "White water rafting",
+      "Guide services",
+      "Equipment rental"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Additional activities"
+    ],
+    difficulty: "Moderate",
+    groupSize: "2-12 people",
+    category: "Adventure Tour"
   },
   {
     id: "41",
@@ -1289,6 +2027,7 @@ export const tours: Tour[] = [
     image: "/lake_bunyonyi__uganda-the-pearl-of-africa.webp",
     title: "Lake Bunyonyi Relaxation",
     description: "Relax by Uganda's deepest lake.",
+    shortDescription: "3-day lake retreat",
     price: 450,
     currency: "USD",
     rating: 4.4,
@@ -1301,14 +2040,29 @@ export const tours: Tour[] = [
     metaDescription: "Relax by Uganda's deepest lake at Lake Bunyonyi. Scenic beauty, island hopping, and peaceful atmosphere.",
     keywords: ["Lake Bunyonyi", "Relaxation", "Uganda", "Island Hopping"],
     url: "/tours/lake-bunyonyi-relaxation-tour",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "3 Days",
+    highlights: [
+      "Lake Bunyonyi scenery",
+      "Island hopping",
+      "Canoeing",
+      "Relaxation",
+      "Cultural visits"
+    ],
+    included: [
+      "Lakeside accommodation",
+      "All meals",
+      "Canoe rides",
+      "Guide services",
+      "Island visits"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-8 people",
+    category: "Lake Retreat"
   },
   {
     id: "42",
@@ -1316,6 +2070,7 @@ export const tours: Tour[] = [
     image: "/Travel-to-Ssese-islands.jpg",
     title: "Ssese Islands Beach Holiday",
     description: "Beach paradise on Lake Victoria.",
+    shortDescription: "4-day island beach holiday",
     price: 650,
     currency: "USD",
     rating: 4.5,
@@ -1328,14 +2083,29 @@ export const tours: Tour[] = [
     metaDescription: "Experience beach paradise on Lake Victoria at Ssese Islands, Uganda. Tropical beaches, water sports, and relaxation.",
     keywords: ["Ssese Islands", "Beach Holiday", "Lake Victoria", "Uganda"],
     url: "/tours/ssese-islands-beach-holiday",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Lake Victoria beaches",
+      "Island exploration",
+      "Water sports",
+      "Relaxation",
+      "Local culture"
+    ],
+    included: [
+      "Island accommodation",
+      "Most meals",
+      "Boat transfers",
+      "Guide services",
+      "Some activities"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Premium water sports"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Island Holiday"
   },
   {
     id: "43",
@@ -1343,6 +2113,7 @@ export const tours: Tour[] = [
     image: "/Lake-Naivasha-National-Park-750x450.jpg",
     title: "Lake Naivasha Boat Safari",
     description: "Boat safari on freshwater Lake Naivasha with hippos, birds, and Crescent Island walking safari.",
+    shortDescription: "1-day boat and walking safari",
     price: 150,
     currency: "USD",
     rating: 4.3,
@@ -1355,14 +2126,30 @@ export const tours: Tour[] = [
     metaDescription: "Enjoy a boat safari on freshwater Lake Naivasha with hippos, birds, and Crescent Island walking safari.",
     keywords: ["Lake Naivasha", "Boat Safari", "Kenya", "Crescent Island"],
     url: "/tours/lake-naivasha-boat-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "1 Day",
+    highlights: [
+      "Boat safari on Lake Naivasha",
+      "Hippo viewing",
+      "Bird watching",
+      "Crescent Island walk",
+      "Wildlife photography"
+    ],
+    included: [
+      "Boat safari",
+      "Park fees",
+      "Guide services",
+      "Crescent Island walk",
+      "Transportation"
+    ],
+    excluded: [
+      "Accommodation",
+      "Meals",
+      "International flights",
+      "Travel insurance"
+    ],
+    difficulty: "Easy",
+    groupSize: "2-10 people",
+    category: "Day Safari"
   },
   {
     id: "44",
@@ -1370,6 +2157,7 @@ export const tours: Tour[] = [
     image: "/wheelchair-accessible-tanzania-safari.webp",
     title: "Accessible Kenya Safari Experience",
     description: "A fully accessible safari experience designed for travelers with mobility challenges, featuring wheelchair-accessible vehicles, accommodations, and tailored wildlife viewing.",
+    shortDescription: "7-day accessible safari",
     price: 2450,
     currency: "USD",
     rating: 4.8,
@@ -1382,14 +2170,29 @@ export const tours: Tour[] = [
     metaDescription: "A fully accessible safari experience designed for travelers with mobility challenges in Kenya. Wheelchair-accessible vehicles and accommodations.",
     keywords: ["Accessible Safari Kenya", "Disability Travel Kenya", "Wheelchair Safari", "Accessible Wildlife Tours"],
     url: "/tours/kenya-disability-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "7 Days",
+    highlights: [
+      "Wheelchair-accessible vehicles",
+      "Accessible accommodations",
+      "Tailored game viewing",
+      "Professional assistance",
+      "Adapted activities"
+    ],
+    included: [
+      "Accessible accommodation",
+      "All meals",
+      "Accessible transportation",
+      "Personal assistant",
+      "All park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal medical equipment"
+    ],
+    difficulty: "Easy",
+    groupSize: "1-4 people",
+    category: "Accessible Safari"
   },
   {
     id: "45",
@@ -1397,6 +2200,7 @@ export const tours: Tour[] = [
     image: "/Tineke-in-Kenya.png",
     title: "4-Day Accessible Masai Mara Experience",
     description: "A focused accessible safari in the Masai Mara with wheelchair-adapted vehicles, accessible tented camps, and front-row seats to the Great Migration.",
+    shortDescription: "4-day accessible Masai Mara",
     price: 1450,
     currency: "USD",
     rating: 4.9,
@@ -1409,14 +2213,29 @@ export const tours: Tour[] = [
     metaDescription: "A focused accessible safari in the Masai Mara with wheelchair-adapted vehicles and accessible tented camps.",
     keywords: ["Accessible Masai Mara", "Disability Safari Kenya", "Wheelchair Masai Mara"],
     url: "/tours/accessible-masai-mara-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "4 Days",
+    highlights: [
+      "Wheelchair-adapted safari vehicles",
+      "Accessible tented camps",
+      "Great Migration viewing",
+      "Professional caregivers",
+      "Customized game drives"
+    ],
+    included: [
+      "Accessible tented camp",
+      "All meals",
+      "Adapted game drives",
+      "Caregiver assistance",
+      "Park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Medical supplies"
+    ],
+    difficulty: "Easy",
+    groupSize: "1-3 people",
+    category: "Accessible Wildlife"
   },
   {
     id: "46",
@@ -1424,6 +2243,7 @@ export const tours: Tour[] = [
     image: "/WhatsApp-Image-2025-01-15-at-12.06.45-PM.webp",
     title: "Tanzania Accessible Safari Adventure",
     description: "An inclusive journey through Tanzania's Serengeti and Ngorongoro Crater with adapted safari vehicles, accessible lodges, and unforgettable wildlife encounters.",
+    shortDescription: "8-day accessible Tanzania safari",
     price: 2950,
     currency: "USD",
     rating: 4.7,
@@ -1436,14 +2256,29 @@ export const tours: Tour[] = [
     metaDescription: "An inclusive journey through Tanzania's Serengeti and Ngorongoro Crater with adapted safari vehicles and accessible lodges.",
     keywords: ["Accessible Tanzania Safari", "Disability Travel Tanzania", "Wheelchair Safari Tanzania"],
     url: "/tours/tanzania-accessible-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "8 Days",
+    highlights: [
+      "Serengeti accessible game drives",
+      "Ngorongoro Crater accessibility",
+      "Adapted accommodations",
+      "Professional support staff",
+      "Inclusive wildlife viewing"
+    ],
+    included: [
+      "Accessible lodges",
+      "All meals",
+      "Adapted safari vehicles",
+      "Support staff",
+      "All park fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal medical equipment"
+    ],
+    difficulty: "Easy",
+    groupSize: "1-4 people",
+    category: "Inclusive Safari"
   },
   {
     id: "49",
@@ -1451,6 +2286,7 @@ export const tours: Tour[] = [
     image: "/ngorongoro-header-3.jpg",
     title: "East Africa Grand Accessible Safari",
     description: "The ultimate East African accessible safari across Kenya and Tanzania, combining Maasai Mara, Serengeti, and Ngorongoro with premium accessible accommodations.",
+    shortDescription: "12-day multi-country accessible safari",
     price: 5800,
     currency: "USD",
     rating: 4.9,
@@ -1468,14 +2304,29 @@ export const tours: Tour[] = [
       "Grand Safari",
     ],
     url: "/tours/east-africa-grand-accessible-safari",
-    duration: undefined,
-    highlights: undefined,
-    included: undefined,
-    excluded: undefined,
-    difficulty: undefined,
-    groupSize: undefined,
-    category: undefined,
-    shortDescription: ""
+    duration: "12 Days",
+    highlights: [
+      "Multi-country accessible experience",
+      "Premium accessible accommodations",
+      "Maasai Mara and Serengeti",
+      "Ngorongoro Crater",
+      "Full support services"
+    ],
+    included: [
+      "All accessible accommodations",
+      "All meals",
+      "All adapted transportation",
+      "Full support staff",
+      "All park and visa fees"
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal items"
+    ],
+    difficulty: "Easy",
+    groupSize: "1-4 people",
+    category: "Premium Accessible Safari"
   },
   {
     "id": "50",
@@ -1483,6 +2334,7 @@ export const tours: Tour[] = [
     "image": "/carnivore-dining.jpg",
     "title": "Carnivore Experience",
     "description": "Indulge in a unique dining adventure at the famous Carnivore Restaurant in Nairobi, featuring exotic game meats and vibrant Kenyan hospitality.",
+    shortDescription: "Half-day dining experience",
     "price": 150,
     "currency": "USD",
     "rating": 4.7,
@@ -1500,21 +2352,36 @@ export const tours: Tour[] = [
       "Game Meat Experience"
     ],
     "url": "/tour/carnivore-experience",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "4 Hours",
+    "highlights": [
+      "Exotic game meats",
+      "Traditional Kenyan hospitality",
+      "Cultural dining experience",
+      "Live entertainment",
+      "Signature cocktails"
+    ],
+    "included": [
+      "Multi-course meal",
+      "Non-alcoholic drinks",
+      "Transportation from city hotels",
+      "Guide services"
+    ],
+    "excluded": [
+      "Alcoholic beverages",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-20 people",
+    "category": "Culinary Experience"
   },
   {
     "id": "51",
     "slug": "safari-madoa-doa",
     "image": "/madoa-doa-safari.jpg",
     "title": "Safari Madoa Doa",
-    "description": "Embark on an exclusive safari adventure through Kenya’s premier wildlife reserves, spotting the Big Five in their natural habitat.",
+    "description": "Embark on an exclusive safari adventure through Kenya's premier wildlife reserves, spotting the Big Five in their natural habitat.",
+    shortDescription: "7-day exclusive wildlife safari",
     "price": 3200,
     "currency": "USD",
     "rating": 4.8,
@@ -1532,14 +2399,29 @@ export const tours: Tour[] = [
       "Madoa Doa Safari"
     ],
     "url": "/tour/safari-madoa-doa",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "7 Days",
+    "highlights": [
+      "Big Five tracking",
+      "Exclusive reserves access",
+      "Luxury accommodations",
+      "Expert guides",
+      "Photography opportunities"
+    ],
+    "included": [
+      "Luxury accommodation",
+      "All meals",
+      "Game drives",
+      "Professional guide",
+      "Park fees"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-6 people",
+    "category": "Exclusive Safari"
   },
   {
     "id": "52",
@@ -1547,6 +2429,7 @@ export const tours: Tour[] = [
     "image": "/zanzibar-beach.jpg",
     "title": "Best of Zanzibar",
     "description": "Discover the tropical paradise of Zanzibar with its pristine beaches, historic Stone Town, and vibrant spice tours.",
+    shortDescription: "8-day Zanzibar exploration",
     "price": 2500,
     "currency": "USD",
     "rating": 4.9,
@@ -1556,7 +2439,7 @@ export const tours: Tour[] = [
     "region": "East Africa",
     "country": "Tanzania",
     "metaTitle": "Best of Zanzibar | Jae Travel Expeditions",
-    "metaDescription": "Explore Zanzibar’s beaches, Stone Town, and spice tours on an 8-day cultural and beach adventure.",
+    "metaDescription": "Explore Zanzibar's beaches, Stone Town, and spice tours on an 8-day cultural and beach adventure.",
     "keywords": [
       "Zanzibar Tour",
       "Stone Town",
@@ -1564,21 +2447,37 @@ export const tours: Tour[] = [
       "Tanzania Beach Holiday"
     ],
     "url": "/tour/best-of-zanzibar",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "8 Days",
+    "highlights": [
+      "Stone Town UNESCO tour",
+      "Spice plantation visit",
+      "Beach relaxation",
+      "Snorkeling",
+      "Local cuisine"
+    ],
+    "included": [
+      "Beach resort accommodation",
+      "Most meals",
+      "Cultural tours",
+      "Beach activities",
+      "Transfers"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Premium water sports"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Island Holiday"
   },
   {
     "id": "53",
     "slug": "classic-sky-safari-2",
     "image": "/sky-safari.jpg",
     "title": "Classic Sky Safari 2",
-    "description": "Soar above East Africa’s iconic landscapes on a luxury sky safari, visiting Amboseli, Meru, and the Maasai Mara.",
+    "description": "Soar above East Africa's iconic landscapes on a luxury sky safari, visiting Amboseli, Meru, and the Maasai Mara.",
+    shortDescription: "10-day luxury air safari",
     "price": 6500,
     "currency": "USD",
     "rating": 5.0,
@@ -1588,7 +2487,7 @@ export const tours: Tour[] = [
     "region": "East Africa",
     "country": "Kenya",
     "metaTitle": "Classic Sky Safari 2 | Jae Travel Expeditions",
-    "metaDescription": "Experience a 10-day luxury sky safari over Kenya’s Amboseli, Meru, and Maasai Mara.",
+    "metaDescription": "Experience a 10-day luxury sky safari over Kenya's Amboseli, Meru, and Maasai Mara.",
     "keywords": [
       "Sky Safari",
       "Luxury Safari Kenya",
@@ -1596,14 +2495,29 @@ export const tours: Tour[] = [
       "Amboseli Tour"
     ],
     "url": "/tour/classic-sky-safari-2",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "10 Days",
+    "highlights": [
+      "Private air transfers",
+      "Exclusive luxury camps",
+      "Aerial wildlife viewing",
+      "Personalized service",
+      "Multi-park experience"
+    ],
+    "included": [
+      "Private air transfers",
+      "Ultra-luxury accommodation",
+      "All meals and premium drinks",
+      "Private guides",
+      "All activities"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Personal purchases"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-8 people",
+    "category": "Luxury Sky Safari"
   },
   {
     "id": "54",
@@ -1611,6 +2525,7 @@ export const tours: Tour[] = [
     "image": "/nairobi-park.jpg",
     "title": "Nairobi National Park Tour",
     "description": "Explore Nairobi National Park, a unique wildlife haven near the city, home to rhinos, lions, and stunning savanna views.",
+    shortDescription: "Half-day wildlife tour",
     "price": 200,
     "currency": "USD",
     "rating": 4.6,
@@ -1628,21 +2543,36 @@ export const tours: Tour[] = [
       "Rhino Safari"
     ],
     "url": "/tour/nairobi-national-park-tour",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "5 Hours",
+    "highlights": [
+      "City skyline with wildlife",
+      "Rhino sanctuary",
+      "Lion sightings",
+      "Giraffe viewing",
+      "Professional guide"
+    ],
+    "included": [
+      "Park entry fees",
+      "Transportation",
+      "Guide services",
+      "Bottled water"
+    ],
+    "excluded": [
+      "Lunch",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-12 people",
+    "category": "Day Tour"
   },
   {
     "id": "55",
     "slug": "visit-a-thousand-hills-distilleries",
     "image": "/thousand-hills-distillery.jpg",
     "title": "Visit a Thousand Hills Distilleries",
-    "description": "Experience Rwanda’s artisanal spirit scene with a tour of Thousand Hills Distilleries, tasting premium local beverages.",
+    "description": "Experience Rwanda's artisanal spirit scene with a tour of Thousand Hills Distilleries, tasting premium local beverages.",
+    shortDescription: "Half-day distillery tour",
     "price": 100,
     "currency": "USD",
     "rating": 4.5,
@@ -1652,7 +2582,7 @@ export const tours: Tour[] = [
     "region": "East Africa",
     "country": "Rwanda",
     "metaTitle": "Visit a Thousand Hills Distilleries | Jae Travel Expeditions",
-    "metaDescription": "Tour Rwanda’s Thousand Hills Distilleries and taste premium local spirits on a half-day experience.",
+    "metaDescription": "Tour Rwanda's Thousand Hills Distilleries and taste premium local spirits on a half-day experience.",
     "keywords": [
       "Rwanda Distillery Tour",
       "Thousand Hills Distillery",
@@ -1660,21 +2590,36 @@ export const tours: Tour[] = [
       "Cultural Tour Rwanda"
     ],
     "url": "/tour/visit-a-thousand-hills-distilleries",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "4 Hours",
+    "highlights": [
+      "Distillery tour",
+      "Spirit tasting",
+      "Production process",
+      "Local ingredients",
+      "Cultural insights"
+    ],
+    "included": [
+      "Distillery tour",
+      "Tasting session",
+      "Transportation",
+      "Guide services"
+    ],
+    "excluded": [
+      "Additional purchases",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Food & Drink Tour"
   },
   {
     "id": "56",
     "slug": "this-is-africa-nyamirambo-womens-center",
     "image": "/nyamirambo-center.jpg",
-    "title": "This is Africa Nyamirambo Women’s Center",
-    "description": "Immerse yourself in Rwandan culture with a visit to Nyamirambo Women’s Center, exploring local crafts and community initiatives.",
+    "title": "This is Africa Nyamirambo Women's Center",
+    "description": "Immerse yourself in Rwandan culture with a visit to Nyamirambo Women's Center, exploring local crafts and community initiatives.",
+    shortDescription: "Half-day cultural tour",
     "price": 80,
     "currency": "USD",
     "rating": 4.8,
@@ -1683,23 +2628,37 @@ export const tours: Tour[] = [
     "bookingUrl": "/booking/this-is-africa-nyamirambo-womens-center",
     "region": "East Africa",
     "country": "Rwanda",
-    "metaTitle": "Nyamirambo Women’s Center Tour | Jae Travel Expeditions",
-    "metaDescription": "Explore Rwandan culture and crafts at Nyamirambo Women’s Center in Kigali on a half-day tour.",
+    "metaTitle": "Nyamirambo Women's Center Tour | Jae Travel Expeditions",
+    "metaDescription": "Explore Rwandan culture and crafts at Nyamirambo Women's Center in Kigali on a half-day tour.",
     "keywords": [
-      "Nyamirambo Women’s Center",
+      "Nyamirambo Women's Center",
       "Rwanda Cultural Tour",
       "Kigali Community Tour",
       "African Crafts"
     ],
     "url": "/tour/this-is-africa-nyamirambo-womens-center",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "3 Hours",
+    "highlights": [
+      "Women's empowerment projects",
+      "Local craft demonstrations",
+      "Community interaction",
+      "Cultural exchange",
+      "Traditional skills"
+    ],
+    "included": [
+      "Center tour",
+      "Craft demonstration",
+      "Guide services",
+      "Transportation"
+    ],
+    "excluded": [
+      "Craft purchases",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-8 people",
+    "category": "Cultural Tour"
   },
   {
     "id": "57",
@@ -1707,6 +2666,7 @@ export const tours: Tour[] = [
     "image": "/beach-relaxation.jpg",
     "title": "Relaxation at the Beach",
     "description": "Unwind on the pristine beaches of East Africa, enjoying sun, sand, and sea in a serene coastal escape.",
+    shortDescription: "5-day beach retreat",
     "price": 1200,
     "currency": "USD",
     "rating": 4.7,
@@ -1716,7 +2676,7 @@ export const tours: Tour[] = [
     "region": "East Africa",
     "country": "Tanzania",
     "metaTitle": "Relaxation at the Beach | Jae Travel Expeditions",
-    "metaDescription": "Unwind on East Africa’s pristine beaches with a 5-day coastal retreat.",
+    "metaDescription": "Unwind on East Africa's pristine beaches with a 5-day coastal retreat.",
     "keywords": [
       "Beach Holiday East Africa",
       "Coastal Retreat",
@@ -1724,21 +2684,36 @@ export const tours: Tour[] = [
       "Relaxation Tour"
     ],
     "url": "/tour/relaxation-at-the-beach",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
+    "duration": "5 Days",
+    "highlights": [
+      "Beachfront accommodation",
+      "Sunset views",
+      "Water activities",
+      "Spa treatments",
+      "Local cuisine"
+    ],
+    "included": [
+      "Beach resort stay",
+      "Most meals",
+      "Basic water activities",
+      "Airport transfers"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Premium spa treatments"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Beach Retreat"
   },
   {
     "id": "58",
     "slug": "safari-dwika",
     "image": "/dwika-safari.jpg",
     "title": "Safari Dwika",
-    "description": "Join an adventurous safari through Tanzania’s iconic parks, witnessing diverse wildlife and stunning landscapes.",
+    "description": "Join an adventurous safari through Tanzania's iconic parks, witnessing diverse wildlife and stunning landscapes.",
+    shortDescription: "7-day Tanzania safari adventure",
     "price": 3500,
     "currency": "USD",
     "rating": 4.8,
@@ -1748,7 +2723,7 @@ export const tours: Tour[] = [
     "region": "East Africa",
     "country": "Tanzania",
     "metaTitle": "Safari Dwika | Jae Travel Expeditions",
-    "metaDescription": "Experience a 7-day safari adventure through Tanzania’s iconic wildlife parks.",
+    "metaDescription": "Experience a 7-day safari adventure through Tanzania's iconic wildlife parks.",
     "keywords": [
       "Tanzania Safari",
       "Wildlife Tour",
@@ -1756,20 +2731,35 @@ export const tours: Tour[] = [
       "East Africa Adventure"
     ],
     "url": "/tour/safari-dwika",
-    "duration": undefined,
-    "highlights": undefined,
-    "included": undefined,
-    "excluded": undefined,
-    "difficulty": undefined,
-    "groupSize": undefined,
-    "category": undefined,
-    shortDescription: ""
-  },
-]
+    "duration": "7 Days",
+    "highlights": [
+      "Multiple national parks",
+      "Big Five viewing",
+      "Expert local guides",
+      "Comfortable accommodations",
+      "Cultural interactions"
+    ],
+    "included": [
+      "All accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Professional guide"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-8 people",
+    "category": "Adventure Safari"
+  }
+];
 
 export const disabilityTours = tours.filter(
   (tour) => tour.slug.includes("accessible") || tour.slug.includes("disability"),
-)
+);
 
 export const toursByCountry = {
   Kenya: tours.filter((t) => t.country === "Kenya"),
@@ -1777,6 +2767,6 @@ export const toursByCountry = {
   Rwanda: tours.filter((t) => t.country === "Rwanda"),
   Uganda: tours.filter((t) => t.country === "Uganda"),
   "Multi-Country": tours.filter((t) => t.country === "Multi-Country"),
-}
+};
 
-export const toursOnOffer = tours.filter((tour) => tour.isOnOffer)
+export const toursOnOffer = tours.filter((tour) => tour.isOnOffer);
