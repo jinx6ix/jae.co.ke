@@ -3,6 +3,7 @@ export interface Vehicle {
   slug: string
   name: string
   image: string
+  type: string
   description: string
   capacity: string
   features: string[]
@@ -16,6 +17,11 @@ export interface Vehicle {
     fuelEfficiency?: string
   }
   gallery: string[]
+  fleetGalleries?: {
+    fleet1: string[]
+    fleet2: string[]
+    fleet3: string[]
+  }
   extras?: {
     [key: string]: string
   }
@@ -46,6 +52,7 @@ export const vehicles: Vehicle[] = [
       "Window mesh for ventilation and insect protection"
     ],
     pricePerDay: 200,
+    type: "4x4 Safari Vehicle",
     ideal: "Perfect for extended game drives, rough terrain exploration, and multi-day safari expeditions across East Africa's national parks and reserves",
     specifications: {
       engine: "4.5L 1HZ Turbo Diesel Engine",
@@ -70,6 +77,30 @@ export const vehicles: Vehicle[] = [
       "/e9b18823-92f1-4957-ba6c-8316f04a18af.jpg",
       "/a42f5d7f-b585-4bcc-9ddf-683e11e37fcb.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "/6eee9dae-9f26-42e8-a59f-980ed0968af3.jpg",
+        "/6b5009d6-26fe-4459-834f-217bc30e87da.jpg",
+        "/34b04005-8317-4fae-a4c4-60c7bd5f7fb5.jpg",
+        "/df0c65bb-3231-428f-8c35-109fee16b207.jpg",
+        "/20e7f10f-6a17-4ce5-8193-74d5bd39cac7.jpg",
+        "/cad4bd0d-d631-46f7-9d13-7dcc03862600.jpg",
+      ],
+      fleet2: [
+        "/c5e3ec93-44b7-4567-b30d-d509e442804b.jpg",
+        "/de35bfcd-b84f-4538-af9f-1fed1ac9201f.jpg",
+        "/00bd9c0d-7338-4768-b847-c49fc8a917ec.jpg",
+        "/b83ae619-b1d0-4fc6-93f6-45b8a588d571.jpg",
+        "/bb4c1dba-a2a5-4440-b7fd-28937f542aab.jpg"
+      ],
+      fleet3: [
+        "/f69a5a21-195f-4546-9f02-09f566cf2d5e.jpg",
+        "/07a5842c-181c-4bf7-97a7-dc4b39de5416.jpg",
+        "/e9b18823-92f1-4957-ba6c-8316f04a18af.jpg",
+        "/a42f5d7f-b585-4bcc-9ddf-683e11e37fcb.jpg",
+        "/db958401-6169-4947-a0f0-bbca4bfc716e.jpg"
+      ]
+    },
     extras: {
       safariGuide: "Professional guide available (+$80/day)",
       campingEquipment: "Full camping gear package (+$50/day)",
@@ -119,6 +150,7 @@ export const vehicles: Vehicle[] = [
       "Keyless entry and push-button start"
     ],
     pricePerDay: 200,
+    type: "Luxury SUV",
     ideal: "Excellent for family safaris, luxury touring, business travel, and comfortable exploration of both urban and rural destinations across East Africa",
     specifications: {
       engine: "3.0L Turbo Diesel Engine with 250hp",
@@ -136,6 +168,29 @@ export const vehicles: Vehicle[] = [
       "/toyota-prado-cargo-space.jpg",
       "/toyota-prado-off-road.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "https://ik.imagekit.io/jinx/travel/5-1536x776%20(1).png?updatedAt=1750087067905",
+        "/toyota-prado-interior.jpg",
+        "/toyota-prado-dashboard-gps.jpg",
+        "/toyota-prado-seats-comfort.jpg",
+        "/toyota-prado-exterior-sunset.jpg"
+      ],
+      fleet2: [
+        "/toyota-prado-cargo-space.jpg",
+        "/toyota-prado-off-road.jpg",
+        "/toyota-prado-luxury-interior.jpg",
+        "/toyota-prado-night-driving.jpg",
+        "/toyota-prado-family-safari.jpg"
+      ],
+      fleet3: [
+        "/toyota-prado-vx-exterior.jpg",
+        "/toyota-prado-vx-interior.jpg",
+        "/toyota-prado-vx-offroad.jpg",
+        "/toyota-prado-vx-cargo.jpg",
+        "/toyota-prado-vx-dashboard.jpg"
+      ]
+    },
     extras: {
       wifiHotspot: "Mobile internet device (+$15/day)",
       premiumInsurance: "Full coverage protection (+$25/day)",
@@ -183,6 +238,7 @@ export const vehicles: Vehicle[] = [
       "Secure storage for camping equipment"
     ],
     pricePerDay: 200,
+    type: "Roof Top Camping Vehicle",
     ideal: "Perfect for adventurous camping safaris, overland expeditions, self-drive adventures, and immersive wilderness experiences across East Africa",
     specifications: {
       engine: "4.0L V6 Diesel Engine",
@@ -201,6 +257,29 @@ export const vehicles: Vehicle[] = [
       "/kitchen-equipment-detail.jpg",
       "/camping-vehicle-night-lighting.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "https://ik.imagekit.io/jinx/travel/4-1536x776%20(1).png?updatedAt=1750087065024",
+        "/roof-top-tent-open-at-sunset.jpg",
+        "/camping-vehicle-interior-kitchenette.jpg",
+        "/roof-tent-interior-bedding.jpg",
+        "/camping-setup-complete.jpg"
+      ],
+      fleet2: [
+        "/solar-panel-installation.jpg",
+        "/kitchen-equipment-detail.jpg",
+        "/camping-vehicle-night-lighting.jpg",
+        "/roof-top-camping-2-exterior.jpg",
+        "/roof-top-camping-2-interior.jpg"
+      ],
+      fleet3: [
+        "/roof-top-camping-3-exterior.jpg",
+        "/roof-top-camping-3-tent-open.jpg",
+        "/roof-top-camping-3-kitchen.jpg",
+        "/roof-top-camping-3-living-area.jpg",
+        "/roof-top-camping-3-night.jpg"
+      ]
+    },
     extras: {
       campingGuide: "Experienced camping assistant (+$70/day)",
       additionalTent: "Ground tent for extra guests (+$30/day)",
@@ -248,6 +327,7 @@ export const vehicles: Vehicle[] = [
       "Secure locking system for valuable gear"
     ],
     pricePerDay: 250,
+    type: "Photography Safari Vehicle",
     ideal: "Specifically designed for professional wildlife photography, bird watching tours, documentary filming, and serious photography expeditions across East Africa",
     specifications: {
       engine: "4.2L Turbo Diesel Engine",
@@ -266,6 +346,29 @@ export const vehicles: Vehicle[] = [
       "/professional-photographer-in-action.jpg",
       "/equipment-storage-compartments.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-07-07%20at%2018.28.17_94668579.jpg?updatedAt=1751902480309",
+        "/db958401-6169-4947-a0f0-bbca4bfc716e.jpg",
+        "/f8730438-2fbd-4dcb-a628-d1980d6be96d.jpg",
+        "/safari-vehicle-extended-roof-for-photography.jpg",
+        "/ef39caf7-09ec-41e2-8811-20cf0b6b15d3 (1).jpg"
+      ],
+      fleet2: [
+        "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-07-07%20at%2018.28.17_2e082e13.jpg?updatedAt=1751902480189",
+        "/photography-vehicle-camera-mounts.jpg",
+        "/professional-photographer-in-action.jpg",
+        "/equipment-storage-compartments.jpg",
+        "/photography-vehicle-2-exterior.jpg"
+      ],
+      fleet3: [
+        "/photography-vehicle-3-exterior.jpg",
+        "/photography-vehicle-3-interior.jpg",
+        "/photography-vehicle-3-camera-mounts.jpg",
+        "/photography-vehicle-3-extended-roof.jpg",
+        "/photography-vehicle-3-photographer.jpg"
+      ]
+    },
     extras: {
       photographyGuide: "Professional photographer guide (+$120/day)",
       equipmentRental: "Full-frame cameras and lenses (+$80-200/day)",
@@ -313,6 +416,7 @@ export const vehicles: Vehicle[] = [
       "Communication aids for hearing impaired"
     ],
     pricePerDay: 300,
+    type: "Wheelchair Accessible Vehicle",
     ideal: "Inclusive safari experiences for travelers with mobility challenges, accessible family vacations, disability-friendly tours, and barrier-free wildlife viewing across East Africa",
     specifications: {
       engine: "3.5L V6 Petrol Engine",
@@ -336,6 +440,29 @@ export const vehicles: Vehicle[] = [
       "/wheelchair-secure-system.jpg",
       "/accessible-safari-viewing.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "https://ik.imagekit.io/jinx/travel/WhatsApp%20Image%202025-09-02%20at%2011.43.25%20AM.jpeg?updatedAt=1756810077606",
+        "/21.jpeg",
+        "/11.jpeg",
+        "/14.jpeg",
+        "/16.jpeg"
+      ],
+      fleet2: [
+        "/20.jpeg",
+        "/23.jpeg",
+        "/27.jpeg",
+        "/30.jpeg",
+        "/accessible-vehicle-interior.jpg"
+      ],
+      fleet3: [
+        "/hydraulic-ramp-operation.jpg",
+        "/wheelchair-secure-system.jpg",
+        "/accessible-safari-viewing.jpg",
+        "/wheelchair-vehicle-2-exterior.jpg",
+        "/wheelchair-vehicle-2-interior.jpg"
+      ]
+    },
     extras: {
       careAssistant: "Trained caregiver available (+$60/day)",
       medicalEquipment: "Oxygen, etc. available on request",
@@ -383,6 +510,7 @@ export const vehicles: Vehicle[] = [
       "Privacy glass for enhanced comfort"
     ],
     pricePerDay: 200,
+    type: "Family Safari Minivan",
     ideal: "Family safaris with children, small group tours, budget-conscious travelers, educational trips, and comfortable road trips across East Africa's diverse destinations",
     specifications: {
       engine: "2.4L 4-Cylinder Turbo Diesel",
@@ -390,12 +518,6 @@ export const vehicles: Vehicle[] = [
       fuelType: "Diesel",
       luggage: "Spacious rear storage compartment with roof rack option",
       fuelEfficiency: "Excellent 12L/100km making it economical for long trips"
-    },
-    extras: {
-      childSeats: "Various sizes available (+$10/day each)",
-      coolerBox: "Large capacity included free of charge",
-      extraDriver: "Additional driver included (+$30/day)",
-      unlimitedMileage: "Available for long-term rentals"
     },
     gallery: [
       "https://ik.imagekit.io/jinx/travel/car-van-1536x776%20(1).png?updatedAt=1750087064275",
@@ -406,6 +528,35 @@ export const vehicles: Vehicle[] = [
       "/van-storage-capacity-showcase.jpg",
       "/minivan-road-trip-scene.jpg"
     ],
+    fleetGalleries: {
+      fleet1: [
+        "https://ik.imagekit.io/jinx/travel/car-van-1536x776%20(1).png?updatedAt=1750087064275",
+        "/safari-minivan-interior-spacious.jpg",
+        "/minivan-popup-roof-open.jpg",
+        "/family-van-seating-configuration.jpg",
+        "/minivan-game-viewing-position.jpg"
+      ],
+      fleet2: [
+        "/van-storage-capacity-showcase.jpg",
+        "/minivan-road-trip-scene.jpg",
+        "/family-minivan-2-exterior.jpg",
+        "/family-minivan-2-interior.jpg",
+        "/family-minivan-2-popup-roof.jpg"
+      ],
+      fleet3: [
+        "/family-minivan-3-exterior.jpg",
+        "/family-minivan-3-interior.jpg",
+        "/family-minivan-3-storage.jpg",
+        "/family-minivan-3-family.jpg",
+        "/family-minivan-3-safari.jpg"
+      ]
+    },
+    extras: {
+      childSeats: "Various sizes available (+$10/day each)",
+      coolerBox: "Large capacity included free of charge",
+      extraDriver: "Additional driver included (+$30/day)",
+      unlimitedMileage: "Available for long-term rentals"
+    },
     metaTitle: "Family Safari Minivan Rental | Group Vehicle Hire for East Africa Tours and Safaris",
     metaDescription:
       "Rent a spacious family safari minivan with pop-up roof and AC for comfortable group tours in Kenya, Tanzania, Rwanda, and Uganda. Perfect for family adventures, small groups, and budget-friendly safari experiences across East Africa.",
