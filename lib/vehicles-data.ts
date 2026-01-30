@@ -79,12 +79,13 @@ export const vehicles: Vehicle[] = [
     ],
     fleetGalleries: {
       fleet1: [
-        "/6eee9dae-9f26-42e8-a59f-980ed0968af3.jpg",
-        "/6b5009d6-26fe-4459-834f-217bc30e87da.jpg",
-        "/34b04005-8317-4fae-a4c4-60c7bd5f7fb5.jpg",
-        "/df0c65bb-3231-428f-8c35-109fee16b207.jpg",
-        "/20e7f10f-6a17-4ce5-8193-74d5bd39cac7.jpg",
-        "/cad4bd0d-d631-46f7-9d13-7dcc03862600.jpg",
+        "/6c473926-ff4d-4180-9507-c54b502e8897.jpg",
+        "/343dfbb0-0113-4034-85b2-35fee2aad0ca.jpg",
+        "/ec0cceeb-0504-43c8-adcc-801ff3f53523.jpg",
+        "/c7afadbd-cf56-4a4e-a9d2-404f3ae83101.jpg",
+        "/ca910e59-62e9-49cb-a4f2-f7cc946e5a36.jpg",
+        "/668536b6-ae61-4975-ac91-8a307aea1ea8.jpg"
+
       ],
       fleet2: [
         "/c5e3ec93-44b7-4567-b30d-d509e442804b.jpg",
@@ -94,11 +95,12 @@ export const vehicles: Vehicle[] = [
         "/bb4c1dba-a2a5-4440-b7fd-28937f542aab.jpg"
       ],
       fleet3: [
-        "/f69a5a21-195f-4546-9f02-09f566cf2d5e.jpg",
-        "/07a5842c-181c-4bf7-97a7-dc4b39de5416.jpg",
-        "/e9b18823-92f1-4957-ba6c-8316f04a18af.jpg",
-        "/a42f5d7f-b585-4bcc-9ddf-683e11e37fcb.jpg",
-        "/db958401-6169-4947-a0f0-bbca4bfc716e.jpg"
+        "/6eee9dae-9f26-42e8-a59f-980ed0968af3.jpg",
+        "/6b5009d6-26fe-4459-834f-217bc30e87da.jpg",
+        "/34b04005-8317-4fae-a4c4-60c7bd5f7fb5.jpg",
+        "/df0c65bb-3231-428f-8c35-109fee16b207.jpg",
+        "/20e7f10f-6a17-4ce5-8193-74d5bd39cac7.jpg",
+        "/cad4bd0d-d631-46f7-9d13-7dcc03862600.jpg",
       ]
     },
     extras: {
@@ -456,11 +458,17 @@ export const vehicles: Vehicle[] = [
         "/accessible-vehicle-interior.jpg"
       ],
       fleet3: [
-        "/hydraulic-ramp-operation.jpg",
-        "/wheelchair-secure-system.jpg",
-        "/accessible-safari-viewing.jpg",
-        "/wheelchair-vehicle-2-exterior.jpg",
-        "/wheelchair-vehicle-2-interior.jpg"
+        "/f846fc25-7931-4b3d-88fe-5821009cf861.jpg",
+        "/5f43c43d-f971-471a-9122-2606eec7288d.jpg",
+        "/357fad81-2bbd-40fd-a21c-6063182cb5f9.jpg",
+        "/c4fdf160-9705-42e7-92e5-2e8e145406e0.jpg",
+        "/1d4b068a-3c99-4055-8496-78e638eb1011.jpg",
+        "/1db4e549-90a4-430a-aad5-9e69d3aaabea.jpg",
+        "/d083bbb5-1eee-4883-8f58-5042517ae372.jpg",
+        "/8834c197-3b9a-437a-a329-ed18fa2e0b29.jpg",
+        "/eb6c6118-e854-4489-afa8-b9ec6d1497cb.jpg",
+        "/916520f3-e8f9-4d6c-81a5-2b7055e822c9.jpg",
+        "/c9e8dbd5-d16a-414c-a61a-e7bfa8014ab2.jpg"
       ]
     },
     extras: {
