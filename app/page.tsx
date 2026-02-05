@@ -163,7 +163,7 @@ const homepageSchema = {
           "name": "Do you offer wheelchair accessible safari vehicles?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — we operate Kenya’s only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade restraints."
+            "text": "Yes — we operate Kenya's only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade restraints."
           }
         },
         {
@@ -468,10 +468,10 @@ export default function HomePage() {
               Don't miss our exclusive <strong>safari packages</strong> designed to make your African dream vacation more affordable than ever. 
               Our limited-time special offers include premium <strong>wheelchair accessible tours in Kenya</strong> with fully adapted 
               <strong> safari vehicles</strong> and stays at luxurious <strong>camps and lodges</strong> that have been carefully selected for their 
-              accessibility features and exceptional service.
+              accessibility features and exceptional service. Check out our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> for even more affordable safari options.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              From the spectacular <strong>Masai Mara great migration</strong> events to intimate <strong>gorilla trekking</strong> adventures in 
+              From the spectacular <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara great migration</Link> events to intimate <strong>gorilla trekking</strong> adventures in 
               Rwanda and Uganda, these specially priced <strong>East Africa safari</strong> packages represent incredible value. Many include 
               additional perks like complimentary airport transfers, extra <strong>game drives</strong>, or cultural experiences that deepen 
               your connection to Africa's rich heritage.
@@ -520,7 +520,7 @@ export default function HomePage() {
             <p className="text-muted-foreground leading-relaxed">
               Our carefully curated selection of <strong>East Africa safari</strong> adventures represents the very best of what this magnificent 
               region has to offer. Each itinerary has been crafted by our expert team to provide an authentic <strong>safari experience</strong> 
-              that balances wildlife viewing, cultural immersion, and relaxation. From the world-famous <strong>Masai Mara great migration</strong> 
+              that balances wildlife viewing, cultural immersion, and relaxation. From the world-famous <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara great migration</Link> 
               to the remote wilderness areas few tourists ever see, we offer diverse <strong>wildlife tours Africa</strong> enthusiasts dream about.
             </p>
             <p className="text-muted-foreground leading-relaxed">
@@ -563,7 +563,7 @@ export default function HomePage() {
             <div className="max-w-5xl mx-auto space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 East Africa offers some of the world's most spectacular and diverse safari destinations, each with its own unique character 
-                and wildlife experiences. From the legendary <strong>Masai Mara great migration</strong> in Kenya to the endless plains of 
+                and wildlife experiences. From the legendary <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara great migration</Link> in Kenya to the endless plains of 
                 <strong> Serengeti National Park safari</strong> in Tanzania, our <strong>East Africa safari</strong> packages cover the 
                 region's most iconic landscapes and hidden gems.
               </p>
@@ -657,7 +657,7 @@ export default function HomePage() {
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Experience the ultimate <strong>wheelchair accessible safari Kenya</strong> has to offer with our specially designed tours. 
-              We provide comprehensive <strong>wheelchair accessible tours in Kenya</strong> that ensure every traveler can witness Africa's magnificent wildlife 
+              We provide comprehensive <Link href="/disability-tours" className="text-primary hover:underline">wheelchair accessible tours in Kenya</Link> that ensure every traveler can witness Africa's magnificent wildlife 
               without limitations. Our fleet of adapted vehicles and accessible accommodations make us the leading choice for <strong>wheelchair accessible safari Kenya</strong> adventures.
             </p>
           </div>
@@ -692,7 +692,7 @@ export default function HomePage() {
             <div className="rounded-lg bg-card p-6 shadow-sm">
               <h3 className="mb-3 text-xl font-semibold">Fully Adapted Vehicles</h3>
               <p className="text-muted-foreground">
-                Our wheelchair accessible safari vehicles feature hydraulic lifts, securement systems, and spacious interiors designed specifically for <strong>wheelchair accessible tours in Kenya</strong>.
+                Our <Link href="/disability-tours" className="text-primary hover:underline">wheelchair accessible tours in Kenya</Link> feature hydraulic lifts, securement systems, and spacious interiors designed specifically for barrier-free safari experiences.
               </p>
             </div>
             <div className="rounded-lg bg-card p-6 shadow-sm">
@@ -704,8 +704,77 @@ export default function HomePage() {
             <div className="rounded-lg bg-card p-6 shadow-sm">
               <h3 className="mb-3 text-xl font-semibold">Expert Accessible Guides</h3>
               <p className="text-muted-foreground">
-                Our guides receive specialized training in accessibility needs, ensuring your <strong>wheelchair accessible tours in Kenya</strong> are safe, comfortable, and unforgettable.
+                Our guides receive specialized training in accessibility needs, ensuring your <Link href="/disability-tours" className="text-primary hover:underline">disability tours Kenya</Link> are safe, comfortable, and unforgettable.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Budget Safari Options Section */}
+      <section className="py-16 bg-muted/10">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              Affordable Safari Adventures Without Compromise
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
+              Experience the magic of Africa without breaking the bank with our carefully curated <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link>. 
+              We believe everyone should have the opportunity to witness Africa's incredible wildlife, which is why we've created affordable 
+              safari packages that don't compromise on quality or accessibility.
+            </p>
+          </div>
+
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
+            <p className="text-muted-foreground leading-relaxed">
+              Our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> are designed to provide authentic safari experiences at prices that make 
+              African travel accessible to more people. From our popular <Link href="/budget-tours/samburu-3-days-private-safari" className="text-primary hover:underline">Samburu 3 Days Private Safari</Link> 
+              to the comprehensive <Link href="/budget-tours/kenya-big-5-7-days-budget-safari" className="text-primary hover:underline">Kenya Big 5 7 Days Budget Safari</Link>, we offer 
+              carefully planned itineraries that maximize wildlife viewing while minimizing costs.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              These budget-friendly options include comfortable accommodations in well-selected <strong>camps and lodges</strong>, daily <strong>game drives</strong> 
+              with experienced guides, and transportation in reliable safari vehicles. While they're priced for budget-conscious travelers, 
+              they still include all the essential elements of a great safari experience. Many of our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> 
+              can also be upgraded with our <strong>wheelchair accessible safari vehicles</strong> for travelers with mobility needs.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Whether you're a student, a young family, or simply looking to maximize your travel budget, our affordable safari options 
+              ensure you can experience the wonders of East Africa without overspending. Discover why we're the go-to choice for 
+              <strong> value safari packages</strong> that deliver unforgettable wildlife encounters at reasonable prices.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">3-Day Samburu Adventure</h3>
+              <p className="text-muted-foreground mb-4">
+                Experience the unique wildlife of northern Kenya on our popular <Link href="/budget-tours/samburu-3-days-private-safari" className="text-primary hover:underline">Samburu 3 Days Private Safari</Link>. 
+                This compact itinerary is perfect for those with limited time who want to see rare species like Grevy's zebra, Somali ostrich, and reticulated giraffe.
+              </p>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/budget-tours/samburu-3-days-private-safari">View Details</Link>
+              </Button>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">7-Day Big Five Safari</h3>
+              <p className="text-muted-foreground mb-4">
+                Our comprehensive <Link href="/budget-tours/kenya-big-5-7-days-budget-safari" className="text-primary hover:underline">Kenya Big 5 7 Days Budget Safari</Link> takes you to multiple 
+                national parks in search of Africa's most iconic animals. This week-long adventure offers excellent value with multiple game drives, comfortable accommodations, and expert guiding.
+              </p>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/budget-tours/kenya-big-5-7-days-budget-safari">View Details</Link>
+              </Button>
+            </div>
+            <div className="rounded-lg bg-card p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-semibold">Great Migration Budget Option</h3>
+              <p className="text-muted-foreground mb-4">
+                Witness the spectacular <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara great migration</Link> without the luxury price tag. 
+                Our budget-friendly migration packages include strategic timing, comfortable tented camps, and prime viewing locations for river crossings and predator action.
+              </p>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/budget-tours">View All Budget Options</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -728,9 +797,9 @@ export default function HomePage() {
                 Wheelchair Accessible Safari Adventures for Everyone
               </h2>
               <p className="mb-6 text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-                We specialize in <strong>wheelchair accessible tours and safaris</strong> across East Africa using specially adapted <strong>wheelchair accessible safari vehicles</strong>. 
+                We specialize in <Link href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">wheelchair accessible tours and safaris</Link> across East Africa using specially adapted <strong>wheelchair accessible safari vehicles</strong>. 
                 Stay in <strong>wheelchair accessible camps and lodges</strong>, enjoy thrilling <strong>game drives</strong>, and create lifelong memories — no barriers.
-                Discover why we're the top choice for <strong>wheelchair accessible safari Kenya</strong> experiences and comprehensive <strong>wheelchair accessible tours in Kenya</strong>.
+                Discover why we're the top choice for <strong>wheelchair accessible safari Kenya</strong> experiences and comprehensive <Link href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">wheelchair accessible tours in Kenya</Link>.
               </p>
 
               {/* Enhanced: Additional CTA paragraphs */}
@@ -738,7 +807,7 @@ export default function HomePage() {
                 <p className="text-lg leading-relaxed text-primary-foreground/90">
                   Our commitment to <strong>accessible travel Africa</strong> means we've thoughtfully designed every aspect of your journey. 
                   From <strong>special needs safari</strong> planning to <strong>barrier-free travel Africa</strong> experiences, we ensure that 
-                  mobility challenges never prevent anyone from experiencing Africa's magnificent wildlife. Our <strong>disability tours Kenya</strong> 
+                  mobility challenges never prevent anyone from experiencing Africa's magnificent wildlife. Our <Link href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">disability tours Kenya</Link> 
                   program sets the standard for <strong>inclusive safari experiences</strong> throughout East Africa.
                 </p>
                 <p className="text-lg leading-relaxed text-primary-foreground/90">
@@ -751,7 +820,7 @@ export default function HomePage() {
 
               <p className="mb-8 text-lg">
                 Learn more about our{" "}
-                <Link href="/disability-tour" className="underline underline-offset-4 hover:text-secondary">
+                <Link href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">
                   wheelchair accessible safari options
                 </Link>{" "}
                 or explore our fleet of{" "}
@@ -819,7 +888,7 @@ export default function HomePage() {
           {/* Enhanced: Testimonials introduction */}
           <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
-              Don't just take our word for it - hear from travelers who have experienced our <strong>wheelchair accessible tours in Kenya</strong>, 
+              Don't just take our word for it - hear from travelers who have experienced our <Link href="/disability-tours" className="text-primary hover:underline">wheelchair accessible tours in Kenya</Link>, 
               luxury <strong>safari packages</strong>, and unforgettable <strong>game drives</strong> across East Africa. Their stories showcase 
               the transformative power of our <strong>inclusive safari experiences</strong> and the dedication of our team to creating 
               exceptional <strong>safari adventures</strong> for all travelers.
@@ -837,7 +906,7 @@ export default function HomePage() {
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
               <p>
-                When it comes to the <strong>Kenya best safari</strong>, JAE Travel stands out as the premier choice for travelers seeking authenticity, luxury, and accessibility. Our expert guides, custom vehicles, and deep knowledge of the Masai Mara ecosystem ensure you experience the Great Migration like never before.
+                When it comes to the <strong>Kenya best safari</strong>, JAE Travel stands out as the premier choice for travelers seeking authenticity, luxury, and accessibility. Our expert guides, custom vehicles, and deep knowledge of the <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara</Link> ecosystem ensure you experience the Great Migration like never before.
               </p>
               <p>
                 Whether you're planning your first African adventure or returning for more, our packages deliver unforgettable moments in one of the world's most iconic wildlife destinations — making us the go-to operator for the true <strong>Kenya best safari</strong>.
@@ -851,7 +920,7 @@ export default function HomePage() {
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
               <p>
-                The Masai Mara Great Migration is widely regarded as the <strong>best safari in Africa</strong>, and 2026 promises to be one of the most spectacular years yet. With record herd sizes and dramatic river crossings, this is the ultimate wildlife spectacle on the continent.
+                The <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara Great Migration</Link> is widely regarded as the <strong>best safari in Africa</strong>, and 2026 promises to be one of the most spectacular years yet. With record herd sizes and dramatic river crossings, this is the ultimate wildlife spectacle on the continent.
               </p>
               <p>
                 At JAE Travel, we make the <strong>best safari in Africa</strong> accessible to everyone — including wheelchair users — through our pioneering hydraulic lift vehicles, specialist guides, and wheelchair-friendly lodges. Book your 2026 adventure today and witness nature at its most extraordinary.
@@ -864,13 +933,13 @@ export default function HomePage() {
               {
                 name: "Sarah Johnson",
                 location: "USA",
-                text: "The Masai Mara safari was magical! We saw the Great Migration up close. Our guide was phenomenal.",
+                text: "The <Link href=\"/maasai-mara-great-migration\" className=\"text-primary hover:underline\">Masai Mara safari</Link> was magical! We saw the Great Migration up close. Our guide was phenomenal.",
                 rating: 5,
               },
               {
                 name: "David Chen",
                 location: "Canada",
-                text: "As a wheelchair user, I never thought I'd go on safari. JaeTravel made it possible and unforgettable. Their wheelchair accessible safari Kenya program is exceptional.",
+                text: "As a wheelchair user, I never thought I'd go on safari. JaeTravel made it possible and unforgettable. Their <Link href=\"/disability-tours\" className=\"text-primary hover:underline\">wheelchair accessible safari Kenya</Link> program is exceptional.",
                 rating: 5,
               },
               {
@@ -904,13 +973,13 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
             Whether you're dreaming of classic <strong>game drives</strong> in luxury <strong>camps and lodges</strong> or a fully <strong>wheelchair accessible safari</strong>, 
-            let us craft your perfect East African adventure. Contact us today to book your <strong>wheelchair accessible tours in Kenya</strong> and experience the best <strong>wheelchair accessible safari Kenya</strong> has to offer.
+            let us craft your perfect East African adventure. Contact us today to book your <Link href="/disability-tours" className="text-primary hover:underline">wheelchair accessible tours in Kenya</Link> and experience the best <strong>wheelchair accessible safari Kenya</strong> has to offer.
           </p>
 
           {/* Enhanced: Final persuasive content */}
           <div className="mb-8 max-w-5xl mx-auto space-y-4">
             <p className="text-muted-foreground leading-relaxed">
-              Your dream <strong>African safari</strong> awaits - from witnessing the spectacular <strong>Great Migration safari</strong> in the Masai Mara to 
+              Your dream <strong>African safari</strong> awaits - from witnessing the spectacular <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Great Migration safari</Link> in the Masai Mara to 
               encountering majestic mountain gorillas during <strong>gorilla trekking</strong> in Rwanda's misty forests. Our expert team is ready to design your perfect 
               <strong> East Africa safari</strong> with accessible <strong>safari vehicles</strong>, premium <strong>camps and lodges</strong>, 
               and unforgettable <strong>wildlife tours Africa</strong> experiences tailored to your needs and preferences.
