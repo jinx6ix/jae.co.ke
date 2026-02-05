@@ -1,4 +1,3 @@
-// File: app/about/AboutClient.tsx
 "use client"
 
 import { useState } from "react"
@@ -171,7 +170,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
               East Africa, developing specialized vehicles and training our guides in inclusive tourism practices. 
               Our fleet of <strong>hydraulic-lift 4x4 vehicles</strong> and partnerships with 
               <strong> barrier-free lodges</strong> ensure that travelers of all abilities can experience 
-              the magic of African wildlife in comfort and safety.
+              the magic of African wildlife in comfort and safety. Discover our <a href="/disability-tours" className="text-primary hover:underline">specialized disability tours</a>.
             </p>
 
             <p>
@@ -187,7 +186,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
               Each guide undergoes extensive training in wildlife behavior, photography techniques, 
               first aid, and cultural interpretation. Many of our guides come from local communities 
               and have generations of knowledge about East Africa's ecosystems, ensuring authentic 
-              and insightful safari experiences for our guests.
+              and insightful safari experiences for our guests. Check out our <a href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara migration tours</a>.
             </p>
 
             <p>
@@ -196,7 +195,8 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
               to local communities, and protective of East Africa's precious wildlife and habitats. 
               Whether you're seeking a classic <strong>Masai Mara safari</strong>, a 
               <strong> gorilla trekking adventure</strong> in Uganda, or a customized multi-country 
-              itinerary, JaeTravel delivers unforgettable journeys that respect both people and planet.
+              itinerary, JaeTravel delivers unforgettable journeys that respect both people and planet. 
+              Browse our <a href="/budget-tours" className="text-primary hover:underline">affordable budget tours</a> or luxury options to find your perfect safari.
             </p>
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                   Founder <strong>James Kimani</strong>, a Maasai guide with 20+ years in the bush, saw travelers with disabilities turned away from safaris. He refused to accept that. So he built a company that says <strong>yes</strong> — to wheelchair users, seniors, families, and everyone in between.
                 </p>
                 <p>
-                  Today, we're proud to be <strong>East Africa's leading accessible safari operator</strong>, with a fleet of <strong>hydraulic-lift 4x4s</strong>, partnerships with <strong>barrier-free lodges</strong>, and a team trained in <strong>inclusive guiding</strong>.
+                  Today, we're proud to be <strong>East Africa's leading accessible safari operator</strong>, with a fleet of <strong>hydraulic-lift 4x4s</strong>, partnerships with <strong>barrier-free lodges</strong>, and a team trained in <strong>inclusive guiding</strong>. Explore our <a href="/disability-tours" className="text-primary hover:underline">accessible tour options</a>.
                 </p>
                 <p>
                   But we're more than accessibility. We're <strong>carbon-neutral</strong>, <strong>community-powered</strong>, and <strong>conservation-driven</strong>. Every safari plants trees, funds schools, and protects wildlife.
@@ -259,7 +259,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                 We maintain strong relationships with conservancy managers and park authorities, 
                 giving our guests access to exclusive areas and special experiences beyond typical 
                 tourist routes. Our cross-border operations between Kenya and Tanzania are seamless, 
-                with all necessary documentation handled efficiently.
+                with all necessary documentation handled efficiently. Check out our <a href="/maasai-mara-great-migration" className="text-primary hover:underline">Great Migration tours</a>.
               </p>
             </div>
             <div>
@@ -294,7 +294,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                       <IconComponent className="h-7 w-7 text-primary" />
                     </div>
                     <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+                    <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: item.text }} />
                   </CardContent>
                 </Card>
               )
@@ -382,7 +382,9 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
           <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
             Join thousands of happy travelers who've discovered Africa with <strong>JaeTravel</strong> — where accessibility, sustainability, and magic meet. 
             Experience the best of <strong>Kenya wildlife safaris</strong>, <strong>Tanzania migration tours</strong>, 
-            <strong>Rwanda gorilla trekking</strong>, and <strong>Uganda adventure travel</strong> with East Africa's most trusted safari operator.
+            <strong>Rwanda gorilla trekking</strong>, and <strong>Uganda adventure travel</strong> with East Africa's most trusted safari operator. 
+            Check out our <a href="/budget-tours" className="underline underline-offset-4 hover:text-secondary">budget tours</a> for affordable options or 
+            our <a href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">accessible safari packages</a> for barrier-free adventures.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
             <Button asChild size="lg" variant="secondary" className="min-w-[220px]">

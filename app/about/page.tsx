@@ -26,8 +26,8 @@ const aboutPageSchema = {
       },
       "award": [
         "Kenya Tourism Award – Accessible Tourism 2023",
-        "World Travel Awards – Africa’s Responsible Tourism 2024",
-        "TripAdvisor Travelers’ Choice 2020–2025"
+        "World Travel Awards – Africa's Responsible Tourism 2024",
+        "TripAdvisor Travelers' Choice 2020–2025"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -62,7 +62,7 @@ const aboutPageSchema = {
       "@id": "https://www.jaetravel.co.ke/about/#webpage",
       "url": "https://www.jaetravel.co.ke/about",
       "name": "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
-      "description": "Meet the team behind Kenya’s leading accessible and sustainable safari company.",
+      "description": "Meet the team behind Kenya's leading accessible and sustainable safari company.",
       "isPartOf": {
         "@id": "https://www.jaetravel.co.ke/#website"
       },
@@ -144,6 +144,67 @@ const aboutPageSchema = {
     },
 
     // 6. FAQPage – 7 questions (optimized for rich FAQ carousel)
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes JaeTravel Expeditions different from other safari companies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike generic operators, we specialize in accessible safaris and sustainable tourism. We own our fleet of wheelchair-adapted vehicles, train all guides in disability support, and partner directly with local communities and conservation projects. Every trip is 100% customized."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long has JaeTravel been operating safaris in East Africa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We've been proudly operating since 2008 — over 17 years of crafting unforgettable, safe, and inclusive safari experiences across Kenya, Tanzania, Rwanda, and Uganda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your safaris suitable for wheelchair users and people with disabilities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We pioneered wheelchair-accessible safaris in East Africa. Our vehicles feature hydraulic lifts, our lodges are barrier-free, and our team is trained in mobility assistance. We've helped over 1,200 travelers with disabilities experience Africa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries do you operate in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We operate in Kenya (Masai Mara, Amboseli, Samburu), Tanzania (Serengeti, Ngorongoro, Zanzibar), Rwanda (gorilla trekking), and Uganda (gorilla habituation, Queen Elizabeth NP)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you support conservation and local communities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We're a carbon-neutral operator, plant a tree for every guest, and 10% of profits go to community schools and anti-poaching units. We only hire local guides and source from local suppliers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize my safari itinerary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every safari is 100% tailor-made. Tell us your dates, budget, interests, and accessibility needs — we'll design a perfect itinerary, whether it's a 3-day Masai Mara getaway or a 14-day multi-country adventure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What awards has JaeTravel won?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We're proud recipients of the Kenya Tourism Award for Accessible Tourism (2023), World Travel Awards – Africa's Responsible Tourism Winner (2024), and TripAdvisor Travelers' Choice 5 years running."
+          }
+        }
+      ]
+    }
   ]
 };
 
@@ -175,7 +236,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About JaeTravel Expeditions | Trusted East Africa Safari Experts",
     description:
-      "Since 2008, we’ve pioneered accessible, sustainable, and authentic safaris across Kenya, Tanzania, Rwanda, and Uganda.",
+      "Since 2008, we've pioneered accessible, sustainable, and authentic safaris across Kenya, Tanzania, Rwanda, and Uganda.",
     images: ["/african-safari-team-with-tourists.jpg"],
     url: "https://www.jaetravel.co.ke/about",
     type: "website",
@@ -204,32 +265,32 @@ const faqs = [
   {
     question: "How long has JaeTravel been operating safaris in East Africa?",
     answer:
-      "We’ve been proudly operating since 2008 — over 17 years of crafting unforgettable, safe, and inclusive safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
+      "We've been proudly operating since 2008 — over 17 years of crafting unforgettable, safe, and inclusive safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
   },
   {
     question: "Are your safaris suitable for wheelchair users and people with disabilities?",
     answer:
-      "Yes. We pioneered <strong>wheelchair-accessible safaris</strong> in East Africa. Our vehicles feature hydraulic lifts, our lodges are barrier-free, and our team is trained in mobility assistance. We’ve helped over 1,200 travelers with disabilities experience Africa.",
+      "Yes. We pioneered <strong>wheelchair-accessible safaris</strong> in East Africa. Our vehicles feature hydraulic lifts, our lodges are barrier-free, and our team is trained in mobility assistance. We've helped over 1,200 travelers with disabilities experience Africa. Discover more on our <a href=\"/disability-tours\" class=\"text-primary hover:underline\">disability tours page</a>.",
   },
   {
     question: "Which countries do you operate in?",
     answer:
-      "We operate in <strong>Kenya</strong> (Masai Mara, Amboseli, Samburu), <strong>Tanzania</strong> (Serengeti, Ngorongoro, Zanzibar), <strong>Rwanda</strong> (gorilla trekking), and <strong>Uganda</strong> (gorilla habituation, Queen Elizabeth NP).",
+      "We operate in <strong>Kenya</strong> (Masai Mara, Amboseli, Samburu), <strong>Tanzania</strong> (Serengeti, Ngorongoro, Zanzibar), <strong>Rwanda</strong> (gorilla trekking), and <strong>Uganda</strong> (gorilla habituation, Queen Elizabeth NP). Explore our <a href=\"/maasai-mara-great-migration\" class=\"text-primary hover:underline\">Masai Mara migration tours</a> and <a href=\"/budget-tours\" class=\"text-primary hover:underline\">budget safari packages</a>.",
   },
   {
     question: "Do you support conservation and local communities?",
     answer:
-      "Absolutely. We’re a <strong>carbon-neutral operator</strong>, plant a tree for every guest, and 10% of profits go to community schools and anti-poaching units. We only hire local guides and source from local suppliers.",
+      "Absolutely. We're a <strong>carbon-neutral operator</strong>, plant a tree for every guest, and 10% of profits go to community schools and anti-poaching units. We only hire local guides and source from local suppliers.",
   },
   {
     question: "Can I customize my safari itinerary?",
     answer:
-      "Every safari is 100% tailor-made. Tell us your dates, budget, interests, and accessibility needs — we’ll design a perfect itinerary, whether it’s a 3-day Masai Mara getaway or a 14-day multi-country adventure.",
+      "Every safari is 100% tailor-made. Tell us your dates, budget, interests, and accessibility needs — we'll design a perfect itinerary, whether it's a <a href=\"/budget-tours/samburu-3-days-private-safari\" class=\"text-primary hover:underline\">3-day Samburu getaway</a> or a <a href=\"/budget-tours/kenya-big-5-7-days-budget-safari\" class=\"text-primary hover:underline\">7-day Big Five adventure</a>.",
   },
   {
     question: "What awards has JaeTravel won?",
     answer:
-      "We’re proud recipients of the <strong>Kenya Tourism Award for Accessible Tourism (2023)</strong>, <strong>World Travel Awards – Africa’s Responsible Tourism Winner (2024)</strong>, and <strong>TripAdvisor Travelers’ Choice 5 years running</strong>.",
+      "We're proud recipients of the <strong>Kenya Tourism Award for Accessible Tourism (2023)</strong>, <strong>World Travel Awards – Africa's Responsible Tourism Winner (2024)</strong>, and <strong>TripAdvisor Travelers' Choice 5 years running</strong>.",
   },
 ]
 
@@ -256,7 +317,7 @@ const teamMembers = [
   {
     name: "Amina Hassan",
     role: "Operations Manager – Tanzania & Rwanda",
-    bio: "Based in Arusha, Amina coordinates all Tanzania and Rwanda trips. She’s an expert in gorilla permits and accessible Serengeti logistics.",
+    bio: "Based in Arusha, Amina coordinates all Tanzania and Rwanda trips. She's an expert in gorilla permits and accessible Serengeti logistics.",
     image: "/team/amina-hassan.jpg",
   },
 ]
@@ -266,17 +327,17 @@ const values = [
   {
     icon: "Heart",
     title: "Accessibility for All",
-    text: "We believe adventure belongs to everyone. Our wheelchair-adapted vehicles, trained staff, and barrier-free lodges make safaris possible for travelers with disabilities.",
+    text: "We believe adventure belongs to everyone. Our wheelchair-adapted vehicles, trained staff, and barrier-free lodges make safaris possible for travelers with disabilities. Learn more about our <a href=\"/disability-tours\" class=\"text-primary hover:underline\">accessible safari tours</a>.",
   },
   {
     icon: "Leaf",
     title: "Conservation First",
-    text: "Carbon-neutral since 2020. We plant 1 tree per guest, fund anti-poaching patrols, and support wildlife corridors. Your safari helps protect Africa’s future.",
+    text: "Carbon-neutral since 2020. We plant 1 tree per guest, fund anti-poaching patrols, and support wildlife corridors. Your safari helps protect Africa's future.",
   },
   {
     icon: "Users",
     title: "Community-Powered",
-    text: "100% local guides. 10% of profits fund schools, clinics, and women’s cooperatives. We don’t just visit Africa — we invest in it.",
+    text: "100% local guides. 10% of profits fund schools, clinics, and women's cooperatives. We don't just visit Africa — we invest in it.",
   },
   {
     icon: "Shield",
@@ -286,7 +347,7 @@ const values = [
   {
     icon: "Award",
     title: "Award-Winning Service",
-    text: "Kenya Tourism Award Winner 2023, World Travel Awards 2024, TripAdvisor Travelers’ Choice 5 years in a row.",
+    text: "Kenya Tourism Award Winner 2023, World Travel Awards 2024, TripAdvisor Travelers' Choice 5 years in a row.",
   },
   {
     icon: "Globe",
