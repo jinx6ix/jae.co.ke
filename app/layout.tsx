@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
+import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
 
 // Fonts with optimized loading
 const playfair = Playfair_Display({
@@ -127,7 +128,7 @@ const criticalCSS = `
     --font-inter: ${inter.style.fontFamily};
     --background: #ffffff;
     --foreground: #1a202c;
-    --primary: #f97316; /* Vibrant orange from your palette */
+    --primary: #f97316;
     --primary-foreground: #ffffff;
     --border: #e5e7eb;
     --muted: #f9fafb;
@@ -168,7 +169,7 @@ const criticalCSS = `
   }
   
   .btn-primary:hover { 
-    background-color: #ea580c; /* Darker orange */
+    background-color: #ea580c;
   }
   
   /* Critical skeleton loading */
@@ -209,24 +210,23 @@ const criticalCSS = `
   }
 `
 
-// Component to handle async CSS loading
+// FIXED: No onLoad event handler - Server Component compatible
 const AsyncCSS = () => (
   <>
-    {/* Load globals.css asynchronously */}
+    {/* Use media="print" trick - loads async without JavaScript */}
     <link 
-      rel="preload" 
+      rel="stylesheet" 
       href="/_next/static/css/app/layout.css" 
-      as="style"
-      onLoad={(e: any) => {
-        e.target.onload = null
-        e.target.rel = 'stylesheet'
-      }}
+      media="print"
+      data-async-css="true"
     />
     <noscript>
       <link rel="stylesheet" href="/_next/static/css/app/layout.css" />
     </noscript>
   </>
 )
+
+// Client component to convert print to all after hydration
 
 export default function RootLayout({
   children,
@@ -305,7 +305,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
         
-        {/* Async loading of non-critical CSS */}
+        {/* Async loading of non-critical CSS - NO onLoad handler */}
         <AsyncCSS />
         
         {/* Preconnect to critical origins */}
@@ -371,9 +371,9 @@ export default function RootLayout({
           `}
         </Script>
 
-        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKz782vQl7AfAH7Q3X4Ssg" />
+        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
         
-        {/* Preload hero image - Update with your actual hero image */}
+        {/* Preload hero image */}
         <link 
           rel="preload" 
           href="/images/hero-safari.jpg" 
@@ -383,7 +383,7 @@ export default function RootLayout({
           fetchPriority="high"
         />
         
-        {/* Preload LCP image if different */}
+        {/* Preload LCP image */}
         <link 
           rel="preload" 
           as="image"
@@ -404,6 +404,9 @@ export default function RootLayout({
             title="gtm-noscript"
           />
         </noscript>
+
+        {/* Initialize async CSS after hydration */}
+        <AsyncCSSInitializer />
 
         <Suspense 
           fallback={
