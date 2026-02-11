@@ -3,11 +3,6 @@ const nextConfig = {
   trailingSlash: false,
   skipTrailingSlashRedirect: true, // This kills all trailing-slash issues forever
 
-  // CSS Optimization for Performance
-  experimental: {
-    inlineCss: true, // Automatically optimizes and inlines critical CSS
-  },
-
   // Image Optimization ni mbaya
   images: {
     unoptimized: true,
