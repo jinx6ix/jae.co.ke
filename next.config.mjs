@@ -8,7 +8,7 @@ const nextConfig = {
     inlineCss: true, // Automatically optimizes and inlines critical CSS
   },
 
-  // Image Optimization
+  // Image Optimization ni mbaya
   images: {
     unoptimized: true,
     remotePatterns: [
