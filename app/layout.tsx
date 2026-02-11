@@ -7,24 +7,26 @@ import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
-import "./globals.css"
 
+// Fonts with optimized loading
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+  preload: true,
+  adjustFontFallback: false,
 })
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  adjustFontFallback: false,
 })
 
 export const metadata: Metadata = {
-  // CRITICAL: Force www as the official domain
   metadataBase: new URL("https://www.jaetravel.co.ke"),
-
   title: {
     default: "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
     template: "%s | JaeTravel Expeditions",
@@ -88,12 +90,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.jaetravel.co.ke",
     languages: {
-      'en': 'https://www.jaetravel.co.ke',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke',       // US
-      'en-GB': 'https://www.jaetravel.co.ke',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke',   // Fallback
+      'en': 'https://www.jaetravel.co.ke',
+      'en-US': 'https://www.jaetravel.co.ke',
+      'en-GB': 'https://www.jaetravel.co.ke',
+      'en-AU': 'https://www.jaetravel.co.ke',
+      'en-CA': 'https://www.jaetravel.co.ke',
+      'x-default': 'https://www.jaetravel.co.ke',
     },
     types: {
       "application/rss+xml": "https://www.jaetravel.co.ke/blog/rss.xml",
@@ -102,12 +104,135 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
+// Extract only critical CSS from your globals.css
+const criticalCSS = `
+  /* Critical Reset & Base Styles */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  body { 
+    line-height: 1.5; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    background-color: #ffffff;
+    color: #1a202c;
+  }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; }
+  input, button, textarea, select { font: inherit; }
+  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+  
+  /* Critical color variables for above-the-fold */
+  :root {
+    --font-playfair: ${playfair.style.fontFamily};
+    --font-inter: ${inter.style.fontFamily};
+    --background: #ffffff;
+    --foreground: #1a202c;
+    --primary: #f97316; /* Vibrant orange from your palette */
+    --primary-foreground: #ffffff;
+    --border: #e5e7eb;
+    --muted: #f9fafb;
+    --muted-foreground: #6b7280;
+    --radius: 0.625rem;
+  }
+  
+  /* Critical container & spacing */
+  .min-h-screen { min-height: 100vh; }
+  
+  /* Critical header/navigation */
+  .header-wrapper { 
+    position: sticky; 
+    top: 0; 
+    z-index: 50; 
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  /* Critical typography */
+  h1, h2, h3, h4, .font-serif { 
+    font-family: var(--font-playfair), Georgia, serif; 
+  }
+  
+  /* Critical buttons - above the fold */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 600;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover { 
+    background-color: #ea580c; /* Darker orange */
+  }
+  
+  /* Critical skeleton loading */
+  .skeleton-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes skeleton-pulse {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Critical navigation hover effects */
+  .nav-item { position: relative; }
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-item:hover::after { width: 100%; }
+  
+  /* Critical border styles */
+  * { border-color: var(--border); }
+  
+  /* Mobile critical styles */
+  @media (max-width: 768px) {
+    .mobile-hidden { display: none; }
+    .mobile-menu { transform: translateX(-100%); }
+    .mobile-menu.active { transform: translateX(0); }
+  }
+`
+
+// Component to handle async CSS loading
+const AsyncCSS = () => (
+  <>
+    {/* Load globals.css asynchronously */}
+    <link 
+      rel="preload" 
+      href="/_next/static/css/app/layout.css" 
+      as="style"
+      onLoad={(e: any) => {
+        e.target.onload = null
+        e.target.rel = 'stylesheet'
+      }}
+    />
+    <noscript>
+      <link rel="stylesheet" href="/_next/static/css/app/layout.css" />
+    </noscript>
+  </>
+)
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // All schema URLs now point to www
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
@@ -172,70 +297,131 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* Dynamic canonical tag — works perfectly on every page */}
-        <link
-          rel="canonical"
-          href={
-            typeof window === "undefined"
-              ? "https://www.jaetravel.co.ke"
-              : `${window.location.protocol}//www.jaetravel.co.ke${window.location.pathname}${window.location.search}`
-          }
+        {/* Inline Critical CSS - Eliminates render-blocking */}
+        <style
+          id="critical-css"
+          dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
-
-        {/* Structured Data */}
+        
+        {/* Async loading of non-critical CSS */}
+        <AsyncCSS />
+        
+        {/* Preconnect to critical origins */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.jaetravel.co.ke" />
+        
+        {/* Viewport meta tag for responsive design */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        
+        {/* Deferred Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          defer
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          defer
         />
 
-        {/* Ahrefs Analytics */}
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" async />
+        {/* Ahrefs Analytics - Deferred */}
+        <script 
+          src="https://analytics.ahrefs.com/analytics.js" 
+          data-key="q74t4ci2dZznctEH4t8jCA" 
+          defer 
+        />
 
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            (function(w,d,s,l,i){
+              w[l]=w[l]||[];
+              w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+              var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-52G2X6L5');
           `}
         </Script>
 
         {/* Google Analytics GA4 */}
-        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B" />
+        <Script 
+          strategy="afterInteractive" 
+          src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B" 
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-2YLERP8F8B', { page_path: window.location.pathname });
+            gtag('config', 'G-2YLERP8F8B', { 
+              page_path: window.location.pathname,
+              transport_type: 'beacon'
+            });
           `}
         </Script>
 
-        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
+        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKz782vQl7AfAH7Q3X4Ssg" />
+        
+        {/* Preload hero image - Update with your actual hero image */}
+        <link 
+          rel="preload" 
+          href="/images/hero-safari.jpg" 
+          as="image" 
+          type="image/jpeg"
+          media="(min-width: 768px)"
+          fetchPriority="high"
+        />
+        
+        {/* Preload LCP image if different */}
+        <link 
+          rel="preload" 
+          as="image"
+          href="/images/hero-banner.jpg"
+          imageSrcSet="/images/hero-banner.jpg 1920w, /images/hero-banner-mobile.jpg 768w"
+          imageSizes="100vw"
+        />
       </head>
 
-      <body className="font-sans antialiased">
-        {/* GTM Noscript */}
+      <body className="font-sans antialiased bg-background text-foreground">
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-52G2X6L5"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
+            title="gtm-noscript"
           />
         </noscript>
 
-        <Suspense>
-          <Header />
-          <main className="min-h-screen">{children}</main>
+        <Suspense 
+          fallback={
+            <div className="min-h-screen flex flex-col items-center justify-center">
+              <div className="skeleton-loading w-24 h-24 rounded-full mb-6"></div>
+              <div className="text-center">
+                <div className="skeleton-loading h-5 w-48 mb-3 rounded"></div>
+                <div className="skeleton-loading h-3 w-32 rounded"></div>
+              </div>
+            </div>
+          }
+        >
+          <div className="header-wrapper">
+            <Header />
+          </div>
+          <main className="min-h-screen">
+            {children}
+          </main>
           <Footer />
           <AnalyticsTracker />
           <Analytics />
