@@ -3098,7 +3098,7 @@ export const tours: Tour[] = [
   {
     "id": "64",
     "slug": "uganda-accessible-primate-safari",
-    "image": "/Uganda-Chimpanzees-45.jpg",
+    "image": "/images (10).jpg",
     "title": "5-Day Uganda Accessible Primate Safari",
     "description": "Experience Uganda's incredible primates on this wheelchair-accessible safari designed for travelers with reduced mobility. Track chimpanzees in Kibale Forest, search for golden monkeys, and enjoy adapted game drives in Queen Elizabeth National Park. Specially modified vehicles, accessible lodges, and trained guides ensure a comfortable and unforgettable primate adventure.",
     "shortDescription": "Wheelchair-accessible chimpanzee tracking & primate safari",

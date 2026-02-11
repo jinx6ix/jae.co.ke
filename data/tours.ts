@@ -2262,7 +2262,7 @@ export const tours: Tour[] = [
   {
     "id": "65",
     "slug": "uganda-accessible-primate-safari",
-    "image": "/uganda-chimps-wheelchair.jpg",
+    "image": "/images (10).jpg",
     "title": "5-Day Accessible Uganda Primate Safari",
     "description": "Experience Uganda's incredible primates on this fully accessible safari. Designed for travelers with mobility challenges, this tour offers wheelchair-friendly accommodations, modified vehicles with ramps, and guided tracking of mountain gorillas and chimpanzees in Kibale Forest and Bwindi Impenetrable National Park.",
     "price": 3850,
