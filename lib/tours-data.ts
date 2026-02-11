@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface Tour {
+  tags: any;
   shortDescription: string;
   image: string;
   duration: string;
@@ -78,7 +79,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
-    category: "Luxury Safari"
+    category: "Luxury Safari",
+    tags: undefined
   },
   {
     id: "kenya-amboseli",
@@ -121,7 +123,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
-    category: "Classic Safari"
+    category: "Classic Safari",
+    tags: undefined
   },
   {
     id: "tanzania-serengeti",
@@ -166,7 +169,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "Small groups (4-10 people)",
-    category: "Migration Safari"
+    category: "Migration Safari",
+    tags: undefined
   },
   {
     id: "tanzania-ngorongoro",
@@ -209,7 +213,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
-    category: "Family Safari"
+    category: "Family Safari",
+    tags: undefined
   },
   {
     id: "uganda-bwindi",
@@ -252,7 +257,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Challenging",
     groupSize: "Maximum 8 per gorilla group",
-    category: "Primate Trekking"
+    category: "Primate Trekking",
+    tags: undefined
   },
   {
     id: "rwanda-volcanoes",
@@ -297,7 +303,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "Maximum 8 per gorilla group",
-    category: "Luxury Primate Trekking"
+    category: "Luxury Primate Trekking",
+    tags: undefined
   },
   {
     id: "1",
@@ -340,7 +347,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Classic Safari"
+    category: "Classic Safari",
+    tags: undefined
   },
   {
     id: "2",
@@ -383,7 +391,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Wildlife Photography"
+    category: "Wildlife Photography",
+    tags: undefined
   },
   {
     id: "3",
@@ -426,7 +435,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Specialty Safari"
+    category: "Specialty Safari",
+    tags: undefined
   },
   {
     id: "4",
@@ -471,7 +481,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Bird Watching"
+    category: "Bird Watching",
+    tags: undefined
   },
   {
     id: "5",
@@ -514,7 +525,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-10 people",
-    category: "Wilderness Safari"
+    category: "Wilderness Safari",
+    tags: undefined
   },
   {
     id: "6",
@@ -557,7 +569,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Beach & Safari Combo"
+    category: "Beach & Safari Combo",
+    tags: undefined
   },
   {
     id: "7",
@@ -600,7 +613,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Difficult",
     groupSize: "2-8 people",
-    category: "Mountain Climbing"
+    category: "Mountain Climbing",
+    tags: undefined
   },
   {
     id: "8",
@@ -643,7 +657,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Conservation Safari"
+    category: "Conservation Safari",
+    tags: undefined
   },
   {
     id: "9",
@@ -686,7 +701,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-12 people",
-    category: "Adventure Safari"
+    category: "Adventure Safari",
+    tags: undefined
   },
   {
     id: "10",
@@ -729,7 +745,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Cultural Tourism"
+    category: "Cultural Tourism",
+    tags: undefined
   },
   {
     id: "11",
@@ -772,7 +789,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Mountain Safari"
+    category: "Mountain Safari",
+    tags: undefined
   },
   {
     id: "12",
@@ -815,7 +833,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Luxury Beach & Safari"
+    category: "Luxury Beach & Safari",
+    tags: undefined
   },
   {
     id: "13",
@@ -858,7 +877,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-10 people",
-    category: "Wildlife Safari"
+    category: "Wildlife Safari",
+    tags: undefined
   },
   {
     id: "14",
@@ -901,7 +921,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Geological Safari"
+    category: "Geological Safari",
+    tags: undefined
   },
   {
     id: "15",
@@ -944,7 +965,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Difficult",
     groupSize: "2-10 people",
-    category: "Mountain Climbing"
+    category: "Mountain Climbing",
+    tags: undefined
   },
   {
     id: "16",
@@ -987,7 +1009,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Elephant Safari"
+    category: "Elephant Safari",
+    tags: undefined
   },
   {
     id: "17",
@@ -1030,7 +1053,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Bird & Wildlife Safari"
+    category: "Bird & Wildlife Safari",
+    tags: undefined
   },
   {
     id: "18",
@@ -1073,7 +1097,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Beach Holiday"
+    category: "Beach Holiday",
+    tags: undefined
   },
   {
     id: "19",
@@ -1116,7 +1141,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-6 people",
-    category: "Wilderness Safari"
+    category: "Wilderness Safari",
+    tags: undefined
   },
   {
     id: "20",
@@ -1159,7 +1185,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Multi-Activity Safari"
+    category: "Multi-Activity Safari",
+    tags: undefined
   },
   {
     id: "21",
@@ -1202,7 +1229,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Accessible Safari"
+    category: "Accessible Safari",
+    tags: undefined
   },
   {
     id: "22",
@@ -1245,7 +1273,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Cultural Tourism"
+    category: "Cultural Tourism",
+    tags: undefined
   },
   {
     id: "23",
@@ -1288,7 +1317,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-6 people",
-    category: "Remote Safari"
+    category: "Remote Safari",
+    tags: undefined
   },
   {
     id: "24",
@@ -1331,7 +1361,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Challenging",
     groupSize: "2-8 people",
-    category: "Primate Trekking"
+    category: "Primate Trekking",
+    tags: undefined
   },
   {
     id: "25",
@@ -1374,7 +1405,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Diving Safari"
+    category: "Diving Safari",
+    tags: undefined
   },
   {
     id: "26",
@@ -1417,7 +1449,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-12 people",
-    category: "Heritage Tour"
+    category: "Heritage Tour",
+    tags: undefined
   },
   {
     id: "27",
@@ -1460,7 +1493,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Comprehensive Safari"
+    category: "Comprehensive Safari",
+    tags: undefined
   },
   {
     id: "28",
@@ -1503,7 +1537,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Challenging",
     groupSize: "Maximum 8 per group",
-    category: "Luxury Gorilla Trekking"
+    category: "Luxury Gorilla Trekking",
+    tags: undefined
   },
   {
     id: "29",
@@ -1546,7 +1581,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Forest Adventure"
+    category: "Forest Adventure",
+    tags: undefined
   },
   {
     id: "30",
@@ -1589,7 +1625,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Lake Retreat"
+    category: "Lake Retreat",
+    tags: undefined
   },
   {
     id: "31",
@@ -1632,7 +1669,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Savanna Safari"
+    category: "Savanna Safari",
+    tags: undefined
   },
   {
     id: "32",
@@ -1675,7 +1713,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "1-12 people",
-    category: "City Tour"
+    category: "City Tour",
+    tags: undefined
   },
   {
     id: "33",
@@ -1718,7 +1757,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Primate Tracking"
+    category: "Primate Tracking",
+    tags: undefined
   },
   {
     id: "34",
@@ -1761,7 +1801,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Challenging",
     groupSize: "Maximum 8 per group",
-    category: "Gorilla Trekking"
+    category: "Gorilla Trekking",
+    tags: undefined
   },
   {
     id: "35",
@@ -1804,7 +1845,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Classic Uganda Safari"
+    category: "Classic Uganda Safari",
+    tags: undefined
   },
   {
     id: "36",
@@ -1847,7 +1889,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Waterfall Safari"
+    category: "Waterfall Safari",
+    tags: undefined
   },
   {
     id: "37",
@@ -1890,7 +1933,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-8 people",
-    category: "Primate Safari"
+    category: "Primate Safari",
+    tags: undefined
   },
   {
     id: "38",
@@ -1933,7 +1977,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Compact Safari"
+    category: "Compact Safari",
+    tags: undefined
   },
   {
     id: "39",
@@ -1976,7 +2021,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Difficult",
     groupSize: "2-8 people",
-    category: "Mountain Trekking"
+    category: "Mountain Trekking",
+    tags: undefined
   },
   {
     id: "40",
@@ -2019,7 +2065,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Moderate",
     groupSize: "2-12 people",
-    category: "Adventure Tour"
+    category: "Adventure Tour",
+    tags: undefined
   },
   {
     id: "41",
@@ -2062,7 +2109,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-8 people",
-    category: "Lake Retreat"
+    category: "Lake Retreat",
+    tags: undefined
   },
   {
     id: "42",
@@ -2105,7 +2153,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Island Holiday"
+    category: "Island Holiday",
+    tags: undefined
   },
   {
     id: "43",
@@ -2149,7 +2198,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "2-10 people",
-    category: "Day Safari"
+    category: "Day Safari",
+    tags: undefined
   },
   {
     id: "44",
@@ -2192,7 +2242,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "1-4 people",
-    category: "Accessible Safari"
+    category: "Accessible Safari",
+    tags: undefined
   },
   {
     id: "45",
@@ -2235,7 +2286,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "1-3 people",
-    category: "Accessible Wildlife"
+    category: "Accessible Wildlife",
+    tags: undefined
   },
   {
     id: "46",
@@ -2278,7 +2330,8 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "1-4 people",
-    category: "Inclusive Safari"
+    category: "Inclusive Safari",
+    tags: undefined
   },
   {
     id: "49",
@@ -2326,12 +2379,13 @@ export const tours: Tour[] = [
     ],
     difficulty: "Easy",
     groupSize: "1-4 people",
-    category: "Premium Accessible Safari"
+    category: "Premium Accessible Safari",
+    tags: undefined
   },
   {
     "id": "50",
     "slug": "carnivore-experience",
-    "image": "/carnivore-dining.jpg",
+    "image": "/carnivore-restaurant.jpg",
     "title": "Carnivore Experience",
     "description": "Indulge in a unique dining adventure at the famous Carnivore Restaurant in Nairobi, featuring exotic game meats and vibrant Kenyan hospitality.",
     shortDescription: "Half-day dining experience",
@@ -2373,12 +2427,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-20 people",
-    "category": "Culinary Experience"
+    "category": "Culinary Experience",
+    tags: undefined
   },
   {
     "id": "51",
     "slug": "safari-madoa-doa",
-    "image": "/madoa-doa-safari.jpg",
+    "image": "/Viaje-a-Kenia-Masai-Mara-32.jpg",
     "title": "Safari Madoa Doa",
     "description": "Embark on an exclusive safari adventure through Kenya's premier wildlife reserves, spotting the Big Five in their natural habitat.",
     shortDescription: "7-day exclusive wildlife safari",
@@ -2421,12 +2476,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Moderate",
     "groupSize": "2-6 people",
-    "category": "Exclusive Safari"
+    "category": "Exclusive Safari",
+    tags: undefined
   },
   {
     "id": "52",
     "slug": "best-of-zanzibar",
-    "image": "/zanzibar-beach.jpg",
+    "image": "/images (9).jpg",
     "title": "Best of Zanzibar",
     "description": "Discover the tropical paradise of Zanzibar with its pristine beaches, historic Stone Town, and vibrant spice tours.",
     shortDescription: "8-day Zanzibar exploration",
@@ -2469,12 +2525,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-10 people",
-    "category": "Island Holiday"
+    "category": "Island Holiday",
+    tags: undefined
   },
   {
     "id": "53",
     "slug": "classic-sky-safari-2",
-    "image": "/sky-safari.jpg",
+    "image": "/images (8).jpg",
     "title": "Classic Sky Safari 2",
     "description": "Soar above East Africa's iconic landscapes on a luxury sky safari, visiting Amboseli, Meru, and the Maasai Mara.",
     shortDescription: "10-day luxury air safari",
@@ -2517,12 +2574,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-8 people",
-    "category": "Luxury Sky Safari"
+    "category": "Luxury Sky Safari",
+    tags: undefined
   },
   {
     "id": "54",
     "slug": "nairobi-national-park-tour",
-    "image": "/nairobi-park.jpg",
+    "image": "/caption.jpg",
     "title": "Nairobi National Park Tour",
     "description": "Explore Nairobi National Park, a unique wildlife haven near the city, home to rhinos, lions, and stunning savanna views.",
     shortDescription: "Half-day wildlife tour",
@@ -2564,12 +2622,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-12 people",
-    "category": "Day Tour"
+    "category": "Day Tour",
+    tags: undefined
   },
   {
     "id": "55",
     "slug": "visit-a-thousand-hills-distilleries",
-    "image": "/thousand-hills-distillery.jpg",
+    "image": "/images (7).jpg",
     "title": "Visit a Thousand Hills Distilleries",
     "description": "Experience Rwanda's artisanal spirit scene with a tour of Thousand Hills Distilleries, tasting premium local beverages.",
     shortDescription: "Half-day distillery tour",
@@ -2611,12 +2670,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-10 people",
-    "category": "Food & Drink Tour"
+    "category": "Food & Drink Tour",
+    tags: undefined
   },
   {
     "id": "56",
     "slug": "this-is-africa-nyamirambo-womens-center",
-    "image": "/nyamirambo-center.jpg",
+    "image": "/nyamirambo-women-s-center.jpg",
     "title": "This is Africa Nyamirambo Women's Center",
     "description": "Immerse yourself in Rwandan culture with a visit to Nyamirambo Women's Center, exploring local crafts and community initiatives.",
     shortDescription: "Half-day cultural tour",
@@ -2658,12 +2718,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-8 people",
-    "category": "Cultural Tour"
+    "category": "Cultural Tour",
+    tags: undefined
   },
   {
     "id": "57",
     "slug": "relaxation-at-the-beach",
-    "image": "/beach-relaxation.jpg",
+    "image": "/images (6).jpg",
     "title": "Relaxation at the Beach",
     "description": "Unwind on the pristine beaches of East Africa, enjoying sun, sand, and sea in a serene coastal escape.",
     shortDescription: "5-day beach retreat",
@@ -2705,12 +2766,13 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Easy",
     "groupSize": "2-10 people",
-    "category": "Beach Retreat"
+    "category": "Beach Retreat",
+    tags: undefined
   },
   {
     "id": "58",
     "slug": "safari-dwika",
-    "image": "/dwika-safari.jpg",
+    "image": "/images (5).jpg",
     "title": "Safari Dwika",
     "description": "Join an adventurous safari through Tanzania's iconic parks, witnessing diverse wildlife and stunning landscapes.",
     shortDescription: "7-day Tanzania safari adventure",
@@ -2753,8 +2815,349 @@ export const tours: Tour[] = [
     ],
     "difficulty": "Moderate",
     "groupSize": "2-8 people",
-    "category": "Adventure Safari"
-  }
+    "category": "Adventure Safari",
+    tags: undefined
+  },
+  {
+      "id": "59",
+      "slug": "lake-nakuru-rhino-sanctuary",
+      "image": "/images (4).jpg",
+      "title": "Lake Nakuru Rhino Sanctuary Experience",
+      "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
+      "shortDescription": "3-day rhino & birding safari in Kenya",
+      "price": 1200,
+      "currency": "USD",
+      "rating": 4.7,
+      "reviewCount": 12,
+      "itinerary": "3-day rhino tracking and birdwatching in Lake Nakuru",
+      "bookingUrl": "/booking/lake-nakuru-rhino-sanctuary",
+      "region": "East Africa",
+      "country": "Kenya",
+      "metaTitle": "Lake Nakuru Rhino Safari | Jae Travel Expeditions",
+      "metaDescription": "Visit Kenya's premier rhino sanctuary at Lake Nakuru. See black and white rhinos, flamingos, and Rothschild giraffes on this 3-day wildlife escape.",
+      "keywords": [
+        "Lake Nakuru",
+        "Rhino Sanctuary Kenya",
+        "Flamingos Lake Nakuru",
+        "Kenya Safari",
+        "Black Rhino Tour"
+      ],
+      "url": "/tour/lake-nakuru-rhino-sanctuary",
+      "duration": "3 Days",
+      "highlights": [
+        "Black and white rhino tracking",
+        "Millions of flamingos (seasonal)",
+        "Rothschild giraffe sightings",
+        "Baboon Cliff viewpoints",
+        "Birdwatcher's paradise (450+ species)"
+      ],
+      "included": [
+        "2 nights accommodation",
+        "All park entry fees",
+        "Private 4x4 safari vehicle",
+        "Professional English-speaking guide",
+        "Bottled water",
+        "Game drives"
+      ],
+      "excluded": [
+        "International flights",
+        "Visa fees (Kenya ETA)",
+        "Tips and gratuities",
+        "Personal expenses",
+        "Alcoholic beverages"
+      ],
+      "difficulty": "Easy",
+      "groupSize": "2-6 people",
+      "category": "Wildlife Safari",
+      "tags": ["Rhino", "Birding", "Kenya", "Family Friendly"]
+  },
+  {
+      "id": "60",
+      "slug": "rwanda-accessible-gorilla-safari",
+      "image": "/images (3).jpg",
+      "title": "Rwanda Accessible Gorilla Safari",
+      "description": "Experience the magic of mountain gorillas in Volcanoes National Park on a tour designed for accessibility. Shorter treks, vehicle support, and premium accommodations ensure a comfortable yet unforgettable primate encounter.",
+      "shortDescription": "4-day accessible gorilla trek in Rwanda",
+      "price": 4500,
+      "currency": "USD",
+      "rating": 5.0,
+      "reviewCount": 9,
+      "itinerary": "4-day gorilla trekking experience with accessible trails",
+      "bookingUrl": "/booking/rwanda-accessible-gorilla-safari",
+      "region": "East Africa",
+      "country": "Rwanda",
+      "metaTitle": "Accessible Gorilla Trekking Rwanda | Jae Travel Expeditions",
+      "metaDescription": "A premium, accessible gorilla safari in Rwanda. Shorter walking distances, porter assistance, and luxury lodges. Perfect for travelers with mobility considerations.",
+      "keywords": [
+        "Rwanda Gorilla Trek",
+        "Accessible Safari",
+        "Volcanoes National Park",
+        "Mountain Gorillas",
+        "Inclusive Travel Africa"
+      ],
+      "url": "/tour/rwanda-accessible-gorilla-safari",
+      "duration": "4 Days",
+      "highlights": [
+        "Guaranteed gorilla permit (Gorilla Fund certified)",
+        "Accessible trekking routes (shorter/steeper gradients avoided)",
+        "Private vehicle access to trailhead",
+        "Dedicated porter for each guest",
+        "Cultural visit to Iby'Iwacu Village",
+        "Luxury eco-lodge with accessible rooms"
+      ],
+      "included": [
+        "All accommodations (accessible rooms)",
+        "All meals",
+        "Gorilla trekking permit ($1,500 value)",
+        "Private 4x4 transport",
+        "Professional trekking guide",
+        "Personal porter",
+        "Park entry fees"
+      ],
+      "excluded": [
+        "International flights",
+        "Travel insurance (mandatory)",
+        "COVID-19 test (if required)",
+        "Extra drinks",
+        "Souvenirs"
+      ],
+      "difficulty": "Easy",
+      "groupSize": "2-6 people",
+      "category": "Primate Safari",
+      "tags": ["Gorillas", "Accessible Travel", "Rwanda", "Luxury", "Conservation"]
+  },
+  {
+    "id": "61",
+    "slug": "big-five-masai-mara",
+    "image": "/Big-5.jpg",
+    "title": "7-Day Big Five Masai Mara",
+    "description": "Embark on an extraordinary 7-day safari in the world-famous Masai Mara, home to the highest concentration of Big Five game in Kenya. Experience the drama of the African wilderness and witness lions, elephants, leopards, buffalo, and rhinos in their natural habitat.",
+    "shortDescription": "7-day Big Five safari in Kenya's Masai Mara",
+    "price": 2850,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviewCount": 24,
+    "itinerary": "7-day Big Five-focused safari in Masai Mara National Reserve",
+    "bookingUrl": "/booking/big-five-masai-mara",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "7-Day Masai Mara Big Five Safari | Jae Travel Expeditions",
+    "metaDescription": "Spot lions, elephants, leopards, buffalo and rhinos on this 7-day Masai Mara safari. Expert guides, premium game drives, and luxury tented camps.",
+    "keywords": [
+      "Masai Mara Big Five",
+      "Kenya Safari",
+      "Lion Safari Kenya",
+      "Masai Mara National Reserve",
+      "African Big Five Tour"
+    ],
+    "url": "/tour/big-five-masai-mara",
+    "duration": "7 Days",
+    "highlights": [
+      "Big Five game viewing (lion, leopard, elephant, buffalo, rhino)",
+      "Hot air balloon safari option over the Mara",
+      "Visit to a authentic Masai village",
+      "Sundowner drinks in the bush",
+      "Expert wildlife tracking",
+      "Photography hides and viewpoints"
+    ],
+    "included": [
+      "6 nights accommodation",
+      "All meals during safari",
+      "Daily game drives in 4x4 vehicle",
+      "Professional safari guide",
+      "All park entry fees",
+      "Bottled water",
+      "Airport transfers (Nairobi)"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Hot air balloon safari (optional)",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Travel insurance"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "4-7 people",
+    "category": "Big Five Safari",
+    "tags": ["Big Five", "Masai Mara", "Kenya", "Lions", "Wildlife Photography"]
+  },
+  {
+    "id": "62",
+    "slug": "big-five-amboseli-elephant",
+    "image": "/african-lions-uganda-1024x683.webp",
+    "title": "5-Day Amboseli Elephant Focus",
+    "description": "Discover the majestic elephants of Amboseli against the breathtaking backdrop of Mount Kilimanjaro. This 5-day specialized safari focuses on Africa's largest elephant herds, offering unparalleled photography opportunities and intimate encounters with these gentle giants.",
+    "shortDescription": "5-day elephant-focused safari in Amboseli",
+    "price": 1950,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 16,
+    "itinerary": "5-day elephant research and photography safari in Amboseli",
+    "bookingUrl": "/booking/big-five-amboseli-elephant",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Amboseli Elephant Safari | Jae Travel Expeditions",
+    "metaDescription": "Experience Africa's most spectacular elephant herds against Mount Kilimanjaro. A 5-day photography-focused safari in Amboseli National Park.",
+    "keywords": [
+      "Amboseli Elephants",
+      "Kenya Elephant Safari",
+      "Mount Kilimanjaro View",
+      "Wildlife Photography Safari",
+      "Big Tuskers Amboseli"
+    ],
+    "url": "/tour/big-five-amboseli-elephant",
+    "duration": "5 Days",
+    "highlights": [
+      "Large elephant herds with 'Big Tuskers'",
+      "Iconic Mt. Kilimanjaro backdrops",
+      "Observation Hill viewpoints",
+      "Swamp-dwelling hippos and birds",
+      "Maasai community visit",
+      "Sunset photography sessions"
+    ],
+    "included": [
+      "4 nights accommodation",
+      "All meals",
+      "Game drives in custom safari vehicle",
+      "Professional photography guide",
+      "Park entry fees",
+      "Welcome drink",
+      "Emergency evacuation cover"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Alcoholic drinks",
+      "Tips",
+      "Personal insurance",
+      "Balloon safari"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Wildlife Safari",
+    "tags": ["Elephants", "Amboseli", "Kilimanjaro", "Photography", "Kenya"]
+  },
+  {
+    "id": "63",
+    "slug": "big-five-tsavo-adventure",
+    "image": "/Inverdoorn-54.jpg",
+    "title": "6-Day Tsavo Big Five Adventure",
+    "description": "Explore Kenya's largest national park, Tsavo, divided into Tsavo East and Tsavo West. This 6-day adventure takes you through red elephant country, volcanic landscapes, and lush riverine forests in search of the Big Five and Tsavo's famous maneless lions.",
+    "shortDescription": "6-day Big Five safari across Tsavo East & West",
+    "price": 2450,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 14,
+    "itinerary": "6-day Big Five safari exploring Tsavo East and Tsavo West",
+    "bookingUrl": "/booking/big-five-tsavo-adventure",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Tsavo Big Five Safari | Jae Travel Expeditions",
+    "metaDescription": "Cross Tsavo East and West on a 6-day Big Five adventure. See red elephants, Mzima Springs, and the legendary maneless lions of Tsavo.",
+    "keywords": [
+      "Tsavo Safari",
+      "Tsavo East National Park",
+      "Tsavo West National Park",
+      "Maneless Lions",
+      "Red Elephants Tsavo",
+      "Mzima Springs"
+    ],
+    "url": "/tour/big-five-tsavo-adventure",
+    "duration": "6 Days",
+    "highlights": [
+      "Big Five sightings across two parks",
+      "Famous red elephants of Tsavo",
+      "Mzima Springs underwater hippo observation",
+      "Shetani lava flow volcanic walk",
+      "Lugard Falls and Mudanda Rock",
+      "Galana River scenery"
+    ],
+    "included": [
+      "5 nights accommodation",
+      "All meals",
+      "Private 4x4 safari jeep",
+      "Services of a professional guide",
+      "Park entry fees for both Tsavo East & West",
+      "Game drives",
+      "Mineral water"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Travel insurance",
+      "Optional night game drive"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-7 people",
+    "category": "Big Five Safari",
+    "tags": ["Tsavo", "Big Five", "Lions", "Red Elephants", "Kenya Safari"]
+  },
+  {
+    "id": "64",
+    "slug": "uganda-accessible-primate-safari",
+    "image": "/Uganda-Chimpanzees-45.jpg",
+    "title": "5-Day Uganda Accessible Primate Safari",
+    "description": "Experience Uganda's incredible primates on this wheelchair-accessible safari designed for travelers with reduced mobility. Track chimpanzees in Kibale Forest, search for golden monkeys, and enjoy adapted game drives in Queen Elizabeth National Park. Specially modified vehicles, accessible lodges, and trained guides ensure a comfortable and unforgettable primate adventure.",
+    "shortDescription": "Wheelchair-accessible chimpanzee tracking & primate safari",
+    "price": 3150,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviewCount": 8,
+    "itinerary": "5-day accessible primate safari through Kibale Forest and Queen Elizabeth National Park",
+    "bookingUrl": "/booking/uganda-accessible-primate-safari",
+    "region": "East Africa",
+    "country": "Uganda",
+    "metaTitle": "Accessible Primate Safari Uganda | Wheelchair-Friendly Chimpanzee Tracking",
+    "metaDescription": "Join our 5-day accessible Uganda primate safari. Wheelchair-friendly vehicles, accessible lodges, and chimpanzee tracking in Kibale Forest. Inclusive African adventure.",
+    "keywords": [
+      "Accessible Safari Uganda",
+      "Wheelchair Safari East Africa",
+      "Uganda Primate Safari",
+      "Kibale Chimpanzee Tracking",
+      "Inclusive Safari",
+      "Disabled Travel Uganda",
+      "Queen Elizabeth National Park Accessible"
+    ],
+    "url": "/tour/uganda-accessible-primate-safari",
+    "duration": "5 Days",
+    "highlights": [
+      "Wheelchair-accessible safari vehicle with lift",
+      "Chimpanzee tracking in Kibale Forest",
+      "Adapted nature walks with trained guides",
+      "Golden monkey viewing",
+      "Accessible game drives in Queen Elizabeth NP",
+      "Kazinga Channel accessible boat cruise",
+      "Roll-in showers and accessible lodges"
+    ],
+    "included": [
+      "4 nights accessible accommodation",
+      "All meals (dietary needs accommodated)",
+      "Accessible private 4x4 safari vehicle with wheelchair lift",
+      "Trained accessible safari guide",
+      "Park entry fees for Kibale & Queen Elizabeth",
+      "Chimpanzee tracking permits",
+      "Accessible boat cruise on Kazinga Channel",
+      "Mineral water and refreshments"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Personal travel insurance",
+      "Tips and gratuities",
+      "Alcoholic beverages",
+      "Personal expenses",
+      "COVID-19 test fees"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Primate Safari",
+    "tags": ["Uganda", "Accessible Safari", "Wheelchair Friendly", "Chimpanzees", "Gorilla Alternative", "Inclusive Travel", "Kibale Forest", "Queen Elizabeth"]
+}
+  
+
 ];
 
 export const disabilityTours = tours.filter(

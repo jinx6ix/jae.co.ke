@@ -1627,6 +1627,695 @@ export const tours: Tour[] = [
     groupSize: "Up to 4 travelers (including wheelchair users)",
     category: "Accessible Travel"
   },
+  {
+    "id": "52",
+    "slug": "carnivore-experience",
+    "image": "/carnivore-restaurant.jpg",
+    "title": "Carnivore Experience",
+    "description": "Indulge in a unique dining adventure at the famous Carnivore Restaurant in Nairobi, featuring exotic game meats and vibrant Kenyan hospitality.",
+    "price": 150,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 25,
+    "itinerary": "Half-day dining experience in Nairobi",
+    "bookingSlug": "carnivore-experience",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Carnivore Experience | Jae Travel Expeditions",
+    "metaDescription": "Enjoy a unique dining adventure at Nairobi's Carnivore Restaurant with exotic game meats and Kenyan hospitality.",
+    "keywords": [
+      "Carnivore Restaurant",
+      "Nairobi Dining",
+      "Kenya Food Tour",
+      "Game Meat Experience"
+    ],
+    "url": "/tour/carnivore-experience",
+    "duration": "4 Hours",
+    "highlights": [
+      "Exotic game meats",
+      "Traditional Kenyan hospitality",
+      "Cultural dining experience",
+      "Live entertainment",
+      "Signature cocktails"
+    ],
+    "included": [
+      "Multi-course meal",
+      "Non-alcoholic drinks",
+      "Transportation from city hotels",
+      "Guide services"
+    ],
+    "excluded": [
+      "Alcoholic beverages",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-20 people",
+    "category": "Culinary Experience"
+  },
+  {
+    "id": "53",
+    "slug": "safari-madoa-doa",
+    "image": "/Viaje-a-Kenia-Masai-Mara-32.jpg",
+    "title": "Safari Madoa Doa",
+    "description": "Embark on an exclusive safari adventure through Kenya's premier wildlife reserves, spotting the Big Five in their natural habitat.",
+    "price": 3200,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 15,
+    "itinerary": "7-day safari across Kenyan reserves",
+    "bookingSlug": "safari-madoa-doa",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Safari Madoa Doa | Jae Travel Expeditions",
+    "metaDescription": "Experience a 7-day exclusive safari in Kenya, spotting the Big Five in premier wildlife reserves.",
+    "keywords": [
+      "Kenya Safari",
+      "Big Five Safari",
+      "Wildlife Adventure",
+      "Madoa Doa Safari"
+    ],
+    "url": "/tour/safari-madoa-doa",
+    "duration": "7 Days",
+    "highlights": [
+      "Big Five tracking",
+      "Exclusive reserves access",
+      "Luxury accommodations",
+      "Expert guides",
+      "Photography opportunities"
+    ],
+    "included": [
+      "Luxury accommodation",
+      "All meals",
+      "Game drives",
+      "Professional guide",
+      "Park fees"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-6 people",
+    "category": "Exclusive Safari"
+  },
+  {
+    "id": "54",
+    "slug": "best-of-zanzibar",
+    "image": "/images (9).jpg",
+    "title": "Best of Zanzibar",
+    "description": "Discover the tropical paradise of Zanzibar with its pristine beaches, historic Stone Town, and vibrant spice tours.",
+    "price": 2500,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviewCount": 22,
+    "itinerary": "8-day cultural and beach tour in Zanzibar",
+    "bookingSlug": "best-of-zanzibar",
+    "region": "East Africa",
+    "country": "Tanzania",
+    "metaTitle": "Best of Zanzibar | Jae Travel Expeditions",
+    "metaDescription": "Explore Zanzibar's beaches, Stone Town, and spice tours on an 8-day cultural and beach adventure.",
+    "keywords": [
+      "Zanzibar Tour",
+      "Stone Town",
+      "Spice Tour",
+      "Tanzania Beach Holiday"
+    ],
+    "url": "/tour/best-of-zanzibar",
+    "duration": "8 Days",
+    "highlights": [
+      "Stone Town UNESCO tour",
+      "Spice plantation visit",
+      "Beach relaxation",
+      "Snorkeling",
+      "Local cuisine"
+    ],
+    "included": [
+      "Beach resort accommodation",
+      "Most meals",
+      "Cultural tours",
+      "Beach activities",
+      "Transfers"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Premium water sports"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Island Holiday"
+  },
+  {
+    "id": "55",
+    "slug": "classic-sky-safari-2",
+    "image": "/images (8).jpg",
+    "title": "Classic Sky Safari 2",
+    "description": "Soar above East Africa's iconic landscapes on a luxury sky safari, visiting Amboseli, Meru, and the Maasai Mara.",
+    "price": 6500,
+    "currency": "USD",
+    "rating": 5.0,
+    "reviewCount": 12,
+    "itinerary": "10-day luxury air safari across Kenya",
+    "bookingSlug": "classic-sky-safari-2",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Classic Sky Safari 2 | Jae Travel Expeditions",
+    "metaDescription": "Experience a 10-day luxury sky safari over Kenya's Amboseli, Meru, and Maasai Mara.",
+    "keywords": [
+      "Sky Safari",
+      "Luxury Safari Kenya",
+      "Maasai Mara",
+      "Amboseli Tour"
+    ],
+    "url": "/tour/classic-sky-safari-2",
+    "duration": "10 Days",
+    "highlights": [
+      "Private air transfers",
+      "Exclusive luxury camps",
+      "Aerial wildlife viewing",
+      "Personalized service",
+      "Multi-park experience"
+    ],
+    "included": [
+      "Private air transfers",
+      "Ultra-luxury accommodation",
+      "All meals and premium drinks",
+      "Private guides",
+      "All activities"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Personal purchases"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-8 people",
+    "category": "Luxury Sky Safari"
+  },
+  {
+    "id": "56",
+    "slug": "nairobi-national-park-tour",
+    "image": "/caption.jpg",
+    "title": "Nairobi National Park Tour",
+    "description": "Explore Nairobi National Park, a unique wildlife haven near the city, home to rhinos, lions, and stunning savanna views.",
+    "price": 200,
+    "currency": "USD",
+    "rating": 4.6,
+    "reviewCount": 30,
+    "itinerary": "Half-day wildlife tour in Nairobi",
+    "bookingSlug": "nairobi-national-park-tour",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Nairobi National Park Tour | Jae Travel Expeditions",
+    "metaDescription": "Discover wildlife near Nairobi with a half-day tour of Nairobi National Park, home to rhinos and lions.",
+    "keywords": [
+      "Nairobi National Park",
+      "Kenya Wildlife Tour",
+      "Day Safari Nairobi",
+      "Rhino Safari"
+    ],
+    "url": "/tour/nairobi-national-park-tour",
+    "duration": "5 Hours",
+    "highlights": [
+      "City skyline with wildlife",
+      "Rhino sanctuary",
+      "Lion sightings",
+      "Giraffe viewing",
+      "Professional guide"
+    ],
+    "included": [
+      "Park entry fees",
+      "Transportation",
+      "Guide services",
+      "Bottled water"
+    ],
+    "excluded": [
+      "Lunch",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-12 people",
+    "category": "Day Tour"
+  },
+  {
+    "id": "57",
+    "slug": "visit-a-thousand-hills-distilleries",
+    "image": "/images (7).jpg",
+    "title": "Visit a Thousand Hills Distilleries",
+    "description": "Experience Rwanda's artisanal spirit scene with a tour of Thousand Hills Distilleries, tasting premium local beverages.",
+    "price": 100,
+    "currency": "USD",
+    "rating": 4.5,
+    "reviewCount": 10,
+    "itinerary": "Half-day distillery tour in Rwanda",
+    "bookingSlug": "visit-a-thousand-hills-distilleries",
+    "region": "East Africa",
+    "country": "Rwanda",
+    "metaTitle": "Visit a Thousand Hills Distilleries | Jae Travel Expeditions",
+    "metaDescription": "Tour Rwanda's Thousand Hills Distilleries and taste premium local spirits on a half-day experience.",
+    "keywords": [
+      "Rwanda Distillery Tour",
+      "Thousand Hills Distillery",
+      "Local Spirits Rwanda",
+      "Cultural Tour Rwanda"
+    ],
+    "url": "/tour/visit-a-thousand-hills-distilleries",
+    "duration": "4 Hours",
+    "highlights": [
+      "Distillery tour",
+      "Spirit tasting",
+      "Production process",
+      "Local ingredients",
+      "Cultural insights"
+    ],
+    "included": [
+      "Distillery tour",
+      "Tasting session",
+      "Transportation",
+      "Guide services"
+    ],
+    "excluded": [
+      "Additional purchases",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Food & Drink Tour"
+  },
+  {
+    "id": "58",
+    "slug": "this-is-africa-nyamirambo-womens-center",
+    "image": "/nyamirambo-women-s-center.jpg",
+    "title": "This is Africa Nyamirambo Women's Center",
+    "description": "Immerse yourself in Rwandan culture with a visit to Nyamirambo Women's Center, exploring local crafts and community initiatives.",
+    "price": 80,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 15,
+    "itinerary": "Half-day cultural tour in Kigali",
+    "bookingSlug": "this-is-africa-nyamirambo-womens-center",
+    "region": "East Africa",
+    "country": "Rwanda",
+    "metaTitle": "Nyamirambo Women's Center Tour | Jae Travel Expeditions",
+    "metaDescription": "Explore Rwandan culture and crafts at Nyamirambo Women's Center in Kigali on a half-day tour.",
+    "keywords": [
+      "Nyamirambo Women's Center",
+      "Rwanda Cultural Tour",
+      "Kigali Community Tour",
+      "African Crafts"
+    ],
+    "url": "/tour/this-is-africa-nyamirambo-womens-center",
+    "duration": "3 Hours",
+    "highlights": [
+      "Women's empowerment projects",
+      "Local craft demonstrations",
+      "Community interaction",
+      "Cultural exchange",
+      "Traditional skills"
+    ],
+    "included": [
+      "Center tour",
+      "Craft demonstration",
+      "Guide services",
+      "Transportation"
+    ],
+    "excluded": [
+      "Craft purchases",
+      "Accommodation",
+      "International flights"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-8 people",
+    "category": "Cultural Tour"
+  },
+  {
+    "id": "59",
+    "slug": "relaxation-at-the-beach",
+    "image": "/images (6).jpg",
+    "title": "Relaxation at the Beach",
+    "description": "Unwind on the pristine beaches of East Africa, enjoying sun, sand, and sea in a serene coastal escape.",
+    "price": 1200,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 20,
+    "itinerary": "5-day beach retreat in East Africa",
+    "bookingSlug": "relaxation-at-the-beach",
+    "region": "East Africa",
+    "country": "Tanzania",
+    "metaTitle": "Relaxation at the Beach | Jae Travel Expeditions",
+    "metaDescription": "Unwind on East Africa's pristine beaches with a 5-day coastal retreat.",
+    "keywords": [
+      "Beach Holiday East Africa",
+      "Coastal Retreat",
+      "Tanzania Beach Tour",
+      "Relaxation Tour"
+    ],
+    "url": "/tour/relaxation-at-the-beach",
+    "duration": "5 Days",
+    "highlights": [
+      "Beachfront accommodation",
+      "Sunset views",
+      "Water activities",
+      "Spa treatments",
+      "Local cuisine"
+    ],
+    "included": [
+      "Beach resort stay",
+      "Most meals",
+      "Basic water activities",
+      "Airport transfers"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Premium spa treatments"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-10 people",
+    "category": "Beach Retreat"
+  },
+  {
+    "id": "60",
+    "slug": "safari-dwika",
+    "image": "/images (5).jpg",
+    "title": "Safari Dwika",
+    "description": "Join an adventurous safari through Tanzania's iconic parks, witnessing diverse wildlife and stunning landscapes.",
+    "price": 3500,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 18,
+    "itinerary": "7-day safari in Tanzania",
+    "bookingSlug": "safari-dwika",
+    "region": "East Africa",
+    "country": "Tanzania",
+    "metaTitle": "Safari Dwika | Jae Travel Expeditions",
+    "metaDescription": "Experience a 7-day safari adventure through Tanzania's iconic wildlife parks.",
+    "keywords": [
+      "Tanzania Safari",
+      "Wildlife Tour",
+      "Dwika Safari",
+      "East Africa Adventure"
+    ],
+    "url": "/tour/safari-dwika",
+    "duration": "7 Days",
+    "highlights": [
+      "Multiple national parks",
+      "Big Five viewing",
+      "Expert local guides",
+      "Comfortable accommodations",
+      "Cultural interactions"
+    ],
+    "included": [
+      "All accommodation",
+      "All meals",
+      "Game drives",
+      "Park fees",
+      "Professional guide"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance",
+      "Optional activities"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-8 people",
+    "category": "Adventure Safari"
+  },
+  {
+    "id": "61",
+    "slug": "lake-nakuru-rhino-sanctuary",
+    "image": "/images (4).jpg",
+    "title": "Lake Nakuru Rhino Sanctuary Experience",
+    "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
+    "price": 1200,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 12,
+    "itinerary": "3-day rhino tracking and birdwatching in Lake Nakuru",
+    "bookingSlug": "lake-nakuru-rhino-sanctuary",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Lake Nakuru Rhino Safari | Jae Travel Expeditions",
+    "metaDescription": "Visit Kenya's premier rhino sanctuary at Lake Nakuru. See black and white rhinos, flamingos, and Rothschild giraffes on this 3-day wildlife escape.",
+    "keywords": [
+      "Lake Nakuru",
+      "Rhino Sanctuary Kenya",
+      "Flamingos Lake Nakuru",
+      "Kenya Safari",
+      "Black Rhino Tour"
+    ],
+    "url": "/tour/lake-nakuru-rhino-sanctuary",
+    "duration": "3 Days",
+    "highlights": [
+      "Black and white rhino tracking",
+      "Millions of flamingos (seasonal)",
+      "Rothschild giraffe sightings",
+      "Baboon Cliff viewpoints",
+      "Birdwatcher's paradise (450+ species)"
+    ],
+    "included": [
+      "2 nights accommodation",
+      "All park entry fees",
+      "Private 4x4 safari vehicle",
+      "Professional English-speaking guide",
+      "Bottled water",
+      "Game drives"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees (Kenya ETA)",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Alcoholic beverages"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Wildlife Safari"
+  },
+  {
+    "id": "62",
+    "slug": "big-five-masai-mara",
+    "image": "/Big-5.jpg",
+    "title": "7-Day Big Five Masai Mara",
+    "description": "Embark on an extraordinary 7-day safari in the world-famous Masai Mara, home to the highest concentration of Big Five game in Kenya. Experience the drama of the African wilderness and witness lions, elephants, leopards, buffalo, and rhinos in their natural habitat.",
+    "price": 2850,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviewCount": 24,
+    "itinerary": "7-day Big Five-focused safari in Masai Mara National Reserve",
+    "bookingSlug": "big-five-masai-mara",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "7-Day Masai Mara Big Five Safari | Jae Travel Expeditions",
+    "metaDescription": "Spot lions, elephants, leopards, buffalo and rhinos on this 7-day Masai Mara safari. Expert guides, premium game drives, and luxury tented camps.",
+    "keywords": [
+      "Masai Mara Big Five",
+      "Kenya Safari",
+      "Lion Safari Kenya",
+      "Masai Mara National Reserve",
+      "African Big Five Tour"
+    ],
+    "url": "/tour/big-five-masai-mara",
+    "duration": "7 Days",
+    "highlights": [
+      "Big Five game viewing (lion, leopard, elephant, buffalo, rhino)",
+      "Hot air balloon safari option over the Mara",
+      "Visit to a authentic Masai village",
+      "Sundowner drinks in the bush",
+      "Expert wildlife tracking",
+      "Photography hides and viewpoints"
+    ],
+    "included": [
+      "6 nights accommodation",
+      "All meals during safari",
+      "Daily game drives in 4x4 vehicle",
+      "Professional safari guide",
+      "All park entry fees",
+      "Bottled water",
+      "Airport transfers (Nairobi)"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Hot air balloon safari (optional)",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Travel insurance"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "4-7 people",
+    "category": "Big Five Safari"
+  },
+  {
+    "id": "63",
+    "slug": "big-five-amboseli-elephant",
+    "image": "/african-lions-uganda-1024x683.webp",
+    "title": "5-Day Amboseli Elephant Focus",
+    "description": "Discover the majestic elephants of Amboseli against the breathtaking backdrop of Mount Kilimanjaro. This 5-day specialized safari focuses on Africa's largest elephant herds, offering unparalleled photography opportunities and intimate encounters with these gentle giants.",
+    "price": 1950,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 16,
+    "itinerary": "5-day elephant research and photography safari in Amboseli",
+    "bookingSlug": "big-five-amboseli-elephant",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Amboseli Elephant Safari | Jae Travel Expeditions",
+    "metaDescription": "Experience Africa's most spectacular elephant herds against Mount Kilimanjaro. A 5-day photography-focused safari in Amboseli National Park.",
+    "keywords": [
+      "Amboseli Elephants",
+      "Kenya Elephant Safari",
+      "Mount Kilimanjaro View",
+      "Wildlife Photography Safari",
+      "Big Tuskers Amboseli"
+    ],
+    "url": "/tour/big-five-amboseli-elephant",
+    "duration": "5 Days",
+    "highlights": [
+      "Large elephant herds with 'Big Tuskers'",
+      "Iconic Mt. Kilimanjaro backdrops",
+      "Observation Hill viewpoints",
+      "Swamp-dwelling hippos and birds",
+      "Maasai community visit",
+      "Sunset photography sessions"
+    ],
+    "included": [
+      "4 nights accommodation",
+      "All meals",
+      "Game drives in custom safari vehicle",
+      "Professional photography guide",
+      "Park entry fees",
+      "Welcome drink",
+      "Emergency evacuation cover"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Alcoholic drinks",
+      "Tips",
+      "Personal insurance",
+      "Balloon safari"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Wildlife Safari"
+  },
+  {
+    "id": "64",
+    "slug": "big-five-tsavo-adventure",
+    "image": "/Inverdoorn-54.jpg",
+    "title": "6-Day Tsavo Big Five Adventure",
+    "description": "Explore Kenya's largest national park, Tsavo, divided into Tsavo East and Tsavo West. This 6-day adventure takes you through red elephant country, volcanic landscapes, and lush riverine forests in search of the Big Five and Tsavo's famous maneless lions.",
+    "price": 2450,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 14,
+    "itinerary": "6-day Big Five safari exploring Tsavo East and Tsavo West",
+    "bookingSlug": "big-five-tsavo-adventure",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Tsavo Big Five Safari | Jae Travel Expeditions",
+    "metaDescription": "Cross Tsavo East and West on a 6-day Big Five adventure. See red elephants, Mzima Springs, and the legendary maneless lions of Tsavo.",
+    "keywords": [
+      "Tsavo Safari",
+      "Tsavo East National Park",
+      "Tsavo West National Park",
+      "Maneless Lions",
+      "Red Elephants Tsavo",
+      "Mzima Springs"
+    ],
+    "url": "/tour/big-five-tsavo-adventure",
+    "duration": "6 Days",
+    "highlights": [
+      "Big Five sightings across two parks",
+      "Famous red elephants of Tsavo",
+      "Mzima Springs underwater hippo observation",
+      "Shetani lava flow volcanic walk",
+      "Lugard Falls and Mudanda Rock",
+      "Galana River scenery"
+    ],
+    "included": [
+      "5 nights accommodation",
+      "All meals",
+      "Private 4x4 safari jeep",
+      "Services of a professional guide",
+      "Park entry fees for both Tsavo East & West",
+      "Game drives",
+      "Mineral water"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Travel insurance",
+      "Optional night game drive"
+    ],
+    "difficulty": "Moderate",
+    "groupSize": "2-7 people",
+    "category": "Big Five Safari"
+  },
+  {
+    "id": "65",
+    "slug": "uganda-accessible-primate-safari",
+    "image": "/uganda-chimps-wheelchair.jpg",
+    "title": "5-Day Accessible Uganda Primate Safari",
+    "description": "Experience Uganda's incredible primates on this fully accessible safari. Designed for travelers with mobility challenges, this tour offers wheelchair-friendly accommodations, modified vehicles with ramps, and guided tracking of mountain gorillas and chimpanzees in Kibale Forest and Bwindi Impenetrable National Park.",
+    "price": 3850,
+    "currency": "USD",
+    "rating": 4.9,
+    "reviewCount": 8,
+    "itinerary": "5-day accessible primate safari tracking gorillas and chimps in Uganda",
+    "bookingSlug": "uganda-accessible-primate-safari",
+    "region": "East Africa",
+    "country": "Uganda",
+    "metaTitle": "Accessible Uganda Primate Safari | Jae Travel Expeditions",
+    "metaDescription": "Join a wheelchair-accessible safari in Uganda to track mountain gorillas and chimpanzees. Adaptive vehicles, step-free lodges, and inclusive guiding.",
+    "keywords": [
+      "Accessible Safari Uganda",
+      "Wheelchair Safari Uganda",
+      "Gorilla Tracking Accessible",
+      "Uganda Primate Safari",
+      "Kibale Chimpanzees Accessible",
+      "Bwindi Gorillas Wheelchair"
+    ],
+    "url": "/tour/uganda-accessible-primate-safari",
+    "duration": "5 Days",
+    "highlights": [
+      "Accessible mountain gorilla tracking in Bwindi",
+      "Chimpanzee habituation experience in Kibale Forest",
+      "Wheelchair-adapted safari vehicle with lift",
+      "Step-free eco-lodges with roll-in showers",
+      "Bigodi Wetland Sanctuary boardwalk nature walk",
+      "Scenic viewpoints with paved access"
+    ],
+    "included": [
+      "4 nights accessible accommodation",
+      "All meals (dietary needs accommodated)",
+      "Private adapted 4x4 with wheelchair ramp",
+      "Professional accessible safari guide",
+      "Gorilla tracking permit",
+      "Chimpanzee tracking permit",
+      "Park entry fees",
+      "Mineral water & soft drinks"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees (East Africa Tourist Visa available)",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Travel insurance",
+      "COVID-19 test fees",
+      "Porter fees (optional)"
+    ],
+    "difficulty": "Easy–Moderate (accessible)",
+    "groupSize": "2–6 people",
+    "category": "Accessible Safari / Primate Safari"
+  }
 ]
 
 export const disabilityTours = tours.filter(
