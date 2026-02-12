@@ -244,7 +244,7 @@ export default function BigFivePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
-              <Link href="/tours">Book Your Big Five Safari</Link>
+              <Link href="/tours/big-five-masai-mara">Book Your Big Five Safari</Link>
             </Button>
             <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20" asChild>
               <Link href="/disability-tours">Explore Accessible Options</Link>
