@@ -2315,7 +2315,59 @@ export const tours: Tour[] = [
     "difficulty": "Easy–Moderate (accessible)",
     "groupSize": "2–6 people",
     "category": "Accessible Safari / Primate Safari"
-  }
+  },
+  {
+    "id": "66",
+    "slug": "from-nairobi-maasai-mara-1-day-safari",
+    "image": "/bbc661354c745efe824cad3249204c2159b382a4700756bedb8b9ac407c5662d.avif",
+    "title": "From Nairobi: Maasai Mara 1-Day Safari: Lunch & Pickup",
+    "description": "Explore the Maasai Mara on a 1-day safari from Nairobi with two game drives and a packed lunch inside the reserve. Optional Maasai village visit available.",
+    "price": 420,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 45,
+    "itinerary": "1-day Maasai Mara safari from Nairobi with morning and afternoon game drives, picnic lunch in the reserve, and optional Maasai village visit",
+    "bookingSlug": "from-nairobi-maasai-mara-1-day-safari",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "From Nairobi: Maasai Mara 1-Day Safari | Jae Travel Expeditions",
+    "metaDescription": "Experience the Maasai Mara in one day from Nairobi: game drives, Big Five spotting, packed lunch in the reserve, optional Maasai cultural visit. Hotel pickup included.",
+    "keywords": [
+    "Maasai Mara Day Safari from Nairobi",
+    "1 Day Maasai Mara Trip",
+    "Nairobi to Maasai Mara Safari",
+    "Big Five Game Drive Kenya",
+    "Maasai Village Visit Optional",
+    "Full Day Safari Maasai Mara"
+    ],
+    "url": "/tour/from-nairobi-maasai-mara-1-day-safari",
+    "duration": "1 Day",
+    "highlights": [
+    "Experience the world-famous Maasai Mara on a guided 1-day safari from Nairobi",
+    "Spot the Big Five and abundant wildlife during peak game-viewing hours",
+    "Enjoy two exciting game drives across the vast open savannah",
+    "Relax with a packed picnic lunch inside the reserve surrounded by wildlife scenery",
+    "Optional Maasai village visit to discover local culture and traditional dances"
+    ],
+    "included": [
+    "Round-trip transportation with hotel pickup and drop-off in Nairobi",
+    "Morning and afternoon game drives",
+    "Packed lunch inside the reserve",
+    "Professional English-speaking guide/driver",
+    "All park transfers and bottled water/soft drinks during the day"
+    ],
+    "excluded": [
+    "Park entrance fees (Jan–June: $100 per person; July–Dec: $200 per person)",
+    "Maasai Village visit fees ($30 per person, optional)",
+    "Tips for guide and driver",
+    "Personal expenses",
+    "International flights or visa fees",
+    "Travel insurance"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2–7 people (shared or private options)",
+    "category": "Day Trip Safari / Wildlife Safari"
+    }
 ]
 
 export const disabilityTours = tours.filter(
