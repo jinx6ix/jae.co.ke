@@ -286,7 +286,8 @@ export const vehicles: Vehicle[] = [
       campingGuide: "Experienced camping assistant (+$70/day)",
       additionalTent: "Ground tent for extra guests (+$30/day)",
       photographyPackage: "Camera gear included (+$40/day)",
-      guidedItinerary: "Custom camping route planning (+$50)"
+      guidedItinerary: "Custom camping route planning (+$50)",
+      campingEquipment: "Full camping gear package (+$20per person/day)"
     },
     metaTitle: "Luxury Roof Top Camping Vehicle Rental | Safari Camping Car for East Africa Adventures",
     metaDescription:
