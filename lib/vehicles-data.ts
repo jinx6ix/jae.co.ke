@@ -502,7 +502,7 @@ export const vehicles: Vehicle[] = [
     id: 6,
     slug: "family-safari-minivan",
     name: "Family Safari Minivan with Pop-up Roof",
-    image: "https://ik.imagekit.io/jinx/travel/car-van-1536x776%20(1).png?updatedAt=1750087064275",
+    image: "/2424ad9a-143e-4d19-a86e-3082e845c6ea.jpg",
     description:
       "Travel in spacious comfort with our family safari minivan, the ideal group vehicle rental for exploring East Africa. Perfect for family adventures or small group tours, this safari minibus features a pop-up roof for exceptional game viewing and ample interior space for everyone. With modern amenities, excellent fuel efficiency, and versatile seating configurations, our minivan hire provides the perfect balance of practicality and comfort for discovering Kenya's coast, Tanzania's northern circuit, Rwanda's cultural sites, and Uganda's natural wonders.",
     capacity: "7 passengers plus driver with configurable seating",
@@ -529,11 +529,11 @@ export const vehicles: Vehicle[] = [
       fuelEfficiency: "Excellent 12L/100km making it economical for long trips"
     },
     gallery: [
-      "https://ik.imagekit.io/jinx/travel/car-van-1536x776%20(1).png?updatedAt=1750087064275",
-      "/safari-minivan-interior-spacious.jpg",
-      "/minivan-popup-roof-open.jpg",
-      "/family-van-seating-configuration.jpg",
-      "/minivan-game-viewing-position.jpg",
+      "/6aa2209d-03d4-4345-bb36-c0d0dacad380.jpg",
+      "/79bf4c9c-22d8-4bdd-bef6-76a88e0628f3.jpg",
+      "/18c27b2c-2140-471c-a1cf-1b58df255c0c.jpg",
+      "/b7e62c35-9f1e-4140-ab4a-fcfe18e7eea1.jpg",
+      "/2047d157-e31a-4f9e-8771-afd37abe204a.jpg",
       "/van-storage-capacity-showcase.jpg",
       "/minivan-road-trip-scene.jpg"
     ],
