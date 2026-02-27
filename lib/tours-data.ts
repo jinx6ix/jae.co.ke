@@ -3207,8 +3207,8 @@ export const tours: Tour[] = [
   "difficulty": "Easy",
   "groupSize": "2–7 people (shared or private options)",
   "category": "Day Trip Safari / Wildlife Safari",
-  tags: undefined,
-  shortDescription: ""
+  "tags": ["Uganda", "Accessible Safari", "Wheelchair Friendly", "Chimpanzees", "Gorilla Alternative", "Inclusive Travel", "Kibale Forest", "Queen Elizabeth"],
+  "shortDescription": "Explore the Maasai Mara on a 1-day safari from Nairobi with two game drives and a packed lunch inside the reserve. Optional Maasai village visit available."
 }
 
 
