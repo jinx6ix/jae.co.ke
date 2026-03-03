@@ -3159,7 +3159,7 @@ export const tours: Tour[] = [
 {
   "id": "66",
   "slug": "from-nairobi-maasai-mara-1-day-safari",
-  "image": "/bbc661354c745efe824cad3249204c2159b382a4700756bedb8b9ac407c5662d (1).avif",
+  "image": "/bbc661354c745efe824cad3249204c2159b382a4700756bedb8b9ac407c5662d.avif",
   "title": "From Nairobi: Maasai Mara 1-Day Safari: AW, Lunch & Pickup",
   "description": "Explore the Maasai Mara on a 1-day safari from Nairobi with two game drives and a packed lunch inside the reserve. Optional Maasai village visit available.",
   "price": 420,
