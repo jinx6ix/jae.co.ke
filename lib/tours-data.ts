@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 
 export interface Tour {
+  location: string;
+  checkInText: string;
   tags: any;
   shortDescription: string;
   image: string;
@@ -80,7 +82,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
     category: "Luxury Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "kenya-amboseli",
@@ -124,7 +128,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
     category: "Classic Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "tanzania-serengeti",
@@ -170,7 +176,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "Small groups (4-10 people)",
     category: "Migration Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "tanzania-ngorongoro",
@@ -214,7 +222,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "Small groups (2-8 people)",
     category: "Family Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "uganda-bwindi",
@@ -258,7 +268,9 @@ export const tours: Tour[] = [
     difficulty: "Challenging",
     groupSize: "Maximum 8 per gorilla group",
     category: "Primate Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "rwanda-volcanoes",
@@ -304,7 +316,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "Maximum 8 per gorilla group",
     category: "Luxury Primate Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "1",
@@ -348,7 +362,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Classic Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "2",
@@ -392,7 +408,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Wildlife Photography",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "3",
@@ -436,7 +454,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Specialty Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "4",
@@ -482,7 +502,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Bird Watching",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "5",
@@ -526,7 +548,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-10 people",
     category: "Wilderness Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "6",
@@ -570,7 +594,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Beach & Safari Combo",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "7",
@@ -614,7 +640,9 @@ export const tours: Tour[] = [
     difficulty: "Difficult",
     groupSize: "2-8 people",
     category: "Mountain Climbing",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "8",
@@ -658,7 +686,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Conservation Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "9",
@@ -702,7 +732,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-12 people",
     category: "Adventure Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "10",
@@ -746,7 +778,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Cultural Tourism",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "11",
@@ -790,7 +824,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Mountain Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "12",
@@ -834,7 +870,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Luxury Beach & Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "13",
@@ -878,7 +916,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-10 people",
     category: "Wildlife Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "14",
@@ -922,7 +962,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Geological Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "15",
@@ -966,7 +1008,9 @@ export const tours: Tour[] = [
     difficulty: "Difficult",
     groupSize: "2-10 people",
     category: "Mountain Climbing",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "16",
@@ -1010,7 +1054,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Elephant Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "17",
@@ -1054,7 +1100,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Bird & Wildlife Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "18",
@@ -1098,7 +1146,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Beach Holiday",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "19",
@@ -1142,7 +1192,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-6 people",
     category: "Wilderness Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "20",
@@ -1186,7 +1238,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Multi-Activity Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "21",
@@ -1230,7 +1284,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Accessible Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "22",
@@ -1274,7 +1330,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Cultural Tourism",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "23",
@@ -1318,7 +1376,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-6 people",
     category: "Remote Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "24",
@@ -1362,7 +1422,9 @@ export const tours: Tour[] = [
     difficulty: "Challenging",
     groupSize: "2-8 people",
     category: "Primate Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "25",
@@ -1406,7 +1468,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Diving Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "26",
@@ -1450,7 +1514,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-12 people",
     category: "Heritage Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "27",
@@ -1494,7 +1560,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Comprehensive Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "28",
@@ -1538,7 +1606,9 @@ export const tours: Tour[] = [
     difficulty: "Challenging",
     groupSize: "Maximum 8 per group",
     category: "Luxury Gorilla Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "29",
@@ -1582,7 +1652,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Forest Adventure",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "30",
@@ -1626,7 +1698,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Lake Retreat",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "31",
@@ -1670,7 +1744,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Savanna Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "32",
@@ -1714,7 +1790,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "1-12 people",
     category: "City Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "33",
@@ -1758,7 +1836,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Primate Tracking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "34",
@@ -1802,7 +1882,9 @@ export const tours: Tour[] = [
     difficulty: "Challenging",
     groupSize: "Maximum 8 per group",
     category: "Gorilla Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "35",
@@ -1846,7 +1928,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Classic Uganda Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "36",
@@ -1890,7 +1974,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Waterfall Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "37",
@@ -1934,7 +2020,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-8 people",
     category: "Primate Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "38",
@@ -1978,7 +2066,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Compact Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "39",
@@ -2022,7 +2112,9 @@ export const tours: Tour[] = [
     difficulty: "Difficult",
     groupSize: "2-8 people",
     category: "Mountain Trekking",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "40",
@@ -2066,7 +2158,9 @@ export const tours: Tour[] = [
     difficulty: "Moderate",
     groupSize: "2-12 people",
     category: "Adventure Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "41",
@@ -2110,7 +2204,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-8 people",
     category: "Lake Retreat",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "42",
@@ -2154,7 +2250,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Island Holiday",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "43",
@@ -2199,7 +2297,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "2-10 people",
     category: "Day Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "44",
@@ -2243,7 +2343,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "1-4 people",
     category: "Accessible Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "45",
@@ -2287,7 +2389,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "1-3 people",
     category: "Accessible Wildlife",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "46",
@@ -2331,7 +2435,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "1-4 people",
     category: "Inclusive Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     id: "49",
@@ -2380,7 +2486,9 @@ export const tours: Tour[] = [
     difficulty: "Easy",
     groupSize: "1-4 people",
     category: "Premium Accessible Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "50",
@@ -2428,7 +2536,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-20 people",
     "category": "Culinary Experience",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "51",
@@ -2477,7 +2587,9 @@ export const tours: Tour[] = [
     "difficulty": "Moderate",
     "groupSize": "2-6 people",
     "category": "Exclusive Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "52",
@@ -2526,7 +2638,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-10 people",
     "category": "Island Holiday",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "53",
@@ -2575,7 +2689,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-8 people",
     "category": "Luxury Sky Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "54",
@@ -2623,7 +2739,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-12 people",
     "category": "Day Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "55",
@@ -2671,7 +2789,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-10 people",
     "category": "Food & Drink Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "56",
@@ -2719,7 +2839,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-8 people",
     "category": "Cultural Tour",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "57",
@@ -2767,7 +2889,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-10 people",
     "category": "Beach Retreat",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
     "id": "58",
@@ -2816,115 +2940,121 @@ export const tours: Tour[] = [
     "difficulty": "Moderate",
     "groupSize": "2-8 people",
     "category": "Adventure Safari",
-    tags: undefined
+    tags: undefined,
+    location: "",
+    checkInText: ""
   },
   {
-      "id": "59",
-      "slug": "lake-nakuru-rhino-sanctuary",
-      "image": "/images (4).jpg",
-      "title": "Lake Nakuru Rhino Sanctuary Experience",
-      "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
-      "shortDescription": "3-day rhino & birding safari in Kenya",
-      "price": 1200,
-      "currency": "USD",
-      "rating": 4.7,
-      "reviewCount": 12,
-      "itinerary": "3-day rhino tracking and birdwatching in Lake Nakuru",
-      "bookingUrl": "/booking/lake-nakuru-rhino-sanctuary",
-      "region": "East Africa",
-      "country": "Kenya",
-      "metaTitle": "Lake Nakuru Rhino Safari | Jae Travel Expeditions",
-      "metaDescription": "Visit Kenya's premier rhino sanctuary at Lake Nakuru. See black and white rhinos, flamingos, and Rothschild giraffes on this 3-day wildlife escape.",
-      "keywords": [
-        "Lake Nakuru",
-        "Rhino Sanctuary Kenya",
-        "Flamingos Lake Nakuru",
-        "Kenya Safari",
-        "Black Rhino Tour"
-      ],
-      "url": "/tour/lake-nakuru-rhino-sanctuary",
-      "duration": "3 Days",
-      "highlights": [
-        "Black and white rhino tracking",
-        "Millions of flamingos (seasonal)",
-        "Rothschild giraffe sightings",
-        "Baboon Cliff viewpoints",
-        "Birdwatcher's paradise (450+ species)"
-      ],
-      "included": [
-        "2 nights accommodation",
-        "All park entry fees",
-        "Private 4x4 safari vehicle",
-        "Professional English-speaking guide",
-        "Bottled water",
-        "Game drives"
-      ],
-      "excluded": [
-        "International flights",
-        "Visa fees (Kenya ETA)",
-        "Tips and gratuities",
-        "Personal expenses",
-        "Alcoholic beverages"
-      ],
-      "difficulty": "Easy",
-      "groupSize": "2-6 people",
-      "category": "Wildlife Safari",
-      "tags": ["Rhino", "Birding", "Kenya", "Family Friendly"]
+    "id": "59",
+    "slug": "lake-nakuru-rhino-sanctuary",
+    "image": "/images (4).jpg",
+    "title": "Lake Nakuru Rhino Sanctuary Experience",
+    "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
+    "shortDescription": "3-day rhino & birding safari in Kenya",
+    "price": 1200,
+    "currency": "USD",
+    "rating": 4.7,
+    "reviewCount": 12,
+    "itinerary": "3-day rhino tracking and birdwatching in Lake Nakuru",
+    "bookingUrl": "/booking/lake-nakuru-rhino-sanctuary",
+    "region": "East Africa",
+    "country": "Kenya",
+    "metaTitle": "Lake Nakuru Rhino Safari | Jae Travel Expeditions",
+    "metaDescription": "Visit Kenya's premier rhino sanctuary at Lake Nakuru. See black and white rhinos, flamingos, and Rothschild giraffes on this 3-day wildlife escape.",
+    "keywords": [
+      "Lake Nakuru",
+      "Rhino Sanctuary Kenya",
+      "Flamingos Lake Nakuru",
+      "Kenya Safari",
+      "Black Rhino Tour"
+    ],
+    "url": "/tour/lake-nakuru-rhino-sanctuary",
+    "duration": "3 Days",
+    "highlights": [
+      "Black and white rhino tracking",
+      "Millions of flamingos (seasonal)",
+      "Rothschild giraffe sightings",
+      "Baboon Cliff viewpoints",
+      "Birdwatcher's paradise (450+ species)"
+    ],
+    "included": [
+      "2 nights accommodation",
+      "All park entry fees",
+      "Private 4x4 safari vehicle",
+      "Professional English-speaking guide",
+      "Bottled water",
+      "Game drives"
+    ],
+    "excluded": [
+      "International flights",
+      "Visa fees (Kenya ETA)",
+      "Tips and gratuities",
+      "Personal expenses",
+      "Alcoholic beverages"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Wildlife Safari",
+    "tags": ["Rhino", "Birding", "Kenya", "Family Friendly"],
+    location: "",
+    checkInText: ""
   },
   {
-      "id": "60",
-      "slug": "rwanda-accessible-gorilla-safari",
-      "image": "/images (3).jpg",
-      "title": "Rwanda Accessible Gorilla Safari",
-      "description": "Experience the magic of mountain gorillas in Volcanoes National Park on a tour designed for accessibility. Shorter treks, vehicle support, and premium accommodations ensure a comfortable yet unforgettable primate encounter.",
-      "shortDescription": "4-day accessible gorilla trek in Rwanda",
-      "price": 4500,
-      "currency": "USD",
-      "rating": 5.0,
-      "reviewCount": 9,
-      "itinerary": "4-day gorilla trekking experience with accessible trails",
-      "bookingUrl": "/booking/rwanda-accessible-gorilla-safari",
-      "region": "East Africa",
-      "country": "Rwanda",
-      "metaTitle": "Accessible Gorilla Trekking Rwanda | Jae Travel Expeditions",
-      "metaDescription": "A premium, accessible gorilla safari in Rwanda. Shorter walking distances, porter assistance, and luxury lodges. Perfect for travelers with mobility considerations.",
-      "keywords": [
-        "Rwanda Gorilla Trek",
-        "Accessible Safari",
-        "Volcanoes National Park",
-        "Mountain Gorillas",
-        "Inclusive Travel Africa"
-      ],
-      "url": "/tour/rwanda-accessible-gorilla-safari",
-      "duration": "4 Days",
-      "highlights": [
-        "Guaranteed gorilla permit (Gorilla Fund certified)",
-        "Accessible trekking routes (shorter/steeper gradients avoided)",
-        "Private vehicle access to trailhead",
-        "Dedicated porter for each guest",
-        "Cultural visit to Iby'Iwacu Village",
-        "Luxury eco-lodge with accessible rooms"
-      ],
-      "included": [
-        "All accommodations (accessible rooms)",
-        "All meals",
-        "Gorilla trekking permit ($1,500 value)",
-        "Private 4x4 transport",
-        "Professional trekking guide",
-        "Personal porter",
-        "Park entry fees"
-      ],
-      "excluded": [
-        "International flights",
-        "Travel insurance (mandatory)",
-        "COVID-19 test (if required)",
-        "Extra drinks",
-        "Souvenirs"
-      ],
-      "difficulty": "Easy",
-      "groupSize": "2-6 people",
-      "category": "Primate Safari",
-      "tags": ["Gorillas", "Accessible Travel", "Rwanda", "Luxury", "Conservation"]
+    "id": "60",
+    "slug": "rwanda-accessible-gorilla-safari",
+    "image": "/images (3).jpg",
+    "title": "Rwanda Accessible Gorilla Safari",
+    "description": "Experience the magic of mountain gorillas in Volcanoes National Park on a tour designed for accessibility. Shorter treks, vehicle support, and premium accommodations ensure a comfortable yet unforgettable primate encounter.",
+    "shortDescription": "4-day accessible gorilla trek in Rwanda",
+    "price": 4500,
+    "currency": "USD",
+    "rating": 5.0,
+    "reviewCount": 9,
+    "itinerary": "4-day gorilla trekking experience with accessible trails",
+    "bookingUrl": "/booking/rwanda-accessible-gorilla-safari",
+    "region": "East Africa",
+    "country": "Rwanda",
+    "metaTitle": "Accessible Gorilla Trekking Rwanda | Jae Travel Expeditions",
+    "metaDescription": "A premium, accessible gorilla safari in Rwanda. Shorter walking distances, porter assistance, and luxury lodges. Perfect for travelers with mobility considerations.",
+    "keywords": [
+      "Rwanda Gorilla Trek",
+      "Accessible Safari",
+      "Volcanoes National Park",
+      "Mountain Gorillas",
+      "Inclusive Travel Africa"
+    ],
+    "url": "/tour/rwanda-accessible-gorilla-safari",
+    "duration": "4 Days",
+    "highlights": [
+      "Guaranteed gorilla permit (Gorilla Fund certified)",
+      "Accessible trekking routes (shorter/steeper gradients avoided)",
+      "Private vehicle access to trailhead",
+      "Dedicated porter for each guest",
+      "Cultural visit to Iby'Iwacu Village",
+      "Luxury eco-lodge with accessible rooms"
+    ],
+    "included": [
+      "All accommodations (accessible rooms)",
+      "All meals",
+      "Gorilla trekking permit ($1,500 value)",
+      "Private 4x4 transport",
+      "Professional trekking guide",
+      "Personal porter",
+      "Park entry fees"
+    ],
+    "excluded": [
+      "International flights",
+      "Travel insurance (mandatory)",
+      "COVID-19 test (if required)",
+      "Extra drinks",
+      "Souvenirs"
+    ],
+    "difficulty": "Easy",
+    "groupSize": "2-6 people",
+    "category": "Primate Safari",
+    "tags": ["Gorillas", "Accessible Travel", "Rwanda", "Luxury", "Conservation"],
+    location: "",
+    checkInText: ""
   },
   {
     "id": "61",
@@ -2980,7 +3110,9 @@ export const tours: Tour[] = [
     "difficulty": "Moderate",
     "groupSize": "4-7 people",
     "category": "Big Five Safari",
-    "tags": ["Big Five", "Masai Mara", "Kenya", "Lions", "Wildlife Photography"]
+    "tags": ["Big Five", "Masai Mara", "Kenya", "Lions", "Wildlife Photography"],
+    location: "",
+    checkInText: ""
   },
   {
     "id": "62",
@@ -3036,7 +3168,9 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-6 people",
     "category": "Wildlife Safari",
-    "tags": ["Elephants", "Amboseli", "Kilimanjaro", "Photography", "Kenya"]
+    "tags": ["Elephants", "Amboseli", "Kilimanjaro", "Photography", "Kenya"],
+    location: "",
+    checkInText: ""
   },
   {
     "id": "63",
@@ -3093,7 +3227,9 @@ export const tours: Tour[] = [
     "difficulty": "Moderate",
     "groupSize": "2-7 people",
     "category": "Big Five Safari",
-    "tags": ["Tsavo", "Big Five", "Lions", "Red Elephants", "Kenya Safari"]
+    "tags": ["Tsavo", "Big Five", "Lions", "Red Elephants", "Kenya Safari"],
+    location: "",
+    checkInText: ""
   },
   {
     "id": "64",
@@ -3154,8 +3290,10 @@ export const tours: Tour[] = [
     "difficulty": "Easy",
     "groupSize": "2-6 people",
     "category": "Primate Safari",
-    "tags": ["Uganda", "Accessible Safari", "Wheelchair Friendly", "Chimpanzees", "Gorilla Alternative", "Inclusive Travel", "Kibale Forest", "Queen Elizabeth"]
-},
+    "tags": ["Uganda", "Accessible Safari", "Wheelchair Friendly", "Chimpanzees", "Gorilla Alternative", "Inclusive Travel", "Kibale Forest", "Queen Elizabeth"],
+    location: "",
+    checkInText: ""
+  },
 {
   "id": "66",
   "slug": "from-nairobi-maasai-mara-1-day-safari",
@@ -3208,7 +3346,9 @@ export const tours: Tour[] = [
   "groupSize": "2–7 people (shared or private options)",
   "category": "Day Trip Safari / Wildlife Safari",
   "tags": ["Uganda", "Accessible Safari", "Wheelchair Friendly", "Chimpanzees", "Gorilla Alternative", "Inclusive Travel", "Kibale Forest", "Queen Elizabeth"],
-  "shortDescription": "Explore the Maasai Mara on a 1-day safari from Nairobi with two game drives and a packed lunch inside the reserve. Optional Maasai village visit available."
+  "shortDescription": "Explore the Maasai Mara on a 1-day safari from Nairobi with two game drives and a packed lunch inside the reserve. Optional Maasai village visit available.",
+  location: "",
+  checkInText: ""
 }
 
 

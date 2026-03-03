@@ -1,15 +1,37 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Clock, Star, Award, Users, Shield, Heart, Zap, Globe, CheckCircle, Phone, Camera, TreePine, Droplets, Sun, CloudRain, Binoculars, Mountain, Waves } from "lucide-react"
-import { faqSchema } from "./faq-schema"
-import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
+// app/maasai-mara-great-migration/page.tsx
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Calendar,
+  Star,
+  Award,
+  Shield,
+  Zap,
+  CheckCircle,
+} from "lucide-react";
+import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard";
 
-// app/maasai-mara-great-migration/schema.ts
-const greatMigrationSchema = {
+// Import your tours data (adjust path as needed)
+import { tours } from "@/lib/tours-data"; // ← your tours array file
+
+// Filter Masai Mara relevant tours
+const masaiMaraTours = tours
+  .filter(
+    (tour) =>
+      tour.slug.includes("masai-mara") ||
+      tour.slug.includes("maasai-mara") ||
+      tour.slug.includes("mara") ||
+      tour.title.toLowerCase().includes("masai mara") ||
+      tour.title.toLowerCase().includes("maasai mara") ||
+      tour.description.toLowerCase().includes("masai mara") ||
+      tour.description.toLowerCase().includes("maasai mara")
+  )
+  .slice(0, 8);
+
+const pageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization + LocalBusiness (with rich contact info, stars & individual reviews)
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
@@ -115,198 +137,65 @@ const greatMigrationSchema = {
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#webpage",
-      "url": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "name": "Masai Mara Great Migration 2026 | Premium Masai Mara Packages & Wheelchair Accessible Safari Kenya",
-      "description": "Explore our exclusive Masai Mara packages for the 2026 Great Migration. Kenya's premier wheelchair-accessible safari operator offers comprehensive Masai Mara packages with custom vehicles, expert guides, and guaranteed river crossing viewing.",
-      "inLanguage": "en-KE",
-      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
-      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#breadcrumb" },
-      "primaryImageOfPage": {
+      url: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      name: "Masai Mara Great Migration 2026 | Wheelchair Accessible Safari Packages",
+      description:
+        "Experience the 2026 Masai Mara Great Migration with Kenya's premier wheelchair-accessible safari packages – custom vehicles, expert guides, guaranteed river crossings.",
+      primaryImageOfPage: {
         "@type": "ImageObject",
-        "url": "https://www.jaetravel.co.ke/masai-mara-migration-hero.jpg",
-        "width": 1200,
-        "height": 630
+        url: "https://www.jaetravel.co.ke/masai-mara-migration-hero.jpg",
+        width: 1200,
+        height: 630,
       },
-      "mainEntity": { "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#business" }
     },
-
-    // 4. BreadcrumbList
+    // BreadcrumbList (keep your existing)
+    // FAQPage (assume merged/expanded in separate file or inline)
+    // NEW: ItemList for rich tour cards/carousel
     {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.jaetravel.co.ke"
+      "@type": "ItemList",
+      name: "2026 Masai Mara Accessible Safari Tours & Packages",
+      itemListElement: masaiMaraTours.map((tour, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        item: {
+          "@type": "TouristTrip",
+          name: `${tour.title} – ${tour.duration}`,
+          description: tour.shortDescription,
+          url: `https://www.jaetravel.co.ke${tour.url}`,
+          image: `https://www.jaetravel.co.ke${tour.image}`,
+          offers: {
+            "@type": "Offer",
+            price: tour.price.toString(),
+            priceCurrency: tour.currency,
+            availability: tour.isOnOffer ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock",
+          },
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Masai Mara Packages",
-          "item": "https://www.jaetravel.co.ke/masai-mara-packages"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Great Migration 2026",
-          "item": "https://www.jaetravel.co.ke/maasai-mara-great-migration"
-        }
-      ]
+      })),
     },
-
-    // 5. FAQPage – 10 optimized questions for maximum rich FAQ carousel visibility
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#faqpage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What Masai Mara packages are available for the 2026 Great Migration?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We offer 3 main Masai Mara packages: Luxury 7-12 day private safaris, 5-9 day group tours, and custom accessible packages. All our Masai Mara packages include wheelchair-accessible vehicles and expert guides."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "When is the Great Migration in Masai Mara in 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Main herds arrive early July to late October 2026. Peak river crossings: August–September. Our Masai Mara packages are timed to maximize crossing opportunities."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can wheelchair users witness Mara River crossings with your Masai Mara packages?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — All our Masai Mara packages feature Kenya's only wheelchair-accessible migration vehicles with hydraulic lifts and pop-up roofs specifically designed for river crossing viewing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is included in your premium Masai Mara packages?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our premium Masai Mara packages include accessible vehicles, expert guides, luxury accommodations, all meals, park fees, medical equipment, and dedicated support staff for disability needs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How far in advance should I book Masai Mara packages for 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "12–18 months. Limited accessible vehicles sell out faster than standard ones. Our Masai Mara packages are in high demand due to unique accessibility features."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are accessible lodges included in your Masai Mara packages?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — Our Masai Mara packages include partnerships with accessible lodges like Governors' Camp, Mara Serena, &Beyond Kichwa Tembo with roll-in showers and widened pathways."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes your Masai Mara packages different from others?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our Masai Mara packages are Kenya's only fully accessible options with hydraulic lift vehicles, medical power, satellite internet, and 100+ hours disability-trained guides specialized for the Great Migration."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which Masai Mara packages are best for photography?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our luxury Masai Mara packages offer priority positioning at crossings, camera hatches at wheelchair eye level, and guides with photography expertise for capturing the migration."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do your Masai Mara packages support conservation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — Every booking from our Masai Mara packages contributes to local conservation efforts, anti-poaching units, and community development in the Masai Mara ecosystem."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is travel insurance required for your Masai Mara packages?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — Mandatory for all our Masai Mara packages, including wheelchair-accessible flying doctor evacuation coverage specific to safari conditions."
-          }
-        }
-      ]
-    },
-
-    // 6. Featured Masai Mara Packages (TouristTrip objects – for rich tour & price results)
-    {
-      "@type": "TouristTrip",
-      "@id": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury/#trip",
-      "name": "Premium Masai Mara Packages - Luxury Accessible Great Migration Safari 2026",
-      "description": "Our luxury Masai Mara packages offer private 7–12 day accessible safaris with daily river crossing focus and premium accommodations",
-      "url": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury",
-      "image": "https://www.jaetravel.co.ke/images/tours/luxury-masai-mara-migration.jpg",
-      "offers": {
-        "@type": "Offer",
-        "price": "6800",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2026-12-31",
-        "availability": "https://schema.org/LimitedAvailability",
-        "url": "https://www.jaetravel.co.ke/tours/masai-mara-packages/luxury"
-      }
-    },
-    {
-      "@type": "TouristTrip",
-      "@id": "https://www.jaetravel.co.ke/booking/masai-mara-packages/group/#trip",
-      "name": "Budget Masai Mara Packages - Accessible Group Great Migration Safari 2026",
-      "description": "Our affordable Masai Mara packages for 5–9 day group safaris with fixed dates and full accessibility features",
-      "url": "https://www.jaetravel.co.ke/booking/masai-mara-packages/group",
-      "image": "https://www.jaetravel.co.ke/images/tours/group-masai-mara-migration.jpg",
-      "offers": {
-        "@type": "Offer",
-        "price": "3450",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.jaetravel.co.ke/booking/masai-mara-packages/group"
-      }
-    }
-  ]
+  ],
 };
 
-export const generateMetadata = (): Metadata => ({
-  title: "Masai Mara Great Migration 2026 | #1 Masai Mara Packages & Wheelchair Accessible Safari Kenya | JAE Travel",
-  description: "Experience the 2026 Masai Mara Great Migration with our exclusive Masai Mara packages. Kenya's premier accessible safari operator offers comprehensive Masai Mara packages featuring hydraulic lift vehicles, wheelchair-friendly lodges, and expert disability-specialist guides. Book your accessible African safari adventure today.",
-  keywords: "masai mara great migration, masai mara packages, maasai mara great migration, great migration masai mara 2026, masai mara safari packages 2026, luxury masai mara packages, budget masai mara tours, accessible masai mara packages, wheelchair friendly safari kenya, wildebeest migration masai mara, accessible african safari, maasai mara river crossing, disability friendly safari kenya, great migration safari packages, masai mara accessible tours, kenya wheelchair travel, adaptive safari vehicles, hydraulic lift safari, accessible travel africa, masai mara national reserve, serengeti migration cycle, masai mara family safari packages, corporate masai mara tours",
+export const metadata: Metadata = {
+  title:
+    "Masai Mara Great Migration 2026 | Wheelchair Accessible Safari Packages & Tours Kenya",
+  description:
+    "Witness the 2026 Great Migration in Masai Mara with Kenya's leading accessible safari operator. Hydraulic lift vehicles, pop-up roofs, specialist guides. Luxury & budget packages from $1,200 USD.",
+  keywords:
+    "masai mara great migration 2026, wheelchair accessible masai mara safari, masai mara packages 2026, accessible masai mara tours, mara river crossing wheelchair, masai mara safari kenya",
   openGraph: {
-    title: "Masai Mara Great Migration 2026 | Premium Masai Mara Packages & Fully Accessible Safari Kenya | JAE Travel",
-    description: "Kenya's premier provider of wheelchair-accessible Masai Mara packages for the Great Migration. Our Masai Mara packages feature custom Land Cruisers with hydraulic lifts, pop-up roofs, medical equipment, and expert guides. Witness Mara River crossings from your wheelchair.",
-    images: [{ 
-      url: "https://www.jaetravel.co.ke/masai-mara-migration.jpg", 
-      width: 1200, 
-      height: 630, 
-      alt: "Wheelchair accessible safari vehicle at 2026 Masai Mara Great Migration river crossing - Premium Masai Mara Packages" 
-    }]
+    title:
+      "Masai Mara Great Migration 2026 | Accessible Safari Packages Kenya | JAE Travel",
+    description:
+      "Experience dramatic Mara River crossings from your wheelchair in 2026. Custom vehicles, expert guides, accessible lodges.",
+    images: [
+      {
+        url: "https://www.jaetravel.co.ke/masai-mara-migration-hero.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
-  alternates: { canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-   languages: {
-    'en': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',           // Main English/global
-    'en-US': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // US
-    'en-GB': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // UK (optional)
-    'en-AU': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Australia (optional)
-    'en-CA': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Canada (optional)
-    'x-default': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',   // Fallback
-  }, },
-  robots: "index, follow, max-image-preview:large",
-  authors: [{ name: "JAE Travel Accessibility Team" }],
-  publisher: "JAE Travel Kenya",
-  category: "Accessible Travel & Masai Mara Packages",
-})
+};
 
 const sections = [
   {
@@ -495,45 +384,43 @@ We actively campaign for improved accessibility standards across African tourism
 export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(greatMigrationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
-        <header className="text-center mb-24">
-          <div className="mb-8 flex justify-center gap-6 flex-wrap">
-            <div className="flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-white font-bold">
-              <Star className="h-5 w-5" /> #1 Masai Mara Packages & Accessible Operator
+      <div className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
+        {/* Hero */}
+        <header className="text-center mb-20 md:mb-32">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-white font-bold">
+              <Star className="h-5 w-5" /> #1 Accessible Masai Mara Operator
             </div>
-            <div className="flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white font-bold">
-              <Award className="h-5 w-5" /> Premium Masai Mara Packages Since 2018
-            </div>
-            <div className="flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 text-white font-bold">
-              <Shield className="h-5 w-5" /> Kenya's Only Accessible Masai Mara Packages
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white font-bold">
+              <Shield className="h-5 w-5" /> Kenya's Only Wheelchair Migration Vehicles
             </div>
           </div>
 
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-10">
-            Masai Mara Great Migration<br />
-            <span className="text-primary">2026 Packages</span>
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
+            Masai Mara Great Migration
+            <br />
+            <span className="text-primary">2026 Accessible Safari Packages</span>
           </h1>
 
-          <p className="mx-auto max-w-6xl text-xl md:text-3xl text-muted-foreground mb-12 leading-relaxed">
-            Experience the 2026 Masai Mara Great Migration with our exclusive Masai Mara packages. We offer the most comprehensive Masai Mara packages in Kenya, featuring custom-engineered accessible vehicles and specialist guides for the ultimate Great Migration adventure.
+          <p className="max-w-4xl mx-auto text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12">
+            Witness dramatic <strong>Mara River crossings</strong> from your wheelchair. Kenya's premier accessible safari operator offers custom hydraulic lift vehicles, 360° pop-up roofs, medical support and expert guides for the 2026 Great Migration.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <Button asChild size="lg" className="text-xl px-12 py-8 bg-green-600 hover:bg-green-700">
-              <Link href="/tours/masai-mara-packages/luxury">
-                <Calendar className="mr-3 h-7 w-7" /> View Luxury Masai Mara Packages
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button asChild size="lg" className="text-lg px-10 py-7 bg-green-600 hover:bg-green-700">
+              <Link href="/tours/accessible-masai-mara-safari">
+                <Calendar className="mr-3 h-6 w-6" />
+                Book Accessible 2026 Package
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-xl px-12 py-8">
-              <Link href="/booking/masai-mara-packages/group">
-                <Zap className="mr-3 h-7 w-7" /> Explore Budget Masai Mara Packages
+            <Button asChild size="lg" variant="outline" className="text-lg px-10 py-7">
+              <Link href="/tours/big-five-masai-mara">
+                View Classic Masai Mara Tours →
               </Link>
             </Button>
           </div>
@@ -550,59 +437,97 @@ export default function MaasaiMaraGreatMigrationPage() {
           </section>
         ))}
 
-        <GreatMigrationVehicleCard />
-
-        <section className="my-40">
-          <h2 className="text-center font-serif text-5xl md:text-7xl font-bold mb-20">
-            Exclusive 2026 Masai Mara Packages for the Great Migration
+        {/* Featured Tours Grid */}
+        <section className="mb-32">
+          <h2 className="text-center font-serif text-4xl md:text-5xl font-bold mb-16">
+            Our Best 2026 Masai Mara Safari Tours & Packages
           </h2>
-          <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
-            <div className="border rounded-3xl p-12 hover:shadow-2xl transition bg-gradient-to-br from-green-50 to-blue-50">
-              <h3 className="text-4xl font-bold mb-8">
-                Luxury Masai Mara Packages - Premier Migration Experience
-              </h3>
-              <ul className="space-y-6 text-lg mb-10">
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> 7–12 day private accessible safari with personalized itinerary</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Multiple river crossings daily with guaranteed optimal positioning</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Luxury accessible lodges & camps with roll-in showers</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Private accessible Land Cruiser with hydraulic lift and medical facilities</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Dedicated disability-specialist guide and driver team</li>
-              </ul>
-              <Button asChild size="lg" className="w-full text-xl py-8">
-                <Link href="/tours/masai-mara-packages/luxury">View Full Itinerary & Book 2026 Dates</Link>
-              </Button>
-            </div>
 
-            <div className="border rounded-3xl p-12 hover:shadow-2xl transition bg-gradient-to-br from-blue-50 to-purple-50">
-              <h3 className="text-4xl font-bold mb-8">
-                Masai Mara Safari Adventure Packages (Accessible Group Tour)
-              </h3>
-              <ul className="space-y-6 text-lg mb-10">
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> 5–9 day joining group safari with fixed departure dates</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Same accessible vehicles & expert disability-trained guides</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Comfortable accessible camps with adapted facilities</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Maximum 6 guests per vehicle ensuring personal attention</li>
-                <li className="flex gap-4"><CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" /> Cost-effective Masai Mara packages with full accessibility</li>
-              </ul>
-              <Button asChild size="lg" className="w-full text-xl py-8">
-                <Link href="/booking/masai-mara-packages/group">Check 2026 Dates & Availability</Link>
-              </Button>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {masaiMaraTours.map((tour) => (
+              <div
+                key={tour.id}
+                className="group border rounded-2xl overflow-hidden hover:shadow-xl transition-all bg-white flex flex-col"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={tour.image}
+                    alt={`${tour.title} – Masai Mara Safari ${tour.duration} 2026`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {tour.isOnOffer && (
+                    <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      Save ${tour.originalPrice! - tour.price}
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    <Link href={tour.url}>
+                      {tour.title} – {tour.duration}
+                    </Link>
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
+                    {tour.shortDescription}
+                  </p>
+
+                  <div className="flex items-center justify-between mb-4 text-sm">
+                    <div className="flex items-center gap-1.5">
+                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                      <span className="font-medium">
+                        {tour.rating} ({tour.reviewCount})
+                      </span>
+                    </div>
+                    <span className="text-lg font-bold text-primary">
+                      From ${tour.price}
+                    </span>
+                  </div>
+
+                  <Button asChild variant="outline" className="mt-auto">
+                    <Link href={tour.bookingUrl || tour.url}>
+                      View Itinerary & Book
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {masaiMaraTours.length === 0 && (
+            <p className="text-center text-muted-foreground py-12">
+              No specific Masai Mara tours found – check our full tours collection.
+            </p>
+          )}
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/tours?region=Kenya&category=Safari">
+                See All Masai Mara & Kenya Safaris →
+              </Link>
+            </Button>
           </div>
         </section>
 
-        <section className="bg-gradient-to-r from-green-600 via-blue-600 to-purple-700 rounded-3xl p-20 text-center text-white">
-          <h2 className="text-5xl md:text-7xl font-bold mb-10">
-            Explore Our 2026 Masai Mara Packages for the Great Migration
+        {/* Vehicle showcase */}
+        <GreatMigrationVehicleCard />
+
+        {/* Final CTA */}
+        <section className="bg-gradient-to-br from-green-600 to-blue-700 rounded-3xl p-12 md:p-20 text-center text-white my-20">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            Ready for Your 2026 Masai Mara Adventure?
           </h2>
-          <p className="text-2xl mb-12 max-w-5xl mx-auto opacity-95 leading-relaxed">
-            Our Masai Mara packages offer the most comprehensive accessible Great Migration experience available. From luxury to budget options, our Masai Mara packages ensure every traveler can witness nature's greatest spectacle. Early booking for our 2026 Masai Mara packages is essential due to limited accessible vehicle availability.
+          <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto opacity-95">
+            Limited accessible vehicles – book early to secure your spot for the greatest wildlife spectacle on Earth.
           </p>
-          <Button asChild size="lg" className="bg-white text-green-600 hover:bg-gray-100 text-2xl px-16 py-10">
-            <Link href="/tours/masai-mara-packages">Browse All Masai Mara Packages</Link>
+          <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-xl px-12 py-8">
+            <Link href="/booking">
+              Contact Us or Book Now
+            </Link>
           </Button>
         </section>
       </div>
     </>
-  )
+  );
 }
