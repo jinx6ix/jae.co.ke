@@ -212,9 +212,9 @@ const homepageSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Wheelchair Accessible Safari Kenya | JaeTravel Expeditions - East Africa Safari Tours & Accessible Travel",
+    title: "Wheelchair Accessible Safari in Kenya | JaeTravel Expeditions", // 58 characters
     description:
-      "Discover unforgettable African safari experiences in Kenya, Tanzania, Rwanda, and Uganda. Specializing in accessible tours for travelers with disabilities, gorilla trekking, Masai Mara, Serengeti Great Migration, and luxury wildlife safaris. Book your dream safari with wheelchair-friendly vehicles and expert guides.",
+      "Wheelchair accessible safaris in Kenya, Tanzania, Rwanda & Uganda. Adapted 4x4 vehicles for Masai Mara, Serengeti & gorilla trekking adventures. Book your inclusive safari.", // 157 characters
     keywords: [
       "african safari",
       "kenya tours",
