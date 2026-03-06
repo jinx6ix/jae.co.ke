@@ -14,7 +14,7 @@ import { faqSchema } from "./faq-schema"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Toyota Prado Rental Kenya & Tanzania | Self-Drive Safari 4x4 | JAE Travel",
+    title: "Toyota Prado Rental Kenya & Tanzania | Self-Drive Safari 4x4 | Jae Travel",
     description:
       "Rent a Toyota Prado for self-drive safari in Kenya, Tanzania, Uganda & Rwanda. Fully equipped 4x4 with pop-up roof, GPS, and insurance. From $95/day. Book now!",
     keywords: [

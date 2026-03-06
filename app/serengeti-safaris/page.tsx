@@ -41,7 +41,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "serengeti-safaris",
-  title: "Serengeti Safaris 2026 | Great Migration & Luxury Tours | JAE Travel Expeditions",
+  title: "Serengeti Safaris 2026 | Great Migration & Luxury Tours | Jae Travel Expeditions",
   description: "Expert-guided Serengeti safaris from Kenya & Tanzania. Track the Great Migration river crossings, witness the Big Five. Licensed East African operator based in Nairobi. Book direct for best rates.",
   h1: "Serengeti Safaris 2026",
   subtitle: "Witness the Great Migration from Kenya & Tanzania – River Crossings, Big Five & Luxury Camps",
@@ -77,9 +77,9 @@ export const metadata: Metadata = {
     "serengeti wildebeest migration",
     "serengeti luxury camps",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   formatDetection: {
     email: false,
     address: false,
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Serengeti Safaris 2026 | Great Migration & Big Five | JAE Travel Expeditions",
+    title: "Serengeti Safaris 2026 | Great Migration & Big Five | Jae Travel Expeditions",
     description: "Book your dream Serengeti safari. Witness the Great Migration river crossings, track the Big Five, and stay in luxury camps. Kenya-based expert operators since 2015.",
     images: [{
       url: "/og/serengeti-safaris-2026.jpg",
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -138,7 +138,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -174,7 +174,7 @@ const jsonLd = {
       description: "Private guided Serengeti safaris tracking the Great Migration, Big Five, and river crossings.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -264,10 +264,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "Is JAE Travel a licensed operator?",
+          name: "Is Jae Travel a licensed operator?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, JAE Travel Expeditions is fully licensed by the Kenya Tourism Board (KTB) and Tanzania Association of Tour Operators (TATO). We've been operating since 2015 with 1,200+ 5-star reviews.",
+            text: "Yes, Jae Travel Expeditions is fully licensed by the Kenya Tourism Board (KTB) and Tanzania Association of Tour Operators (TATO). We've been operating since 2015 with 1,200+ 5-star reviews.",
           },
         },
       ],
@@ -699,7 +699,7 @@ export default function SerengetiSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/10 text-sm text-gray-400">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

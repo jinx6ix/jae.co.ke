@@ -11,7 +11,7 @@ const vehicleHireSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions – Vehicle Hire & Transfers",
+      "name": "Jae Travel Expeditions – Vehicle Hire & Transfers",
       "url": "https://www.jaetravel.co.ke/vehicle-hire",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
@@ -63,7 +63,7 @@ const vehicleHireSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
@@ -72,7 +72,7 @@ const vehicleHireSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/vehicle-hire/#webpage",
       "url": "https://www.jaetravel.co.ke/vehicle-hire",
-      "name": "Vehicle Rental & Airport Transfers | JAE Travel Kenya",
+      "name": "Vehicle Rental & Airport Transfers | Jae Travel Kenya",
       "description": "Luxury car hire and private transfers in Nairobi and across Kenya. 24/7 service with professional drivers.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "breadcrumb": { "@id": "https://www.jaetravel.co.ke/vehicle-hire/#breadcrumb" },
@@ -146,7 +146,7 @@ const vehicleHireSchema = {
       "name": "Nairobi Airport Transfer (JKIA / Wilson)",
       "description": "Reliable door-to-door airport transfer service with meet & greet, professional driver, bottled water, and Wi-Fi.",
       "image": "https://www.jaetravel.co.ke/vehicle-hire/airport-transfer-vehicle.jpg",
-      "brand": { "@type": "Brand", "name": "JAE Travel Expeditions" },
+      "brand": { "@type": "Brand", "name": "Jae Travel Expeditions" },
       "offers": {
         "@type": "Offer",
         "url": "https://www.jaetravel.co.ke/vehicle-hire",

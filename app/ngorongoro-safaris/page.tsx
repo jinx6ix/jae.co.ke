@@ -42,7 +42,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "ngorongoro-safaris",
-  title: "Ngorongoro Crater Safaris 2026 | Tanzania Big Five & Black Rhinos | JAE Travel Expeditions",
+  title: "Ngorongoro Crater Safaris 2026 | Tanzania Big Five & Black Rhinos | Jae Travel Expeditions",
   description: "Descend into Ngorongoro Crater 2026 – highest Big Five density, reliable black rhinos, lions & elephants. Luxury rim lodges from $950 USD. Arusha-based private 4x4 safaris. Kenya-based operator with local expertise.",
   h1: "Ngorongoro Crater",
   h1Sub: "Safaris 2026",
@@ -76,12 +76,12 @@ export const metadata: Metadata = {
     "ngorongoro crater descent fee",
     "ngorongoro unesco world heritage safari",
     "arusha ngorongoro private safari",
-    "jae travel ngorongoro tours",
+    "Jae Travel ngorongoro tours",
     "tanzania safari packages",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/ngorongoro-safaris",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Ngorongoro Crater Safaris 2026 | Big Five & Black Rhinos | JAE Travel Expeditions",
+    title: "Ngorongoro Crater Safaris 2026 | Big Five & Black Rhinos | Jae Travel Expeditions",
     description: "Descend into Ngorongoro Crater – highest Big Five density, reliable black rhinos. Tanzania's UNESCO World Heritage site. Kenya-based operator since 2015.",
     images: [{
       url: "/og/ngorongoro-safaris-2026.jpg",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -131,7 +131,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -153,7 +153,7 @@ const jsonLd = {
       description: "Private guided safaris in Ngorongoro Crater, tracking black rhinos and the Big Five.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -672,7 +672,7 @@ export default function NgorongoroSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

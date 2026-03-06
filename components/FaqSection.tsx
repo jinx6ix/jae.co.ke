@@ -41,7 +41,7 @@ const FaqSection = () => {
         </h2>
       </div>
       <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">
-        Everything international travelers need to know about Serengeti safaris with JAE Travel.
+        Everything international travelers need to know about Serengeti safaris with Jae Travel.
       </p>
       
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">

@@ -10,7 +10,7 @@ const aboutPageSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "Award-winning accessible & sustainable safari operator in Kenya, Tanzania, Rwanda & Uganda since 2008. Specializing in wheelchair-friendly safaris and responsible tourism.",
@@ -50,7 +50,7 @@ const aboutPageSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }

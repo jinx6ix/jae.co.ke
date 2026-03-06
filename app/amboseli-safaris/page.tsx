@@ -46,7 +46,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "amboseli-safaris",
-  title: "Amboseli Safaris 2026 | Elephant Baby Boom & Stunning Kilimanjaro Views | JAE Travel Expeditions",
+  title: "Amboseli Safaris 2026 | Elephant Baby Boom & Stunning Kilimanjaro Views | Jae Travel Expeditions",
   description: "Experience Amboseli in 2026 – witness 220+ new elephant calves from the 2025 boom continuing strong, crystal-clear Kilimanjaro, private 4x4 safaris from Nairobi. Packages from $1,150 USD all-inclusive.",
   h1: "Amboseli Safaris",
   h1Sub: "2026",
@@ -80,9 +80,9 @@ export const metadata: Metadata = {
     "kenya elephant safari",
     "mount kilimanjaro view safari",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/amboseli-safaris",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Amboseli Safaris 2026 | Elephant Baby Boom & Kilimanjaro | JAE Travel Expeditions",
+    title: "Amboseli Safaris 2026 | Elephant Baby Boom & Kilimanjaro | Jae Travel Expeditions",
     description: "Witness 220+ new elephant calves against Mount Kilimanjaro. Private safaris from Nairobi. Kenya-based operator since 2015.",
     images: [{
       url: "/og/amboseli-2026.jpg",
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -132,7 +132,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -154,7 +154,7 @@ const jsonLd = {
       description: "Private guided safaris to Amboseli National Park featuring elephant families and Kilimanjaro views.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -724,7 +724,7 @@ export default function AmboseliSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

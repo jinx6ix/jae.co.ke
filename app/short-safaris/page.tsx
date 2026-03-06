@@ -41,7 +41,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "short-safaris",
-  title: "Short Safaris & Day Trips 2026 | 1-3 Day Kenya Tours from Nairobi | JAE Travel Expeditions",
+  title: "Short Safaris & Day Trips 2026 | 1-3 Day Kenya Tours from Nairobi | Jae Travel Expeditions",
   description: "Perfect for layovers or short breaks. 1-3 day safaris from Nairobi to Lake Nakuru, Amboseli, Masai Mara, and more. Private 4x4, expert guides, all park fees included. Packages from $150 USD.",
   h1: "Short Safaris",
   h1Sub: "& Day Trips 2026",
@@ -83,9 +83,9 @@ export const metadata: Metadata = {
     "kenya short breaks",
     "layover safari nairobi",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/short-safaris",
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -124,7 +124,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -146,7 +146,7 @@ const jsonLd = {
       description: "1-3 day guided safaris from Nairobi to Kenya's top destinations.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -496,7 +496,7 @@ export default function ShortSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

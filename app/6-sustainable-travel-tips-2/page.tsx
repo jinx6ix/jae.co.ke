@@ -47,7 +47,7 @@ const sustainableTravelSchema = {
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
@@ -69,7 +69,7 @@ const sustainableTravelSchema = {
     {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
-      "name": "JAE Travel – Sustainable & Accessible Safaris East Africa",
+      "name": "Jae Travel – Sustainable & Accessible Safaris East Africa",
       "description": "Leading operator of sustainable, eco-friendly, and wheelchair-accessible safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
@@ -91,7 +91,7 @@ const sustainableTravelSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
@@ -157,7 +157,7 @@ const sustainableTravelSchema = {
       "author": {
         "@type": "Organization",
         "@id": "https://www.jaetravel.co.ke/#organization",
-        "name": "JAE Travel Expeditions"
+        "name": "Jae Travel Expeditions"
       },
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"

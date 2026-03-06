@@ -35,7 +35,7 @@ const pageSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
@@ -91,7 +91,7 @@ const pageSchema = {
             "name": "Sarah M."
           },
           "datePublished": "2024-09-15",
-          "reviewBody": "The Masai Mara packages offered by JAE Travel are exceptional. As a paraplegic, I never thought I'd see a Mara River crossing live. Their hydraulic lift vehicle worked perfectly on steep banks. I saw three crossings in one morning — life-changing."
+          "reviewBody": "The Masai Mara packages offered by Jae Travel are exceptional. As a paraplegic, I never thought I'd see a Mara River crossing live. Their hydraulic lift vehicle worked perfectly on steep banks. I saw three crossings in one morning — life-changing."
         },
         {
           "@type": "Review",
@@ -129,7 +129,7 @@ const pageSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
@@ -184,7 +184,7 @@ export const metadata: Metadata = {
     "masai mara great migration 2026, wheelchair accessible masai mara safari, masai mara packages 2026, accessible masai mara tours, mara river crossing wheelchair, masai mara safari kenya",
   openGraph: {
     title:
-      "Masai Mara Great Migration 2026 | Accessible Safari Packages Kenya | JAE Travel",
+      "Masai Mara Great Migration 2026 | Accessible Safari Packages Kenya | Jae Travel",
     description:
       "Experience dramatic Mara River crossings from your wheelchair in 2026. Custom vehicles, expert guides, accessible lodges.",
     images: [
@@ -206,7 +206,7 @@ The Masai Mara Great Migration represents the largest terrestrial mammal migrati
 
 This is not a singular event but rather a continuous, year-round cycle driven by rainfall patterns and the search for fresh grazing lands. The most photographed and filmed moments typically occur between July and October when the massive herds confront the treacherous Mara River and Talek River crossings. These crossings represent nature's ultimate survival drama: 5-meter Nile crocodiles launch coordinated attacks, lion prides and leopards strategically position themselves on exit banks, and the river waters churn with the panic of thousands of animals fighting for survival. Our Masai Mara packages are timed to coincide with these peak crossing periods.
 
-For travelers with mobility impairments, witnessing this spectacle has historically been nearly impossible due to inaccessible vehicles and infrastructure. JAE Travel has revolutionized accessible African tourism by pioneering Kenya's first and only fleet of fully wheelchair-accessible Great Migration safari vehicles available in our Masai Mara packages. Our 18 custom-modified Toyota Land Cruisers feature German-engineered hydraulic lifts with 400 kg capacity, full pop-up roofs allowing 360° game viewing while remaining seated in your wheelchair, medical-grade Q'Straint 4-point restraint systems tested to 20G impact standards, 3kW pure sine wave inverters for medical equipment, 45L medical refrigerators, Starlink satellite internet for connectivity, and drivers who have completed an intensive 100-hour disability-specialist training program. These features are standard across all our Masai Mara packages.
+For travelers with mobility impairments, witnessing this spectacle has historically been nearly impossible due to inaccessible vehicles and infrastructure. Jae Travel has revolutionized accessible African tourism by pioneering Kenya's first and only fleet of fully wheelchair-accessible Great Migration safari vehicles available in our Masai Mara packages. Our 18 custom-modified Toyota Land Cruisers feature German-engineered hydraulic lifts with 400 kg capacity, full pop-up roofs allowing 360° game viewing while remaining seated in your wheelchair, medical-grade Q'Straint 4-point restraint systems tested to 20G impact standards, 3kW pure sine wave inverters for medical equipment, 45L medical refrigerators, Starlink satellite internet for connectivity, and drivers who have completed an intensive 100-hour disability-specialist training program. These features are standard across all our Masai Mara packages.
 
 Since our founding in 2018, we have successfully guided over 720 wheelchair users and travelers with limited mobility to witness multiple Mara River crossings per day through our Masai Mara packages. Many of our clients describe their experience as life-changing, having never imagined they could witness Africa's greatest wildlife spectacle firsthand. Our commitment to accessibility extends beyond vehicles to include partnerships with accessible lodges, trained staff, and comprehensive emergency protocols across all our Masai Mara packages.
 
@@ -286,7 +286,7 @@ The Nile crocodiles inhabiting the Mara River represent some of the largest and 
   },
   {
     h2: "How Wheelchair Users Experience Our Masai Mara Packages – No Barriers, No Compromises",
-    content: `Traditional safari vehicles systematically exclude wheelchair users from the Great Migration experience due to rough terrain requirements, extended hours in the field, and the necessity of standing for optimal game viewing. JAE Travel has eliminated every accessibility barrier through innovative engineering and specialized training in all our Masai Mara packages:
+    content: `Traditional safari vehicles systematically exclude wheelchair users from the Great Migration experience due to rough terrain requirements, extended hours in the field, and the necessity of standing for optimal game viewing. Jae Travel has eliminated every accessibility barrier through innovative engineering and specialized training in all our Masai Mara packages:
 
 <strong>Vehicle Accessibility Features in Every Masai Mara Package:</strong><br/>
 - German-engineered hydraulic side lifts with 400 kg capacity that operate reliably even on 30° riverbank slopes<br/>
@@ -350,7 +350,7 @@ Consult with a travel medicine specialist 6–8 weeks before departure regarding
   },
   {
     h2: "Conservation & Responsible Tourism in Our Masai Mara Packages",
-    content: `The Masai Mara faces increasing environmental pressure from growing tourism numbers. JAE Travel operates under strict, scientifically-informed low-impact guidelines across all our Masai Mara packages:
+    content: `The Masai Mara faces increasing environmental pressure from growing tourism numbers. Jae Travel operates under strict, scientifically-informed low-impact guidelines across all our Masai Mara packages:
 
 <strong>Environmental Protection Protocols in Every Masai Mara Package:</strong><br/>
 - Maximum 5 vehicles permitted per crossing event (we often secure exclusive access in private conservancies)<br/>
@@ -371,11 +371,11 @@ We actively campaign for improved accessibility standards across African tourism
   },
   {
     h2: "Client Stories: Real Experiences from Our Masai Mara Packages",
-    content: `<strong>Sarah M., United Kingdom – September 2024:</strong> "The luxury Masai Mara packages from JAE Travel exceeded all expectations. As a paraplegic for 25 years following a car accident, I had resigned myself to watching wildlife documentaries from my living room. JAE Travel transformed this limitation – I witnessed three separate river crossings in one incredible morning. The hydraulic lift worked flawlessly on steep riverbanks, and being able to photograph from my wheelchair through the pop-up roof was liberating. This experience redefined what I believed was possible with my mobility challenges through their exceptional Masai Mara packages."
+    content: `<strong>Sarah M., United Kingdom – September 2024:</strong> "The luxury Masai Mara packages from Jae Travel exceeded all expectations. As a paraplegic for 25 years following a car accident, I had resigned myself to watching wildlife documentaries from my living room. Jae Travel transformed this limitation – I witnessed three separate river crossings in one incredible morning. The hydraulic lift worked flawlessly on steep riverbanks, and being able to photograph from my wheelchair through the pop-up roof was liberating. This experience redefined what I believed was possible with my mobility challenges through their exceptional Masai Mara packages."
 
-<strong>James K., Australia – August 2025:</strong> "Twelve years in a wheelchair hadn't dimmed my childhood dream of seeing the Great Migration. When I researched Masai Mara packages, JAE Travel stood out for their accessibility features. When the first wildebeest leaped into the Mara River, tears streamed down my face – not just from the spectacle, but from the realization that their Masai Mara packages had made the impossible accessible. The medical refrigeration for my medication, the secure wheelchair restraints, and the knowledgeable guides who understood both wildlife and accessibility needs created a seamless experience."
+<strong>James K., Australia – August 2025:</strong> "Twelve years in a wheelchair hadn't dimmed my childhood dream of seeing the Great Migration. When I researched Masai Mara packages, Jae Travel stood out for their accessibility features. When the first wildebeest leaped into the Mara River, tears streamed down my face – not just from the spectacle, but from the realization that their Masai Mara packages had made the impossible accessible. The medical refrigeration for my medication, the secure wheelchair restraints, and the knowledgeable guides who understood both wildlife and accessibility needs created a seamless experience."
 
-<strong>Maria R., Canada – July 2025:</strong> "Traveling with multiple sclerosis requires careful planning, but the Masai Mara packages from JAE Travel anticipated every need. The climate-controlled vehicle prevented overheating, the comfortable seating reduced fatigue, and the ability to remain in my power chair throughout game drives preserved my energy. Witnessing a crocodile attack mere meters from our vehicle was simultaneously terrifying and exhilarating – an experience I'll cherish forever thanks to their thoughtfully designed Masai Mara packages."
+<strong>Maria R., Canada – July 2025:</strong> "Traveling with multiple sclerosis requires careful planning, but the Masai Mara packages from Jae Travel anticipated every need. The climate-controlled vehicle prevented overheating, the comfortable seating reduced fatigue, and the ability to remain in my power chair throughout game drives preserved my energy. Witnessing a crocodile attack mere meters from our vehicle was simultaneously terrifying and exhilarating – an experience I'll cherish forever thanks to their thoughtfully designed Masai Mara packages."
 
 <strong>Additional testimonials and detailed case studies from our Masai Mara packages available upon request, including videos and photography from our accessibility-focused safaris.</strong>`
   }

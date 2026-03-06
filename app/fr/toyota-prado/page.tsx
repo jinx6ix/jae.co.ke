@@ -14,7 +14,7 @@ import { faqSchema } from "./faq-schema"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Location Toyota Prado Kenya & Tanzanie | Safari Self-Drive 4x4 | JAE Travel",
+    title: "Location Toyota Prado Kenya & Tanzanie | Safari Self-Drive 4x4 | Jae Travel",
     description:
       "Louez un Toyota Prado pour safari en self-drive au Kenya, en Tanzanie, Ouganda & Rwanda. 4x4 tout équipé avec toit pop-up, GPS et assurance. À partir de 95 $/jour. Réservez maintenant !",
     keywords: [

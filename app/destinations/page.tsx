@@ -14,7 +14,7 @@ const destinationsSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
@@ -48,7 +48,7 @@ const destinationsSchema = {
             "name": "David Chen"
           },
           "datePublished": "2025-08-20",
-          "reviewBody": "JAE Travel took us to the best East Africa destinations — Masai Mara, Serengeti, and Volcanoes National Park. Everything was perfectly planned, accessible, and unforgettable!"
+          "reviewBody": "Jae Travel took us to the best East Africa destinations — Masai Mara, Serengeti, and Volcanoes National Park. Everything was perfectly planned, accessible, and unforgettable!"
         },
         {
           "@type": "Review",
@@ -62,7 +62,7 @@ const destinationsSchema = {
             "name": "Sarah Johnson"
           },
           "datePublished": "2025-07-15",
-          "reviewBody": "Amazing multi-country safari with JAE Travel! From gorilla trekking in Rwanda to the Great Migration in Tanzania — the guides and logistics were outstanding. Highly recommend!"
+          "reviewBody": "Amazing multi-country safari with Jae Travel! From gorilla trekking in Rwanda to the Great Migration in Tanzania — the guides and logistics were outstanding. Highly recommend!"
         },
         {
           "@type": "Review",
@@ -76,7 +76,7 @@ const destinationsSchema = {
             "name": "Michael Thompson"
           },
           "datePublished": "2025-09-05",
-          "reviewBody": "JAE Travel showed us the true beauty of East Africa — Serengeti, Bwindi, Zanzibar, and more. Professional, safe, and truly accessible. Best safari company we've ever used!"
+          "reviewBody": "Jae Travel showed us the true beauty of East Africa — Serengeti, Bwindi, Zanzibar, and more. Professional, safe, and truly accessible. Best safari company we've ever used!"
         }
       ]
     },
@@ -86,7 +86,7 @@ const destinationsSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 

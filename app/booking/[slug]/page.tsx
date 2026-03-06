@@ -23,7 +23,7 @@ function generateTourSchema(tour: typeof tours[0]) {
       {
         "@type": ["Organization", "LocalBusiness"],
         "@id": "https://www.jaetravel.co.ke/#organization",
-        "name": "JAE Travel Expeditions",
+        "name": "Jae Travel Expeditions",
         "url": "https://www.jaetravel.co.ke",
         "logo": "https://www.jaetravel.co.ke/logo.png",
         "telephone": "+254726485228",
@@ -50,7 +50,7 @@ function generateTourSchema(tour: typeof tours[0]) {
           "name": "David Chen"
         },
         "datePublished": "2025-08-20",
-        "reviewBody": `Absolutely incredible ${tour.title}! The wildlife sightings were breathtaking, the guide was knowledgeable and friendly, and the accommodations were perfect. JAE Travel made our dream safari come true. Highly recommended!`,
+        "reviewBody": `Absolutely incredible ${tour.title}! The wildlife sightings were breathtaking, the guide was knowledgeable and friendly, and the accommodations were perfect. Jae Travel made our dream safari come true. Highly recommended!`,
         "itemReviewed": {
           "@id": `${pageUrl}#product`
         }
@@ -68,7 +68,7 @@ function generateTourSchema(tour: typeof tours[0]) {
           "name": "Sarah Johnson"
         },
         "datePublished": "2025-07-15",
-        "reviewBody": `Just completed the ${tour.title} and it exceeded all expectations. Everything was perfectly organized, the food was amazing, and the accessibility features were flawless. Thank you JAE Travel for an unforgettable experience!`,
+        "reviewBody": `Just completed the ${tour.title} and it exceeded all expectations. Everything was perfectly organized, the food was amazing, and the accessibility features were flawless. Thank you Jae Travel for an unforgettable experience!`,
         "itemReviewed": {
           "@id": `${pageUrl}#product`
         }
@@ -86,7 +86,7 @@ function generateTourSchema(tour: typeof tours[0]) {
           "name": "Michael Thompson"
         },
         "datePublished": "2025-09-05",
-        "reviewBody": `The ${tour.title} was the highlight of our East Africa trip. Professional guides, comfortable transport, and incredible wildlife encounters. JAE Travel is the best in the business — 5 stars all the way!`,
+        "reviewBody": `The ${tour.title} was the highlight of our East Africa trip. Professional guides, comfortable transport, and incredible wildlife encounters. Jae Travel is the best in the business — 5 stars all the way!`,
         "itemReviewed": {
           "@id": `${pageUrl}#product`
         }
@@ -101,7 +101,7 @@ function generateTourSchema(tour: typeof tours[0]) {
         "image": tour.image?.[0] || "https://www.jaetravel.co.ke/default-tour-image.jpg",
         "brand": {
           "@type": "Brand",
-          "name": "JAE Travel Expeditions"
+          "name": "Jae Travel Expeditions"
         },
         "sku": tour.slug,
         "offers": {
@@ -158,7 +158,7 @@ function generateTourSchema(tour: typeof tours[0]) {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         "url": pageUrl,
-        "name": `Book ${tour.title} | JAE Travel Expeditions`,
+        "name": `Book ${tour.title} | Jae Travel Expeditions`,
         "description": `Secure your ${tour.title} safari starting from ${tour.currency || 'USD'} ${tour.price.toLocaleString()}. Private & group options available.`,
         "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
         "breadcrumb": { "@id": `${pageUrl}#breadcrumb` },

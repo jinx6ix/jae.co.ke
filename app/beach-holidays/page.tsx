@@ -51,7 +51,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "beach-holidays",
-  title: "Beach & Island Holidays 2026 | Zanzibar, Diani, Mombasa & Pemba | JAE Travel Expeditions",
+  title: "Beach & Island Holidays 2026 | Zanzibar, Diani, Mombasa & Pemba | Jae Travel Expeditions",
   description: "Relax on East Africa's pristine beaches. White sands of Zanzibar, Diani's palm-fringed shores, Pemba's diving paradise, and Mombasa's coastal culture. Beach resorts, water sports, and island escapes from $350 USD.",
   h1: "Beach & Island",
   h1Sub: "Holidays 2026",
@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     "east africa beach resorts",
     "indian ocean beach holidays",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/beach-holidays",
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -137,7 +137,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -159,7 +159,7 @@ const jsonLd = {
       description: "Luxury beach holidays and island escapes across East Africa's coastline and lakes.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -600,7 +600,7 @@ export default function BeachHolidaysPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

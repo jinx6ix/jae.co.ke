@@ -17,7 +17,7 @@ const contactPageSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "East Africa’s leading wheelchair-accessible safari operator. Kenya, Tanzania, Rwanda & Uganda.",
@@ -125,7 +125,7 @@ const contactPageSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
@@ -134,7 +134,7 @@ const contactPageSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/contact/#webpage",
       "url": "https://www.jaetravel.co.ke/contact",
-      "name": "Contact Us | JAE Travel Expeditions",
+      "name": "Contact Us | Jae Travel Expeditions",
       "description": "Get in touch for safari bookings, vehicle hire, or custom accessible tours. 24/7 support.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "breadcrumb": { "@id": "https://www.jaetravel.co.ke/contact/#breadcrumb" },
@@ -172,7 +172,7 @@ const contactPageSchema = {
       "@type": "ContactPage",
       "@id": "https://www.jaetravel.co.ke/contact/#contactpage",
       "url": "https://www.jaetravel.co.ke/contact",
-      "name": "Contact JAE Travel Expeditions",
+      "name": "Contact Jae Travel Expeditions",
       "description": "Book your safari, inquire about wheelchair-accessible tours, or hire vehicles. We reply within 24 hours."
     },
 

@@ -27,7 +27,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
       {
         "@type": ["Organization", "LocalBusiness", "TravelAgency"],
         "@id": "https://www.jaetravel.co.ke/#organization",
-        "name": "JAE Travel Expeditions – Safaris de Luxe Accessibles",
+        "name": "Jae Travel Expeditions – Safaris de Luxe Accessibles",
         "url": "https://www.jaetravel.co.ke",
         "logo": "https://www.jaetravel.co.ke/logo.png",
         "telephone": "+254726485228",
@@ -62,7 +62,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "David Chen"
             },
             "datePublished": "2025-08-20",
-            "reviewBody": `Notre safari à ${destination.name} a été absolument magique ! Guides exceptionnels, véhicules accessibles parfaits et paysages à couper le souffle. JAE Travel est le meilleur choix pour un voyage inclusif.`
+            "reviewBody": `Notre safari à ${destination.name} a été absolument magique ! Guides exceptionnels, véhicules accessibles parfaits et paysages à couper le souffle. Jae Travel est le meilleur choix pour un voyage inclusif.`
           },
           {
             "@type": "Review",
@@ -76,7 +76,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "Sarah Johnson"
             },
             "datePublished": "2025-07-15",
-            "reviewBody": `Expérience inoubliable à ${destination.name} avec JAE Travel. Tout était parfaitement adapté : véhicule avec élévateur hydraulique, lodges accessibles et service 5 étoiles. Merci !`
+            "reviewBody": `Expérience inoubliable à ${destination.name} avec Jae Travel. Tout était parfaitement adapté : véhicule avec élévateur hydraulique, lodges accessibles et service 5 étoiles. Merci !`
           },
           {
             "@type": "Review",
@@ -90,7 +90,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "Michael Thompson"
             },
             "datePublished": "2025-09-05",
-            "reviewBody": `JAE Travel a rendu notre voyage à ${destination.name} exceptionnel. Guides passionnés, organisation impeccable et accessibilité totale. Meilleur opérateur safari d'Afrique de l'Est !`
+            "reviewBody": `Jae Travel a rendu notre voyage à ${destination.name} exceptionnel. Guides passionnés, organisation impeccable et accessibilité totale. Meilleur opérateur safari d'Afrique de l'Est !`
           }
         ]
       },
@@ -107,7 +107,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
           "url": destination.heroImage,
           "contentUrl": destination.heroImage,
           "name": `Paysage iconique de ${destination.name} – Safari de luxe accessible`,
-          "description": `Meilleure vue safari ${destination.name} ${currentYear}–${currentYear + 1} – expérience inclusive JAE Travel`,
+          "description": `Meilleure vue safari ${destination.name} ${currentYear}–${currentYear + 1} – expérience inclusive Jae Travel`,
           "width": "1200",
           "height": "800",
           "inLanguage": "fr",
@@ -124,7 +124,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
         "@type": "WebSite",
         "@id": "https://www.jaetravel.co.ke/#website",
         "url": "https://www.jaetravel.co.ke",
-        "name": "JAE Travel Expeditions",
+        "name": "Jae Travel Expeditions",
         "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
 
@@ -191,7 +191,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
             "name": `Est-ce que ${destination.name} propose des safaris accessibles en fauteuil roulant ?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Oui ! JAE Travel est spécialisé dans les safaris 100% accessibles avec véhicules équipés d’élévateur hydraulique, lodges sans barrières et itinéraires adaptés aux personnes à mobilité réduite."
+              "text": "Oui ! Jae Travel est spécialisé dans les safaris 100% accessibles avec véhicules équipés d’élévateur hydraulique, lodges sans barrières et itinéraires adaptés aux personnes à mobilité réduite."
             }
           },
           {
@@ -256,7 +256,7 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
   const destination = getDestinationBySlug(country)
 
   if (!destination) {
-    return { title: "Destination Introuvable | JAE Travel Expeditions" }
+    return { title: "Destination Introuvable | Jae Travel Expeditions" }
   }
 
   return {
@@ -278,7 +278,7 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
       title: destination.metaTitle,
       description: destination.metaDescription,
       url: `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,
-      siteName: "JAE Travel Expeditions",
+      siteName: "Jae Travel Expeditions",
       images: [
         {
           url: destination.heroImage,
@@ -322,7 +322,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         <div className="relative h-[70vh] min-h-[520px] md:h-[80vh]">
           <Image
             src={destination.heroImage || "/placeholder.svg"}
-            alt={`${destination.name} – Paysage safari iconique – JAE Travel Expeditions`}
+            alt={`${destination.name} – Paysage safari iconique – Jae Travel Expeditions`}
             fill
             className="object-cover brightness-[0.82]"
             priority
@@ -369,7 +369,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   </p>
 
                   <p>
-                    Chez <strong>JAE Travel Expeditions</strong>, nous avons conçu des itinéraires qui combinent luxe, accessibilité et
+                    Chez <strong>Jae Travel Expeditions</strong>, nous avons conçu des itinéraires qui combinent luxe, accessibilité et
                     respect de l’environnement. Nos véhicules 4×4 équipés d’élévateurs hydrauliques, nos lodges sans barrières et
                     nos guides experts font de chaque voyage une expérience inclusive et mémorable.
                   </p>
@@ -417,11 +417,11 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
             </div>
           </div>
 
-          {/* Pourquoi choisir JAE Travel pour {destination.name} */}
+          {/* Pourquoi choisir Jae Travel pour {destination.name} */}
           <section className="mb-20 py-14 bg-gradient-to-br from-muted/40 to-muted/10 rounded-3xl">
             <div className="max-w-5xl mx-auto px-6">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-12">
-                Pourquoi visiter {destination.name} avec JAE Travel ?
+                Pourquoi visiter {destination.name} avec Jae Travel ?
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {[

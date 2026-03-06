@@ -44,7 +44,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "great-migration-safaris",
-  title: "Great Migration Safaris 2026 | Masai Mara & Serengeti River Crossings | JAE Travel Expeditions",
+  title: "Great Migration Safaris 2026 | Masai Mara & Serengeti River Crossings | Jae Travel Expeditions",
   description: "Witness the 2026 Great Wildebeest Migration – Mara River crossings peak Aug–Sep, calving Jan–Mar. Masai Mara & Serengeti private safaris from $1,200 USD. Kenya-based operator with local expertise.",
   h1: "Great Migration",
   h1Sub: "Safaris 2026",
@@ -79,12 +79,12 @@ export const metadata: Metadata = {
     "best time great migration 2026",
     "mara river crossings safari kenya",
     "wildebeest migration tanzania kenya",
-    "jae travel migration safaris",
+    "Jae Travel migration safaris",
     "east africa safari tours",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/great-migration-safaris",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Great Migration Safaris 2026 | Masai Mara & Serengeti | JAE Travel Expeditions",
+    title: "Great Migration Safaris 2026 | Masai Mara & Serengeti | Jae Travel Expeditions",
     description: "Witness the greatest wildlife spectacle on earth. Mara River crossings, calving season, predator action. Kenya-based expert operators since 2015.",
     images: [{
       url: "/og/great-migration-2026.jpg",
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -134,7 +134,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -156,7 +156,7 @@ const jsonLd = {
       description: "Private guided safaris tracking the Great Migration across Masai Mara and Serengeti.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -663,7 +663,7 @@ export default function GreatMigrationSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

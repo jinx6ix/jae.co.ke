@@ -173,7 +173,7 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
               "@type": "WebPage",
               "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#webpage`,
               "url": `https://www.jaetravel.co.ke/tours/${tour.slug}`,
-              "name": `${tour.title} Safari Tour | JAE Travel Expeditions`,
+              "name": `${tour.title} Safari Tour | Jae Travel Expeditions`,
               "description": tour.description,
               "breadcrumb": {
                 "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#breadcrumb`

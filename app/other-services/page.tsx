@@ -12,7 +12,7 @@ const transportSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions – Transportation Services Kenya & East Africa",
+      "name": "Jae Travel Expeditions – Transportation Services Kenya & East Africa",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "image": "https://www.jaetravel.co.ke/14.jpeg",
@@ -98,7 +98,7 @@ const transportSchema = {
             "name": "James Kimani"
           },
           "datePublished": "2025-09-05",
-          "reviewBody": "Used JAE Travel for group transport in Nairobi — comfortable minibus, professional driver, and punctual service. Great for corporate events and tours!"
+          "reviewBody": "Used Jae Travel for group transport in Nairobi — comfortable minibus, professional driver, and punctual service. Great for corporate events and tours!"
         }
       ]
     },
@@ -108,7 +108,7 @@ const transportSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
@@ -317,7 +317,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Transportation Services Kenya & East Africa | JAE Travel Expeditions",
+    title: "Transportation Services Kenya & East Africa | Jae Travel Expeditions",
     description: "Reliable car hire, airport transfers and safari transport across Kenya, Tanzania, Rwanda & Uganda.",
     url: "https://www.jaetravel.co.ke/other-services",
     type: "website",

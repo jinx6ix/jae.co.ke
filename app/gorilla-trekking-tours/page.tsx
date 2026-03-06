@@ -45,7 +45,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "gorilla-trekking-tours",
-  title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda Mountain Gorillas | JAE Travel Expeditions",
+  title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda Mountain Gorillas | Jae Travel Expeditions",
   description: "Book 2026 gorilla trekking in Rwanda (Volcanoes NP) & Uganda (Bwindi) – permits $1,500 Rwanda / $800 Uganda, expert trackers, luxury lodges. Once-in-a-lifetime encounters from $2,200 USD.",
   h1: "Gorilla Trekking",
   h1Sub: "Tours 2026",
@@ -83,12 +83,12 @@ export const metadata: Metadata = {
     "best time gorilla trekking dry season",
     "gorilla habituation experience Uganda",
     "gorilla permit booking 2026",
-    "jae travel gorilla safaris",
+    "Jae Travel gorilla safaris",
     "east africa gorilla trekking",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/gorilla-trekking-tours",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda | JAE Travel Expeditions",
+    title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda | Jae Travel Expeditions",
     description: "Trek endangered mountain gorillas in Rwanda's Volcanoes NP & Uganda's Bwindi. Guaranteed permits, expert trackers. Kenya-based operator since 2015.",
     images: [{
       url: "/og/gorilla-trekking-2026.jpg",
@@ -109,7 +109,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -138,7 +138,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -160,7 +160,7 @@ const jsonLd = {
       description: "Guaranteed permits for mountain gorilla trekking in Uganda and Rwanda.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -647,7 +647,7 @@ export default function GorillaTrekkingToursPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

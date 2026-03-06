@@ -48,7 +48,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "cultural-tours",
-  title: "Cultural & City Tours 2026 | Maasai Villages, Stone Town & Kigali | JAE Travel Expeditions",
+  title: "Cultural & City Tours 2026 | Maasai Villages, Stone Town & Kigali | Jae Travel Expeditions",
   description: "Immerse yourself in East Africa's rich cultures. Visit Maasai villages, explore Stone Town's ancient streets, discover Kigali's history, and experience local traditions. Guided cultural experiences from $80 USD.",
   h1: "Cultural & City",
   h1Sub: "Experiences 2026",
@@ -91,9 +91,9 @@ export const metadata: Metadata = {
     "arusha cultural tour",
     "east african culture experiences",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/cultural-tours",
@@ -114,7 +114,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -132,7 +132,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -154,7 +154,7 @@ const jsonLd = {
       description: "Guided cultural tours and city experiences across East Africa.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -477,7 +477,7 @@ export default function CulturalToursPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

@@ -45,7 +45,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "flamingo-safari-tours",
-  title: "Flamingo Safari Tours 2026 | Lake Nakuru Pink Flocks & Rhinos Kenya | JAE Travel Expeditions",
+  title: "Flamingo Safari Tours 2026 | Lake Nakuru Pink Flocks & Rhinos Kenya | Jae Travel Expeditions",
   description: "Experience Lake Nakuru's iconic flamingo spectacle in 2026 – thousands of pink birds, black/white rhinos, 450+ species. Short safaris from Nairobi from $450 USD. Private 4x4, expert guides.",
   h1: "Flamingo Safari",
   h1Sub: "Tours 2026",
@@ -80,12 +80,12 @@ export const metadata: Metadata = {
     "flamingo safari from nairobi",
     "lake bogoria flamingos alternative",
     "pink lake nakuru kenya 2026",
-    "jae travel flamingo tours",
+    "Jae Travel flamingo tours",
     "kenya birding safaris",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/flamingo-safari-tours",
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya | JAE Travel Expeditions",
+    title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya | Jae Travel Expeditions",
     description: "Witness thousands of flamingos at Lake Nakuru. Pink horizons, rhino sanctuary, 450+ bird species. Short safaris from Nairobi. Kenya-based operator since 2015.",
     images: [{
       url: "/og/flamingo-safari-2026.jpg",
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -135,7 +135,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -157,7 +157,7 @@ const jsonLd = {
       description: "Private guided safaris to Lake Nakuru for flamingo viewing, rhino sanctuary, and birdwatching.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -644,7 +644,7 @@ export default function FlamingoSafariToursPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

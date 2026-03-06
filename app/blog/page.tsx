@@ -10,7 +10,7 @@ const blogPageSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "East Africa’s leading operator of accessible, sustainable, and responsible safaris in Kenya, Tanzania, Rwanda, and Uganda.",
@@ -32,7 +32,7 @@ const blogPageSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
@@ -43,7 +43,7 @@ const blogPageSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/blog/#webpage",
       "url": "https://www.jaetravel.co.ke/blog",
-      "name": "Safari Travel Blog | Tips, Guides & Stories | JAE Travel Expeditions",
+      "name": "Safari Travel Blog | Tips, Guides & Stories | Jae Travel Expeditions",
       "description": "Expert safari tips, destination guides, wildlife stories, and accessible travel advice from East Africa’s leading inclusive safari operator.",
       "isPartOf": {
         "@id": "https://www.jaetravel.co.ke/#website"
@@ -87,7 +87,7 @@ const blogPageSchema = {
       "@type": "Blog",
       "@id": "https://www.jaetravel.co.ke/blog/#blog",
       "url": "https://www.jaetravel.co.ke/blog",
-      "name": "JAE Travel Safari Blog",
+      "name": "Jae Travel Safari Blog",
       "description": "Weekly insights, safari tips, wildlife stories, and accessible travel guides from East Africa.",
       "blogPost": blogPosts.slice(0, 10).map(post => ({
         "@type": "BlogPosting",

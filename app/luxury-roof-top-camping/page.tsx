@@ -18,7 +18,7 @@ const campingSchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
       "description": "Specialist in luxury rooftop camping safaris in Kenya: Maasai Mara, Amboseli, Tsavo, and private conservancies.",
@@ -42,7 +42,7 @@ const campingSchema = {
             "name": "Alex Turner"
           },
           "datePublished": "2025-08-15",
-          "reviewBody": "Best camping experience ever! The rooftop tent was incredibly comfortable, waking up to lions roaring was magical, and the gourmet meals under the stars were unforgettable. JAE Travel nailed it!"
+          "reviewBody": "Best camping experience ever! The rooftop tent was incredibly comfortable, waking up to lions roaring was magical, and the gourmet meals under the stars were unforgettable. Jae Travel nailed it!"
         },
         {
           "@type": "Review",
@@ -56,7 +56,7 @@ const campingSchema = {
             "name": "Emma Laurent"
           },
           "datePublished": "2025-09-10",
-          "reviewBody": "Luxury rooftop camping with JAE Travel is pure magic. Spacious tent, memory foam mattress, panoramic views, and incredible wildlife sightings. Everything was perfect from start to finish."
+          "reviewBody": "Luxury rooftop camping with Jae Travel is pure magic. Spacious tent, memory foam mattress, panoramic views, and incredible wildlife sightings. Everything was perfect from start to finish."
         },
         {
           "@type": "Review",
@@ -70,7 +70,7 @@ const campingSchema = {
             "name": "Thomas Kimani"
           },
           "datePublished": "2025-10-05",
-          "reviewBody": "Unique and thrilling rooftop camping adventure in the Maasai Mara. Total safety, absolute comfort, and incredible proximity to wildlife. JAE Travel exceeded all expectations!"
+          "reviewBody": "Unique and thrilling rooftop camping adventure in the Maasai Mara. Total safety, absolute comfort, and incredible proximity to wildlife. Jae Travel exceeded all expectations!"
         }
       ]
     },
@@ -80,7 +80,7 @@ const campingSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 
@@ -89,7 +89,7 @@ const campingSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#webpage",
       "url": "https://www.jaetravel.co.ke/luxury-roof-top-camping",
-      "name": "Luxury Roof-Top Camping Kenya | Glamping Safari | JAE Travel",
+      "name": "Luxury Roof-Top Camping Kenya | Glamping Safari | Jae Travel",
       "description": "Premium rooftop tent camping in Maasai Mara, Amboseli & private conservancies. 4x4 vehicle, gourmet meals, starlit dinners.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "breadcrumb": { "@id": "https://www.jaetravel.co.ke/luxury-roof-top-camping/#breadcrumb" },
@@ -163,7 +163,7 @@ const campingSchema = {
       ],
       "brand": {
         "@type": "Brand",
-        "name": "JAE Travel Expeditions"
+        "name": "Jae Travel Expeditions"
       },
       "sku": "ROOFTOP-LUXURY-KE",
       "offers": [
@@ -313,7 +313,7 @@ const campingSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Luxury Roof-Top Camping Kenya | Glamping Safari | JAE Travel",
+    title: "Luxury Roof-Top Camping Kenya | Glamping Safari | Jae Travel",
     description:
       "Experience luxury roof-top camping in Kenya with 4x4 vehicles, premium tents, and starlit dinners. Perfect for Maasai Mara, Amboseli, and private conservancies.",
     keywords: [

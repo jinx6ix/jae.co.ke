@@ -10,7 +10,7 @@ const gallerySchema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "East Africa’s leading operator of accessible, sustainable, and responsible safaris in Kenya, Tanzania, Rwanda, and Uganda.",
@@ -32,7 +32,7 @@ const gallerySchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
@@ -43,7 +43,7 @@ const gallerySchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/gallery/#webpage",
       "url": "https://www.jaetravel.co.ke/gallery",
-      "name": "Safari Photo & Video Gallery | JAE Travel Expeditions",
+      "name": "Safari Photo & Video Gallery | Jae Travel Expeditions",
       "description": "Stunning wildlife photography and videos from Kenya, Tanzania, Rwanda & Uganda safaris.",
       "isPartOf": {
         "@id": "https://www.jaetravel.co.ke/#website"
@@ -86,7 +86,7 @@ const gallerySchema = {
     {
       "@type": "ImageGallery",
       "@id": "https://www.jaetravel.co.ke/gallery/#imagegallery",
-      "name": "JAE Travel Safari Photo & Video Gallery",
+      "name": "Jae Travel Safari Photo & Video Gallery",
       "description": "Professional wildlife photography and safari videos from Masai Mara, Serengeti, gorilla trekking, and accessible East Africa adventures.",
       "url": "https://www.jaetravel.co.ke/gallery",
       "associatedMedia": [
@@ -166,7 +166,7 @@ const gallerySchema = {
           "name": "Can I use your safari photos for personal projects?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Personal non-commercial use is welcome with credit to JAE Travel Expeditions. For commercial use, please contact us."
+            "text": "Personal non-commercial use is welcome with credit to Jae Travel Expeditions. For commercial use, please contact us."
           }
         },
         {
@@ -198,7 +198,7 @@ const gallerySchema = {
           "name": "Can I submit my own safari photos to your gallery?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We love featuring guest photos! Send us your best shots from your JAE Travel safari and we may feature them with credit."
+            "text": "We love featuring guest photos! Send us your best shots from your Jae Travel safari and we may feature them with credit."
           }
         }
       ]

@@ -42,7 +42,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "uganda-circuit-safaris",
-  title: "Uganda Circuit Safaris 2026 | Gorillas, Chimps & Wildlife | JAE Travel Expeditions",
+  title: "Uganda Circuit Safaris 2026 | Gorillas, Chimps & Wildlife | Jae Travel Expeditions",
   description: "Explore Uganda's premier safari circuit. Track mountain gorillas in Bwindi, chimpanzees in Kibale, and wildlife in Queen Elizabeth. Multi-park itineraries from 5-12 days. Expert guides, luxury lodges.",
   h1: "Uganda Circuit",
   h1Sub: "Safaris 2026",
@@ -82,9 +82,9 @@ export const metadata: Metadata = {
     "pearl of africa safari",
     "multi-park uganda itinerary",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/uganda-circuit-safaris",
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -123,7 +123,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -145,7 +145,7 @@ const jsonLd = {
       description: "Multi-park guided safaris across Uganda's premier national parks.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -489,7 +489,7 @@ export default function UgandaCircuitSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

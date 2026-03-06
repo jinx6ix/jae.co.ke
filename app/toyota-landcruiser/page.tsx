@@ -13,7 +13,7 @@ import { faqSchema } from "./faq-schema"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Toyota Land Cruiser Hire Kenya & Tanzania | Safari 4x4 | JAE Travel",
+    title: "Toyota Land Cruiser Hire Kenya & Tanzania | Safari 4x4 | Jae Travel",
     description:
       "Hire a Toyota Land Cruiser for safari in Kenya, Tanzania, Uganda & Rwanda. Pop-up roof, 7 seats, 4x4, driver optional. From $120/day. Book now!",
     keywords: [

@@ -66,11 +66,11 @@ export default function FrenchProductPage({ params }: Props) {
       "width": "1200",
       "height": "800",
       "name": `${product.name} – Safari de luxe accessible`,
-      "description": `Meilleure expérience safari ${product.name} – JAE Travel Expeditions`
+      "description": `Meilleure expérience safari ${product.name} – Jae Travel Expeditions`
     },
     "brand": {
       "@type": "Brand",
-      "name": "JAE Travel Expeditions"
+      "name": "Jae Travel Expeditions"
     },
     "sku": product.id || product.slug,
     "offers": {
@@ -83,7 +83,7 @@ export default function FrenchProductPage({ params }: Props) {
       "itemCondition": "https://schema.org/NewCondition",
       "seller": {
         "@type": "Organization",
-        "name": "JAE Travel Expeditions",
+        "name": "Jae Travel Expeditions",
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
     },
@@ -122,7 +122,7 @@ export default function FrenchProductPage({ params }: Props) {
           "name": "David L."
         },
         "datePublished": "2025-09-10",
-        "reviewBody": "Safari inoubliable ! Les Big Five, les levers de soleil spectaculaires et un service irréprochable. Merci à JAE Travel pour cette expérience magique et sécurisée."
+        "reviewBody": "Safari inoubliable ! Les Big Five, les levers de soleil spectaculaires et un service irréprochable. Merci à Jae Travel pour cette expérience magique et sécurisée."
       },
       {
         "@type": "Review",
@@ -269,7 +269,7 @@ export default function FrenchProductPage({ params }: Props) {
       <section className="rounded-2xl bg-muted/50 p-12 mb-16 text-center">
         <h2 className="font-serif text-3xl font-bold mb-6">Ce Que Disent Nos Voyageurs</h2>
         <blockquote className="italic text-xl max-w-3xl mx-auto mb-6">
-          “{product.name} a dépassé toutes nos attentes ! Les paysages, la faune et l’équipe de JAE Travel ont rendu ce voyage magique.”
+          “{product.name} a dépassé toutes nos attentes ! Les paysages, la faune et l’équipe de Jae Travel ont rendu ce voyage magique.”
         </blockquote>
         <p className="font-semibold">— Voyageur satisfait</p>
         <Button asChild size="lg" className="mt-8 bg-primary text-white hover:bg-primary/90 text-lg">

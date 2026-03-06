@@ -67,7 +67,7 @@ const schema = {
     {
       "@type": ["Organization", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "description": "East Africa's leading specialist in fully wheelchair-accessible safaris in Kenya, Tanzania, Rwanda and Uganda. Hydraulic-lift vehicles, barrier-free lodges, disability-trained guides.",
@@ -189,7 +189,7 @@ const schema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
     },
 

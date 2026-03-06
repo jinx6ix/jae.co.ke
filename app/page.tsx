@@ -19,7 +19,7 @@ const homepageSchema = {
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "telephone": "+254726485228",
@@ -41,7 +41,7 @@ const homepageSchema = {
     {
       "@type": "LocalBusiness",
       "@id": "https://www.jaetravel.co.ke/#business",
-      "name": "JAE Travel Expeditions – Wheelchair Accessible Safaris & Vehicle Hire Kenya",
+      "name": "Jae Travel Expeditions – Wheelchair Accessible Safaris & Vehicle Hire Kenya",
       "description": "East Africa's leading wheelchair-accessible safari operator offering adapted Land Cruisers with hydraulic lifts, pop-up roofs, and full medical facilities. Also providing private safari vehicle hire.",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
@@ -121,7 +121,7 @@ const homepageSchema = {
       "@type": "WebSite",
       "@id": "https://www.jaetravel.co.ke/#website",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "publisher": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
@@ -132,7 +132,7 @@ const homepageSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/#webpage",
       "url": "https://www.jaetravel.co.ke",
-      "name": "JAE Travel Expeditions - Wheelchair Accessible Safaris East Africa",
+      "name": "Jae Travel Expeditions - Wheelchair Accessible Safaris East Africa",
       "description": "East Africa's leading operator of wheelchair-accessible safaris and adapted safari vehicle hire in Kenya, Tanzania, Rwanda, and Uganda.",
       "isPartOf": {
         "@id": "https://www.jaetravel.co.ke/#website"
@@ -902,11 +902,11 @@ export default function HomePage() {
 
           <section className="mb-8 scroll-mt-32">
             <h2 className="font-serif text-2xl md:text-6xl font-bold mb-12 text-balance">
-              Why JAE Travel Offers the Kenya Best Safari Experience
+              Why Jae Travel Offers the Kenya Best Safari Experience
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
               <p>
-                When it comes to the <strong>Kenya best safari</strong>, JAE Travel stands out as the premier choice for travelers seeking authenticity, luxury, and accessibility. Our expert guides, custom vehicles, and deep knowledge of the <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara</Link> ecosystem ensure you experience the Great Migration like never before.
+                When it comes to the <strong>Kenya best safari</strong>, Jae Travel stands out as the premier choice for travelers seeking authenticity, luxury, and accessibility. Our expert guides, custom vehicles, and deep knowledge of the <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara</Link> ecosystem ensure you experience the Great Migration like never before.
               </p>
               <p>
                 Whether you're planning your first African adventure or returning for more, our packages deliver unforgettable moments in one of the world's most iconic wildlife destinations — making us the go-to operator for the true <strong>Kenya best safari</strong>.
@@ -923,7 +923,7 @@ export default function HomePage() {
                 The <Link href="/maasai-mara-great-migration" className="text-primary hover:underline">Masai Mara Great Migration</Link> is widely regarded as the <strong>best safari in Africa</strong>, and 2026 promises to be one of the most spectacular years yet. With record herd sizes and dramatic river crossings, this is the ultimate wildlife spectacle on the continent.
               </p>
               <p>
-                At JAE Travel, we make the <strong>best safari in Africa</strong> accessible to everyone — including wheelchair users — through our pioneering hydraulic lift vehicles, specialist guides, and wheelchair-friendly lodges. Book your 2026 adventure today and witness nature at its most extraordinary.
+                At Jae Travel, we make the <strong>best safari in Africa</strong> accessible to everyone — including wheelchair users — through our pioneering hydraulic lift vehicles, specialist guides, and wheelchair-friendly lodges. Book your 2026 adventure today and witness nature at its most extraordinary.
               </p>
             </div>
           </section>

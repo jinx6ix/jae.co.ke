@@ -47,7 +47,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "birdwatching-safaris-east-africa",
-  title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species, Flamingos & Shoebills | JAE Travel Expeditions",
+  title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species, Flamingos & Shoebills | Jae Travel Expeditions",
   description: "Premier 2026 birdwatching safaris in Kenya, Tanzania & Uganda – Lake Nakuru flamingos, migratory peaks Nov–Apr, lilac-breasted rollers, shoebills. Expert guides, small groups, photography focused. Packages from $450 USD.",
   h1: "Birdwatching Safaris",
   h1Sub: "East Africa 2026",
@@ -85,12 +85,12 @@ export const metadata: Metadata = {
     "lilac breasted roller serengeti safari",
     "best birdwatching east africa 2026",
     "kibale forest birding uganda",
-    "jae travel birdwatching safaris",
+    "Jae Travel birdwatching safaris",
     "rift valley birding safari",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/birdwatching-safaris-east-africa",
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species | JAE Travel Expeditions",
+    title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species | Jae Travel Expeditions",
     description: "Premier birdwatching safaris in Kenya, Tanzania & Uganda. Flamingos, shoebills, rollers, and 1,400+ species. Expert guides, photography focused.",
     images: [{
       url: "/og/birdwatching-east-africa-2026.jpg",
@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -140,7 +140,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -162,7 +162,7 @@ const jsonLd = {
       description: "Expert-guided birding safaris across Kenya, Tanzania and Uganda targeting 1,400+ species.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -736,7 +736,7 @@ export default function BirdwatchingSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

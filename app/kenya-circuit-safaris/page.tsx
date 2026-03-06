@@ -44,7 +44,7 @@ import { tours } from "@/lib/tours-data"
 
 const CONFIG = {
   slug: "kenya-circuit-safaris",
-  title: "Kenya Circuit Safaris 2026 | Masai Mara, Amboseli, Tsavo & More | JAE Travel Expeditions",
+  title: "Kenya Circuit Safaris 2026 | Masai Mara, Amboseli, Tsavo & More | Jae Travel Expeditions",
   description: "Explore Kenya's legendary safari circuit. Witness the Great Migration in Masai Mara, elephants against Kilimanjaro in Amboseli, and red elephants in Tsavo. Multi-park itineraries from 5-14 days. Expert guides, luxury lodges.",
   h1: "Kenya Circuit",
   h1Sub: "Safaris 2026",
@@ -87,9 +87,9 @@ export const metadata: Metadata = {
     "great migration kenya",
     "multi-park kenya safari",
   ],
-  authors: [{ name: "JAE Travel Expeditions" }],
-  creator: "JAE Travel Expeditions",
-  publisher: "JAE Travel Expeditions",
+  authors: [{ name: "Jae Travel Expeditions" }],
+  creator: "Jae Travel Expeditions",
+  publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "/kenya-circuit-safaris",
@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     }],
     locale: "en_US",
     type: "website",
-    siteName: "JAE Travel Expeditions",
+    siteName: "Jae Travel Expeditions",
   },
   twitter: {
     card: "summary_large_image",
@@ -128,7 +128,7 @@ const jsonLd = {
     {
       "@type": "TravelAgency",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "JAE Travel Expeditions",
+      name: "Jae Travel Expeditions",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Karen Roundabout",
@@ -150,7 +150,7 @@ const jsonLd = {
       description: "Multi-park guided safaris across Kenya's premier national parks and reserves.",
       brand: {
         "@type": "Brand",
-        name: "JAE Travel Expeditions",
+        name: "Jae Travel Expeditions",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -494,7 +494,7 @@ export default function KenyaCircuitSafarisPage() {
               </div>
               
               <div className="mt-12 pt-8 border-t border-white/20 text-sm text-white/60">
-                <p>JAE Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
+                <p>Jae Travel Expeditions • Karen Roundabout, Nairobi, Kenya</p>
                 <p className="mt-2">+254 726 485 228 • info@jaetravel.co.ke</p>
               </div>
             </div>

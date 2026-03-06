@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | JAE Travel Expeditions - Transportation & Safari Services Kenya & East Africa",
-  description: "Read the terms and conditions for booking transportation, vehicle hire, airport transfers, and safari tours with JAE Travel Expeditions in Kenya, Tanzania, Rwanda, and Uganda.",
+  title: "Terms and Conditions | Jae Travel Expeditions - Transportation & Safari Services Kenya & East Africa",
+  description: "Read the terms and conditions for booking transportation, vehicle hire, airport transfers, and safari tours with Jae Travel Expeditions in Kenya, Tanzania, Rwanda, and Uganda.",
   keywords: [
-    "terms and conditions JAE Travel",
+    "terms and conditions Jae Travel",
     "booking terms Kenya safari",
     "vehicle hire terms Kenya",
     "airport transfer terms Nairobi",
@@ -33,7 +33,7 @@ export default function TermsAndConditionsPage() {
         <div className="mb-16 text-center">
           <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Terms and Conditions</h1>
           <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed">
-            Please read these terms and conditions carefully before booking any services with JAE Travel Expeditions.
+            Please read these terms and conditions carefully before booking any services with Jae Travel Expeditions.
             Last updated: January 09, 2026
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function TermsAndConditionsPage() {
           <section>
             <h2 className="text-3xl font-bold mb-4">1. Introduction</h2>
             <p>
-              These Terms and Conditions govern the provision of transportation services, vehicle hire, airport transfers, safari tours, and related travel services offered by JAE Travel Expeditions ("we", "us", "our"), a company based in Nairobi, Kenya.
+              These Terms and Conditions govern the provision of transportation services, vehicle hire, airport transfers, safari tours, and related travel services offered by Jae Travel Expeditions ("we", "us", "our"), a company based in Nairobi, Kenya.
             </p>
             <p>
               By booking any service with us, either directly through our website, by phone, email, or in person, you ("the client", "you") agree to be bound by these Terms and Conditions.
@@ -152,7 +152,7 @@ export default function TermsAndConditionsPage() {
               For questions about these Terms and Conditions, please contact us:
             </p>
             <p>
-              JAE Travel Expeditions<br />
+              Jae Travel Expeditions<br />
               Nairobi, Kenya<br />
               Phone: +254 726 485 228<br />
               Email: info@jaetravel.co.ke<br />

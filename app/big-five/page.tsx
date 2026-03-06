@@ -15,7 +15,7 @@ const bigFiveSchema = {
     {
       "@type": "Organization",
       "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JAE Travel Expeditions",
+      "name": "Jae Travel Expeditions",
       "url": "https://www.jaetravel.co.ke",
       "logo": "https://www.jaetravel.co.ke/logo.png",
       "sameAs": ["https://www.facebook.com/JaeTravelExpeditions", "https://www.instagram.com/JaeTravelExpeditions"],
@@ -109,7 +109,7 @@ const bigFiveSchema = {
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Big Five Safari Kenya | Lion, Leopard, Elephant, Rhino & Buffalo | JAE Travel Expeditions",
+    title: "Big Five Safari Kenya | Lion, Leopard, Elephant, Rhino & Buffalo | Jae Travel Expeditions",
     description:
       "Discover Africa's legendary Big Five animals on wheelchair accessible safaris in Kenya. Experience thrilling game drives in Masai Mara, Amboseli, Tsavo & more. Book your inclusive Big Five safari adventure today with expert guides and adapted vehicles.",
     keywords: [
@@ -265,7 +265,7 @@ export default function BigFivePage() {
               Originally coined by hunters for the most challenging game, today these icons draw wildlife enthusiasts worldwide for photographic <strong>Big Five safaris in Kenya</strong>.
             </p>
             <p>
-              At JAE Travel Expeditions, we specialize in <strong>inclusive Big Five tours</strong> that make these encounters accessible to all. 
+              At Jae Travel Expeditions, we specialize in <strong>inclusive Big Five tours</strong> that make these encounters accessible to all. 
               Our fleet of <Link href="/vehicle-hire" className="text-primary hover:underline">wheelchair accessible safari vehicles</Link> with hydraulic lifts and pop-up roofs allows comfortable viewing during extended <strong>game drives</strong>, 
               while our partnerships with <strong>disability-friendly lodges</strong> ensure a seamless experience.
             </p>
@@ -286,7 +286,7 @@ export default function BigFivePage() {
       <section className="py-20 border-b">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl md:text-5xl font-bold">
-            Why Choose JAE Travel for Your Big Five Safari Kenya
+            Why Choose Jae Travel for Your Big Five Safari Kenya
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center text-center">

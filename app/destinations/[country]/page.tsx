@@ -26,7 +26,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
       {
         "@type": ["Organization", "LocalBusiness"],
         "@id": "https://www.jaetravel.co.ke/#organization",
-        "name": "JAE Travel Expeditions",
+        "name": "Jae Travel Expeditions",
         "url": "https://www.jaetravel.co.ke",
         "logo": "https://www.jaetravel.co.ke/logo.png",
         "telephone": "+254726485228",
@@ -51,7 +51,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "David Chen"
             },
             "datePublished": "2025-08-20",
-            "reviewBody": `Our safari in ${destination.name} was absolutely breathtaking! JAE Travel's guides knew every corner of the park, and the accessibility features were flawless. Highly recommend!`
+            "reviewBody": `Our safari in ${destination.name} was absolutely breathtaking! Jae Travel's guides knew every corner of the park, and the accessibility features were flawless. Highly recommend!`
           },
           {
             "@type": "Review",
@@ -65,7 +65,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "Sarah Johnson"
             },
             "datePublished": "2025-07-15",
-            "reviewBody": `Amazing experience exploring ${destination.name} with JAE Travel! Professional team, comfortable transport, and incredible wildlife sightings. Everything was perfectly organized.`
+            "reviewBody": `Amazing experience exploring ${destination.name} with Jae Travel! Professional team, comfortable transport, and incredible wildlife sightings. Everything was perfectly organized.`
           },
           {
             "@type": "Review",
@@ -79,7 +79,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
               "name": "Michael Thompson"
             },
             "datePublished": "2025-09-05",
-            "reviewBody": `JAE Travel delivered an unforgettable trip to ${destination.name}! The best guides, stunning scenery, and seamless planning. Best safari company in East Africa!`
+            "reviewBody": `Jae Travel delivered an unforgettable trip to ${destination.name}! The best guides, stunning scenery, and seamless planning. Best safari company in East Africa!`
           }
         ]
       },
@@ -115,7 +115,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
         "@type": "WebSite",
         "@id": "https://www.jaetravel.co.ke/#website",
         "url": "https://www.jaetravel.co.ke",
-        "name": "JAE Travel Expeditions",
+        "name": "Jae Travel Expeditions",
         "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
 
@@ -124,7 +124,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         "url": pageUrl,
-        "name": `${destination.name} Safari | JAE Travel Expeditions`,
+        "name": `${destination.name} Safari | Jae Travel Expeditions`,
         "description": destination.metaDescription,
         "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
         "breadcrumb": { "@id": `${pageUrl}#breadcrumb` },
