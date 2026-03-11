@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useState } from 'react';
 
-interface OrderData {
+export interface OrderData {
   order_id: string;
   email: string;
   delivery_country: string;

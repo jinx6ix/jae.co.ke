@@ -8,7 +8,8 @@ import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
 import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
-import { OrderProvider, useOrder } from '@/components/OrderContext';
+import { OrderProvider } from '@/components/OrderContext';
+import DynamicScripts from '@/components/DynamicScripts'; // New client component
 import "./globals.css"
 
 // Fonts with optimized loading
@@ -226,80 +227,6 @@ const AsyncCSS = () => (
   </>
 )
 
-// Client component for dynamic scripts
-function DynamicScripts() {
-  'use client';
-  
-  const { orderData } = useOrder();
-
-  return (
-    <>
-      {/* Google Customer Reviews Survey Opt-in - Only renders when order data exists */}
-      {orderData && (
-        <>
-          <Script
-            src="https://apis.google.com/js/platform.js?onload=renderOptIn"
-            strategy="lazyOnload"
-            id="google-survey-optin"
-          />
-
-          <Script id="google-survey-config" strategy="lazyOnload">
-            {`
-              window.renderOptIn = function() {
-                if (typeof window.gapi !== 'undefined' && window.gapi) {
-                  window.gapi.load('surveyoptin', function() {
-                    window.gapi.surveyoptin.render({
-                      "merchant_id": 5694347760,
-                      "order_id": "${orderData.order_id}",
-                      "email": "${orderData.email}",
-                      "delivery_country": "${orderData.delivery_country}",
-                      "estimated_delivery_date": "${orderData.estimated_delivery_date}",
-                      "products": ${JSON.stringify(orderData.products || [])}
-                    });
-                  });
-                }
-              }
-
-              if (document.readyState === 'complete') {
-                window.renderOptIn();
-              }
-            `}
-          </Script>
-        </>
-      )}
-
-      {/* Merchant Widget - Always renders but with dynamic config */}
-      <Script
-        id="merchant-widget"
-        src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
-        strategy="lazyOnload"
-      />
-
-      <Script id="merchant-widget-init" strategy="lazyOnload">
-        {`
-          function initMerchantWidget() {
-            if (typeof merchantwidget !== 'undefined' && merchantwidget) {
-              merchantwidget.start({
-                merchant_id: 5694347760,
-                position: 'BOTTOM_RIGHT',
-                region: '${orderData?.delivery_country || "KE"}',
-              });
-            }
-          }
-
-          if (document.getElementById('merchant-widget')) {
-            document.getElementById('merchant-widget').addEventListener('load', initMerchantWidget);
-          }
-
-          if (document.readyState === 'complete') {
-            setTimeout(initMerchantWidget, 1000);
-          }
-        `}
-      </Script>
-    </>
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -504,7 +431,7 @@ export default function RootLayout({
             <AnalyticsTracker />
             <Analytics />
             
-            {/* Dynamic scripts that depend on order data */}
+            {/* Dynamic scripts client component */}
             <DynamicScripts />
           </Suspense>
         </OrderProvider>
