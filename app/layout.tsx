@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
+import GoogleSurveyOptIn from "@/components/google-survey-optin"
 import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
 import "./globals.css"
 
@@ -227,6 +228,8 @@ const AsyncCSS = () => (
   </>
 )
 
+
+
 // Client component to convert print to all after hydration
 
 export default function RootLayout({
@@ -305,6 +308,8 @@ export default function RootLayout({
           id="critical-css"
           dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
+
+        
         
         {/* Async loading of non-critical CSS - NO onLoad handler */}
         <AsyncCSS />
@@ -431,6 +436,10 @@ export default function RootLayout({
           <AnalyticsTracker />
           <Analytics />
         </Suspense>
+
+         {/* Google Customer Reviews Survey */}
+        <GoogleSurveyOptIn orderId={""} email={""} deliveryDate={""} />
+
       </body>
     </html>
   )
