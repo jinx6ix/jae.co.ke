@@ -8,6 +8,7 @@ import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
 import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
+import { OrderProvider, useOrder } from '@/components/OrderContext';
 import "./globals.css"
 
 // Fonts with optimized loading
@@ -50,7 +51,6 @@ export const metadata: Metadata = {
   authors: [{ name: "JaeTravel Expeditions" }],
   creator: "JaeTravel Expeditions",
   publisher: "JaeTravel Expeditions",
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
-// Extract only critical CSS from your globals.css
+// Critical CSS for above-the-fold content
 const criticalCSS = `
   /* Critical Reset & Base Styles */
   *, *::before, *::after { box-sizing: border-box; }
@@ -211,10 +211,9 @@ const criticalCSS = `
   }
 `
 
-// FIXED: No onLoad event handler - Server Component compatible
+// Async CSS loading component
 const AsyncCSS = () => (
   <>
-    {/* Use media="print" trick - loads async without JavaScript */}
     <link 
       rel="stylesheet" 
       href="/_next/static/css/app/layout.css" 
@@ -227,7 +226,79 @@ const AsyncCSS = () => (
   </>
 )
 
-// Client component to convert print to all after hydration
+// Client component for dynamic scripts
+function DynamicScripts() {
+  'use client';
+  
+  const { orderData } = useOrder();
+
+  return (
+    <>
+      {/* Google Customer Reviews Survey Opt-in - Only renders when order data exists */}
+      {orderData && (
+        <>
+          <Script
+            src="https://apis.google.com/js/platform.js?onload=renderOptIn"
+            strategy="lazyOnload"
+            id="google-survey-optin"
+          />
+
+          <Script id="google-survey-config" strategy="lazyOnload">
+            {`
+              window.renderOptIn = function() {
+                if (typeof window.gapi !== 'undefined' && window.gapi) {
+                  window.gapi.load('surveyoptin', function() {
+                    window.gapi.surveyoptin.render({
+                      "merchant_id": 5694347760,
+                      "order_id": "${orderData.order_id}",
+                      "email": "${orderData.email}",
+                      "delivery_country": "${orderData.delivery_country}",
+                      "estimated_delivery_date": "${orderData.estimated_delivery_date}",
+                      "products": ${JSON.stringify(orderData.products || [])}
+                    });
+                  });
+                }
+              }
+
+              if (document.readyState === 'complete') {
+                window.renderOptIn();
+              }
+            `}
+          </Script>
+        </>
+      )}
+
+      {/* Merchant Widget - Always renders but with dynamic config */}
+      <Script
+        id="merchant-widget"
+        src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
+        strategy="lazyOnload"
+      />
+
+      <Script id="merchant-widget-init" strategy="lazyOnload">
+        {`
+          function initMerchantWidget() {
+            if (typeof merchantwidget !== 'undefined' && merchantwidget) {
+              merchantwidget.start({
+                merchant_id: 5694347760,
+                position: 'BOTTOM_RIGHT',
+                region: '${orderData?.delivery_country || "KE"}',
+              });
+            }
+          }
+
+          if (document.getElementById('merchant-widget')) {
+            document.getElementById('merchant-widget').addEventListener('load', initMerchantWidget);
+          }
+
+          if (document.readyState === 'complete') {
+            setTimeout(initMerchantWidget, 1000);
+          }
+        `}
+      </Script>
+    </>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -300,13 +371,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* Inline Critical CSS - Eliminates render-blocking */}
+        {/* Inline Critical CSS */}
         <style
           id="critical-css"
           dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
         
-        {/* Async loading of non-critical CSS - NO onLoad handler */}
+        {/* Async loading of non-critical CSS */}
         <AsyncCSS />
         
         {/* Preconnect to critical origins */}
@@ -321,10 +392,10 @@ export default function RootLayout({
         {/* Canonical URL */}
         <link rel="canonical" href="https://www.jaetravel.co.ke" />
         
-        {/* Viewport meta tag for responsive design */}
+        {/* Viewport meta tag */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
-        {/* Deferred Structured Data */}
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -336,13 +407,35 @@ export default function RootLayout({
           defer
         />
 
-        {/* Ahrefs Analytics - Deferred */}
+        {/* Ahrefs Analytics */}
         <script 
           src="https://analytics.ahrefs.com/analytics.js" 
           data-key="q74t4ci2dZznctEH4t8jCA" 
           defer 
         />
 
+        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
+        
+        {/* Preload hero images */}
+        <link 
+          rel="preload" 
+          href="/images/hero-safari.jpg" 
+          as="image" 
+          type="image/jpeg"
+          media="(min-width: 768px)"
+          fetchPriority="high"
+        />
+        
+        <link 
+          rel="preload" 
+          as="image"
+          href="/images/hero-banner.jpg"
+          imageSrcSet="/images/hero-banner.jpg 1920w, /images/hero-banner-mobile.jpg 768w"
+          imageSizes="100vw"
+        />
+      </head>
+
+      <body className="font-sans antialiased bg-background text-foreground">
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
@@ -358,7 +451,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Google Analytics GA4 */}
+        {/* Google Analytics */}
         <Script 
           strategy="afterInteractive" 
           src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B" 
@@ -375,29 +468,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
-        
-        {/* Preload hero image */}
-        <link 
-          rel="preload" 
-          href="/images/hero-safari.jpg" 
-          as="image" 
-          type="image/jpeg"
-          media="(min-width: 768px)"
-          fetchPriority="high"
-        />
-        
-        {/* Preload LCP image */}
-        <link 
-          rel="preload" 
-          as="image"
-          href="/images/hero-banner.jpg"
-          imageSrcSet="/images/hero-banner.jpg 1920w, /images/hero-banner-mobile.jpg 768w"
-          imageSizes="100vw"
-        />
-      </head>
-
-      <body className="font-sans antialiased bg-background text-foreground">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -409,84 +479,35 @@ export default function RootLayout({
           />
         </noscript>
 
-        {/* Google Customer Reviews Survey Opt-in Script */}
-        <script
-          src="https://apis.google.com/js/platform.js?onload=renderOptIn"
-          async
-          defer
-        />
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.renderOptIn = function() {
-                window.gapi.load('surveyoptin', function() {
-                  window.gapi.surveyoptin.render(
-                    {
-                      // REQUIRED FIELDS
-                      "merchant_id": 5694347760,
-                      "order_id": "ORDER_ID",
-                      "email": "CUSTOMER_EMAIL",
-                      "delivery_country": "COUNTRY_CODE",
-                      "estimated_delivery_date": "YYYY-MM-DD",
-
-                      // OPTIONAL FIELDS
-                      "products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
-                    });
-                });
-              }
-            `
-          }}
-        />
-
-        {/* Merchant Widget Script */}
-        <script
-          id="merchantWidgetScript"
-          src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
-          defer
-        />
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.getElementById('merchantWidgetScript').addEventListener('load', function () {
-                merchantwidget.start({
-                  // REQUIRED FIELDS
-                  merchant_id: 5694347760,
-
-                  // OPTIONAL FIELDS
-                  position: 'POSITION',
-                  region: 'REGION',
-                });
-              });
-            `
-          }}
-        />
-
         {/* Initialize async CSS after hydration */}
         <AsyncCSSInitializer />
 
-        <Suspense 
-          fallback={
-            <div className="min-h-screen flex flex-col items-center justify-center">
-              <div className="skeleton-loading w-24 h-24 rounded-full mb-6"></div>
-              <div className="text-center">
-                <div className="skeleton-loading h-5 w-48 mb-3 rounded"></div>
-                <div className="skeleton-loading h-3 w-32 rounded"></div>
+        <OrderProvider>
+          <Suspense 
+            fallback={
+              <div className="min-h-screen flex flex-col items-center justify-center">
+                <div className="skeleton-loading w-24 h-24 rounded-full mb-6"></div>
+                <div className="text-center">
+                  <div className="skeleton-loading h-5 w-48 mb-3 rounded"></div>
+                  <div className="skeleton-loading h-3 w-32 rounded"></div>
+                </div>
               </div>
+            }
+          >
+            <div className="header-wrapper">
+              <Header />
             </div>
-          }
-        >
-          <div className="header-wrapper">
-            <Header />
-          </div>
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <AnalyticsTracker />
-          <Analytics />
-        </Suspense>
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+            <AnalyticsTracker />
+            <Analytics />
+            
+            {/* Dynamic scripts that depend on order data */}
+            <DynamicScripts />
+          </Suspense>
+        </OrderProvider>
       </body>
     </html>
   )
