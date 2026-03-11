@@ -7,7 +7,6 @@ import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import Script from "next/script"
 import { Suspense } from "react"
-import GoogleSurveyOptIn from "@/components/google-survey-optin"
 import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
 import "./globals.css"
 
@@ -228,8 +227,6 @@ const AsyncCSS = () => (
   </>
 )
 
-
-
 // Client component to convert print to all after hydration
 
 export default function RootLayout({
@@ -308,8 +305,6 @@ export default function RootLayout({
           id="critical-css"
           dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
-
-        
         
         {/* Async loading of non-critical CSS - NO onLoad handler */}
         <AsyncCSS />
@@ -320,6 +315,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+        <link rel="dns-prefetch" href="https://apis.google.com" />
+        <link rel="dns-prefetch" href="https://www.gstatic.com" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://www.jaetravel.co.ke" />
@@ -412,6 +409,60 @@ export default function RootLayout({
           />
         </noscript>
 
+        {/* Google Customer Reviews Survey Opt-in Script */}
+        <script
+          src="https://apis.google.com/js/platform.js?onload=renderOptIn"
+          async
+          defer
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.renderOptIn = function() {
+                window.gapi.load('surveyoptin', function() {
+                  window.gapi.surveyoptin.render(
+                    {
+                      // REQUIRED FIELDS
+                      "merchant_id": 5694347760,
+                      "order_id": "ORDER_ID",
+                      "email": "CUSTOMER_EMAIL",
+                      "delivery_country": "COUNTRY_CODE",
+                      "estimated_delivery_date": "YYYY-MM-DD",
+
+                      // OPTIONAL FIELDS
+                      "products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
+                    });
+                });
+              }
+            `
+          }}
+        />
+
+        {/* Merchant Widget Script */}
+        <script
+          id="merchantWidgetScript"
+          src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
+          defer
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.getElementById('merchantWidgetScript').addEventListener('load', function () {
+                merchantwidget.start({
+                  // REQUIRED FIELDS
+                  merchant_id: 5694347760,
+
+                  // OPTIONAL FIELDS
+                  position: 'POSITION',
+                  region: 'REGION',
+                });
+              });
+            `
+          }}
+        />
+
         {/* Initialize async CSS after hydration */}
         <AsyncCSSInitializer />
 
@@ -436,10 +487,6 @@ export default function RootLayout({
           <AnalyticsTracker />
           <Analytics />
         </Suspense>
-
-         {/* Google Customer Reviews Survey */}
-        <GoogleSurveyOptIn orderId={""} email={""} deliveryDate={""} />
-
       </body>
     </html>
   )
