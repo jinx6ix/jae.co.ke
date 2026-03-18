@@ -404,7 +404,7 @@ Don't miss this opportunity to experience Kenya's wildlife highlights at excepti
       {
         day: 3,
         title: "Drive to Naivasha",
-        content: "After breakfast check out and proceed to drive to Naivasha with lunch on the way. ‘Lake Naivasha offers an accessible and captivating safari experience in Kenya’s Rift Valley. Known for its tranquil waters and abundant wildlife, this freshwater lake provides a unique adventure for nature enthusiasts and travelers seeking a serene escape.’ Arrive at Naivasha in the evening for dinner and overnight at Chambai Safari Hotel.",
+        content: "After breakfast check out and proceed to drive to Naivasha with lunch on the way. ‘Lake Naivasha offers an accessible and captivating safari experience in Kenya’s Rift Valley. Known for its tranquil waters and abundant wildlife, this freshwater lake provides a unique adventure for nature enthusiasts and travelers seeking a serene escape.’ Arrive at Naivasha in the evening for dinner and overnight at Leisure Apex.",
         meals: undefined
       },
       {
@@ -633,7 +633,7 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across mult
       {
         day: 4,
         title: "Morning Game drive in Nakuru National Park and depart for Naivasha",
-        content: "After breakfast depart for a morning game drive in Lake Nakuru National Park. Exit the park at around noon and proceed drive to Naivasha with lunch on the way. Arrive in Naivasha and you can enjoy an optional boat ride at an extra cost of 40 USD per person which your driver guide will assist to organize for you. Dinner and overnight at Chambai Safari Hotel.",
+        content: "After breakfast depart for a morning game drive in Lake Nakuru National Park. Exit the park at around noon and proceed drive to Naivasha with lunch on the way. Arrive in Naivasha and you can enjoy an optional boat ride at an extra cost of 40 USD per person which your driver guide will assist to organize for you. Dinner and overnight at Leisure Apex Hotel.",
         meals: undefined
       },
       {
@@ -877,7 +877,7 @@ Don't miss this ultimate opportunity to experience Kenya's complete wildlife cir
       {
         day: 4,
         title: "Morning Game drive at Lake Nakuru National Park and drive to Naivasha",
-        content: "Enjoy a morning game drive at the great Lake Nakuru National Park. Thereafter check out and enjoy lunch on the way. Drive to Naivasha for dinner and overnight at Chambai Safari Hotel.",
+        content: "Enjoy a morning game drive at the great Lake Nakuru National Park. Thereafter check out and enjoy lunch on the way. Drive to Naivasha for dinner and overnight at Leisure Apex Hotel.",
         meals: undefined
       },
       {
@@ -1159,7 +1159,7 @@ Don't miss this ultimate opportunity for comprehensive Big Five experiences at b
       {
         day: 5,
         title: "Morning game drive at Lake Nakuru National Park and drive to Naivasha",
-        content: "Morning game drive at Lake Nakuru National Park. After exploring Nakuru, check out and drive toward Naivasha. Lunch en route. Arrive at Naivasha for dinner and overnight stay at Chambai Safari Hotel.",
+        content: "Morning game drive at Lake Nakuru National Park. After exploring Nakuru, check out and drive toward Naivasha. Lunch en route. Arrive at Naivasha for dinner and overnight stay at Leisure Apex Hotel.",
         meals: undefined
       },
       {
@@ -1313,7 +1313,7 @@ Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experienc
       {
         day: 7,
         title: "Drive to Naivasha",
-        content: "After breakfast, enjoy a morning game drive in Amboseli National Park and later on depart for Naivasha arriving for lunch. In the afternoon enjoy a boat ride in Naivasha in search for hippos and the birdlife as well as a guided walk at the Crescent Island where you will spot animals roaming at close proximity. Dinner and overnight stay at Chambai Safari Hotel.",
+        content: "After breakfast, enjoy a morning game drive in Amboseli National Park and later on depart for Naivasha arriving for lunch. In the afternoon enjoy a boat ride in Naivasha in search for hippos and the birdlife as well as a guided walk at the Crescent Island where you will spot animals roaming at close proximity. Dinner and overnight stay at Leisure Apex Hotel.",
         meals: undefined
       },
       {
@@ -1661,7 +1661,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
   
   Educational value covers multiple ecosystems: savannah ecology in Mara, freshwater lake dynamics at Naivasha, and elephant behavior in Amboseli. Each destination presents distinct conservation stories - from predator protection in Mara to human-wildlife coexistence around Naivasha to elephant research in Amboseli. Our guides provide context transforming wildlife viewing into meaningful understanding of Kenya's environmental challenges and successes.
   
-  Budget accommodations at strategically located camps maintain comfort while preserving safari authenticity. Properties like Rhino Tourist Camp (Mara), Chambai Safari Hotel (Naivasha), and Manjaro Tented Camp (Amboseli) offer secure accommodations, hot showers, dining facilities, and proximity to wildlife areas. The shared group model reduces individual costs while creating camaraderie among travelers.
+  Budget accommodations at strategically located camps maintain comfort while preserving safari authenticity. Properties like Rhino Tourist Camp (Mara), Leisure Apex Hotel (Naivasha), and Manjaro Tented Camp (Amboseli) offer secure accommodations, hot showers, dining facilities, and proximity to wildlife areas. The shared group model reduces individual costs while creating camaraderie among travelers.
   
   This safari suits: first-time Kenya visitors wanting diverse introduction, wildlife enthusiasts seeking varied ecosystems, photography enthusiasts building portfolios, travelers with one-week availability, or those wanting Masai Mara plus additional experiences. The itinerary avoids excessive travel fatigue while delivering substantial wildlife diversity across three distinct environments.
   
@@ -1705,7 +1705,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
       {
         day: 3,
         title: "Masai Mara to Lake Naivasha - Boat Safari",
-        content: "After breakfast, enjoy a final morning game drive in Masai Mara (7:00 AM - 10:00 AM) for last wildlife opportunities. Return to camp for check-out by 10:30 AM. Depart Masai Mara for Lake Naivasha, with lunch en route. Arrive at Lake Naivasha in the afternoon and check into your accommodation. At 4:00 PM, enjoy an included boat safari on Lake Naivasha, offering close encounters with hippos, diverse bird species, and scenic lake views. Return to shore before dusk. Dinner and overnight at Chambai Safari Hotel or similar lakeside accommodation.",
+        content: "After breakfast, enjoy a final morning game drive in Masai Mara (7:00 AM - 10:00 AM) for last wildlife opportunities. Return to camp for check-out by 10:30 AM. Depart Masai Mara for Lake Naivasha, with lunch en route. Arrive at Lake Naivasha in the afternoon and check into your accommodation. At 4:00 PM, enjoy an included boat safari on Lake Naivasha, offering close encounters with hippos, diverse bird species, and scenic lake views. Return to shore before dusk. Dinner and overnight at Leisure Apex Hotel or similar lakeside accommodation.",
         meals: undefined
       },
       {
