@@ -38,6 +38,23 @@ import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard";
 // Import your tours data
 import { tours } from "@/lib/tours-data";
 
+// Helper function to safely convert itinerary to array
+const getItineraryArray = (itinerary: string | string[] | undefined) => {
+  if (!itinerary) return [];
+  
+  // If it's already an array, return it
+  if (Array.isArray(itinerary)) {
+    return itinerary;
+  }
+  
+  // If it's a string, split by periods and filter out empty items
+  if (typeof itinerary === 'string') {
+    return itinerary.split('.').filter(item => item.trim().length > 0);
+  }
+  
+  return [];
+};
+
 // Filter Masai Mara relevant tours
 const masaiMaraTours = tours
   .filter(
@@ -212,31 +229,37 @@ const pageSchema = {
       name: "2026 Masai Mara Accessible Safari Tours & Packages",
       description: "Curated collection of accessible Masai Mara Great Migration safari packages",
       numberOfItems: totalTours,
-      itemListElement: masaiMaraTours.map((tour, idx) => ({
-        "@type": "ListItem",
-        position: idx + 1,
-        item: {
-          "@type": "TouristTrip",
-          name: `${tour.title} – ${tour.duration}`,
-          description: tour.shortDescription,
-          url: `https://www.jaetravel.co.ke${tour.url}`,
-          image: `https://www.jaetravel.co.ke${tour.image}`,
-          offers: {
-            "@type": "Offer",
-            price: tour.price.toString(),
-            priceCurrency: tour.currency || "USD",
-            availability: tour.isOnOffer ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock",
+      itemListElement: masaiMaraTours.map((tour, idx) => {
+        const itineraryArray = getItineraryArray(tour.itinerary);
+        
+        return {
+          "@type": "ListItem",
+          position: idx + 1,
+          item: {
+            "@type": "TouristTrip",
+            name: `${tour.title} – ${tour.duration}`,
+            description: tour.shortDescription,
+            url: `https://www.jaetravel.co.ke${tour.url}`,
+            image: `https://www.jaetravel.co.ke${tour.image}`,
+            offers: {
+              "@type": "Offer",
+              price: tour.price.toString(),
+              priceCurrency: tour.currency || "USD",
+              availability: tour.isOnOffer ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock",
+            },
+            ...(itineraryArray.length > 0 && {
+              itinerary: {
+                "@type": "ItemList",
+                itemListElement: itineraryArray.map((item, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  name: typeof item === 'string' ? item.trim() : String(item)
+                }))
+              }
+            })
           },
-          itinerary: {
-            "@type": "ItemList",
-            itemListElement: tour.itinerary?.map((item, i) => ({
-              "@type": "ListItem",
-              position: i + 1,
-              name: item
-            })) || []
-          }
-        },
-      })),
+        };
+      }),
     },
     {
       "@type": "FAQPage",
