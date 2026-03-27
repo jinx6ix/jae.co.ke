@@ -2,13 +2,13 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  // Primary title with keyword-rich format
-  title: "1 Day Maasai Mara Safari from Nairobi (2026) | Best Day Trip Kenya",
+  // Title: 60 characters max
+  title: "1 Day Maasai Mara Safari from Nairobi (2026) | Best Kenya Day Trip",
   
-  // Meta description with keywords, emojis, and CTAs (160 chars optimal)
-  description: "✓ Book the best 1 day Maasai Mara safari from Nairobi. Full-day game drive ✓ Big Five guaranteed ✓ Packed lunch included ✓ Free cancellation. From $180.",
+  // Description: 115 characters max
+  description: "Book the best 1 day Maasai Mara safari from Nairobi. Full-day game drive, Big Five guaranteed, packed lunch included. Free cancellation. From $180.",
   
-  // Keywords for search engines (comma-separated)
+  // Keywords - Comprehensive
   keywords: [
     "1 day Maasai Mara safari",
     "Maasai Mara day trip",
@@ -21,16 +21,40 @@ export const metadata: Metadata = {
     "budget day safari Kenya",
     "Nairobi day trips",
     "Kenya day tours",
-    "Maasai Mara game drive"
+    "Maasai Mara game drive",
+    "day trip to Maasai Mara",
+    "1 day Kenya safari",
+    "Nairobi day safari",
+    "Mara day trip",
+    "cheap day safari Kenya",
+    "affordable Maasai Mara tour",
+    "last minute Mara safari",
+    "Maasai Mara day excursion"
   ].join(", "),
 
-  // Authorship
   authors: [{ name: "Jae Travel Expeditions", url: "https://jaetravel.co.ke" }],
-  
-  // Publisher
+  creator: "Jae Travel Expeditions",
   publisher: "Jae Travel Expeditions",
+  metadataBase: new URL("https://jaetravel.co.ke"),
+  category: "travel",
+  classification: "Safari Tours",
+  applicationName: "Jae Travel Expeditions",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
 
-  // Open Graph for social media
+  // Alternative URLs
+  alternates: {
+    canonical: "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+    languages: {
+      'en-US': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
+      'en-GB': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
+      'en-AU': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
+      'en-CA': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
+      'x-default': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
+    },
+  },
+
+  // Open Graph
   openGraph: {
     title: "1 Day Maasai Mara Safari from Nairobi - Best Day Trip 2026",
     description: "Experience Kenya's famous Maasai Mara in just one day. Full-day game drive, expert guides, and Big Five sightings. Book online!",
@@ -41,11 +65,16 @@ export const metadata: Metadata = {
         url: "https://jaetravel.co.ke/images/og/1-day-maasai-mara.jpg",
         width: 1200,
         height: 630,
-        alt: "1 Day Maasai Mara Safari - Game drive with lions",
+        alt: "1 Day Maasai Mara Safari - Game drive with lions in Kenya",
+        type: "image/jpeg",
+        secureUrl: "https://jaetravel.co.ke/images/og/1-day-maasai-mara.jpg",
       },
     ],
     locale: "en_US",
     type: "website",
+    emails: ["info@jaetravel.co.ke"],
+    phoneNumbers: ["+254726485228"],
+    countryName: "Kenya",
   },
 
   // Twitter Cards
@@ -54,8 +83,10 @@ export const metadata: Metadata = {
     title: "1 Day Maasai Mara Safari from Nairobi",
     description: "Book your 1-day Maasai Mara safari. Best price guaranteed!",
     images: ["https://jaetravel.co.ke/images/twitter/1-day-maasai-mara.jpg"],
-    creator: "@jaetravel",
     site: "@jaetravel",
+    creator: "@jaetravel",
+    siteId: "123456789",
+    creatorId: "123456789",
   },
 
   // Robots directives
@@ -68,42 +99,73 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "noimageindex": false,
+      "notranslate": false,
     },
+    nocache: false,
   },
 
-  // Canonical URL
-  alternates: {
-    canonical: "https://jaetravel.co.ke/safari/1-day-maasai-mara",
-    languages: {
-      'en-US': 'https://jaetravel.co.ke/safari/1-day-maasai-mara',
-    },
-  },
-
-  // Verification for Google Search Console
+  // Verification
   verification: {
     google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
+    yandex: "yandex-verification-code",
+    yahoo: "yahoo-verification-code",
+    other: {
+      "facebook-domain-verification": "facebook-verification-code",
+    },
   },
 
-  // Category
-  category: "travel",
-
-  // Other metadata
-  applicationName: "Jae Travel Expeditions",
-  generator: "Next.js",
-  referrer: "origin-when-cross-origin",
+  // Apple and mobile
+  appleWebApp: {
+    capable: true,
+    title: "Jae Travel - 1 Day Mara Safari",
+    statusBarStyle: "black-translucent",
+  },
+  
+  // Icons
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/shortcut-icon.png'],
+  },
+  
+  // Manifest
+  manifest: '/manifest.json',
+  
+  // Other
   formatDetection: {
     email: false,
     address: false,
-    telephone: false,
+    telephone: true,
   },
-
+  
   // Viewport
   viewport: {
     width: "device-width",
     initialScale: 1,
     maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
   },
-
+  
   // Theme color
-  themeColor: "#f97316",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f97316" },
+    { media: "(prefers-color-scheme: dark)", color: "#ea580c" },
+  ],
+  
+  // Color scheme
+  colorScheme: "light dark",
+  
+  // Other metadata
+  assets: ["/images/safaris/1-day-mara/"],
+  
+  // Book information
+ 
 };

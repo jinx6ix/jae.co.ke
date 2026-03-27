@@ -226,8 +226,8 @@ export const generateSafariSchema = () => {
           ],
           "uploadDate": "2025-01-15",
           "duration": "PT2M30S",
-          "contentUrl": "https://www.youtube.com/watch?v=your-video-id",
-          "embedUrl": "https://www.youtube.com/embed/your-video-id",
+          "contentUrl": "https://www.youtube.com/watch?v=jwMhdq_Z_DM",
+          "embedUrl": "https://www.youtube.com/embed/jwMhdq_Z_DM",
           "interactionStatistic": {
             "@type": "InteractionCounter",
             "interactionType": { "@type": "WatchAction" },

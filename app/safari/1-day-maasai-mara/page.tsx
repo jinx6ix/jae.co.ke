@@ -2,16 +2,22 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
+import { Suspense } from 'react';
 import { generateSafariSchema } from './schema';
 import { metadata as pageMetadata } from './metadata';
 
 // Export metadata for Next.js
 export { pageMetadata as metadata };
 
+// Generate static params for dynamic routes if needed
+export async function generateStaticParams() {
+  return [];
+}
+
 // Main page component
 export default function OneDayMaasaiMaraPage() {
   const safariData = {
-    // All data extracted from PDF
     title: "1 Day Maasai Mara Safari from Nairobi",
     duration: "1 Day / 0 Nights",
     price: {
@@ -188,18 +194,18 @@ export default function OneDayMaasaiMaraPage() {
   return (
     <>
       {/* JSON-LD Schema Injection */}
-      <script
+      <Script
+        id="safari-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSafariSchema()) }}
       />
 
       <main className="bg-white">
-        {/* HERO SECTION - Above the fold critical content */}
+        {/* HERO SECTION */}
         <section className="relative h-[70vh] min-h-[600px] bg-black">
-          {/* Hero Image with overlay */}
           <Image
             src={safariData.images.hero}
-            alt="1 day Maasai Mara safari - Lions on game drive"
+            alt="1 day Maasai Mara safari from Nairobi - Lions on game drive at sunrise in Kenya"
             fill
             priority
             className="object-cover opacity-90"
@@ -207,7 +213,6 @@ export default function OneDayMaasaiMaraPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
           
-          {/* Hero Content */}
           <div className="absolute bottom-0 left-0 right-0 text-white pb-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Trust badges */}
@@ -227,10 +232,10 @@ export default function OneDayMaasaiMaraPage() {
                 1 Day Maasai Mara Safari from Nairobi
               </h1>
               
-              <p className="text-xl md:text-2xl mb-6 max-w-3xl text-gray-200">
+              <h2 className="text-xl md:text-2xl mb-6 max-w-3xl text-gray-200">
                 Experience Kenya's most famous wildlife reserve in just one day. 
                 Full-day game drive • Expert guides • Big Five viewing
-              </p>
+              </h2>
 
               {/* Quick stats */}
               <div className="flex flex-wrap gap-6 mb-8">
@@ -272,9 +277,10 @@ export default function OneDayMaasaiMaraPage() {
                   View Full Itinerary
                 </Link>
                 <Link
-                  href="https://wa.me/254XXXXXXXXX"
+                  href="https://wa.me/254726485228"
                   className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all flex items-center gap-2"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span>💬</span> WhatsApp Inquiry
                 </Link>
@@ -283,7 +289,7 @@ export default function OneDayMaasaiMaraPage() {
           </div>
         </section>
 
-        {/* BREADCRUMBS - SEO structure */}
+        {/* BREADCRUMBS */}
         <nav className="bg-gray-50 py-3 border-b" aria-label="Breadcrumb">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ol className="flex items-center space-x-2 text-sm text-gray-600">
@@ -302,7 +308,7 @@ export default function OneDayMaasaiMaraPage() {
           </div>
         </nav>
 
-        {/* INTRO SECTION with keywords */}
+        {/* INTRO SECTION */}
         <section className="py-12 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-4">
@@ -336,7 +342,7 @@ export default function OneDayMaasaiMaraPage() {
           </div>
         </section>
 
-        {/* DETAILED ITINERARY - Main content for SEO */}
+        {/* DETAILED ITINERARY */}
         <section id="itinerary" className="py-16 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-4">
@@ -346,7 +352,6 @@ export default function OneDayMaasaiMaraPage() {
               A perfectly paced day safari designed to maximize wildlife viewing while ensuring comfort
             </p>
 
-            {/* Timeline */}
             <div className="relative">
               {/* Vertical line */}
               <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-orange-200 transform md:translate-x-px"></div>
@@ -578,7 +583,7 @@ export default function OneDayMaasaiMaraPage() {
                 <div key={index} className="relative h-48 rounded-lg overflow-hidden group">
                   <Image
                     src={image}
-                    alt={`1 day Maasai Mara safari - Image ${index + 1}`}
+                    alt={`1 day Maasai Mara safari - Kenya wildlife safari photo ${index + 1}`}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -588,7 +593,7 @@ export default function OneDayMaasaiMaraPage() {
           </div>
         </section>
 
-        {/* REVIEWS */}
+        {/* REVIEWS SECTION */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-2">
@@ -625,7 +630,7 @@ export default function OneDayMaasaiMaraPage() {
           </div>
         </section>
 
-        {/* FAQ SECTION - For featured snippets */}
+        {/* FAQ SECTION */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-4">
@@ -696,9 +701,10 @@ export default function OneDayMaasaiMaraPage() {
                 Check Prices & Book
               </Link>
               <Link
-                href="https://wa.me/254XXXXXXXXX"
+                href="https://wa.me/254726485228"
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center gap-2 transition-all"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <span>💬</span> WhatsApp Us Now
               </Link>
@@ -719,9 +725,10 @@ export default function OneDayMaasaiMaraPage() {
               View Prices
             </Link>
             <Link
-              href="https://wa.me/254XXXXXXXXX"
+              href="https://wa.me/254726485228"
               className="flex-1 bg-green-500 text-white text-center py-3 rounded-lg font-bold flex items-center justify-center gap-1"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span>💬</span> WhatsApp
             </Link>
