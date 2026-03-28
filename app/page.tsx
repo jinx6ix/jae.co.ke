@@ -223,7 +223,7 @@ const homepageSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours | JaeTravel Expeditions",
+    title: "Accessible Safaris in Kenya (2026) | Wheelchair-Friendly Tours & Vehicles",
     description: "Kenya's #1 wheelchair accessible safari operator. German hydraulic lift 4x4 vehicles (400kg capacity), disability-friendly lodges, Masai Mara Great Migration 2026 dates & gorilla trekking. Real 5-star reviews from wheelchair travelers.",
     keywords: [
       "wheelchair accessible safari kenya",
@@ -278,9 +278,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-    },
-    other: {
-      "script:ld+json": JSON.stringify([breadcrumbSchema]),
     },
   }
 }

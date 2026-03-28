@@ -91,7 +91,6 @@ export const metadata: Metadata = {
     google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
   },
   alternates: {
-    canonical: "https://www.jaetravel.co.ke",
     languages: {
       'en': 'https://www.jaetravel.co.ke',
       'en-US': 'https://www.jaetravel.co.ke',
@@ -424,8 +423,10 @@ export default function RootLayout({
             <div className="header-wrapper">
               <Header />
             </div>
-            <main className="min-h-screen">
-              {children}
+            <main className="min-h-screen flex justify-center">
+              <div className="w-full max-w-7xl px-4">
+                {children}
+              </div>
             </main>
             <Footer />
             <AnalyticsTracker />
