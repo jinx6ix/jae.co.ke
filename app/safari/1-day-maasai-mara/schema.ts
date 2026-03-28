@@ -20,9 +20,9 @@ export const generateSafariSchema = () => {
           "sku": "JTE-1D-MM-001",
           "mpn": "MM-1D-2026",
           "image": [
-            "https://jaetravel.co.ke/images/safaris/1-day-mara/hero.jpg",
-            "https://jaetravel.co.ke/images/safaris/1-day-mara/gallery-1.jpg",
-            "https://jaetravel.co.ke/images/safaris/1-day-mara/gallery-2.jpg"
+            "https://jaetravel.co.ke/hero.jpg",
+            "https://jaetravel.co.ke/gallery-1.jpg",
+            "https://jaetravel.co.ke/gallery-2.jpg"
           ],
           "offers": {
             "@type": "AggregateOffer",
@@ -127,7 +127,7 @@ export const generateSafariSchema = () => {
             "@type": "TourOperator",
             "name": "Jae Travel Expeditions",
             "url": "https://jaetravel.co.ke",
-            "logo": "https://jaetravel.co.ke/images/logo.png",
+            "logo": "https://jaetravel.co.ke/logo.png",
             "sameAs": [
               "https://www.facebook.com/jaetravel",
               "https://www.instagram.com/jaetravel",
@@ -222,7 +222,7 @@ export const generateSafariSchema = () => {
           "name": "1 Day Maasai Mara Safari Experience",
           "description": "Watch what you'll experience on a 1-day safari to Maasai Mara from Nairobi",
           "thumbnailUrl": [
-            "https://jaetravel.co.ke/images/videos/1-day-mara-thumb.jpg"
+            "https://jaetravel.co.ke/1-day-mara-thumb.jpg"
           ],
           "uploadDate": "2025-01-15",
           "duration": "PT2M30S",
@@ -249,7 +249,7 @@ export const generateSafariSchema = () => {
             "@id": "https://jaetravel.co.ke/#website"
           },
           "primaryImageOfPage": {
-            "@id": "https://jaetravel.co.ke/images/safaris/1-day-mara/hero.jpg"
+            "@id": "https://jaetravel.co.ke/hero.jpg"
           }
         },
   
@@ -259,8 +259,8 @@ export const generateSafariSchema = () => {
           "@id": "https://jaetravel.co.ke/#organization",
           "name": "Jae Travel Expeditions",
           "url": "https://jaetravel.co.ke",
-          "logo": "https://jaetravel.co.ke/images/logo.png",
-          "image": "https://jaetravel.co.ke/images/company.jpg",
+          "logo": "https://jaetravel.co.ke/logo.png",
+          "image": "https://jaetravel.co.ke/company.jpg",
           "description": "Premier Kenya safari tour operator offering customized wildlife adventures",
           "address": {
             "@type": "PostalAddress",
@@ -275,7 +275,7 @@ export const generateSafariSchema = () => {
             "latitude": "-1.2921",
             "longitude": "36.8219"
           },
-          "telephone": "+254-XXX-XXXXXX",
+          "telephone": "+254-726485228",
           "email": "info@jaetravel.co.ke",
           "sameAs": [
             "https://www.facebook.com/jaetravel",
