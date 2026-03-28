@@ -224,7 +224,7 @@ const homepageSchema = {
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "Accessible Safaris in Kenya (2026) | Wheelchair-Friendly Tours & Vehicles",
-    description: "Kenya's #1 wheelchair accessible safari operator. German hydraulic lift 4x4 vehicles (400kg capacity), disability-friendly lodges, Masai Mara Great Migration 2026 dates & gorilla trekking. Real 5-star reviews from wheelchair travelers.",
+    description: "Book a wheelchair-accessible safari in Kenya with adapted vehicles, accessible lodges, and expert guides. Experience Maasai Mara & gorilla trekking in East Africa.",
     keywords: [
       "wheelchair accessible safari kenya",
       "wheelchair accessible safari kenya 2026",
