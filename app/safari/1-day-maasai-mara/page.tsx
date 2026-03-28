@@ -204,7 +204,7 @@ export default function OneDayMaasaiMaraPage() {
       ]
     },
     video: {
-      youtubeId: "your-video-id",
+      youtubeId: "jwMhdq_Z_DM",
       title: "1 Day Maasai Mara Safari Experience"
     },
     pdfUrl: "/pdfs/1-day-maasai-mara-itinerary.pdf"
