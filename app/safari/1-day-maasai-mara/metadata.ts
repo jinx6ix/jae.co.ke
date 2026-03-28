@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "1 Day Maasai Mara Safari from Nairobi (2026) | Best Kenya Day Trip",
+  title: "1 Day Maasai Mara Safari (2026) | Best Kenya Day Trip",
 
   description: "Book the best 1 Day Maasai Mara Safari from Nairobi. Full-day game drive, Big Five wildlife, expert guide, packed lunch & hotel pickup. From $180.",
 
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     "budget day safari Kenya", "Nairobi day trips", "Kenya safari day tour"
   ].join(", "),
 
-  authors: [{ name: "Jae Travel Expeditions", url: "https://jaetravel.co.ke" }],
-  creator: "Jae Travel Expeditions",
-  publisher: "Jae Travel Expeditions",
+  authors: [{ name: "JaeTravel Expeditions", url: "https://jaetravel.co.ke" }],
+  creator: "JaeTravel Expeditions",
+  publisher: "JaeTravel Expeditions",
   metadataBase: new URL("https://jaetravel.co.ke"),
   category: "travel",
   classification: "Safari Tours",
