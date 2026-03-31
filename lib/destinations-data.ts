@@ -1,4 +1,5 @@
 export interface Destination {
+  wildlifeHighlights: string
   name: string
   slug: string
   country: string
@@ -58,6 +59,8 @@ export const destinations: Destination[] = [
       "Beach and bush combinations",
     ],
     popularTours: 12,
+    wildlifeHighlights:
+      "Big Five sightings (lion, leopard, elephant, buffalo, rhino), Great Wildebeest Migration, Maasai giraffes, cheetahs, zebras, flamingos, and diverse birdlife across savannahs and lakes.",
   },
 
   {
@@ -103,6 +106,8 @@ export const destinations: Destination[] = [
       "Cultural explorers",
     ],
     popularTours: 15,
+    wildlifeHighlights:
+      "Massive wildebeest herds of the Great Migration, lions, elephants, rhinos in Ngorongoro Crater, flamingos, hippos, crocodiles, and rare African wild dogs.",
   },
 
   {
@@ -148,6 +153,8 @@ export const destinations: Destination[] = [
       "Conservation-focused travelers",
     ],
     popularTours: 8,
+    wildlifeHighlights:
+      "Endangered mountain gorillas, golden monkeys, forest elephants, chimpanzees in nearby forests, and over 200 bird species in lush volcanic landscapes.",
   },
 
   {
@@ -193,6 +200,8 @@ export const destinations: Destination[] = [
       "Nature enthusiasts",
     ],
     popularTours: 10,
+    wildlifeHighlights:
+      "Mountain gorillas of Bwindi, chimpanzees in Kibale Forest, tree-climbing lions, elephants, hippos, Nile crocodiles, and abundant bird species including shoebill stork.",
   },
 ]
 
