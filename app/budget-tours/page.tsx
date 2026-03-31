@@ -32,7 +32,7 @@ const maxPrice = totalTours > 0
 // METADATA - Title: 60 chars | Description: 115 chars
 // ============================================
 export const metadata: Metadata = {
-  title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
+  title: "Budget Safaris Kenya 2026 | Cheap Tours from $450",
   description: "Discover the best budget safaris in Kenya 2026. Masai Mara, Nakuru, Naivasha & Amboseli. Affordable group & private safaris starting from $450. Book now!",
   keywords: [
     "budget safaris Kenya 2026", "private safaris Kenya", "tented camps Masai Mara",

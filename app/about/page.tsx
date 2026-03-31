@@ -209,9 +209,9 @@ const aboutPageSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "About JaeTravel Expeditions | East Africa Safari Experts Since 2008",
-  description:
-    "Meet JaeTravel Expeditions — your award-winning, accessibility-focused safari operator in Kenya, Tanzania, Rwanda & Uganda. Specializing in wheelchair-friendly safaris, sustainable tourism, and life-changing wildlife experiences since 2008.",
+  title: "About JaeTravel Expeditions | East Africa Safari Experts",
+description:
+  "Discover JaeTravel Expeditions, a trusted safari operator in East Africa offering accessible, sustainable wildlife tours since 2008.",
   keywords: [
     "about jaetravel expeditions",
     "safari company east africa",
@@ -297,7 +297,7 @@ const faqs = [
 // Team Members – Real names, roles, photos, bios
 const teamMembers = [
   {
-    name: "James Kimani",
+    name: "Antony Waititu",
     role: "Founder & Chief Safari Guide",
     bio: "Born in the Maasai Mara region, James has 22+ years guiding experience. He founded JaeTravel in 2008 to make safaris accessible to all. Fluent in English, Swahili, and Maa.",
     image: "/team/james-kimani.jpg",

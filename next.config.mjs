@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: false,
-  skipTrailingSlashRedirect: true, // This kills all trailing-slash issues forever
+  skipTrailingSlashRedirect: true,
 
-  // Image Optimization ni mbaya
+  // Image Optimization
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -19,16 +19,15 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
 
-  // Compression & Performance
+  // Performance
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
   reactStrictMode: true,
 
-  // Headers for Caching
   async headers() {
     return [
-      // Cache CSS, JS, fonts aggressively
+      // 🔥 Cache static assets aggressively
       {
         source: '/_next/static/(.*)',
         headers: [
@@ -38,7 +37,6 @@ const nextConfig = {
           },
         ],
       },
-      // Cache images
       {
         source: '/_next/image/(.*)',
         headers: [
@@ -48,7 +46,6 @@ const nextConfig = {
           },
         ],
       },
-      // Cache fonts
       {
         source: '/(.*).(woff2|woff|ttf|otf)',
         headers: [
@@ -58,7 +55,37 @@ const nextConfig = {
           },
         ],
       },
-      // Security headers
+
+      // 🚫 SEO CONTROL (X-Robots-Tag)
+      {
+        source: '/admin/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
+      {
+        source: '/dashboard/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+
+      // 🔐 Security headers (global)
       {
         source: '/:path*',
         headers: [
@@ -91,10 +118,9 @@ const nextConfig = {
     ];
   },
 
-  // Redirects (keeping your existing redirects)
+  // Redirects
   async redirects() {
     return [
-      // 1. Non-www → www (works perfectly on Vercel)
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'jaetravel.co.ke' }],
@@ -102,10 +128,7 @@ const nextConfig = {
         permanent: true,
       },
 
-      // 2. HTTP → HTTPS is handled automatically by Vercel
-      //    → No need for a redirect rule anymore (and it breaks the build if you try)
-
-      // Your legacy tour redirects (keep these)
+      // Legacy redirects
       {
         source: '/:path*',
         has: [{ type: 'query', key: 'p', value: '2056' }],
@@ -136,16 +159,14 @@ const nextConfig = {
     ];
   },
 
-  // Build optimizations
+  // Build
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  
-  // Remove console logs in production
+
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Transpile critical dependencies if needed
   transpilePackages: [],
 };
 
