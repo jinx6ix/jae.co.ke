@@ -59,14 +59,14 @@ export async function generateMetadata({
     keywords: vehicle.keywords,
 
     alternates: {
-      canonical: `${baseUrl}/vehicles/${vehicle.slug}`,
+      canonical: `${baseUrl}/vehicle-hire/${vehicle.slug}`,
     },
 
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${baseUrl}/vehicles/${vehicle.slug}`,
+      url: `${baseUrl}/vehicle-hire/${vehicle.slug}`,
       images: [
         {
           url: image,
