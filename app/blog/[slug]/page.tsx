@@ -23,14 +23,17 @@ export async function generateStaticParams() {
   }))
 }
 
-// Generate metadata with enhanced SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const post = blogPosts.find((p) => p.slug === slug)
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+  const BRAND_SUFFIX = " | JaeTravel Expeditions"
+  const MAX_TITLE_LENGTH = 78
+
   if (!post) {
     return {
-      title: "Post Not Found | JaeTravel Expeditions",
+      title: "Post Not Found",
       robots: {
         index: false,
         follow: false,
@@ -38,23 +41,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+  // ✅ Ensure title doesn't exceed limit AFTER suffix is added
+  const maxBaseLength = MAX_TITLE_LENGTH - BRAND_SUFFIX.length
+  let safeTitle = post.metaTitle
+
+  if (safeTitle.length > maxBaseLength) {
+    safeTitle = safeTitle.slice(0, maxBaseLength - 3) + "..."
+  }
+
+  // ✅ Ensure description max ~115 chars
+  let safeDescription = post.metaDescription
+  if (safeDescription.length > 115) {
+    safeDescription = safeDescription.slice(0, 112) + "..."
+  }
+
+  const fullTitle = safeTitle + BRAND_SUFFIX
 
   return {
-    title: post.metaTitle,
-    description: post.metaDescription,
+    title: fullTitle,
+    description: safeDescription,
     keywords: post.keywords,
     authors: [{ name: post.author }],
     creator: post.author,
     publisher: "JaeTravel Expeditions",
+
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
     },
+
     openGraph: {
-      title: post.metaTitle,
-      description: post.metaDescription,
+      title: fullTitle,
+      description: safeDescription,
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.publishedAt,
@@ -64,7 +83,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
         {
-          url: post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`,
+          url: post.image.startsWith("http")
+            ? post.image
+            : `${baseUrl}${post.image}`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -74,14 +95,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: "en_KE",
       siteName: "JaeTravel Expeditions",
     },
+
     twitter: {
       card: "summary_large_image",
-      title: post.metaTitle,
-      description: post.metaDescription,
-      images: [post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`],
+      title: fullTitle,
+      description: safeDescription,
+      images: [
+        post.image.startsWith("http")
+          ? post.image
+          : `${baseUrl}${post.image}`,
+      ],
       creator: "@jaetravel",
       site: "@jaetravel",
     },
+
     robots: {
       index: true,
       follow: true,
@@ -93,10 +120,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "max-snippet": -1,
       },
     },
+
     alternates: {
       canonical: `${baseUrl}/blog/${post.slug}`,
     },
+
     category: post.category,
+
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION,
     },
@@ -207,7 +237,7 @@ function generateSchemaMarkup(post: BlogPost, baseUrl: string) {
       latitude: "-1.286389",
       longitude: "36.817223",
     },
-    telephone: "+254-XXX-XXX-XXX",
+    telephone: "+254-726-485-228",
     email: "info@jaetravel.co.ke",
     priceRange: "$$$",
     openingHoursSpecification: [

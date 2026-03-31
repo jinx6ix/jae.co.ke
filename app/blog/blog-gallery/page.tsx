@@ -41,15 +41,15 @@ const gallerySchema = {
     // 3. WebPage
     {
       "@type": "WebPage",
-      "@id": "https://www.jaetravel.co.ke/gallery/#webpage",
-      "url": "https://www.jaetravel.co.ke/gallery",
+      "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#webpage",
+      "url": "https://www.jaetravel.co.ke/blog/blog-gallery",
       "name": "Safari Photo & Video Gallery | Jae Travel Expeditions",
       "description": "Stunning wildlife photography and videos from Kenya, Tanzania, Rwanda & Uganda safaris.",
       "isPartOf": {
         "@id": "https://www.jaetravel.co.ke/#website"
       },
       "breadcrumb": {
-        "@id": "https://www.jaetravel.co.ke/gallery/#breadcrumb"
+        "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#breadcrumb"
       },
       "primaryImageOfPage": {
         "@type": "ImageObject",
@@ -58,14 +58,14 @@ const gallerySchema = {
         "height": 630
       },
       "mainEntity": {
-        "@id": "https://www.jaetravel.co.ke/gallery/#imagegallery"
+        "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#imagegallery"
       }
     },
 
     // 4. BreadcrumbList
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.jaetravel.co.ke/gallery/#breadcrumb",
+      "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -77,7 +77,7 @@ const gallerySchema = {
           "@type": "ListItem",
           "position": 2,
           "name": "Gallery",
-          "item": "https://www.jaetravel.co.ke/gallery"
+          "item": "https://www.jaetravel.co.ke/blog/blog-gallery"
         }
       ]
     },
@@ -85,10 +85,10 @@ const gallerySchema = {
     // 5. ImageGallery (optimized for Google Image Search & rich gallery results)
     {
       "@type": "ImageGallery",
-      "@id": "https://www.jaetravel.co.ke/gallery/#imagegallery",
+      "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#imagegallery",
       "name": "Jae Travel Safari Photo & Video Gallery",
       "description": "Professional wildlife photography and safari videos from Masai Mara, Serengeti, gorilla trekking, and accessible East Africa adventures.",
-      "url": "https://www.jaetravel.co.ke/gallery",
+      "url": "https://www.jaetravel.co.ke/blog/blog-gallery",
       "associatedMedia": [
         {
           "@type": "ImageObject",
@@ -159,7 +159,7 @@ const gallerySchema = {
     // 6. FAQPage – optimized for rich FAQ carousel
     {
       "@type": "FAQPage",
-      "@id": "https://www.jaetravel.co.ke/gallery/#faqpage",
+      "@id": "https://www.jaetravel.co.ke/blog/blog-gallery/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
@@ -207,8 +207,9 @@ const gallerySchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Safari Photo & Video Gallery | Wildlife Photography East Africa | JaeTravel",
-  description: "Explore stunning safari photos and videos from Masai Mara, Serengeti, gorilla trekking in Rwanda & Uganda. Professional wildlife and accessible safari imagery.",
+  title: "Safari Photo & Video Gallery | East Africa Wildlife",
+  description:
+  "Explore safari photos and videos from Masai Mara, Serengeti, and gorilla trekking in Rwanda and Uganda.",
   keywords: [
     "safari photo gallery",
     "wildlife photography east africa",
@@ -233,14 +234,14 @@ export const metadata: Metadata = {
     type: "website"
   },
   alternates: { 
-    canonical: "https://www.jaetravel.co.ke/gallery",
+    canonical: "https://www.jaetravel.co.ke/blog/blog-gallery",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/gallery',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/gallery',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/gallery',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/gallery',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/gallery',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/gallery',   // Fallback
+      'en': 'https://www.jaetravel.co.ke/blog/blog-gallery',           // Main English/global
+      'en-US': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // US
+      'en-GB': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // UK (optional)
+      'en-AU': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // Australia (optional)
+      'en-CA': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // Canada (optional)
+      'x-default': 'https://www.jaetravel.co.ke/blog/blog-gallery',   // Fallback
     },
    }
 }

@@ -165,9 +165,9 @@ const blogPageSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Safari Travel Blog | Tips, Guides & Stories | JaeTravel Expeditions",
+  title: "Safari Travel Blog | Tips, Guides & Stories",
   description:
-    "Read our safari travel blog for expert tips, destination guides, wildlife stories, and accessible travel advice for East Africa. Plan your perfect safari adventure.",
+  "Read safari tips, destination guides, wildlife stories, and accessible travel advice for East Africa.",
   keywords: [
     "Safari Blog",
     "Travel Tips",
