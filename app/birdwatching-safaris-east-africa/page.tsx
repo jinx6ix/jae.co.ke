@@ -210,7 +210,7 @@ export default function BirdwatchingSafarisPage() {
   return (
     <>
       {/* JSON-LD Script */}
-      <JsonLd data={jsonLd} />
+      <JsonLd data={jsonLd} id={" birdwatching-safari-schema"} />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">
