@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Car, Map, Plane, Building, Mountain, Palmtree } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 // ENHANCED SEO-OPTIMIZED TRANSPORTATION SCHEMA — FULL RICH RESULTS + IMAGEOBJECT + UPDATED URLS
 const transportSchema = {
@@ -402,10 +403,7 @@ export default function OtherServicesPage() {
   return (
     <>
       {/* ENHANCED RICH RESULTS SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(transportSchema) }}
-      />
+      <JsonLd id="enhanced-rich-results" data={transportSchema} />
       <div className="container mx-auto px-4 py-16">
         {/* Header */}
         <div className="mb-16 text-center">

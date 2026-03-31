@@ -386,7 +386,7 @@ export default function BudgetToursPage() {
       {/* Structured Data - Now includes real tour cards */}
       <Script
         id="budget-tours-schema"
-        type="application/ld+json"
+        
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 

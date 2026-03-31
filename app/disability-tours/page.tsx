@@ -22,6 +22,7 @@ import {
   Clock,
   Map,
 } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 // ──────────────────────────────────────────────────────────────────────────────
 // METADATA — MAXIMUM KEYWORD DENSITY + 2026 TIMELINESS
@@ -329,10 +330,9 @@ const accessibleItineraries = [   {     id: 1,     name: "Masai Mara Express",  
 export default function DisabilityToursPage() {
   return (
     <div className="pb-16">
-      <Script
-        id="structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      <JsonLd 
+        id="page-structured-data" 
+        data={schema} 
       />
 
       {/* HERO */}

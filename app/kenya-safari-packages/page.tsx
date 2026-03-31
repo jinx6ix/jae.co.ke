@@ -12,6 +12,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import KenyaSafariPackagesClient from "./kenyaSafariPackagesClient";
+import JsonLd from "@/components/JsonLd";
 
 // ============================================
 // SAFARI PACKAGES DATA
@@ -323,11 +324,7 @@ const generateSchemaMarkup = () => {
 export default function KenyaSafariPackagesPage() {
   return (
     <>
-      <Script
-        id="kenya-safari-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSchemaMarkup()) }}
-      />
+      <JsonLd id="schema-markup" data={generateSchemaMarkup()} />
 
       <main className="bg-white">
         {/* ========== HERO SECTION ========== */}

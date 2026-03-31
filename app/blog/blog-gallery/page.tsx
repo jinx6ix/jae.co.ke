@@ -1,6 +1,7 @@
 // app/gallery/page.tsx
 import type { Metadata } from "next"
 import GalleryP from "./gallery"
+import JsonLd from "@/components/JsonLd";
 
 // BULLET-PROOF GALLERY SCHEMA — MAXIMUM VISUAL RICH RESULTS (2025–2026)
 const gallerySchema = {
@@ -250,10 +251,7 @@ export default function GalleryPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA — YOUR PHOTOS WILL RANK IN GOOGLE IMAGES! */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
-      />
+      <JsonLd data={gallerySchema} id={"gallery-schema"} />
 
       <GalleryP />
     </>

@@ -45,6 +45,7 @@ import FaqSection from "@/components/FaqSection"
 import TrustBadges from "@/components/TrustBadges"
 
 import { tours } from "@/lib/tours-data"
+import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "cultural-tours",
@@ -179,10 +180,7 @@ export default function CulturalToursPage() {
   return (
     <>
       {/* JSON-LD Script */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} id={"cultural-tours-schema"} />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">

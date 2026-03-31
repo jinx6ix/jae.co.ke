@@ -9,6 +9,7 @@ import CampingHero from "./CampingHero"
 import CampingHighlights from "./CampingHighlights"
 import CampingTestimonials from "./CampingTestimonials"
 import { faqSchema } from "./faq-schema"
+import JsonLd from "@/components/JsonLd"
 
 // BULLET-PROOF LUXURY CAMPING SCHEMA — FULL RICH RESULTS + IMAGEOBJECT
 const campingSchema = {
@@ -370,10 +371,7 @@ export default function LuxuryCampingPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA — PRODUCT + IMAGEOBJECT */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(campingSchema) }}
-      />
+      <JsonLd id="luxury-camping-schema" data={campingSchema} />
       <div className="container mx-auto px-4 py-16">
         {/* Hero – Client */}
         <CampingHero product={product} />

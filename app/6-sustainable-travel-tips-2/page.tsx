@@ -257,10 +257,12 @@ export default function SustainableTravelTips() {
 
   return (
     <>
-      {/* FULL RICH RESULTS SCHEMA — 5 stars + FAQ + Article */}
+      {/* FIXED: Reliable JSON-LD Structured Data — prevents defer + escaping issues */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(sustainableTravelSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(sustainableTravelSchema).replace(/</g, '\\u003c')
+        }}
       />
 
       <main className="max-w-4xl mx-auto px-6 py-16 prose prose-lg">

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { products } from "@/lib/products-data";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, XCircle, Clock, DollarSign, Users, MapPin } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
 
 type Props = {
   params: { slug: string };
@@ -143,10 +144,7 @@ export default function FrenchProductPage({ params }: Props) {
   
   return (
     <>
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <JsonLd data={schema} id={"product-schema"} />
     <div className="container mx-auto px-4 py-16">
       {/* Hero Section */}
       <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-12">

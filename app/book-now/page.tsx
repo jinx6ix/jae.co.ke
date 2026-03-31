@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Phone, Mail, Clock, MapPin } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
 
 // BULLET-PROOF VEHICLE HIRE SCHEMA — MAXIMUM RICH RESULTS
 const vehicleHireSchema = {
@@ -322,10 +323,7 @@ export default function BookNowPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA */}            
-      <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(vehicleHireSchema) }}
-        />
+      <JsonLd data={vehicleHireSchema} id={'vehicle-hire-schema'} />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {/* Hero Header */}
         <div className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 text-white">

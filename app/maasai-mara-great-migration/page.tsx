@@ -37,6 +37,7 @@ import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard";
 
 // Import your tours data
 import { tours } from "@/lib/tours-data";
+import JsonLd from "@/components/JsonLd";
 
 // Helper function to safely convert itinerary to array
 const getItineraryArray = (itinerary: string | string[] | undefined) => {
@@ -368,8 +369,9 @@ const renderContent = (content: string) => {
 export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
-      <Script id="migration-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
-      <Script id="video-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema["@graph"].find((item: any) => item["@type"] === "VideoObject") || {}) }} />
+      <JsonLd id="page-schema" data={pageSchema} />
+      <JsonLd id="organization-schema" data={pageSchema["@graph"][0]} />
+      <JsonLd id="video-schema" data={pageSchema["@graph"][6]} />
 
       <div className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
         {/* ========== HERO SECTION ========== */}

@@ -1,6 +1,7 @@
 // File: app/about/page.tsx
 import type { Metadata } from "next"
 import AboutClient from "./AboutClient"
+import JsonLd from "@/components/JsonLd";
 
 // BULLET-PROOF ABOUT PAGE SCHEMA — 100% RICH RESULTS (2025–2026)
 const aboutPageSchema = {
@@ -360,10 +361,7 @@ export default function AboutPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
-      />
+      <JsonLd data={aboutPageSchema} />
       <AboutClient faqs={faqs} teamMembers={teamMembers} values={values} />
     </>
   )

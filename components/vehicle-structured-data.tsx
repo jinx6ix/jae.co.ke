@@ -1,3 +1,5 @@
+import JsonLd from "./JsonLd"
+
 interface VehicleStructuredDataProps {
   vehicle: {
     name: string
@@ -46,5 +48,5 @@ export function VehicleStructuredData({ vehicle }: VehicleStructuredDataProps) {
     category: "Vehicle Rental",
   }
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+  return <JsonLd id="vehicle-schema" data={structuredData} />
 }

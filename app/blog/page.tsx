@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import BlogClient from "./BlogClient"
 import { blogPosts } from "@/lib/blog-data"
+import JsonLd from "@/components/JsonLd";
 
 // BULLET-PROOF BLOG PAGE SCHEMA — MAXIMUM RICH RESULTS (2025–2026)
 const blogPageSchema = {
@@ -233,10 +234,8 @@ export default function BlogPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageSchema) }}
-      />
+      <JsonLd data={blogPageSchema} />
+      
       <BlogClient 
         blogPosts={blogPosts}
         faqs={faqs}

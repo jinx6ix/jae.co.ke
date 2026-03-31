@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, Clock, Star, Award, Users, Shield, Heart, Zap, Globe, CheckCircle, Phone, Camera, TreePine, Droplets, Sun, CloudRain, Binoculars, Mountain, Waves } from "lucide-react"
 import { faqSchema } from "./faq-schema"
 import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
+import JsonLd from "@/components/JsonLd"
 
 export const generateMetadata = (): Metadata => ({
   title: "Maasai Mara Great Migration 2026 | #1 Wheelchair Accessible River Crossing Safari Kenya | JaeTravel Expeditions",
@@ -234,7 +235,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd id="maasai-mara-schema" data={faqSchema} />
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <header className="text-center mb-24">

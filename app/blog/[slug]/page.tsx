@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Calendar, User, ArrowLeft, Share2, Clock, Tag, Star, ThumbsUp, MessageCircle } from "lucide-react"
 import Script from "next/script"
+import JsonLd from "@/components/JsonLd"
 
 type PageProps = {
   params: Promise<{
@@ -385,37 +386,13 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       {/* All Schema Markup Scripts */}
-      <Script
-        id="blog-posting-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.blogPosting) }}
-      />
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }}
-      />
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.organization) }}
-      />
-      <Script
-        id="product-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.product) }}
-      />
-      <Script
-        id="review-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.review) }}
-      />
-      <Script
-        id="video-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.video) }}
-      />
-
+      // Much cleaner:
+      <JsonLd id="blog-posting-schema" data={schemas.blogPosting} />
+      <JsonLd id="breadcrumb-schema" data={schemas.breadcrumb} />
+      <JsonLd id="organization-schema" data={schemas.organization} />
+      <JsonLd id="product-schema" data={schemas.product} />
+      <JsonLd id="review-schema" data={schemas.review} />
+      <JsonLd id="video-schema" data={schemas.video} />
       <div className="pb-16">
         {/* Hero Section */}
         <div className="relative h-[60vh] min-h-[400px]">

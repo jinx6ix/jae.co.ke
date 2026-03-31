@@ -1,6 +1,7 @@
 // app/contact/page.tsx
 import { Metadata } from "next";
 import ContactPageClient from "./ContactPageClient";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Contact Us | East Africa Accessible Safari Experts",
@@ -175,12 +176,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Structured Data - Server Rendered */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(contactPageSchema),
-        }}
-      />
+      <JsonLd data={contactPageSchema} id={"contact-schema"} />
 
       <ContactPageClient />
     </>

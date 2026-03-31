@@ -4,6 +4,7 @@ import { toPlainString } from '@/lib/util';
 import BookingForm from '@/components/BookingForm';
 import TourDetails from '@/components/TourDetails';
 import { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
 
 interface BookingPageProps {
   params: Promise<{
@@ -273,10 +274,7 @@ export default async function BookingPage({ params }: BookingPageProps) {
   return (
     <>
       {/* DYNAMIC RICH RESULTS SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateTourSchema(tour)) }}
-      />
+      <JsonLd data={generateTourSchema(tour)} id={'tour-schema'} />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {/* Header */}
         <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-50">

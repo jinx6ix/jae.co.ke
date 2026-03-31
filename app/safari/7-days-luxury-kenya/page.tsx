@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import SafariContent from './SafariContent';
 import BookingWidget from './BookingWidget';
 import FAQs from './FAQs';
+import JsonLd from '@/components/JsonLd';
 
 // ================= METADATA =================
 export const metadata: Metadata = {
@@ -156,9 +157,9 @@ export default function SevenDaysBudgetKenyaPage() {
     <main className="bg-gradient-to-br from-white via-green-50/30 to-orange-50/20">
 
       {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd 
+        id="structured-data" 
+        data={jsonLd} 
       />
 
       {/* HERO */}

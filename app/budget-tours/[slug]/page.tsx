@@ -13,6 +13,7 @@ import TourItinerary from "./components/TourItinerary";
 import TourInclusions from "./components/TourInclusions";
 import TourFAQs from "./components/TourFAQs";
 import TourCTA from "./components/TourCTA";
+import JsonLd from "@/components/JsonLd";
 
 // Define the variant type to fix TypeScript errors
 type CTALink = {
@@ -260,11 +261,7 @@ export default async function TourDetailPage(props: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* Structured Data */}
-      <Script
-        id="structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd id="structured-data" data={schema} />
 
       {/* Main Content Container with responsive padding */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

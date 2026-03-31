@@ -8,6 +8,7 @@ import { TourCard } from "@/components/tour-card"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Calendar, Check, ArrowRight } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 interface DestinationPageProps {
   params: {
@@ -328,9 +329,9 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
   return (
     <>
       {/* DYNAMIC RICH RESULTS SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateDestinationSchema(destination)) }}
+      <JsonLd 
+        id="destination-schema" 
+        data={generateDestinationSchema(destination)} 
       />
       <div className="pb-16">
         {/* Hero Section */}

@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 type Slide = {
   id: string
@@ -194,31 +195,29 @@ export default function HeroCarousel() {
       </div>
 
       {/* Schema.org Carousel */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            itemListElement: slides.map((slide, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              item: {
-                "@type": "TouristAttraction",
-                name: slide.title,
-                description: slide.subtitle,
-                image: `https://www.jaetravel.co.ke${slide.image}`,
-                url: `https://www.jaetravel.co.ke${slide.ctaLink}`,
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: slide.destination.split(",")[0].trim(),
-                  addressCountry:
-                    slide.destination.split(",")[1]?.trim() || "KE",
-                },
+      <JsonLd 
+        id="structured-data" 
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: slides.map((slide, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "TouristAttraction",
+              name: slide.title,
+              description: slide.subtitle,
+              image: `https://www.jaetravel.co.ke${slide.image}`,
+              url: `https://www.jaetravel.co.ke${slide.ctaLink}`,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: slide.destination.split(",")[0].trim(),
+                addressCountry:
+                  slide.destination.split(",")[1]?.trim() || "KE",
               },
-            })),
-          }),
-        }}
+            },
+          })),
+        }} 
       />
     </section>
   )

@@ -1,3 +1,5 @@
+import JsonLd from "./JsonLd"
+
 interface TourStructuredDataProps {
   tour: {
     title: string
@@ -152,21 +154,15 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
   return (
     <>
       {/* Full TouristTrip with itinerary & detailed tour info */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(touristTripData) }}
-      />
+      <JsonLd id="tour-schema" data={touristTripData} />
 
       {/* Separate Product for valid rich stars & price */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(cleanProductData) }}
-      />
+      <JsonLd id="product-schema" data={cleanProductData} />
 
       {/* Optional: Add WebPage + Breadcrumb + FAQ for even better SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <JsonLd 
+        id="structured-data" 
+        data={{
           "@context": "https://schema.org",
           "@graph": [
             {
@@ -193,7 +189,7 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
               ]
             }
           ]
-        }) }}
+        }} 
       />
     </>
   )

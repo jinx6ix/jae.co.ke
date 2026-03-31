@@ -39,6 +39,7 @@ import FaqSection from "@/components/FaqSection"
 import TrustBadges from "@/components/TrustBadges"
 
 import { tours } from "@/lib/tours-data"
+import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "uganda-circuit-safaris",
@@ -170,11 +171,7 @@ export default function UgandaCircuitSafarisPage() {
   return (
     <>
       {/* JSON-LD Script */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      
+      <JsonLd id="uganda-circuit-schema" data={jsonLd} />
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">
           

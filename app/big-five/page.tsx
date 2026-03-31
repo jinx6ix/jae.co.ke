@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import TourCard from "../TourCard" // Assuming TourCard exists from homepage
 import { tours } from "@/lib/tours-data" // Assuming this exists
 import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, Users as UsersIcon, Globe, Heart, Zap, Search, Camera, Binoculars, Leaf, Clock } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 // Enhanced Rich Schema with more entities (Organization, Breadcrumb, more FAQs, multiple TouristTrips)
 const bigFiveSchema = {
@@ -216,10 +217,7 @@ export default function BigFivePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(bigFiveSchema) }}
-      />
+      <JsonLd data={bigFiveSchema} />
 
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center bg-muted/10">

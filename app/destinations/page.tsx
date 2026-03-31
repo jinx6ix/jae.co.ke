@@ -5,6 +5,7 @@ import DestinationCard from "./DestinationCard"
 import { destinations } from "@/lib/destinations-data"
 import { Button } from "@/components/ui/button"
 import { faqSchema } from "./faq-schema"
+import JsonLd from "@/components/JsonLd"
 
 // BULLET-PROOF DESTINATIONS SCHEMA — IMAGE + RICH RESULTS (2025–2026)
 const destinationsSchema = {
@@ -268,10 +269,7 @@ export default function DestinationsPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA — WITH IMAGEOBJECT! */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationsSchema) }}
-      />
+      <JsonLd id="destinations-schema" data={destinationsSchema} />
       <div className="container mx-auto px-4 py-16">
 
         {/* Hero Header */}

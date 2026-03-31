@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, CheckCircle, Shield, Users, Car, Phone, Mail, Calendar, MapPin, Star, Heart, Clock, Award, Globe, Battery, Wifi, Utensils, Eye } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
 
 // Define proper TypeScript interfaces
 interface VehicleSpecifications {
@@ -472,56 +473,54 @@ export default function VehicleDetailPage({ params }: PageProps) {
   return (
     <>
       {/* Comprehensive Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TouristAttraction",
-            name: vehicle.name,
-            description: vehicle.description,
-            url: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
-            image: `https://www.jaetravel.co.ke${vehicle.image}`,
-            address: {
-              "@type": "PostalAddress",
-              addressCountry: "Kenya",
-              addressRegion: "Nairobi"
-            },
-            offers: {
-              "@type": "Offer",
-              price: vehicle.price.replace(/[^0-9]/g, ''),
-              priceCurrency: "USD",
-              priceValidUntil: "2025-12-31",
-              availability: "https://schema.org/InStock",
-              url: `https://www.jaetravel.co.ke/book-now?vehicle=${params.slug}`,
-            },
-            accessibilityFeature: [
-              "wheelchairAccessible",
-              "hydraulicLift",
-              "accessibleViewingPlatform",
-              "wheelchairFriendlyPath",
-              "accessibleRestroom",
-              "assistiveListeningSystem",
-              "tactilePathway",
-              "signLanguageGuideAvailable"
-            ],
-            accessibilityHazard: "none",
-            touristType: [
-              "Accessible Tourism",
-              "Wheelchair Users",
-              "Mobility Impaired",
-              "Senior Travelers",
-              "Family with Disabled Members"
-            ],
-            areaServed: ["Kenya", "Tanzania", "East Africa"],
-            award: "Kenya Tourism Board Gold Level Accessible Operator 2024",
-            provider: {
-              "@type": "Organization",
-              name: "JaeTravel Expeditions",
-              description: "Kenya's leading accessible safari operator specializing in wheelchair friendly wildlife experiences"
-            }
-          }),
-        }}
+      <JsonLd 
+        id="structured-data" 
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          name: vehicle.name,
+          description: vehicle.description,
+          url: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+          image: `https://www.jaetravel.co.ke${vehicle.image}`,
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "Kenya",
+            addressRegion: "Nairobi"
+          },
+          offers: {
+            "@type": "Offer",
+            price: vehicle.price.replace(/[^0-9]/g, ''),
+            priceCurrency: "USD",
+            priceValidUntil: "2025-12-31",
+            availability: "https://schema.org/InStock",
+            url: `https://www.jaetravel.co.ke/book-now?vehicle=${params.slug}`,
+          },
+          accessibilityFeature: [
+            "wheelchairAccessible",
+            "hydraulicLift",
+            "accessibleViewingPlatform",
+            "wheelchairFriendlyPath",
+            "accessibleRestroom",
+            "assistiveListeningSystem",
+            "tactilePathway",
+            "signLanguageGuideAvailable"
+          ],
+          accessibilityHazard: "none",
+          touristType: [
+            "Accessible Tourism",
+            "Wheelchair Users",
+            "Mobility Impaired",
+            "Senior Travelers",
+            "Family with Disabled Members"
+          ],
+          areaServed: ["Kenya", "Tanzania", "East Africa"],
+          award: "Kenya Tourism Board Gold Level Accessible Operator 2024",
+          provider: {
+            "@type": "Organization",
+            name: "JaeTravel Expeditions",
+            description: "Kenya's leading accessible safari operator specializing in wheelchair friendly wildlife experiences"
+          }
+        }} 
       />
 
       <div className="container mx-auto px-4 py-12 md:py-20">

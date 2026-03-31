@@ -2,6 +2,7 @@
 import { Metadata } from "next";
 import ToursPageClient from "./ToursPageClient";
 import { tours } from "@/lib/tours-data";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Safari Tours & Packages in East Africa",
@@ -142,10 +143,7 @@ const toursPageSchema = {
 export default function ToursPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(toursPageSchema) }}
-      />
+      <JsonLd id="tours-schema" data={toursPageSchema} />
       <ToursPageClient />
     </>
   );

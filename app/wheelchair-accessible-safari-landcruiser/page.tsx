@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Shield, Users, Clock, Car, Wifi, Accessibility, Star, Award, MapPin, CheckCircle, Phone, Mail, Calendar, Heart, Zap, Globe } from "lucide-react"
 import VehicleCard from "./VehicleCard"
 import { faqSchema } from "./faq-schema"
+import JsonLd from "@/components/JsonLd"
 
 // ————————————————————————
 // ULTIMATE SEO METADATA - DOMINATING "WHEELCHAIR ACCESSIBLE CRUISER KENYA"
@@ -199,10 +200,7 @@ export default function WheelchairVehiclePage() {
   return (
     <>
       {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd id="faq-schema" data={faqSchema} />
 
       <div className="container mx-auto px-4 py-16">
         {/* ULTIMATE HERO SECTION - TARGETING "WHEELCHAIR ACCESSIBLE CRUISER KENYA" */}

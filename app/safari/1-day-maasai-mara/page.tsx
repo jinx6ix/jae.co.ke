@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { generateSafariSchema } from './schema';
 import { metadata as pageMetadata } from './metadata';
 import SafariClientWrapper from './SafariClientWrapper';
+import JsonLd from '@/components/JsonLd';
 
 // Export metadata for Next.js
 export { pageMetadata as metadata };
@@ -213,11 +214,11 @@ export default function OneDayMaasaiMaraPage() {
   return (
     <>
       {/* JSON-LD Schema Injection */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSafariSchema()) }}
+      <JsonLd 
+        id="structured-data" 
+        data={generateSafariSchema()} 
       />
-      
+            
       <SafariClientWrapper safariData={safariData} />
     </>
   );

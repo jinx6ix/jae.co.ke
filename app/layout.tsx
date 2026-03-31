@@ -11,6 +11,7 @@ import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
 import { OrderProvider } from '@/components/OrderContext';
 import DynamicScripts from '@/components/DynamicScripts'; // New client component
 import "./globals.css"
+import JsonLd from "@/components/JsonLd"
 
 // Fonts with optimized loading
 const playfair = Playfair_Display({
@@ -319,15 +320,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
         {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-          defer
+        <JsonLd 
+          id="structured-data" 
+          data={organizationSchema} 
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-          defer
+        <JsonLd 
+          id="website-schema"
+          data={websiteSchema}
         />
 
         {/* Ahrefs Analytics */}
