@@ -45,14 +45,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser",
+      canonical: "https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser",
       languages: {
-        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',           // Main English/global
-        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // US
-        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // UK (optional)
-        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // Australia (optional)
-        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',       // Canada (optional)
-        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-landcruiser',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',   // Fallback
       },
     },
     other: {

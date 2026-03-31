@@ -344,14 +344,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/camping/rooftop-tent-sunset.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping",
+      canonical: "https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping",
       languages: {
-        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',           // Main English/global
-        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // US
-        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // UK (optional)
-        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // Australia (optional)
-        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',       // Canada (optional)
-        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire/luxury-roof-top-camping',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',   // Fallback
       },
     },
     other: {

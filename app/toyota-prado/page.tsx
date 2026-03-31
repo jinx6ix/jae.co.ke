@@ -46,14 +46,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/vehicles/toyota-prado-hero.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado",
+      canonical: "https://www.jaetravel.co.ke/vehicle-hire/toyota-prado",
       languages: {
-        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',           // Main English/global
-        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',       // US
-        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',       // UK (optional)
-        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',       // Australia (optional)
-        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',       // Canada (optional)
-        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire/toyota-prado',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',   // Fallback
       },
     },
     other: {

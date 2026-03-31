@@ -47,14 +47,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/og-vehicle-hire.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravelexpeditions.com/vehicle-hire",
+      canonical: "https://www.jaetravel.co.ke/vehicle-hire",
       languages: {
-        'en': 'https://www.jaetravelexpeditions.com/vehicle-hire',           // Main English/global
-        'en-US': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // US
-        'en-GB': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // UK (optional)
-        'en-AU': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // Australia (optional)
-        'en-CA': 'https://www.jaetravelexpeditions.com/vehicle-hire',       // Canada (optional)
-        'x-default': 'https://www.jaetravelexpeditions.com/vehicle-hire',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/vehicle-hire',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire',   // Fallback
       },
     },
     other: {
