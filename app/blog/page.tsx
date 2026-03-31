@@ -182,7 +182,7 @@ export const metadata: Metadata = {
     canonical: "https://www.jaetravel.co.ke/blog",
     languages: {
       "en": "https://www.jaetravel.co.ke/blog",
-      "ex-default": "https://www.jaetravel.co.ke/blog",
+      "x-default": "https://www.jaetravel.co.ke/blog",
     }
   },
 
