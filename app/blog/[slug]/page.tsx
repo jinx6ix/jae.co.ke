@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = blogPosts.find((p) => p.slug === slug)
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
-  const BRAND_SUFFIX = " | JaeTravel Expeditions"
   const MAX_TITLE_LENGTH = 78
 
   if (!post) {
@@ -42,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   // ✅ Ensure title doesn't exceed limit AFTER suffix is added
-  const maxBaseLength = MAX_TITLE_LENGTH - BRAND_SUFFIX.length
+  const maxBaseLength = MAX_TITLE_LENGTH
   let safeTitle = post.metaTitle
 
   if (safeTitle.length > maxBaseLength) {
@@ -55,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     safeDescription = safeDescription.slice(0, 112) + "..."
   }
 
-  const fullTitle = safeTitle + BRAND_SUFFIX
+  const fullTitle = safeTitle
 
   return {
     title: fullTitle,
