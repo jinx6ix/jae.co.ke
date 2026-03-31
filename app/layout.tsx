@@ -315,9 +315,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://apis.google.com" />
         <link rel="dns-prefetch" href="https://www.gstatic.com" />
         
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://www.jaetravel.co.ke" />
-        
         {/* Viewport meta tag */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
