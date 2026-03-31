@@ -291,10 +291,12 @@ export default function HomePage() {
 
   return (
     <>
-      {/* FULL RICH RESULTS SCHEMA — triggers Review stars, FAQ accordion, Video rich result, Breadcrumb */}
-      <script
+     {/* FIXED: Reliable JSON-LD Structured Data for Homepage */}
+     <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homepageSchema).replace(/</g, '\\u003c')
+        }}
       />
 
       {/* Hero Carousel */}
