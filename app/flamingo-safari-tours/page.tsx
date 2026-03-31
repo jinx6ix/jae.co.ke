@@ -23,20 +23,20 @@ import {
   Sunrise,
   Sunset,
 } from "lucide-react"
+import TourCard from "@/components/TourCard"
+import MigrationCalendar from "@/components/MigrationCalendar"
+import LiveWildlifeReport from "@/components/LiveWildlifeReport"
+import FaqSection from "@/components/FaqSection"
+import TrustBadges from "@/components/TrustBadges"
 
-// Import dynamic components from client component
-import { 
-  MigrationCalendar, 
-  LiveWildlifeReport, 
-  FaqSection, 
-  TrustBadges,
-  TourCard 
-} from "@/components/dynamic/DynamicComponents"
+import { tours } from "@/lib/tours-data"
+import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "flamingo-safari-tours",
-  title: "Flamingo Safari Tours 2026 | Lake Nakuru Pink Flocks & Rhinos Kenya | Jae Travel Expeditions",
-  description: "Experience Lake Nakuru's iconic flamingo spectacle in 2026 – thousands of pink birds, black/white rhinos, 450+ species. Short safaris from Nairobi from $450 USD. Private 4x4, expert guides.",
+  title: "Flamingo Safari Tours 2026 | Lake Nakuru & Rhinos Kenya",
+  description:
+    "See Lake Nakuru flamingos, rhinos & 450+ bird species. Short safaris from Nairobi from $450. Private 4x4 tours.",
   h1: "Flamingo Safari",
   h1Sub: "Tours 2026",
   subtitle: "Lake Nakuru National Park – Pink Horizons, Rhino Sanctuary & Unforgettable Birdlife",
@@ -280,171 +280,71 @@ export default function FlamingoSafariToursPage() {
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">
           
-          {/* Top Bar - Server Component */}
-          <TopBar />
-          
-          {/* Breadcrumbs - Server Component */}
-          <Breadcrumbs />
-          
-          {/* Hero Section - Server Component with Optimized Image */}
-          <HeroSection />
-          
-          {/* Why Kenya-Based Operator - Server Component */}
-          <WhyKenyaOperator />
-          
-          {/* Live Wildlife Report - Client Component with Suspense */}
-          <Suspense fallback={<div className="h-64 bg-gray-100 rounded-xl animate-pulse mb-40" />}>
-            <LiveWildlifeReport />
-          </Suspense>
-          
-          {/* Video Highlights - Server Component */}
-          <VideoHighlights />
-          
-          {/* Lakes Comparison - Server Component */}
-          <LakesComparison />
-          
-          {/* Best Time to Visit - Server Component */}
-          <BestTimeToVisit />
-          
-          {/* Featured Tours - Client Component */}
-          <section id="tours" className="mb-40">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block text-xs uppercase tracking-wider text-pink-600 mb-4">
-                Choose Your Adventure
-              </span>
-              
-              <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
-                {CONFIG.featuredToursTitle}
-              </h2>
-              
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Private 4x4 • Professional guide • Park fees • Nairobi pickup • 1-3 day options
-              </p>
+          {/* ========== TOP BAR - Minimal ========== */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-16 pb-6 border-b border-gray-100">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <Globe className="h-4 w-4 text-pink-600" />
+                <span className="text-sm">Global Safari Specialists</span>
+              </div>
+              <div className="hidden md:block w-px h-4 bg-gray-200"></div>
+              <div className="flex items-center gap-2 text-gray-600">
+                <MapPin className="h-4 w-4 text-pink-600" />
+                <span className="text-sm">Nairobi, Kenya • Karen Roundabout</span>
+              </div>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-              {pageTours.map((tour, index) => (
-                <TourCard
-                  key={tour.id || index}
-                  title={tour.title}
-                  description={tour.shortDescription || "Private safari from Nairobi – flamingo flocks, rhinos, 450+ bird species at Lake Nakuru."}
-                  price={tour.price ?? 450}
-                  rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 150 + index * 25}
-                  location="Lake Nakuru, Kenya"
-                  imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
-                  checkInText="All park fees included"
-                  href={tour.url || `/tours/${tour.slug || "nakuru-flamingo-2026"}`}
-                  badge={index === 0 ? "Best Seller" : index === 1 ? "Top Rated" : undefined}
-                />
-              ))}
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-1">
+                <div className="flex text-pink-400">
+                  <Star className="h-4 w-4 fill-current" />
+                  <Star className="h-4 w-4 fill-current" />
+                  <Star className="h-4 w-4 fill-current" />
+                  <Star className="h-4 w-4 fill-current" />
+                  <Star className="h-4 w-4 fill-current" />
+                </div>
+                <span className="ml-1 text-sm font-medium text-gray-700">1,200+ reviews</span>
+              </div>
+              
+              <div className="hidden md:block w-px h-4 bg-gray-200"></div>
+              
+              <div className="flex items-center gap-2 text-gray-600">
+                <Phone className="h-4 w-4 text-pink-600" />
+                <span className="text-sm font-medium">+254 726 485 228</span>
+              </div>
             </div>
-            
-            <div className="text-center mt-16">
-              <Button 
-                asChild 
-                variant="outline" 
-                className="px-10 py-6 border-2 border-gray-200 hover:border-pink-600 hover:text-pink-600 rounded-full"
-              >
-                <Link href="/tours?tag=flamingo">
-                  View All Flamingo Tours <span className="ml-2">→</span>
-                </Link>
-              </Button>
-            </div>
-          </section>
-          
-          {/* FAQ Section - Client Component with Suspense */}
-          <Suspense fallback={<div className="h-96 bg-gray-100 rounded-xl animate-pulse mb-40" />}>
-            <FaqSection />
-          </Suspense>
-          
-          {/* Trust Badges - Client Component with Suspense */}
-          <Suspense fallback={<div className="h-32 bg-gray-100 rounded-xl animate-pulse mb-40" />}>
-            <TrustBadges />
-          </Suspense>
-          
-          {/* Final CTA - Server Component */}
-          <FinalCTA />
-        </div>
-      </div>
-    </>
-  )
-}
-
-// ========== SERVER COMPONENTS ==========
-
-function TopBar() {
-  return (
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-16 pb-6 border-b border-gray-100">
-      <div className="flex items-center gap-6">
-        <div className="flex items-center gap-2 text-gray-600">
-          <Globe className="h-4 w-4 text-pink-600" />
-          <span className="text-sm">Global Safari Specialists</span>
-        </div>
-        <div className="hidden md:block w-px h-4 bg-gray-200"></div>
-        <div className="flex items-center gap-2 text-gray-600">
-          <MapPin className="h-4 w-4 text-pink-600" />
-          <span className="text-sm">Nairobi, Kenya • Karen Roundabout</span>
-        </div>
-      </div>
-      
-      <div className="flex items-center gap-6">
-        <div className="flex items-center gap-1">
-          <div className="flex text-pink-400">
-            <Star className="h-4 w-4 fill-current" />
-            <Star className="h-4 w-4 fill-current" />
-            <Star className="h-4 w-4 fill-current" />
-            <Star className="h-4 w-4 fill-current" />
-            <Star className="h-4 w-4 fill-current" />
           </div>
-          <span className="ml-1 text-sm font-medium text-gray-700">1,200+ reviews</span>
-        </div>
-        
-        <div className="hidden md:block w-px h-4 bg-gray-200"></div>
-        
-        <div className="flex items-center gap-2 text-gray-600">
-          <Phone className="h-4 w-4 text-pink-600" />
-          <span className="text-sm font-medium">+254 726 485 228</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function Breadcrumbs() {
-  return (
-    <nav className="flex mb-16 text-sm text-gray-500" aria-label="Breadcrumb">
-      <ol className="flex items-center flex-wrap gap-2">
-        <li><Link href="/" className="hover:text-pink-600 transition">Home</Link></li>
-        <li><span className="text-gray-300">/</span></li>
-        <li><Link href="/destinations" className="hover:text-pink-600 transition">Destinations</Link></li>
-        <li><span className="text-gray-300">/</span></li>
-        <li><Link href="/kenya" className="hover:text-pink-600 transition">Kenya</Link></li>
-        <li><span className="text-gray-300">/</span></li>
-        <li className="text-gray-900 font-medium">Flamingo Safari Tours 2026</li>
-      </ol>
-    </nav>
-  )
-}
-
-function HeroSection() {
-  return (
-    <header className="max-w-5xl mx-auto text-center mb-32">
-      {/* Trust badges - minimal */}
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
-        <span className="inline-flex items-center gap-1.5 bg-pink-50 text-pink-700 px-4 py-1.5 rounded-full text-sm border border-pink-100">
-          <Bird className="h-3.5 w-3.5" />
-          Thousands of Flamingos
-        </span>
-        <span className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-4 py-1.5 rounded-full text-sm border border-purple-100">
-          <Feather className="h-3.5 w-3.5" />
-          Pink Lake Magic
-        </span>
-        <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-sm border border-green-100">
-          <Shield className="h-3.5 w-3.5" />
-          Rhino Sanctuary
-        </span>
-      </div>
+          
+          {/* ========== BREADCRUMBS - Clean ========== */}
+          <nav className="flex mb-16 text-sm text-gray-500" aria-label="Breadcrumb">
+            <ol className="flex items-center flex-wrap gap-2">
+              <li><Link href="/" className="hover:text-pink-600 transition">Home</Link></li>
+              <li><span className="text-gray-300">/</span></li>
+              <li><Link href="/destinations" className="hover:text-pink-600 transition">Destinations</Link></li>
+              <li><span className="text-gray-300">/</span></li>
+              <li><Link href="/kenya" className="hover:text-pink-600 transition">Kenya</Link></li>
+              <li><span className="text-gray-300">/</span></li>
+              <li className="text-gray-900 font-medium">Flamingo Safari Tours 2026</li>
+            </ol>
+          </nav>
+          
+          {/* ========== HERO - Spacious & Elegant ========== */}
+          <header className="max-w-5xl mx-auto text-center mb-32">
+            {/* Trust badges - minimal */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <span className="inline-flex items-center gap-1.5 bg-pink-50 text-pink-700 px-4 py-1.5 rounded-full text-sm border border-pink-100">
+                <Bird className="h-3.5 w-3.5" />
+                Thousands of Flamingos
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-4 py-1.5 rounded-full text-sm border border-purple-100">
+                <Feather className="h-3.5 w-3.5" />
+                Pink Lake Magic
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-sm border border-green-100">
+                <Shield className="h-3.5 w-3.5" />
+                Rhino Sanctuary
+              </span>
+            </div>
 
       {/* Main heading - elegant split */}
       <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-none mb-8 text-gray-900 tracking-tight">
