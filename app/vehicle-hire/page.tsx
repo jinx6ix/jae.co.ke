@@ -13,9 +13,9 @@ import { vehicles } from "@/lib/vehicles-data"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Safari Vehicle Hire & 4x4 Car Rental in East Africa | JaeTravel Expeditions",
+    title: "Safari Vehicle Hire & 4x4 Rental in East Africa",
     description:
-      "Rent premium 4x4 safari vehicles, Land Cruisers, and specialized safari cars in Kenya, Tanzania, Rwanda, and Uganda. Self-drive or with professional driver. Book your safari vehicle rental today for the ultimate African adventure.",
+      "Rent 4x4 safari vehicles, Land Cruisers, and tour cars in Kenya, Tanzania, Rwanda & Uganda. Self-drive or with driver.",    
     keywords: [
       "safari vehicles",
       "safari vehicle hire",

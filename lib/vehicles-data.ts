@@ -110,9 +110,8 @@ export const vehicles: Vehicle[] = [
       childSeats: "Various sizes available (+$10/day)",
       additionalDriver: "Second driver included (+$40/day)"
     },
-    metaTitle: "Toyota Landcruiser Hire & Rental | Premium 4x4 Safari Vehicle for East Africa Safaris",
-    metaDescription:
-      "Book our reliable Toyota Landcruiser 4x4 safari vehicle rental for unforgettable game drives in Kenya, Tanzania, Rwanda, and Uganda. Features pop-up roof, 7-passenger capacity, and off-road capability. Perfect Landcruiser hire for family safaris and adventure tours.",
+    metaTitle: "Toyota Landcruiser Hire | 4x4 Safari Vehicle Rental for East Africa",
+    metaDescription: "Rent Toyota Landcruiser 4x4 safari vehicle with pop-up roof from $200/day. Ideal for game drives in Kenya, Tanzania, Uganda & Rwanda. 7-passenger capacity, off-road ready.",
     keywords: [
       "Toyota Landcruiser rental",
       "4x4 safari vehicle",
@@ -199,9 +198,8 @@ export const vehicles: Vehicle[] = [
       airportTransfer: "Complimentary with 7+ day rental",
       childSeats: "Premium models available (+$15/day)"
     },
-    metaTitle: "Toyota Prado Rental | Luxury SUV Hire for Family Safaris in East Africa",
-    metaDescription:
-      "Rent a Toyota Prado luxury SUV for comfortable family safaris and tours across Kenya, Tanzania, Rwanda, and Uganda. Features 4WD, GPS, air conditioning, and premium comfort for your East Africa adventure.",
+    metaTitle: "Toyota Prado Rental | Luxury SUV Hire for Family Safaris",
+    metaDescription: "Rent Toyota Prado luxury SUV for comfortable family safaris in Kenya, Tanzania, Rwanda & Uganda. 4WD, GPS, AC, premium comfort from $200/day.",
     keywords: [
       "Toyota Prado rental",
       "family safari vehicle",
@@ -289,9 +287,8 @@ export const vehicles: Vehicle[] = [
       guidedItinerary: "Custom camping route planning (+$50)",
       campingEquipment: "Full camping gear package (+$20per person/day)"
     },
-    metaTitle: "Luxury Roof Top Camping Vehicle Rental | Safari Camping Car for East Africa Adventures",
-    metaDescription:
-      "Rent a luxury roof top camping vehicle for unforgettable overland adventures in East Africa. Complete with tent, solar power, kitchenette, and premium camping gear for the ultimate safari camping experience in Kenya, Tanzania, Rwanda, and Uganda.",
+    metaTitle: "Luxury Roof Top Camping Vehicle | Safari Camping Car Rental",
+    metaDescription: "Rent luxury roof top camping vehicle with tent, solar power & kitchenette from $200/day. Ultimate overland adventure for camping safaris in Kenya, Tanzania, Uganda & Rwanda.",
     keywords: [
       "roof top camping vehicle",
       "safari camping car",
@@ -378,9 +375,8 @@ export const vehicles: Vehicle[] = [
       editingWorkshop: "On-safari editing sessions (+$60/day)",
       backupService: "Daily image backup and storage (+$40/day)"
     },
-    metaTitle: "Photography Safari Vehicle Rental | Specialized Camera Car for Wildlife Photography in East Africa",
-    metaDescription:
-      "Rent a professional photography-converted safari vehicle with extended roof, camera mounts, and stabilization equipment. Perfect for wildlife photography in Kenya's Masai Mara, Tanzania's Serengeti, Rwanda's Volcanoes, and Uganda's national parks.",
+    metaTitle: "Photography Safari Vehicle | Camera Car Rental for Wildlife Photography",
+    metaDescription: "Rent professional photography-converted safari vehicle with extended roof & camera mounts from $250/day. Perfect for wildlife photography in Kenya, Tanzania, Rwanda & Uganda.",
     keywords: [
       "photography safari vehicle",
       "camera car rental",
@@ -478,9 +474,8 @@ export const vehicles: Vehicle[] = [
       signLanguageGuide: "For hearing impaired guests (+$80/day)",
       customItinerary: "Accessibility-focused route planning (+$75)"
     },
-    metaTitle: "Wheelchair Accessible Safari Vehicle Rental | Disability-Friendly Car Hire for East Africa Safaris",
-    metaDescription:
-      "Rent a wheelchair accessible safari vehicle with hydraulic lift, trained driver, and accessibility features. Inclusive safari experiences in Kenya, Tanzania, Rwanda, and Uganda for travelers with mobility challenges.",
+    metaTitle: "Wheelchair Accessible Safari Vehicle | Disability-Friendly Car Hire",
+    metaDescription: "Rent wheelchair accessible safari vehicle with hydraulic lift & trained driver from $300/day. Inclusive safari experiences for travelers with mobility challenges in East Africa.",
     keywords: [
       "wheelchair accessible vehicle",
       "disability safari car",
@@ -566,9 +561,8 @@ export const vehicles: Vehicle[] = [
       extraDriver: "Additional driver included (+$30/day)",
       unlimitedMileage: "Available for long-term rentals"
     },
-    metaTitle: "Family Safari Minivan Rental | Group Vehicle Hire for East Africa Tours and Safaris",
-    metaDescription:
-      "Rent a spacious family safari minivan with pop-up roof and AC for comfortable group tours in Kenya, Tanzania, Rwanda, and Uganda. Perfect for family adventures, small groups, and budget-friendly safari experiences across East Africa.",
+    metaTitle: "Family Safari Minivan Rental | Group Vehicle Hire for Tours",
+    metaDescription: "Rent family safari minivan with pop-up roof & AC from $200/day. Perfect for group tours and family adventures in Kenya, Tanzania, Rwanda & Uganda. 7-passenger capacity.",
     keywords: [
       "family safari van",
       "group vehicle rental",

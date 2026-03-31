@@ -22,11 +22,11 @@ export interface Tour {
   departure: string;
   itinerary: {
     meals: any; day: number; title: string; content: string 
-}[];  // Detailed day-by-day
-  highlights: string[];         // Bullet points for SEO
-  included: string[];           // For content
-  excluded: string[];           // For content
-  faqs: { question: string; answer: string }[];  // FAQ schema
+}[];
+  highlights: string[];
+  included: string[];
+  excluded: string[];
+  faqs: { question: string; answer: string }[];
 }
 
 export const budgetTours: Tour[] = [
@@ -57,7 +57,7 @@ This affordable Kenya safari 2026 represents smart travel planning. While longer
 Booking is straightforward through our WhatsApp booking system, with flexible departure dates and last-minute availability often possible. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates. Child discounts, group rates, and customizations are available upon request.
 
 Don't miss this opportunity to experience Masai Mara's wonders at budget pricing. Whether you're a first-time safari-goer, solo traveler seeking adventure, or budget-conscious wildlife enthusiast, this 3-day Masai Mara Budget Safari delivers authentic African experiences without breaking the bank. Book now for your 2026 adventure and create memories that will last a lifetime.`,
-    metaDescription: "Book the best 3-day Masai Mara budget safari Kenya 2026 - cheap group joining tour from Nairobi. Experience Big Five game drives, wildebeest migration, and affordable camping from $450. Free cancellation, professional guides, all-inclusive package.",
+    metaDescription: "Book 3-day Masai Mara budget safari Kenya 2026 from $450. Big Five game drives, shared Land Cruiser, budget camping, all meals. Daily departures from Nairobi.",
     keywords: ["3-day Masai Mara budget safari", "cheap Masai Mara safari Kenya 2026", "affordable Masai Mara group tour", "budget Kenya safari packages", "Masai Mara wildlife tour from $450", "cheap group safari Kenya", "budget camping Masai Mara", "Kenya safari deals 2026"],
     price: 450,
     originalPrice: 550,
@@ -163,7 +163,7 @@ This superior budget safari Kenya 2026 represents smart upgrading for discerning
 Booking considerations are similar to our basic safaris, though availability may be more limited due to smaller camp capacities. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates at superior budget camps. Customizations, special requests, and group rates are available with sufficient notice.
 
 Don't miss this opportunity to experience Masai Mara with enhanced comfort at still-affordable pricing. Whether you're celebrating a special occasion, traveling with someone who appreciates better amenities, or simply want to treat yourself to improved comfort after adventurous days in the bush, this 3-day Superior Budget Safari delivers excellent value and enhanced experiences. Book now for your 2026 Masai Mara adventure and enjoy the best of African wildlife with better comfort and service.`,
-    metaDescription: "Book Masai Mara 3 Days Superior Budget Shared Land Cruiser Safari Kenya 2026 - upgraded budget experience with better camps, improved meals, and enhanced services from $730. Quality wildlife viewing with superior comfort.",
+    metaDescription: "Book 3-day Masai Mara superior budget safari Kenya 2026 from $730. Upgraded camps, improved meals, shared Land Cruiser. Better comfort than basic budget.",
     keywords: ["Masai Mara superior budget safari", "upgraded budget safari Kenya 2026", "better budget camps Masai Mara", "affordable comfort safari", "Masai Mara improved budget tour", "quality budget safari Kenya", "enhanced budget experience Mara"],
     price: 730,
     originalPrice: 850,
@@ -271,7 +271,7 @@ This affordable private safari 2026 is perfect for families wanting child-friend
 Booking private safaris requires discussing specific interests during reservation. We match you with guides experienced in your areas of interest and plan optimal itineraries. Advance booking (1-2 months) is recommended to secure preferred guides and accommodations for private arrangements.
 
 Don't miss this opportunity to experience Kenya's unique northern wilderness on your terms. Whether seeking the Special Five, dramatic desert landscapes, authentic cultural interactions, or simply personalized safari attention, this 3-day Samburu Private Safari delivers exclusive experiences impossible in group settings. Book now for your 2026 northern adventure.`,
-    metaDescription: "Book Samburu 3 Days Private Safari Kenya 2026 - exclusive northern Kenya adventure with private vehicle and guide from $690. Search for the Special Five, enjoy personalized itinerary, all-inclusive private experience.",
+    metaDescription: "Book 3-day Samburu private safari Kenya 2026 from $690. Exclusive northern Kenya adventure with private vehicle, guide, and personalized itinerary. Search for Special Five.",
     keywords: ["Samburu private safari", "3 days private safari Kenya", "Samburu Special Five tour", "exclusive northern Kenya safari", "private budget safari Kenya", "Samburu National Reserve private", "customized Kenya safari affordable"],
     price: 690,
     originalPrice: 850,
@@ -375,7 +375,7 @@ This affordable Kenya safari 2026 is perfect for first-time visitors wanting com
 Booking is straightforward through our WhatsApp booking system, with flexible departure dates and last-minute availability often possible. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates. Child discounts, group rates, and customizations are available upon request for this popular two-park combination.
 
 Don't miss this opportunity to experience Kenya's wildlife highlights at exceptional budget pricing. Whether you're seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, comprehensive Kenyan wildlife exposure, or simply the best value safari combining two iconic destinations, this 4-day budget shared safari delivers unforgettable experiences that will leave you with lifelong memories of Africa's magnificent wildlife. Book now for your 2026 adventure and discover why Kenya's diversity makes it the ultimate safari destination.`,
-    metaDescription: "Book Masai Mara - Nakuru 4 Days Budget Shared Safari Kenya 2026 - affordable two-park adventure from Nairobi starting at $610. Experience Big Five game drives and flamingo spectacles in one cheap package.",
+    metaDescription: "Book 4-day Masai Mara Nakuru budget safari Kenya 2026 from $610. Experience Big Five game drives and flamingo spectacles in one affordable two-park adventure.",
     keywords: ["Masai Mara Nakuru 4 days budget safari", "cheap two-park Kenya safari 2026", "affordable Mara and Nakuru tour", "budget shared safari Kenya", "Kenya wildlife combo from $610", "flamingos and Big Five safari", "4-day budget Kenya adventure"],
     price: 610,
     originalPrice: 750,
@@ -487,7 +487,7 @@ This affordable Kenya safari 2026 is perfect for travelers wanting diverse exper
 Booking is straightforward through our WhatsApp system with flexible departure dates. We recommend booking 2-3 months in advance for peak season (July-October). Child discounts, group rates, and customizations are available upon request for this popular land-water combination.
 
 Don't miss this opportunity to experience Kenya's wildlife diversity across ecosystems at exceptional budget pricing. Whether seeking predator action in Masai Mara, hippo encounters at Naivasha, comprehensive wildlife understanding, or simply unique safari experiences combining land and water adventures, this 4-day budget shared safari delivers unforgettable memories of Africa's magnificent wildlife in varied environments. Book now for your 2026 adventure.`,
-    metaDescription: "Book Masai Mara - Naivasha 4 Days Budget Shared Safari Kenya 2026 - affordable savanna and lake adventure from Nairobi starting at $610. Experience game drives and boat safari with hippos in one cheap package.",
+    metaDescription: "Book 4-day Masai Mara Naivasha budget safari Kenya 2026 from $610. Game drives and boat safari with hippos in one affordable land-water adventure from Nairobi.",
     keywords: ["Masai Mara Naivasha 4 days budget safari", "cheap Mara and Naivasha tour 2026", "affordable boat safari Kenya", "budget shared safari with hippos", "Kenya land and water safari from $610", "game drives and boat ride combo", "4-day budget Kenya lake adventure"],
     price: 610,
     originalPrice: 750,
@@ -598,7 +598,7 @@ This affordable Kenya safari 2026 is perfect for first-time visitors wanting com
 Booking is straightforward through our WhatsApp system with flexible departure dates. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates. Child discounts, group rates, and customizations are available upon request for this popular three-park combination.
 
 Don't miss this opportunity to experience Kenya's wildlife diversity across multiple ecosystems at exceptional budget pricing. Whether seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, hippo encounters at Naivasha, comprehensive wildlife understanding, or simply maximum variety in one affordable package, this 5-day shared Land Cruiser safari delivers unforgettable memories of Africa's magnificent wildlife across varied environments. Book now for your 2026 adventure and discover why Kenya's ecological diversity makes it the ultimate safari destination.`,
-    metaDescription: "Book Masai Mara - Nakuru & Naivasha 5 Days Shared Land Cruiser Safari Kenya 2026 - affordable three-park adventure from Nairobi starting at $680. Experience Big Five, flamingos, and hippos in one comprehensive budget package.",
+    metaDescription: "Book 5-day Masai Mara Nakuru Naivasha safari Kenya 2026 from $680. Big Five, flamingos, hippos boat ride in one affordable three-park adventure from Nairobi.",
     keywords: ["Masai Mara Nakuru Naivasha 5 days safari", "cheap three-park Kenya safari 2026", "affordable Mara Nakuru Naivasha tour", "budget shared Land Cruiser safari", "Kenya three-park combo from $680", "Big Five flamingos hippos safari", "5-day budget Kenya adventure"],
     price: 680,
     originalPrice: 850,
@@ -716,7 +716,7 @@ This affordable comprehensive safari 2026 is perfect for first-time visitors wan
 Booking requires planning due to the circuit's complexity. We recommend advance booking (2-3 months for peak season) to secure preferred dates and accommodations across three parks. Customizations, focused interests (birdwatching, photography, etc.), and group rates are available upon request with sufficient notice, though the standard itinerary already provides excellent coverage for most travelers.
 
 Don't miss this comprehensive opportunity to experience Kenya's premier wildlife parks at budget pricing. Whether you're seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, iconic elephant-Kilimanjaro scenes in Amboseli, comprehensive Kenyan wildlife exposure, or simply the best value three-park safari combining Kenya's most famous destinations, this 6-day shared safari delivers unforgettable experiences across Kenya's premier wildlife parks. Book now for your 2026 adventure and discover why Kenya's ecological diversity and world-famous parks make it Africa's ultimate safari destination.`,
-    metaDescription: "Book Masai Mara-Nakuru-Amboseli 6 Days Shared Safari Kenya 2026 - comprehensive three-park tour from Nairobi starting at $850. Experience Big Five, flamingos, and elephants with Kilimanjaro views in one affordable package.",
+    metaDescription: "Book 6-day Masai Mara Nakuru Amboseli shared safari Kenya 2026 from $850. Big Five, flamingos, elephants with Kilimanjaro views in one affordable three-park tour.",
     keywords: ["Masai Mara Nakuru Amboseli 6 days safari", "cheap three-park Kenya tour 2026", "affordable comprehensive Kenya safari", "budget shared safari three parks", "Kenya wildlife circuit from $850", "Big Five flamingos elephants safari", "6-day budget Kenya experience"],
     price: 850,
     originalPrice: 1050,
@@ -842,7 +842,7 @@ This affordable comprehensive safari 2026 is perfect for first-time visitors wan
 Booking requires planning due to the circuit's complexity. We recommend advance booking (2-3 months for peak season) to secure preferred dates and accommodations across four destinations. Customizations, focused interests (birdwatching, photography, etc.), and group rates are available upon request with sufficient notice, though the standard itinerary already provides excellent coverage for most travelers wanting comprehensive Kenyan experiences.
 
 Don't miss this ultimate opportunity to experience Kenya's complete wildlife circuit at budget pricing. Whether you're seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, hippo encounters at Naivasha, iconic elephant-Kilimanjaro scenes in Amboseli, comprehensive Kenyan wildlife exposure, or simply maximum variety in one affordable package, this 7-day Best of Kenya budget shared safari delivers unforgettable experiences across Kenya's premier wildlife destinations. Book now for your 2026 adventure and discover why Kenya's ecological diversity and world-famous parks make it Africa's ultimate safari destination.`,
-    metaDescription: "Book Best of Kenya 7 Days Budget Shared Safari 2026 - complete wildlife circuit covering four parks from Nairobi starting at $980. Experience Masai Mara, Lake Nakuru, Naivasha, and Amboseli in one affordable comprehensive package.",
+    metaDescription: "Book Best of Kenya 7-day budget shared safari 2026 from $980. Complete wildlife circuit covering Masai Mara, Lake Nakuru, Naivasha, and Amboseli in one package.",
     keywords: ["Best of Kenya 7 days budget safari", "complete Kenya circuit 2026", "affordable four-park Kenya tour", "budget shared safari comprehensive", "Kenya wildlife adventure from $980", "Mara Nakuru Naivasha Amboseli safari", "7-day budget Kenya experience"],
     price: 980,
     originalPrice: 1200,
@@ -980,7 +980,7 @@ This specialized safari 2026 is perfect for wildlife enthusiasts prioritizing Bi
 Booking requires discussing Big Five priorities and expectations. We match participants with similar wildlife interests and prepare guides for focused tracking. Advance booking (3-4 months) is recommended for optimal guide and accommodation selection to support Big Five goals.
 
 Don't miss this specialized opportunity for comprehensive Big Five experiences at budget pricing. Whether completing your wildlife checklist, building photographic portfolios, fulfilling lifelong African dreams, or simply prioritizing Kenya's most iconic species, this 7-day Big Five budget safari delivers focused experiences impossible in general tours. Book now for your 2026 Big Five adventure.`,
-    metaDescription: "Book Kenya Big 5 7 Days Budget Safari 2026 - affordable Big Five focused tour from Nairobi starting at $2530. Specialized tracking for lion, leopard, elephant, buffalo, rhino across multiple parks.",
+    metaDescription: "Book Kenya Big 5 7-day budget safari 2026 from $2530. Specialized Big Five focused tour with lion, leopard, elephant, buffalo, rhino tracking across multiple parks.",
     keywords: ["Kenya Big 5 safari budget", "7 days Big Five focused safari", "affordable Big Five tour Kenya 2026", "lion leopard elephant buffalo rhino safari", "Big Five tracking budget", "specialized wildlife safari Kenya", "7-day Big Five experience"],
     price: 2530,
     originalPrice: 2950,
@@ -1118,7 +1118,7 @@ This specialized extended safari 2026 is perfect for serious wildlife enthusiast
 Booking requires discussion of specific Big Five goals and expectations. We prepare specialized tracking plans and match participants with compatible interests. Advance booking (3-4 months minimum) is essential for optimal guide selection and itinerary customization to support extended Big Five objectives.
 
 Don't miss this ultimate opportunity for comprehensive Big Five experiences at budget-conscious pricing. Whether pursuing photographic excellence, deep wildlife understanding, complete Big Five portfolios, or simply the most thorough African wildlife experience possible, this 8-day extended Big Five budget safari delivers focused adventures impossible in standard tours. Book now for your 2026 Big Five expedition.`,
-    metaDescription: "Book Kenya 8 Days Budget Big 5 Safari 2026 - extended Big Five focused adventure from Nairobi starting at $2930. Comprehensive tracking for lion, leopard, elephant, buffalo, rhino across multiple parks with extra time for optimal sightings.",
+    metaDescription: "Book Kenya 8-day budget Big 5 safari 2026 from $2930. Extended Big Five focused adventure with comprehensive lion, leopard, elephant, buffalo, rhino tracking across multiple parks.",
     keywords: ["Kenya 8 days Big 5 safari budget", "extended Big Five safari Kenya", "affordable comprehensive Big Five tour", "lion leopard tracking extended", "Big Five photography safari", "8-day wildlife focused Kenya", "extended Big Five experience 2026"],
     price: 2930,
     originalPrice: 3450,
@@ -1260,7 +1260,7 @@ This ultimate safari 2026 is perfect for serious wildlife enthusiasts wanting co
 Booking requires advance planning (4-6 months recommended) due to comprehensive logistics across multiple regions. We assist with itinerary customization based on specific interests, seasonal considerations, and practical arrangements. Group compatibility considerations are more important given extended shared travel.
 
 Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experiences at budget-conscious pricing. Whether seeking maximum destination coverage, complete photographic portfolios, thorough ecological understanding, or simply the definitive African safari adventure, this 10-day Kenya's Best budget safari delivers unparalleled experiences across Kenya's premier wildlife destinations. Book now for your 2026 expedition and discover why Kenya represents Africa's ultimate safari diversity.`,
-    metaDescription: "Book Kenya's Best 10 Days Budget Safari 2026 - ultimate comprehensive tour from Nairobi starting at $3190. Experience five premier parks including Masai Mara, Samburu, Lake Nakuru, Naivasha, and Amboseli in one extended affordable package.",
+    metaDescription: "Book Kenya's Best 10-day budget safari 2026 from $3190. Ultimate comprehensive tour covering five premier parks including Masai Mara, Samburu, Nakuru, Naivasha, Amboseli.",
     keywords: ["Kenya's best 10 days safari budget", "ultimate Kenya safari comprehensive", "10-day budget Kenya circuit", "five-park Kenya adventure affordable", "extended Kenya wildlife tour", "complete Kenya experience budget", "10-day safari Mara Samburu Amboseli"],
     price: 3190,
     originalPrice: 3850,
@@ -1325,7 +1325,7 @@ Don't miss this ultimate opportunity for comprehensive Kenyan wildlife experienc
       {
         day: 9,
         title: "Masai Mara full day exploring the reserve",
-        content: "This day you will depart after an early breakfast to Maasai Mara Reserve for full day game viewing drives. Picnic lunches will be served as you relax under a tree as you see the vast landscape and its beauty. Spend the whole day looking for the big 5 and we are hopeful you will see almost all if not all of the big five among many animals. Thereafter you will return to the camp for dinner and overnight at Rhino Tourist Camp.",
+        content: "This day you will depart after an early breakfast to Masai Mara Reserve for full day game viewing drives. Picnic lunches will be served as you relax under a tree as you see the vast landscape and its beauty. Spend the whole day looking for the big 5 and we are hopeful you will see almost all if not all of the big five among many animals. Thereafter you will return to the camp for dinner and overnight at Rhino Tourist Camp.",
         meals: undefined
       },
       {
@@ -1410,7 +1410,7 @@ For first-time safari-goers, this 3-day introduction provides manageable exposur
 Booking is straightforward with immediate confirmation for most departure dates. We recommend booking 2-3 months in advance for peak season (July-October) or 2-4 weeks for other periods. Solo travelers benefit from shared accommodation arrangements (same-gender room sharing) avoiding single supplements.
 
 Don't miss this opportunity to experience Africa's most famous wildlife reserve at unprecedented budget pricing. Whether seeking introductory safari experience, photographic opportunities, or simply the thrill of witnessing wild animals in their natural habitat, our 3-Day Masai Mara Budget Safari delivers unforgettable experiences at accessible cost. Book now for 2026 departure and discover why Masai Mara remains the world's premier safari destination.`,
-    metaDescription: "Book 3-Day Masai Mara Budget Safari 2026 from Nairobi starting at $790. Affordable wildlife adventure with Big Five game drives, budget camp accommodation, shared group experience. Weekly departures.",
+    metaDescription: "Book 3-day Masai Mara budget safari 2026 from $790. Big Five game drives, budget camp accommodation, shared group experience. Weekly departures from Nairobi.",
     keywords: [
       "3 day Masai Mara budget safari",
       "Masai Mara affordable safari 3 days", 
@@ -1422,7 +1422,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
     ],
     price: 790,
     originalPrice: 950,
-    image: "/masai-mara-safari.jpg", // You'll need to add this image
+    image: "/masai-mara-safari.jpg",
     url: "/budget-tours/3-day-masai-mara-budget-safari",
     bookingUrl: "/budget-tours/3-day-masai-mara-budget-safari#booking-form",
     country: "Kenya",
@@ -1530,7 +1530,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
   Booking requires 2-4 months advance planning for peak season (July-October) or 2-6 weeks for other periods. We assist with pre-safari preparations, packing guidance, and logistical arrangements. Solo travelers benefit from shared room arrangements avoiding single supplements, while families enjoy child-friendly accommodations and activities.
   
   Don't miss this classic Kenyan safari experience at unprecedented budget pricing. Whether seeking comprehensive wildlife introduction, photographic diversity, or simply the thrill of Africa's most iconic landscapes, our 6-Day Masai Mara, Nakuru & Amboseli Budget Safari delivers unforgettable experiences across Kenya's premier destinations. Book now for 2026 departure and discover why this circuit remains Kenya's most popular safari route.`,
-    metaDescription: "Book 6-Day Masai Mara, Nakuru & Amboseli Budget Safari 2026 from Nairobi starting at $1490. Classic Kenya circuit with Big Five, flamingos, elephants & Kilimanjaro views. Shared group tour with weekly departures.",
+    metaDescription: "Book 6-day Masai Mara Nakuru Amboseli budget safari 2026 from $1490. Classic Kenya circuit with Big Five, flamingos, elephants, and Kilimanjaro views. Shared group tour.",
     keywords: [
       "6 day Masai Mara Nakuru Amboseli budget safari",
       "Masai Mara Lake Nakuru Amboseli circuit", 
@@ -1542,7 +1542,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
     ],
     price: 1490,
     originalPrice: 1850,
-    image: "/amboseli_elephants_at_sun_set-2__1200w.jpg", // Add this image
+    image: "/amboseli_elephants_at_sun_set-2__1200w.jpg",
     url: "/budget-tours/6-day-masai-mara-nakuru-amboseli-budget-safari",
     bookingUrl: "/budget-tours/6-day-masai-mara-nakuru-amboseli-budget-safari#booking-form",
     country: "Kenya",
@@ -1668,7 +1668,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
   Booking requires 1-3 months advance planning for peak season (July-October) or 2-6 weeks for other periods. We assist with preparations, packing guidance, and logistical arrangements. Solo travelers benefit from shared room arrangements, while families appreciate child-friendly activities and accommodations.
   
   Don't miss this perfectly balanced Kenyan safari at unprecedented budget pricing. Whether seeking diverse wildlife experiences, photographic variety, or simply the quintessential African adventure, our 5-Day Masai Mara, Naivasha & Amboseli Budget Safari delivers unforgettable memories across Kenya's premier destinations. Book now for 2026 departure and discover why this combination represents smart safari planning.`,
-    metaDescription: "Book 5-Day Masai Mara, Naivasha & Amboseli Budget Safari 2026 from Nairobi starting at $1190. Big Five game drives, Lake Naivasha boat safari, Amboseli elephants & Kilimanjaro. Shared group tour weekly departures.",
+    metaDescription: "Book 5-day Masai Mara Naivasha Amboseli budget safari 2026 from $1190. Big Five game drives, Lake Naivasha boat safari with hippos, Amboseli elephants and Kilimanjaro views.",
     keywords: [
       "5 day Masai Mara Naivasha Amboseli budget safari",
       "Masai Mara Lake Naivasha Amboseli package", 
@@ -1680,7 +1680,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
     ],
     price: 1190,
     originalPrice: 1490,
-    image: "/ostrich_family_in_amboseli-2__1200w.jpg", // Add this image
+    image: "/ostrich_family_in_amboseli-2__1200w.jpg",
     url: "/budget-tours/5-day-masai-mara-naivasha-amboseli-budget-safari",
     bookingUrl: "/budget-tours/5-day-masai-mara-naivasha-amboseli-budget-safari#booking-form",
     country: "Kenya",
