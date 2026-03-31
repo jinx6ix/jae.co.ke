@@ -7,7 +7,7 @@ import FAQs from './FAQs';
 
 // ================= METADATA =================
 export const metadata: Metadata = {
-  title: "7 Days Kenya Budget Safari | Maasai Mara, Amboseli & Nakuru (2026)",
+  title: "7 Days Kenya Budget Safari | Maasai Mara, Amboseli (2026)",
   description:
     "Affordable 7 days Kenya budget safari covering Maasai Mara, Lake Nakuru, Naivasha & Amboseli. Shared safari from $1,355. Book 2026 departures.",
   alternates: {
