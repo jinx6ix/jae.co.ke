@@ -216,9 +216,9 @@ const destinationsSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Top East Africa Destinations | Kenya, Tanzania, Rwanda, Uganda Safari Tours",
+    title: "Top East Africa Safari Destinations | Kenya, Tanzania & More",
     description:
-      "Explore East Africa's best destinations: Kenya (Masai Mara, Amboseli), Tanzania (Serengeti, Zanzibar), Rwanda (gorilla trekking), Uganda (Bwindi, Queen Elizabeth). Book wildlife safaris, cultural tours, and accessible adventures.",
+      "Explore East Africa’s top safari destinations including Kenya, Tanzania, Rwanda & Uganda. Discover wildlife, culture, and accessible adventures.",    
     keywords: [
       "East Africa Destinations",
       "Kenya Travel",

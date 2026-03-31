@@ -242,14 +242,22 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: DestinationPageProps): Promise<Metadata> {
-  // Await the params object
+export async function generateMetadata({
+  params,
+}: DestinationPageProps): Promise<Metadata> {
   const { country } = await params
   const destination = getDestinationBySlug(country)
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+
   if (!destination) {
     return {
-      title: 'Destination Not Found'
+      title: "Destination Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     }
   }
 
@@ -257,10 +265,51 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
     title: destination.metaTitle,
     description: destination.metaDescription,
     keywords: destination.keywords,
+
+    alternates: {
+      canonical: `${baseUrl}/destinations/${country}`,
+    },
+
     openGraph: {
       title: destination.metaTitle,
       description: destination.metaDescription,
-      images: [destination.heroImage],
+      type: "website",
+      url: `${baseUrl}/destinations/${country}`,
+      images: [
+        {
+          url: destination.heroImage.startsWith("http")
+            ? destination.heroImage
+            : `${baseUrl}${destination.heroImage}`,
+          width: 1200,
+          height: 630,
+          alt: destination.metaTitle,
+        },
+      ],
+      siteName: "JaeTravel Expeditions",
+      locale: "en_KE",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      images: [
+        destination.heroImage.startsWith("http")
+          ? destination.heroImage
+          : `${baseUrl}${destination.heroImage}`,
+      ],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   }
 }
