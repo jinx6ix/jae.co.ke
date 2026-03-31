@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const post = blogPosts.find((p) => p.slug === slug)
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
   const MAX_TITLE_LENGTH = 78
 
   if (!post) {
@@ -40,24 +41,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  // ✅ Ensure title doesn't exceed limit AFTER suffix is added
-  const maxBaseLength = MAX_TITLE_LENGTH
+  // ✅ Title (NO brand suffix here)
   let safeTitle = post.metaTitle
 
-  if (safeTitle.length > maxBaseLength) {
-    safeTitle = safeTitle.slice(0, maxBaseLength - 3) + "..."
+  // keep room for layout-added brand automatically
+  if (safeTitle.length > MAX_TITLE_LENGTH) {
+    safeTitle = safeTitle.slice(0, MAX_TITLE_LENGTH - 3) + "..."
   }
 
-  // ✅ Ensure description max ~115 chars
+  // ✅ Description safety trim
   let safeDescription = post.metaDescription
   if (safeDescription.length > 115) {
     safeDescription = safeDescription.slice(0, 112) + "..."
   }
 
-  const fullTitle = safeTitle
-
   return {
-    title: fullTitle,
+    title: safeTitle,
     description: safeDescription,
     keywords: post.keywords,
     authors: [{ name: post.author }],
@@ -71,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
 
     openGraph: {
-      title: fullTitle,
+      title: safeTitle,
       description: safeDescription,
       type: "article",
       publishedTime: post.publishedAt,
@@ -97,7 +96,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: safeTitle,
       description: safeDescription,
       images: [
         post.image.startsWith("http")
