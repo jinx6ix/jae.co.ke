@@ -178,6 +178,31 @@ export const metadata: Metadata = {
     "Kenya Travel Tips",
     "Tanzania Safari Guide",
   ],
+  alternates: {
+    canonical: "https://www.jaetravel.co.ke/blog",
+    languages: {
+      "en": "https://www.jaetravel.co.ke/blog",
+      "ex-default": "https://www.jaetravel.co.ke/blog",
+    }
+  },
+
+  openGraph: {
+    title: "Safari Travel Blog | Tips, Guides & Stories",
+    description:
+      "Explore East Africa safari tips, travel guides, wildlife stories, and accessible travel advice.",
+    url: "https://www.jaetravel.co.ke/blog",
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    locale: "en_KE",
+    images: [
+      {
+        url: "https://www.jaetravel.co.ke/blog.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Safari Travel Blog - JaeTravel Expeditions",
+      },
+    ],
+  },
 }
 
 // FAQ data for the blog page
