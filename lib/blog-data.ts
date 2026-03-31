@@ -33,7 +33,7 @@ Planning your safari during the migration requires booking well in advance, as l
     publishedAt: "2025-01-15",
     category: "Travel Tips",
     image: "/masai-mara-migration.jpg",
-    metaTitle: "Best Time to Visit Masai Mara for Great Migration 2025 | Kenya Safari Guide",
+    metaTitle: "Best Time to Visit Masai Mara for Great Migration 2025",
     metaDescription:
       "Plan your perfect Masai Mara safari with our comprehensive guide to the Great Migration. Learn the best months, what to expect, and expert tips for witnessing this natural wonder in Kenya.",
     keywords: [
@@ -70,7 +70,7 @@ The wildlife viewing experience is equally spectacular for all travelers. Access
     publishedAt: "2025-01-10",
     category: "Accessibility",
     image: "/accessible-safari-wheelchair.jpg",
-    metaTitle: "Accessible Safari Guide for East Africa | Wheelchair-Friendly Tours Kenya, Tanzania, Rwanda, Uganda",
+    metaTitle: "Accessible Safari Guide for East Africa Wheelchair Tours",    
     metaDescription:
       "Complete guide to accessible safaris in East Africa for travelers with disabilities. Learn about wheelchair-friendly tours, adapted vehicles, accessible accommodations, and inclusive travel options in Kenya, Tanzania, Rwanda, and Uganda.",
     keywords: [
@@ -113,7 +113,7 @@ The emotional impact of gorilla trekking is profound. Watching gorilla families 
     publishedAt: "2025-01-05",
     category: "Wildlife",
     image: "/mountain-gorilla-trekking.jpg",
-    metaTitle: "Gorilla Trekking Tips for Rwanda and Uganda 2025 | Complete Guide to Mountain Gorilla Safaris",
+    metaTitle: "Gorilla Trekking Tips Rwanda & Uganda Complete Guide 2025",    
     metaDescription:
       "Essential tips for your first gorilla trekking experience in Rwanda and Uganda. Expert advice on permits, preparation, what to wear, and how to make the most of your mountain gorilla encounter.",
     keywords: [
@@ -155,7 +155,7 @@ The ideal choice depends on your priorities: choose the Serengeti for a more rem
     publishedAt: "2024-12-28",
     category: "Destinations",
     image: "/tanzania-serengeti.jpg",
-    metaTitle: "Serengeti vs Masai Mara: Complete Safari Comparison Guide 2025 | Kenya vs Tanzania",
+    metaTitle: "Serengeti vs Masai Mara Safari Comparison Guide 2025",    
     metaDescription:
       "Detailed comparison of Serengeti and Masai Mara safaris. Learn the differences, advantages, costs, and which destination is best for your African safari adventure in Kenya or Tanzania.",
     keywords: [
@@ -198,7 +198,7 @@ Booking luxury lodges requires planning 9-12 months ahead, especially for peak s
     publishedAt: "2024-12-20",
     category: "Luxury Travel",
     image: "/kenya-safari-landscape.jpg",
-    metaTitle: "Top 10 Luxury Safari Lodges in East Africa 2025 | Kenya, Tanzania, Rwanda, Uganda",
+    metaTitle: "Top 10 Luxury Safari Lodges in East Africa 2025 Guide",    
     metaDescription:
       "Discover the most exclusive luxury safari lodges in East Africa. Expert reviews of premium accommodations in Kenya, Tanzania, Rwanda, and Uganda for unforgettable wildlife experiences.",
     keywords: [
@@ -241,7 +241,7 @@ The benefits of family safaris extend beyond the trip itself. Children develop a
     publishedAt: "2024-12-15",
     category: "Family Travel",
     image: "/kenya-safari-landscape.jpg",
-    metaTitle: "Ultimate Family Safari Guide for East Africa 2025 | Kenya, Tanzania, Rwanda, Uganda with Kids",
+    metaTitle: "Ultimate Family Safari Guide East Africa with Kids 2025",
     metaDescription:
       "Complete guide to family safaris in East Africa. Expert tips for traveling with children, best family-friendly lodges, age considerations, and how to plan the perfect safari adventure for kids.",
     keywords: [
@@ -284,7 +284,7 @@ Specialized photography safaris offer advantages for serious photographers: cust
     publishedAt: "2024-12-10",
     category: "Photography",
     image: "/masai-mara-migration.jpg",
-    metaTitle: "Wildlife Photography Safari Tips for East Africa 2025 | Camera Settings, Composition, Techniques",
+    metaTitle: "Wildlife Photography Safari Tips East Africa Guide 2025",
     metaDescription:
       "Master wildlife photography on your East African safari. Expert tips on camera equipment, settings, composition, lighting, and techniques for capturing stunning safari images in Kenya and Tanzania.",
     keywords: [
@@ -329,7 +329,7 @@ The combination of safari and beach creates the ultimate Tanzania experience –
     publishedAt: "2024-12-05",
     category: "Beach & Islands",
     image: "/tanzania-serengeti.jpg",
-    metaTitle: "Zanzibar Beach Extension After Safari 2025 | Complete Guide to Tanzania Safari & Beach Holidays",
+    metaTitle: "Zanzibar Beach Extension After Tanzania Safari Guide 2025",
     metaDescription:
       "Plan the perfect Zanzibar beach extension after your Tanzania safari. Complete guide to beaches, activities, accommodations, and logistics for combining safari and beach holidays.",
     keywords: [
@@ -376,7 +376,7 @@ The solo female travel community is supportive and growing. Online forums, Faceb
     publishedAt: "2024-11-28",
     category: "Solo Travel",
     image: "/kenya-safari-landscape.jpg",
-    metaTitle: "Solo Female Traveler's Guide to East African Safaris 2025 | Safety Tips, Advice, Planning",
+    metaTitle: "Solo Female Safari Guide East Africa Safety & Tips 2025",
     metaDescription:
       "Complete guide for solo female travelers planning East African safaris. Safety tips, accommodation advice, cultural considerations, and practical information for independent women travelers in Kenya, Tanzania, Rwanda, and Uganda.",
     keywords: [
@@ -423,7 +423,7 @@ The budget safari experience emphasizes adventure and authenticity over luxury. 
     publishedAt: "2024-11-20",
     category: "Budget Travel",
     image: "/kenya-safari-landscape.jpg",
-    metaTitle: "Budget Safari Guide for East Africa 2025 | Affordable Kenya, Tanzania, Uganda Safari Tips",
+    metaTitle: "Budget Safari Guide East Africa Affordable Travel Tips 2025",
     metaDescription:
       "Plan an affordable East African safari with our budget travel guide. Money-saving tips, camping safaris, group tours, and budget-friendly destinations in Kenya, Tanzania, Rwanda, and Uganda.",
     keywords: [
@@ -472,7 +472,7 @@ Conservation safaris prove that tourism can be a force for good. By choosing res
     publishedAt: "2024-11-15",
     category: "Conservation",
     image: "/rwanda-mountain-gorillas.jpg",
-    metaTitle: "Conservation Safaris & Responsible Travel in East Africa 2025 | Sustainable Safari Guide",
+    metaTitle: "Conservation Safaris Responsible Travel East Africa Guide",
     metaDescription:
       "Learn how to travel responsibly on your East African safari. Complete guide to conservation tourism, sustainable practices, community-based tourism, and making positive impact in Kenya, Tanzania, Rwanda, and Uganda.",
     keywords: [
