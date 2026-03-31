@@ -25,25 +25,81 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const vehicle = vehicles.find((v) => v.slug === slug);
+  const { slug } = await params
+  const vehicle = vehicles.find((v) => v.slug === slug)
+
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
 
   if (!vehicle) {
-    return { title: "Vehicle Not Found" };
+    return {
+      title: "Vehicle Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    }
   }
 
+  const title = vehicle.metaTitle || vehicle.name
+  const description =
+    vehicle.metaDescription || vehicle.description
+
+  const image = vehicle.image
+    ? vehicle.image.startsWith("http")
+      ? vehicle.image
+      : `${baseUrl}${vehicle.image}`
+    : `${baseUrl}/placeholder.svg?key=vehicle-${vehicle.slug}`
+
   return {
-    title: vehicle.metaTitle,
-    description: vehicle.metaDescription,
+    title,
+    description,
     keywords: vehicle.keywords,
-    openGraph: {
-      title: vehicle.metaTitle,
-      description: vehicle.metaDescription,
-      images: [vehicle.image],
+
+    alternates: {
+      canonical: `${baseUrl}/vehicles/${vehicle.slug}`,
     },
-  };
+
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: `${baseUrl}/vehicles/${vehicle.slug}`,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      siteName: "Jae Travel Expeditions",
+      locale: "en_KE",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+      creator: "@jaetravel",
+      site: "@jaetravel",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  }
 }
 
 export default async function VehicleDetailPage({
