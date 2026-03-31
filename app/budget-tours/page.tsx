@@ -52,18 +52,18 @@ export const metadata: Metadata = {
   publisher: "JaeTravel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/budget-tours/",
+    canonical: "https://www.jaetravel.co.ke/budget-tours",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/budget-tours/',
-      'en-US': 'https://www.jaetravel.co.ke/budget-tours/',
-      'en-GB': 'https://www.jaetravel.co.ke/budget-tours/',
-      'x-default': 'https://www.jaetravel.co.ke/budget-tours/',
+      'en': 'https://www.jaetravel.co.ke/budget-tours',
+      'en-US': 'https://www.jaetravel.co.ke/budget-tours',
+      'en-GB': 'https://www.jaetravel.co.ke/budget-tours',
+      'x-default': 'https://www.jaetravel.co.ke/budget-tours',
     },
   },
   openGraph: {
     title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
     description: "Experience the Great Wildebeest Migration on affordable budget safaris. Group & private safaris in Masai Mara, Nakuru, Naivasha & Amboseli. Book now!",
-    url: "https://www.jaetravel.co.ke/budget-tours/",
+    url: "https://www.jaetravel.co.ke/budget-tours",
     siteName: "JaeTravel Expeditions",
     images: [
       {
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   },
 };
 
-const absoluteUrl = "https://www.jaetravel.co.ke/budget-tours/";
+const absoluteUrl = "https://www.jaetravel.co.ke/budget-tours";
 const heroImage = "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg";
 
 // Limit to first 6 tours for schema (to avoid too large JSON)

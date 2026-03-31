@@ -231,7 +231,7 @@ export default async function TourDetailPage(props: Props) {
             "@type": "ListItem",
             "position": 2,
             "name": "Budget Tours",
-            "item": "https://www.jaetravel.co.ke/budget-tours/"
+            "item": "https://www.jaetravel.co.ke/budget-tours"
           },
           {
             "@type": "ListItem",
