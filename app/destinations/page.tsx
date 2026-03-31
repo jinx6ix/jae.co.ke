@@ -216,7 +216,7 @@ const destinationsSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Top East Africa Safari Destinations | Kenya, Tanzania & More",
+    title: "Top East Africa Safari Destinations ",
     description:
       "Explore East Africa’s top safari destinations including Kenya, Tanzania, Rwanda & Uganda. Discover wildlife, culture, and accessible adventures.",    
     keywords: [
