@@ -35,8 +35,9 @@ import {
 
 const CONFIG = {
   slug: "flamingo-safari-tours",
-  title: "Flamingo Safari Tours 2026 | Lake Nakuru Pink Flocks & Rhinos Kenya | Jae Travel Expeditions",
-  description: "Experience Lake Nakuru's iconic flamingo spectacle in 2026 – thousands of pink birds, black/white rhinos, 450+ species. Short safaris from Nairobi from $450 USD. Private 4x4, expert guides.",
+  title: "Flamingo Safari Tours 2026 | Lake Nakuru & Rhinos Kenya",
+  description:
+    "See Lake Nakuru flamingos, rhinos & 450+ bird species. Short safaris from Nairobi from $450. Private 4x4 tours.",
   h1: "Flamingo Safari",
   h1Sub: "Tours 2026",
   subtitle: "Lake Nakuru National Park – Pink Horizons, Rhino Sanctuary & Unforgettable Birdlife",
