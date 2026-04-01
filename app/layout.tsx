@@ -222,20 +222,7 @@ const criticalCSS = `
   }
 `
 
-// Async CSS loading component
-const AsyncCSS = () => (
-  <>
-    <link 
-      rel="stylesheet" 
-      href="/_next/static/css/app/layout.css" 
-      media="print"
-      data-async-css="true"
-    />
-    <noscript>
-      <link rel="stylesheet" href="/_next/static/css/app/layout.css" />
-    </noscript>
-  </>
-)
+//Removed Async CSS loading component
 
 export default function RootLayout({
   children,
@@ -314,9 +301,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: criticalCSS }}
         />
         
-        {/* Async loading of non-critical CSS */}
-        <AsyncCSS />
-        
         {/* Preconnect to critical origins */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -327,7 +311,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.gstatic.com" />
         
         {/* Viewport meta tag */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        
         
         {/* Structured Data */}
         <JsonLd 
@@ -430,7 +414,7 @@ export default function RootLayout({
               <Header />
             </div>
             <main className="min-h-screen flex justify-center">
-              <div className="w-full max-w-7xl px-4">
+              <div className="w-full max-w-7xl">
                 {children}
               </div>
             </main>
