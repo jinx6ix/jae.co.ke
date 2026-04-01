@@ -45,8 +45,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "kenya-circuit-safaris",
-  title: "Kenya Circuit Safaris 2026 | Masai Mara, Amboseli, Tsavo & More | Jae Travel Expeditions",
-  description: "Explore Kenya's legendary safari circuit. Witness the Great Migration in Masai Mara, elephants against Kilimanjaro in Amboseli, and red elephants in Tsavo. Multi-park itineraries from 5-14 days. Expert guides, luxury lodges.",
+  title: "Kenya Circuit Safaris 2026 | Masai Mara, Amboseli & Tsavo",
+  description:
+    "Explore Kenya’s safari circuit: Masai Mara migration, Amboseli elephants & Tsavo red elephants. 5–14 day guided itineraries.",
   h1: "Kenya Circuit",
   h1Sub: "Safaris 2026",
   subtitle: "The Original Safari Destination – Masai Mara, Amboseli, Tsavo, Lake Nakuru & Beyond",
