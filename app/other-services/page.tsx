@@ -281,9 +281,9 @@ const transportSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Transportation Services Kenya & East Africa | Car Hire, Airport Transfers & Safari Vehicles",
+  title: "Transport Services Kenya & East Africa | Car Hire & Transfers",
   description:
-    "Professional vehicle hire and transportation services in Kenya, Tanzania, Rwanda & Uganda. Airport transfers Nairobi, 4x4 safari Land Cruiser rental, self-drive cars, chauffeur services and group transport across East Africa.",
+    "Vehicle hire and transport in Kenya, Tanzania, Rwanda & Uganda. Airport transfers, 4x4 safari Land Cruisers, chauffeur & self-drive services.",
   keywords: [
     "car hire Kenya",
     "airport transfers Nairobi",
