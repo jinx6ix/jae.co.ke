@@ -36,5 +36,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://jaetravel.co.ke/safari/7-days-budget-kenya",
+    languages: {
+      "en": "https://jaetravel.co.ke/safari/7-days-budget-kenya",
+      "es": "https://jaetravel.co.ke/es/safari/7-days-budget-kenya",
+      "fr": "https://jaetravel.co.ke/fr/safari/7-days-budget-kenya",
+      "de": "https://jaetravel.co.ke/de/safari/7-days-budget-kenya",
+       "en-GB": "https://jaetravel.co.ke/safari/7-days-budget-kenya"
+    }
   },
 };
