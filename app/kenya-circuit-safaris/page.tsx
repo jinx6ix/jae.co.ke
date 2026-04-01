@@ -45,7 +45,7 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "kenya-circuit-safaris",
-  title: "Kenya Circuit Safaris 2026 | Masai Mara, Amboseli & Tsavo",
+  title: "Kenya Circuit Safaris 2026 | MasaiMara, Amboseli & Tsavo",
   description:
     "Explore Kenya’s safari circuit: Masai Mara migration, Amboseli elephants & Tsavo red elephants. 5–14 day guided itineraries.",
   h1: "Kenya Circuit",
