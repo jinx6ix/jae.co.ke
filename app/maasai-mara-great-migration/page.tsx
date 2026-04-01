@@ -86,8 +86,9 @@ const maxPrice = totalTours > 0
 // METADATA - Title: 60 chars | Description: 115 chars
 // ============================================
 export const metadata: Metadata = {
-  title: "Masai Mara Great Migration 2026 | Wheelchair Accessible Safari Packages",
-  description: "Witness the 2026 Great Migration in Masai Mara with Kenya's leading accessible safari operator. Hydraulic lift vehicles, pop-up roofs, specialist guides. Book now.",
+  title: "Masai Mara Great Migration 2026 | Accessible Safari Kenya",
+  description:
+    "See the 2026 Great Migration in Masai Mara. Wheelchair-accessible safaris with lift vehicles, expert guides & pop-up roof 4x4s.",
   keywords: "masai mara great migration 2026, wheelchair accessible masai mara safari, masai mara packages 2026, accessible masai mara tours, mara river crossing wheelchair, masai mara safari kenya, great migration packages, accessible safari kenya, disability friendly safari, hydraulic lift safari vehicles",
   authors: [{ name: "Jae Travel Expeditions", url: "https://www.jaetravel.co.ke" }],
   creator: "Jae Travel Expeditions",
@@ -95,6 +96,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+    languages: {
+      "en-US": "https://www.jaetravel.co.ke/en-us/maasai-mara-great-migration",
+      "en-GB": "https://www.jaetravel.co.ke/en-gb/maasai-mara-great-migration",
+      "en-AU": "https://www.jaetravel.co.ke/en-au/maasai-mara-great-migration",
+      "en-CA": "https://www.jaetravel.co.ke/en-ca/maasai-mara-great-migration",
+    }
   },
   openGraph: {
     title: "Masai Mara Great Migration 2026 | Accessible Safari Packages Kenya",
