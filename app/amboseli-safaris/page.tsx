@@ -47,8 +47,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "amboseli-safaris",
-  title: "Amboseli Safaris 2026 | Elephant Baby Boom & Stunning Kilimanjaro Views | Jae Travel Expeditions",
-  description: "Experience Amboseli in 2026 – witness 220+ new elephant calves from the 2025 boom continuing strong, crystal-clear Kilimanjaro, private 4x4 safaris from Nairobi. Packages from $1,150 USD all-inclusive.",
+  title: "Amboseli Safari 2026 | Elephants & Kilimanjaro Views",
+  description:
+    "Amboseli 2026 safari: elephants, newborn calves & Mount Kilimanjaro views. Private 4x4 game drives from Nairobi. From $1,150 all-inclusive.",
   h1: "Amboseli Safaris",
   h1Sub: "2026",
   subtitle: "Where Massive Elephant Families Meet Africa's Tallest Mountain – Baby Boom Continues with 220+ New Calves",
