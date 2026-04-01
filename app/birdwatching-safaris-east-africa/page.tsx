@@ -48,8 +48,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "birdwatching-safaris-east-africa",
-  title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species, Flamingos & Shoebills | Jae Travel Expeditions",
-  description: "Premier 2026 birdwatching safaris in Kenya, Tanzania & Uganda – Lake Nakuru flamingos, migratory peaks Nov–Apr, lilac-breasted rollers, shoebills. Expert guides, small groups, photography focused. Packages from $450 USD.",
+  title: "Birdwatching Safaris East Africa 2026 | 1,400+ Bird Species",
+  description:
+    "2026 birdwatching safaris in Kenya, Tanzania & Uganda. See flamingos, shoebills & migratory birds. Expert guides. From $450.",
   h1: "Birdwatching Safaris",
   h1Sub: "East Africa 2026",
   subtitle: "Over 1,400 Species – Migratory Wonders, Flamingo Spectacles & Rare Gems Across Kenya, Tanzania & Uganda",
