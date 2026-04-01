@@ -314,9 +314,9 @@ const campingSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Luxury Roof-Top Camping Kenya | Glamping Safari | Jae Travel",
+    title: "Luxury Rooftop Camping Kenya | Glamping Safari Experience",
     description:
-      "Experience luxury roof-top camping in Kenya with 4x4 vehicles, premium tents, and starlit dinners. Perfect for Maasai Mara, Amboseli, and private conservancies.",
+      "Luxury rooftop camping in Kenya with 4x4 vehicles, premium tents & starlit bush dinners in Maasai Mara, Amboseli & conservancies.",
     keywords: [
       "luxury roof top camping Kenya",
       "glamping safari Kenya",
@@ -345,14 +345,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/camping/rooftop-tent-sunset.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping",
+      canonical: "https://www.jaetravel.co.ke/luxury-roof-top-camping",
       languages: {
-        'en': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',           // Main English/global
-        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // US
-        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // UK (optional)
-        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // Australia (optional)
-        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',       // Canada (optional)
-        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/luxury-roof-top-camping',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/luxury-roof-top-camping',   // Fallback
       },
     },
     other: {
