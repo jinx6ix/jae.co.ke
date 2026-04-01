@@ -110,9 +110,9 @@ const bigFiveSchema = {
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Big Five Safari Kenya | Lion, Leopard, Elephant, Rhino & Buffalo | Jae Travel Expeditions",
+    title: "Big Five Safari Kenya | Maasai Mara, Amboseli & Tsavo",
     description:
-      "Discover Africa's legendary Big Five animals on wheelchair accessible safaris in Kenya. Experience thrilling game drives in Masai Mara, Amboseli, Tsavo & more. Book your inclusive Big Five safari adventure today with expert guides and adapted vehicles.",
+      "See lion, leopard, elephant, rhino & buffalo in Kenya’s top parks. Wheelchair-accessible safaris with expert guides. From $450.",
     keywords: [
       "big five safari",
       "big five kenya",
@@ -217,7 +217,7 @@ export default function BigFivePage() {
 
   return (
     <>
-      <JsonLd data={bigFiveSchema} />
+      <JsonLd data={bigFiveSchema} id="big-five-schema" />
 
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center bg-muted/10">
