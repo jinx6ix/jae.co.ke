@@ -5,9 +5,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "6 Sustainable Travel Tips for East Africa Safari | Eco-Friendly Kenya, Tanzania, Rwanda & Uganda",
+  title: "6 Sustainable Travel Tips for East Africa Safari 2026",
   description:
-    "Discover 6 proven sustainable travel tips for your East Africa safari. Reduce plastic waste, support local communities, choose eco-lodges, and offset carbon — all while enjoying Kenya, Tanzania, Rwanda & Uganda responsibly.",
+    "6 eco-friendly safari tips for East Africa: Kenya, Tanzania, Rwanda & Uganda. Reduce waste, support locals & choose eco-lodges.",
   keywords: [
     "sustainable travel east africa",
     "eco friendly safari kenya",
