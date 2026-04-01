@@ -42,8 +42,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "short-safaris",
-  title: "Short Safaris & Day Trips 2026 | 1-3 Days",
-  description: "Perfect for layovers or short breaks. 1-3 day safaris from Nairobi to Lake Nakuru, Amboseli, Masai Mara, and more. Private 4x4, expert guides, all park fees included. Packages from $150 USD.",
+  title: "Short Safaris Kenya 2026 | 1-3 Day Nairobi Tours",
+  description:
+    "1–3 day Kenya safaris from Nairobi to Maasai Mara, Amboseli & Lake Nakuru. Private 4x4 tours, expert guides & park fees included. From $150.",
   h1: "Short Safaris",
   h1Sub: "& Day Trips 2026",
   subtitle: "Perfect for Layovers & Short Breaks – 1-3 Day Adventures from Nairobi to Kenya's Finest Parks",
