@@ -52,8 +52,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "beach-holidays",
-  title: "Beach & Island Holidays 2026 | Zanzibar, Diani, Mombasa & Pemba | Jae Travel Expeditions",
-  description: "Relax on East Africa's pristine beaches. White sands of Zanzibar, Diani's palm-fringed shores, Pemba's diving paradise, and Mombasa's coastal culture. Beach resorts, water sports, and island escapes from $350 USD.",
+  title: "Beach & Island Holidays 2026 | Zanzibar, Diani & Mombasa",
+  description:
+    "Relax on East Africa’s top beaches: Zanzibar, Diani, Pemba & Mombasa. White sands, diving, resorts & island escapes from $350.",
   h1: "Beach & Island",
   h1Sub: "Holidays 2026",
   subtitle: "Paradise Found – White Sands, Turquoise Waters & Island Escapes Along East Africa's Pristine Coastline",
@@ -185,7 +186,7 @@ export default function BeachHolidaysPage() {
   return (
     <>
       {/* JSON-LD Script */}
-      <JsonLd data={jsonLd} />
+      <JsonLd data={jsonLd} id="beach-schema" />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">
