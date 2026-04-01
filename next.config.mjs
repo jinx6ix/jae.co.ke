@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: false,
-  skipTrailingSlashRedirect: true,
+
+  // ❌ Removed (can break routing + assets on Vercel)
+  // skipTrailingSlashRedirect: true,
 
   // Image Optimization
   images: {
@@ -16,7 +18,7 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/webp'],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
   // Performance
@@ -27,25 +29,10 @@ const nextConfig = {
 
   async headers() {
     return [
-      // 🔥 Cache static assets aggressively
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/image/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
+      // ❌ REMOVED: NEVER touch _next/static or _next/image on Vercel
+      // This was the root cause of your MIME type error
+
+      // ✅ Cache fonts only (safe)
       {
         source: '/(.*).(woff2|woff|ttf|otf)',
         headers: [
@@ -56,7 +43,7 @@ const nextConfig = {
         ],
       },
 
-      // 🚫 SEO CONTROL (X-Robots-Tag)
+      // 🚫 SEO CONTROL
       {
         source: '/admin/:path*',
         headers: [
@@ -85,7 +72,7 @@ const nextConfig = {
         ],
       },
 
-      // 🔐 Security headers (global)
+      // 🔐 Security headers (safe globally)
       {
         source: '/:path*',
         headers: [
@@ -159,8 +146,7 @@ const nextConfig = {
     ];
   },
 
-  // Build
-  eslint: { ignoreDuringBuilds: true },
+  // Build (cleaned for Next.js 16)
   typescript: { ignoreBuildErrors: true },
 
   compiler: {

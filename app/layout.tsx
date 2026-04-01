@@ -1,4 +1,5 @@
 import type React from "react"
+import type { Viewport } from "next";
 import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
@@ -13,6 +14,15 @@ import DynamicScripts from '@/components/DynamicScripts'; // New client componen
 import "./globals.css"
 import JsonLd from "@/components/JsonLd"
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f97316" },
+    { media: "(prefers-color-scheme: dark)", color: "#ea580c" },
+  ],
+};
 // Fonts with optimized loading
 const playfair = Playfair_Display({
   subsets: ["latin"],

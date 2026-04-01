@@ -37,26 +37,24 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
   const tour = getTourBySlug(params.slug);
-  
+
   if (!tour) return {};
 
   const absoluteImageUrl = `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`;
-  const viewportContent = "width=device-width, initial-scale=1, maximum-scale=5";
 
   return {
     title: tour.title,
     description: tour.metaDescription,
     keywords: tour.keywords.join(", "),
-    viewport: viewportContent,
     alternates: {
       canonical: `https://www.jaetravel.co.ke${tour.url}`,
       languages: {
-        'en': `https://www.jaetravel.co.ke${tour.url}`,
-        'en-US': `https://www.jaetravel.co.ke${tour.url}`,
-        'en-GB': `https://www.jaetravel.co.ke${tour.url}`,
-        'en-AU': `https://www.jaetravel.co.ke${tour.url}`,
-        'en-CA': `https://www.jaetravel.co.ke${tour.url}`,
-        'x-default': `https://www.jaetravel.co.ke${tour.url}`,
+        en: `https://www.jaetravel.co.ke${tour.url}`,
+        "en-US": `https://www.jaetravel.co.ke${tour.url}`,
+        "en-GB": `https://www.jaetravel.co.ke${tour.url}`,
+        "en-AU": `https://www.jaetravel.co.ke${tour.url}`,
+        "en-CA": `https://www.jaetravel.co.ke${tour.url}`,
+        "x-default": `https://www.jaetravel.co.ke${tour.url}`,
       },
     },
     openGraph: {
