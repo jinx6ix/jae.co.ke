@@ -86,7 +86,7 @@ const maxPrice = totalTours > 0
 // METADATA - Title: 60 chars | Description: 115 chars
 // ============================================
 export const metadata: Metadata = {
-  title: "Masai Mara Great Migration 2026 | Accessible Safari Kenya",
+  title: "Masai Mara Great Migration 2026| Accessible Safari Kenya",
   description:
     "See the 2026 Great Migration in Masai Mara. Wheelchair-accessible safaris with lift vehicles, expert guides & pop-up roof 4x4s.",
   keywords: "masai mara great migration 2026, wheelchair accessible masai mara safari, masai mara packages 2026, accessible masai mara tours, mara river crossing wheelchair, masai mara safari kenya, great migration packages, accessible safari kenya, disability friendly safari, hydraulic lift safari vehicles",

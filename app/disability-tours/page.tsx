@@ -28,10 +28,9 @@ import JsonLd from "@/components/JsonLd"
 // METADATA — MAXIMUM KEYWORD DENSITY + 2026 TIMELINESS
 // ──────────────────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title:
-    "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Disability Tours | JaeTravel Expeditions",
+  title: "Wheelchair Accessible Safari Kenya 2026",
   description:
-    "Kenya's #1 wheelchair accessible safari operator for 2026. German hydraulic lift 4x4s (400kg), barrier-free lodges, Masai Mara Great Migration dates, gorilla trekking Rwanda. Real 5-star reviews from wheelchair travelers. Disability tours Kenya & East Africa.",
+    "Wheelchair-accessible safaris in Kenya 2026. Lift-equipped 4x4 vehicles, barrier-free lodges & Masai Mara Great Migration tours in East Africa.",
   keywords: [
     "wheelchair accessible safari kenya",
     "wheelchair accessible safari kenya 2026",
