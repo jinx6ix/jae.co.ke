@@ -43,8 +43,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "ngorongoro-safaris",
-  title: "Ngorongoro Crater Safaris 2026 | Tanzania Big Five & Black Rhinos | Jae Travel Expeditions",
-  description: "Descend into Ngorongoro Crater 2026 – highest Big Five density, reliable black rhinos, lions & elephants. Luxury rim lodges from $950 USD. Arusha-based private 4x4 safaris. Kenya-based operator with local expertise.",
+  title: "Ngorongoro Crater Safari 2026 | Tanzania Big Five Tour",
+  description:
+    "Explore Ngorongoro Crater in 2026. See the Big Five, black rhinos, lions & elephants. Luxury rim lodges & private 4x4 safaris from Arusha.",
   h1: "Ngorongoro Crater",
   h1Sub: "Safaris 2026",
   subtitle: "UNESCO Caldera – Africa's Garden of Eden with Unmatched Wildlife Density & Black Rhino Sightings",
