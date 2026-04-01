@@ -46,8 +46,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "adventure-trekking",
-  title: "Adventure & Trekking 2026 | Kilimanjaro, Mount Kenya & Rwenzori | Jae Travel Expeditions",
-  description: "Challenge yourself with East Africa's greatest treks. Climb Kilimanjaro (5,895m), Mount Kenya, or the Rwenzori Mountains. Expert guides, safety protocols, and unforgettable summit experiences. Packages from $1,100 USD.",
+  title: "Adventure Trekking 2026 | Kilimanjaro, Kenya & Rwenzori",
+  description:
+    "Climb Kilimanjaro, Mount Kenya & Rwenzori with expert guides. Safe, guided East Africa treks and summit experiences from $1,100.",
   h1: "Adventure & Trekking",
   h1Sub: "2026",
   subtitle: "Conquer Africa's Highest Peaks – Kilimanjaro, Mount Kenya & the Mountains of the Moon",
@@ -177,7 +178,7 @@ export default function AdventureTrekkingPage() {
   return (
     <>
       {/* JSON-LD Script */}
-      <JsonLd data={jsonLd} />
+      <JsonLd data={jsonLd} id="adventure-schema" />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">
