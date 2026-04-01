@@ -18,7 +18,7 @@ import JsonLd from "@/components/JsonLd";
 
 const CONFIG = {
   slug: "gorilla-trekking-tours",
-  title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda Gorillas",
+  title: "Gorilla Trekking Tours & Safaris 2026 | Rwanda & Uganda",
   description:
     "2026 gorilla trekking in Rwanda & Uganda. See mountain gorillas in Volcanoes NP & Bwindi. Permits from $800, expert guides & lodges.",
   h1: "Gorilla Trekking",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda",
+    title: "Gorilla Trekking Tours & Safaris 2026 | Rwanda & Uganda",
     description: "Trek endangered mountain gorillas. Guaranteed permits. Book your 2026 adventure.",
     images: ["/twitter/gorilla-trekking.jpg"],
     creator: "@jaetravel",
