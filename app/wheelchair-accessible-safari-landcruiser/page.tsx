@@ -43,8 +43,9 @@ export const generateMetadata = (): Metadata => {
   const allKeywords = [...primaryKeywords, ...secondaryKeywords, ...longTailKeywords]
 
   return {
-    title: "Wheelchair Accessible Land Cruiser Kenya | #1 Safari Vehicle Hire 2025",
-    description: "KENYA'S #1 WHEELCHAIR ACCESSIBLE CRUISER: Rent our modified Toyota Land Cruiser with hydraulic lift, pop-up roof & medical restraints. Perfect for Masai Mara, Amboseli & Serengeti safaris. Book your accessible cruiser today!",
+    title: "Wheelchair Accessible Land Cruiser Kenya | Safari Vehicle Hire",
+    description:
+     "Rent a wheelchair-accessible Land Cruiser in Kenya with hydraulic lift, pop-up roof and safety restraints. Ideal for Masai Mara and Amboseli safaris.",
     keywords: allKeywords.join(", "),
     openGraph: {
       title: "Wheelchair Accessible Land Cruiser Kenya | Safari Vehicle with Hydraulic Lift",
