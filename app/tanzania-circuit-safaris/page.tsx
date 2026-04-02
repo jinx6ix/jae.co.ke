@@ -44,8 +44,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "tanzania-circuit-safaris",
-  title: "Tanzania Circuit Safaris 2026 | Serengeti, Ngorongoro & Kilimanjaro | Jae Travel Expeditions",
-  description: "Explore Tanzania's legendary northern circuit. Witness the Great Migration in Serengeti, descend into Ngorongoro Crater, and climb Kilimanjaro. Multi-park itineraries from 5-14 days. Expert guides, luxury lodges.",
+  title: "Tanzania Circuit Safaris 2026 | Serengeti & Ngorongoro",
+  description:
+    "Explore Tanzania’s top parks: Serengeti migration & Ngorongoro Crater. 5–14 day guided safaris with expert guides & lodges.",
   h1: "Tanzania Circuit",
   h1Sub: "Safaris 2026",
   subtitle: "The Ultimate Safari Destination – Serengeti Migration, Ngorongoro Crater, Kilimanjaro & Beyond",
