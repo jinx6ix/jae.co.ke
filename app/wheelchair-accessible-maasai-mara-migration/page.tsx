@@ -11,8 +11,7 @@ export const generateMetadata = (): Metadata => ({
   title: "Maasai Mara Great Migration Safari 2026 | Accessible",
 
   description:
-    "Experience the 2026 Maasai Mara Great Migration with wheelchair-accessible 4x4 safaris. Witness Mara River crossings, expert guides, and adapted vehicles across Kenya.",
-
+  "Experience the 2026 Maasai Mara Great Migration on a wheelchair-accessible safari. See Mara River crossings with expert guides and adapted 4x4 vehicles.",
   keywords: [
     "maasai mara great migration 2026",
     "great migration kenya safari",
