@@ -9,20 +9,20 @@ export const metadata: Metadata = {
   keywords:
     "1 day Maasai Mara safari, Maasai Mara day trip, Nairobi to Maasai Mara, Kenya day safari, one day safari Kenya, Maasai Mara from Nairobi, day safari Nairobi, Maasai Mara game drive, budget day safari Kenya, Nairobi day trips, Kenya safari day tour",
 
-  authors: [{ name: "JaeTravel Expeditions", url: "https://jaetravel.co.ke" }],
+  authors: [{ name: "JaeTravel Expeditions", url: "https://www.jaetravel.co.ke" }],
   creator: "JaeTravel Expeditions",
   publisher: "JaeTravel Expeditions",
-  metadataBase: new URL("https://jaetravel.co.ke"),
+  metadataBase: new URL("https://www.jaetravel.co.ke"),
   category: "travel",
   classification: "Safari Tours",
   applicationName: "Jae Travel Expeditions",
 
   alternates: {
-    canonical: "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+    canonical: "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
     languages: {
-      "en-US": "https://jaetravel.co.ke/safari/1-day-maasai-mara",
-      "en-GB": "https://jaetravel.co.ke/safari/1-day-maasai-mara",
-      "x-default": "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+      "en-US": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
+      "en-GB": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
+      "x-default": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
     },
   },
 
@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     title: "1 Day Maasai Mara Safari from Nairobi – Luxury Game Drive",
     description:
       "Unforgettable one-day safari in Kenya's Maasai Mara. See the Big Five, full game drive with expert guide, packed lunch & Nairobi hotel pickup. From $180.",
-    url: "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+    url: "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
     siteName: "Jae Travel Expeditions",
     images: [
       {
-        url: "https://jaetravel.co.ke/1-day-maasai-mara.jpg",
+        url: "https://www.jaetravel.co.ke/1-day-maasai-mara.jpg",
         width: 1200,
         height: 630,
         alt: "Maasai Mara Safari",
@@ -52,11 +52,11 @@ export const metadata: Metadata = {
     title: "1 Day Maasai Mara Safari from Nairobi",
     description:
       "Big Five game drive + lunch included. From $180. Expert guide & hotel pickup.",
-    images: ["https://jaetravel.co.ke/1-day-maasai-mara.jpg"],
+    images: ["https://www.jaetravel.co.ke/1-day-maasai-mara.jpg"],
   },
 
   other: {
-    "og:image:secure_url": "https://jaetravel.co.ke/1-day-maasai-mara.jpg",
+    "og:image:secure_url": "https://www.jaetravel.co.ke/1-day-maasai-mara.jpg",
     "og:image:alt": "1 Day Maasai Mara Safari Kenya Big Five",
     "twitter:label1": "Starting Price",
     "twitter:data1": "$180",

@@ -163,21 +163,21 @@ export const metadata: Metadata = {
   title: "Kenya Safari Packages 2026 | Best Safari Tours & Wildlife Adventures",
   description: "Book authentic Kenya safari packages 2026. Maasai Mara, Amboseli & Tsavo tours. Best prices, expert guides, and 5-star reviews. Custom itineraries available.",
   keywords: "Kenya safari packages, Maasai Mara safari, Amboseli safari, Tsavo safari, Kenya tours, African safari deals, luxury safari Kenya, budget safari Kenya, wildlife safaris, Kenya travel packages, Great Migration safari, Kenya safari deals 2026",
-  authors: [{ name: "Jae Travel Expeditions", url: "https://jaetravel.co.ke" }],
+  authors: [{ name: "Jae Travel Expeditions", url: "https://www.jaetravel.co.ke" }],
   creator: "Jae Travel Expeditions",
   publisher: "Jae Travel Expeditions",
-  metadataBase: new URL("https://jaetravel.co.ke"),
+  metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
-    canonical: "https://jaetravel.co.ke/kenya-safari-packages",
+    canonical: "https://www.jaetravel.co.ke/kenya-safari-packages",
   },
   openGraph: {
     title: "Kenya Safari Packages 2026 | Best Safari Tours & Wildlife Adventures",
     description: "Experience the best Kenya safari packages. Maasai Mara, Amboseli, Tsavo. Book your African adventure today with expert guides and best price guarantee.",
-    url: "https://jaetravel.co.ke/kenya-safari-packages",
+    url: "https://www.jaetravel.co.ke/kenya-safari-packages",
     siteName: "Jae Travel Expeditions",
     images: [
       {
-        url: "https://jaetravel.co.ke/images/kenya-safari-og.jpg",
+        url: "https://www.jaetravel.co.ke/images/kenya-safari-og.jpg",
         width: 1200,
         height: 630,
         alt: "Kenya Safari Packages - Wildebeest migration in Maasai Mara with lions and elephants",
@@ -191,7 +191,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kenya Safari Packages 2026 | Jae Travel",
     description: "Book your dream Kenya safari. Best prices, expert guides, amazing wildlife! Maasai Mara, Amboseli, Tsavo tours available.",
-    images: ["https://jaetravel.co.ke/images/kenya-safari-twitter.jpg"],
+    images: ["https://www.jaetravel.co.ke/images/kenya-safari-twitter.jpg"],
     site: "@jaetravel",
     creator: "@jaetravel",
   },
@@ -220,12 +220,12 @@ const generateSchemaMarkup = () => {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://jaetravel.co.ke/#organization",
+        "@id": "https://www.jaetravel.co.ke/#organization",
         "name": "Jae Travel Expeditions",
-        "url": "https://jaetravel.co.ke",
+        "url": "https://www.jaetravel.co.ke",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://jaetravel.co.ke/images/logo.png",
+          "url": "https://www.jaetravel.co.ke/logo.png",
           "width": 600,
           "height": 60
         },
@@ -256,24 +256,24 @@ const generateSchemaMarkup = () => {
       },
       {
         "@type": "WebPage",
-        "@id": "https://jaetravel.co.ke/kenya-safari-packages/#webpage",
-        "url": "https://jaetravel.co.ke/kenya-safari-packages",
+        "@id": "https://www.jaetravel.co.ke/kenya-safari-packages/#webpage",
+        "url": "https://www.jaetravel.co.ke/kenya-safari-packages",
         "name": "Kenya Safari Packages 2026 | Best Safari Tours & Wildlife Adventures",
         "description": "Book authentic Kenya safari packages 2026. Maasai Mara, Amboseli & Tsavo tours. Best prices, expert guides.",
-        "isPartOf": { "@id": "https://jaetravel.co.ke/#website" },
-        "breadcrumb": { "@id": "https://jaetravel.co.ke/kenya-safari-packages/#breadcrumb" }
+        "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+        "breadcrumb": { "@id": "https://www.jaetravel.co.ke/kenya-safari-packages/#breadcrumb" }
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://jaetravel.co.ke/kenya-safari-packages/#breadcrumb",
+        "@id": "https://www.jaetravel.co.ke/kenya-safari-packages/#breadcrumb",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaetravel.co.ke" },
-          { "@type": "ListItem", "position": 2, "name": "Safari Packages", "item": "https://jaetravel.co.ke/kenya-safari-packages" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke" },
+          { "@type": "ListItem", "position": 2, "name": "Safari Packages", "item": "https://www.jaetravel.co.ke/kenya-safari-packages" }
         ]
       },
       {
         "@type": "Product",
-        "@id": "https://jaetravel.co.ke/kenya-safari-packages/#product",
+        "@id": "https://www.jaetravel.co.ke/kenya-safari-packages/#product",
         "name": "Kenya Safari Packages 2026",
         "description": "Premium Kenya safari experiences with expert guides, game drives, and comfortable accommodations.",
         "brand": { "@type": "Brand", "name": "Jae Travel Expeditions" },
@@ -294,7 +294,7 @@ const generateSchemaMarkup = () => {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://jaetravel.co.ke/kenya-safari-packages/#faq",
+        "@id": "https://www.jaetravel.co.ke/kenya-safari-packages/#faq",
         "mainEntity": [
           {
             "@type": "Question",

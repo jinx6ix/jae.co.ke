@@ -80,7 +80,7 @@ const jsonLd = {
       "@type": "Product",
       "@id": "https://www.jaetravel.co.ke/safari/7-days-budget-kenya#product",
       "name": "7 Days Kenya Budget Shared Safari",
-      "image": "https://jaetravel.co.ke/7-days-budget-kenya.jpg",
+      "image": "https://www.jaetravel.co.ke/7-days-budget-kenya.jpg",
       "description":
         "7-day budget safari in Kenya covering Maasai Mara, Lake Nakuru, Naivasha and Amboseli with game drives, boat rides and guided walks.",
       "brand": {

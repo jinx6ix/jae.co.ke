@@ -10,7 +10,7 @@ export const generateSafariSchema = () => {
         // 1. PRODUCT SCHEMA (Shows price, rating in search)
         {
           "@type": "Product",
-          "@id": "https://jaetravel.co.ke/safari/1-day-maasai-mara#product",
+          "@id": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara#product",
           "name": "1 Day Maasai Mara Safari from Nairobi",
           "description": "Full-day game drive in Maasai Mara National Reserve with expert guides. Includes transport, packed lunch, and Big Five wildlife viewing.",
           "brand": {
@@ -20,9 +20,9 @@ export const generateSafariSchema = () => {
           "sku": "JTE-1D-MM-001",
           "mpn": "MM-1D-2026",
           "image": [
-            "https://jaetravel.co.ke/hero.jpg",
-            "https://jaetravel.co.ke/gallery-1.jpg",
-            "https://jaetravel.co.ke/gallery-2.jpg"
+            "https://www.jaetravel.co.ke/hero.jpg",
+            "https://www.jaetravel.co.ke/gallery-1.jpg",
+            "https://www.jaetravel.co.ke/gallery-2.jpg"
           ],
           "offers": {
             "@type": "AggregateOffer",
@@ -33,7 +33,7 @@ export const generateSafariSchema = () => {
             "offerCount": 4,
             "validFrom": currentDate,
             "validThrough": validThrough.toISOString().split('T')[0],
-            "url": "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+            "url": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
             "priceValidUntil": "2026-12-31",
             "offers": [
               {
@@ -126,8 +126,8 @@ export const generateSafariSchema = () => {
           "provider": {
             "@type": "TourOperator",
             "name": "Jae Travel Expeditions",
-            "url": "https://jaetravel.co.ke",
-            "logo": "https://jaetravel.co.ke/logo.png",
+            "url": "https://www.jaetravel.co.ke",
+            "logo": "https://www.jaetravel.co.ke/logo.png",
             "sameAs": [
               "https://www.facebook.com/jaetravel",
               "https://www.instagram.com/jaetravel",
@@ -145,25 +145,25 @@ export const generateSafariSchema = () => {
         // 3. BREADCRUMB SCHEMA (Shows navigation path)
         {
           "@type": "BreadcrumbList",
-          "@id": "https://jaetravel.co.ke/safari/1-day-maasai-mara#breadcrumb",
+          "@id": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://jaetravel.co.ke"
+              "item": "https://www.jaetravel.co.ke"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Kenya Safari Packages",
-              "item": "https://jaetravel.co.ke/kenya-safari-packages"
+              "item": "https://www.jaetravel.co.ke/kenya-safari-packages"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "1 Day Maasai Mara Safari",
-              "item": "https://jaetravel.co.ke/safari/1-day-maasai-mara"
+              "item": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara"
             }
           ]
         },
@@ -171,7 +171,7 @@ export const generateSafariSchema = () => {
         // 4. FAQ SCHEMA (For featured snippets)
         {
           "@type": "FAQPage",
-          "@id": "https://jaetravel.co.ke/safari/1-day-maasai-mara#faq",
+          "@id": "#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -222,7 +222,7 @@ export const generateSafariSchema = () => {
           "name": "1 Day Maasai Mara Safari Experience",
           "description": "Watch what you'll experience on a 1-day safari to Maasai Mara from Nairobi",
           "thumbnailUrl": [
-            "https://jaetravel.co.ke/1-day-mara-thumb.jpg"
+            "https://www.jaetravel.co.ke/1-day-mara-thumb.jpg"
           ],
           "uploadDate": "2025-01-15",
           "duration": "PT2M30S",
@@ -238,29 +238,29 @@ export const generateSafariSchema = () => {
         // 6. WEBSITE SCHEMA
         {
           "@type": "WebPage",
-          "@id": "https://jaetravel.co.ke/safari/1-day-maasai-mara#webpage",
-          "url": "https://jaetravel.co.ke/safari/1-day-maasai-mara",
+          "@id": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara#webpage",
+          "url": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara",
           "name": "1 Day Maasai Mara Safari from Nairobi - Jae Travel",
           "description": "Book the best 1 day Maasai Mara safari from Nairobi. Full-day game drive, Big Five guaranteed, packed lunch included.",
           "datePublished": "2025-01-01",
           "dateModified": currentDate,
           "inLanguage": "en",
           "isPartOf": {
-            "@id": "https://jaetravel.co.ke/#website"
+            "@id": "https://www.jaetravel.co.ke/#website"
           },
           "primaryImageOfPage": {
-            "@id": "https://jaetravel.co.ke/hero.jpg"
+            "@id": "https://www.jaetravel.co.ke/hero.jpg"
           }
         },
   
         // 7. LOCAL BUSINESS SCHEMA
         {
           "@type": "TouristInformationCenter",
-          "@id": "https://jaetravel.co.ke/#organization",
+          "@id": "https://www.jaetravel.co.ke/#organization",
           "name": "Jae Travel Expeditions",
-          "url": "https://jaetravel.co.ke",
-          "logo": "https://jaetravel.co.ke/logo.png",
-          "image": "https://jaetravel.co.ke/company.jpg",
+          "url": "https://www.jaetravel.co.ke",
+          "logo": "https://www.jaetravel.co.ke/logo.png",
+          "image": "https://www.jaetravel.co.ke/company.jpg",
           "description": "Premier Kenya safari tour operator offering customized wildlife adventures",
           "address": {
             "@type": "PostalAddress",
@@ -310,7 +310,7 @@ export const generateSafariSchema = () => {
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock",
             "validFrom": currentDate,
-            "url": "https://jaetravel.co.ke/safari/1-day-maasai-mara"
+            "url": "https://www.jaetravel.co.ke/safari/1-day-maasai-mara"
           }
         }
       ]
