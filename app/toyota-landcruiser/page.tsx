@@ -47,12 +47,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
     alternates: {
       canonical: "https://www.jaetravel.co.ke/toyota-landcruiser",
       languages: {
-        'en': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',           // Main English/global
-        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // US
-        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // UK (optional)
-        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // Australia (optional)
-        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // Canada (optional)
-        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/toyota-landcruiser',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/toyota-landcruiser',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/toyota-landcruiser',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/toyota-landcruiser',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/toyota-landcruiser',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/toyota-landcruiser',   // Fallback
       },
     },
     other: {

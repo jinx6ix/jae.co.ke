@@ -14,9 +14,9 @@ import { faqSchema } from "./faq-schema"
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Toyota Prado Rental Kenya & Tanzania | Self-Drive Safari 4x4 | Jae Travel",
+    title: "Toyota Prado Rental | Self-Drive Safari 4x4 Kenya & Tanzania",
     description:
-      "Rent a Toyota Prado for self-drive safari in Kenya, Tanzania, Uganda & Rwanda. Fully equipped 4x4 with pop-up roof, GPS, and insurance. From $95/day. Book now!",
+      "Rent a Toyota Prado 4x4 for self-drive safaris in Kenya & Tanzania. Pop-up roof, GPS & insurance included. From $95/day.",
     keywords: [
       "Toyota Prado rental Kenya",
       "self drive safari Kenya",
@@ -46,14 +46,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/vehicles/toyota-prado-hero.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/vehicle-hire/toyota-prado",
+      canonical: "https://www.jaetravel.co.ke/toyota-prado",
       languages: {
-        'en': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',           // Main English/global
-        'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // US
-        'en-GB': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // UK (optional)
-        'en-AU': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // Australia (optional)
-        'en-CA': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',       // Canada (optional)
-        'x-default': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-prado',   // Fallback
+        'en': 'https://www.jaetravel.co.ke/toyota-prado',           // Main English/global
+        'en-US': 'https://www.jaetravel.co.ke/toyota-prado',       // US
+        'en-GB': 'https://www.jaetravel.co.ke/toyota-prado',       // UK (optional)
+        'en-AU': 'https://www.jaetravel.co.ke/toyota-prado',       // Australia (optional)
+        'en-CA': 'https://www.jaetravel.co.ke/toyota-prado',       // Canada (optional)
+        'x-default': 'https://www.jaetravel.co.ke/toyota-prado',   // Fallback
       },
     },
     other: {
