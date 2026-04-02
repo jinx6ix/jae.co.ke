@@ -41,14 +41,14 @@ export const generateMetadata = (): Metadata => ({
   },
 
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+    canonical: "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
     languages: {
-      en: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "en-US": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "en-GB": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "en-AU": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "en-CA": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
-      "x-default": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      en: "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
+      "en-US": "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
+      "en-GB": "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
+      "en-AU": "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
+      "en-CA": "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
+      "x-default": "https://www.jaetravel.co.ke/wheelchair-accessible-maasai-mara-migration",
     },
   },
 
