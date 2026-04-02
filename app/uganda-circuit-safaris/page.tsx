@@ -43,8 +43,9 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "uganda-circuit-safaris",
-  title: "Uganda Circuit Safaris 2026 | Gorillas, Chimps & Wildlife | Jae Travel Expeditions",
-  description: "Explore Uganda's premier safari circuit. Track mountain gorillas in Bwindi, chimpanzees in Kibale, and wildlife in Queen Elizabeth. Multi-park itineraries from 5-12 days. Expert guides, luxury lodges.",
+  title: "Uganda Circuit Safaris 2026 | Gorillas & Wildlife Tours",
+  description:
+    "Explore Uganda safaris: gorilla trekking in Bwindi, chimp tracking in Kibale & wildlife in Queen Elizabeth. 5–12 day guided tours.",
   h1: "Uganda Circuit",
   h1Sub: "Safaris 2026",
   subtitle: "The Pearl of Africa – Gorilla Trekking, Chimpanzee Tracking & Savanna Wildlife Across Uganda's Finest Parks",
