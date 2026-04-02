@@ -40,20 +40,83 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const { slug } = await params
   const tour = tours.find((t) => t.slug === slug)
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+  const MAX_TITLE_LENGTH = 78 // includes your auto brand suffix
+  const MAX_DESCRIPTION_LENGTH = 115
+
   if (!tour) {
     return {
       title: "Tour Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     }
   }
 
+  // ✅ TITLE CONTROL (important for your system)
+  let safeTitle = tour.metaTitle || tour.title
+
+  if (safeTitle.length > MAX_TITLE_LENGTH) {
+    safeTitle = safeTitle.slice(0, MAX_TITLE_LENGTH - 3) + "..."
+  }
+
+  // ✅ DESCRIPTION CONTROL
+  let safeDescription = tour.metaDescription || tour.description
+
+  if (safeDescription.length > MAX_DESCRIPTION_LENGTH) {
+    safeDescription = safeDescription.slice(0, MAX_DESCRIPTION_LENGTH - 3) + "..."
+  }
+
+  const imageUrl = tour.image?.startsWith("http")
+    ? tour.image
+    : `${baseUrl}${tour.image || `/placeholder.svg?key=tour-${tour.id}`}`
+
+  const url = `${baseUrl}/safari/${tour.slug}`
+
   return {
-    title: tour.metaTitle || tour.title,
-    description: tour.metaDescription || tour.description,
+    title: safeTitle,
+    description: safeDescription,
     keywords: tour.keywords,
+
     openGraph: {
-      title: tour.metaTitle || tour.title,
-      description: tour.metaDescription || tour.description,
-      images: [tour.image || `/placeholder.svg?key=tour-${tour.id}`],
+      title: safeTitle,
+      description: safeDescription,
+      url,
+      siteName: "JaeTravel Expeditions",
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: tour.title,
+        },
+      ],
+      locale: "en_KE",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: safeTitle,
+      description: safeDescription,
+      images: [imageUrl],
+      creator: "@jaetravel",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    alternates: {
+      canonical: url,
     },
   }
 }
