@@ -45,7 +45,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/WhatsApp Image 2025-10-14 at 21.13.25_75828e63.jpg"],
     },
     alternates: {
-      canonical: "https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser",
+      canonical: "https://www.jaetravel.co.ke/toyota-landcruiser",
       languages: {
         'en': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',           // Main English/global
         'en-US': 'https://www.jaetravel.co.ke/vehicle-hire/toyota-landcruiser',       // US
