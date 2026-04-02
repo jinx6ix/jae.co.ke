@@ -7,34 +7,65 @@ import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
 import JsonLd from "@/components/JsonLd"
 
 export const generateMetadata = (): Metadata => ({
-  title: "Maasai Mara Great Migration 2026 | #1 Wheelchair Accessible River Crossing Safari Kenya | JaeTravel Expeditions",
-  description: "JaeTravel Expeditions offers Kenya's premier wheelchair accessible Maasai Mara Great Migration 2026 safari experience. Witness dramatic Mara River crossings from custom adaptive safari vehicles with hydraulic lifts. Over 720 wheelchair users served since 2018. Book your accessible African safari adventure today.",
-  keywords: "maasai mara great migration, great migration masai mara 2026, wildebeest migration masai mara, wheelchair accessible safari kenya, accessible african safari, maasai mara river crossing, disability friendly safari kenya, great migration safari packages, masai mara accessible tours, kenya wheelchair travel, adaptive safari vehicles, hydraulic lift safari, accessible travel africa, maasai mara national reserve, serengeti migration cycle, nile crocodile attacks, accessible wildlife photography, kenya safari for disabled, JaeTravel Expeditions, accessible kenya safari, wheelchair friendly masai mara, disability travel africa",
+  // ✅ Keep under ~60–65 chars (brand added globally)
+  title: "Maasai Mara Great Migration Safari 2026 | Accessible",
+
+  description:
+    "Experience the 2026 Maasai Mara Great Migration with wheelchair-accessible 4x4 safaris. Witness Mara River crossings, expert guides, and adapted vehicles across Kenya.",
+
+  keywords: [
+    "maasai mara great migration 2026",
+    "great migration kenya safari",
+    "wheelchair accessible safari kenya",
+    "accessible african safari",
+    "mara river crossing safari",
+    "masai mara safari packages",
+    "adaptive safari vehicles",
+    "kenya accessible travel"
+  ].join(", "),
+
   openGraph: {
-    title: "Maasai Mara Great Migration 2026 | Fully Accessible Safari Kenya | JaeTravel Expeditions",
-    description: "JaeTravel Expeditions - Kenya's only wheelchair-accessible Great Migration safari operator. Custom Land Cruisers with hydraulic lifts, pop-up roofs, and medical equipment. Witness Mara River crossings from your wheelchair.",
-    images: [{ 
-      url: "https://www.jaetravelexpeditions.co.ke/masai-mara-migration.jpg", 
-      width: 1200, 
-      height: 630, 
-      alt: "JaeTravel Expeditions wheelchair accessible safari vehicle at 2026 Maasai Mara Great Migration river crossing with wildebeest herds" 
-    }]
+    title: "Maasai Mara Great Migration 2026 Safari",
+    description:
+      "Witness dramatic Mara River crossings on a fully accessible safari in Kenya with adapted 4x4 vehicles and expert guides.",
+    images: [
+      {
+        url: "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Maasai Mara Great Migration river crossing with wildebeest herds",
+      },
+    ],
+    type: "website",
+    siteName: "Jae Travel Expeditions",
   },
-  alternates: { 
-    canonical: "https://www.jaetravelexpeditions.co.ke/maasai-mara-great-migration",
+
+  alternates: {
+    canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/maasai-mara-great-migration',   // Fallback
+      en: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-US": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-GB": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-AU": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-CA": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "x-default": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
     },
-   },
-  robots: "index, follow, max-image-preview:large",
-  authors: [{ name: "JaeTravel Expeditions Accessibility Team" }],
-  publisher: "JaeTravel Expeditions ",
-  category: "Accessible Travel",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  authors: [{ name: "Jae Travel Expeditions" }],
+  publisher: "Jae Travel Expeditions",
+  category: "Travel",
 })
 
 const sections = [

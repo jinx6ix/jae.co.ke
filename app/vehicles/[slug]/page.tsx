@@ -393,73 +393,73 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const vehicle = vehicles[params.slug as keyof typeof vehicles]
-  
+
   if (!vehicle) {
     return {
-      title: "Accessible Safari Vehicle Not Found | Kenya's #1 Wheelchair Friendly Safari",
-      description: "Page not found for accessible Kenya safari vehicles. Browse our certified wheelchair accessible safari Land Cruisers and vans for Masai Mara, Amboseli, and more."
+      title: "Accessible Safari Vehicles Kenya",
+      description:
+        "Browse certified wheelchair-accessible safari vehicles in Kenya. Explore Land Cruisers, vans & adapted 4x4s for Masai Mara and beyond.",
     }
   }
 
   const keywords = [
-    "accessible Kenya safari",
     "wheelchair accessible safari Kenya",
+    "accessible safari vehicles Kenya",
     "disabled safari Kenya",
-    "mobility impaired safari Kenya",
-    "handicap accessible Kenya safari",
-    "wheelchair friendly safari Kenya",
+    "mobility safari Africa",
     "inclusive safari tours Kenya",
-    "adaptive safari Kenya",
-    "special needs safari Kenya",
-    "Kenya safari for people with disabilities",
-    "accessible masai mara tours",
-    "wheelchair travel kenya",
-    "kenya disability tours 2025",
-    "accessible african safari tours",
-    "wheelchair accessible land cruiser kenya",
-    "mobility safari equipment kenya",
-    "disabled friendly game drives",
-    "kenya accessible tourism",
-    "barrier free safari africa",
-    "special needs travel kenya"
+    "adaptive safari vehicles",
+    "accessible Land Cruiser Kenya",
+    "barrier free safari Africa",
+    "accessible Masai Mara tours",
+    "special needs safari Africa"
   ].join(", ")
 
   return {
-    title: `${vehicle.name} | Kenya's #1 Accessible Safari Operator 2025/2026`,
-    description: `${vehicle.description} Book your barrier-free Masai Mara safari with certified disability specialists. Medical equipment support, trained guides, guaranteed accessibility.`,
-    keywords: keywords,
+    // ✅ Keep short (brand added in layout)
+    title: `${vehicle.name} Accessible Safari Vehicle Kenya`,
+
+    // ✅ Strong CTR + global SEO
+    description: `${vehicle.description} Wheelchair-accessible 4x4 safari vehicles with trained guides, medical support, and guaranteed accessibility across Kenya & East Africa.`,
+
+    keywords,
+
     openGraph: {
-      title: `${vehicle.name} | Award-Winning Accessible Kenya Safari`,
-      description: vehicle.description,
+      title: `${vehicle.name} Accessible Safari Vehicle`,
+      description:
+        "Wheelchair-accessible safari vehicles in Kenya with expert guides and adapted 4x4 systems.",
       images: [vehicle.image],
       type: "website",
-      siteName: "JaeTravel Expeditions"
+      siteName: "Jae Travel Expeditions",
     },
+
     alternates: {
       canonical: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
       languages: {
-        'en': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,           // Main English/global
-        'en-US': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // US
-        'en-GB': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // UK (optional)
-        'en-AU': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // Australia (optional)
-        'en-CA': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,       // Canada (optional)
-        'x-default': `https://www.jaetravel.co.ke/vehicles/${params.slug}`,   // Fallback
+        en: `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+        "en-US": `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+        "en-GB": `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+        "en-AU": `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+        "en-CA": `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
+        "x-default": `https://www.jaetravel.co.ke/vehicles/${params.slug}`,
       },
     },
+
     robots: {
       index: true,
       follow: true,
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
+
     verification: {
-      google: 'KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg',
-    }
+      google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
+    },
   }
 }
 
