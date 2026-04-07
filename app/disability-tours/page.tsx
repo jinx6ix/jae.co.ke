@@ -21,6 +21,112 @@ import {
   Star,
   Clock,
   Map,
+  Truck,
+  BatteryCharging,
+  HandHelping,
+  Hotel,
+  TreePine,
+  Waves,
+  Mountain,
+  Sun,
+  Cloud,
+  Compass,
+  Camera,
+  Eye,
+  Mic,
+  BookOpen,
+  CalendarDays,
+  Gift,
+  Coffee,
+  UtensilsCrossed,
+  Wifi,
+  Wind,
+  Leaf,
+  PawPrint,
+  Bird,
+  Fish,
+  Flower2,
+  Sparkles,
+  Gem,
+  Crown,
+  Medal,
+  Trophy,
+  Target,
+  Zap,
+  DollarSign,
+  TicketCheck,
+  Building2,
+  Bus,
+  Plane,
+  GraduationCap,
+  Briefcase,
+  Luggage,
+  Package,
+  Beer,
+  Wine,
+  Cake,
+  Pizza,
+  Apple,
+  Carrot,
+  Salad,
+  IceCream,
+  Candy,
+  Cookie,
+  Drumstick,
+  Cherry,
+  Grape,
+  Orange,
+  Lemon,
+  Banana,
+  Watermelon,
+  Egg,
+  Milk,
+  Cheese,
+  Bread,
+  Croissant,
+  Flame,
+  Lightbulb,
+  Plug,
+  Fan,
+  Radio,
+  Tv,
+  Signal,
+  Satellite,
+  Navigation,
+  Route,
+  Flag,
+  Snowflake,
+  CloudRain,
+  CloudSun,
+  Moon,
+  CloudSnow,
+  Cloudy,
+  Fog,
+  Haze,
+  Rainbow,
+  Fire,
+  Droplet,
+  Flower,
+  Tree,
+  Bug,
+  Lock,
+  Key,
+  Fingerprint,
+  QrCode,
+  Barcode,
+  CreditCard,
+  Wallet,
+  Receipt,
+  FileText,
+  ClipboardList,
+  AlarmClock,
+  Timer,
+  Hourglass,
+  CalendarCheck,
+  CalendarX,
+  CalendarPlus,
+  CalendarMinus,
+  CalendarRange,
 } from "lucide-react"
 import JsonLd from "@/components/JsonLd"
 
@@ -53,6 +159,14 @@ export const metadata: Metadata = {
     "wheelchair accessible tours and safaris kenya",
     "disability tours in kenya 2026",
     "best wheelchair accessible safari kenya",
+    "accessible travel africa 2026",
+    "wheelchair friendly safari kenya",
+    "mobility impaired safari kenya",
+    "accessible game drives kenya",
+    "wheelchair accessible lodges masai mara",
+    "roll-in shower safari camps",
+    "gorilla trekking wheelchair rwanda",
+    "accessible wildlife viewing kenya",
   ],
   openGraph: {
     title:
@@ -318,10 +432,455 @@ const schema = {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// ITINERARIES DATA (example structure – replace with your real data if different)
+// ITINERARIES DATA
 // ──────────────────────────────────────────────────────────────────────────────
-// Itinerary data structure 
-const accessibleItineraries = [   {     id: 1,     name: "Masai Mara Express",     duration: "4 Days / 3 Nights",     route: "Nairobi → Masai Mara → Nairobi",     description: "Perfect for wheelchair users seeking a quick but comprehensive wildlife experience in Kenya's most famous reserve",     details: [       { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing at wheelchair-accessible hotel" },       { day: 2, location: "Masai Mara", description: "Full day game drives in wheelchair-adapted vehicle with hydraulic lift" },       { day: 3, location: "Masai Mara", description: "Morning and afternoon game drives, accessible cultural visit" },       { day: 4, location: "Nairobi", description: "Return transfer and departure" }     ],     highlights: ["Wheelchair-accessible game drives", "Barrier-free tented camp", "Great Migration viewing (seasonal)", "Accessible cultural experience"],     accessibility: ["Hydraulic lift vehicles", "Roll-in shower tents", "Wide pathways", "Adapted viewing areas"]   },   {     id: 2,     name: "Lakes & Mara Adventure",     duration: "5 Days / 4 Nights",     route: "Nairobi → Lake Nakuru → Masai Mara → Nairobi",     description: "Combining flamingo-filled lakes with the iconic Masai Mara for a diverse wheelchair-accessible safari",     details: [       { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible accommodation" },       { day: 2, location: "Lake Nakuru", description: "Transfer to Nakuru, afternoon wheelchair-accessible game drive" },       { day: 3, location: "Masai Mara", description: "Travel to Mara, evening game drive in adapted vehicle" },       { day: 4, location: "Masai Mara", description: "Full day of accessible wildlife viewing and photography" },       { day: 5, location: "Nairobi", description: "Return journey with lunch stop at accessible facility" }     ],     highlights: ["Flamingo watching at Lake Nakuru", "Rhino sanctuary visit", "Big Five safari experience", "Accessible photography opportunities"],     accessibility: ["Ramp access viewpoints", "Adapted vehicles throughout", "Accessible lodges", "Trained support staff"]   },   {     id: 3,     name: "Classic Kenya Circuit",     duration: "6 Days / 5 Nights",     route: "Nairobi → Lake Nakuru → Masai Mara → Lake Naivasha → Nairobi",     description: "The ultimate wheelchair-accessible Kenya safari covering top destinations with full accessibility",     details: [       { day: 1, location: "Nairobi", description: "Arrival and accessibility orientation" },       { day: 2, location: "Lake Nakuru", description: "Pink flamingo spectacle and rhino tracking" },       { day: 3, location: "Masai Mara", description: "Transfer to Mara, extensive game viewing" },       { day: 4, location: "Masai Mara", description: "Full day exploring the reserve in wheelchair-adapted vehicle" },       { day: 5, location: "Lake Naivasha", description: "Boat safari with wheelchair ramp access" },       { day: 6, location: "Nairobi", description: "Return to Nairobi for departure" }     ],     highlights: ["Lake Nakuru flamingos", "Masai Mara wildlife", "Lake Naivasha boat safari", "Multiple accessible accommodations"],     accessibility: ["Boat with wheelchair ramp", "Multiple adapted vehicles", "Variety of barrier-free lodges", "Comprehensive support"]   },   {     id: 4,     name: "Amboseli Kilimanjaro Views",     duration: "4 Days / 3 Nights",     route: "Nairobi → Amboseli → Nairobi",     description: "Elephant encounters with breathtaking views of Mount Kilimanjaro in fully accessible settings",     details: [       { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible hotel" },       { day: 2, location: "Amboseli", description: "Transfer to Amboseli, afternoon game drive with Kilimanjaro views" },       { day: 3, location: "Amboseli", description: "Full day elephant watching and photography from adapted vehicle" },       { day: 4, location: "Nairobi", description: "Morning game drive, return to Nairobi" }     ],     highlights: ["Mount Kilimanjaro views", "Large elephant herds", "Swamp observation points", "Big Five sightings"],     accessibility: ["Elevated viewing platforms", "Wheelchair-adapted swamp access", "Accessible lodge with ramps", "Specialized photography support"]   },   {     id: 5,     name: "Rift Valley Explorer",     duration: "5 Days / 4 Nights",     route: "Nairobi → Lake Naivasha → Amboseli → Nairobi",     description: "Combining Rift Valley lakes with Amboseli's elephants for a diverse accessible experience",     details: [       { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing" },       { day: 2, location: "Lake Naivasha", description: "Wheelchair-accessible boat safari and crescent island visit" },       { day: 3, location: "Amboseli", description: "Transfer to Amboseli, sunset game drive" },       { day: 4, location: "Amboseli", description: "Full day elephant conservation experience" },       { day: 5, location: "Nairobi", description: "Return journey with accessible lunch stop" }     ],     highlights: ["Lake Naivasha boat safari", "Amboseli elephants", "Kilimanjaro photography", "Rift Valley scenery"],     accessibility: ["Adapted boat with ramp", "Multiple wheelchair vehicles", "Barrier-free lodges", "Trained guides"]   } ]
+const accessibleItineraries = [
+  {
+    id: 1,
+    name: "Masai Mara Express",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi → Masai Mara → Nairobi",
+    description:
+      "Perfect for wheelchair users seeking a quick but comprehensive wildlife experience in Kenya's most famous reserve",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing at wheelchair-accessible hotel" },
+      { day: 2, location: "Masai Mara", description: "Full day game drives in wheelchair-adapted vehicle with hydraulic lift" },
+      { day: 3, location: "Masai Mara", description: "Morning and afternoon game drives, accessible cultural visit" },
+      { day: 4, location: "Nairobi", description: "Return transfer and departure" },
+    ],
+    highlights: [
+      "Wheelchair-accessible game drives",
+      "Barrier-free tented camp",
+      "Great Migration viewing (seasonal)",
+      "Accessible cultural experience",
+    ],
+    accessibility: [
+      "Hydraulic lift vehicles",
+      "Roll-in shower tents",
+      "Wide pathways",
+      "Adapted viewing areas",
+    ],
+  },
+  {
+    id: 2,
+    name: "Lakes & Mara Adventure",
+    duration: "5 Days / 4 Nights",
+    route: "Nairobi → Lake Nakuru → Masai Mara → Nairobi",
+    description:
+      "Combining flamingo-filled lakes with the iconic Masai Mara for a diverse wheelchair-accessible safari",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible accommodation" },
+      { day: 2, location: "Lake Nakuru", description: "Transfer to Nakuru, afternoon wheelchair-accessible game drive" },
+      { day: 3, location: "Masai Mara", description: "Travel to Mara, evening game drive in adapted vehicle" },
+      { day: 4, location: "Masai Mara", description: "Full day of accessible wildlife viewing and photography" },
+      { day: 5, location: "Nairobi", description: "Return journey with lunch stop at accessible facility" },
+    ],
+    highlights: [
+      "Flamingo watching at Lake Nakuru",
+      "Rhino sanctuary visit",
+      "Big Five safari experience",
+      "Accessible photography opportunities",
+    ],
+    accessibility: [
+      "Ramp access viewpoints",
+      "Adapted vehicles throughout",
+      "Accessible lodges",
+      "Trained support staff",
+    ],
+  },
+  {
+    id: 3,
+    name: "Classic Kenya Circuit",
+    duration: "6 Days / 5 Nights",
+    route: "Nairobi → Lake Nakuru → Masai Mara → Lake Naivasha → Nairobi",
+    description:
+      "The ultimate wheelchair-accessible Kenya safari covering top destinations with full accessibility",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility orientation" },
+      { day: 2, location: "Lake Nakuru", description: "Pink flamingo spectacle and rhino tracking" },
+      { day: 3, location: "Masai Mara", description: "Transfer to Mara, extensive game viewing" },
+      { day: 4, location: "Masai Mara", description: "Full day exploring the reserve in wheelchair-adapted vehicle" },
+      { day: 5, location: "Lake Naivasha", description: "Boat safari with wheelchair ramp access" },
+      { day: 6, location: "Nairobi", description: "Return to Nairobi for departure" },
+    ],
+    highlights: [
+      "Lake Nakuru flamingos",
+      "Masai Mara wildlife",
+      "Lake Naivasha boat safari",
+      "Multiple accessible accommodations",
+    ],
+    accessibility: [
+      "Boat with wheelchair ramp",
+      "Multiple adapted vehicles",
+      "Variety of barrier-free lodges",
+      "Comprehensive support",
+    ],
+  },
+  {
+    id: 4,
+    name: "Amboseli Kilimanjaro Views",
+    duration: "4 Days / 3 Nights",
+    route: "Nairobi → Amboseli → Nairobi",
+    description:
+      "Elephant encounters with breathtaking views of Mount Kilimanjaro in fully accessible settings",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and overnight at accessible hotel" },
+      { day: 2, location: "Amboseli", description: "Transfer to Amboseli, afternoon game drive with Kilimanjaro views" },
+      { day: 3, location: "Amboseli", description: "Full day elephant watching and photography from adapted vehicle" },
+      { day: 4, location: "Nairobi", description: "Morning game drive, return to Nairobi" },
+    ],
+    highlights: [
+      "Mount Kilimanjaro views",
+      "Large elephant herds",
+      "Swamp observation points",
+      "Big Five sightings",
+    ],
+    accessibility: [
+      "Elevated viewing platforms",
+      "Wheelchair-adapted swamp access",
+      "Accessible lodge with ramps",
+      "Specialized photography support",
+    ],
+  },
+  {
+    id: 5,
+    name: "Rift Valley Explorer",
+    duration: "5 Days / 4 Nights",
+    route: "Nairobi → Lake Naivasha → Amboseli → Nairobi",
+    description:
+      "Combining Rift Valley lakes with Amboseli's elephants for a diverse accessible experience",
+    details: [
+      { day: 1, location: "Nairobi", description: "Arrival and accessibility briefing" },
+      { day: 2, location: "Lake Naivasha", description: "Wheelchair-accessible boat safari and crescent island visit" },
+      { day: 3, location: "Amboseli", description: "Transfer to Amboseli, sunset game drive" },
+      { day: 4, location: "Amboseli", description: "Full day elephant conservation experience" },
+      { day: 5, location: "Nairobi", description: "Return journey with accessible lunch stop" },
+    ],
+    highlights: [
+      "Lake Naivasha boat safari",
+      "Amboseli elephants",
+      "Kilimanjaro photography",
+      "Rift Valley scenery",
+    ],
+    accessibility: [
+      "Adapted boat with ramp",
+      "Multiple wheelchair vehicles",
+      "Barrier-free lodges",
+      "Trained guides",
+    ],
+  },
+]
+
+// ──────────────────────────────────────────────────────────────────────────────
+// ACCESSIBILITY FEATURES DATA (groups of 3)
+// ──────────────────────────────────────────────────────────────────────────────
+const accessibilityFeatures = [
+  {
+    icon: <Truck className="h-8 w-8 text-green-600" />,
+    title: "German Hydraulic Lift Vehicles",
+    description:
+      "400kg capacity lifts that allow you to remain in your own wheelchair throughout the entire game drive.",
+    longDescription:
+      "Our custom-built 4x4 Land Cruisers feature state-of-the-art German hydraulic lifts with a 400kg weight capacity. You drive your wheelchair directly onto the platform and are secured in place with medical-grade restraints.",
+  },
+  {
+    icon: <Shield className="h-8 w-8 text-green-600" />,
+    title: "Medical-Grade Securement Systems",
+    description:
+      "Four-point ISO-certified restraints keep your wheelchair rock-solid during game drives across rough African terrain.",
+    longDescription:
+      "Unlike basic straps offered by other operators, our vehicles are equipped with professional medical-grade securement systems tested to ISO standards.",
+  },
+  {
+    icon: <Hotel className="h-8 w-8 text-green-600" />,
+    title: "Fully Audited Barrier-Free Lodges",
+    description:
+      "Every partner lodge has roll-in showers, grab bars, ramps, widened doors, and trained staff.",
+    longDescription:
+      "We personally audit every lodge and camp we partner with. Our accessibility checklist includes roll-in showers with benches, grab bars, widened doorways, ramps, lowered beds, and staff trained in disability awareness.",
+  },
+  {
+    icon: <HandHelping className="h-8 w-8 text-green-600" />,
+    title: "Disability-Trained Safari Guides",
+    description:
+      "Our guides are certified in mobility assistance, emergency protocols, and disability awareness.",
+    longDescription:
+      "All JaeTravel guides complete specialized training on manual wheelchair handling, transfer techniques, emergency evacuation procedures for wheelchair users, and sensitivity training.",
+  },
+  {
+    icon: <BatteryCharging className="h-8 w-8 text-green-600" />,
+    title: "Power Wheelchair Charging",
+    description:
+      "All our vehicles and lodges have charging stations for power wheelchairs and mobility scooters.",
+    longDescription:
+      "Every JaeTravel safari vehicle is equipped with standard power outlets, and all our partner lodges have designated charging areas in accessible rooms.",
+  },
+  {
+    icon: <TicketCheck className="h-8 w-8 text-green-600" />,
+    title: "Special Access Permits",
+    description:
+      "We arrange all special permits for accessible gorilla trekking, reduced mobility game drives, and priority park entry.",
+    longDescription:
+      "For gorilla trekking, we arrange special permits that include sedan chair carriers and shorter trekking routes. For national parks, we secure priority entry and accessible viewing points.",
+  },
+]
+
+// ──────────────────────────────────────────────────────────────────────────────
+// DESTINATION DEEP DIVE DATA (groups of 3)
+// ──────────────────────────────────────────────────────────────────────────────
+const destinationDeepDive = [
+  {
+    icon: <TreePine className="h-8 w-8 text-amber-700" />,
+    name: "Masai Mara National Reserve",
+    region: "Southwest Kenya",
+    accessibility: "★★★★★",
+    description:
+      "Home to the Great Migration and year-round Big Five viewing. Our hydraulic lift vehicles navigate all terrain types.",
+    accessibleFeatures: [
+      "Hydraulic lift vehicles for all game drives",
+      "Accessible river crossing viewing platforms",
+      "Barrier-free tented camps inside the reserve",
+      "Trained guides for mobility assistance",
+    ],
+    bestTime: "June–October (Migration) | December–February (Calving)",
+    wildlife: "Lions, leopards, elephants, buffalo, rhinos, cheetahs, hyenas, wildebeest, zebras, giraffes",
+  },
+  {
+    icon: <Mountain className="h-8 w-8 text-amber-700" />,
+    name: "Amboseli National Park",
+    region: "Southeast Kenya",
+    accessibility: "★★★★☆",
+    description:
+      "Famous for large elephant herds with Mount Kilimanjaro as backdrop. Accessible observation platforms at swamps.",
+    accessibleFeatures: [
+      "Elevated accessible viewing platforms at swamps",
+      "Wheelchair-friendly lodge with ramp access",
+      "Adapted vehicles for park game drives",
+      "Easy terrain for manual wheelchairs",
+    ],
+    bestTime: "June–October | January–February",
+    wildlife: "Elephants (largest herds in Kenya), lions, cheetahs, spotted hyenas, giraffes, zebras, wildebeest",
+  },
+  {
+    icon: <Waves className="h-8 w-8 text-amber-700" />,
+    name: "Lake Nakuru National Park",
+    region: "Central Kenya",
+    accessibility: "★★★★☆",
+    description:
+      "Known for millions of flamingos and rhino sanctuary. Accessible viewpoints along the lake shore.",
+    accessibleFeatures: [
+      "Accessible flamingo viewing points",
+      "Rhino sanctuary with wheelchair-accessible trails",
+      "Adapted vehicles for game drives",
+      "Accessible picnic sites with lake views",
+    ],
+    bestTime: "Year-round (flamingo numbers vary)",
+    wildlife: "Flamingos, pelicans, rhinos (black & white), lions, leopards, giraffes, buffalo",
+  },
+  {
+    icon: <Sun className="h-8 w-8 text-amber-700" />,
+    name: "Tsavo East & West",
+    region: "Southeast Kenya",
+    accessibility: "★★★★☆",
+    description:
+      "Vast wilderness known for red elephants and lava flows. Good road networks for accessible safaris.",
+    accessibleFeatures: [
+      "Well-maintained roads suitable for wheelchair vehicles",
+      "Accessible lodges with roll-in showers",
+      "Red elephant viewing from adapted vehicles",
+      "Mzima Springs underwater hippo viewing (ramp access)",
+    ],
+    bestTime: "June–October | January–February",
+    wildlife: "Red elephants, lions, leopards, giraffes, zebras, hippos, crocodiles, over 500 bird species",
+  },
+  {
+    icon: <Compass className="h-8 w-8 text-amber-700" />,
+    name: "Samburu & Shaba",
+    region: "Northern Kenya",
+    accessibility: "★★★☆☆",
+    description:
+      "Unique northern species including reticulated giraffes and Grevy's zebras. Smaller crowds for accessible safaris.",
+    accessibleFeatures: [
+      "Specialized northern species viewing",
+      "Accessible lodges with ramp access",
+      "Adapted vehicles for river crossing viewing",
+      "Quiet reserves for relaxed pacing",
+    ],
+    bestTime: "June–October | December–March",
+    wildlife: "Reticulated giraffes, Grevy's zebras, Somali ostriches, gerenuk, oryx, elephants, lions",
+  },
+  {
+    icon: <Map className="h-8 w-8 text-amber-700" />,
+    name: "Lake Naivasha & Hell's Gate",
+    region: "Central Kenya",
+    accessibility: "★★★★☆",
+    description:
+      "Boat safaris with wheelchair ramps and accessible walking trails. Easy drive from Nairobi.",
+    accessibleFeatures: [
+      "Wheelchair-accessible boat safari with ramp",
+      "Flat walking trails at Hell's Gate (manual wheelchair friendly)",
+      "Accessible lodges and camps",
+      "Day trip friendly from Nairobi",
+    ],
+    bestTime: "Year-round",
+    wildlife: "Hippos, giraffes, zebras, antelopes, over 400 bird species including fish eagles",
+  },
+]
+
+// ──────────────────────────────────────────────────────────────────────────────
+// SEASONAL GUIDE DATA (groups of 3)
+// ──────────────────────────────────────────────────────────────────────────────
+const seasonalGuide = [
+  {
+    icon: <Sun className="h-8 w-8 text-yellow-600" />,
+    season: "Dry Season",
+    months: "June – October",
+    accessibility: "★★★★★ Best for Wheelchair Users",
+    description:
+      "Dust roads are firm and easy to navigate. Wildlife concentrates around water sources, making game viewing easier.",
+    pros: [
+      "Firm, stable roads – easier for vehicle navigation",
+      "Wildlife concentrated at waterholes – shorter distances",
+      "River crossings for Great Migration (July-October)",
+      "Ideal for photography",
+    ],
+    cons: [
+      "Higher demand – book 6+ months in advance",
+      "Higher prices for accommodations",
+      "Dust can be an issue for respiratory conditions",
+    ],
+    packingTips: "Sunscreen, hat, light clothing, dust mask, binoculars, camera with zoom lens",
+  },
+  {
+    icon: <CloudRain className="h-8 w-8 text-blue-600" />,
+    season: "Green Season",
+    months: "November – December & March – May",
+    accessibility: "★★★★☆ Good",
+    description:
+      "Lush landscapes, baby animals, and fewer crowds. Roads remain accessible with our 4x4 vehicles.",
+    pros: [
+      "Lower prices and fewer tourists",
+      "Lush green landscapes for photography",
+      "Baby animals and birthing season (Jan-Feb)",
+      "Easier to book last-minute",
+    ],
+    cons: [
+      "Occasional muddy spots on roads",
+      "Some wildlife spreads out due to abundant water",
+      "Humidity higher in coastal areas",
+    ],
+    packingTips: "Light rain jacket, waterproof bag for electronics, insect repellent, light layers",
+  },
+  {
+    icon: <Flower2 className="h-8 w-8 text-purple-600" />,
+    season: "Shoulder Months",
+    months: "January – February & June",
+    accessibility: "★★★★☆ Very Good",
+    description:
+      "Sweet spot between seasons: good weather, fewer crowds, and excellent wildlife viewing.",
+    pros: [
+      "Calving season in January-February",
+      "Migration preparation in June",
+      "Moderate prices and availability",
+      "Excellent weather conditions",
+    ],
+    cons: [
+      "Can be windy in February",
+      "Some camps close for maintenance in November",
+    ],
+    packingTips: "Layers for morning/evening chill, sun protection, comfortable safari clothing",
+  },
+]
+
+// ──────────────────────────────────────────────────────────────────────────────
+// DISABILITY ACCOMMODATIONS DATA (groups of 3)
+// ──────────────────────────────────────────────────────────────────────────────
+const disabilityAccommodations = [
+  {
+    icon: <Accessibility className="h-8 w-8 text-blue-600" />,
+    title: "Wheelchair Users",
+    description:
+      "Full-time and part-time wheelchair users are our specialty. Hydraulic lifts, securement systems, and barrier-free lodges.",
+    features: [
+      "400kg hydraulic lift vehicles",
+      "Medical-grade securement systems",
+      "Roll-in showers with benches",
+      "Widened doorways (32+ inches)",
+      "Ramps at all lodge entrances",
+      "Accessible game viewing platforms",
+    ],
+  },
+  {
+    icon: <Users className="h-8 w-8 text-blue-600" />,
+    title: "Limited Mobility",
+    description:
+      "For those who can walk short distances but need assistance with longer walks or stairs.",
+    features: [
+      "Step-free vehicle entry with lift",
+      "Priority seating near vehicle door",
+      "Walkers and canes accommodated",
+      "Reduced walking itineraries",
+      "Accessible bathrooms at stops",
+      "Rest breaks as needed",
+    ],
+  },
+  {
+    icon: <Eye className="h-8 w-8 text-blue-600" />,
+    title: "Visual Impairments",
+    description:
+      "Safari is an incredible sensory experience for blind and low-vision travelers.",
+    features: [
+      "Audio descriptions of wildlife",
+      "Touch opportunities (with safety protocols)",
+      "Scent and sound awareness guidance",
+      "Guide dogs welcome",
+      "Braille materials available",
+      "Verbal navigation assistance",
+    ],
+  },
+  {
+    icon: <Mic className="h-8 w-8 text-blue-600" />,
+    title: "Hearing Impairments",
+    description:
+      "We ensure full communication access for Deaf and hard of hearing travelers.",
+    features: [
+      "Sign language interpreters available",
+      "Written materials for all information",
+      "Visual alerts for important announcements",
+      "Captioning on any video content",
+      "Assistive listening devices",
+      "Text-based communication options",
+    ],
+  },
+  {
+    icon: <Heart className="h-8 w-8 text-blue-600" />,
+    title: "Cognitive & Neurodivergent",
+    description:
+      "Safaris can be adapted for travelers with autism, dementia, or other cognitive conditions.",
+    features: [
+      "Flexible, sensory-friendly pacing",
+      "Quiet vehicle options",
+      "Routine-based itineraries",
+      "Visual schedules available",
+      "Reduced stimulation game drives",
+      "Supportive, patient guides",
+    ],
+  },
+  {
+    icon: <Shield className="h-8 w-8 text-blue-600" />,
+    title: "Medical Conditions",
+    description:
+      "Travelers with diabetes, respiratory conditions, or other medical needs are fully supported.",
+    features: [
+      "Onboard medical kits",
+      "Refrigeration for medications",
+      "Satellite phones for emergencies",
+      "Flying doctor evacuation coverage",
+      "Dietary accommodations",
+      "Oxygen available on request",
+    ],
+  },
+]
 
 // ──────────────────────────────────────────────────────────────────────────────
 // MAIN PAGE COMPONENT
@@ -329,12 +888,9 @@ const accessibleItineraries = [   {     id: 1,     name: "Masai Mara Express",  
 export default function DisabilityToursPage() {
   return (
     <div className="pb-16">
-      <JsonLd 
-        id="page-structured-data" 
-        data={schema} 
-      />
+      <JsonLd id="page-structured-data" data={schema} />
 
-      {/* HERO */}
+      {/* ========== HERO SECTION ========== */}
       <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -343,6 +899,7 @@ export default function DisabilityToursPage() {
             fill
             className="object-cover brightness-50"
             priority
+            quality={90}
           />
         </div>
 
@@ -355,12 +912,14 @@ export default function DisabilityToursPage() {
             Wheelchair Accessible Safari Kenya 2026 – Inclusive Adventures for All
           </h1>
 
-          <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90 text-pretty">
-            Kenya's #1 operator for <strong>wheelchair accessible safari Kenya</strong> and{" "}
-            <strong>wheelchair accessible tours in Kenya</strong>. German hydraulic lift 4x4
-            vehicles, barrier-free lodges, Masai Mara Great Migration 2026 dates, and gorilla
-            trekking Rwanda.
-          </p>
+          <div className="max-w-5xl mx-auto pl-70">
+            <p className="mb-8 text-xl leading-relaxed text-white/90 text-pretty">
+              Kenya's #1 operator for <strong>wheelchair accessible safari Kenya</strong> and{" "}
+              <strong>wheelchair accessible tours in Kenya</strong>. German hydraulic lift 4x4
+              vehicles, barrier-free lodges, Masai Mara Great Migration 2026 dates, and gorilla
+              trekking Rwanda.
+            </p>
+          </div>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="min-w-[220px] text-lg">
@@ -378,13 +937,58 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* ADVANCED FLEET */}
+      {/* ========== INTRODUCTION SECTION ========== */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-8 md:grid-cols-2 items-center">
+            <div>
+              <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
+                Inclusive Wheelchair Accessible Safaris – Redefining Adventure in Kenya 2026
+              </h2>
+              <div className="space-y-4 pl-2">
+                <div>
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    At Jae Travel, we believe <strong>disability should never limit discovery</strong>.
+                    Our <strong>wheelchair accessible safari Kenya</strong> programs are designed for
+                    travelers using wheelchairs, those with limited mobility, and special needs
+                    families.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    Custom-built vehicles with hydraulic lifts,{" "}
+                    <strong>barrier-free lodges</strong>, and disability-trained guides make every{" "}
+                    <strong>wheelchair accessible tour in Kenya</strong> seamless and unforgettable.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    From the Great Migration viewed from your wheelchair to gorilla encounters in
+                    Rwanda – we make it possible.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-96 overflow-hidden rounded-xl shadow-xl">
+              <Image
+                src="/1d4b068a-3c99-4055-8496-78e638eb1011.jpg"
+                alt="Group enjoying wheelchair accessible safari game drive in Kenya with adapted vehicle"
+                fill
+                className="object-cover"
+                quality={90}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== ADVANCED FLEET SECTION ========== */}
       <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             Kenya's Most Advanced Wheelchair Accessible Safari Vehicles 2026
           </h2>
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="max-w-5xl mx-auto text-center mb-12 pl-70">
             <p className="text-lg text-muted-foreground">
               German hydraulic lifts with 400kg capacity – the only fleet built exclusively for
               full-time wheelchair users on <strong>wheelchair accessible safari Kenya</strong>.
@@ -399,6 +1003,7 @@ export default function DisabilityToursPage() {
                 width={400}
                 height={300}
                 className="w-full rounded-lg mb-6"
+                quality={90}
               />
               <h3 className="font-semibold text-xl mb-3">German Hydraulic Lift System</h3>
               <p className="text-muted-foreground">
@@ -413,6 +1018,7 @@ export default function DisabilityToursPage() {
                 width={400}
                 height={300}
                 className="w-full rounded-lg mb-6"
+                quality={90}
               />
               <h3 className="font-semibold text-xl mb-3">Four-Point Medical-Grade Securement</h3>
               <p className="text-muted-foreground">
@@ -427,6 +1033,7 @@ export default function DisabilityToursPage() {
                 width={400}
                 height={300}
                 className="w-full rounded-lg mb-6"
+                quality={90}
               />
               <h3 className="font-semibold text-xl mb-3">Panoramic & Spacious Interior</h3>
               <p className="text-muted-foreground">
@@ -442,6 +1049,7 @@ export default function DisabilityToursPage() {
                 width={400}
                 height={300}
                 className="w-full rounded-lg mb-6"
+                quality={90}
               />
               <h3 className="font-semibold text-xl mb-3">Onboard Medical & Safety Kit</h3>
               <p className="text-muted-foreground">
@@ -452,13 +1060,13 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* COMPARISON TABLE */}
+      {/* ========== COMPARISON TABLE with pl-60 ========== */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             Why Travelers Choose JaeTravel for Wheelchair Accessible Safari Kenya
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto">
+          <div className="max-w-5xl mx-auto overflow-x-auto pl-60">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -505,13 +1113,13 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* 2026 DATES TABLE */}
+      {/* ========== 2026 DATES TABLE with pl-60 ========== */}
       <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             2026 Wheelchair Accessible Safari Kenya Dates – Masai Mara & Gorilla Trekking
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto">
+          <div className="max-w-5xl mx-auto overflow-x-auto pl-60">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -548,18 +1156,58 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* ITINERARIES */}
+      {/* ========== ACCESSIBILITY FEATURES (groups of 3) ========== */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              Comprehensive Accessibility Features for Your Safari
+            </h2>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Every aspect of your <strong>wheelchair accessible safari Kenya</strong> is designed
+                with your needs in mind – from vehicles to lodges to guides.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {accessibilityFeatures.map((feature, index) => (
+              <Card key={index} className="border-2 hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-50">
+                    {feature.icon}
+                  </div>
+                  <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{feature.description}</p>
+                  <details className="mt-2">
+                    <summary className="text-sm text-primary cursor-pointer hover:underline">
+                      Learn more
+                    </summary>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {feature.longDescription}
+                    </p>
+                  </details>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== ITINERARIES SECTION ========== */}
       <section id="itineraries" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Wheelchair Accessible Safari Itineraries Kenya 2026
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Every itinerary includes <strong>wheelchair accessible safari vehicles</strong>,
-              barrier-free camps, and trained support staff for{" "}
-              <strong>disability tours in Kenya</strong>.
-            </p>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Every itinerary includes <strong>wheelchair accessible safari vehicles</strong>,
+                barrier-free camps, and trained support staff for{" "}
+                <strong>disability tours in Kenya</strong>.
+              </p>
+            </div>
           </div>
 
           <div className="space-y-8">
@@ -582,7 +1230,7 @@ export default function DisabilityToursPage() {
                           {itinerary.route}
                         </div>
                       </div>
-                      <p className="text-muted-foreground mb-4">{itinerary.description}</p>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">{itinerary.description}</p>
 
                       <div className="grid gap-4 sm:grid-cols-2 mb-4">
                         <div>
@@ -645,10 +1293,12 @@ export default function DisabilityToursPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="mb-4 text-muted-foreground">
-              Don't see your perfect <strong>wheelchair accessible safari</strong> itinerary? We
-              specialize in custom routes designed specifically for your accessibility needs.
-            </p>
+            <div className="max-w-3xl mx-auto pl-70 mb-6">
+              <p className="text-muted-foreground leading-relaxed">
+                Don't see your perfect <strong>wheelchair accessible safari</strong> itinerary? We
+                specialize in custom routes designed specifically for your accessibility needs.
+              </p>
+            </div>
             <Button asChild size="lg">
               <Link href="/contact">Design Your Custom Accessible Safari</Link>
             </Button>
@@ -656,53 +1306,19 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* INTRODUCTION */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            <div>
-              <h2 className="mb-4 font-serif text-3xl font-bold text-balance">
-                Inclusive Wheelchair Accessible Safaris – Redefining Adventure in Kenya 2026
-              </h2>
-              <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-                At Jae Travel, we believe <strong>disability should never limit discovery</strong>.
-                Our <strong>wheelchair accessible safari Kenya</strong> programs are designed for
-                travelers using wheelchairs, those with limited mobility, and special needs
-                families.
-              </p>
-              <p className="mb-4 leading-relaxed text-muted-foreground">
-                Custom-built vehicles with hydraulic lifts,{" "}
-                <strong>barrier-free lodges</strong>, and disability-trained guides make every{" "}
-                <strong>wheelchair accessible tour in Kenya</strong> seamless and unforgettable.
-              </p>
-              <p className="leading-relaxed text-muted-foreground">
-                From the Great Migration viewed from your wheelchair to gorilla encounters in
-                Rwanda – we make it possible.
-              </p>
-            </div>
-            <div className="relative h-96 overflow-hidden rounded-xl shadow-xl">
-              <Image
-                src="/accessible-safari-wheelchair.jpg"
-                alt="Group enjoying wheelchair accessible safari game drive in Kenya with adapted vehicle"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
+      {/* ========== WHY CHOOSE US (groups of 3) ========== */}
       <section className="border-b border-border bg-muted/30 py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Why Choose Jae Travel for Your Wheelchair Accessible Safari
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              We don't just accommodate disabilities – we specialize in creating exceptional{" "}
-              <strong>wheelchair accessible safari</strong> experiences.
-            </p>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We don't just accommodate disabilities – we specialize in creating exceptional{" "}
+                <strong>wheelchair accessible safari</strong> experiences.
+              </p>
+            </div>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -752,16 +1368,173 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* WHAT'S INCLUDED */}
-      <section className="py-16">
+      {/* ========== DESTINATION DEEP DIVE (groups of 3) ========== */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              Wheelchair Accessible Safari Destinations in East Africa
+            </h2>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Explore our top destinations for <strong>wheelchair accessible tours in Kenya</strong>{" "}
+                and beyond – each vetted for accessibility features and wildlife experiences.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {destinationDeepDive.map((dest, index) => (
+              <Card key={index} className="border-2 hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="mb-3 text-primary">{dest.icon}</div>
+                  <h3 className="mb-1 text-xl font-semibold">{dest.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-2">{dest.region}</p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-sm font-medium">Accessibility:</span>
+                    <span className="text-yellow-500 text-sm">{dest.accessibility}</span>
+                  </div>
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{dest.description}</p>
+                  <details className="mt-2">
+                    <summary className="text-sm text-primary cursor-pointer hover:underline">
+                      Accessibility features & wildlife
+                    </summary>
+                    <div className="mt-3 space-y-2">
+                      <p className="text-sm font-semibold">Accessible Features:</p>
+                      <ul className="space-y-1 mb-3">
+                        {dest.accessibleFeatures.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2 text-xs">
+                            <Check className="h-3 w-3 text-green-600" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm font-semibold">Best Time:</p>
+                      <p className="text-xs text-muted-foreground mb-2">{dest.bestTime}</p>
+                      <p className="text-sm font-semibold">Wildlife:</p>
+                      <p className="text-xs text-muted-foreground">{dest.wildlife}</p>
+                    </div>
+                  </details>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SEASONAL ACCESSIBILITY GUIDE (groups of 3) ========== */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              When to Go: Seasonal Guide for Wheelchair Accessible Safaris
+            </h2>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Understanding Kenya's seasons helps you plan the perfect{" "}
+                <strong>wheelchair accessible safari Kenya 2026</strong> experience.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {seasonalGuide.map((season, index) => (
+              <Card key={index} className="border-2">
+                <CardContent className="p-6">
+                  <div className="mb-3 flex items-center gap-2">
+                    {season.icon}
+                    <h3 className="text-xl font-bold">{season.season}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-1">{season.months}</p>
+                  <p className="text-sm font-semibold text-green-600 mb-3">{season.accessibility}</p>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{season.description}</p>
+                  <details className="mt-2">
+                    <summary className="text-sm text-primary cursor-pointer hover:underline">
+                      Pros, cons & packing tips
+                    </summary>
+                    <div className="mt-3">
+                      <p className="text-sm font-semibold">Pros:</p>
+                      <ul className="space-y-1 mb-3">
+                        {season.pros.map((pro, i) => (
+                          <li key={i} className="flex items-center gap-2 text-xs">
+                            <Check className="h-3 w-3 text-green-600" />
+                            {pro}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm font-semibold">Cons:</p>
+                      <ul className="space-y-1 mb-3">
+                        {season.cons.map((con, i) => (
+                          <li key={i} className="flex items-center gap-2 text-xs">
+                            <span className="text-red-500">—</span>
+                            {con}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm font-semibold">Packing Tips:</p>
+                      <p className="text-xs text-muted-foreground">{season.packingTips}</p>
+                    </div>
+                  </details>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== ACCESSIBILITY BY DISABILITY TYPE (groups of 3) ========== */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+              Accessibility Features by Disability Type
+            </h2>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Every traveler is unique. We tailor your <strong>wheelchair accessible safari Kenya</strong>{" "}
+                to your specific needs and preferences.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {disabilityAccommodations.map((item, index) => (
+              <Card key={index} className="border-2">
+                <CardContent className="p-6">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-50">
+                    {item.icon}
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{item.description}</p>
+                  <details className="mt-2">
+                    <summary className="text-sm text-primary cursor-pointer hover:underline">
+                      View accommodations
+                    </summary>
+                    <ul className="mt-3 space-y-1">
+                      {item.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs">
+                          <Check className="h-3 w-3 text-green-600" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== WHAT'S INCLUDED (split into groups of 3) ========== */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               What's Included in Every Wheelchair Accessible Safari
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              From arrival to departure – everything is covered with wheelchair accessibility at the core.
-            </p>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                From arrival to departure – everything is covered with wheelchair accessibility at the core.
+              </p>
+            </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -789,64 +1562,18 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* DESTINATION HIGHLIGHTS */}
-      <section className="bg-muted/30 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Wheelchair Accessible Safari Destinations in East Africa
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                name: "Masai Mara, Kenya",
-                icon: <MapPin className="h-6 w-6" />,
-                desc: "World-famous Great Migration. Hydraulic lift vehicles and barrier-free camps.",
-                link: "/tours/accessible-masai-mara-safari",
-              },
-              {
-                name: "Serengeti & Ngorongoro, Tanzania",
-                icon: <MapPin className="h-6 w-6" />,
-                desc: "Follow the migration in adapted vehicles. Accessible tented camps.",
-                link: "/tours/tanzania-accessible-safari",
-              },
-              {
-                name: "Volcanoes National Park, Rwanda",
-                icon: <MapPin className="h-6 w-6" />,
-                desc: "Wheelchair accessible gorilla trekking with sedan chairs and shorter trails.",
-                link: "/tours/accessible-gorilla-trekking-rwanda",
-              },
-              {
-                name: "Bwindi & Queen Elizabeth, Uganda",
-                icon: <MapPin className="h-6 w-6" />,
-                desc: "Gorilla habituation and boat safaris with ramps and adapted platforms.",
-                link: "/tours/uganda-accessible-safari",
-              },
-            ].map((dest, i) => (
-              <Card key={i} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-6">
-                  <div className="mb-3 text-primary">{dest.icon}</div>
-                  <h3 className="mb-2 font-semibold">{dest.name}</h3>
-                  <p className="mb-4 text-sm text-muted-foreground">{dest.desc}</p>
-                  <Button asChild variant="ghost" size="sm">
-                    <Link href={dest.link}>Learn More →</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED TOURS */}
+      {/* ========== FEATURED TOURS ========== */}
       <section id="tours" className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Featured Wheelchair Accessible Safari Tours
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-              Choose from our most popular wheelchair accessible safari packages or let us design a custom itinerary.
-            </p>
+            <div className="max-w-4xl mx-auto pl-70">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Choose from our most popular wheelchair accessible safari packages or let us design a custom itinerary.
+              </p>
+            </div>
           </div>
 
           {disabilityTours.length > 0 ? (
@@ -867,9 +1594,11 @@ export default function DisabilityToursPage() {
           )}
 
           <div className="mt-12 text-center">
-            <p className="mb-4 text-muted-foreground">
-              Can't find your ideal itinerary? We specialize in custom wheelchair accessible safaris.
-            </p>
+            <div className="max-w-3xl mx-auto pl-70 mb-6">
+              <p className="text-muted-foreground leading-relaxed">
+                Can't find your ideal itinerary? We specialize in custom wheelchair accessible safaris.
+              </p>
+            </div>
             <Button asChild size="lg">
               <Link href="/contact">Build Your Custom Tour</Link>
             </Button>
@@ -877,7 +1606,7 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* ========== TESTIMONIALS (groups of 3) ========== */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
@@ -913,8 +1642,8 @@ export default function DisabilityToursPage() {
               <Card key={i} className="border-2">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="h-16 w-16 rounded-full bg-muted overflow-hidden">
-                      <Image src={t.image} alt={t.name} width={64} height={64} className="object-cover" />
+                    <div className="h-16 w-16 rounded-full bg-muted overflow-hidden relative">
+                      <Image src={t.image} alt={t.name} width={64} height={64} className="object-cover" quality={90} />
                     </div>
                     <div>
                       <p className="font-semibold">{t.name}</p>
@@ -935,7 +1664,7 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* ========== FAQ SECTION ========== */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
@@ -983,16 +1712,18 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* ========== FINAL CTA ========== */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
             <h2 className="mb-4 font-serif text-3xl font-bold md:text-4xl text-balance">
               Your Wheelchair Accessible Safari Kenya 2026 Awaits
             </h2>
-            <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-primary-foreground/90 text-pretty">
-              Let our experts design a safe, comfortable, thrilling safari tailored to your needs – from first inquiry to final game drive.
-            </p>
+            <div className="max-w-3xl mx-auto pl-70 mb-8">
+              <p className="text-lg leading-relaxed text-primary-foreground/90 text-pretty">
+                Let our experts design a safe, comfortable, thrilling safari tailored to your needs – from first inquiry to final game drive.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contact">Start Planning Your 2026 Safari</Link>

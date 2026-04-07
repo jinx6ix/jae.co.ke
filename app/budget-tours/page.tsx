@@ -386,7 +386,7 @@ export default function BudgetToursPage() {
       {/* Structured Data - Now includes real tour cards */}
       <Script
         id="budget-tours-schema"
-        
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
@@ -400,6 +400,7 @@ export default function BudgetToursPage() {
             className="object-cover brightness-50"
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+            quality={90}
           />
         </div>
         <div className="container relative z-10 mx-auto px-4 text-center text-white">
@@ -408,7 +409,7 @@ export default function BudgetToursPage() {
             <strong>Budget Safaris Kenya 2026</strong> — <span className="text-primary">From $450</span>
           </h1>
           {/* H2 - Secondary Keyword */}
-          <h2 className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-white/90">
+          <h2 className="mx-auto mb-8 max-w-5xl text-xl leading-relaxed text-white/90">
             Experience the spectacular <strong>wildebeest migration</strong> in <strong>Masai Mara National Reserve</strong> on our affordable <strong>budget safaris</strong>. 
             Choose between exciting <strong>group safaris</strong> or personalized <strong>private safaris</strong> with comfortable <strong>tented camps</strong> accommodation. 
             Enjoy incredible <strong>game viewing</strong> of <strong>lions, leopards</strong> and the Big Five on this <strong>unforgettable experience</strong>.
@@ -476,26 +477,56 @@ export default function BudgetToursPage() {
 
       {/* ========== INTRODUCTION SECTION ========== */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
-          <h2 className="mb-8 text-center font-serif text-4xl font-bold">
-            Discover the Best <strong>Budget Safaris in Kenya</strong> for 2026
+        <div className="container mx-auto px-4 text-center">
+          {/* Main Title */}
+          <h2 className="mb-6 font-serif text-5xl md:text-6xl font-bold tracking-tight">
+            Discover the Best <strong className="text-green-600">Budget Safaris in Kenya</strong> for 2026
           </h2>
-          {/* H4 - Subheading */}
-          <h3 className="text-center text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Affordable wildlife adventures with comfortable tented camps and expert guides
-          </h3>
-          <p className="mx-auto mb-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Planning your dream <strong>safari in Kenya</strong>? As a leading <strong>Kenya tour operator</strong>, JaeTravel Expeditions offers exceptional <strong>budget safaris</strong>, <strong>cheap safaris in Kenya</strong>, and <strong>budget tours in Kenya</strong> to <strong>Masai Mara National Reserve</strong>. 
-            Whether you prefer the camaraderie of <strong>group safaris</strong> or the exclusivity of <strong>private safaris</strong>, we create <strong>unforgettable experiences</strong> that won't break the bank.
-          </p>
-          <p className="mx-auto mb-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Our <strong>Mara safari</strong> packages include comfortable <strong>tented camps</strong> accommodation and expert-led <strong>game viewing</strong> drives. 
-            Witness the spectacular <strong>wildebeest migration</strong> and spot majestic <strong>lions, leopards</strong> and other wildlife on our carefully crafted <strong>Kenya tours</strong>.
-          </p>
-          <div className="text-center">
-            <Button asChild size="lg" variant="default" className="bg-green-600 hover:bg-green-700">
-              <Link href="#tours">Explore Our <strong>Cheap Safaris in Kenya</strong> Packages</Link>
+
+          {/* Subheading */}
+          <div className="max-w-5xl mx-auto pl-70 mb-12">
+            <h3 className="text-2xl text-gray-600 font-light">
+              Affordable wildlife adventures with comfortable tented camps and expert guides
+            </h3>
+          </div>
+
+          {/* Paragraphs in their own divs with pl-60 and wider max-w-5xl for longer lines */}
+          <div className="max-w-5xl mx-auto pl-60 space-y-6">
+            <div>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                Planning your dream <strong>safari in Kenya</strong>? As a leading <strong>Kenya tour operator</strong>, 
+                JaeTravel Expeditions offers exceptional <strong>budget safaris</strong>, <strong>cheap safaris in Kenya</strong>, 
+                and <strong>budget tours in Kenya</strong> to <strong>Masai Mara National Reserve</strong>.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                Whether you prefer the camaraderie of <strong>group safaris</strong> or the exclusivity of 
+                <strong>private safaris</strong>, we create <strong>unforgettable experiences</strong> that won&apos;t break the bank.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                Our <strong>Mara safari</strong> packages include comfortable <strong>tented camps</strong> accommodation 
+                and expert-led <strong>game viewing</strong> drives. Witness the spectacular 
+                <strong>wildebeest migration</strong> and spot majestic <strong>lions, leopards</strong> and other wildlife 
+                on our carefully crafted <strong>Kenya tours</strong>.
+              </p>
+            </div>
+          </div>
+
+          {/* Call-to-Action Button */}
+          <div className="pt-8">
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-green-600 hover:bg-green-700 text-white font-medium px-10 py-7 text-lg rounded-full"
+            >
+              <Link href="#tours">
+                Explore Our <strong>Cheap Safaris in Kenya</strong> Packages
+              </Link>
             </Button>
           </div>
         </div>
@@ -504,7 +535,6 @@ export default function BudgetToursPage() {
       {/* ========== KEY FEATURES SECTION ========== */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-12 text-center font-serif text-4xl font-bold">
             Your Perfect <strong>Budget Tours in Kenya</strong> Experience
           </h2>
@@ -534,7 +564,6 @@ export default function BudgetToursPage() {
               <Card key={i} className="hover:shadow-lg transition">
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">{item.icon}</div>
-                  {/* H4 - Feature Title */}
                   <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
                   <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: item.desc }} />
                 </CardContent>
@@ -552,7 +581,6 @@ export default function BudgetToursPage() {
       {/* ========== WHY CHOOSE US SECTION ========== */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-12 text-center font-serif text-4xl font-bold">
             Why Choose JaeTravel for Your <strong>Cheap Safaris in Kenya</strong>
           </h2>
@@ -577,7 +605,6 @@ export default function BudgetToursPage() {
               <Card key={i} className="hover:shadow-lg transition">
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">{item.icon}</div>
-                  {/* H4 - Benefit Title */}
                   <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
                   <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: item.desc }} />
                 </CardContent>
@@ -590,17 +617,17 @@ export default function BudgetToursPage() {
       {/* ========== ACCOMMODATION SECTION ========== */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-12 text-center font-serif text-4xl font-bold">
             Authentic <strong>Tented Camps</strong> for <strong>Budget Safaris in Kenya</strong>
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              {/* H4 - Subsection Title */}
               <h3 className="mb-6 text-2xl font-bold">Experience the Real Africa on Cheap Tours</h3>
-              <p className="mb-4 text-lg">
-                Our carefully selected <strong>tented camps</strong> offer the perfect blend of adventure and comfort. Wake up to the sounds of the African bush and enjoy:
-              </p>
+              <div className="pl-60 mb-6">
+                <p className="text-lg leading-relaxed">
+                  Our carefully selected <strong>tented camps</strong> offer the perfect blend of adventure and comfort. Wake up to the sounds of the African bush and enjoy:
+                </p>
+              </div>
               <ul className="space-y-3">
                 {[
                   "Comfortable beds with quality bedding",
@@ -618,11 +645,12 @@ export default function BudgetToursPage() {
               </ul>
             </div>
             <div>
-              {/* H4 - Subsection Title */}
               <h3 className="mb-6 text-2xl font-bold">Perfect for All Safari Styles</h3>
-              <p className="mb-4 text-lg">
-                Whether you're on <strong>private safaris</strong> or joining our popular <strong>group safaris</strong>, our <strong>tented camps</strong> provide:
-              </p>
+              <div className="pl-60 mb-6">
+                <p className="text-lg leading-relaxed">
+                  Whether you&apos;re on <strong>private safaris</strong> or joining our popular <strong>group safaris</strong>, our <strong>tented camps</strong> provide:
+                </p>
+              </div>
               <ul className="space-y-3">
                 {[
                   "Social areas for meeting fellow travelers",
@@ -648,7 +676,6 @@ export default function BudgetToursPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              {/* H3 - Section Title */}
               <h2 className="mb-6 font-serif text-3xl font-bold">
                 Your <strong>Unforgettable Experience</strong> Includes
               </h2>
@@ -671,7 +698,6 @@ export default function BudgetToursPage() {
               </ul>
             </div>
             <div>
-              {/* H3 - Section Title */}
               <h2 className="mb-6 font-serif text-3xl font-bold">
                 Plan Your Perfect <strong>Cheap Tours in Kenya</strong>
               </h2>
@@ -700,18 +726,18 @@ export default function BudgetToursPage() {
       {/* ========== MIGRATION FOCUS SECTION ========== */}
       <section className="py-16 bg-green-50">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-8 text-center font-serif text-4xl font-bold">
             Witness the Spectacular <strong>Wildebeest Migration</strong> on Budget Tours
           </h2>
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-6 text-lg">
-              The Great <strong>wildebeest migration</strong> is one of nature's most incredible spectacles. Each year, over 1.5 million wildebeest, along with zebras and gazelles, journey through the <strong>Masai Mara National Reserve</strong>.
-            </p>
+          <div className="mx-auto max-w-5xl">
+            <div className="pl-70 mb-8">
+              <p className="text-lg leading-relaxed">
+                The Great <strong>wildebeest migration</strong> is one of nature&apos;s most incredible spectacles. Each year, over 1.5 million wildebeest, along with zebras and gazelles, journey through the <strong>Masai Mara National Reserve</strong>.
+              </p>
+            </div>
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardContent className="p-6">
-                  {/* H4 - Subsection Title */}
                   <h3 className="mb-3 text-xl font-bold">Best Viewing Times</h3>
                   <ul className="space-y-2">
                     <li><strong>July-October:</strong> River crossings in Masai Mara</li>
@@ -723,9 +749,8 @@ export default function BudgetToursPage() {
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  {/* H4 - Subsection Title */}
                   <h3 className="mb-3 text-xl font-bold">Predator Action</h3>
-                  <p>During the migration, you'll witness incredible predator-prey interactions. Our <strong>game viewing</strong> drives focus on areas where <strong>lions, leopards</strong>, cheetahs, and hyenas are most active.</p>
+                  <p>During the migration, you&apos;ll witness incredible predator-prey interactions. Our <strong>game viewing</strong> drives focus on areas where <strong>lions, leopards</strong>, cheetahs, and hyenas are most active.</p>
                 </CardContent>
               </Card>
             </div>
@@ -736,7 +761,6 @@ export default function BudgetToursPage() {
       {/* ========== TESTIMONIALS SECTION ========== */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-12 text-center font-serif text-4xl font-bold">
             What Our Guests Say About <strong>Budget Safaris in Kenya</strong>
           </h2>
@@ -764,7 +788,6 @@ export default function BudgetToursPage() {
       {/* ========== FAQ SECTION ========== */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          {/* H3 - Section Title */}
           <h2 className="mb-12 text-center font-serif text-4xl font-bold">
             Frequently Asked Questions About <strong>Budget Safaris Kenya</strong>
           </h2>
@@ -789,14 +812,15 @@ export default function BudgetToursPage() {
       {/* ========== FINAL CTA SECTION ========== */}
       <section className="py-16 bg-gradient-to-br from-green-700 to-green-800 text-white">
         <div className="container mx-auto px-4 text-center">
-          {/* H3 - CTA Title */}
           <h2 className="mb-6 font-serif text-4xl font-bold">
             Ready for Your <strong>Unforgettable Safari Experience</strong>?
           </h2>
-          <p className="mb-8 max-w-3xl mx-auto text-lg">
-            From ${minPrice} per person — secure your spot on our <strong>budget safaris</strong> to <strong>Masai Mara National Reserve</strong>. 
-            Choose <strong>private safaris</strong> for exclusivity or join our popular <strong>group safaris</strong> for maximum value.
-          </p>
+          <div className="max-w-5xl mx-auto pl-70 mb-8">
+            <p className="text-lg leading-relaxed">
+              From ${minPrice} per person — secure your spot on our <strong>budget safaris</strong> to <strong>Masai Mara National Reserve</strong>. 
+              Choose <strong>private safaris</strong> for exclusivity or join our popular <strong>group safaris</strong> for maximum value.
+            </p>
+          </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" variant="secondary" asChild className="bg-white text-green-700 hover:bg-gray-100">
               <Link href="/contact">Book Your <strong>Mara Safari</strong> Today</Link>
@@ -812,7 +836,6 @@ export default function BudgetToursPage() {
               </a>
             </Button>
           </div>
-          {/* H6 - Contact Info */}
           <h6 className="mt-8 text-sm opacity-90 flex justify-center gap-6 flex-wrap">
             <span className="flex items-center gap-2"><Phone size={14} /> +254 726 485 228</span>
             <span className="flex items-center gap-2"><Mail size={14} /> info@jaetravel.co.ke</span>
