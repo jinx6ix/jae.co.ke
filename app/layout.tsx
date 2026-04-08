@@ -10,7 +10,7 @@ import Script from "next/script"
 import { Suspense } from "react"
 import AsyncCSSInitializer from '@/components/AsyncCSSInitializer';
 import { OrderProvider } from '@/components/OrderContext';
-import DynamicScripts from '@/components/DynamicScripts'; // New client component
+import DynamicScripts from '@/components/DynamicScripts';
 import "./globals.css"
 import JsonLd from "@/components/JsonLd"
 
@@ -23,6 +23,7 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#ea580c" },
   ],
 };
+
 // Fonts with optimized loading
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -222,8 +223,6 @@ const criticalCSS = `
   }
 `
 
-//Removed Async CSS loading component
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -292,6 +291,10 @@ export default function RootLayout({
     url: "https://www.jaetravel.co.ke",
   }
 
+  // GTM ID
+  const GTM_ID = "GTM-52G2X6L5"
+  const GA_ID = "G-2YLERP8F8B"
+
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
@@ -310,9 +313,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://apis.google.com" />
         <link rel="dns-prefetch" href="https://www.gstatic.com" />
         
-        {/* Viewport meta tag */}
-        
-        
         {/* Structured Data */}
         <JsonLd 
           id="structured-data" 
@@ -330,6 +330,7 @@ export default function RootLayout({
           defer 
         />
 
+        {/* Google Site Verification */}
         <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
         
         {/* Preload hero images */}
@@ -349,49 +350,58 @@ export default function RootLayout({
           imageSrcSet="/images/hero-banner.jpg 1920w, /images/hero-banner-mobile.jpg 768w"
           imageSizes="100vw"
         />
+
+        {/* Google Tag Manager - Single implementation in head */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${GTM_ID}');
+            `,
+          }}
+        />
+
+        {/* Google Analytics 4 - Combined with GTM or separate */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        />
+        <Script
+          id="ga4-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}', {
+                page_path: window.location.pathname,
+                send_page_view: true,
+                transport_type: 'beacon'
+              });
+            `,
+          }}
+        />
       </head>
 
       <body className="font-sans antialiased bg-background text-foreground">
-        {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){
-              w[l]=w[l]||[];
-              w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-              var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-              j.async=true;
-              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-52G2X6L5');
-          `}
-        </Script>
-
-        {/* Google Analytics */}
-        <Script 
-          strategy="afterInteractive" 
-          src="https://www.googletagmanager.com/gtag/js?id=G-2YLERP8F8B" 
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2YLERP8F8B', { 
-              page_path: window.location.pathname,
-              transport_type: 'beacon'
-            });
-          `}
-        </Script>
-
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Tag Manager (noscript) - Required fallback for users without JS */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-52G2X6L5"
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
-            title="gtm-noscript"
+            title="Google Tag Manager"
           />
         </noscript>
 
