@@ -15,7 +15,7 @@ export function AnalyticsTracker() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", "G-XXXXXXXXXX", {
+      window.gtag("config", "G-2YLERP8F8B", {
         page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ""),
       })
     }
