@@ -48,7 +48,7 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "birdwatching-safaris-east-africa",
-  title: "Birdwatching Safaris Kenya 2026 | 1,400+ Bird Species",
+  title: "Birdwatching Safaris East Africa 2026: Best Locations, Species & Travel Guide",
   description:
     "2026 birdwatching safaris in Kenya, Tanzania & Uganda. See flamingos, shoebills & migratory birds. Expert guides. From $450.",
   h1: "Birdwatching Safaris",
