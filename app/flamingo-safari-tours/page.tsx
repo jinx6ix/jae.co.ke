@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import Link from "next/link"
@@ -275,6 +276,16 @@ const jsonLd = {
 export default function FlamingoSafariToursPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="flamingo-safari-tours"
+        categoryOpts={{
+          title: "Flamingo Safari Tours Kenya — Lake Nakuru & Bogoria",
+          description: "See millions of flamingos on Kenya's Rift Valley lakes. Lake Nakuru, Lake Bogoria safari tours.",
+          image: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("flamingo") || t.title?.toLowerCase().includes("flamingo") || t.description?.toLowerCase().includes("flamingo")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="structured-data" data={jsonLd} />
       

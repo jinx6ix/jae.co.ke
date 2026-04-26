@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/great-migration-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -203,6 +204,16 @@ const jsonLd = {
 export default function GreatMigrationSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="great-migration-safaris"
+        categoryOpts={{
+          title: "Great Migration Safaris East Africa 2026",
+          description: "Witness the greatest wildlife spectacle on Earth. Masai Mara and Serengeti packages.",
+          image: "/masai-mara-migration.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("migration") || t.title?.toLowerCase().includes("migration") || t.description?.toLowerCase().includes("migration")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="great-migration-safaris-schema" data={jsonLd} />
       

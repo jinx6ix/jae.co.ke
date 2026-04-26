@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/serengeti-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -279,6 +280,16 @@ const jsonLd = {
 export default function SerengetiSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="serengeti-safaris"
+        categoryOpts={{
+          title: "Serengeti Safari Tours Tanzania 2026",
+          description: "Complete Serengeti safari packages. Great Migration, Big Five, and luxury tented camps.",
+          image: "/tanzania-serengeti.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("serengeti") || t.title?.toLowerCase().includes("serengeti") || t.description?.toLowerCase().includes("serengeti")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} id={"serengeti-schema"} />
       

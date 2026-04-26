@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/amboseli-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -197,6 +198,16 @@ const jsonLd = {
 export default function AmboseliSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="amboseli-safaris"
+        categoryOpts={{
+          title: "Amboseli National Park Safaris Kenya",
+          description: "Amboseli safari with Kilimanjaro views. Elephant herds, Big Five, and luxury lodges.",
+          image: "/Amboseli-National-Park-Elephantsssss.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("amboseli") || t.title?.toLowerCase().includes("amboseli") || t.description?.toLowerCase().includes("amboseli")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} />
       

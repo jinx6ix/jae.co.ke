@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/beach-holidays/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -185,6 +186,16 @@ const jsonLd = {
 export default function BeachHolidaysPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="beach-holidays"
+        categoryOpts={{
+          title: "East Africa Beach Holidays — Zanzibar & Diani",
+          description: "Combine safari and beach on Kenya and Tanzania's Indian Ocean coast. Zanzibar, Diani Beach packages.",
+          image: "/zanzibar-stone-town-view-min-800x600.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("beach") || t.title?.toLowerCase().includes("beach") || t.description?.toLowerCase().includes("beach")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} id="beach-schema" />
       

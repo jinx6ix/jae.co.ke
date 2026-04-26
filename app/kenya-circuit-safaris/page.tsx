@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/kenya-circuit-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -176,6 +177,16 @@ const jsonLd = {
 export default function KenyaCircuitSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="kenya-circuit-safaris"
+        categoryOpts={{
+          title: "Kenya Circuit Safari Packages 2026",
+          description: "Complete Kenya circuit safaris covering Masai Mara, Amboseli, Tsavo, Nakuru and more.",
+          image: "/kenya-safari-landscape.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("kenya") || t.title?.toLowerCase().includes("kenya") || t.description?.toLowerCase().includes("kenya")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="kenya-circuit-safaris-jsonld" data={jsonLd} />
       

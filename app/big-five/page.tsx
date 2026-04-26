@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/big-five/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -217,6 +218,16 @@ export default function BigFivePage() {
 
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="big-five"
+        categoryOpts={{
+          title: "Big Five Safari Tours Kenya & Tanzania",
+          description: "See all Big Five (lion, leopard, elephant, buffalo, rhino) on Kenya and Tanzania safari tours.",
+          image: "/masai-mara-safari.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("five") || t.title?.toLowerCase().includes("five") || t.description?.toLowerCase().includes("five")) : [],
+        }}
+      />
       <JsonLd data={bigFiveSchema} id="big-five-schema" />
 
       {/* Hero Section */}

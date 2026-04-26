@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/uganda-circuit-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -171,6 +172,16 @@ const jsonLd = {
 export default function UgandaCircuitSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="uganda-circuit-safaris"
+        categoryOpts={{
+          title: "Uganda Safari Tours 2026 — Gorillas & Wildlife",
+          description: "Uganda circuit safaris covering Bwindi gorillas, Kibale chimps, Queen Elizabeth, and Murchison Falls.",
+          image: "/uganda-wildlife.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("uganda") || t.title?.toLowerCase().includes("uganda") || t.description?.toLowerCase().includes("uganda")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="uganda-circuit-schema" data={jsonLd} />
       <div className="min-h-screen bg-white">

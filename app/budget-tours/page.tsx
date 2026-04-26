@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/budget-tours/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";

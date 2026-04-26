@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/tours/page.tsx
 import { Metadata } from "next";
 import ToursPageClient from "./ToursPageClient";

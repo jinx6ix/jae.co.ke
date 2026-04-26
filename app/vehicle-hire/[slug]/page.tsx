@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { vehicles } from "@/lib/vehicles-data";
 import { Check, ArrowLeft, Users, Luggage, Fuel, Settings, ChevronRight } from "lucide-react";
 import { VehicleBookingForm } from "@/components/vehicle-booking-form";
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import { VehicleStructuredData } from "@/components/vehicle-structured-data";
 import { HeroSlider } from "./components/HeroSlider";
 import { VehicleHighlightGallery } from "./components/VehicleHighlightGallery";
@@ -127,7 +128,7 @@ export default async function VehicleDetailPage({
 
   return (
     <>
-      <VehicleStructuredData vehicle={vehicle} />
+      <AllPageSEOSchema type="vehicle" data={vehicle} slug={vehicle.slug} />
 
       <div className="min-h-screen bg-background pb-20">
         {/* Breadcrumb */}

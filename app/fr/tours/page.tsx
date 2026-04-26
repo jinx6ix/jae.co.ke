@@ -1,287 +1,98 @@
-"use client"
-
-import { useState, useMemo } from "react"
+// app/fr/tours/page.tsx — French Tours Listing
+import type { Metadata } from "next"
+import Link from "next/link"
+import Image from "next/image"
+import { buildHreflangAlternates, BASE_URL } from "@/lib/i18n/config"
 import { tours } from "@/lib/tours-data"
-import { TourCard } from "@/components/tour-card"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const TOURS_PER_PAGE = 12
+export const metadata: Metadata = {
+  title: "Tous les Circuits Safari Afrique de l'Est | JaeTravel Expéditions",
+  description: "Parcourez tous nos circuits safari au Kenya, Tanzanie, Rwanda et Ouganda. Safaris budget, luxe et accessibles fauteuil roulant. Réservez en ligne ou via WhatsApp.",
+  keywords: ["circuits safari afrique est","safari kenya tours","trekking gorilles","grande migration safari","safaris accessibles","safari tanzanie","safari ouganda","budget safari kenya"],
+  alternates: { canonical: `${BASE_URL}/fr/tours`, languages: buildHreflangAlternates("/tours") },
+  openGraph: { title: "Tous les Circuits Safari | JaeTravel Expéditions", description: "Safaris Kenya, Tanzanie, Rwanda et Ouganda.", url: `${BASE_URL}/fr/tours`, locale: "fr_FR", type: "website", images: [{ url: `${BASE_URL}/og-image.jpg`, width: 1200, height: 630, alt: "Circuits Safari Afrique de l'Est" }] },
+}
 
-export default function ToursPage() {
-  const [selectedCountry, setSelectedCountry] = useState("All")
-  const [priceRange, setPriceRange] = useState([0, 6000])
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-  const [currentPage, setCurrentPage] = useState(1)
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Circuits Safari Afrique de l'Est — JaeTravel Expéditions",
+  description: "Liste complète des circuits safari au Kenya, Tanzanie, Rwanda et Ouganda",
+  url: `${BASE_URL}/fr/tours`,
+  numberOfItems: tours.length,
+  itemListElement: tours.slice(0, 20).map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `${BASE_URL}/fr/tour/${t.slug}`,
+    name: t.title,
+  })),
+}
 
-  const countries = ["All", "Kenya", "Tanzania", "Rwanda", "Uganda", "Multi-Country"]
-
-  const tourTypes = useMemo(() => {
-    const types = new Set<string>()
-    tours.forEach((tour) => {
-      if (tour.title.toLowerCase().includes("safari")) types.add("Safari")
-      if (tour.title.toLowerCase().includes("gorilla") || tour.title.toLowerCase().includes("chimpanzee"))
-        types.add("Primate Trekking")
-      if (tour.title.toLowerCase().includes("beach") || tour.title.toLowerCase().includes("island"))
-        types.add("Beach & Islands")
-      if (
-        tour.title.toLowerCase().includes("climbing") ||
-        tour.title.toLowerCase().includes("hiking") ||
-        tour.title.toLowerCase().includes("trek")
-      )
-        types.add("Mountain Trekking")
-      if (tour.title.toLowerCase().includes("cultural") || tour.title.toLowerCase().includes("heritage"))
-        types.add("Cultural")
-      if (tour.title.toLowerCase().includes("accessible") || tour.title.toLowerCase().includes("disability"))
-        types.add("Accessible Tours")
-      if (tour.title.toLowerCase().includes("adventure") || tour.title.toLowerCase().includes("rafting"))
-        types.add("Adventure")
-    })
-    return Array.from(types).sort()
-  }, [])
-
-  const filteredTours = useMemo(() => {
-    return tours.filter((tour) => {
-      // Country filter
-      if (selectedCountry !== "All" && tour.country !== selectedCountry) return false
-
-      // Price range filter
-      if (tour.price < priceRange[0] || tour.price > priceRange[1]) return false
-
-      // Tour type filter
-      if (selectedTypes.length > 0) {
-        const tourTitle = tour.title.toLowerCase()
-        const matchesType = selectedTypes.some((type) => {
-          if (type === "Safari") return tourTitle.includes("safari")
-          if (type === "Primate Trekking")
-            return tourTitle.includes("gorilla") || tourTitle.includes("chimpanzee") || tourTitle.includes("monkey")
-          if (type === "Beach & Islands") return tourTitle.includes("beach") || tourTitle.includes("island")
-          if (type === "Mountain Trekking")
-            return tourTitle.includes("climbing") || tourTitle.includes("hiking") || tourTitle.includes("trek")
-          if (type === "Cultural") return tourTitle.includes("cultural") || tourTitle.includes("heritage")
-          if (type === "Accessible Tours") return tourTitle.includes("accessible") || tourTitle.includes("disability")
-          if (type === "Adventure") return tourTitle.includes("adventure") || tourTitle.includes("rafting")
-          return false
-        })
-        if (!matchesType) return false
-      }
-
-      return true
-    })
-  }, [selectedCountry, priceRange, selectedTypes])
-
-  useMemo(() => {
-    setCurrentPage(1)
-  }, [selectedCountry, priceRange, selectedTypes])
-
-  const handleTypeToggle = (type: string) => {
-    setSelectedTypes((prev) => (prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]))
-  }
-
-  const clearFilters = () => {
-    setSelectedCountry("All")
-    setPriceRange([0, 6000])
-    setSelectedTypes([])
-    setCurrentPage(1)
-  }
-
-  const totalPages = Math.ceil(filteredTours.length / TOURS_PER_PAGE)
-  const startIndex = (currentPage - 1) * TOURS_PER_PAGE
-  const endIndex = startIndex + TOURS_PER_PAGE
-  const currentTours = filteredTours.slice(startIndex, endIndex)
-
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1)
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }
-  }
-
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1)
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }
-  }
-
-  const goToPage = (page: number) => {
-    setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
+export default function FrenchToursPage() {
+  const countries = ["Tous", "Kenya", "Tanzania", "Rwanda", "Uganda"]
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Découvrez Nos Circuits Safari</h1>
-        <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
-          Vivez des expériences safari inoubliables à travers l'Afrique de l'Est. De l'observation de la Grande Migration dans le Masai Mara au trekking des gorilles de montagne au Rwanda et en Ouganda, nous proposons des circuits soigneusement conçus qui mettent en valeur la faune, les paysages et la culture africains les plus exceptionnels.
-        </p>
-      </div>
-
-      <div className="mb-8 rounded-2xl border bg-card p-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Filtrer les Circuits</h2>
-          <Button variant="outline" size="sm" onClick={clearFilters}>
-            Réinitialiser Tous les Filtres
-          </Button>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Country Filter */}
-          <div className="space-y-2">
-            <Label htmlFor="country-filter">Destination</Label>
-            <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-              <SelectTrigger id="country-filter">
-                <SelectValue placeholder="Sélectionner un pays" />
-              </SelectTrigger>
-              <SelectContent>
-                {countries.map((country) => (
-                  <SelectItem key={country} value={country}>
-                    {country === "All" ? "Tous" : country === "Multi-Country" ? "Multi-Pays" : country}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="bg-gradient-to-b from-orange-50 to-white py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Tous nos Circuits Safari</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Découvrez {tours.length}+ circuits soigneusement élaborés au Kenya, en Tanzanie, au Rwanda et en Ouganda</p>
           </div>
 
-          {/* Price Range Filter */}
-          <div className="space-y-4 md:col-span-2">
-            <div className="flex items-center justify-between">
-              <Label>Fourchette de Prix (USD)</Label>
-              <span className="text-sm font-medium text-primary">
-                ${priceRange[0]} - ${priceRange[1]}
-              </span>
-            </div>
-            <Slider min={0} max={6000} step={50} value={priceRange} onValueChange={setPriceRange} className="w-full" />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>$0</span>
-              <span>$6 000</span>
-            </div>
-          </div>
-
-          {/* Tour Type Filter */}
-          <div className="space-y-3 md:col-span-3">
-            <Label>Type de Circuit</Label>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {tourTypes.map((type) => (
-                <div key={type} className="flex items-center gap-2">
-                  <Checkbox
-                    id={`type-${type}`}
-                    checked={selectedTypes.includes(type)}
-                    onCheckedChange={() => handleTypeToggle(type)}
-                  />
-                  <label
-                    htmlFor={`type-${type}`}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                  >
-                    {type === "Safari" ? "Safari" :
-                     type === "Primate Trekking" ? "Trekking Primates" :
-                     type === "Beach & Islands" ? "Plage & Îles" :
-                     type === "Mountain Trekking" ? "Trekking en Montagne" :
-                     type === "Cultural" ? "Culturel" :
-                     type === "Accessible Tours" ? "Circuits Accessibles" :
-                     type === "Adventure" ? "Aventure" : type}
-                  </label>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Results count */}
-        <div className="mt-6 border-t pt-4">
-          <p className="text-sm text-muted-foreground">
-            Affichage de <span className="font-semibold text-foreground">{startIndex + 1}</span> à{" "}
-            <span className="font-semibold text-foreground">{Math.min(endIndex, filteredTours.length)}</span> sur{" "}
-            <span className="font-semibold text-foreground">{filteredTours.length}</span> circuits
-          </p>
-        </div>
-      </div>
-
-      {/* Tours Grid */}
-      {currentTours.length > 0 ? (
-        <>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {currentTours.map((tour) => (
-              <TourCard key={tour.id} tour={tour} />
+          {/* Filter tabs */}
+          <div className="flex flex-wrap gap-3 justify-center mb-10">
+            {countries.map(c => (
+              <button key={c} className="px-5 py-2 rounded-full border border-gray-200 hover:border-orange-400 hover:bg-orange-50 text-sm font-medium transition-colors">
+                {c === "Tous" ? "Tous les pays" : c}
+              </button>
             ))}
           </div>
 
-          {totalPages > 1 && (
-            <div className="mt-12 flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-                aria-label="Page précédente"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tours.map(tour => (
+              <Link key={tour.slug} href={`/fr/tour/${tour.slug}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:-translate-y-1">
+                <div className="relative h-52">
+                  <Image src={tour.image || "/placeholder.jpg"} alt={tour.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  {tour.isOnOffer && <span className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">Offre spéciale</span>}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full">{tour.country}</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h2 className="font-serif font-bold text-lg mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">{tour.title}</h2>
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-2">{tour.shortDescription || tour.description}</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      {tour.isOnOffer && tour.originalPrice && (
+                        <span className="text-gray-400 text-sm line-through mr-2">${tour.originalPrice.toLocaleString()}</span>
+                      )}
+                      <span className="text-orange-500 font-bold text-lg">${tour.price.toLocaleString()}</span>
+                      <span className="text-gray-400 text-xs ml-1">/pers.</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                      <span className="text-yellow-400">★</span>
+                      <span>{tour.rating}</span>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex gap-4 text-xs text-gray-500">
+                    <span>🕐 {tour.duration}</span>
+                    <span>👥 {tour.groupSize}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
 
-              <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-                  const showPage =
-                    page === 1 || page === totalPages || (page >= currentPage - 1 && page <= currentPage + 1)
-
-                  if (!showPage) {
-                    if (page === currentPage - 2 || page === currentPage + 2) {
-                      return (
-                        <span key={page} className="px-2 text-muted-foreground">
-                          ...
-                        </span>
-                      )
-                    }
-                    return null
-                  }
-
-                  return (
-                    <Button
-                      key={page}
-                      variant={currentPage === page ? "default" : "outline"}
-                      size="icon"
-                      onClick={() => goToPage(page)}
-                      className="h-10 w-10"
-                    >
-                      {page}
-                    </Button>
-                  )
-                })}
-              </div>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={goToNextPage}
-                disabled={currentPage === totalPages}
-                aria-label="Page suivante"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          )}
-        </>
-      ) : (
-        <div className="rounded-2xl border bg-muted/50 p-12 text-center">
-          <h3 className="mb-2 text-xl font-semibold">Aucun circuit trouvé</h3>
-          <p className="mb-4 text-muted-foreground">Essayez de modifier vos filtres pour voir plus de résultats.</p>
-          <Button onClick={clearFilters}>Réinitialiser Tous les Filtres</Button>
+          <div className="text-center mt-12 bg-orange-50 rounded-2xl p-8">
+            <h3 className="text-2xl font-serif font-bold mb-3">Vous ne trouvez pas ce que vous cherchez ?</h3>
+            <p className="text-gray-600 mb-6">Nous créons des safaris sur mesure. Contactez-nous pour un circuit personnalisé.</p>
+            <a href="https://wa.me/254726485228?text=Bonjour%2C%20je%20cherche%20un%20circuit%20personnalisé" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl transition-colors">
+              💬 Demander un circuit personnalisé
+            </a>
+          </div>
         </div>
-      )}
-
-      {/* CTA Section */}
-      <div className="mt-16 rounded-2xl bg-primary/10 p-8 text-center md:p-12">
-        <h2 className="mb-4 font-serif text-3xl font-bold text-balance">Vous ne trouvez pas ce que vous cherchez ?</h2>
-        <p className="mx-auto mb-6 max-w-2xl text-muted-foreground leading-relaxed text-pretty">
-          Nous sommes spécialisés dans la création d'expériences safari sur mesure adaptées à vos préférences, votre budget et votre style de voyage. Contactez-nous pour concevoir votre aventure parfaite en Afrique de l'Est.
-        </p>
-        <Button size="lg">Contactez-nous pour un Circuit Sur Mesure</Button>
       </div>
-    </div>
+    </>
   )
 }

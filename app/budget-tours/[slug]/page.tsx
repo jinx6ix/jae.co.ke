@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/budget-tours/[slug]/page.tsx
 import type { Metadata, ResolvingMetadata } from "next";
 import Script from "next/script";

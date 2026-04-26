@@ -1,47 +1,63 @@
-// app/robots.txt/route.ts
-export const dynamic = "force-dynamic"  // optional – removes it from static rendering if you prefer
-export const revalidate = 3600          // re-generate every hour (good enough)
+// app/robots.txt/route.ts — UPDATED with language paths + AI crawlers
+export const dynamic = "force-dynamic"
+export const revalidate = 3600
 
 export async function GET() {
-  const baseUrl = "https://www.jaetravel.co.ke"
-
-  const robotsTxt = `# JAETravel Expeditions – robots.txt
+  const base = "https://www.jaetravel.co.ke"
+  const txt = `# JaeTravel Expeditions — robots.txt
 # Updated: ${new Date().toISOString().split("T")[0]}
 
 User-agent: *
 Allow: /
 
-# Essential Next.js assets (must be allowed)
-Allow: /_next/
-Allow: /favicon.ico
-Allow: /images/
+# ── Language subdirectories (all indexable) ──
+Allow: /fr/
+Allow: /de/
+Allow: /it/
+Allow: /hi/
+Allow: /ar/
+Allow: /zh/
 
-# Block truly private or unnecessary paths
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /draft/
-Disallow: /temp/
-
-# (Optional but nice) Explicitly encourage crawling of important sections
+# ── Key content directories ──
 Allow: /tours/
+Allow: /tour/
+Allow: /budget-tours/
 Allow: /vehicle-hire/
+Allow: /vehicles/
 Allow: /destinations/
 Allow: /blog/
 Allow: /about/
 Allow: /contact/
-Allow: /disability-tours/
+Allow: /_next/static/
 
-# Sitemap – correct domain!
-Sitemap: ${baseUrl}/sitemap.xml
+# ── Block private/API paths ──
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /draft/
+Disallow: /checkout/
+Disallow: /book-now/
 
-# Host directive (only needed for very old Googlebot versions – harmless to keep)
-Host: ${baseUrl}
+# ── AI crawlers — allow for AI search visibility ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ── Sitemaps ──
+Sitemap: ${base}/sitemap.xml
+Host: ${base}
 `
-
-  return new Response(robotsTxt, {
+  return new Response(txt, {
     headers: {
-      "Content-Type": "application/xml; charset=utf-8",
+      "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   })

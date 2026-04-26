@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/short-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -172,6 +173,16 @@ const jsonLd = {
 export default function ShortSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="short-safaris"
+        categoryOpts={{
+          title: "Short Safaris Kenya — 1-3 Day Tours from Nairobi",
+          description: "Quick safari getaways from Nairobi. 1, 2 and 3 day safaris to Masai Mara, Amboseli, Nakuru.",
+          image: "/morning-game-drive.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("short") || t.title?.toLowerCase().includes("short") || t.description?.toLowerCase().includes("short")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="jsonld" data={jsonLd} />
       

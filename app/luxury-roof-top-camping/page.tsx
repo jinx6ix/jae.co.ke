@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/vehicle-hire/luxury-roof-top-camping/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -370,6 +371,16 @@ export default function LuxuryCampingPage() {
 
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="luxury-roof-top-camping"
+        categoryOpts={{
+          title: "Luxury Rooftop Camping Safari Kenya",
+          description: "Sleep under the stars on safari. Custom rooftop tent vehicles for immersive East Africa camping.",
+          image: "/roof-top-tent-open-at-sunset.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("camping") || t.title?.toLowerCase().includes("camping") || t.description?.toLowerCase().includes("camping")) : [],
+        }}
+      />
       {/* FULL RICH RESULTS SCHEMA — PRODUCT + IMAGEOBJECT */}
       <JsonLd id="luxury-camping-schema" data={campingSchema} />
       <div className="container mx-auto px-4 py-16">

@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -200,6 +201,16 @@ const vehicleCategories = [
 export default function WheelchairVehiclePage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="wheelchair-accessible-safari-landcruiser"
+        categoryOpts={{
+          title: "Wheelchair Accessible Safari Kenya — Hydraulic Lift Land Cruiser",
+          description: "Kenya's only fleet of wheelchair-adapted 4x4s with German hydraulic lifts (400kg). Masai Mara, Amboseli.",
+          image: "/wheelchair-accessible-tanzania-safari.webp",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("wheelchair") || t.title?.toLowerCase().includes("wheelchair") || t.description?.toLowerCase().includes("wheelchair")) : [],
+        }}
+      />
       {/* FAQ Schema */}
       <JsonLd id="faq-schema" data={faqSchema} />
 

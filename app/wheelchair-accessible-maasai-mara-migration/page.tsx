@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -265,6 +266,16 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="wheelchair-accessible-maasai-mara-migration"
+        categoryOpts={{
+          title: "Wheelchair Accessible Masai Mara Great Migration Safari",
+          description: "Experience the Great Migration in an accessible 4x4 with hydraulic lift. Fully inclusive wildlife safari.",
+          image: "/masai-mara-wheelchair-height.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("wheelchair") || t.title?.toLowerCase().includes("wheelchair") || t.description?.toLowerCase().includes("wheelchair")) : [],
+        }}
+      />
       <JsonLd id="maasai-mara-schema" data={faqSchema} />
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">

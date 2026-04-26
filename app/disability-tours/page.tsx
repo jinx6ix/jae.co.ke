@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/disability-tours/page.tsx
 import type { Metadata } from "next"
 import Image from "next/image"
@@ -887,6 +888,18 @@ const disabilityAccommodations = [
 // ──────────────────────────────────────────────────────────────────────────────
 export default function DisabilityToursPage() {
   return (
+    <>
+      <AllPageSEOSchema
+        type="category"
+        slug="disability-tours"
+        categoryOpts={{
+          title: "Disability-Friendly Safari Tours East Africa",
+          description: "Inclusive safari experiences for travelers with disabilities. Adapted vehicles, accessible lodges.",
+          image: "/wheelchair-accessible-tanzania-safari.webp",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("accessible") || t.title?.toLowerCase().includes("accessible") || t.description?.toLowerCase().includes("accessible")) : [],
+        }}
+      />
+    </>
     <div className="pb-16">
       <JsonLd id="page-structured-data" data={schema} />
 

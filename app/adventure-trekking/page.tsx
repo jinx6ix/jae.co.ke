@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/adventure-trekking/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -177,6 +178,16 @@ const jsonLd = {
 export default function AdventureTrekkingPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="adventure-trekking"
+        categoryOpts={{
+          title: "Adventure Trekking Tours East Africa",
+          description: "Mountain trekking, hiking, and adventure tours in East Africa. Kilimanjaro, Mount Kenya, and more.",
+          image: "/kilimanjaro-moutain-climbing.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("trek") || t.title?.toLowerCase().includes("trek") || t.description?.toLowerCase().includes("trek")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} id="adventure-schema" />
       

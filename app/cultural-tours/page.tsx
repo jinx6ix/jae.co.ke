@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/cultural-tours/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -179,6 +180,16 @@ const jsonLd = {
 export default function CulturalToursPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="cultural-tours"
+        categoryOpts={{
+          title: "Cultural Tours East Africa — Maasai, Swahili & More",
+          description: "Authentic cultural experiences in East Africa. Maasai village visits, Swahili heritage, and local immersion.",
+          image: "/safari-guides-with-tourists-in-africa.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("cultural") || t.title?.toLowerCase().includes("cultural") || t.description?.toLowerCase().includes("cultural")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} id={"cultural-tours-schema"} />
       

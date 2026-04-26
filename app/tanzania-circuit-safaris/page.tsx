@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/tanzania-circuit-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -173,6 +174,16 @@ const jsonLd = {
 export default function TanzaniaCircuitSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="tanzania-circuit-safaris"
+        categoryOpts={{
+          title: "Tanzania Circuit Safari Tours 2026",
+          description: "Tanzania northern circuit safaris: Serengeti, Ngorongoro, Tarangire, and Kilimanjaro.",
+          image: "/tanzania-serengeti.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("tanzania") || t.title?.toLowerCase().includes("tanzania") || t.description?.toLowerCase().includes("tanzania")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="jsonld" data={jsonLd} />
       

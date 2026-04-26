@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Calendar, User, ArrowLeft, Share2, Clock, Tag, Star, ThumbsUp, MessageCircle } from "lucide-react"
 import Script from "next/script"
 import JsonLd from "@/components/JsonLd"
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 
 type PageProps = {
   params: Promise<{
@@ -387,12 +388,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       {/* All Schema Markup Scripts */}
       // Much cleaner:
-      <JsonLd id="blog-posting-schema" data={schemas.blogPosting} />
-      <JsonLd id="breadcrumb-schema" data={schemas.breadcrumb} />
-      <JsonLd id="organization-schema" data={schemas.organization} />
-      <JsonLd id="product-schema" data={schemas.product} />
-      <JsonLd id="review-schema" data={schemas.review} />
-      <JsonLd id="video-schema" data={schemas.video} />
+      <AllPageSEOSchema type="blog" data={post} slug={post.slug} />
       <div className="pb-16">
         {/* Hero Section */}
         <div className="relative h-[60vh] min-h-[400px]">

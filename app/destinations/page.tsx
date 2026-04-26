@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/destinations/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"

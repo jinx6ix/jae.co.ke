@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/ngorongoro-safaris/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -196,6 +197,16 @@ const jsonLd = {
 export default function NgorongoroSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="ngorongoro-safaris"
+        categoryOpts={{
+          title: "Ngorongoro Crater Safari Tours Tanzania",
+          description: "Ngorongoro Crater safaris. World's largest intact volcanic caldera with highest wildlife density.",
+          image: "/ngorongoro-header-3.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("ngorongoro") || t.title?.toLowerCase().includes("ngorongoro") || t.description?.toLowerCase().includes("ngorongoro")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd id="NgorongoroSafarisJsonLd" data={jsonLd} />
       

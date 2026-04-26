@@ -10,6 +10,7 @@ import { TourReviews } from "@/components/tour-reviews"
 import fs from "fs/promises"
 import { BookingForm } from "@/components/booking-form"
 import { TourStructuredData } from "@/components/tour-structured-data"
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import { Star, MapPin, Clock, Users, Check, ArrowRight, ChevronRight } from "lucide-react"
 import path from "path"
 
@@ -117,6 +118,16 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 
     alternates: {
       canonical: url,
+      languages: {
+        "en":        url,
+        "fr":        `${baseUrl}/fr/tour/${slug}`,
+        "de":        `${baseUrl}/de/tour/${slug}`,
+        "it":        `${baseUrl}/it/tour/${slug}`,
+        "hi":        `${baseUrl}/hi/tour/${slug}`,
+        "ar":        `${baseUrl}/ar/tour/${slug}`,
+        "zh":        `${baseUrl}/zh/tour/${slug}`,
+        "x-default": url,
+      },
     },
   }
 }
@@ -145,7 +156,7 @@ export default async function TourPage(props: TourPageProps) {
 
   return (
     <>
-      <TourStructuredData tour={{ ...tour, duration: String(tour.duration || "Not specified") }} />
+      <AllPageSEOSchema type="tour" data={tour} slug={slug} />
 
       <div className="pb-16">
         {/* Breadcrumb */}

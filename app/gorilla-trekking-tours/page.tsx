@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/gorilla-trekking-tours/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -207,6 +208,16 @@ const jsonLd = {
 export default function GorillaTrekkingToursPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="gorilla-trekking-tours"
+        categoryOpts={{
+          title: "Gorilla Trekking Tours Rwanda & Uganda 2026",
+          description: "Mountain gorilla trekking in Rwanda's Volcanoes NP and Uganda's Bwindi Forest. Expert guides, permits included.",
+          image: "/mountain-gorilla-trekking.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("gorilla") || t.title?.toLowerCase().includes("gorilla") || t.description?.toLowerCase().includes("gorilla")) : [],
+        }}
+      />
       {/* Optimized JSON-LD */}
       <JsonLd id="gorilla-trekking-schema" data={jsonLd} />
 

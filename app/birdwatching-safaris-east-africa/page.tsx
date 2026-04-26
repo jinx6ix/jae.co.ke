@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/birdwatching-safaris-east-africa/page.tsx
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -48,7 +49,7 @@ import JsonLd from "@/components/JsonLd"
 
 const CONFIG = {
   slug: "birdwatching-safaris-east-africa",
-  title: "Birdwatching Safaris East Africa 2026: Best Locations, Species & Travel Guide",
+  title: "Birdwatching Safaris Kenya 2026 | 1,400+ Bird Species",
   description:
     "2026 birdwatching safaris in Kenya, Tanzania & Uganda. See flamingos, shoebills & migratory birds. Expert guides. From $450.",
   h1: "Birdwatching Safaris",
@@ -210,6 +211,16 @@ const jsonLd = {
 export default function BirdwatchingSafarisPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="birdwatching-safaris-east-africa"
+        categoryOpts={{
+          title: "Birdwatching Safaris East Africa — 1,000+ Species",
+          description: "Expert-guided birdwatching safaris in Kenya, Tanzania, Rwanda, and Uganda. 1,000+ bird species.",
+          image: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("bird") || t.title?.toLowerCase().includes("bird") || t.description?.toLowerCase().includes("bird")) : [],
+        }}
+      />
       {/* JSON-LD Script */}
       <JsonLd data={jsonLd} id={" birdwatching-safari-schema"} />
       

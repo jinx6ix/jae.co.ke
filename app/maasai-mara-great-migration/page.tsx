@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/maasai-mara-great-migration/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -376,6 +377,16 @@ const renderContent = (content: string) => {
 export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
+      <AllPageSEOSchema
+        type="category"
+        slug="maasai-mara-great-migration"
+        categoryOpts={{
+          title: "Masai Mara Great Migration Safari 2026",
+          description: "Witness the Great Wildebeest Migration in Masai Mara. 1.5M wildebeest cross July-October.",
+          image: "/masai-mara-migration.jpg",
+          tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("mara") || t.title?.toLowerCase().includes("mara") || t.description?.toLowerCase().includes("mara")) : [],
+        }}
+      />
       <JsonLd id="page-schema" data={pageSchema} />
       <JsonLd id="organization-schema" data={pageSchema["@graph"][0]} />
       <JsonLd id="video-schema" data={pageSchema["@graph"][6]} />

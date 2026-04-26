@@ -1,3 +1,4 @@
+import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Image from "next/image"
@@ -328,6 +329,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
 
   return (
     <>
+      <AllPageSEOSchema type="destination" data={destination} slug={country} />
       {/* DYNAMIC RICH RESULTS SCHEMA */}
       <JsonLd 
         id="destination-schema" 
