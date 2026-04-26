@@ -8,8 +8,7 @@ import HeroCarousel from "./HeroCarousel"
 import { tours, toursOnOffer } from "@/lib/tours-data"
 import { destinations } from "@/lib/destinations-data"
 import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, UsersIcon, Globe, Heart, Zap } from "lucide-react"
-import { breadcrumbSchema } from "./breadcrumb-schema"
-import DestinationCard from "./destination/DestinationCard"
+import DestinationCard from "./DestinationCard"
 
 // COMPLETE BULLET-PROOF HOMEPAGE SCHEMA — FULLY VALID + ENHANCED FOR ALL RICH RESULTS (Reviews, FAQ, Video, Breadcrumb)
 const homepageSchema = {
