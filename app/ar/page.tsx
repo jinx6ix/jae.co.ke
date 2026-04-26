@@ -28,12 +28,7 @@ export const metadata: Metadata = {
     url: "https://www.jaetravel.co.ke/ar",
     locale: "ar_AE",
     type: "website",
-    images: [{ url: `https://www.jaetravel.co.ke/api/og?title=${encodeURIComponent(
-      "سفاري كينيا 2026"
-    )}&locale=ar`,
-     width: 1200, 
-     height: 630, 
-     alt: "جيه تريفل - سفاري شرق أفريقيا" }],
+    images: [{ url: "https://www.jaetravel.co.ke/og-image.jpg", width: 1200, height: 630, alt: "جيه تريفل - سفاري شرق أفريقيا" }],
   },
   robots: {
     index: true,

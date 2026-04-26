@@ -6,7 +6,7 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 
   const title = searchParams.get("title") || "JaeTravel Expeditions";
-  const image = searchParams.get("image") || "https://www.jaetravel.co.ke/og-default.jpg";
+  const image = searchParams.get("image") || "https://www.jaetravel.co.ke/og-image.jpg";
   const locale = searchParams.get("locale") || "en";
 
   const isRTL = locale === "ar";
