@@ -7,7 +7,7 @@ import TourCard from "./TourCard"
 import HeroCarousel from "./HeroCarousel"
 import { tours, toursOnOffer } from "@/lib/tours-data"
 import { destinations } from "@/lib/destinations-data"
-import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, Users as UsersIcon, Globe, Heart, Zap } from "lucide-react"
+import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, UsersIcon, Globe, Heart, Zap } from "lucide-react"
 import { breadcrumbSchema } from "./breadcrumb-schema"
 import DestinationCard from "./destination/DestinationCard"
 
@@ -219,9 +219,20 @@ const homepageSchema = {
 }
 
 // ————————————————————————
-// MAXIMUM KEYWORD METADATA + IMAGE METADATA FOR RICH RESULTS
+// DYNAMIC OG IMAGE API INTEGRATION
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+
+  // Build the URL to your dynamic OG image endpoint
+  const ogImageUrl = new URL("/api/og", baseUrl)
+  ogImageUrl.searchParams.set("title", "Wheelchair Accessible Safari Kenya 2026")
+  ogImageUrl.searchParams.set(
+    "image",
+    `${baseUrl}/accessible-safari-wheelchair.jpg`
+  )
+  ogImageUrl.searchParams.set("locale", "en")
+
   return {
     title: "Accessible Safaris in Kenya (2026) | Wheelchair-Friendly Tours & Vehicles",
     description: "Book a wheelchair-accessible safari in Kenya with adapted vehicles, accessible lodges, and expert guides. Experience Maasai Mara & gorilla trekking in East Africa.",
@@ -250,12 +261,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     openGraph: {
       title: "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours",
       description: "East Africa's leading wheelchair accessible safari operator with German hydraulic lifts, disability-friendly lodges, and Masai Mara Great Migration 2026 packages.",
-      images: [
-        "/og-masai-mara-migration.jpg",
-        "/accessible-safari-wheelchair.jpg"
-      ],
+      images: [{ url: ogImageUrl.toString() }], // 👈 Now uses your dynamic API
       type: "website",
       locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours",
+      description: "East Africa's leading wheelchair accessible safari operator with German hydraulic lifts, disability-friendly lodges.",
+      images: [ogImageUrl.toString()],
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke",
@@ -643,15 +657,15 @@ export default function HomePage() {
                   <th className="p-5 text-left font-semibold">Feature</th>
                   <th className="p-5 font-semibold">JaeTravel Expeditions</th>
                   <th className="p-5 font-semibold">Typical Operators</th>
-                </tr>
+                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="p-5 border-t font-medium">Lift Capacity</td><td className="p-5 border-t text-green-600 font-semibold">400kg German hydraulic</td><td className="p-5 border-t">Manual ramps (max 150kg)</td></tr>
-                <tr><td className="p-5 font-medium">Wheelchair Securement</td><td className="p-5 text-green-600 font-semibold">Medical-grade 4-point system</td><td className="p-5">Basic straps</td></tr>
-                <tr><td className="p-5 font-medium">Lodge Partnerships</td><td className="p-5 text-green-600 font-semibold">Fully audited disability-friendly lodges</td><td className="p-5">Standard lodges</td></tr>
-                <tr><td className="p-5 font-medium">2026 Availability</td><td className="p-5 text-green-600 font-semibold">Guaranteed Masai Mara &amp; gorilla slots</td><td className="p-5">Limited or none</td></tr>
-                <tr><td className="p-5 font-medium">Driver Training</td><td className="p-5 text-green-600 font-semibold">Accessibility-certified guides</td><td className="p-5">Standard drivers</td></tr>
-                <tr><td className="p-5 font-medium">Own Wheelchair Use</td><td className="p-5 text-green-600 font-semibold">Stay seated entire game drive</td><td className="p-5">Transfer required</td></tr>
+                 <tr><td className="p-5 border-t font-medium">Lift Capacity</td><td className="p-5 border-t text-green-600 font-semibold">400kg German hydraulic</td><td className="p-5 border-t">Manual ramps (max 150kg)</td></tr>
+                 <tr><td className="p-5 font-medium">Wheelchair Securement</td><td className="p-5 text-green-600 font-semibold">Medical-grade 4-point system</td><td className="p-5">Basic straps</td></tr>
+                 <tr><td className="p-5 font-medium">Lodge Partnerships</td><td className="p-5 text-green-600 font-semibold">Fully audited disability-friendly lodges</td><td className="p-5">Standard lodges</td></tr>
+                 <tr><td className="p-5 font-medium">2026 Availability</td><td className="p-5 text-green-600 font-semibold">Guaranteed Masai Mara &amp; gorilla slots</td><td className="p-5">Limited or none</td></tr>
+                 <tr><td className="p-5 font-medium">Driver Training</td><td className="p-5 text-green-600 font-semibold">Accessibility-certified guides</td><td className="p-5">Standard drivers</td></tr>
+                 <tr><td className="p-5 font-medium">Own Wheelchair Use</td><td className="p-5 text-green-600 font-semibold">Stay seated entire game drive</td><td className="p-5">Transfer required</td></tr>
               </tbody>
             </table>
           </div>
@@ -672,13 +686,13 @@ export default function HomePage() {
                   <th className="p-5">Masai Mara Great Migration</th>
                   <th className="p-5">Gorilla Trekking Rwanda/Uganda</th>
                   <th className="p-5">Best for Wheelchair Accessible Safari</th>
-                </tr>
+                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="p-5 font-medium">June – September</td><td className="p-5">Peak migration &amp; river crossings</td><td className="p-5">Dry season — easiest trails</td><td className="p-5 text-green-600 font-semibold">★★★★★ Highest recommendation</td></tr>
-                <tr><td className="p-5 font-medium">July – October</td><td className="p-5">Best river crossing viewing</td><td className="p-5">Excellent</td><td className="p-5 text-green-600 font-semibold">Ideal for wheelchair users</td></tr>
-                <tr><td className="p-5 font-medium">December – February</td><td className="p-5">Calving season start</td><td className="p-5">Dry season — perfect trails</td><td className="p-5 text-green-600 font-semibold">Excellent wheelchair access</td></tr>
-                <tr><td className="p-5 font-medium">Year-round</td><td className="p-5">Daily game drives available</td><td className="p-5">Permits always open</td><td className="p-5">Custom wheelchair accessible tours in Kenya available daily</td></tr>
+                 <tr><td className="p-5 font-medium">June – September</td><td className="p-5">Peak migration &amp; river crossings</td><td className="p-5">Dry season — easiest trails</td><td className="p-5 text-green-600 font-semibold">★★★★★ Highest recommendation</td></tr>
+                 <tr><td className="p-5 font-medium">July – October</td><td className="p-5">Best river crossing viewing</td><td className="p-5">Excellent</td><td className="p-5 text-green-600 font-semibold">Ideal for wheelchair users</td></tr>
+                 <tr><td className="p-5 font-medium">December – February</td><td className="p-5">Calving season start</td><td className="p-5">Dry season — perfect trails</td><td className="p-5 text-green-600 font-semibold">Excellent wheelchair access</td></tr>
+                 <tr><td className="p-5 font-medium">Year-round</td><td className="p-5">Daily game drives available</td><td className="p-5">Permits always open</td><td className="p-5">Custom wheelchair accessible tours in Kenya available daily</td></tr>
               </tbody>
             </table>
             <p className="text-center text-sm text-muted-foreground mt-6">All dates include our hydraulic lift vehicles and fully accessible lodges.</p>
