@@ -45,11 +45,18 @@ export async function generateMetadata({
   const title = tour.metaTitle || tour.title;
   const description = tour.metaDescription || tour.description;
 
-  const image = tour.image
+  // Absolute URL for the tour image (to be used as background in OG API)
+  const tourImageAbsolute = tour.image
     ? tour.image.startsWith("http")
       ? tour.image
       : `${baseUrl}${tour.image}`
     : `${baseUrl}/placeholder.svg?key=tour-${tour.id}`;
+
+  // Build dynamic OG image URL using your API endpoint
+  const ogImageUrl = new URL("/api/og", baseUrl);
+  ogImageUrl.searchParams.set("title", title);
+  ogImageUrl.searchParams.set("image", tourImageAbsolute);
+  ogImageUrl.searchParams.set("locale", "ar"); // Arabic locale for RTL rendering
 
   return {
     title,
@@ -70,7 +77,7 @@ export async function generateMetadata({
       url: `${baseUrl}/ar/tours/${tour.slug}`,
       images: [
         {
-          url: image,
+          url: ogImageUrl.toString(), // 👈 Dynamic API image
           width: 1200,
           height: 630,
           alt: title,
@@ -83,7 +90,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [ogImageUrl.toString()], // 👈 Same dynamic image for Twitter
       creator: "@jaetravel",
       site: "@jaetravel",
     },

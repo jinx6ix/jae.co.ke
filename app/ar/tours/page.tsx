@@ -4,54 +4,78 @@ import ToursPageClient from "./ToursPageClient";
 import { tours } from "@/lib/i18n/data/ar/tours-data"; // استخدم بيانات الجولات العربية
 import JsonLd from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "جولات وباقات سفاري في شرق أفريقيا",
-  description:
-    "استكشف جولات السفاري الكلاسيكية والمجهزة لذوي الإعاقة في كينيا وتنزانيا ورواندا وأوغندا. من ماساي مارا إلى مغامرات تتبع الغوريلا.",
-  keywords: [
-    "جولات سفاري كينيا",
-    "باقات سفاري تنزانيا",
-    "تتبع الغوريلا رواندا",
-    "سفاري أوغندا",
-    "جولات سفاري ميسرة",
-    "جولات شرق أفريقيا",
-    "سفاري ماساي مارا",
-  ],
-  openGraph: {
-    title: "جولات وباقات سفاري | رحلات جي تريل",
+// Dynamic metadata with OG image API integration
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke";
+
+  // Build dynamic OG image URL using your API endpoint
+  const ogImageUrl = new URL("/api/og", baseUrl);
+  ogImageUrl.searchParams.set(
+    "title",
+    "جولات وباقات سفاري في شرق أفريقيا | رحلات جي تريل"
+  );
+  ogImageUrl.searchParams.set(
+    "image",
+    `${baseUrl}/images/tours-hero.jpg` // Representative background for the tours listing
+  );
+  ogImageUrl.searchParams.set("locale", "ar"); // Arabic locale for RTL rendering
+
+  return {
+    title: "جولات وباقات سفاري في شرق أفريقيا",
     description:
-      "تجارب سفاري منسقة في جميع أنحاء شرق أفريقيا. خيارات ميسرة لذوي الإعاقة متاحة.",
-    images: [
-      {
-        url: "https://www.jaetravel.co.ke/images/tours-hero.jpg",
-        width: 1200,
-        height: 630,
-        alt: "رحلات جي تريل - جولات سفاري في شرق أفريقيا",
-      },
+      "استكشف جولات السفاري الكلاسيكية والمجهزة لذوي الإعاقة في كينيا وتنزانيا ورواندا وأوغندا. من ماساي مارا إلى مغامرات تتبع الغوريلا.",
+    keywords: [
+      "جولات سفاري كينيا",
+      "باقات سفاري تنزانيا",
+      "تتبع الغوريلا رواندا",
+      "سفاري أوغندا",
+      "جولات سفاري ميسرة",
+      "جولات شرق أفريقيا",
+      "سفاري ماساي مارا",
     ],
-    locale: "ar_AR",
-    type: "website",
-  },
-  alternates: {
-    canonical: "https://www.jaetravel.co.ke/ar/tours",
-    languages: {
-      'ar': 'https://www.jaetravel.co.ke/ar/tours',
-      'en': 'https://www.jaetravel.co.ke/tours',
-      'x-default': 'https://www.jaetravel.co.ke/tours',
+    openGraph: {
+      title: "جولات وباقات سفاري | رحلات جي تريل",
+      description:
+        "تجارب سفاري منسقة في جميع أنحاء شرق أفريقيا. خيارات ميسرة لذوي الإعاقة متاحة.",
+      images: [
+        {
+          url: ogImageUrl.toString(), // 👈 Dynamic API image
+          width: 1200,
+          height: 630,
+          alt: "رحلات جي تريل - جولات سفاري في شرق أفريقيا",
+        },
+      ],
+      locale: "ar_AR",
+      type: "website",
     },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    twitter: {
+      card: "summary_large_image",
+      title: "جولات وباقات سفاري | رحلات جي تريل",
+      description:
+        "تجارب سفاري منسقة في جميع أنحاء شرق أفريقيا. خيارات ميسرة لذوي الإعاقة متاحة.",
+      images: [ogImageUrl.toString()],
+    },
+    alternates: {
+      canonical: "https://www.jaetravel.co.ke/ar/tours",
+      languages: {
+        ar: "https://www.jaetravel.co.ke/ar/tours",
+        en: "https://www.jaetravel.co.ke/tours",
+        "x-default": "https://www.jaetravel.co.ke/tours",
+      },
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 // مخطط شامل لصفحة الجولات بالعربية (يدعم نتائج غنية للمنتجات والمراجعات ومسار التنقل والأسئلة الشائعة)
 const toursPageSchema = {
