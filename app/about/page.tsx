@@ -361,7 +361,7 @@ export default function AboutPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA */}
-      <JsonLd data={aboutPageSchema} />
+      <JsonLd data={aboutPageSchema} id={"about-schema"} />
       <AboutClient faqs={faqs} teamMembers={teamMembers} values={values} />
     </>
   )
