@@ -90,6 +90,7 @@ export const metadata: Metadata = {
 
 const GTM_ID = "GTM-52G2X6L5";
 const GA_ID = "G-2YLERP8F8B";
+const AW_ID = "AW-17802463747";  // Google Ads conversion ID
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -182,9 +183,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
 
+        {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');` }} />
+
+        {/* GA4 (already defines window.dataLayer and gtag function) */}
         <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
         <Script id="ga4-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{page_path:window.location.pathname,send_page_view:true,transport_type:'beacon'});` }} />
+
+        {/* Google Ads Conversion Tracking (AW-17802463747) */}
+        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${AW_ID}`} />
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`gtag('config', '${AW_ID}');`}
+        </Script>
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <noscript>
