@@ -195,6 +195,37 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Script id="google-ads-conversion" strategy="afterInteractive">
           {`gtag('config', '${AW_ID}');`}
         </Script>
+
+        {/* Google Ads Page View Conversion Event (fires automatically on page load) */}
+        <Script id="google-ads-pageview-conversion" strategy="afterInteractive">
+          {`
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
+              'value': 1.0,
+              'currency': 'USD'
+            });
+          `}
+        </Script>
+
+        {/* Google Ads helper function for click conversions (gtag_report_conversion) */}
+        <Script id="google-ads-conversion-helper" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
+                  'value': 1.0,
+                  'currency': 'USD',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <noscript>
