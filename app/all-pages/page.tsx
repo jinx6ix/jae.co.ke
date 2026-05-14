@@ -93,6 +93,28 @@ export default function SitemapPage() {
           </ul>
         </section>
 
+        {/* Park-Specific Destination Pages */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold border-b pb-2">Kenya National Parks</h2>
+          <ul className="space-y-2">
+            <li><Link href="/destinations/amboseli" className="text-primary hover:underline">Amboseli National Park</Link></li>
+            <li><Link href="/destinations/tsavo" className="text-primary hover:underline">Tsavo National Parks</Link></li>
+            <li><Link href="/destinations/samburu" className="text-primary hover:underline">Samburu National Reserve</Link></li>
+            <li><Link href="/destinations/lake-nakuru" className="text-primary hover:underline">Lake Nakuru National Park</Link></li>
+          </ul>
+        </section>
+
+        {/* Tanzania & Rwanda Uganda */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold border-b pb-2">Tanzania & East Africa</h2>
+          <ul className="space-y-2">
+            <li><Link href="/destinations/serengeti" className="text-primary hover:underline">Serengeti National Park</Link></li>
+            <li><Link href="/destinations/ngorongoro" className="text-primary hover:underline">Ngorongoro Conservation</Link></li>
+            <li><Link href="/destinations/bwindi" className="text-primary hover:underline">Bwindi Forest (Uganda)</Link></li>
+            <li><Link href="/destinations/volcanoes" className="text-primary hover:underline">Volcanoes NP (Rwanda)</Link></li>
+          </ul>
+        </section>
+
         {/* Tour Packages */}
         <section className="space-y-4">
           <h2 className="text-xl font-semibold border-b pb-2">Tour Packages</h2>
@@ -174,6 +196,18 @@ export default function SitemapPage() {
             <li><Link href="/terms" className="text-primary hover:underline">Terms & Conditions</Link></li>
             <li><Link href="/book-now" className="text-primary hover:underline">Book Now</Link></li>
             <li><Link href="/other-services" className="text-primary hover:underline">Other Services</Link></li>
+            <li><Link href="/all-pages" className="text-primary hover:underline">All Pages Sitemap</Link></li>
+          </ul>
+        </section>
+
+        {/* Sitemaps */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold border-b pb-2">Sitemaps</h2>
+          <ul className="space-y-2">
+            <li><Link href="/sitemap.xml" className="text-primary hover:underline">XML Sitemap</Link></li>
+            <li><Link href="/sitemap-images.xml" className="text-primary hover:underline">Images Sitemap</Link></li>
+            <li><Link href="/sitemap-videos.xml" className="text-primary hover:underline">Videos Sitemap</Link></li>
+            <li><Link href="/blog/rss.xml" className="text-primary hover:underline">RSS Feed</Link></li>
           </ul>
         </section>
       </div>

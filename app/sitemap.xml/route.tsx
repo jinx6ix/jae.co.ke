@@ -81,6 +81,17 @@ export async function GET() {
     { path: "/wheelchair-vehicle", freq: "weekly", pri: "0.9" },
     { path: "/toyota-landcruiser", freq: "monthly", pri: "0.8" },
     { path: "/toyota-prado", freq: "monthly", pri: "0.8" },
+    // Destination specific pages
+    { path: "/destinations/amboseli", freq: "weekly", pri: "0.9" },
+    { path: "/destinations/tsavo", freq: "weekly", pri: "0.85" },
+    { path: "/destinations/samburu", freq: "weekly", pri: "0.85" },
+    { path: "/destinations/lake-nakuru", freq: "weekly", pri: "0.85" },
+    { path: "/destinations/serengeti", freq: "weekly", pri: "0.9" },
+    { path: "/destinations/ngorongoro", freq: "weekly", pri: "0.9" },
+    { path: "/destinations/bwindi", freq: "weekly", pri: "0.9" },
+    { path: "/destinations/volcanoes", freq: "weekly", pri: "0.9" },
+    // HTML Sitemap
+    { path: "/all-pages", freq: "monthly", pri: "0.5" },
   ]
 
   const dynamicEntries = [
