@@ -66,21 +66,6 @@ const nextConfig = {
         destination: "https://www.jaetravel.co.ke/:path*",
         permanent: true,
       },
-      // ── Regional variant redirects (en-*) to canonical language ──
-      { source: "/en-gb/:path*", destination: "/:path*", permanent: true },
-      { source: "/en-gb", destination: "/", permanent: true },
-      { source: "/en-au/:path*", destination: "/:path*", permanent: true },
-      { source: "/en-au", destination: "/", permanent: true },
-      { source: "/en-us/:path*", destination: "/:path*", permanent: true },
-      { source: "/en-us", destination: "/", permanent: true },
-      { source: "/en-ca/:path*", destination: "/:path*", permanent: true },
-      { source: "/en-ca", destination: "/", permanent: true },
-      // ── Trailing slash redirects (remove trailing slash) ──
-      { source: "/:path*/", destination: "/:path*", permanent: true },
-      // ── Old legacy routes ──
-      { source: "/product/:path*", destination: "/tours/:path*", permanent: true },
-      { source: "/booking/:path*", destination: "/book-now/:path*", permanent: true },
-      { source: "/destination/:path*", destination: "/destinations/:path*", permanent: true },
       // ── Legacy redirects ──
       { source: "/:path*", has: [{ type: "query", key: "p", value: "2056" }], destination: "https://www.jaetravel.co.ke/tour/kenya-cultural-tour", permanent: true },
       { source: "/:path*", has: [{ type: "query", key: "p", value: "2121" }], destination: "https://www.jaetravel.co.ke/tour/tanzania-wildlife-adventure", permanent: true },
@@ -88,10 +73,6 @@ const nextConfig = {
       // ── Old French routes redirect to new structure ──
       { source: "/fr/author/:path*", destination: "/fr", permanent: true },
       { source: "/fr/produit/:path*", destination: "/fr/vehicle-hire", permanent: true },
-      // ── Remove query params that create duplicate pages ──
-      { source: "/tours", has: [{ type: "query", key: "destination" }], destination: "/tours", permanent: true },
-      { source: "/book-now", has: [{ type: "query", key: "vehicle" }], destination: "/book-now", permanent: true },
-      { source: "/book-now", has: [{ type: "query", key: "service" }], destination: "/book-now", permanent: true },
     ]
   },
 
