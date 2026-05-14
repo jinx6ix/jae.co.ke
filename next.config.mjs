@@ -3,12 +3,16 @@ const nextConfig = {
   trailingSlash: false,
 
   images: {
-    unoptimized: true,
-    remotePatterns: [{ protocol: "https", hostname: "www.jaetravel.co.ke", pathname: "/**" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "www.jaetravel.co.ke", pathname: "/**" },
+      { protocol: "https", hostname: "jaetravel.co.ke", pathname: "/**" },
+    ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   compress: true,
