@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Sitemap | JaeTravel Expeditions",
   description: "Complete sitemap of JaeTravel Expeditions - Find all our safari tours, destinations, vehicle hire options, and travel resources.",
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/sitemap",
+    canonical: "https://www.jaetravel.co.ke/all-pages",
   },
 };
 
@@ -149,7 +149,7 @@ export default function SitemapPage() {
                 </Link>
               </li>
             ))}
-            <li><Link href="/blog" className="text-primary hover:underline">View All Posts →</Link></li>
+            <li><Link href="/blog" className="text-primary hover:underline">View All Posts</Link></li>
           </ul>
         </section>
 
@@ -158,12 +158,12 @@ export default function SitemapPage() {
           <h2 className="text-xl font-semibold border-b pb-2">Language Versions</h2>
           <ul className="space-y-2">
             <li><Link href="/" className="text-primary hover:underline">English</Link></li>
-            <li><Link href="/fr" className="text-primary hover:underline">Français</Link></li>
+            <li><Link href="/fr" className="text-primary hover:underline">Francais</Link></li>
             <li><Link href="/de" className="text-primary hover:underline">Deutsch</Link></li>
             <li><Link href="/it" className="text-primary hover:underline">Italiano</Link></li>
-            <li><Link href="/hi" className="text-primary hover:underline">हिन्दी</Link></li>
-            <li><Link href="/ar" className="text-primary hover:underline">العربية</Link></li>
-            <li><Link href="/zh" className="text-primary hover:underline">中文</Link></li>
+            <li><Link href="/hi" className="text-primary hover:underline">Hindi</Link></li>
+            <li><Link href="/ar" className="text-primary hover:underline">Arabic</Link></li>
+            <li><Link href="/zh" className="text-primary hover:underline">Chinese</Link></li>
           </ul>
         </section>
 
