@@ -69,6 +69,10 @@ export const metadata: Metadata = {
     canonical: BASE,
     languages: {
       "en":       BASE,
+      "en-US":    BASE,
+      "en-GB":    BASE,
+      "en-AU":    BASE,
+      "en-CA":    BASE,
       "fr":       `${BASE}/fr`,
       "de":       `${BASE}/de`,
       "it":       `${BASE}/it`,

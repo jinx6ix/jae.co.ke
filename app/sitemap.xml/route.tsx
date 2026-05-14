@@ -1,5 +1,6 @@
 // app/sitemap.xml/route.tsx — MULTILINGUAL SITEMAP WITH ALL LANGUAGE VERSIONS
 // Includes: hreflang xhtml annotations, all language prefixes, all slug pages
+// NOTE: Only canonical URLs (no regional variants, no query params)
 import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
 import { budgetTours } from "@/lib/budget-tours-data"
@@ -10,6 +11,7 @@ export const dynamic = "force-dynamic"
 export const revalidate = 3600
 
 const BASE = "https://www.jaetravel.co.ke"
+// Only include canonical languages - no regional variants (en-GB, en-US, etc)
 const LANGS = ["en","fr","de","it","hi","ar","zh"] as const
 const LANG_PREFIX: Record<string,string> = { en:"", fr:"/fr", de:"/de", it:"/it", hi:"/hi", ar:"/ar", zh:"/zh" }
 
