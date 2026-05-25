@@ -6,6 +6,7 @@ import { Calendar, MapPin, Clock, Star, Award, Users, Shield, Heart, Zap, Globe,
 import { faqSchema } from "./faq-schema"
 import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard"
 import JsonLd from "@/components/JsonLd"
+import { tours } from "@/lib/tours-data"
 
 export const generateMetadata = (): Metadata => ({
   // ✅ Keep under ~60–65 chars (brand added globally)
