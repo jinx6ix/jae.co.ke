@@ -33,10 +33,10 @@ export const budgetTours: Tour[] = [
   {
     id: "1",
     slug: "masai-mara-3-days-budget-land-cruiser-safari",
-    title: "Masai Mara 3 Days Budget Land Cruiser Safari Kenya 2026 - Affordable Group Tour from $450",
-    description: "Join our affordable 3-day Masai Mara budget safari in Kenya 2026 for an unforgettable wildlife adventure. Spot the Big Five on cheap game drives in shared 4x4 Land Cruisers, with budget camping and all-inclusive meals starting from $450. Perfect for first-time safari-goers and budget travelers seeking authentic African wildlife experiences.",
-    shortDescription: "Perfect short Masai Mara budget safari. See the Big Five on shared game drives, stay in budget camps, enjoy all meals. Great for first-timers and solo travelers. From $450.",
-    longDescription: `Experience the magic of Africa's most famous wildlife reserve on our affordable 3-Day Masai Mara Budget Safari Kenya 2026. This carefully crafted itinerary offers first-time safari-goers and budget-conscious travelers an authentic African wildlife experience without compromising on quality or wildlife viewing opportunities. Starting from just $450 per person, this cheap Masai Mara safari package represents exceptional value for money, providing all the essentials for an unforgettable adventure in one of the world's premier wildlife destinations.
+    title: "Masai Mara 3 Days Budget Land Cruiser Safari Kenya 2026 - Affordable Group Tour from $950",
+    description: "Join our affordable 3-day Masai Mara budget safari in Kenya 2026 for an unforgettable wildlife adventure. Spot the Big Five on cheap game drives in shared 4x4 Land Cruisers, with budget camping and all-inclusive meals starting from $950. Perfect for first-time safari-goers and budget travelers seeking authentic African wildlife experiences.",
+    shortDescription: "Perfect short Masai Mara budget safari. See the Big Five on shared game drives, stay in budget camps, enjoy all meals. Great for first-timers and solo travelers. from $950.",
+    longDescription: `Experience the magic of Africa's most famous wildlife reserve on our affordable 3-Day Masai Mara Budget Safari Kenya 2026. This carefully crafted itinerary offers first-time safari-goers and budget-conscious travelers an authentic African wildlife experience without compromising on quality or wildlife viewing opportunities. Starting from just $950 per person, this cheap Masai Mara safari package represents exceptional value for money, providing all the essentials for an unforgettable adventure in one of the world's premier wildlife destinations.
 
 Masai Mara National Reserve needs little introduction - it's Kenya's flagship wildlife area, renowned for its high density of predators, spectacular Great Migration (July-October), and classic African savannah landscapes. Our 3-day budget safari captures the essence of this iconic reserve in a compact timeframe, perfect for travelers with limited time or those wanting to add a wildlife experience to a broader Kenya itinerary.
 
@@ -57,8 +57,8 @@ This affordable Kenya safari 2026 represents smart travel planning. While longer
 Booking is straightforward through our WhatsApp booking system, with flexible departure dates and last-minute availability often possible. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates. Child discounts, group rates, and customizations are available upon request.
 
 Don't miss this opportunity to experience Masai Mara's wonders at budget pricing. Whether you're a first-time safari-goer, solo traveler seeking adventure, or budget-conscious wildlife enthusiast, this 3-day Masai Mara Budget Safari delivers authentic African experiences without breaking the bank. Book now for your 2026 adventure and create memories that will last a lifetime.`,
-    metaDescription: "Book 3-day Masai Mara budget safari Kenya 2026 from $450. Big Five game drives, shared Land Cruiser, budget camping, all meals. Daily departures from Nairobi.",
-    keywords: ["3-day Masai Mara budget safari", "cheap Masai Mara safari Kenya 2026", "affordable Masai Mara group tour", "budget Kenya safari packages", "Masai Mara wildlife tour from $450", "cheap group safari Kenya", "budget camping Masai Mara", "Kenya safari deals 2026"],
+    metaDescription: "Book 3-day Masai Mara budget safari Kenya 2026 from $950. Big Five game drives, shared Land Cruiser, budget camping, all meals. Daily departures from Nairobi.",
+    keywords: ["3-day Masai Mara budget safari", "cheap Masai Mara safari Kenya 2026", "affordable Masai Mara group tour", "budget Kenya safari packages", "Masai Mara wildlife tour from $950", "cheap group safari Kenya", "budget camping Masai Mara", "Kenya safari deals 2026"],
     price: 950,
     originalPrice: 1000,
     image: "/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",
@@ -94,7 +94,7 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
       "Affordable Big Five sightings in Masai Mara National Reserve",
       "Cheap shared group tours in 4x4 Land Cruisers from Nairobi",
       "Budget camping with full-board meals included",
-      "Best value Kenya safari 2026 starting at $450 per person",
+      "Best value Kenya safari 2026 starting at $950 per person",
       "Professional English-speaking safari guides",
       "Great Migration viewing opportunities (seasonal)",
       "Flexible daily departures from Nairobi",
@@ -115,7 +115,7 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
       "Travel and medical insurance (highly recommended)",
       "Tips and gratuities to guide/camp staff",
       "All Masai Mara National Reserve park fees",
-      "Optional activities (hot air balloon safari $450-500)",
+      "Optional activities (hot air balloon safari $950-500)",
       "Alcoholic beverages and soft drinks",
       "Personal expenses and souvenirs",
       "Single room supplement ($80 extra if available)",
@@ -124,7 +124,7 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
     faqs: [
       { 
         question: "What is the cost of a 3-day Masai Mara budget safari in Kenya 2026?", 
-        answer: "Our cheap Masai Mara safari starts from $450 per person for shared group tours. This all-inclusive price covers transport, park fees, accommodation, meals, game drives, and professional guiding. Additional costs may include optional activities, tips, and personal expenses." 
+        answer: "Our cheap Masai Mara safari starts from $950 per person for shared group tours. This all-inclusive price covers transport, park fees, accommodation, meals, game drives, and professional guiding. Additional costs may include optional activities, tips, and personal expenses." 
       },
       { 
         question: "Is this affordable Kenya safari suitable for families with children?", 
@@ -230,7 +230,7 @@ Don't miss this opportunity to experience Masai Mara with enhanced comfort at st
     faqs: [
       { 
         question: "What makes this 'superior' compared to your basic budget safari?", 
-        answer: "This safari features better accommodations (upgraded tents/better facilities), improved meal quality and variety, potentially newer vehicles, senior guides, and enhanced overall service. While maintaining budget pricing, it offers noticeable comfort improvements over our basic $450 safari." 
+        answer: "This safari features better accommodations (upgraded tents/better facilities), improved meal quality and variety, potentially newer vehicles, senior guides, and enhanced overall service. While maintaining budget pricing, it offers noticeable comfort improvements over our basic $950 safari." 
       },
       { 
         question: "Is the wildlife viewing different on this superior safari?", 
@@ -1615,7 +1615,7 @@ Don't miss this opportunity to experience Africa's most famous wildlife reserve 
       "Kenya visa fees (approximately $50)",
       "Travel insurance (highly recommended)",
       "Tips for guide and camp staff",
-      "Optional activities (Maasai village visit $20, balloon safari $450+)",
+      "Optional activities (Maasai village visit $20, balloon safari $950+)",
       "Alcoholic beverages and premium drinks",
       "Personal expenses and souvenirs",
       "Items of personal nature"

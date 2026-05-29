@@ -51,7 +51,7 @@ const CONFIG = {
   slug: "birdwatching-safaris-east-africa",
   title: "Birdwatching Safaris Kenya 2026 | 1,400+ Bird Species",
   description:
-    "2026 birdwatching safaris in Kenya, Tanzania & Uganda. See flamingos, shoebills & migratory birds. Expert guides. From $450.",
+    "2026 birdwatching safaris in Kenya, Tanzania & Uganda. See flamingos, shoebills & migratory birds. Expert guides. from $450.",
   h1: "Birdwatching Safaris",
   h1Sub: "East Africa 2026",
   subtitle: "Over 1,400 Species – Migratory Wonders, Flamingo Spectacles & Rare Gems Across Kenya, Tanzania & Uganda",

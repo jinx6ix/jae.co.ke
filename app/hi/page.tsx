@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const schema = {"@context":"https://schema.org","@type":"FAQPage",mainEntity:[
   {"@type":"Question","name":"मसाई मारा जाने का सबसे अच्छा समय क्या है?","acceptedAnswer":{"@type":"Answer","text":"महान प्रवास के लिए जुलाई से अक्टूबर सबसे अच्छा समय है। अगस्त-सितंबर में 15 लाख जीनू मारा नदी पार करते हैं।"}},
   {"@type":"Question","name":"क्या आप व्हीलचेयर सुलभ सफारी प्रदान करते हैं?","acceptedAnswer":{"@type":"Answer","text":"हां! हम केन्या में एकमात्र ऑपरेटर हैं जो जर्मन हाइड्रोलिक लिफ्ट (400 किग्रा क्षमता) के साथ पूरी तरह से अनुकूलित 4x4 Land Cruisers संचालित करते हैं।"}},
-  {"@type":"Question","name":"केन्या सफारी की लागत कितनी है?","acceptedAnswer":{"@type":"Answer","text":"बजट सफारी मसाई मारा में 3 दिनों के लिए $450 से शुरू होती है। लक्जरी सफारी 5 दिनों के लिए $3,500 से शुरू होती है।"}},
+  {"@type":"Question","name":"केन्या सफारी की लागत कितनी है?","acceptedAnswer":{"@type":"Answer","text":"बजट सफारी मसाई मारा में 3 दिनों के लिए $950 से शुरू होती है। लक्जरी सफारी 5 दिनों के लिए $3,500 से शुरू होती है।"}},
 ]}
 
 export default function HindiHomePage() {
@@ -36,7 +36,7 @@ export default function HindiHomePage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-serif font-bold text-center mb-12">लोकप्रिय टूर</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[{href:"/hi/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"मसाई मारा लक्जरी सफारी",desc:"महान प्रवास, बिग फाइव और लक्जरी लॉज",price:"$3,500 से"},{href:"/hi/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"गोरिल्ला ट्रेकिंग",desc:"रवांडा में पर्वतीय गोरिल्लाओं से अविस्मरणीय मुलाकात",price:"अनुरोध पर"},{href:"/hi/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3 दिन बजट सफारी",desc:"साझा Land Cruiser में किफायती मसाई मारा",price:"$450 से"}].map(({href,img,title,desc,price})=>(
+          {[{href:"/hi/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"मसाई मारा लक्जरी सफारी",desc:"महान प्रवास, बिग फाइव और लक्जरी लॉज",price:"$3,500 से"},{href:"/hi/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"गोरिल्ला ट्रेकिंग",desc:"रवांडा में पर्वतीय गोरिल्लाओं से अविस्मरणीय मुलाकात",price:"अनुरोध पर"},{href:"/hi/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3 दिन बजट सफारी",desc:"साझा Land Cruiser में किफायती मसाई मारा",price:"$950 से"}].map(({href,img,title,desc,price})=>(
             <Link key={href} href={href} className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <div className="relative h-52"><Image src={img} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" /></div>
               <div className="p-5"><h3 className="font-serif font-bold text-xl mb-2">{title}</h3><p className="text-gray-600 text-sm mb-3">{desc}</p><p className="text-orange-500 font-bold">{price}</p></div>

@@ -715,7 +715,7 @@ function buildCategoryPageSchema(opts: { title: string; description: string; slu
       // FAQ
       { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: [
         { "@type": "Question", name: `What is the best ${opts.title.toLowerCase()} operator?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions is rated 5/5 with 723+ verified reviews. We specialize in ${opts.title.toLowerCase()} across East Africa with expert local guides and accessible options.` } },
-        { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $450 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
+        { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $950 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
       ]},
       // WEBPAGE
       { "@type": "WebPage", "@id": url, url, inLanguage: "en", isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` }, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },

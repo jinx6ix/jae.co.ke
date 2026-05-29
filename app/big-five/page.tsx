@@ -113,7 +113,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: "Big Five Safari Kenya | Maasai Mara, Amboseli & Tsavo",
     description:
-      "See lion, leopard, elephant, rhino & buffalo in Kenya’s top parks. Wheelchair-accessible safaris with expert guides. From $450.",
+      "See lion, leopard, elephant, rhino & buffalo in Kenya’s top parks. Wheelchair-accessible safaris with expert guides. from $450.",
     keywords: [
       "big five safari",
       "big five kenya",

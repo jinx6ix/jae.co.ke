@@ -136,7 +136,7 @@ const organizationSchema = {
           { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Wildlife Safari Tours", description: "Big Five and Great Migration" } },
           { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Gorilla Trekking", description: "Mountain gorilla encounters in Rwanda and Uganda" } },
           { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Accessible Safari Tours", description: "Wheelchair-adapted vehicles and inclusive travel" } },
-          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Budget Safari Tours", description: "Affordable Kenya safaris from $450" } },
+          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Budget Safari Tours", description: "Affordable Kenya safaris from $950" } },
         ],
       },
     },

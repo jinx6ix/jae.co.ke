@@ -33,8 +33,8 @@ const maxPrice = totalTours > 0
 // METADATA - Title: 60 chars | Description: 115 chars
 // ============================================
 export const metadata: Metadata = {
-  title: "Budget Safaris Kenya 2026 | Cheap Tours from $450",
-  description: "Discover the best budget safaris in Kenya 2026. Masai Mara, Nakuru, Naivasha & Amboseli. Affordable group & private safaris starting from $450. Book now!",
+  title: "Budget Safaris Kenya 2026 | Cheap Tours from $950",
+  description: "Discover the best budget safaris in Kenya 2026. Masai Mara, Nakuru, Naivasha & Amboseli. Affordable group & private safaris starting from $950. Book now!",
   keywords: [
     "budget safaris Kenya 2026", "private safaris Kenya", "tented camps Masai Mara",
     "wildebeest migration safari", "budget safaris Masai Mara", "Masai Mara National Reserve tours",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
+    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
     description: "Experience the Great Wildebeest Migration on affordable budget safaris. Group & private safaris in Masai Mara, Nakuru, Naivasha & Amboseli. Book now!",
     url: "https://www.jaetravel.co.ke/budget-tours",
     siteName: "JaeTravel Expeditions",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
+    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
     description: "Join our group safaris or private safaris to witness the Great Migration. Affordable tented camp stays with unforgettable experiences.",
     images: ["https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg"],
     site: "@jaetravel",
@@ -209,7 +209,7 @@ const schema = {
       "@type": "WebPage",
       "@id": `${absoluteUrl}#webpage`,
       "url": absoluteUrl,
-      "name": "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
+      "name": "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
       "description": "Book budget safaris to Masai Mara National Reserve for unforgettable experiences. Private safaris & group safaris with tented camp accommodation. Witness lions leopards & the Great Migration.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "primaryImageOfPage": {
@@ -266,7 +266,7 @@ const schema = {
       "@type": "ItemList",
       "@id": `${absoluteUrl}#budget-tours-list`,
       "name": "Budget Safari Packages Kenya 2026 - Cheap Masai Mara Tours",
-      "description": "Affordable safari packages starting from $450",
+      "description": "Affordable safari packages starting from $950",
       "numberOfItems": totalTours,
       "itemListElement": featuredTours.map((tour, index) => ({
         "@type": "ListItem",
@@ -407,7 +407,7 @@ export default function BudgetToursPage() {
         <div className="container relative z-10 mx-auto px-4 text-center text-white">
           {/* H1 - Primary Keyword */}
           <h1 className="mb-6 font-serif text-5xl font-bold md:text-6xl lg:text-7xl">
-            <strong>Budget Safaris Kenya 2026</strong> — <span className="text-primary">From $450</span>
+            <strong>Budget Safaris Kenya 2026</strong> — <span className="text-primary">from $950</span>
           </h1>
           {/* H2 - Secondary Keyword */}
           <h2 className="mx-auto mb-8 max-w-5xl text-xl leading-relaxed text-white/90">
@@ -590,7 +590,7 @@ export default function BudgetToursPage() {
               {
                 icon: <DollarSign className="h-7 w-7 text-green-600" />,
                 title: "Best Value Budget Safaris",
-                desc: "Starting from $450 — premium <strong>game viewing</strong> experiences at affordable prices.",
+                desc: "Starting from $950 — premium <strong>game viewing</strong> experiences at affordable prices.",
               },
               {
                 icon: <Users className="h-7 w-7 text-green-600" />,
