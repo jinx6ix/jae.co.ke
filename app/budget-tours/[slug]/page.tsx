@@ -14,6 +14,7 @@ import TourItinerary from "./components/TourItinerary";
 import TourInclusions from "./components/TourInclusions";
 import TourFAQs from "./components/TourFAQs";
 import TourCTA from "./components/TourCTA";
+import BookingButtons from "./components/BookingButtons";
 import JsonLd from "@/components/JsonLd";
 
 // Define the variant type to fix TypeScript errors
@@ -369,17 +370,17 @@ export default async function TourDetailPage(props: Props) {
                   <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
                     <TourOverview tour={tour} />
                     
-                    {/* Quick action buttons for mobile/tablet */}
-                    <div className="mt-6 space-y-3">
-                      <a
-                        href={tour.bookingUrl || '#'}
-                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200"
-                      >
-                        Book This Tour
-                      </a>
-                      <button className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200">
-                        Request Quote
-                      </button>
+                    {/* Quick action buttons using the working BookingButtons component */}
+                    <div className="mt-6">
+                      <BookingButtons 
+                        tour={{ 
+                          title: tour.title, 
+                          price: tour.price, 
+                          duration: tour.duration,
+                          bookingUrl: tour.bookingUrl,
+                          slug: tour.slug
+                        }} 
+                      />
                     </div>
                   </div>
 
@@ -402,42 +403,54 @@ export default async function TourDetailPage(props: Props) {
       </main>
 
       {/* Desktop Sticky CTA - Hidden on mobile, visible on desktop scroll */}
-      <div className="hidden lg:block fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg transform transition-transform duration-300 translate-y-0 hover:shadow-xl z-40">
-        <div className="max-w-7xl mx-auto px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Starting from</p>
-              <p className="text-2xl font-bold text-gray-900">${tour.price}</p>
-              <p className="text-xs text-gray-500">per person</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href={tour.bookingUrl || '#'}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
-              >
-                Book Now
-              </a>
-              <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                Inquiry
-              </button>
-            </div>
-          </div>
+      <div className="hidden lg:flex fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-40 items-center justify-between px-8 py-3">
+        <div>
+          <p className="text-sm text-gray-600">Starting from</p>
+          <p className="text-2xl font-bold text-gray-900">${tour.price}</p>
+          <p className="text-xs text-gray-500">per person</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <a
+            href={`https://wa.me/+254726485228?text=${encodeURIComponent(`Hello! I'm interested in booking ${tour.title} for $${tour.price}. Can you provide availability and more details?`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 flex items-center gap-2"
+          >
+            <Phone className="h-4 w-4" />
+            Inquiry
+          </a>
+          <a
+            href={tour.bookingUrl || '#'}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200"
+          >
+            Book Now
+          </a>
         </div>
       </div>
 
       {/* Mobile Sticky CTA - Visible only on mobile */}
-      <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white border-t border-gray-200 p-4 shadow-lg z-50">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex-1">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 shadow-lg z-50">
+        <div className="flex items-center justify-between gap-3">
+          <div>
             <p className="text-xs text-gray-600">Starting from</p>
             <p className="text-lg font-bold text-gray-900">${tour.price}</p>
           </div>
-          <a
-            href={tour.bookingUrl || '#'}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200"
-          >
-            Book Now
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={`https://wa.me/+254726485228?text=${encodeURIComponent(`Hello! I'm interested in booking ${tour.title} for $${tour.price}. Can you provide availability and more details?`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold p-2.5 rounded-lg transition-colors duration-200 flex items-center justify-center"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href={tour.bookingUrl || '#'}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-lg transition-colors duration-200 text-sm"
+            >
+              Book Now
+            </a>
+          </div>
         </div>
       </div>
 
