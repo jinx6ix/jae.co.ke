@@ -16,6 +16,7 @@ import TourFAQs from "./components/TourFAQs";
 import TourCTA from "./components/TourCTA";
 import BookingButtons from "./components/BookingButtons";
 import JsonLd from "@/components/JsonLd";
+import { Phone } from "lucide-react";
 
 // Define the variant type to fix TypeScript errors
 type CTALink = {
