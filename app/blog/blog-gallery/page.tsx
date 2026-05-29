@@ -2,6 +2,7 @@
 import type { Metadata } from "next"
 import GalleryP from "./gallery"
 import JsonLd from "@/components/JsonLd";
+import YouTubeVideoSchema from "./YouTubeVideoSchema"
 
 // BULLET-PROOF GALLERY SCHEMA — MAXIMUM VISUAL RICH RESULTS (2025–2026)
 const gallerySchema = {
@@ -252,6 +253,9 @@ export default function GalleryPage() {
     <>
       {/* FULL RICH RESULTS SCHEMA — YOUR PHOTOS WILL RANK IN GOOGLE IMAGES! */}
       <JsonLd data={gallerySchema} id={"gallery-schema"} />
+      
+      {/* YouTube Video Schema for Video Rich Results */}
+      <YouTubeVideoSchema />
 
       <GalleryP />
     </>

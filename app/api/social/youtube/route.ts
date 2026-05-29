@@ -55,19 +55,20 @@ export async function GET() {
 
     const posts: SocialMediaPost[] = data.items?.map((item: any, index: number) => {
       const duration = durations[item.id.videoId]
+      const videoId = item.id.videoId
       return {
-        id: `yt-${item.id.videoId}`,
+        id: `yt-${videoId}`,
         platform: 'youtube' as const,
         type: 'video' as const,
-        url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-        thumbnailUrl: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || '',
+        url: `https://www.youtube.com/watch?v=${videoId}`,
+        thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
         caption: item.snippet.title,
         authorName: 'JaeTravel Expeditions',
         authorUsername: 'JaeTravel',
         publishedAt: item.snippet.publishedAt,
-        views: 0, // Would need separate stats API call
+        views: 0,
         duration: duration ? formatDuration(duration) : `${index * 3 + 8}:${String(index * 17 % 60).padStart(2, '0')}`,
-        permalink: `https://www.youtube.com/watch?v=${item.id.videoId}`
+        permalink: `https://www.youtube.com/watch?v=${videoId}`
       }
     }) || []
 

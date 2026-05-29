@@ -12,7 +12,7 @@ const nextConfig = {
       { protocol: "https", hostname: "scontent.xx.fbcdn.net", pathname: "/**" },
       { protocol: "https", hostname: "graph.facebook.com", pathname: "/**" },
       { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
-      { protocol: "https", hostname: "i.ytimg.com", pathname: "/**" },
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
       { protocol: "https", hostname: "v16.tiktokcdn.com", pathname: "/**" },
       { protocol: "https", hostname: "picsum.photos", pathname: "/**" },
     ],
