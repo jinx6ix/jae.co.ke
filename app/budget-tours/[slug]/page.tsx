@@ -421,8 +421,10 @@ export default async function TourDetailPage(props: Props) {
             Inquiry
           </a>
           <a
-            href={tour.bookingUrl || '#'}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200"
+            href={`https://wa.me/+254726485228?text=${encodeURIComponent(`🛒 BOOKING REQUEST\n\nTour: ${tour.title}\nPrice: $${tour.price}\nDuration: ${tour.duration}\n\nI would like to book this tour. Please provide availability and payment details.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 flex items-center gap-2"
           >
             Book Now
           </a>
@@ -446,7 +448,9 @@ export default async function TourDetailPage(props: Props) {
               <Phone className="h-4 w-4" />
             </a>
             <a
-              href={tour.bookingUrl || '#'}
+              href={`https://wa.me/+254726485228?text=${encodeURIComponent(`🛒 BOOKING REQUEST\n\nTour: ${tour.title}\nPrice: $${tour.price}\nDuration: ${tour.duration}\n\nI would like to book this tour. Please provide availability and payment details.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-lg transition-colors duration-200 text-sm"
             >
               Book Now
