@@ -5,7 +5,7 @@ import Image from "next/image"
 import { galleryItems, galleryCategories, galleryCountries, GalleryItem } from "@/lib/gallery-data"
 import { GalleryFilters } from "@/components/gallery-filters"
 import { MediaModal } from "@/components/media-modal"
-import SocialFeed from "./SocialFeed"
+import WallsioFeed from "./WallsioFeed"
 import { Camera, Video, MapPin, Calendar, User } from "lucide-react"
 
 export default function GalleryP() {
@@ -198,17 +198,12 @@ export default function GalleryP() {
         </div>
       </section>
 
-      {/* Social Media Feed Section */}
+      {/* Social Media Feed Section - Powered by Walls.io */}
       <section className="py-16 border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h2 className="font-serif text-4xl font-bold mb-4">Follow Our Safari Adventures</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Real-time updates from our social media channels. See the latest wildlife sightings, 
-              behind-the-scenes moments, and safari experiences from Kenya, Tanzania, Rwanda, and Uganda.
-            </p>
+          <div className="max-w-7xl mx-auto">
+            <WallsioFeed />
           </div>
-          <SocialFeed />
         </div>
       </section>
 
