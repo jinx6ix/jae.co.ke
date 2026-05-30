@@ -9,6 +9,16 @@ const defaultLocale = 'en';
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  
+  // ✅ BYPASS STATIC VERIFICATION FILES
+  const bypassFiles = [
+    'tiktokHKtXE2qxZn7UFcYEGlIuLdzZn9nlpbbG.txt'
+  ];
+
+  if (bypassFiles.some(file => pathname.includes(file))) {
+    return NextResponse.next();
+  }
+
   // Extract the first segment of the path (e.g., /fr/... -> fr)
   const pathSegments = pathname.split('/');
   const localeFromPath = pathSegments[1];
