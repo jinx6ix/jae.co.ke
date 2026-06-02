@@ -184,7 +184,18 @@ export const metadata: Metadata = {
     languages: {
       "en": "https://www.jaetravel.co.ke/blog",
       "x-default": "https://www.jaetravel.co.ke/blog",
-    }
+    },
+    urls: [
+      { url: "https://www.jaetravel.co.ke/blog", hreflang: "en" },
+      { url: "https://www.jaetravel.co.ke/blog", hreflang: "x-default" },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Travel Blog | East Africa Safari Stories & Tips",
+    description: "Read travel stories, tips, and guides about East Africa safaris. Expert advice on wildlife photography, conservation, and planning your perfect African adventure.",
+    images: ["/og-image.jpg"],
   },
 
   openGraph: {

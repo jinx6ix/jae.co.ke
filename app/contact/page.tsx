@@ -28,15 +28,17 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Jae Travel Expeditions - Accessible Safaris East Africa",
+    description: "Ready for your dream safari? Our team responds within 24 hours. Specializing in wheelchair-accessible tours across Kenya, Tanzania, Rwanda & Uganda.",
+    images: ["https://www.jaetravel.co.ke/contact-hero.jpg"],
+  },
   alternates: {
     canonical: "https://www.jaetravel.co.ke/contact",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/contact',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/contact',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/contact',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/contact',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/contact',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/contact',   // Fallback
+      'en': 'https://www.jaetravel.co.ke/contact',
+      'x-default': 'https://www.jaetravel.co.ke/contact',
     },
   },
 };

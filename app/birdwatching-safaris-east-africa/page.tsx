@@ -118,10 +118,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species",
-    description: "Premier birding in Kenya, Tanzania & Uganda. Flamingos, shoebills, rollers. Book your 2026 safari.",
-    images: ["/twitter/birdwatching-east-africa.jpg"],
-    creator: "@jaetravel",
+    title: "Birdwatching Safaris East Africa 2026 | 1,400+ Species | Jae Travel Expeditions",
+    description: "Premier birdwatching safaris in Kenya, Tanzania & Uganda. Flamingos, shoebills, rollers, and 1,400+ species. Expert guides, photography focused.",
+    images: ["/og/birdwatching-east-africa-2026.jpg"],
   },
   robots: {
     index: true,

@@ -39,14 +39,8 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${BASE_URL}/vehicle-hire`,
-    languages: {
+    hreflang: {
       "en": `${BASE_URL}/vehicle-hire`,
-      "fr": `${BASE_URL}/fr/vehicle-hire`,
-      "de": `${BASE_URL}/de/vehicle-hire`,
-      "it": `${BASE_URL}/it/vehicle-hire`,
-      "hi": `${BASE_URL}/hi/vehicle-hire`,
-      "ar": `${BASE_URL}/ar/vehicle-hire`,
-      "zh": `${BASE_URL}/zh/vehicle-hire`,
       "x-default": `${BASE_URL}/vehicle-hire`,
     },
   },

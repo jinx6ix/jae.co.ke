@@ -47,15 +47,17 @@ export async function GET() {
   const staticPages = [
     { path: "/", freq: "daily", pri: "1.0" },
     { path: "/tours", freq: "weekly", pri: "0.9" },
+    { path: "/tour", freq: "weekly", pri: "0.9" },
     { path: "/budget-tours", freq: "weekly", pri: "0.9" },
     { path: "/vehicle-hire", freq: "weekly", pri: "0.9" },
     { path: "/vehicles", freq: "weekly", pri: "0.8" },
     { path: "/destinations", freq: "weekly", pri: "0.8" },
-    { path: "/destinations/kenya", freq: "weekly", pri: "0.9" },
-    { path: "/destinations/tanzania", freq: "weekly", pri: "0.9" },
-    { path: "/destinations/rwanda", freq: "weekly", pri: "0.9" },
-    { path: "/destinations/uganda", freq: "weekly", pri: "0.9" },
+    { path: "/destination/kenya", freq: "weekly", pri: "0.9" },
+    { path: "/destination/tanzania", freq: "weekly", pri: "0.9" },
+    { path: "/destination/rwanda", freq: "weekly", pri: "0.9" },
+    { path: "/destination/uganda", freq: "weekly", pri: "0.9" },
     { path: "/blog", freq: "weekly", pri: "0.8" },
+    { path: "/blog/blog-gallery", freq: "weekly", pri: "0.7" },
     { path: "/about", freq: "monthly", pri: "0.7" },
     { path: "/contact", freq: "monthly", pri: "0.7" },
     { path: "/maasai-mara-great-migration", freq: "weekly", pri: "0.9" },
@@ -67,6 +69,7 @@ export async function GET() {
     { path: "/amboseli-safaris", freq: "weekly", pri: "0.8" },
     { path: "/ngorongoro-safaris", freq: "weekly", pri: "0.8" },
     { path: "/great-migration-safaris", freq: "weekly", pri: "0.9" },
+    { path: "/kenya-safari-packages", freq: "weekly", pri: "0.8" },
     { path: "/kenya-circuit-safaris", freq: "weekly", pri: "0.8" },
     { path: "/tanzania-circuit-safaris", freq: "weekly", pri: "0.8" },
     { path: "/uganda-circuit-safaris", freq: "weekly", pri: "0.8" },
@@ -80,6 +83,8 @@ export async function GET() {
     { path: "/short-safaris", freq: "weekly", pri: "0.8" },
     { path: "/other-services", freq: "monthly", pri: "0.7" },
     { path: "/terms", freq: "monthly", pri: "0.4" },
+    { path: "/privacy-policy", freq: "yearly", pri: "0.3" },
+    { path: "/book-now", freq: "monthly", pri: "0.7" },
     { path: "/wheelchair-vehicle", freq: "weekly", pri: "0.9" },
     { path: "/toyota-landcruiser", freq: "monthly", pri: "0.8" },
     { path: "/toyota-prado", freq: "monthly", pri: "0.8" },
@@ -97,10 +102,10 @@ export async function GET() {
   ]
 
   const dynamicEntries = [
-    ...safeTours.map(t => ({ path: `/tour/${t.slug}`, freq: "weekly", pri: "0.9" })),
-    ...safeBudget.map(t => ({ path: `/budget-tours/${t.slug}`, freq: "weekly", pri: "0.9" })),
+    ...safeTours.map(t => ({ path: `/safari/${t.slug}`, freq: "weekly", pri: "0.9" })),
+    ...safeBudget.map(t => ({ path: t.url, freq: "weekly", pri: "0.9" })),
     ...safeVehicles.map(v => ({ path: `/vehicle-hire/${v.slug}`, freq: "weekly", pri: "0.9" })),
-    ...safeDests.map(d => ({ path: `/destinations/${d.country.toLowerCase()}`, freq: "weekly", pri: "0.85" })),
+    ...safeDests.map(d => ({ path: `/destination/${d.slug}`, freq: "weekly", pri: "0.85" })),
     ...safeBlog.map(b => ({ path: `/blog/${b.slug}`, freq: "monthly", pri: "0.7" })),
   ]
 

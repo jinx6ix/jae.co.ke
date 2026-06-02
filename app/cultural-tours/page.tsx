@@ -120,10 +120,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cultural & City Tours 2026 | East Africa Experiences",
-    description: "Immerse yourself in East Africa's rich cultural heritage.",
-    images: ["/twitter/cultural-2026.jpg"],
-    creator: "@jaetravel",
+    title: "Cultural & City Tours 2026 | Maasai, Stone Town & Kigali",
+    description: "Immerse yourself in East Africa's rich cultures. Village visits, historic sites, and local traditions.",
+    images: ["/og/cultural-2026.jpg"],
   },
 }
 

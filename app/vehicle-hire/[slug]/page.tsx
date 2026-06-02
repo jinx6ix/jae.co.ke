@@ -61,6 +61,10 @@ export async function generateMetadata({
 
     alternates: {
       canonical: `${baseUrl}/vehicle-hire/${vehicle.slug}`,
+      languages: {
+        'en': `${baseUrl}/vehicle-hire/${vehicle.slug}`,
+        'x-default': `${baseUrl}/vehicle-hire/${vehicle.slug}`,
+      },
     },
 
     openGraph: {

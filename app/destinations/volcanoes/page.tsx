@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Volcanoes National Park Gorilla Trekking | Rwanda Tours",
   description: "Trek mountain gorillas in Rwanda's Volcanoes National Park, home to Dian Fossey's research center. Experience golden monkeys and unforgettable gorilla encounters in the land of a thousand hills.",
   keywords: ["volcanoes national park", "rwanda gorilla trekking", "golden monkeys", "dian fossey", "volcanoes tours", "rwanda safari"],
+  openGraph: {
+    title: "Volcanoes National Park Gorilla Trekking | Rwanda Tours",
+    description: "Trek mountain gorillas in Rwanda's Volcanoes National Park, home to Dian Fossey's research center. Experience golden monkeys and unforgettable gorilla encounters in the land of a thousand hills.",
+    url: `${BASE}/destinations/volcanoes`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/Volcanoes-National-Park-Rwanda-Natural-World-Kenya-Safaris.jpg`, width: 1200, height: 630, alt: "Volcanoes National Park" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Volcanoes National Park Gorilla Trekking | Rwanda Tours",
+    description: "Trek mountain gorillas in Rwanda's Volcanoes National Park, home to Dian Fossey's research center. Experience golden monkeys and unforgettable gorilla encounters in the land of a thousand hills.",
+    images: [`${BASE}/Volcanoes-National-Park-Rwanda-Natural-World-Kenya-Safaris.jpg`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/volcanoes`,
+    languages: { 'en': `${BASE}/destinations/volcanoes`, 'x-default': `${BASE}/destinations/volcanoes` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

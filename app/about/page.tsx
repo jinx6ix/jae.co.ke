@@ -242,15 +242,17 @@ description:
     url: "https://www.jaetravel.co.ke/about",
     type: "website",
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: "About JaeTravel Expeditions | Trusted East Africa Safari Experts",
+    description: "Since 2008, we've pioneered accessible, sustainable, and authentic safaris across Kenya, Tanzania, Rwanda, and Uganda.",
+    images: ["/african-safari-team-with-tourists.jpg"],
+  },
   alternates: {
     canonical: "https://www.jaetravel.co.ke/about",
-    languages: {
-      'en': 'https://www.jaetravel.co.ke/about',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/about',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/about',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/about',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/about',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/about',   // Fallback
+    hrefs: {
+      'en': 'https://www.jaetravel.co.ke/about',
+      'x-default': 'https://www.jaetravel.co.ke/about',
     },
   },
   robots: "index, follow",

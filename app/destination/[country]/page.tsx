@@ -30,14 +30,54 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
     }
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
+  const imageUrl = destination.heroImage?.startsWith("http")
+    ? destination.heroImage
+    : `${baseUrl}${destination.heroImage}`
+  const url = `${baseUrl}/destination/${params.country}`
+
   return {
     title: destination.metaTitle,
     description: destination.metaDescription,
     keywords: destination.keywords,
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': url,
+        'x-default': url,
+      },
+    },
     openGraph: {
       title: destination.metaTitle,
       description: destination.metaDescription,
-      images: [destination.heroImage],
+      url,
+      siteName: "JaeTravel Expeditions",
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: destination.name,
+        },
+      ],
+      locale: "en_KE",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      images: [imageUrl],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   }
 }

@@ -61,10 +61,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
     canonical: "https://www.jaetravel.co.ke/gorilla-trekking-tours",
-    languages: {
-      "en-US": "/en-us/gorilla-trekking-tours",
-      "en-GB": "/en-gb/gorilla-trekking-tours",
-      "en-AU": "/en-au/gorilla-trekking-tours",
+    hreflang: {
+      "en-US": "https://www.jaetravel.co.ke/gorilla-trekking-tours",
+      "en-GB": "https://www.jaetravel.co.ke/gorilla-trekking-tours",
+      "en-AU": "https://www.jaetravel.co.ke/gorilla-trekking-tours",
+      "x-default": "https://www.jaetravel.co.ke/gorilla-trekking-tours",
     },
   },
   openGraph: {

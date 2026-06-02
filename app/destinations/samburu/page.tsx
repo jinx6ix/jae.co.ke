@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Samburu National Reserve Safari | Kenya Tours",
   description: "Discover rare wildlife in Samburu including Grevy's zebras, reticulated giraffes, and the Big Five. Experience Kenya's northern safari wilderness with unique species found nowhere else in Africa.",
   keywords: ["samburu national reserve", "kenya safari", "grevy zebra", "reticulated giraffe", "northern kenya", "samburu tours"],
+  openGraph: {
+    title: "Samburu National Reserve Safari | Kenya Tours",
+    description: "Discover rare wildlife in Samburu including Grevy's zebras, reticulated giraffes, and the Big Five. Experience Kenya's northern safari wilderness with unique species found nowhere else in Africa.",
+    url: `${BASE}/destinations/samburu`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/Samburu_National_Reserve,_Kenya-26December2012.jpg`, width: 1200, height: 630, alt: "Samburu National Reserve" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Samburu National Reserve Safari | Kenya Tours",
+    description: "Discover rare wildlife in Samburu including Grevy's zebras, reticulated giraffes, and the Big Five. Experience Kenya's northern safari wilderness with unique species found nowhere else in Africa.",
+    images: [`${BASE}/Samburu_National_Reserve,_Kenya-26December2012.jpg`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/samburu`,
+    languages: { 'en': `${BASE}/destinations/samburu`, 'x-default': `${BASE}/destinations/samburu` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

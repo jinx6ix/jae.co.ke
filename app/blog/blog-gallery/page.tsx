@@ -238,14 +238,20 @@ export const metadata: Metadata = {
   alternates: { 
     canonical: "https://www.jaetravel.co.ke/blog/blog-gallery",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/blog/blog-gallery',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/blog/blog-gallery',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/blog/blog-gallery',   // Fallback
+      'en': 'https://www.jaetravel.co.ke/blog/blog-gallery',
+      'en-US': 'https://www.jaetravel.co.ke/blog/blog-gallery',
+      'en-GB': 'https://www.jaetravel.co.ke/blog/blog-gallery',
+      'en-AU': 'https://www.jaetravel.co.ke/blog/blog-gallery',
+      'en-CA': 'https://www.jaetravel.co.ke/blog/blog-gallery',
+      'x-default': 'https://www.jaetravel.co.ke/blog/blog-gallery',
     },
-   }
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Safari Photo & Video Gallery | East Africa Wildlife",
+    description: "Explore safari photos and videos from Masai Mara, Serengeti, and gorilla trekking in Rwanda and Uganda.",
+    images: ["https://www.jaetravel.co.ke/serengeti-sunset-safari-witness-breathtaking-african-landscape-tanzanias-national-park-experience-awe-inspiring-beauty-382016699.webp"],
+  },
 }
 
 export default function GalleryPage() {

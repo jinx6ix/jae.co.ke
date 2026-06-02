@@ -246,15 +246,21 @@ export const generateMetadata = async (): Promise<Metadata> => {
       description: "Discover the best safari destinations in East Africa. From Masai Mara to Serengeti, gorilla trekking to Zanzibar beaches.",
       images: ["/og-east-africa-destinations.jpg"],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "East Africa Safari Destinations | Kenya, Tanzania, Rwanda, Uganda",
+      description: "Discover the best safari destinations in East Africa. From Masai Mara to Serengeti, gorilla trekking to Zanzibar beaches.",
+      images: ["/og-east-africa-destinations.jpg"],
+    },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/destinations",
-      languages: {
-        'en': "https://www.jaetravel.co.ke/destinations",           // Main English/global
-        'en-US': "https://www.jaetravel.co.ke/destinations",       // US
-        'en-GB': "https://www.jaetravel.co.ke/destinations",        // UK (optional)
-        'en-AU': "https://www.jaetravel.co.ke/destinations",        // Australia (optional)
-        'en-CA': "https://www.jaetravel.co.ke/destinations",        // Canada (optional)
-        'x-default': "https://www.jaetravel.co.ke/destinations",    // Fallback
+      hreflang: {
+        'en': "https://www.jaetravel.co.ke/destinations",
+        'en-US': "https://www.jaetravel.co.ke/destinations",
+        'en-GB': "https://www.jaetravel.co.ke/destinations",
+        'en-AU': "https://www.jaetravel.co.ke/destinations",
+        'en-CA': "https://www.jaetravel.co.ke/destinations",
+        'x-default': "https://www.jaetravel.co.ke/destinations",
       },
     },
     other: {

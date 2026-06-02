@@ -15,13 +15,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.jaetravel.co.ke/terms",
     languages: {
-      'en': 'https://www.jaetravel.co.ke/terms',           // Main English/global
-      'en-US': 'https://www.jaetravel.co.ke/terms',       // US
-      'en-GB': 'https://www.jaetravel.co.ke/terms',       // UK (optional)
-      'en-AU': 'https://www.jaetravel.co.ke/terms',       // Australia (optional)
-      'en-CA': 'https://www.jaetravel.co.ke/terms',       // Canada (optional)
-      'x-default': 'https://www.jaetravel.co.ke/terms',   // Fallback
+      'en': 'https://www.jaetravel.co.ke/terms',
+      'x-default': 'https://www.jaetravel.co.ke/terms',
     },
+  },
+  openGraph: {
+    title: "Terms and Conditions | Jae Travel Expeditions",
+    description: "Read the terms and conditions for booking transportation, vehicle hire, airport transfers, and safari tours with Jae Travel Expeditions in Kenya, Tanzania, Rwanda, and Uganda.",
+    url: "https://www.jaetravel.co.ke/terms",
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: "https://www.jaetravel.co.ke/og-image.jpg", width: 1200, height: 630, alt: "JaeTravel Expeditions Terms and Conditions" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms and Conditions | Jae Travel Expeditions",
+    description: "Read the terms and conditions for booking transportation, vehicle hire, airport transfers, and safari tours with Jae Travel Expeditions in Kenya, Tanzania, Rwanda, and Uganda.",
+    images: ["https://www.jaetravel.co.ke/og-image.jpg"],
   },
 }
 

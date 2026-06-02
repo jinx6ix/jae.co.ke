@@ -192,6 +192,13 @@ export const metadata: Metadata = {
       "x-default": "https://www.jaetravel.co.ke/disability-tours",
     },
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Wheelchair Accessible Safari Kenya 2026",
+    description:
+      "Wheelchair-accessible safaris in Kenya 2026. Lift-equipped 4x4 vehicles, barrier-free lodges & Masai Mara Great Migration tours in East Africa.",
+    images: ["/og-image.jpg"],
+  },
   robots: "index, follow",
 }
 

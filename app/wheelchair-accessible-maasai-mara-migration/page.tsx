@@ -53,6 +53,14 @@ export const generateMetadata = (): Metadata => ({
     },
   },
 
+  twitter: {
+    card: 'summary_large_image',
+    title: "Maasai Mara Great Migration Safari 2026 | Accessible",
+    description:
+      "Experience the 2026 Maasai Mara Great Migration on a wheelchair-accessible safari. See Mara River crossings with expert guides and adapted 4x4 vehicles.",
+    images: ["/og-image.jpg"],
+  },
+
   robots: {
     index: true,
     follow: true,

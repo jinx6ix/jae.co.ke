@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Tsavo East & West National Park Safari | Kenya Tours",
   description: "Discover Tsavo, Kenya's largest national park. Experience diverse landscapes, the famous red elephants, Mzima Springs, and Chyulu Hills on a Tsavo safari adventure.",
   keywords: ["tsavo national park", "kenya safari", "red elephants", "mzima springs", "chyulu hills", "tsavo tours"],
+  openGraph: {
+    title: "Tsavo East & West National Park Safari | Kenya Tours",
+    description: "Discover Tsavo, Kenya's largest national park. Experience diverse landscapes, the famous red elephants, Mzima Springs, and Chyulu Hills on a Tsavo safari adventure.",
+    url: `${BASE}/destinations/tsavo`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/tsavo-west-national-park-chyulu-gate.jpg.webp`, width: 1200, height: 630, alt: "Tsavo National Parks" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tsavo East & West National Park Safari | Kenya Tours",
+    description: "Discover Tsavo, Kenya's largest national park. Experience diverse landscapes, the famous red elephants, Mzima Springs, and Chyulu Hills on a Tsavo safari adventure.",
+    images: [`${BASE}/tsavo-west-national-park-chyulu-gate.jpg.webp`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/tsavo`,
+    languages: { 'en': `${BASE}/destinations/tsavo`, 'x-default': `${BASE}/destinations/tsavo` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

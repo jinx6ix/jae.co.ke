@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Ngorongoro Conservation Area Safari | Tanzania Tours",
   description: "Explore Ngorongoro Crater, the world's largest inactive volcanic caldera. Experience incredible wildlife density and stunning views in this UNESCO World Heritage Site.",
   keywords: ["ngorongoro crater", "tanzania safari", "caldera", "big five", "ngorongoro conservation", "tanzania tours"],
+  openGraph: {
+    title: "Ngorongoro Conservation Area Safari | Tanzania Tours",
+    description: "Explore Ngorongoro Crater, the world's largest inactive volcanic caldera. Experience incredible wildlife density and stunning views in this UNESCO World Heritage Site.",
+    url: `${BASE}/destinations/ngorongoro`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/ngorongoro-header-3.jpg`, width: 1200, height: 630, alt: "Ngorongoro Conservation Area" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ngorongoro Conservation Area Safari | Tanzania Tours",
+    description: "Explore Ngorongoro Crater, the world's largest inactive volcanic caldera. Experience incredible wildlife density and stunning views in this UNESCO World Heritage Site.",
+    images: [`${BASE}/ngorongoro-header-3.jpg`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/ngorongoro`,
+    languages: { 'en': `${BASE}/destinations/ngorongoro`, 'x-default': `${BASE}/destinations/ngorongoro` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Lake Nakuru National Park Safari | Kenya Tours",
   description: "Witness spectacular flamingo migrations and rhino sightings at Lake Nakuru National Park. Experience one of Kenya's finest rhino conservation areas with stunning lake views.",
   keywords: ["lake nakuru national park", "kenya safari", "flamingos", "rhino sanctuary", "bird watching", "lake nakuru tours"],
+  openGraph: {
+    title: "Lake Nakuru National Park Safari | Kenya Tours",
+    description: "Witness spectacular flamingo migrations and rhino sightings at Lake Nakuru National Park. Experience one of Kenya's finest rhino conservation areas with stunning lake views.",
+    url: `${BASE}/destinations/lake-nakuru`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/lake-nakuru-flamingos-in-red-sunset-590x390.jpg`, width: 1200, height: 630, alt: "Lake Nakuru National Park" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lake Nakuru National Park Safari | Kenya Tours",
+    description: "Witness spectacular flamingo migrations and rhino sightings at Lake Nakuru National Park. Experience one of Kenya's finest rhino conservation areas with stunning lake views.",
+    images: [`${BASE}/lake-nakuru-flamingos-in-red-sunset-590x390.jpg`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/lake-nakuru`,
+    languages: { 'en': `${BASE}/destinations/lake-nakuru`, 'x-default': `${BASE}/destinations/lake-nakuru` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

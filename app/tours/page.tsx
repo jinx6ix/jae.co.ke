@@ -24,15 +24,27 @@ export const metadata: Metadata = {
       "Curated safari experiences across East Africa. Wheelchair accessible options available.",
     images: [
       {
-        url: "https://www.jaetravel.co.ke/images/tours-hero.jpg", // Replace with your actual hero image
+        url: "https://www.jaetravel.co.ke/images/tours-hero.jpg",
         width: 1200,
         height: 630,
         alt: "Jae Travel Expeditions Safari Tours in East Africa",
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Safari Tours & Packages | Jae Travel Expeditions",
+    description:
+      "Curated safari experiences across East Africa. Wheelchair accessible options available.",
+    images: ["https://www.jaetravel.co.ke/images/tours-hero.jpg"],
+  },
   alternates: {
     canonical: "https://www.jaetravel.co.ke/tours",
+    languages: {
+      "en": "https://www.jaetravel.co.ke/tours",
+      "sw": "https://www.jaetravel.co.ke/sw/tours",
+      "x-default": "https://www.jaetravel.co.ke/tours",
+    },
   },
 };
 

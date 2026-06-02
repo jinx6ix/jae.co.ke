@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Bwindi Impenetrable Forest Gorilla Trekking | Uganda Tours",
   description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda. Experience life-changing encounters with endangered mountain gorillas in one of Africa's oldest rainforests.",
   keywords: ["bwindi impenetrable forest", "uganda gorilla trekking", "mountain gorillas", "bwindi tours", "uganda safari", "gorilla permit"],
+  alternates: {
+    canonical: `${BASE}/destinations/bwindi`,
+    languages: { 'en': `${BASE}/destinations/bwindi`, 'x-default': `${BASE}/destinations/bwindi` },
+  },
+  openGraph: {
+    title: "Bwindi Impenetrable Forest Gorilla Trekking | Uganda Tours",
+    description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda. Experience life-changing encounters with endangered mountain gorillas.",
+    url: `${BASE}/destinations/bwindi`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/bwindi-forest-uganda-gorilla-safaris.jpg`, width: 1200, height: 630, alt: "Bwindi Impenetrable Forest" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bwindi Impenetrable Forest Gorilla Trekking | Uganda Tours",
+    description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda. Experience life-changing encounters with endangered mountain gorillas.",
+    images: [`${BASE}/bwindi-forest-uganda-gorilla-safaris.jpg`],
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

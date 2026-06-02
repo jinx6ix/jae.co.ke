@@ -96,11 +96,12 @@ export const metadata: Metadata = {
   publisher: "Jae Travel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
-    canonical: "/adventure-trekking",
-    languages: {
-      "en-US": "/en-us/adventure-trekking",
-      "en-GB": "/en-gb/adventure-trekking",
-      "en-AU": "/en-au/adventure-trekking",
+    canonical: "https://www.jaetravel.co.ke/adventure-trekking",
+    hreflang: {
+      "en-US": "https://www.jaetravel.co.ke/adventure-trekking",
+      "en-GB": "https://www.jaetravel.co.ke/adventure-trekking",
+      "en-AU": "https://www.jaetravel.co.ke/adventure-trekking",
+      "x-default": "https://www.jaetravel.co.ke/adventure-trekking",
     },
   },
   openGraph: {

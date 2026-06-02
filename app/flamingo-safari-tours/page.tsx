@@ -112,10 +112,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya",
-    description: "Witness thousands of flamingos at Lake Nakuru. Book your 2026 safari from Nairobi.",
-    images: ["/twitter/flamingo-safari.jpg"],
-    creator: "@jaetravel",
+    title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya | Jae Travel Expeditions",
+    description: "Witness thousands of flamingos at Lake Nakuru. Pink horizons, rhino sanctuary, 450+ bird species. Short safaris from Nairobi. Kenya-based operator since 2015.",
+    images: ["/og/flamingo-safari-2026.jpg"],
   },
   robots: {
     index: true,

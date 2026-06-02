@@ -15,6 +15,25 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://www.jaetravel.co.ke/privacy-policy",
+    languages: {
+      'en': 'https://www.jaetravel.co.ke/privacy-policy',
+      'x-default': 'https://www.jaetravel.co.ke/privacy-policy',
+    },
+  },
+  openGraph: {
+    title: "Privacy Policy | JaeTravel Expeditions",
+    description: "JaeTravel Expeditions privacy policy covering data collection, usage, cookies, social media integration, and your rights regarding personal information.",
+    url: "https://www.jaetravel.co.ke/privacy-policy",
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: "https://www.jaetravel.co.ke/og-image.jpg", width: 1200, height: 630, alt: "JaeTravel Expeditions Privacy Policy" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | JaeTravel Expeditions",
+    description: "JaeTravel Expeditions privacy policy covering data collection, usage, cookies, social media integration, and your rights regarding personal information.",
+    images: ["https://www.jaetravel.co.ke/og-image.jpg"],
   },
 }
 

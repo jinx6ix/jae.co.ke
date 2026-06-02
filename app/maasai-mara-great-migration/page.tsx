@@ -98,10 +98,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
     languages: {
-      "en-US": "https://www.jaetravel.co.ke/en-us/maasai-mara-great-migration",
-      "en-GB": "https://www.jaetravel.co.ke/en-gb/maasai-mara-great-migration",
-      "en-AU": "https://www.jaetravel.co.ke/en-au/maasai-mara-great-migration",
-      "en-CA": "https://www.jaetravel.co.ke/en-ca/maasai-mara-great-migration",
+      en: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-US": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-GB": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-AU": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "en-CA": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
+      "x-default": "https://www.jaetravel.co.ke/maasai-mara-great-migration",
     }
   },
   openGraph: {

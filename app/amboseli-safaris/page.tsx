@@ -110,10 +110,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amboseli Safaris 2026 | Elephant Baby Boom & Kilimanjaro",
-    description: "Witness 220+ new elephant calves against Mount Kilimanjaro. Book your 2026 safari.",
-    images: ["/twitter/amboseli-2026.jpg"],
-    creator: "@jaetravel",
+    title: "Amboseli Safaris 2026 | Elephant Baby Boom & Kilimanjaro | Jae Travel Expeditions",
+    description: "Witness 220+ new elephant calves against Mount Kilimanjaro. Private safaris from Nairobi. Kenya-based operator since 2015.",
+    images: ["/og/amboseli-2026.jpg"],
   },
   robots: {
     index: true,

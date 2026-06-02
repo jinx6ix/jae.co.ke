@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   title: "Serengeti National Park Safari | Tanzania Tours",
   description: "Experience the endless plains of Serengeti National Park. Witness the Great Migration, Big Five safaris, and world-class wildlife viewing in Tanzania's premier national park.",
   keywords: ["serengeti national park", "tanzania safari", "great migration", "big five", "serengeti tours", "tanzania tours"],
+  openGraph: {
+    title: "Serengeti National Park Safari | Tanzania Tours",
+    description: "Experience the endless plains of Serengeti National Park. Witness the Great Migration, Big Five safaris, and world-class wildlife viewing in Tanzania's premier national park.",
+    url: `${BASE}/destinations/serengeti`,
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    images: [{ url: `${BASE}/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg`, width: 1200, height: 630, alt: "Serengeti National Park" }],
+    locale: "en_KE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Serengeti National Park Safari | Tanzania Tours",
+    description: "Experience the endless plains of Serengeti National Park. Witness the Great Migration, Big Five safaris, and world-class wildlife viewing in Tanzania's premier national park.",
+    images: [`${BASE}/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg`],
+  },
+  alternates: {
+    canonical: `${BASE}/destinations/serengeti`,
+    languages: { 'en': `${BASE}/destinations/serengeti`, 'x-default': `${BASE}/destinations/serengeti` },
+  },
 };
 
 const BASE = "https://www.jaetravel.co.ke";

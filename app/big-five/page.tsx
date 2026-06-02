@@ -146,11 +146,18 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: ["/big-five-hero.jpg"],
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Big Five Safari Kenya | Lion, Leopard, Elephant, Rhino & Buffalo",
+      description: "Experience the thrill of spotting Africa's Big Five in Kenya with fully accessible safari options. Expert guides, adapted vehicles.",
+      images: ["/big-five-hero.jpg"],
+    },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/big-five",
-      languages: {
-        'en': 'https://www.jaetravel.co.ke/big-five',
-        'en-US': 'https://www.jaetravel.co.ke/big-five',
+      hreflang: {
+        'en': "https://www.jaetravel.co.ke/big-five",
+        'en-US': "https://www.jaetravel.co.ke/big-five",
+        'x-default': "https://www.jaetravel.co.ke/big-five",
       },
     },
     robots: {

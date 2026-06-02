@@ -126,10 +126,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beach & Island Holidays 2026 | East Africa Coast",
-    description: "Paradise found on East Africa's pristine beaches.",
-    images: ["/twitter/beach-2026.jpg"],
-    creator: "@jaetravel",
+    title: "Beach & Island Holidays 2026 | Zanzibar, Diani & Mombasa",
+    description: "Relax on East Africa's pristine beaches. White sands, turquoise waters, and luxury resorts.",
+    images: ["/og/beach-2026.jpg"],
   },
 }
 
