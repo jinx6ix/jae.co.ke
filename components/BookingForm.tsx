@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
+import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { useOnlineBookingState } from "@/hooks/useOnlineBookingState"
+import type { OnlineBookingWriteInput } from "@/lib/online-bookings"
 
 interface BookingFormProps {
   tourTitle: string
@@ -43,6 +45,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [resetCountdown, setResetCountdown] = useState<number | null>(null)
   const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const { dbWriteStatus, write, reset: resetDbWrite } = useOnlineBookingState()
 
   const clearResetTimers = () => {
     if (resetTimerRef.current) {
@@ -60,6 +63,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     setResetCountdown(null)
     setSubmitted(false)
     setBookingResult(null)
+    resetDbWrite()
     setFormData({
       name: "",
       email: "",
@@ -75,7 +79,14 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   // The user can still click "Book Another Tour" / "✕" to reset early,
   // and the timer is cleared on unmount or if the component re-submits.
   useEffect(() => {
-    if (!submitted) {
+    if (!submitted || dbWriteStatus === 'pending') {
+      clearResetTimers()
+      setResetCountdown(null)
+      return
+    }
+
+    // Don't auto-reset the failure panel — the user needs to read it.
+    if (dbWriteStatus === 'failed') {
       clearResetTimers()
       setResetCountdown(null)
       return
@@ -93,6 +104,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       setResetCountdown(null)
       setSubmitted(false)
       setBookingResult(null)
+      resetDbWrite()
       setFormData({
         name: "",
         email: "",
@@ -104,7 +116,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     }, SECONDS * 1000)
 
     return clearResetTimers
-  }, [submitted])
+  }, [submitted, dbWriteStatus, resetDbWrite])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -138,35 +150,36 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       console.log("[Booking] API Response:", result)
 
       if (result.success) {
-        // Also record the booking in the shared Supabase `online_bookings`
-        // table so the operator dashboard can see and confirm it. Fire-and-
-        // forget — the customer email already went out.
-        const obSourceId = `BK${Date.now()}-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
-        fetch("/api/online-bookings", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            source_booking_id: obSourceId,
-            booking_kind: "tour",
-            tour_slug: tourSlug ?? null,
-            vehicle_slug: null,
-            service_name: tourTitle,
-            customer_name: formData.name,
-            customer_email: formData.email,
-            customer_phone: formData.phone,
-            customer_country: "Kenya",
-            departure_date: formData.date,
-            return_date: null,
-            adults: Number.parseInt(formData.travelers || "1") || 1,
-            total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
-            currency: "USD",
-            pickup_location: null,
-            special_requests: formData.message || null,
-            source_url: typeof window !== "undefined" ? window.location.href : null,
-          }),
-        }).catch((err) => {
-          console.warn("[Booking] online-bookings write failed (non-blocking):", err);
-        });
+        // Reuse the booking id from the email route as the dashboard's
+        // source_booking_id. A retried form upserts into the same row
+        // (source_booking_id is UNIQUE in online_bookings) instead of
+        // creating a duplicate.
+        const obInput: OnlineBookingWriteInput = {
+          source_booking_id: result.bookingId,
+          booking_kind: "tour",
+          tour_slug: tourSlug ?? null,
+          vehicle_slug: null,
+          service_name: tourTitle,
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          customer_country: "Kenya",
+          departure_date: formData.date,
+          return_date: null,
+          adults: Number.parseInt(formData.travelers || "1") || 1,
+          total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
+          currency: "USD",
+          pickup_location: null,
+          special_requests: formData.message || null,
+          source_url: typeof window !== "undefined" ? window.location.href : null,
+        };
+
+        // Awaited — we MUST know the dashboard write result before we can
+        // show the user a success card. The customer email has already gone
+        // out at this point, so a failure here is "the operator dashboard
+        // didn't see it" — not "the booking was lost". The UI is honest
+        // about which case applies.
+        await write(obInput);
 
         setBookingResult(result)
         setSubmitted(true)
@@ -216,7 +229,91 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     window.open(whatsappUrl, "_blank")?.focus()
   }
 
-  if (submitted && bookingResult) {
+  if (submitted && bookingResult && dbWriteStatus === 'failed') {
+    return (
+      <div className="relative rounded-lg border border-amber-200 bg-amber-50 p-8 text-center animate-in fade-in duration-500">
+        <div className="absolute right-4 top-4">
+          <button
+            type="button"
+            onClick={resetForm}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-amber-500 transition-colors hover:bg-amber-100 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            aria-label="Dismiss"
+            title="Dismiss"
+          >
+            <span className="text-lg leading-none">✕</span>
+          </button>
+        </div>
+
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-amber-100">
+          <AlertCircle className="h-12 w-12 text-amber-600" />
+        </div>
+
+        <h3 className="mb-3 text-3xl font-bold text-amber-700">Booking Received</h3>
+        <p className="mb-2 text-lg font-semibold text-amber-800">
+          Booking ID: <code className="bg-amber-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
+        </p>
+
+        <p className="mb-6 text-amber-700 text-sm leading-relaxed max-w-md mx-auto">
+          ✅ Your confirmation email has been sent to <strong>{formData.email}</strong>.<br />
+          ⚠️ We couldn&rsquo;t queue this in our system right now. Our team has been alerted and will follow up within 24 hours.
+        </p>
+
+        <div className="space-y-3 max-w-md mx-auto">
+          <Button
+            onClick={handleWhatsApp}
+            className="w-full justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white"
+            size="lg"
+          >
+            <Send className="h-5 w-5" />
+            Confirm via WhatsApp
+          </Button>
+
+          <Button
+            onClick={resetForm}
+            variant="outline"
+            className="w-full border-amber-300 text-amber-700 hover:bg-amber-50"
+            size="lg"
+          >
+            📝 Book Another Tour
+          </Button>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-amber-200">
+          <p className="text-xs text-amber-600 mb-2">Need immediate help?</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
+            <a
+              href="tel:+254726485228"
+              className="flex items-center gap-2 text-amber-700 hover:text-amber-800 font-medium"
+            >
+              📞 +254 726 485 228
+            </a>
+            <a
+              href="mailto:info@jaetravel.co.ke"
+              className="flex items-center gap-2 text-amber-700 hover:text-amber-800 font-medium"
+            >
+              ✉️ info@jaetravel.co.ke
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (submitted && bookingResult && dbWriteStatus === 'pending') {
+    return (
+      <div className="rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
+          <Loader2 className="h-12 w-12 text-orange-600 animate-spin" />
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-orange-700">Recording your booking…</h3>
+        <p className="text-orange-700 text-sm">
+          Booking ID: <code className="bg-orange-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
+        </p>
+      </div>
+    )
+  }
+
+  if (submitted && bookingResult && dbWriteStatus === 'recorded') {
     return (
       <div className="relative rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
         {/* Auto-reset dismiss + countdown */}

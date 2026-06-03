@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar, Mail, Phone, User, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
+import { Calendar, Mail, Phone, User, MessageSquare, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useOnlineBookingState } from "@/hooks/useOnlineBookingState";
+import type { OnlineBookingWriteInput } from "@/lib/online-bookings";
 
 interface VehicleBookingFormProps {
   vehicleName: string;
@@ -27,7 +29,9 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [bookingId, setBookingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { dbWriteStatus, write } = useOnlineBookingState();
 
   // Calculate rental days
   const calculateDays = () => {
@@ -86,35 +90,36 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
         throw new Error(result.message || "Failed to submit booking");
       }
 
-      // Also record the booking in the shared Supabase `online_bookings`
-      // table so the operator dashboard can see and confirm it. Fire-and-
-      // forget — the customer email already went out.
-      const obSourceId = `VH${Date.now()}-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
-      fetch("/api/online-bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source_booking_id: obSourceId,
-          booking_kind: "vehicle_hire",
-          tour_slug: null,
-          vehicle_slug: slug ?? null,
-          service_name: vehicleName,
-          customer_name: formData.name,
-          customer_email: formData.email,
-          customer_phone: formData.phone,
-          customer_country: "Kenya",
-          departure_date: formData.pickupDate,
-          return_date: formData.returnDate || null,
-          adults: 1, // vehicle hire is per-vehicle, not per-pax
-          total_price: totalPrice,
-          currency: "USD",
-          pickup_location: formData.pickupLocation,
-          special_requests: formData.message || null,
-          source_url: typeof window !== "undefined" ? window.location.href : null,
-        }),
-      }).catch((err) => {
-        console.warn("[VehicleBooking] online-bookings write failed (non-blocking):", err);
-      });
+      // Reuse the booking id from the vehicle-hire email route as the
+      // dashboard's source_booking_id. A retried form upserts into the
+      // same row (source_booking_id is UNIQUE in online_bookings) instead
+      // of creating a duplicate.
+      const obInput: OnlineBookingWriteInput = {
+        source_booking_id: result.bookingId,
+        booking_kind: "vehicle_hire",
+        tour_slug: null,
+        vehicle_slug: slug ?? null,
+        service_name: vehicleName,
+        customer_name: formData.name,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
+        customer_country: "Kenya",
+        departure_date: formData.pickupDate,
+        return_date: formData.returnDate || null,
+        adults: 1, // vehicle hire is per-vehicle, not per-pax
+        total_price: totalPrice,
+        currency: "USD",
+        pickup_location: formData.pickupLocation,
+        special_requests: formData.message || null,
+        source_url: typeof window !== "undefined" ? window.location.href : null,
+      };
+
+      // Awaited — we MUST know the dashboard write result before we can
+      // show the user a success card. The customer email has already gone
+      // out at this point, so a failure here is "the operator dashboard
+      // didn't see it" — not "the booking was lost". The UI is honest
+      // about which case applies.
+      await write(obInput);
 
       // Google Analytics: Purchase
       if (typeof window !== "undefined" && (window as any).gtag) {
@@ -127,6 +132,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
         });
       }
 
+      setBookingId(result.bookingId ?? null);
       setSubmitted(true);
     } catch (err: any) {
       console.error("Booking error:", err);
@@ -136,14 +142,67 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
     }
   };
 
-  // Success UI
-  if (submitted) {
+  // Loading — email route is done, dashboard write is in flight.
+  if (submitted && dbWriteStatus === 'pending') {
+    return (
+      <div className="rounded-xl border border-orange-200 bg-orange-50 p-8 text-center">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100">
+          <Loader2 className="h-8 w-8 text-orange-600 animate-spin" />
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-orange-800">Recording your booking…</h3>
+        {bookingId && (
+          <p className="mb-4 text-sm text-orange-700">
+            Booking ID: <code className="bg-orange-100 px-2 py-1 rounded font-mono text-sm">{bookingId}</code>
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Failure — email was sent, but the dashboard never saw the row.
+  if (submitted && dbWriteStatus === 'failed') {
+    return (
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-8 text-center">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
+          <AlertCircle className="h-8 w-8 text-amber-600" />
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-amber-800">Booking Received</h3>
+        {bookingId && (
+          <p className="mb-3 text-sm text-amber-700">
+            Booking ID: <code className="bg-amber-100 px-2 py-1 rounded font-mono text-sm">{bookingId}</code>
+          </p>
+        )}
+        <p className="mb-4 text-amber-700">
+          Thank you, <strong>{formData.name}</strong>! Your request for the{" "}
+          <strong>{vehicleName}</strong> is in our inbox.
+        </p>
+        <p className="mb-6 text-sm text-amber-600">
+          ⚠️ We couldn&rsquo;t queue this in our system right now. Our team has been alerted and will follow up within 24 hours.
+        </p>
+        <Button
+          onClick={() => setSubmitted(false)}
+          variant="outline"
+          className="border-amber-600 text-amber-600 hover:bg-amber-50"
+        >
+          Book Another Vehicle
+        </Button>
+      </div>
+    );
+  }
+
+  // Success — only after the dashboard write was recorded.
+  if (submitted && dbWriteStatus === 'recorded') {
     return (
       <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-8 w-8 text-green-600" />
         </div>
         <h3 className="mb-3 text-2xl font-bold text-green-800">Booking Request Sent!</h3>
+        {bookingId && (
+          <p className="mb-3 text-sm text-green-700">
+            Booking ID: <code className="bg-green-100 px-2 py-1 rounded font-mono text-sm">{bookingId}</code>
+          </p>
+        )}
         <p className="mb-4 text-green-700">
           Thank you, <strong>{formData.name}</strong>! We've received your request for the{" "}
           <strong>{vehicleName}</strong>.

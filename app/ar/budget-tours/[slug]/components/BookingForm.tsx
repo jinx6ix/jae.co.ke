@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
+import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { useOnlineBookingState } from "@/hooks/useOnlineBookingState"
+import type { OnlineBookingWriteInput } from "@/lib/online-bookings"
 
 interface BookingFormProps {
   tourTitle: string
@@ -46,6 +48,7 @@ export default function BookingForm({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [bookingResult, setBookingResult] = useState<BookingResponse | null>(null)
+  const { dbWriteStatus, write, reset: resetDbWrite } = useOnlineBookingState()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -78,35 +81,36 @@ export default function BookingForm({
         throw new Error(result.message || "Booking failed")
       }
 
-      // Also record the booking in the shared Supabase `online_bookings`
-      // table so the operator dashboard can see and confirm it. Fire-and-
-      // forget — the customer email already went out.
-      const obSourceId = `BK${Date.now()}-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
-      fetch("/api/online-bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source_booking_id: obSourceId,
-          booking_kind: "tour",
-          tour_slug: slug ?? null,
-          vehicle_slug: null,
-          service_name: tourTitle,
-          customer_name: formData.name,
-          customer_email: formData.email,
-          customer_phone: formData.phone,
-          customer_country: "Kenya",
-          departure_date: formData.date,
-          return_date: null,
-          adults: Number.parseInt(formData.travelers || "1") || 1,
-          total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
-          currency: "USD",
-          pickup_location: null,
-          special_requests: formData.message || null,
-          source_url: typeof window !== "undefined" ? window.location.href : null,
-        }),
-      }).catch((err) => {
-        console.warn("[Booking] online-bookings write failed (non-blocking):", err);
-      });
+      // Reuse the booking id from the email route as the dashboard's
+      // source_booking_id. A retried form upserts into the same row
+      // (source_booking_id is UNIQUE in online_bookings) instead of
+      // creating a duplicate.
+      const obInput: OnlineBookingWriteInput = {
+        source_booking_id: result.bookingId,
+        booking_kind: "tour",
+        tour_slug: slug ?? null,
+        vehicle_slug: null,
+        service_name: tourTitle,
+        customer_name: formData.name,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
+        customer_country: "Kenya",
+        departure_date: formData.date,
+        return_date: null,
+        adults: Number.parseInt(formData.travelers || "1") || 1,
+        total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
+        currency: "USD",
+        pickup_location: null,
+        special_requests: formData.message || null,
+        source_url: typeof window !== "undefined" ? window.location.href : null,
+      };
+
+      // Awaited — we MUST know the dashboard write result before we can
+      // show the user a success card. The customer email has already gone
+      // out at this point, so a failure here is "the operator dashboard
+      // didn't see it" — not "the booking was lost". The UI is honest
+      // about which case applies.
+      await write(obInput);
 
       setBookingResult(result)
       setSubmitted(true)
@@ -172,7 +176,67 @@ export default function BookingForm({
     window.open(whatsappUrl, "_blank")
   }
 
-  if (submitted && bookingResult) {
+  if (submitted && bookingResult && dbWriteStatus === 'failed') {
+    return (
+      <div className="rounded-xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-8 text-center shadow-sm animate-in fade-in duration-500">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-amber-100">
+          <AlertCircle className="h-12 w-12 text-amber-600" />
+        </div>
+
+        <h3 className="mb-4 text-3xl font-bold text-amber-800">Booking Received</h3>
+
+        <p className="mb-2 text-lg font-semibold text-amber-700">
+          Booking ID: <code className="rounded bg-amber-100 px-2 py-1 font-mono text-sm">{bookingResult.bookingId}</code>
+        </p>
+
+        <p className="mb-8 text-amber-700">
+          ✅ Your confirmation email has been sent to <strong>{formData.email}</strong>.<br />
+          ⚠️ We couldn&rsquo;t queue this in our system right now. Our team has been alerted and will follow up within 24 hours.
+        </p>
+
+        <div className="space-y-4 max-w-md mx-auto">
+          <Button
+            onClick={handleWhatsApp}
+            className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white gap-2"
+            size="lg"
+          >
+            <Send className="h-5 w-5" />
+            Confirm via WhatsApp
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full border-amber-300 text-amber-700 hover:bg-amber-50"
+            size="lg"
+            onClick={() => {
+              setSubmitted(false)
+              setBookingResult(null)
+              resetDbWrite()
+              setFormData({ name: "", email: "", phone: "", travelers: "2", date: "", message: "" })
+            }}
+          >
+            Book Another Tour
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  if (submitted && bookingResult && dbWriteStatus === 'pending') {
+    return (
+      <div className="rounded-xl border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
+          <Loader2 className="h-12 w-12 text-orange-600 animate-spin" />
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-orange-800">Recording your booking…</h3>
+        <p className="text-orange-700 text-sm">
+          Booking ID: <code className="bg-orange-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
+        </p>
+      </div>
+    )
+  }
+
+  if (submitted && bookingResult && dbWriteStatus === 'recorded') {
     return (
       <div className="rounded-xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-8 text-center shadow-sm animate-in fade-in duration-500">
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
@@ -194,16 +258,16 @@ export default function BookingForm({
         {/* Status Badges */}
         <div className="mb-8 grid grid-cols-2 gap-4 max-w-md mx-auto">
           <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
-            bookingResult.customerEmailSent 
-              ? "bg-green-50 border-green-200 text-green-700" 
+            bookingResult.customerEmailSent
+              ? "bg-green-50 border-green-200 text-green-700"
               : "bg-yellow-50 border-yellow-200 text-yellow-700"
           }`}>
             <Mail className="h-4 w-4" />
             {bookingResult.customerEmailSent ? "Email Sent" : "Email Sending..."}
           </div>
           <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
-            bookingResult.adminEmailSent 
-              ? "bg-green-50 border-green-200 text-green-700" 
+            bookingResult.adminEmailSent
+              ? "bg-green-50 border-green-200 text-green-700"
               : "bg-yellow-50 border-yellow-200 text-yellow-700"
           }`}>
             <Users className="h-4 w-4" />
@@ -238,6 +302,7 @@ export default function BookingForm({
             onClick={() => {
               setSubmitted(false)
               setBookingResult(null)
+              resetDbWrite()
               setFormData({ name: "", email: "", phone: "", travelers: "2", date: "", message: "" })
             }}
           >

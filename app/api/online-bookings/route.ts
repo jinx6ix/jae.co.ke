@@ -33,11 +33,31 @@ const OnlineBookingSchema = z.object({
   customer_phone: z.string().min(3).max(50),
   customer_country: z.string().max(100).nullable().optional(),
 
-  departure_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD'),
-  return_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD').nullable().optional(),
+  // ISO date YYYY-MM-DD. We sanity-check the date is in a plausible
+  // window (today → +5y) so a malicious client can't pollute the
+  // dashboard with year-9999 or year-1900 rows.
+  departure_date: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+    .refine(
+      (s) => {
+        const d = new Date(s + 'T00:00:00Z').getTime();
+        if (Number.isNaN(d)) return false;
+        const now = Date.now();
+        const fiveYears = 5 * 365 * 24 * 60 * 60 * 1000;
+        return d >= now - 24 * 60 * 60 * 1000 && d <= now + fiveYears;
+      },
+      { message: 'departure_date must be within the last day and next 5 years' },
+    ),
+  return_date: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+    .nullable()
+    .optional(),
 
   adults: z.number().int().min(1).max(100).default(1),
-  total_price: z.number().nonnegative(),
+  // Capped at $1M as a sanity bound. Real safari tours are < $50k.
+  total_price: z.number().nonnegative().max(1_000_000),
   currency: z.string().max(10).nullable().optional(),
 
   pickup_location: z.string().max(300).nullable().optional(),
@@ -62,7 +82,10 @@ export async function POST(req: NextRequest) {
   //    shared project yet, return a soft 503 so the form logs and moves on
   //    (the email is the user-visible success path).
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-    console.warn('[online-bookings] NEXT_PUBLIC_SUPABASE_URL/ANON_KEY not set; skipping DB write');
+    console.error(
+      '[online-bookings] not_configured source_booking_id=',
+      body.source_booking_id,
+    );
     return NextResponse.json(
       { ok: false, error: 'not_configured' },
       { status: 503 },
@@ -102,7 +125,14 @@ export async function POST(req: NextRequest) {
     };
 
   if (insertErr) {
-    console.error('[online-bookings] insert failed:', insertErr);
+    console.error(
+      '[online-bookings] insert_failed source_booking_id=',
+      body.source_booking_id,
+      'code=',
+      insertErr.code,
+      'message=',
+      insertErr.message,
+    );
     return NextResponse.json(
       { ok: false, error: 'insert_failed', details: insertErr.message },
       { status: 500 },
@@ -110,12 +140,28 @@ export async function POST(req: NextRequest) {
   }
 
   if (!inserted) {
-    // Should not happen with .maybeSingle() on an upsert, but guard.
+    console.error(
+      '[online-bookings] no_row_returned source_booking_id=',
+      body.source_booking_id,
+    );
     return NextResponse.json(
       { ok: false, error: 'no_row_returned' },
       { status: 500 },
     );
   }
+
+  // Idempotency: an upsert with `ignoreDuplicates: false` is "insert or
+  // update". `created_at` here is the row's create time (not the upsert
+  // time), so a retried form sees the original timestamp and the
+  // dashboard can detect "this is a retry, not a new booking".
+  console.log(
+    '[online-bookings] action=inserted source_booking_id=',
+    inserted.source_booking_id,
+    'id=',
+    inserted.id,
+    'status=',
+    inserted.status,
+  );
 
   return NextResponse.json({
     ok: true,

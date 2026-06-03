@@ -4,7 +4,8 @@
       "Bash(powershell *)",
       "Bash(pnpm run *)",
       "Bash(dir *)",
-      "Bash(./node_modules/.bin/tsc --noEmit -p .)"
+      "Bash(./node_modules/.bin/tsc --noEmit -p .)",
+      "Bash(curl *)"
     ]
   }
 }
