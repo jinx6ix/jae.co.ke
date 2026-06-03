@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, Users, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Tsavo East & West National Park Safari | Kenya Tours",
   description: "Discover Tsavo, Kenya's largest national park. Experience diverse landscapes, the famous red elephants, Mzima Springs, and Chyulu Hills on a Tsavo safari adventure.",
@@ -30,8 +32,6 @@ export const metadata: Metadata = {
     languages: { 'en': `${BASE}/destinations/tsavo`, 'x-default': `${BASE}/destinations/tsavo` },
   },
 };
-
-const BASE = "https://www.jaetravel.co.ke";
 
 const destinationData = {
   name: "Tsavo National Parks",

@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Volcanoes National Park Gorilla Trekking | Rwanda Tours",
   description: "Trek mountain gorillas in Rwanda's Volcanoes National Park, home to Dian Fossey's research center. Experience golden monkeys and unforgettable gorilla encounters in the land of a thousand hills.",
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const BASE = "https://www.jaetravel.co.ke";
 const destinationData = {
   name: "Volcanoes National Park",
   country: "Rwanda",

@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Lake Nakuru National Park Safari | Kenya Tours",
   description: "Witness spectacular flamingo migrations and rhino sightings at Lake Nakuru National Park. Experience one of Kenya's finest rhino conservation areas with stunning lake views.",
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const BASE = "https://www.jaetravel.co.ke";
 const destinationData = {
   name: "Lake Nakuru National Park",
   country: "Kenya",

@@ -9,13 +9,13 @@ import {
   Camera, Calendar, CheckCircle, Phone, Mail
 } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Amboseli National Park Safari | Kenya Tours",
   description: "Experience breathtaking views of Mount Kilimanjaro on safari in Amboseli National Park. Witness large elephant herds and diverse wildlife. Book your Amboseli safari today.",
   keywords: ["amboseli national park", "kenya safari", "kilimanjaro views", "elephant herds", "amboseli tours", "kenya tours"],
 };
-
-const BASE = "https://www.jaetravel.co.ke";
 
 const destinationData = {
   name: "Amboseli National Park",

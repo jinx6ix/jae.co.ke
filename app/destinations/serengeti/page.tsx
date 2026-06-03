@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Serengeti National Park Safari | Tanzania Tours",
   description: "Experience the endless plains of Serengeti National Park. Witness the Great Migration, Big Five safaris, and world-class wildlife viewing in Tanzania's premier national park.",
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const BASE = "https://www.jaetravel.co.ke";
 const destinationData = {
   name: "Serengeti National Park",
   country: "Tanzania",

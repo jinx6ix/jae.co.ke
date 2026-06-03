@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Bwindi Impenetrable Forest Gorilla Trekking | Uganda Tours",
   description: "Trek mountain gorillas in Bwindi Impenetrable Forest, Uganda. Experience life-changing encounters with endangered mountain gorillas in one of Africa's oldest rainforests.",
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const BASE = "https://www.jaetravel.co.ke";
 const destinationData = {
   name: "Bwindi Impenetrable Forest",
   country: "Uganda",

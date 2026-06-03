@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Samburu National Reserve Safari | Kenya Tours",
   description: "Discover rare wildlife in Samburu including Grevy's zebras, reticulated giraffes, and the Big Five. Experience Kenya's northern safari wilderness with unique species found nowhere else in Africa.",
@@ -30,8 +32,6 @@ export const metadata: Metadata = {
     languages: { 'en': `${BASE}/destinations/samburu`, 'x-default': `${BASE}/destinations/samburu` },
   },
 };
-
-const BASE = "https://www.jaetravel.co.ke";
 
 const destinationData = {
   name: "Samburu National Reserve",

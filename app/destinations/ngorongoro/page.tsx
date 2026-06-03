@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { tours } from "@/lib/tours-data";
 import { MapPin, Clock, Star, Shield, ArrowRight, Camera, Calendar, CheckCircle, Phone, Mail } from "lucide-react";
 
+const BASE = "https://www.jaetravel.co.ke";
+
 export const metadata: Metadata = {
   title: "Ngorongoro Conservation Area Safari | Tanzania Tours",
   description: "Explore Ngorongoro Crater, the world's largest inactive volcanic caldera. Experience incredible wildlife density and stunning views in this UNESCO World Heritage Site.",
@@ -31,7 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const BASE = "https://www.jaetravel.co.ke";
 const destinationData = {
   name: "Ngorongoro Conservation Area",
   country: "Tanzania",
