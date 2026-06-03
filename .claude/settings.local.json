@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(powershell *)",
-      "Bash(pnpm run *)"
+      "Bash(pnpm run *)",
+      "Bash(dir *)",
+      "Bash(./node_modules/.bin/tsc --noEmit -p .)"
     ]
   }
 }

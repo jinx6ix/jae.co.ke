@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -40,6 +40,71 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [bookingResult, setBookingResult] = useState<BookingResponse | null>(null)
+  const [resetCountdown, setResetCountdown] = useState<number | null>(null)
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const clearResetTimers = () => {
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current)
+      resetTimerRef.current = null
+    }
+    if (countdownIntervalRef.current) {
+      clearInterval(countdownIntervalRef.current)
+      countdownIntervalRef.current = null
+    }
+  }
+
+  const resetForm = () => {
+    clearResetTimers()
+    setResetCountdown(null)
+    setSubmitted(false)
+    setBookingResult(null)
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      travelers: "2",
+      date: "",
+      message: "",
+    })
+  }
+
+  // Auto-reset the form 5 seconds after a successful submission so the user
+  // can immediately book another trip without having to click anything.
+  // The user can still click "Book Another Tour" / "✕" to reset early,
+  // and the timer is cleared on unmount or if the component re-submits.
+  useEffect(() => {
+    if (!submitted) {
+      clearResetTimers()
+      setResetCountdown(null)
+      return
+    }
+
+    const SECONDS = 5
+    setResetCountdown(SECONDS)
+
+    countdownIntervalRef.current = setInterval(() => {
+      setResetCountdown((prev) => (prev !== null && prev > 0 ? prev - 1 : prev))
+    }, 1000)
+
+    resetTimerRef.current = setTimeout(() => {
+      clearResetTimers()
+      setResetCountdown(null)
+      setSubmitted(false)
+      setBookingResult(null)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        travelers: "2",
+        date: "",
+        message: "",
+      })
+    }, SECONDS * 1000)
+
+    return clearResetTimers
+  }, [submitted])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -153,7 +218,28 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
 
   if (submitted && bookingResult) {
     return (
-      <div className="rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
+      <div className="relative rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
+        {/* Auto-reset dismiss + countdown */}
+        <div className="absolute right-4 top-4 flex items-center gap-2">
+          {resetCountdown !== null && resetCountdown > 0 && (
+            <span
+              className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700"
+              aria-live="polite"
+            >
+              Resetting in {resetCountdown}s
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={resetForm}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-orange-500 transition-colors hover:bg-orange-100 hover:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            aria-label="Dismiss and book another tour"
+            title="Book another tour"
+          >
+            <span className="text-lg leading-none">✕</span>
+          </button>
+        </div>
+
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
           <CheckCircle className="h-12 w-12 text-orange-600" />
         </div>
@@ -211,20 +297,9 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             Share on WhatsApp
           </Button>
           
-          <Button 
-            onClick={() => {
-              setSubmitted(false)
-              setBookingResult(null)
-              setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                travelers: "2",
-                date: "",
-                message: "",
-              })
-            }} 
-            variant="outline" 
+          <Button
+            onClick={resetForm}
+            variant="outline"
             className="w-full border-orange-300 text-orange-700 hover:bg-orange-50"
             size="lg"
           >
