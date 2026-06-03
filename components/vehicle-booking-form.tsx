@@ -85,6 +85,35 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
         throw new Error(result.message || "Failed to submit booking");
       }
 
+      // Also record the booking in the shared Supabase `online_bookings`
+      // table so the operator dashboard can see and confirm it. Fire-and-
+      // forget — the customer email already went out.
+      fetch("/api/online-bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source_booking_id: bookingId,
+          booking_kind: "vehicle_hire",
+          tour_slug: null,
+          vehicle_slug: slug ?? null,
+          service_name: vehicleName,
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          customer_country: "Kenya",
+          departure_date: formData.pickupDate,
+          return_date: formData.returnDate || null,
+          adults: 1, // vehicle hire is per-vehicle, not per-pax
+          total_price: totalPrice,
+          currency: "USD",
+          pickup_location: formData.pickupLocation,
+          special_requests: formData.message || null,
+          source_url: typeof window !== "undefined" ? window.location.href : null,
+        }),
+      }).catch((err) => {
+        console.warn("[VehicleBooking] online-bookings write failed (non-blocking):", err);
+      });
+
       // Google Analytics: Purchase
       if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", "purchase", {

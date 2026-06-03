@@ -78,6 +78,36 @@ export default function BookingForm({
         throw new Error(result.message || "Booking failed")
       }
 
+      // Also record the booking in the shared Supabase `online_bookings`
+      // table so the operator dashboard can see and confirm it. Fire-and-
+      // forget — the customer email already went out.
+      const obSourceId = `BK${Date.now()}-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
+      fetch("/api/online-bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source_booking_id: obSourceId,
+          booking_kind: "tour",
+          tour_slug: slug ?? null,
+          vehicle_slug: null,
+          service_name: tourTitle,
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          customer_country: "Kenya",
+          departure_date: formData.date,
+          return_date: null,
+          adults: Number.parseInt(formData.travelers || "1") || 1,
+          total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
+          currency: "USD",
+          pickup_location: null,
+          special_requests: formData.message || null,
+          source_url: typeof window !== "undefined" ? window.location.href : null,
+        }),
+      }).catch((err) => {
+        console.warn("[Booking] online-bookings write failed (non-blocking):", err);
+      });
+
       setBookingResult(result)
       setSubmitted(true)
     } catch (error: any) {
