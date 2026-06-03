@@ -13,6 +13,7 @@ interface BookingFormProps {
   tourPrice: number
   tourDuration: string
   serviceType?: string
+  tourSlug?: string
 }
 
 interface BookingResponse {
@@ -27,7 +28,7 @@ interface BookingResponse {
   downloadUrl?: string
 }
 
-export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour" }: BookingFormProps) {
+export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour", tourSlug }: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -82,7 +83,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           body: JSON.stringify({
             source_booking_id: obSourceId,
             booking_kind: "tour",
-            tour_slug: slug ?? null,
+            tour_slug: tourSlug ?? null,
             vehicle_slug: null,
             service_name: tourTitle,
             customer_name: formData.name,

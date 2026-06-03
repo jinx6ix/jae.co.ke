@@ -340,6 +340,7 @@ export default async function TourPage(props: TourPageProps) {
                   tourTitle={String(tour.title)}
                   tourPrice={Number(tour.price)}
                   tourDuration={String(duration)}
+                  tourSlug={String(tour.slug)}
                 />
 
                 {/* Contact Card */}

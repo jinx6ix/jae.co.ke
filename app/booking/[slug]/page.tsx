@@ -340,6 +340,7 @@ export default async function BookingPage({ params }: BookingPageProps) {
                   tourPrice={tour.price}
                   tourDuration={toPlainString(tour.duration)}   // Fixed!
                   serviceType="tour"
+                  tourSlug={tour.slug}
                 />
               </div>
             </div>

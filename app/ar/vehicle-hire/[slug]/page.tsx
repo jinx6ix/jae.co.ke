@@ -331,6 +331,7 @@ export default async function VehicleDetailPage({
                 vehicleName={vehicle.name}
                 pricePerDay={vehicle.pricePerDay}
                 vehicleId={vehicle.id}
+                slug={slug}
               />
             </div>
           </div>

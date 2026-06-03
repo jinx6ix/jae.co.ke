@@ -11,9 +11,10 @@ interface VehicleBookingFormProps {
   vehicleName: string;
   pricePerDay: number;
   vehicleId: string | number; // Accept string or number
+  slug?: string;              // URL slug, used for vehicle_slug in online_bookings
 }
 
-export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: VehicleBookingFormProps) {
+export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }: VehicleBookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -88,11 +89,12 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
       // Also record the booking in the shared Supabase `online_bookings`
       // table so the operator dashboard can see and confirm it. Fire-and-
       // forget — the customer email already went out.
+      const obSourceId = `VH${Date.now()}-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
       fetch("/api/online-bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          source_booking_id: bookingId,
+          source_booking_id: obSourceId,
           booking_kind: "vehicle_hire",
           tour_slug: null,
           vehicle_slug: slug ?? null,

@@ -351,10 +351,11 @@ export default async function TourPage(props: TourPageProps) {
             <div className="lg:col-span-1">
               <div className="sticky top-20 space-y-6">
                 {/* Booking Card */}
-                <BookingForm 
-                  tourTitle={String(tour.title)} 
-                  tourPrice={Number(tour.price)} 
-                  tourDuration={String(duration)} 
+                <BookingForm
+                  tourTitle={String(tour.title)}
+                  tourPrice={Number(tour.price)}
+                  tourDuration={String(duration)}
+                  tourSlug={String(tour.slug)}
                 />
 
                 {/* Contact Card */}
