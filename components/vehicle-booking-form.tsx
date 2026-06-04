@@ -78,6 +78,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
         body: JSON.stringify({
           vehicleName,
           vehicleId,
+          vehicleSlug: slug,
           ...formData,
           totalPrice,
           days: calculateDays(),

@@ -27,6 +27,7 @@ interface BookingResponse {
   whatsappLink?: string
   pdfUrl?: string
   downloadUrl?: string
+  tourUrl?: string
 }
 
 export default function BookingForm({
@@ -62,6 +63,7 @@ export default function BookingForm({
           serviceName: tourTitle,
           serviceType,
           slug, // useful if you want to generate tour-specific links
+          tourSlug: slug, // consumed by /api/bookings to build the safari link
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -161,12 +163,16 @@ export default function BookingForm({
       return
     }
 
+    const tourUrl = bookingResult?.tourUrl
+      || (slug ? `${window.location.origin}/safari/${slug}` : "")
+
     const message = `🆕 *New Booking Request*\n\n` +
       `👤 *Name:* ${formData.name}\n` +
       `📧 *Email:* ${formData.email}\n` +
       `📞 *Phone:* ${formData.phone}\n\n` +
       `🎫 *Booking ID:* ${bookingResult?.bookingId || "Pending"}\n` +
       `🏞️ *Tour:* ${tourTitle}\n` +
+      (tourUrl ? `🔗 *Tour Page:* ${tourUrl}\n` : ``) +
       `👥 *Travelers:* ${formData.travelers}\n` +
       `💰 *Total:* $${totalPrice.toLocaleString()}\n` +
       `📅 *Start Date:* ${formData.date}\n\n` +

@@ -5,7 +5,9 @@
       "Bash(pnpm run *)",
       "Bash(dir *)",
       "Bash(./node_modules/.bin/tsc --noEmit -p .)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Bash(git stash *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

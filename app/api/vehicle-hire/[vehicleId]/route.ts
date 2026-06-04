@@ -74,6 +74,13 @@ export async function POST(request: NextRequest) {
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
+    // === Vehicle page link ===
+    // Forwarded by the vehicle booking form. Falls back to /vehicles when missing.
+    const vehicleSlug = typeof bookingData.vehicleSlug === 'string' && bookingData.vehicleSlug.trim()
+      ? bookingData.vehicleSlug.trim()
+      : (vehicleId ? String(vehicleId) : '');
+    const vehicleUrl = vehicleSlug ? `${baseUrl}/vehicles/${vehicleSlug}` : `${baseUrl}/vehicles`;
+
     // === CUSTOMER EMAIL (Orange Theme) ===
     const customerEmail = {
       from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
@@ -127,13 +134,21 @@ export async function POST(request: NextRequest) {
       </div>
 
       <div style="text-align:center; margin:30px 0;">
+        <a href="${vehicleUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Vehicle Details</a>
+      </div>
+
+      <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:-10px;">
+        Or copy this link: <a href="${vehicleUrl}" style="color:#0ea5e9; word-break:break-all;">${vehicleUrl}</a>
+      </p>
+
+      <div style="text-align:center; margin:30px 0;">
         <a href="${clientPdfUrl}" class="btn">Download PDF Confirmation</a>
       </div>
 
       <div style="background:#ecfdf5; border:1px solid #bbf7d0; border-radius:12px; padding:25px; text-align:center;">
         <h3 style="margin:0 0 15px; color:#059669; font-size:18px;">Need Help?</h3>
         <p>Chat with us instantly on WhatsApp:</p>
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have booking #${bookingId}`)}" class="btn btn-wa" target="_blank">
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have booking #${bookingId} for ${bookingData.vehicleName} — ${vehicleUrl}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
       </div>
@@ -211,12 +226,14 @@ export async function POST(request: NextRequest) {
           <tr><td class="label">Days:</td><td class="value">${days}</td></tr>
           <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#059669; font-size:18px;">$${totalPrice.toLocaleString()}</td></tr>
           <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.message || 'None'}</td></tr>
+          <tr><td class="label">Vehicle Page:</td><td class="value"><a href="${vehicleUrl}" style="color:#059669; word-break:break-all;" target="_blank">${vehicleUrl}</a></td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
+        <a href="${vehicleUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Vehicle Page</a>
         <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download Admin PDF</a>
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your vehicle booking #${bookingId} is confirmed!`)}" class="btn btn-wa" target="_blank">
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your vehicle booking #${bookingId} for ${bookingData.vehicleName} is confirmed! Vehicle: ${vehicleUrl}`)}" class="btn btn-wa" target="_blank">
           Contact Customer
         </a>
       </div>
@@ -258,6 +275,7 @@ export async function POST(request: NextRequest) {
       adminEmailSent: adminSent,
       pdfUrl: clientPdfUrl,
       whatsappLink: adminWhatsApp,
+      tourUrl: vehicleUrl,
     });
 
   } catch (error: any) {

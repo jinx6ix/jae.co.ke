@@ -25,6 +25,22 @@ export async function POST(request: NextRequest) {
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${data.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
+    // === Site link (best guess based on the destination they picked) ===
+    // Inquiries aren't tied to a specific tour, so we point them at the
+    // destination page when possible, otherwise the homepage.
+    const DESTINATION_PATHS: Record<string, string> = {
+      kenya: '/tours?destination=kenya',
+      tanzania: '/tours?destination=tanzania',
+      rwanda: '/tours?destination=rwanda',
+      uganda: '/tours?destination=uganda',
+      accessible: '/tours?destination=accessible',
+      vehicle: '/vehicles',
+      custom: '/tours',
+    };
+    const interestKey = (data.country || '').toString().trim().toLowerCase();
+    const sitePath = DESTINATION_PATHS[interestKey] || '/';
+    const siteUrl = `${baseUrl}${sitePath}`;
+
     // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {
       from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
@@ -74,7 +90,15 @@ export async function POST(request: NextRequest) {
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have inquiry #${inquiryId}`)}" class="btn btn-wa" target="_blank">
+        <a href="${siteUrl}" class="btn" style="background:#0ea5e9;" target="_blank">Browse Our Tours</a>
+      </div>
+
+      <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:-10px;">
+        Or copy this link: <a href="${siteUrl}" style="color:#0ea5e9; word-break:break-all;">${siteUrl}</a>
+      </p>
+
+      <div style="text-align:center; margin:30px 0;">
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have inquiry #${inquiryId} — ${siteUrl}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
       </div>
@@ -143,11 +167,13 @@ export async function POST(request: NextRequest) {
           <tr><td class="label">ID:</td><td class="value"><span class="highlight">${inquiryId}</span></td></tr>
           <tr><td class="label">Interested In:</td><td class="value">${data.country || 'General'}</td></tr>
           <tr><td class="label">Message:</td><td class="value" style="font-style:italic; color:#6b7280;">${data.message}</td></tr>
+          <tr><td class="label">Suggested Page:</td><td class="value"><a href="${siteUrl}" style="color:#059669; word-break:break-all;" target="_blank">${siteUrl}</a></td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${data.name}, thanks for your inquiry!`)}" class="btn btn-wa" target="_blank">
+        <a href="${siteUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Suggested Page</a>
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${data.name}, thanks for your inquiry! Here are some options: ${siteUrl}`)}" class="btn btn-wa" target="_blank">
           Contact Customer
         </a>
       </div>

@@ -58,6 +58,13 @@ export async function POST(request: NextRequest) {
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
+    // === Tour page link ===
+    // Forwarded by the booking form (tourSlug). Falls back to /tours when missing.
+    const slug = typeof bookingData.tourSlug === 'string' && bookingData.tourSlug.trim()
+      ? bookingData.tourSlug.trim()
+      : '';
+    const tourUrl = slug ? `${baseUrl}/safari/${slug}` : `${baseUrl}/tours`;
+
     // === CUSTOMER EMAIL ===
     const customerEmail = {
       from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
@@ -110,13 +117,21 @@ export async function POST(request: NextRequest) {
       </div>
 
       <div style="text-align:center; margin:30px 0;">
+        <a href="${tourUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Tour Details</a>
+      </div>
+
+      <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:-10px;">
+        Or copy this link: <a href="${tourUrl}" style="color:#0ea5e9; word-break:break-all;">${tourUrl}</a>
+      </p>
+
+      <div style="text-align:center; margin:30px 0;">
         <a href="${clientPdfUrl}" class="btn">Download PDF Confirmation</a>
       </div>
 
       <div style="background:#ecfdf5; border:1px solid #bbf7d0; border-radius:12px; padding:25px; text-align:center;">
         <h3 style="margin:0 0 15px; color:#059669; font-size:18px;">Need Help?</h3>
         <p>Chat with us instantly on WhatsApp:</p>
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have a booking #${bookingId}`)}" class="btn btn-wa" target="_blank">
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have a booking #${bookingId} for ${bookingData.serviceName} — ${tourUrl}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
       </div>
@@ -193,12 +208,14 @@ export async function POST(request: NextRequest) {
           <tr><td class="label">Travelers:</td><td class="value">${bookingData.travelers}</td></tr>
           <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#059669; font-size:18px;">$${parseFloat(bookingData.totalPrice).toLocaleString()}</td></tr>
           <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.specialRequirements || 'None'}</td></tr>
+          <tr><td class="label">Tour Page:</td><td class="value"><a href="${tourUrl}" style="color:#059669; word-break:break-all;" target="_blank">${tourUrl}</a></td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
+        <a href="${tourUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Tour Page</a>
         <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download Admin PDF</a>
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your booking #${bookingId} is confirmed!`)}" class="btn btn-wa" target="_blank">
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your booking #${bookingId} for ${bookingData.serviceName} is confirmed! Tour: ${tourUrl}`)}" class="btn btn-wa" target="_blank">
           Contact Customer on WhatsApp
         </a>
       </div>
@@ -240,6 +257,7 @@ export async function POST(request: NextRequest) {
       adminEmailSent: adminSent,
       pdfUrl: `/api/bookings/${bookingId}/download?...`, // same as clientPdfUrl
       whatsappLink: adminWhatsApp,
+      tourUrl,
     });
 
   } catch (error: any) {

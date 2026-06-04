@@ -20,7 +20,10 @@ export default function BookingButtons({ tour }: BookingButtonsProps) {
   const [showForm, setShowForm] = useState(false)
 
   const handleWhatsApp = () => {
-    const message = `Hello! I'm interested in booking *${tour.title}* for $${tour.price}.\nCan you provide availability and more details?`
+    const tourUrl = tour.slug
+      ? `${window.location.origin}/safari/${tour.slug}`
+      : window.location.href
+    const message = `Hello! I'm interested in booking *${tour.title}* for $${tour.price}.\nCan you provide availability and more details?\n\n🔗 ${tourUrl}`
     window.open(`https://wa.me/+254726485228?text=${encodeURIComponent(message)}`, '_blank')
   }
 

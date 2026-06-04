@@ -28,6 +28,7 @@ interface BookingResponse {
   whatsappLink?: string
   pdfUrl?: string
   downloadUrl?: string
+  tourUrl?: string
 }
 
 export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour", tourSlug }: BookingFormProps) {
@@ -133,6 +134,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
         body: JSON.stringify({
           serviceName: tourTitle,
           serviceType,
+          tourSlug,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -224,7 +226,21 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       return
     }
 
-    const message = `🆕 *New Booking Confirmation*\n\n👤 ${formData.name}\n📧 ${formData.email}\n📞 ${formData.phone}\n\n🎫 *Booking ID:* ${bookingResult?.bookingId}\n🏕️ *Tour:* ${tourTitle}\n👥 *Travelers:* ${formData.travelers}\n💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n📅 *Date:* ${formData.date}\n\nPlease confirm details and arrange payment.`
+    const tourUrl = bookingResult?.tourUrl
+      || (tourSlug ? `${window.location.origin}/safari/${tourSlug}` : "")
+
+    const message =
+      `🆕 *New Booking Confirmation*\n\n` +
+      `👤 ${formData.name}\n` +
+      `📧 ${formData.email}\n` +
+      `📞 ${formData.phone}\n\n` +
+      `🎫 *Booking ID:* ${bookingResult?.bookingId}\n` +
+      `🏕️ *Tour:* ${tourTitle}\n` +
+      (tourUrl ? `🔗 *Tour Page:* ${tourUrl}\n` : ``) +
+      `👥 *Travelers:* ${formData.travelers}\n` +
+      `💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n` +
+      `📅 *Date:* ${formData.date}\n\n` +
+      `Please confirm details and arrange payment.`
 
     const whatsappUrl = `https://wa.me/+254726485228?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")?.focus()
