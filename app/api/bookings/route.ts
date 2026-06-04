@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
+import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST!,
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
   try {
     bookingData = await request.json();
     const bookingId = `BK${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl();
 
     // === PDF URLs ===
     const clientPdfUrl = `${baseUrl}/api/bookings/${bookingId}/download?${new URLSearchParams({
@@ -59,11 +60,16 @@ export async function POST(request: NextRequest) {
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
     // === Tour page link ===
-    // Forwarded by the booking form (tourSlug). Falls back to /tours when missing.
+    // Prefer the page URL the form was actually submitted from (validated
+    // against the trusted-host allowlist). Falls back to /safari/<slug> if
+    // the form did not send a pageUrl or the host isn't trusted, and finally
+    // to /tours if no slug was supplied.
+    const trustedPageUrl = sanitizeTrustedPageUrl(bookingData.pageUrl);
     const slug = typeof bookingData.tourSlug === 'string' && bookingData.tourSlug.trim()
       ? bookingData.tourSlug.trim()
       : '';
-    const tourUrl = slug ? `${baseUrl}/safari/${slug}` : `${baseUrl}/tours`;
+    const tourUrl = trustedPageUrl
+      || (slug ? `${baseUrl}/safari/${slug}` : `${baseUrl}/tours`);
 
     // === CUSTOMER EMAIL ===
     const customerEmail = {

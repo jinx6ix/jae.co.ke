@@ -64,6 +64,7 @@ export default function BookingForm({
           serviceType,
           slug, // useful if you want to generate tour-specific links
           tourSlug: slug, // consumed by /api/bookings to build the safari link
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,

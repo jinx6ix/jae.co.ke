@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
+import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST!,
@@ -25,7 +26,7 @@ export async function POST(request: NextRequest) {
   try {
     bookingData = await request.json();
     const bookingId = `TR${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`; // TR = Transfer
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl();
 
     const totalPrice = parseFloat(bookingData.totalPrice || bookingData.price);
 
@@ -61,12 +62,16 @@ export async function POST(request: NextRequest) {
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
-    // === Service page link (optional) ===
-    // If the form forwards a service slug, surface the tour/transfer page.
+    // === Service page link ===
+    // Prefer the page URL the form was actually submitted from (validated
+    // against the trusted-host allowlist). If the form forwards a service
+    // slug, surface the tour/transfer page as a fallback.
+    const trustedPageUrl = sanitizeTrustedPageUrl(bookingData.pageUrl);
     const serviceSlug = typeof bookingData.serviceSlug === 'string' && bookingData.serviceSlug.trim()
       ? bookingData.serviceSlug.trim()
       : '';
-    const serviceUrl = serviceSlug ? `${baseUrl}/safari/${serviceSlug}` : '';
+    const serviceUrl = trustedPageUrl
+      || (serviceSlug ? `${baseUrl}/safari/${serviceSlug}` : '');
 
     // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {

@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
+import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST!,
@@ -20,14 +21,18 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
     const inquiryId = `INQ${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl();
 
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${data.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
-    // === Site link (best guess based on the destination they picked) ===
-    // Inquiries aren't tied to a specific tour, so we point them at the
-    // destination page when possible, otherwise the homepage.
+    // === Site link ===
+    // Prefer the page URL the contact form was actually submitted from
+    // (validated against the trusted-host allowlist). The inquiry form is
+    // not tied to a specific tour, so if no pageUrl is provided we fall
+    // back to the destination page based on the dropdown they picked,
+    // otherwise the homepage.
+    const trustedPageUrl = sanitizeTrustedPageUrl(data.pageUrl);
     const DESTINATION_PATHS: Record<string, string> = {
       kenya: '/tours?destination=kenya',
       tanzania: '/tours?destination=tanzania',
@@ -39,7 +44,7 @@ export async function POST(request: NextRequest) {
     };
     const interestKey = (data.country || '').toString().trim().toLowerCase();
     const sitePath = DESTINATION_PATHS[interestKey] || '/';
-    const siteUrl = `${baseUrl}${sitePath}`;
+    const siteUrl = trustedPageUrl || `${baseUrl}${sitePath}`;
 
     // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {

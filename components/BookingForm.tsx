@@ -134,6 +134,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           serviceName: tourTitle,
           serviceType,
           tourSlug,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,

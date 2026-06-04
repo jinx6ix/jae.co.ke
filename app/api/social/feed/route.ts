@@ -33,7 +33,7 @@ export async function GET() {
     }
 
     // If we have some credentials, fetch from individual platforms
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.jaetravel.co.ke'
     
     const fetchWithFallback = async (platform: string, endpoint: string) => {
       try {

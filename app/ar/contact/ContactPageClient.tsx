@@ -32,7 +32,10 @@ export default function ContactPageClient() {
       const response = await fetch("/ar/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
+        }),
       });
 
       const result = await response.json();

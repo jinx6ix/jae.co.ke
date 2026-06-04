@@ -9,10 +9,10 @@ export async function POST() {
   try {
     // Fetch from all platforms to cache them
     const [instagramRes, youtubeRes, facebookRes, tiktokRes] = await Promise.all([
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/social/instagram`),
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/social/youtube`),
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/social/facebook`),
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/social/tiktok`),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.jaetravel.co.ke'}/api/social/instagram`),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.jaetravel.co.ke'}/api/social/youtube`),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.jaetravel.co.ke'}/api/social/facebook`),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.jaetravel.co.ke'}/api/social/tiktok`),
     ])
 
     const [instagram, youtube, facebook, tiktok] = await Promise.all([

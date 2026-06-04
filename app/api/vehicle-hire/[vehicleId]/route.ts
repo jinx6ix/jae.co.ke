@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
+import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST!,
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
     const vehicleId = searchParams.get('vehicleId') || bookingData.vehicleId?.toString();
 
     const bookingId = `VH${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`; // VH = Vehicle Hire
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl();
 
     // === CALCULATE DAYS & TOTAL ===
     const pickup = new Date(bookingData.pickupDate);
@@ -75,11 +76,15 @@ export async function POST(request: NextRequest) {
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
     // === Vehicle page link ===
-    // Forwarded by the vehicle booking form. Falls back to /vehicles when missing.
+    // Prefer the page URL the form was actually submitted from (validated
+    // against the trusted-host allowlist). Falls back to /vehicles/<slug> if
+    // the form did not send a pageUrl or the host isn't trusted.
+    const trustedPageUrl = sanitizeTrustedPageUrl(bookingData.pageUrl);
     const vehicleSlug = typeof bookingData.vehicleSlug === 'string' && bookingData.vehicleSlug.trim()
       ? bookingData.vehicleSlug.trim()
       : (vehicleId ? String(vehicleId) : '');
-    const vehicleUrl = vehicleSlug ? `${baseUrl}/vehicles/${vehicleSlug}` : `${baseUrl}/vehicles`;
+    const vehicleUrl = trustedPageUrl
+      || (vehicleSlug ? `${baseUrl}/vehicles/${vehicleSlug}` : `${baseUrl}/vehicles`);
 
     // === CUSTOMER EMAIL (Orange Theme) ===
     const customerEmail = {

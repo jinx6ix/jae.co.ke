@@ -79,6 +79,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId, slug }
           vehicleName,
           vehicleId,
           vehicleSlug: slug,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
           ...formData,
           totalPrice,
           days: calculateDays(),
