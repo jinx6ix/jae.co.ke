@@ -299,6 +299,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // COMPLETE SERVER COMPONENT — ALL ORIGINAL SECTIONS + NEW OPTIMIZED SECTIONS
 // ————————————————————————
+const comparisonRows = [
+  { feature: "Lift Capacity", us: "400kg German hydraulic", them: "Manual ramps (max 150kg)" },
+  { feature: "Wheelchair Securement", us: "Medical-grade 4-point system", them: "Basic straps" },
+  { feature: "Lodge Partnerships", us: "Fully audited disability-friendly lodges", them: "Standard lodges" },
+  { feature: "2026 Availability", us: "Guaranteed Masai Mara & gorilla slots", them: "Limited or none" },
+  { feature: "Driver Training", us: "Accessibility-certified guides", them: "Standard drivers" },
+  { feature: "Own Wheelchair Use", us: "Stay seated entire game drive", them: "Transfer required" },
+]
+
+const datesRows = [
+  { period: "June – September", mara: "Peak migration & river crossings", gorilla: "Dry season — easiest trails", best: "★★★★★ Highest recommendation" },
+  { period: "July – October", mara: "Best river crossing viewing", gorilla: "Excellent", best: "Ideal for wheelchair users" },
+  { period: "December – February", mara: "Calving season start", gorilla: "Dry season — perfect trails", best: "Excellent wheelchair access" },
+  { period: "Year-round", mara: "Daily game drives available", gorilla: "Permits always open", best: "Custom wheelchair accessible tours in Kenya available daily" },
+]
+
 export default function HomePage() {
   const featuredTours = tours.slice(0, 3)
   const specialOffers = toursOnOffer.slice(0, 4)
@@ -317,15 +333,15 @@ export default function HomePage() {
       <HeroCarousel />
 
       {/* Why Choose Us — keyword reinforced H1 + body */}
-      <section className="border-b border-border bg-muted/30 py-16">
+      <section className="border-b border-border bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h1 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+          <h1 className="mb-8 md:mb-12 text-center font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             Wheelchair Accessible Safari Kenya 2026 - Premier Accessible Tours &amp; Wildlife Adventures
           </h1>
           
-          <div className="mb-12 max-w-5xl mx-auto text-center space-y-6 pl-70">
+          <div className="mb-8 md:mb-12 max-w-3xl mx-auto text-center space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to JaeTravel Expeditions — Kenya&apos;s #1 operator for <strong>wheelchair accessible safari Kenya</strong> and <strong>wheelchair accessible tours in Kenya</strong>. 
+              Welcome to JaeTravel Expeditions — Kenya&apos;s #1 operator for <strong>wheelchair accessible safari Kenya</strong> and <strong>wheelchair accessible tours in Kenya</strong>.
               Our German hydraulic lift vehicles and disability-friendly lodges make the Masai Mara Great Migration, Serengeti, and gorilla trekking fully accessible.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -340,7 +356,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Shield className="h-8 w-8" />
@@ -381,21 +397,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Special Offers Section — fully preserved + keywords with pl-70 and pl-60 */}
-      <section className="py-16">
+      {/* Special Offers Section — fully preserved + keywords */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               Limited-Time Safari Special Offers
             </h2>
-            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-70">
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
+            <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
+              <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                 Save on <strong>Great Migration game drives</strong>, <strong>wheelchair accessible safari</strong> packages in Kenya, Tanzania, Rwanda &amp; Uganda.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Don&apos;t miss our exclusive <strong>safari packages</strong> designed for <strong>wheelchair accessible tours in Kenya</strong> with fully adapted 
               <strong> safari vehicles</strong> and stays at luxurious <strong>disability-friendly lodges</strong>.
@@ -405,17 +421,17 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-4">
             {specialOffers.map((tour) => (
               <div key={tour.id} className="relative">
-                <div className="absolute -right-2 -top-2 z-10 rounded-full bg-destructive px-3 py-1 text-sm font-semibold text-destructive-foreground shadow-lg">
+                <div className="absolute right-2 top-2 z-10 rounded-full bg-destructive px-3 py-1 text-sm font-semibold text-destructive-foreground shadow-lg">
                   Save ${tour.originalPrice! - tour.price}
                 </div>
                 <TourCard tour={tour} showOriginalPrice />
               </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
+          <div className="mt-8 md:mt-12 text-center">
             <Button asChild size="lg" variant="outline">
               <Link href="/tours">
                 View All Safari Packages <ArrowRight className="ml-2 h-5 w-5" />
@@ -426,31 +442,31 @@ export default function HomePage() {
       </section>
 
       {/* Featured Tours Section — fully preserved */}
-      <section className="py-16 bg-muted/10">
+      <section className="py-12 md:py-16 bg-muted/10">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               Featured East Africa Safari Experiences
             </h2>
-            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-70">
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
+            <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
+              <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                 Handpicked <strong>safari experiences</strong> with comfortable <strong>camps and lodges</strong> and optional <strong>wheelchair accessible safari vehicles</strong>.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Our carefully curated selection of <strong>East Africa safari</strong> adventures with <strong>wheelchair accessible tours in Kenya</strong>.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredTours.map((tour) => (
               <TourCard key={tour.id} tour={tour} />
             ))}
           </div>
-          <div className="mt-12 text-center">
+          <div className="mt-8 md:mt-12 text-center">
             <Button asChild size="lg" variant="outline">
               <Link href="/tours">
                 Explore All Tours <ArrowRight className="ml-2 h-5 w-5" />
@@ -461,12 +477,12 @@ export default function HomePage() {
       </section>
 
       {/* Destinations Section — fully preserved */}
-      <section className="border-t border-border bg-muted/30 py-16">
+      <section className="border-t border-border bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold">Explore East Africa&apos;s Premier Safari Destinations</h2>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Explore East Africa&apos;s Premier Safari Destinations</h2>
             
-            <div className="max-w-5xl mx-auto space-y-6 pl-70">
+            <div className="max-w-3xl mx-auto space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 East Africa offers some of the world&apos;s most spectacular safari destinations for <strong>wheelchair accessible safari Kenya</strong>.
               </p>
@@ -476,13 +492,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {destinations.map((destination) => (
               <DestinationCard key={destination.slug} destination={destination} />
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-8 md:mt-12 text-center">
             <Button asChild size="lg" variant="outline">
               <Link href="/destinations">
                 View All Destinations <ArrowRight className="ml-2 h-5 w-5" />
@@ -493,15 +509,15 @@ export default function HomePage() {
       </section>
 
       {/* The Complete Safari Experience Section — fully preserved */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               The Complete Safari Experience - From Dawn to Dusk
             </h2>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-3">
             <div className="text-center">
               <div className="mb-4 flex justify-center">
                 <Zap className="h-12 w-12 text-primary" />
@@ -536,18 +552,18 @@ export default function HomePage() {
       </section>
 
       {/* Wheelchair Accessible Tours Kenya Section — fully preserved */}
-      <section className="py-16 bg-primary/5">
+      <section className="py-12 md:py-16 bg-primary/5">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               Wheelchair Accessible Tours in Kenya - Barrier-Free Safari Adventures
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty pl-70">
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Experience the ultimate <strong>wheelchair accessible safari Kenya</strong> with our specially designed tours.
             </p>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               As pioneers in <strong>accessible travel Africa</strong>, we&apos;ve developed the most comprehensive 
               <strong> wheelchair accessible tours and safaris</strong> in East Africa.
@@ -557,7 +573,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg bg-card p-6 shadow-sm">
               <h3 className="mb-3 text-xl font-semibold">Fully Adapted Vehicles</h3>
               <p className="text-muted-foreground">
@@ -581,12 +597,12 @@ export default function HomePage() {
       </section>
 
       {/* NEW SECTION 1: Kenya&apos;s Most Advanced Accessible Fleet */}
-      <section className="py-16 bg-muted/10">
+      <section className="py-12 md:py-16 bg-muted/10">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-8 md:mb-12 text-center font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             Kenya&apos;s Most Advanced Wheelchair Accessible Safari Vehicles 2026
           </h2>
-          <div className="max-w-4xl mx-auto text-center mb-12 pl-70">
+          <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
             <p className="text-lg text-muted-foreground">
               German-engineered hydraulic lifts with 400kg capacity — the only fleet built exclusively for full-time wheelchair users on <strong>wheelchair accessible safari Kenya</strong>.
             </p>
@@ -644,81 +660,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW SECTION 2: Comparison Table */}
-      <section className="py-16">
+      {/* NEW SECTION 2: Comparison Cards */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-8 md:mb-12 text-center font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             Why Travelers Choose JaeTravel for Wheelchair Accessible Safari Kenya
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto pl-60">
-            <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
-              <thead>
-                <tr className="bg-primary text-primary-foreground">
-                  <th className="p-5 text-left font-semibold">Feature</th>
-                  <th className="p-5 font-semibold">JaeTravel Expeditions</th>
-                  <th className="p-5 font-semibold">Typical Operators</th>
-                 </tr>
-              </thead>
-              <tbody className="divide-y">
-                 <tr><td className="p-5 border-t font-medium">Lift Capacity</td><td className="p-5 border-t text-green-600 font-semibold">400kg German hydraulic</td><td className="p-5 border-t">Manual ramps (max 150kg)</td></tr>
-                 <tr><td className="p-5 font-medium">Wheelchair Securement</td><td className="p-5 text-green-600 font-semibold">Medical-grade 4-point system</td><td className="p-5">Basic straps</td></tr>
-                 <tr><td className="p-5 font-medium">Lodge Partnerships</td><td className="p-5 text-green-600 font-semibold">Fully audited disability-friendly lodges</td><td className="p-5">Standard lodges</td></tr>
-                 <tr><td className="p-5 font-medium">2026 Availability</td><td className="p-5 text-green-600 font-semibold">Guaranteed Masai Mara &amp; gorilla slots</td><td className="p-5">Limited or none</td></tr>
-                 <tr><td className="p-5 font-medium">Driver Training</td><td className="p-5 text-green-600 font-semibold">Accessibility-certified guides</td><td className="p-5">Standard drivers</td></tr>
-                 <tr><td className="p-5 font-medium">Own Wheelchair Use</td><td className="p-5 text-green-600 font-semibold">Stay seated entire game drive</td><td className="p-5">Transfer required</td></tr>
-              </tbody>
-            </table>
+          <div className="grid gap-3 sm:grid-cols-2 max-w-5xl mx-auto">
+            {comparisonRows.map((row) => (
+              <div key={row.feature} className="rounded-xl border bg-card p-5">
+                <div className="font-semibold mb-3 text-base">{row.feature}</div>
+                <div className="text-sm text-green-600 font-semibold mb-1">
+                  <span className="text-muted-foreground font-normal">JaeTravel:</span> {row.us}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  <span className="text-foreground/70">Typical:</span> {row.them}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* NEW SECTION 3: 2026 Dates Table */}
-      <section className="py-16 bg-muted/10">
+      {/* NEW SECTION 3: 2026 Dates Cards */}
+      <section className="py-12 md:py-16 bg-muted/10">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-8 md:mb-12 text-center font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             2026 Wheelchair Accessible Safari Kenya Dates — Masai Mara Great Migration &amp; Gorilla Trekking
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto pl-60">
-            <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
-              <thead>
-                <tr className="bg-primary text-primary-foreground">
-                  <th className="p-5 text-left">Period</th>
-                  <th className="p-5">Masai Mara Great Migration</th>
-                  <th className="p-5">Gorilla Trekking Rwanda/Uganda</th>
-                  <th className="p-5">Best for Wheelchair Accessible Safari</th>
-                 </tr>
-              </thead>
-              <tbody className="divide-y">
-                 <tr><td className="p-5 font-medium">June – September</td><td className="p-5">Peak migration &amp; river crossings</td><td className="p-5">Dry season — easiest trails</td><td className="p-5 text-green-600 font-semibold">★★★★★ Highest recommendation</td></tr>
-                 <tr><td className="p-5 font-medium">July – October</td><td className="p-5">Best river crossing viewing</td><td className="p-5">Excellent</td><td className="p-5 text-green-600 font-semibold">Ideal for wheelchair users</td></tr>
-                 <tr><td className="p-5 font-medium">December – February</td><td className="p-5">Calving season start</td><td className="p-5">Dry season — perfect trails</td><td className="p-5 text-green-600 font-semibold">Excellent wheelchair access</td></tr>
-                 <tr><td className="p-5 font-medium">Year-round</td><td className="p-5">Daily game drives available</td><td className="p-5">Permits always open</td><td className="p-5">Custom wheelchair accessible tours in Kenya available daily</td></tr>
-              </tbody>
-            </table>
-            <p className="text-center text-sm text-muted-foreground mt-6">All dates include our hydraulic lift vehicles and fully accessible lodges.</p>
+          <div className="grid gap-4 sm:grid-cols-2 max-w-5xl mx-auto">
+            {datesRows.map((row) => (
+              <div key={row.period} className="rounded-xl border bg-card p-5">
+                <div className="font-semibold mb-3 text-base">{row.period}</div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  <span className="text-foreground/70">Masai Mara:</span> {row.mara}
+                </div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  <span className="text-foreground/70">Gorilla Trekking:</span> {row.gorilla}
+                </div>
+                <div className="text-sm text-green-600 font-semibold">
+                  {row.best}
+                </div>
+              </div>
+            ))}
           </div>
+          <p className="text-center text-sm text-muted-foreground mt-6">All dates include our hydraulic lift vehicles and fully accessible lodges.</p>
         </div>
       </section>
 
       {/* Budget Safari Options Section — fully preserved */}
-      <section className="py-16 bg-muted/10">
+      <section className="py-12 md:py-16 bg-muted/10">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               Affordable Safari Adventures Without Compromise
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty pl-70">
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Experience the magic of Africa with our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> that can be upgraded with <strong>wheelchair accessible safari vehicles</strong>.
             </p>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> include comfortable accommodations and daily <strong>game drives</strong>.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-3">
             <div className="rounded-lg bg-card p-6 shadow-sm">
               <h3 className="mb-3 text-xl font-semibold">3-Day Samburu Adventure</h3>
               <p className="text-muted-foreground mb-4">
@@ -751,10 +759,10 @@ export default function HomePage() {
       </section>
 
       {/* Accessible Travel CTA Section — fully preserved */}
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="relative overflow-hidden rounded-2xl bg-primary p-8 text-primary-foreground md:p-12">
-            <div className="absolute right-0 top-0 h-full w-1/3 opacity-20">
+            <div className="absolute right-0 top-0 h-full w-1/2 md:w-1/3 opacity-20">
               <Image
                 src="/accessible-safari-wheelchair.jpg"
                 alt="Wheelchair user enjoying game drive on accessible safari vehicle in Kenya"
@@ -776,7 +784,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <p className="mb-8 text-lg">
+              <p className="mb-6 md:mb-8 text-lg">
                 Learn more about our{" "}
                 <Link href="/disability-tours" className="underline underline-offset-4 hover:text-secondary">
                   wheelchair accessible safari options
@@ -797,10 +805,10 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-muted/20">
+      <section className="py-12 md:py-16 bg-muted/20">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
               Frequently Asked Questions About Wheelchair Accessible Safari Kenya
             </h2>
           </div>
@@ -823,20 +831,20 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials & Final CTA — fully preserved */}
-      <section className="border-t border-border bg-muted/30 py-16">
+      <section className="border-t border-border bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-8 md:mb-12 text-center font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             What Our Safari Guests Say
           </h2>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Hear from travelers who have experienced our <strong>wheelchair accessible tours in Kenya</strong>.
             </p>
           </div>
 
-          <section className="mb-8 scroll-mt-32">
-            <h2 className="font-serif text-2xl md:text-6xl font-bold mb-12 text-balance">
+          <section className="mb-6 md:mb-8 scroll-mt-32">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-8 md:mb-12 text-balance">
               Why Jae Travel Offers the Kenya Best Safari Experience
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
@@ -846,8 +854,8 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mb-8 scroll-mt-32">
-            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-12 text-balance">
+          <section className="mb-6 md:mb-8 scroll-mt-32">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-8 md:mb-12 text-balance">
               Discover the Best Safari in Africa for 2026
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
@@ -857,7 +865,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-3">
             {[
               {
                 name: "Sarah Johnson",
@@ -895,16 +903,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
+          <h2 className="mb-4 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-balance">
             Ready for Your Unforgettable Safari Experience?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
+          <p className="mx-auto mb-6 md:mb-8 max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
             Whether you&apos;re dreaming of classic <strong>game drives</strong> or a fully <strong>wheelchair accessible safari</strong>, contact us today.
           </p>
 
-          <div className="mb-8 max-w-5xl mx-auto space-y-4 pl-60">
+          <div className="mb-6 max-w-3xl mx-auto space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Your dream <strong>African safari</strong> awaits with <strong>wheelchair accessible safari vehicles</strong> and <strong>disability-friendly lodges</strong>.
             </p>
