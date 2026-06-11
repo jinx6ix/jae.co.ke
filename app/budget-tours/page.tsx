@@ -1,4 +1,3 @@
-import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/budget-tours/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -6,83 +5,79 @@ import Link from "next/link";
 import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
+import {
   Check, DollarSign, Users, Shield, Phone, MapPin, Calendar, Camera,
-  Star, Award, Clock, CreditCard, Headphones, Gift, Tag, Percent,
-  Truck, Waves, Mountain, TreePine, Sun, ChevronRight, Heart,
-  Mail
+  Star, Award, Clock, CreditCard, Mail, Sun, Mountain,
+  Binoculars, Camera as CameraIcon, Globe, TreePine, Heart,
+  Droplets, Thermometer, Info, ChevronRight, ThumbsUp,
+  Coffee, AlertCircle, Palmtree, Ticket, ArrowRight, Car
 } from "lucide-react";
 import BudgetToursClient from "./BudgetToursClient";
-
-// Import the budget tours data to include real tour cards in schema
+import GoogleMerchantWidget from "./GoogleMerchantWidget";
 import { budgetTours } from "@/lib/budget-tours-data";
 
-// Calculate stats
 const totalTours = budgetTours.length;
-const avgRating = totalTours > 0 
+const avgRating = totalTours > 0
   ? (budgetTours.reduce((sum, t) => sum + (t.rating || 4.5), 0) / totalTours).toFixed(1)
   : "4.8";
-const minPrice = totalTours > 0 
+const minPrice = totalTours > 0
   ? Math.min(...budgetTours.map(t => t.price))
-  : 450;
-const maxPrice = totalTours > 0 
+  : 610;
+const maxPrice = totalTours > 0
   ? Math.max(...budgetTours.map(t => t.price))
-  : 1200;
+  : 1690;
+const totalReviews = budgetTours.reduce((s, t) => s + t.reviewCount, 0);
+const ABSOLUTE_URL = "https://www.jaetravel.co.ke/budget-tours";
+const HERO_IMG = "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg";
+const featuredTours = budgetTours.slice(0, 6);
 
-// ============================================
-// METADATA - Title: 60 chars | Description: 115 chars
-// ============================================
 export const metadata: Metadata = {
-  title: "Budget Safaris Kenya 2026 | Cheap Tours from $950",
-  description: "Discover the best budget safaris in Kenya 2026. Masai Mara, Nakuru, Naivasha & Amboseli. Affordable group & private safaris starting from $950. Book now!",
+  title: "Budget Safari Kenya 2026 | From $610/Person | JaeTravel",
+  description: "Kenya budget safaris from $610. Masai Mara, Amboseli, Nakuru tours. All-inclusive.",
   keywords: [
-    "budget safaris Kenya 2026", "private safaris Kenya", "tented camps Masai Mara",
-    "wildebeest migration safari", "budget safaris Masai Mara", "Masai Mara National Reserve tours",
-    "game viewing Kenya", "unforgettable safari experiences", "group safaris Kenya",
-    "Mara safari packages", "Kenya tour operators", "safari in Kenya 2026",
-    "lions leopards viewing", "affordable Kenya safari", "cheap Masai Mara tours",
-    "budget tours in Kenya", "cheap safaris", "budget safaris in Kenya",
-    "cheap safaris in Kenya", "cheap tours in Kenya", "affordable safaris Kenya",
-    "group joining safaris Kenya", "camping safaris Kenya", "low-cost Kenya tours",
-    "East Africa budget safaris", "Masai Mara budget packages", "Amboseli cheap tours",
-    "Lake Nakuru affordable safaris", "Tsavo budget wildlife tours", "Big Five budget viewing",
-    "overland safaris Kenya", "shared safari tours"
+    "budget tours Kenya", "budget safari Kenya", "cheap safaris Kenya", "Kenya budget tours 2026",
+    "budget tours in Kenya", "cheap Kenya safari", "budget Kenya tours", "Kenya cheap tours",
+    "affordable Kenya safaris", "budget safari in Kenya", "Kenya budget safari tours",
+    "Masai Mara budget tours", "Amboseli budget tours", "Lake Nakuru budget tours",
+    "Kenya group safaris", "budget Kenya wildlife tours", "Kenya tour packages budget",
+    "cheap Africa safaris", "budget East Africa tours", "Kenya budget travel",
+    "budget safari packages Kenya", "Kenya budget game drives", "budget tented camp Kenya",
+    "Kenya budget travel guide", "budget Kenya itinerary", "affordable Kenya tours 2026",
+    "Kenya budget vacation", "budget safaris Masai Mara", "Kenya budget holiday packages",
+    "cheapest Kenya safaris", "Kenya budget trips", "low cost Kenya tours", "budget Africa tours"
   ].join(", "),
+  
   authors: [{ name: "JaeTravel Expeditions", url: "https://www.jaetravel.co.ke" }],
   creator: "JaeTravel Expeditions",
   publisher: "JaeTravel Expeditions",
   metadataBase: new URL("https://www.jaetravel.co.ke"),
   alternates: {
-    canonical: "https://www.jaetravel.co.ke/budget-tours",
+    canonical: ABSOLUTE_URL,
     languages: {
-      'en': 'https://www.jaetravel.co.ke/budget-tours',
-      'en-US': 'https://www.jaetravel.co.ke/budget-tours',
-      'en-GB': 'https://www.jaetravel.co.ke/budget-tours',
-      'x-default': 'https://www.jaetravel.co.ke/budget-tours',
+      'en': ABSOLUTE_URL,
+      'x-default': ABSOLUTE_URL,
     },
   },
   openGraph: {
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
-    description: "Experience the Great Wildebeest Migration on affordable budget safaris. Group & private safaris in Masai Mara, Nakuru, Naivasha & Amboseli. Book now!",
-    url: "https://www.jaetravel.co.ke/budget-tours",
+    title: "Budget Safari Kenya 2026 | Tours from $610/Person",
+    description: "Kenya budget safaris from $610. Masai Mara, Amboseli, Nakuru tours. All-inclusive, expert guides.",
+    url: ABSOLUTE_URL,
     siteName: "JaeTravel Expeditions",
-    images: [
-      {
-        url: "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Wildebeest migration in Masai Mara National Reserve - budget safaris Kenya, cheap safaris in Kenya",
-        type: "image/jpeg",
-      },
-    ],
+    images: [{
+      url: HERO_IMG,
+      width: 1200,
+      height: 630,
+      alt: "Budget Safari Kenya 2026 - Wildebeest migration in Masai Mara",
+      type: "image/jpeg",
+    }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
-    description: "Join our group safaris or private safaris to witness the Great Migration. Affordable tented camp stays with unforgettable experiences.",
-    images: ["https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg"],
+    title: "Budget Safari Kenya 2026 | Tours from $610/Person",
+    description: "Kenya budget safaris from $610. Masai Mara, Amboseli, Nakuru tours. All-inclusive.",
+    images: [HERO_IMG],
     site: "@jaetravel",
     creator: "@jaetravel",
   },
@@ -97,476 +92,198 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  other: {
-    "og:price:amount": "450",
-    "og:price:currency": "USD",
-  },
 };
 
-const absoluteUrl = "https://www.jaetravel.co.ke/budget-tours";
-const heroImage = "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg";
-
-// Limit to first 6 tours for schema (to avoid too large JSON)
-const featuredTours = budgetTours.slice(0, 6);
-
-// ============================================
-// COMPREHENSIVE SCHEMA MARKUP
-// ============================================
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. TouristAttraction for Masai Mara
     {
-      "@type": "TouristAttraction",
-      "@id": "https://www.jaetravel.co.ke/#attraction",
-      "name": "Masai Mara National Reserve",
-      "description": "World-famous wildlife reserve in Kenya known for the Great Wildebeest Migration, budget safaris in Kenya, and cheap tours in Kenya",
-      "image": heroImage,
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -1.4933,
-        "longitude": 35.1431
-      },
-      "address": {
+      "@type": "Organization",
+      name: "JaeTravel Expeditions",
+      description: "Kenya tour operator specializing in budget tours and affordable safaris across Kenya's top wildlife destinations.",
+      url: "https://www.jaetravel.co.ke",
+      logo: "https://www.jaetravel.co.ke/logo.png",
+      telephone: "+254726485228",
+      email: "info@jaetravel.co.ke",
+      address: {
         "@type": "PostalAddress",
-        "addressCountry": "KE",
-        "addressLocality": "Masai Mara"
-      }
-    },
-
-    // 2. Organization + LocalBusiness (with aggregateRating & individual reviews for rich stars)
-    {
-      "@type": ["Organization", "LocalBusiness"],
-      "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JaeTravel Expeditions",
-      "description": "Professional Kenya tour operator specializing in budget safaris, cheap safaris in Kenya, budget tours in Kenya, and unforgettable safari experiences",
-      "url": "https://www.jaetravel.co.ke",
-      "logo": "https://www.jaetravel.co.ke/logo.png",
-      "telephone": "+254726485228",
-      "email": "info@jaetravel.co.ke",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Nairobi",
-        "postalCode": "00100",
-        "addressCountry": "KE",
-        "addressLocality": "Nairobi"
+        addressCountry: "KE",
+        addressLocality: "Nairobi"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254726485228",
-        "contactType": "customer service",
-        "areaServed": "KE",
-        "availableLanguage": ["English", "Swahili"]
-      },
-      "sameAs": [
+      sameAs: [
         "https://www.facebook.com/jaetravelexpeditions",
         "https://www.instagram.com/jaetravel",
         "https://twitter.com/jaetravelke"
       ],
-      "aggregateRating": {
+      aggregateRating: {
         "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "reviewCount": "723"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "David Chen" },
-          "datePublished": "2025-08-20",
-          "reviewBody": "JaeTravel made our budget Masai Mara safari unforgettable! Excellent guides, comfortable camps, and incredible wildlife sightings — especially the wildebeest migration."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sarah Johnson" },
-          "datePublished": "2025-07-15",
-          "reviewBody": "Perfect group safari with JaeTravel! Affordable price, great tented camp, and our guide spotted lions, leopards, and the Big Five."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Michael Thompson" },
-          "datePublished": "2025-09-05",
-          "reviewBody": "Best budget safari experience in Kenya! JaeTravel delivered amazing value — professional team, comfortable transport, and breathtaking views."
-        }
-      ]
+        ratingValue: "5.0",
+        bestRating: "5",
+        reviewCount: totalReviews.toString()
+      }
     },
-
-    // 3. WebSite
-    {
-      "@type": "WebSite",
-      "@id": "https://www.jaetravel.co.ke/#website",
-      "url": "https://www.jaetravel.co.ke",
-      "name": "JaeTravel Expeditions - Kenya Tour Operator",
-      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
-    },
-
-    // 4. WebPage
     {
       "@type": "WebPage",
-      "@id": `${absoluteUrl}#webpage`,
-      "url": absoluteUrl,
-      "name": "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $950",
-      "description": "Book budget safaris to Masai Mara National Reserve for unforgettable experiences. Private safaris & group safaris with tented camp accommodation. Witness lions leopards & the Great Migration.",
-      "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
-      "primaryImageOfPage": {
+      url: ABSOLUTE_URL,
+      name: "Budget Safari Kenya 2026 | Tours from $610/Person",
+      description: "Kenya budget safaris from $610. Masai Mara, Amboseli, Nakuru tours. All-inclusive, expert guides.",
+      primaryImageOfPage: {
         "@type": "ImageObject",
-        "url": heroImage,
-        "width": 1200,
-        "height": 630,
-        "caption": "Wildebeest migration in Masai Mara - budget safaris Kenya"
-      },
-      "breadcrumb": { "@id": `${absoluteUrl}#breadcrumb` }
+        url: HERO_IMG,
+        width: 1200,
+        height: 630
+      }
     },
-
-    // 5. BreadcrumbList
     {
       "@type": "BreadcrumbList",
-      "@id": `${absoluteUrl}#breadcrumb`,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jaetravel.co.ke/" },
-        { "@type": "ListItem", "position": 2, "name": "Budget Safaris Kenya", "item": absoluteUrl }
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.jaetravel.co.ke/" },
+        { "@type": "ListItem", position: 2, name: "Budget Safari Kenya", item: ABSOLUTE_URL }
       ]
     },
-
-    // 6. Product Schema for Budget Tours
     {
       "@type": "Product",
-      "@id": `${absoluteUrl}#product`,
-      "name": "Budget Safari Packages Kenya 2026",
-      "description": "Affordable safari packages to Masai Mara, Lake Nakuru, Amboseli, and Tsavo. Includes game drives, tented camp accommodation, and expert guides.",
-      "image": heroImage,
-      "brand": {
-        "@type": "Brand",
-        "name": "JaeTravel Expeditions"
-      },
-      "offers": {
+      name: "Budget Safari Packages Kenya 2026",
+      description: "Affordable safari packages across Kenya from $610. Masai Mara, Amboseli, Lake Nakuru, Naivasha with all-inclusive guiding.",
+      image: HERO_IMG,
+      brand: { "@type": "Brand", name: "JaeTravel Expeditions" },
+      offers: {
         "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": minPrice.toString(),
-        "highPrice": maxPrice.toString(),
-        "offerCount": totalTours,
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2026-12-31",
+        priceCurrency: "USD",
+        lowPrice: minPrice.toString(),
+        highPrice: maxPrice.toString(),
+        offerCount: totalTours.toString(),
+        availability: "https://schema.org/InStock",
+        priceValidUntil: "2026-12-31"
       },
-      "aggregateRating": {
+      aggregateRating: {
         "@type": "AggregateRating",
-        "ratingValue": avgRating,
-        "reviewCount": "723",
-        "bestRating": "5",
-      },
-      "category": "Budget Safari Tours"
+        ratingValue: avgRating,
+        reviewCount: totalReviews.toString(),
+        bestRating: "5"
+      }
     },
-
-    // 7. ItemList with TouristTrip items
-    {
-      "@type": "ItemList",
-      "@id": `${absoluteUrl}#budget-tours-list`,
-      "name": "Budget Safari Packages Kenya 2026 - Cheap Masai Mara Tours",
-      "description": "Affordable safari packages starting from $950",
-      "numberOfItems": totalTours,
-      "itemListElement": featuredTours.map((tour, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "item": {
-          "@type": "TouristTrip",
-          "@id": `https://www.jaetravel.co.ke${tour.url}#trip`,
-          "name": tour.title,
-          "description": tour.shortDescription || tour.description,
-          "image": `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`,
-          "duration": tour.duration,
-          "touristType": ["Budget Travelers", "Adventure Seekers", "Wildlife Enthusiasts"],
-          "itinerary": {
-            "@type": "ItemList",
-            "itemListElement": tour.itinerary?.map((item, i) => ({
-              "@type": "ListItem",
-              "position": i + 1,
-              "name": item
-            })) || []
-          },
-          "offers": {
-            "@type": "Offer",
-            "url": `https://www.jaetravel.co.ke${tour.url}`,
-            "priceCurrency": "USD",
-            "price": tour.price.toString(),
-            "priceValidUntil": "2026-12-31",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@type": "Organization",
-              "@id": "https://www.jaetravel.co.ke/#organization"
-            }
-          }
-        }
-      }))
-    },
-
-    // 8. FAQPage
     {
       "@type": "FAQPage",
-      "@id": `${absoluteUrl}#faqpage`,
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is included in your budget safaris to Masai Mara National Reserve?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our budget safaris include accommodation in comfortable tented camps, all game viewing drives in Masai Mara National Reserve, professional guides, meals, and transport. Witness lions, leopards, and the wildebeest migration on these unforgettable experiences with cheap safaris in Kenya."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer private safaris or group safaris?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! We offer both private safaris for personalized itineraries and group safaris for budget-conscious travelers. All our Kenya tours feature expert guides and excellent game viewing opportunities."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "When is the best time for wildebeest migration viewing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Great Wildebeest Migration in Masai Mara National Reserve peaks from July to October. Our budget safaris during this period offer incredible game viewing of millions of wildebeest crossing the Mara River."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What type of accommodation do you use for budget safaris?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We use comfortable tented camps that provide an authentic safari experience while maintaining affordability. These camps are strategically located for optimal game viewing in Masai Mara."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What wildlife can we expect to see on a Mara safari?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Masai Mara National Reserve is famous for its Big Five sightings, including lions and leopards. During migration season, you'll witness millions of wildebeest, zebras, and predators in action."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why choose JaeTravel as your Kenya tour operator?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "As an experienced Kenya tour operator, we specialize in creating unforgettable safari experiences at affordable prices. Our expertise ensures you get the best game viewing opportunities with budget tours in Kenya."
-          }
-        }
+      mainEntity: [
+        { "@type": "Question", name: "How much does a budget safari in Kenya cost?", acceptedAnswer: { "@type": "Answer", text: `Our Kenya budget safaris start from $${minPrice} per person for entry-level packages. These include shared transport, tented camp accommodation, park fees, all meals, and professional guiding. Mid-range packages ($800-$1,200) offer better camps or private vehicle options. All tours are all-inclusive — no hidden extras.` } },
+        { "@type": "Question", name: "What is the cheapest way to do a safari in Kenya?", acceptedAnswer: { "@type": "Answer", text: "The cheapest safaris in Kenya are group joining tours (4-12 travelers sharing a vehicle) staying at budget tented camps. Booking 2+ months ahead and choosing less busy seasons (March-May) can save 20-30%. Our $610+ budget packages represent the best value — park fees alone for Masai Mara are $100/day, so our all-inclusive pricing undercuts self-planning significantly." } },
+        { "@type": "Question", name: "What destinations can I visit on a budget Kenya tour?", acceptedAnswer: { "@type": "Answer", text: "Popular budget safari destinations include Masai Mara (world-famous for Big Five and Great Migration), Lake Nakuru (rhinos and flamingos), Amboseli (elephants with Kilimanjaro views), Lake Naivasha (hippos and birding), and Tsavo (remote wildlife). Most budget packages combine 2-3 parks in 3-7 days." } },
+        { "@type": "Question", name: "Is Kenya safe for budget travelers?", acceptedAnswer: { "@type": "Answer", text: "Kenya's major safari destinations (Masai Mara, Amboseli, Lake Nakuru) are very safe for tourists. We use licensed operators, professional guides, and well-maintained vehicles. Nairobi has typical urban caution needs — our safaris handle all transport from hotel to park and back. Safari camps have security personnel." } },
+        { "@type": "Question", name: "What is the best time to visit Kenya for a budget safari?", acceptedAnswer: { "@type": "Answer", text: "June-October is peak season (dry, best wildlife viewing, Great Migration in Masai Mara) with higher prices. November-March is green season — lower prices, fewer crowds, excellent birding. April-May long rains see the biggest discounts but some roads become tricky. Budget travelers can save 30-40% by visiting in the green season." } },
+        { "@type": "Question", name: "What is included in a typical budget safari package?", acceptedAnswer: { "@type": "Answer", text: "All our Kenya budget safari packages include: 4x4 Land Cruiser transport from Nairobi, park entrance fees, accommodation in tented camps or lodges, all meals (breakfast, lunch, dinner), professional English-speaking safari guide, and drinking water. Not included: international flights, visa, travel insurance, tips, alcohol, and optional activities." } },
+        { "@type": "Question", name: "Can I see the Big Five on a budget Kenya safari?", acceptedAnswer: { "@type": "Answer", text: "Yes — all our Kenya budget safari packages are designed to spot the Big Five (lion, leopard, elephant, buffalo, rhino). Masai Mara has excellent lion and leopard sightings. Lake Nakuru has black and white rhinos in a protected sanctuary. Amboseli has large elephant herds. Our guides are experts at tracking wildlife in these proven Big Five destinations." } },
+        { "@type": "Question", name: "What's the difference between group and private safaris?", acceptedAnswer: { "@type": "Answer", text: "Group safaris share a 4x4 vehicle with 4-12 other travelers — lower per-person cost, social atmosphere, great for solo travelers. Private safaris give you a dedicated vehicle and guide — flexibility to set your own pace and schedule, but 40-60% more expensive. Both use the same parks, same game drives, same quality guides." } },
+        { "@type": "Question", name: "How far in advance should I book a Kenya budget safari?", acceptedAnswer: { "@type": "Answer", text: "For peak season (July-October, December-January, Easter), book 2-3 months ahead to secure your preferred dates and package. For green season (March-May, November), 2-4 weeks is often sufficient. Last-minute bookings are possible but availability becomes limited." } },
+        { "@type": "Question", name: "Do budget safari camps have hot water and electricity?", acceptedAnswer: { "@type": "Answer", text: "Most budget tented camps in Kenya offer 24-hour electricity, hot showers, and comfortable beds with quality bedding. Some remote camps may have solar power limitations. We carefully vet all accommodations — our budget options balance authentic safari experience with genuine comfort." } },
+        { "@type": "Question", name: "What should I pack for a Kenya budget safari?", acceptedAnswer: { "@type": "Answer", text: "Pack light neutral-colored clothing (khaki, brown, green — no white or bright colors), layers for morning game drives (can be cool), binoculars, a camera with zoom lens (200mm+ recommended), sunscreen, a wide-brimmed hat, comfortable walking shoes, and personal medications. Most camps provide bedding, towels, and basic toiletries." } },
+        { "@type": "Question", name: "How do I get from Nairobi to safari parks on a budget?", acceptedAnswer: { "@type": "Answer", text: "All our Kenya budget safari packages include round-trip transport from Nairobi in 4x4 Land Cruisers. The drive to Masai Mara takes 5-6 hours (scenic Great Rift Valley route). Lake Nakuru is 2-3 hours. Amboseli is 4-5 hours. Transport, park fees, accommodation, and meals are all bundled in the package price." } }
       ]
-    },
-
-    // 9. VideoObject Schema
-    {
-      "@type": "VideoObject",
-      "@id": `${absoluteUrl}#video`,
-      "name": "Budget Safari in Masai Mara - Wildebeest Migration Highlights",
-      "description": "Experience the thrill of witnessing the Great Wildebeest Migration on a budget safari in Kenya. See lions, leopards, and river crossings.",
-      "thumbnailUrl": "https://www.jaetravel.co.ke/migration-thumb.jpg",
-      "uploadDate": "2025-01-01T00:00:00Z",
-      "duration": "PT2M30S",
-      "contentUrl": "https://www.jaetravel.co.ke/videos/budget-safari-masai-mara.mp4",
-      "embedUrl": "https://www.youtube.com/embed/budget-safari-id",
-      "publisher": {
-        "@type": "Organization",
-        "name": "JaeTravel Expeditions"
-      }
     }
   ]
 };
 
-// ============================================
-// MAIN PAGE COMPONENT
-// ============================================
 export default function BudgetToursPage() {
   return (
     <div className="pb-16">
-      {/* Structured Data - Now includes real tour cards */}
-      <Script
-        id="budget-tours-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <Script id="budget-tours-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <GoogleMerchantWidget />
 
-      {/* ========== HERO SECTION ========== */}
-      <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
+      {/* HERO */}
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/fantasticafrica-20240806-0001.jpg"
-            alt="Wildebeest migration game viewing in Masai Mara National Reserve - budget safaris Kenya, cheap safaris in Kenya"
-            fill
-            className="object-cover brightness-50"
-            priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-            quality={90}
-          />
+          <Image src="/fantasticafrica-20240806-0001.jpg" alt="Budget Safari Kenya 2026 - Wildebeest migration Masai Mara" fill className="object-cover brightness-50" priority sizes="100vw" quality={90} />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-[1]" />
         <div className="container relative z-10 mx-auto px-4 text-center text-white">
-          {/* H1 - Primary Keyword */}
-          <h1 className="mb-6 font-serif text-5xl font-bold md:text-6xl lg:text-7xl">
-            <strong>Budget Safaris Kenya 2026</strong> — <span className="text-primary">from $950</span>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 mb-6 text-sm">
+            <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+            <span>Rated {avgRating}/5 by {totalReviews}+ Happy Safari Travelers</span>
+          </div>
+          <h1 className="mb-6 font-serif text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+            Budget Safari Kenya 2026 <span className="text-amber-400">— From ${minPrice}</span>
           </h1>
-          {/* H2 - Secondary Keyword */}
-          <h2 className="mx-auto mb-8 max-w-5xl text-xl leading-relaxed text-white/90">
-            Experience the spectacular <strong>wildebeest migration</strong> in <strong>Masai Mara National Reserve</strong> on our affordable <strong>budget safaris</strong>. 
-            Choose between exciting <strong>group safaris</strong> or personalized <strong>private safaris</strong> with comfortable <strong>tented camps</strong> accommodation. 
-            Enjoy incredible <strong>game viewing</strong> of <strong>lions, leopards</strong> and the Big Five on this <strong>unforgettable experience</strong>.
-          </h2>
-          
-          {/* Price Display */}
-          <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 mb-8 inline-flex items-center gap-4 mx-auto">
-            <div className="text-center">
-              <p className="text-sm opacity-80">Starting from</p>
-              <p className="text-3xl font-bold">${minPrice}</p>
-            </div>
-            <div className="w-px h-10 bg-white/30"></div>
-            <div className="text-center">
-              <p className="text-sm opacity-80">Average</p>
-              <p className="text-3xl font-bold">${Math.round((minPrice + maxPrice) / 2)}</p>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="min-w-[220px] text-lg bg-green-600 hover:bg-green-700">
-              <Link href="#tours">View All <strong>Mara Safari</strong> Packages</Link>
+          <p className="mx-auto mb-8 max-w-5xl text-xl leading-relaxed text-white/90">
+            Kenya budget tours from ${minPrice} per person. Masai Mara, Amboseli, Lake Nakuru — all-inclusive wildlife adventures with expert guides. No hidden costs.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-8">
+            <Button asChild size="lg" className="min-w-[240px] text-lg bg-green-600 hover:bg-green-700 font-semibold">
+              <Link href="#tours">View {totalTours} Safari Packages</Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="min-w-[220px] border-white bg-white/10 text-white backdrop-blur hover:bg-white/20"
-            >
-              <Link href="/contact">Contact Our <strong>Tour Operator</strong> Today</Link>
+            <Button asChild size="lg" variant="outline" className="min-w-[240px] text-lg border-white bg-white/10 text-white backdrop-blur hover:bg-white/20">
+              <Link href="/contact">Talk to Safari Expert</Link>
             </Button>
           </div>
-
-          {/* Trust Badges */}
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
             <span className="flex items-center gap-2"><Shield className="h-4 w-4" /> Best Price Guarantee</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4" /> Group & Private Safaris</span>
+            <span className="flex items-center gap-2"><Users className="h-4 w-4" /> Group & Private Options</span>
+            <span className="flex items-center gap-2"><Star className="h-4 w-4" /> {avgRating}/5 Rating</span>
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> 24/7 Support</span>
           </div>
         </div>
       </section>
 
-      {/* ========== STATS SECTION ========== */}
-      <section className="py-12 bg-gray-50">
+      {/* TRUST STATS */}
+      <section className="bg-green-700 text-white py-6">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-green-700 mb-2">{totalTours}+</div>
-              <div className="text-gray-600">Budget Safari Packages</div>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-green-700 mb-2">723+</div>
-              <div className="text-gray-600">Happy Travelers</div>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-green-700 mb-2">{avgRating}★</div>
-              <div className="text-gray-600">Average Rating</div>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-green-700 mb-2">${minPrice}</div>
-              <div className="text-gray-600">Starting Price</div>
-            </div>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center text-sm font-medium">
+            <div><div className="text-2xl font-bold">{totalTours}+</div><div className="opacity-80">Safari Packages</div></div>
+            <div className="w-px bg-white/20 hidden md:block" />
+            <div><div className="text-2xl font-bold">${minPrice}</div><div className="opacity-80">Starting From</div></div>
+            <div className="w-px bg-white/20 hidden md:block" />
+            <div><div className="text-2xl font-bold">{avgRating}★</div><div className="opacity-80">Average Rating</div></div>
+            <div className="w-px bg-white/20 hidden md:block" />
+            <div><div className="text-2xl font-bold">{totalReviews}+</div><div className="opacity-80">Happy Travelers</div></div>
+            <div className="w-px bg-white/20 hidden md:block" />
+            <div><div className="text-2xl font-bold">15+</div><div className="opacity-80">Years Experience</div></div>
           </div>
         </div>
       </section>
 
-      {/* ========== INTRODUCTION SECTION ========== */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          {/* Main Title */}
-          <h2 className="mb-6 font-serif text-5xl md:text-6xl font-bold tracking-tight">
-            Discover the Best <strong className="text-green-600">Budget Safaris in Kenya</strong> for 2026
-          </h2>
-
-          {/* Subheading */}
-          <div className="max-w-5xl mx-auto pl-70 mb-12">
-            <h3 className="text-2xl text-gray-600 font-light">
-              Affordable wildlife adventures with comfortable tented camps and expert guides
-            </h3>
+      {/* INTRO */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="mb-6 font-serif text-5xl font-bold tracking-tight">
+              Kenya Budget Safaris: World-Class Wildlife Without the Premium Price
+            </h2>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              Kenya offers some of Africa&apos;s most spectacular wildlife experiences — and you don&apos;t need a luxury budget to enjoy them. Our Kenya budget tours make Masai Mara, Amboseli, Lake Nakuru, and more accessible to every traveler, starting from just <strong>${minPrice} per person</strong>.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              Whether you&apos;re after the Big Five, the Great Migration, flamingo-filled lakes, or elephants against Kilimanjaro — our budget safari packages cover Kenya&apos;s iconic destinations with comfortable tented camps, expert guides, and all-inclusive pricing. No hidden costs, no surprises.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              From solo travelers joining group tours to families seeking affordable adventures, our Kenya budget tours deliver <strong>unforgettable wildlife encounters</strong> at prices that won&apos;t break the bank. All tours include 4x4 transport, park fees, accommodation, meals, and professional guiding.
+            </p>
           </div>
-
-          {/* Paragraphs in their own divs with pl-60 and wider max-w-5xl for longer lines */}
-          <div className="max-w-5xl mx-auto pl-60 space-y-6">
-            <div>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Planning your dream <strong>safari in Kenya</strong>? As a leading <strong>Kenya tour operator</strong>, 
-                JaeTravel Expeditions offers exceptional <strong>budget safaris</strong>, <strong>cheap safaris in Kenya</strong>, 
-                and <strong>budget tours in Kenya</strong> to <strong>Masai Mara National Reserve</strong>.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Whether you prefer the camaraderie of <strong>group safaris</strong> or the exclusivity of 
-                <strong>private safaris</strong>, we create <strong>unforgettable experiences</strong> that won&apos;t break the bank.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Our <strong>Mara safari</strong> packages include comfortable <strong>tented camps</strong> accommodation 
-                and expert-led <strong>game viewing</strong> drives. Witness the spectacular 
-                <strong>wildebeest migration</strong> and spot majestic <strong>lions, leopards</strong> and other wildlife 
-                on our carefully crafted <strong>Kenya tours</strong>.
-              </p>
-            </div>
-          </div>
-
-          {/* Call-to-Action Button */}
-          <div className="pt-8">
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white font-medium px-10 py-7 text-lg rounded-full"
-            >
-              <Link href="#tours">
-                Explore Our <strong>Cheap Safaris in Kenya</strong> Packages
-              </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-lg px-8 py-6">
+              <Link href="#tours">Browse Safari Packages</Link>
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
+              <a href="https://wa.me/254726485228"><Phone className="mr-2 h-5 w-5" />Chat on WhatsApp</a>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* ========== KEY FEATURES SECTION ========== */}
+      {/* WHY KENYA */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            Your Perfect <strong>Budget Tours in Kenya</strong> Experience
-          </h2>
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold">Why Choose a Budget Safari in Kenya?</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                icon: <MapPin className="h-7 w-7 text-green-600" />,
-                title: "Masai Mara National Reserve",
-                desc: "Prime <strong>game viewing</strong> in Kenya's most famous wildlife sanctuary",
-              },
-              {
-                icon: <Calendar className="h-7 w-7 text-green-600" />,
-                title: "Wildebeest Migration",
-                desc: "Witness the Great Migration on our specially timed <strong>Mara safari</strong> packages",
-              },
-              {
-                icon: <Users className="h-7 w-7 text-green-600" />,
-                title: "Flexible Safari Options",
-                desc: "Choose between <strong>private safaris</strong> or affordable <strong>group safaris</strong>",
-              },
-              {
-                icon: <Camera className="h-7 w-7 text-green-600" />,
-                title: "Lions & Leopards",
-                desc: "Excellent chances to spot <strong>lions, leopards</strong> and the complete Big Five",
-              },
+              { icon: <Globe className="h-8 w-8" />, title: "Big Five Destinations", desc: "Masai Mara, Amboseli, Lake Nakuru — proven Big Five safari destinations with reliable wildlife sightings year-round." },
+              { icon: <DollarSign className="h-8 w-8" />, title: "Best Value in Africa", desc: `Packages from $${minPrice} include transport, park fees, camps, meals — far less than booking independently.` },
+              { icon: <Car className="h-8 w-8" />, title: "Expert Local Guides", desc: "Professional safari guides with deep knowledge of wildlife behavior, ecosystems, and Kenyan culture." },
+              { icon: <TreePine className="h-8 w-8" />, title: "Authentic Experience", desc: "Stay in comfortable tented camps in prime wildlife areas — closer to nature, genuine safari atmosphere." },
             ].map((item, i) => (
-              <Card key={i} className="hover:shadow-lg transition">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center">{item.icon}</div>
-                  <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                  <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: item.desc }} />
+              <Card key={i} className="hover:shadow-lg transition border-2 border-transparent hover:border-green-500">
+                <CardContent className="p-8 text-center">
+                  <div className="flex justify-center mb-4 text-green-600">{item.icon}</div>
+                  <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -574,147 +291,281 @@ export default function BudgetToursPage() {
         </div>
       </section>
 
-      {/* ========== DYNAMIC TOURS GRID ========== */}
+      {/* TOP SAFARI DESTINATIONS */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="mb-4 font-serif text-4xl font-bold">Top Safari Destinations in Kenya</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">Kenya&apos;s national parks and reserves offer incredible wildlife viewing across diverse ecosystems — all accessible on our budget safari packages.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Masai Mara National Reserve", emoji: "🦁", desc: "Kenya&apos;s most famous safari destination. World-renowned for Big Five sightings and the Great Migration (July-October). Lions, leopards, elephants, and dramatic river crossings.", price: "From $610", img: "/masai-mara-migration.jpg", href: "/budget-masai-mara-safari" },
+              { name: "Lake Nakuru National Park", emoji: "🦩", desc: "Famous for pink flamingos, black and white rhinos, and Rothschild giraffes. Excellent birding with 450+ species. Just 2-3 hours from Nairobi.", price: "From $610", img: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg", href: "/budget-lake-nakuru-safari" },
+              { name: "Amboseli National Park", emoji: "🐘", desc: "Iconic elephants with Mt. Kilimanjaro backdrop. High predator density, 400+ bird species, and spectacular photography opportunities.", price: "From $750", img: "/amboseli_elephants_at_sun_set-2__1200w.jpg", href: "/cheap-amboseli-tours" },
+              { name: "Lake Naivasha", emoji: "🦛", desc: "Boat rides among hippos, golden monkey tracking, and birding paradise. Often combined with Hell&apos;s Gate National Park for walking safaris.", price: "From $610", img: "/masai-mara-safari.jpg", href: "/budget-tours" },
+              { name: "Tsavo East & West", emoji: "🌿", desc: "One of Kenya&apos;s largest parks. Diverse habitats — from arid plains to volcanic features. Excellent for lions, elephants, and the famous red elephants.", price: "From $750", img: "/kenya-safari-landscape.jpg", href: "/budget-tours" },
+              { name: "Samburu National Reserve", emoji: "🦒", desc: "Arid landscape with species found nowhere else — Grevy&apos;s zebras, reticulated giraffes, Somali ostriches, and the endangered African wild dog.", price: "From $850", img: "/Samburu_National_Reserve,_Kenya-26December2012.jpg", href: "/budget-tours" },
+            ].map((dest, i) => (
+              <Link key={i} href={dest.href} className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition border">
+                <div className="relative h-48 overflow-hidden">
+                  <Image src={dest.img} alt={dest.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className="p-6">
+                  <div className="text-2xl mb-2">{dest.emoji}</div>
+                  <h3 className="font-bold text-lg mb-2">{dest.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-3" dangerouslySetInnerHTML={{ __html: dest.desc }} />
+                  <div className="flex items-center justify-between">
+                    <span className="text-green-700 font-bold text-sm">{dest.price}</span>
+                    <span className="text-primary text-sm flex items-center gap-1">Learn more <ChevronRight className="h-4 w-4" /></span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GROUP vs PRIVATE */}
+      <section className="py-16 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center font-serif text-4xl font-bold">Choose Your Safari Style</h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card className="border-2 border-green-200">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <Users className="h-8 w-8 text-green-600" />
+                  <h3 className="text-2xl font-bold">Group Joining Safaris</h3>
+                </div>
+                <div className="text-lg font-semibold text-green-700 mb-4">From ${minPrice} per person</div>
+                <p className="text-muted-foreground mb-6">Share the adventure with 4-12 fellow travelers in a 4x4 Land Cruiser. Our most popular budget option — social, affordable, and great for solo travelers.</p>
+                <ul className="space-y-3">
+                  {["Meet travelers from around the world", "Lowest per-person price", "Social atmosphere", "Fixed departure dates", "Perfect for solo travelers", "Same wildlife viewing quality as private"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="mt-6 w-full bg-green-600 hover:bg-green-700">
+                  <Link href="/group-joining-safaris-kenya">View Group Safari Packages</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="border-2 border-amber-200">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <TreePine className="h-8 w-8 text-amber-600" />
+                  <h3 className="text-2xl font-bold">Private Safaris</h3>
+                </div>
+                <div className="text-lg font-semibold text-amber-700 mb-4">From $850 per person</div>
+                <p className="text-muted-foreground mb-6">Your own vehicle and guide for complete flexibility — set your schedule, choose your pace, and customize your wildlife priorities.</p>
+                <ul className="space-y-3">
+                  {["Dedicated 4x4 vehicle and guide", "Flexible departure dates", "Customizable itinerary", "Stop for photos whenever you want", "Ideal for families or couples", "Comfort and privacy priority"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="mt-6 w-full" variant="outline">
+                  <Link href="/contact">Ask About Private Safari</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* WILDLIFE HIGHLIGHTS */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="mb-4 font-serif text-4xl font-bold">Wildlife You&apos;ll See on Kenya Budget Tours</h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">Kenya&apos;s national parks host an extraordinary diversity of wildlife — from the iconic Big Five to thousands of flamingos and 500+ bird species.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { emoji: "🦁", title: "Lions", desc: "High pride densities in Masai Mara. Watch hunts, cubs playing, and the dramatic Mara River crossings during migration season." },
+              { emoji: "🐘", title: "Elephants", desc: "Large family herds in Amboseli with Kilimanjaro backdrop. Herds of 50-100 regularly seen moving between water sources." },
+              { emoji: "🦏", title: "Rhinos", desc: "Lake Nakuru has Kenya&apos;s most successful rhino sanctuary. Both black and white rhinos in protected habitat with excellent sighting rates." },
+              { emoji: "🐆", title: "Leopards", desc: "Masai Mara has one of the highest leopard densities in Africa. Our guides know the best trees and territories for sightings." },
+              { emoji: "🦬", title: "Buffalo", desc: "Large herds congregate near wetlands in Lake Nakuru and Mara. Herds of 500+ are a spectacular sight against the African horizon." },
+              { emoji: "🦩", title: "Flamingos", desc: "Lake Nakuru&apos;s alkaline waters attract up to 2 million flamingos — one of the most spectacular bird sights in Africa." },
+              { emoji: "🦛", title: "Hippos", desc: "Lake Naivasha hosts thousands of hippos. Boat rides bring you close to these massive but shy creatures in their natural habitat." },
+              { emoji: "🦒", title: "Giraffes", desc: "Rothschild giraffes at Lake Nakuru, Masai giraffes in Mara. Their towering height and gentle nature make for magical encounters." },
+              { emoji: "🦅", title: "Birds", desc: "450-500+ species across Kenya parks. African fish eagles, pelvic fish owls, steppe eagles, kingfishers, and migrant species Nov-March." },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 p-6 rounded-xl text-center hover:shadow-md transition">
+                <div className="text-4xl mb-3">{item.emoji}</div>
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BEST TIME TO VISIT */}
+      <section className="py-16 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center font-serif text-4xl font-bold">Best Time to Visit Kenya for Budget Safaris</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { season: "June – October", label: "Peak Season", color: "border-green-500", icon: <Sun className="h-8 w-8 text-green-600" />, highlights: ["Great Migration in Masai Mara", "Best Big Five sightings", "Kilimanjaro clearest views", "Dry = easier wildlife tracking"], temp: "20-28°C", tip: "Book 2-3 months ahead. Highest prices but best wildlife viewing." },
+              { season: "November – March", label: "Green Season", color: "border-blue-500", icon: <Droplets className="h-8 w-8 text-blue-500" />, highlights: ["Lower prices (20-30% off)", "Fewer crowds", "Excellent birding (migrants)", "Lush green landscapes"], temp: "22-30°C", tip: "Best value for budget travelers. Great all-around." },
+              { season: "April – May", label: "Long Rains", color: "border-gray-400", icon: <Thermometer className="h-8 w-8 text-gray-500" />, highlights: ["Biggest discounts (40% off)", "Some roads become muddy", "Not recommended for remote areas", "Many lodges offer deep cuts"], temp: "18-26°C", tip: "Only for flexible travelers comfortable with rain and mud." },
+            ].map((item, i) => (
+              <Card key={i} className={`border-t-4 ${item.color}`}>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    {item.icon}
+                    <div>
+                      <h3 className="text-xl font-bold">{item.season}</h3>
+                      <p className="text-sm text-muted-foreground">{item.label}</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-2 mb-4">
+                    {item.highlights.map((h, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm">
+                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="text-sm font-medium text-green-700 mb-2">Avg temp: {item.temp}</div>
+                  <div className="bg-gray-50 p-3 rounded text-xs text-muted-foreground"><Info className="inline h-3 w-3 mr-1" />{item.tip}</div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PACKING TIPS */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center font-serif text-4xl font-bold">Safari Packing Essentials</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { title: "Clothing", icon: "👕", items: ["Neutral colors: khaki, brown, green", "Long-sleeve shirts for sun/mosquitoes", "Shorts or light trousers", "Light jacket (mornings are cool)", "Comfortable walking shoes", "Wide-brimmed hat"] },
+              { title: "Gear & Tech", icon: "📷", items: ["Binoculars (10x42 recommended)", "Camera with 200-400mm zoom", "Extra memory cards and batteries", "Sunscreen SPF 50+", "Dust-resistant bag for cameras", "Power bank for long game drives"] },
+              { title: "Health & Comfort", icon: "💊", items: ["Personal medications", "Anti-malarial prophylaxis", "Insect repellent (DEET 30%+)", "Reusable water bottle", "Lip balm and moisturizer", "Basic first-aid kit"] },
+            ].map((item, i) => (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <h3 className="font-bold text-lg mb-4">{item.title}</h3>
+                  <ul className="space-y-2">
+                    {item.items.map((thing, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
+                        {thing}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
+              <AlertCircle className="h-4 w-4" /> Avoid white, bright colors, and dark colors — they alarm wildlife. Earth tones blend with the environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* VALUE COMPARISON */}
+      <section className="py-16 bg-green-50">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center font-serif text-4xl font-bold">Why Our Budget Tours Beat Planning Yourself</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card>
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold mb-6 text-green-700">Our All-Inclusive Package</h3>
+                <ul className="space-y-3">
+                  {[
+                    "4x4 Land Cruiser transport from Nairobi",
+                    "All park entrance fees (e.g., $100+/day for Masai Mara)",
+                    "Comfortable tented camp accommodation",
+                    "All meals: breakfast, lunch, dinner",
+                    "Professional English-speaking safari guide",
+                    "Bottled drinking water throughout",
+                    "Nairobi hotel/airport pick-up & drop-off",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 pt-4 border-t">
+                  <div className="text-sm text-muted-foreground mb-1">Total per person from</div>
+                  <div className="text-3xl font-bold text-green-700">${minPrice}</div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold mb-6 text-red-600">Self-Planning Costs</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Safari vehicle rental + driver: $150-250/day",
+                    "Masai Mara park fees: $100/day + $35 vehicle fee",
+                    "Budget accommodation: $50-100/night",
+                    "Meals at safari camps: $30-50/day",
+                    "Airport transfers and logistics",
+                    "Risk of unavailable camps or fully booked parks",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-red-500 text-lg flex-shrink-0">–</span>
+                      <span className="text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 pt-4 border-t">
+                  <div className="text-sm text-muted-foreground mb-1">Estimated 3-day minimum cost</div>
+                  <div className="text-3xl font-bold text-red-600">$800+</div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* DYNAMIC TOURS GRID */}
       <div id="tours">
         <BudgetToursClient />
       </div>
 
-      {/* ========== WHY CHOOSE US SECTION ========== */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            Why Choose JaeTravel for Your <strong>Cheap Safaris in Kenya</strong>
-          </h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                icon: <DollarSign className="h-7 w-7 text-green-600" />,
-                title: "Best Value Budget Safaris",
-                desc: "Starting from $950 — premium <strong>game viewing</strong> experiences at affordable prices.",
-              },
-              {
-                icon: <Users className="h-7 w-7 text-green-600" />,
-                title: "Expert Tour Operator",
-                desc: "As a professional <strong>Kenya tour operator</strong>, we provide knowledgeable guides for <strong>unforgettable experiences</strong>.",
-              },
-              {
-                icon: <Shield className="h-7 w-7 text-green-600" />,
-                title: "Authentic Tented Camps",
-                desc: "Stay in comfortable <strong>tented camps</strong> that bring you closer to nature.",
-              },
-            ].map((item, i) => (
-              <Card key={i} className="hover:shadow-lg transition">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center">{item.icon}</div>
-                  <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                  <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: item.desc }} />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== ACCOMMODATION SECTION ========== */}
+      {/* INCLUDED/EXCLUDED */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            Authentic <strong>Tented Camps</strong> for <strong>Budget Safaris in Kenya</strong>
-          </h2>
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h3 className="mb-6 text-2xl font-bold">Experience the Real Africa on Cheap Tours</h3>
-              <div className="pl-60 mb-6">
-                <p className="text-lg leading-relaxed">
-                  Our carefully selected <strong>tented camps</strong> offer the perfect blend of adventure and comfort. Wake up to the sounds of the African bush and enjoy:
-                </p>
-              </div>
-              <ul className="space-y-3">
-                {[
-                  "Comfortable beds with quality bedding",
-                  "Private en-suite bathrooms",
-                  "Solar-powered lighting",
-                  "Secure accommodations in prime locations",
-                  "Evening campfires under starry skies",
-                  "Close proximity to <strong>game viewing</strong> areas"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-6 text-2xl font-bold">Perfect for All Safari Styles</h3>
-              <div className="pl-60 mb-6">
-                <p className="text-lg leading-relaxed">
-                  Whether you&apos;re on <strong>private safaris</strong> or joining our popular <strong>group safaris</strong>, our <strong>tented camps</strong> provide:
-                </p>
-              </div>
-              <ul className="space-y-3">
-                {[
-                  "Social areas for meeting fellow travelers",
-                  "Private spaces for couples and families",
-                  "Knowledgeable camp staff",
-                  "Delicious meals prepared fresh daily",
-                  "Strategic locations for <strong>wildebeest migration</strong> viewing",
-                  "Easy access to <strong>Masai Mara National Reserve</strong>"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== INCLUDED / EXCLUDED SECTION ========== */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-12 md:grid-cols-2">
-            <div>
-              <h2 className="mb-6 font-serif text-3xl font-bold">
-                Your <strong>Unforgettable Experience</strong> Includes
+              <h2 className="mb-8 font-serif text-3xl font-bold flex items-center gap-3">
+                <span className="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center"><Check className="h-5 w-5" /></span>
+                Everything Included
               </h2>
-              <ul className="space-y-3">
-                {[
-                  "All <strong>game viewing</strong> drives in 4x4 vehicles",
-                  "Accommodation in authentic <strong>tented camps</strong>",
-                  "Professional guides from our <strong>tour operator</strong> team",
-                  "All park fees for <strong>Masai Mara National Reserve</strong>",
-                  "Full-board meals during your <strong>safari in Kenya</strong>",
-                  "Transportation for <strong>private safaris</strong> or <strong>group safaris</strong>",
-                  "Opportunity to witness the <strong>wildebeest migration</strong>",
-                  "Chances to spot <strong>lions, leopards</strong> and Big Five"
-                ].map((item, i) => (
+              <ul className="space-y-4">
+                {["Professional English-speaking safari guide/driver", "4x4 Land Cruiser transport from Nairobi and between parks", "All park entrance fees and conservation charges", "Comfortable budget tented camp accommodation", "Full-board meals (breakfast, lunch, dinner daily)", "Bottled drinking water throughout the safari", "Nairobi hotel/airport pick-up and drop-off", "All government taxes and levies"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <Check className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
+                    <Check className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 font-serif text-3xl font-bold">
-                Plan Your Perfect <strong>Cheap Tours in Kenya</strong>
+              <h2 className="mb-8 font-serif text-3xl font-bold flex items-center gap-3">
+                <span className="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg">–</span>
+                Not Included (Plan Ahead)
               </h2>
-              <ul className="space-y-3">
-                {[
-                  "International flights to Kenya",
-                  "Travel insurance (highly recommended)",
-                  "Optional activities like hot air balloon rides",
-                  "Alcoholic beverages and personal expenses",
-                  "Tips for guides and camp staff",
-                  "Visa fees for entry to Kenya",
-                  "Single supplements for solo travelers",
-                  "Any additional nights beyond itinerary"
-                ].map((item, i) => (
+              <ul className="space-y-4">
+                {["International flights to Nairobi (Jomo Kenyatta International Airport)", "Kenya e-visa ($51 for most nationalities)", "Travel insurance (strongly recommended — from $30)", "Yellow fever vaccination certificate (required if arriving from endemic area)", "Tips for guide and camp staff ($10-20/day combined suggested)", "Alcoholic beverages and soft drinks", "Personal expenses and souvenirs", "Optional activities (balloon safari $450-500, village visits $25-30)"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-red-500 text-xl">–</span>
+                    <span className="text-red-500 text-xl flex-shrink-0">–</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -724,55 +575,19 @@ export default function BudgetToursPage() {
         </div>
       </section>
 
-      {/* ========== MIGRATION FOCUS SECTION ========== */}
-      <section className="py-16 bg-green-50">
+      {/* TESTIMONIALS */}
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center font-serif text-4xl font-bold">
-            Witness the Spectacular <strong>Wildebeest Migration</strong> on Budget Tours
-          </h2>
-          <div className="mx-auto max-w-5xl">
-            <div className="pl-70 mb-8">
-              <p className="text-lg leading-relaxed">
-                The Great <strong>wildebeest migration</strong> is one of nature&apos;s most incredible spectacles. Each year, over 1.5 million wildebeest, along with zebras and gazelles, journey through the <strong>Masai Mara National Reserve</strong>.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-xl font-bold">Best Viewing Times</h3>
-                  <ul className="space-y-2">
-                    <li><strong>July-October:</strong> River crossings in Masai Mara</li>
-                    <li><strong>November-December:</strong> Southern migration begins</li>
-                    <li><strong>January-March:</strong> Calving season in Serengeti</li>
-                    <li><strong>April-June:</strong> Grumeti River crossings</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-xl font-bold">Predator Action</h3>
-                  <p>During the migration, you&apos;ll witness incredible predator-prey interactions. Our <strong>game viewing</strong> drives focus on areas where <strong>lions, leopards</strong>, cheetahs, and hyenas are most active.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== TESTIMONIALS SECTION ========== */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            What Our Guests Say About <strong>Budget Safaris in Kenya</strong>
-          </h2>
+          <h2 className="mb-4 text-center font-serif text-4xl font-bold">What Our Safari Guests Say</h2>
+          <p className="text-center text-muted-foreground mb-12">Real reviews from travelers who experienced Kenya budget tours</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "David Chen", location: "Singapore", text: "JaeTravel made our budget Masai Mara safari unforgettable! Excellent guides, comfortable camps, and incredible wildlife sightings — especially the wildebeest migration.", rating: 5 },
-              { name: "Sarah Johnson", location: "United Kingdom", text: "Perfect group safari with JaeTravel! Affordable price, great tented camp, and our guide spotted lions, leopards, and the Big Five.", rating: 5 },
-              { name: "Michael Thompson", location: "Australia", text: "Best budget safari experience in Kenya! JaeTravel delivered amazing value — professional team, comfortable transport, and breathtaking views.", rating: 5 }
+              { name: "David Chen", location: "Singapore", text: "Incredible value for money. JaeTravel organized everything perfectly — from the moment we landed in Nairobi to our final game drive. The tented camp was comfortable, the guide was exceptional, and we saw all Big Five.", rating: 5, tour: "5-Day Masai Mara Budget Safari" },
+              { name: "Sarah Johnson", location: "United Kingdom", text: "As a solo traveler, joining a group safari was the best decision. I made friends from around the world and had the most incredible wildlife experiences. The Kenya budget tour format works beautifully.", rating: 5, tour: "6-Day Three-Park Budget Safari" },
+              { name: "Michael Thompson", location: "Australia", text: "Best money I&apos;ve ever spent on travel. The Great Migration river crossing was beyond words — millions of wildebeest, crocodiles waiting, the whole drama. And JaeTravel delivered it all at an affordable price.", rating: 5, tour: "4-Day Mara Migration Safari" },
             ].map((review, i) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-2xl shadow-md">
-                <div className="flex mb-4">
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-md">
+                <div className="flex mb-3">
                   {Array.from({ length: review.rating }).map((_, idx) => (
                     <Star key={idx} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   ))}
@@ -780,70 +595,103 @@ export default function BudgetToursPage() {
                 <p className="text-gray-700 mb-4 italic">"{review.text}"</p>
                 <p className="font-bold text-gray-900">{review.name}</p>
                 <p className="text-sm text-gray-500">{review.location}</p>
+                <p className="text-xs text-green-600 mt-1">Booked: {review.tour}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ========== FAQ SECTION ========== */}
-      <section className="py-16 bg-gray-50">
+      {/* FAQ */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            Frequently Asked Questions About <strong>Budget Safaris Kenya</strong>
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-4 font-serif text-4xl font-bold">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground">Everything you need to know about Kenya budget tours and safaris</p>
+          </div>
           <div className="max-w-4xl mx-auto space-y-4">
             {[
-              { q: "What is included in your budget safaris to Masai Mara?", a: "Our budget safaris include accommodation in comfortable tented camps, all game viewing drives in Masai Mara National Reserve, professional guides, meals, and transport. Witness lions, leopards, and the wildebeest migration on these unforgettable experiences." },
-              { q: "Do you offer private safaris or group safaris?", a: "Yes! We offer both private safaris for personalized itineraries and group safaris for budget-conscious travelers. All our Kenya tours feature expert guides and excellent game viewing opportunities." },
-              { q: "When is the best time for wildebeest migration viewing?", a: "The Great Wildebeest Migration in Masai Mara peaks from July to October. Our budget safaris during this period offer incredible game viewing of millions of wildebeest crossing the Mara River." },
-              { q: "What type of accommodation do you use for budget safaris?", a: "We use comfortable tented camps that provide an authentic safari experience while maintaining affordability. These camps are strategically located for optimal game viewing in Masai Mara." }
+              { q: "How much does a budget safari in Kenya cost?", a: `Our Kenya budget safaris start from $${minPrice} per person for entry-level packages including shared transport, tented camp accommodation, park fees, all meals, and professional guiding. Mid-range packages ($800-$1,200) offer upgraded camps or private vehicle options. All tours are all-inclusive with no hidden costs.` },
+              { q: "What is the cheapest way to do a safari in Kenya?", a: "The cheapest safaris in Kenya are group joining tours (4-12 travelers sharing a 4x4 vehicle) staying at budget tented camps. Booking 2+ months ahead and choosing green season (March-May or November) can save 20-40%. Our all-inclusive packages from $610 beat self-planning costs, which typically run $800+ for a 3-day trip." },
+              { q: "Is Kenya safe for budget travelers?", a: "Kenya's major safari destinations — Masai Mara, Amboseli, Lake Nakuru — are very safe for tourists. We use licensed operators, professional guides, and well-maintained 4x4 vehicles. Safari camps have security personnel. Nairobi has typical urban caution needs, but our packages handle all transport from airport to park and back." },
+              { q: "What is the best time for budget safaris in Kenya?", a: "November-March offers the best combination of value and wildlife viewing — prices drop 20-30%, crowds thin out, and birding is excellent with migratory species. June-October is peak season with the highest prices but best wildlife visibility. April-May has the deepest discounts but expect rain and muddy roads." },
+              { q: "Can I see the Big Five on a Kenya budget tour?", a: "Yes — all our budget safari packages are designed to spot all Big Five: lion, leopard, elephant, buffalo, and rhino. Masai Mara offers excellent lion and leopard sightings. Lake Nakuru has a protected rhino sanctuary. Amboseli has large elephant herds. Our expert guides are masters at tracking wildlife." },
+              { q: "What destinations are covered in Kenya budget tours?", a: "Popular budget safari combinations include: Masai Mara (Big Five, Great Migration), Lake Nakuru (flamingos, rhinos), Amboseli (elephants, Kilimanjaro views), Lake Naivasha (hippos, birding), and Tsavo (remote wildlife). Most packages combine 2-3 parks over 3-7 days for a complete Kenyan experience." },
+              { q: "What's the difference between group and private safaris?", a: "Group safaris share a 4x4 Land Cruiser with 4-12 travelers — lower per-person cost (from $610) and social atmosphere, ideal for solo travelers. Private safaris give you a dedicated vehicle and guide — flexibility to set your own schedule but 40-60% more expensive. Both use the same parks, same game drives, same expert guides." },
+              { q: "Do budget tented camps have hot water and electricity?", a: "Yes — our carefully vetted budget tented camps offer 24-hour electricity, hot showers, and comfortable beds with quality bedding. Camps are secure, clean, and in prime wildlife locations. Some remote camps may have solar power limitations. We always ensure a minimum standard of comfort for all budget packages." },
+              { q: "How far in advance should I book a Kenya budget safari?", a: "For peak season (July-October migration, December-January holidays, Easter), book 2-3 months ahead to secure your preferred dates and package. For green season, 2-4 weeks is often sufficient. Last-minute bookings are possible but availability becomes limited, especially for popular Masai Mara packages." },
+              { q: "What should I pack for a Kenya budget safari?", a: "Pack light neutral-colored clothing (khaki, brown, green — avoid white and bright colors), layers for cool morning game drives, binoculars, a camera with 200mm+ zoom, sunscreen SPF 50+, wide-brimmed hat, comfortable walking shoes, personal medications, and a small daypack. Most camps provide bedding, towels, and basic toiletries." },
+              { q: "Are Kenya budget tours suitable for families with children?", a: "Yes — children aged 6+ can join most group safari packages. Many families choose private safaris for added flexibility. Children love the tented camp experience, wildlife spotting, and outdoor adventure. Some lodges have age restrictions for game drives, but we have family-friendly options across all destinations." },
+              { q: "How do I get from Nairobi to safari parks?", a: "All our Kenya budget safari packages include round-trip 4x4 Land Cruiser transport from Nairobi hotels and airports. Drives: Masai Mara (5-6 hours via Great Rift Valley), Lake Nakuru (2-3 hours), Amboseli (4-5 hours). Transport, park fees, accommodation, and meals are all bundled — no separate costs to budget for." },
             ].map((faq, i) => (
               <details key={i} className="bg-white p-6 rounded-xl border border-gray-200" open={i === 0}>
-                <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-green-600 transition">
-                  {faq.q}
-                </summary>
-                <p className="mt-3 text-gray-700">{faq.a}</p>
+                <summary className="font-bold text-lg text-gray-900 cursor-pointer hover:text-green-600 transition">{faq.q}</summary>
+                <p className="mt-3 text-gray-700 leading-relaxed">{faq.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ========== FINAL CTA SECTION ========== */}
-      <section className="py-16 bg-gradient-to-br from-green-700 to-green-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-6 font-serif text-4xl font-bold">
-            Ready for Your <strong>Unforgettable Safari Experience</strong>?
-          </h2>
-          <div className="max-w-5xl mx-auto pl-70 mb-8">
-            <p className="text-lg leading-relaxed">
-              From ${minPrice} per person — secure your spot on our <strong>budget safaris</strong> to <strong>Masai Mara National Reserve</strong>. 
-              Choose <strong>private safaris</strong> for exclusivity or join our popular <strong>group safaris</strong> for maximum value.
-            </p>
+      {/* BOOKING STEPS */}
+      <section className="py-16 bg-green-700 text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center font-serif text-4xl font-bold">How to Book Your Kenya Budget Safari</h2>
+          <div className="grid gap-8 md:grid-cols-4">
+            {[
+              { step: "1", title: "Browse Packages", desc: "Explore our {totalTours}+ safari packages from $610. Filter by destination, duration, and budget." },
+              { step: "2", title: "Contact Us", desc: "Reach out via WhatsApp, email, or our booking form. Our safari experts respond within 2 hours." },
+              { step: "3", title: "Customize & Confirm", desc: "We tailor the itinerary to your needs, confirm availability, and send you a detailed quotation." },
+              { step: "4", title: "Pay & Travel", desc: "Secure your spot with a deposit. Final balance due before departure. We handle the rest." },
+            ].map((item, i) => (
+              <div key={i} className="text-center">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">{item.step}</div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-white/80">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" variant="secondary" asChild className="bg-white text-green-700 hover:bg-gray-100">
-              <Link href="/contact">Book Your <strong>Mara Safari</strong> Today</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/20"
-              asChild
-            >
-              <a href="https://wa.me/+254726485228">
-                <Phone className="mr-2 h-5 w-5" /> Chat with Our <strong>Tour Operator</strong>
-              </a>
-            </Button>
-          </div>
-          <h6 className="mt-8 text-sm opacity-90 flex justify-center gap-6 flex-wrap">
-            <span className="flex items-center gap-2"><Phone size={14} /> +254 726 485 228</span>
-            <span className="flex items-center gap-2"><Mail size={14} /> info@jaetravel.co.ke</span>
-            <span className="flex items-center gap-2"><CreditCard size={14} /> Secure Payment</span>
-          </h6>
         </div>
       </section>
+
+      {/* FINAL CTA */}
+      <section className="py-20 bg-gradient-to-br from-green-700 via-green-800 to-green-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="mb-6 font-serif text-5xl font-bold">Ready for Your Kenya Budget Safari?</h2>
+          <p className="max-w-3xl mx-auto mb-8 text-xl leading-relaxed opacity-90">
+            From ${minPrice} per person — all-inclusive wildlife adventures across Kenya&apos;s iconic destinations. No hidden costs, no surprises. Just unforgettable African experiences.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-lg px-10 py-7 font-semibold" asChild>
+              <Link href="/contact">Book Your Safari Now</Link>
+            </Button>
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 text-lg px-10 py-7" asChild>
+              <a href="https://wa.me/254726485228"><Phone className="mr-2 h-5 w-5" />Chat on WhatsApp</a>
+            </Button>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8 text-sm opacity-80">
+            <span className="flex items-center gap-2"><Phone size={16} /> +254 726 485 228</span>
+            <span className="flex items-center gap-2"><Mail size={16} /> info@jaetravel.co.ke</span>
+            <span className="flex items-center gap-2"><Clock size={16} /> Responds within 2 hours</span>
+            <span className="flex items-center gap-2"><Shield size={16} /> Best Price Guarantee</span>
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM LINKS */}
+      <div className="bg-gray-100 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-muted-foreground mb-4">Explore specific Kenya safari destinations</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button asChild variant="outline" size="sm"><Link href="/budget-masai-mara-safari">Masai Mara Safaris</Link></Button>
+            <Button asChild variant="outline" size="sm"><Link href="/cheap-amboseli-tours">Amboseli Safaris</Link></Button>
+            <Button asChild variant="outline" size="sm"><Link href="/budget-lake-nakuru-safari">Lake Nakuru Safaris</Link></Button>
+            <Button asChild variant="outline" size="sm"><Link href="/group-joining-safaris-kenya">Group Joining Safaris</Link></Button>
+            <Button asChild variant="outline" size="sm"><Link href="/amboseli-safaris">All Amboseli Tours</Link></Button>
+            <Button asChild variant="outline" size="sm"><Link href="/short-safaris">Short Safaris</Link></Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
