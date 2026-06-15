@@ -24,7 +24,10 @@ export default function GoogleMerchantWidget() {
       </Script>
       <Script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" strategy="afterInteractive" onLoad={() => {
         if (typeof window !== 'undefined' && (window as any).merchantwidget) {
-          (window as any).merchantwidget.start({ merchant_id: 5694347760 });
+          (window as any).merchantwidget.start({
+            merchant_id: 5694347760,
+            checkout_url: "https://www.jaetravel.co.ke/checkout/success?item_id={id}"
+          });
         }
       }} />
     </>
