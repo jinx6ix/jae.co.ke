@@ -504,26 +504,26 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across ecos
       {
         day: 1,
         title: "Drive Nairobi to Masai Mara",
-        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return for dinner and overnight stay at Rhino Tourist Camp.",
+        content: "Your safari begins with a 7:00 AM pickup in Nairobi. After a brief meet-and-greet with your driver-guide, you’ll head southwest toward the world-renowned Masai Mara. Enjoy a scheduled stop at the Great Rift Valley viewpoint for stunning photos of the escarpment floor before arriving at Wild Nest Mara Camp for check-in and lunch. In the afternoon, you can opt for a cultural visit to a local village (30 USD) to experience traditional songs and customs. Dinner and your overnight stay will be at the camp.",
         meals: undefined
       },
       {
         day: 2,
         title: "Full day exploring Masai Mara National Reserve",
-        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp.",
-        meals: undefined
+        content: "After an early breakfast, head into the reserve for a full day of game viewing. This vast ecosystem offers the best chance to spot the “Big 5” alongside cheetahs, hippos, and crocodiles. You will enjoy a picnic lunch under a croton tree amidst the rolling savannah. After a day of exploring the diverse landscapes and abundant wildlife, return to Mara Ntulele Camp for a relaxing evening and dinner.",
+        meals: "Breakfast, Lunch, Dinner"
       },
       {
         day: 3,
         title: "Drive to Nakuru",
-        content: "After breakfast check out and you may opt to visit the Maasai village, where you will interact with the Maasai community and learn about their way of life and culture at 30 USD per person. Later on, proceed drive to Nakuru with lunch on the way. Arrive at Nakuru in the evening for dinner and overnight at Buraha Zenoni Hotel & Resort.",
-        meals: undefined
+        content: "Following breakfast, check out and depart the Mara region, traveling toward the freshwater shores of Lake Naivasha. You will have lunch en route, arriving at the lush Sweet Lake Resort in the late afternoon. This evening is yours to unwind by the pool or enjoy the serene resort grounds as you prepare for tomorrow’s water-based adventures. Dinner and your overnight stay will be at the resort.",
+        meals: "Breakfast, Lunch, Dinner"
       },
       {
         day: 4,
         title: "Morning Game drive in Lake Nakuru National Park and transfer to Nairobi",
-        content: "After an early breakfast, depart for a morning game drive at Lake Nakuru National Park where we hope you will have the sight of flamingos. Have your cameras ready as here you will see lots of rhinos. Later on exit the park with lunch on the way. Continue drive to Nairobi and you will be dropped off at Nairobi CBD on arrival.",
-        meals: undefined
+        content: "Start your morning with a scenic boat safari on Lake Naivasha, where you can spot pods of hippos and diverse birdlife like African Fish Eagles. You’ll dock at Crescent Island for a unique walking safari; since there are no predators, you can walk alongside giraffes, zebras, and waterbucks. After the walk, enjoy lunch before the drive back to Nairobi. You will be dropped off at the Nairobi CBD in the late afternoon.",
+        meals: "Breakfast, Lunch"
       }
     ],
     highlights: [
