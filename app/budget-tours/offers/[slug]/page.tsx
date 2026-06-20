@@ -252,6 +252,7 @@ export default async function OfferDetailPage(props: Props) {
                   tourDuration={offer.duration}
                   serviceType="tour"
                   tourSlug={offer.slug}
+                  tourUrl={`https://www.jaetravel.co.ke${offer.bookingUrl}`}
                 />
               </div>
 

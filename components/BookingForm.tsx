@@ -16,6 +16,7 @@ interface BookingFormProps {
   tourDuration: string
   serviceType?: string
   tourSlug?: string
+  tourUrl?: string
 }
 
 interface BookingResponse {
@@ -31,7 +32,7 @@ interface BookingResponse {
   tourUrl?: string
 }
 
-export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour", tourSlug }: BookingFormProps) {
+export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour", tourSlug, tourUrl }: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -226,8 +227,27 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       return
     }
 
-    const tourUrl = bookingResult?.tourUrl
-      || (tourSlug ? `${window.location.origin}/safari/${tourSlug}` : "")
+    // Determine the full tour URL
+    const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://www.jaetravel.co.ke"
+
+    let fullTourUrl = tourUrl
+
+    // If no direct tourUrl provided, construct from tourSlug
+    if (!fullTourUrl && tourSlug) {
+      // Check slug format to determine the correct URL pattern
+      if (tourSlug.includes('offer') || tourSlug.includes('special')) {
+        fullTourUrl = `${baseUrl}/budget-tours/offers/${tourSlug}`
+      } else if (tourSlug.includes('masai') || tourSlug.includes('mara') || tourSlug.includes('safari') || tourSlug.includes('kenya')) {
+        fullTourUrl = `${baseUrl}/budget-tours/${tourSlug}`
+      } else if (tourSlug.includes('accessible') || tourSlug.includes('disability')) {
+        fullTourUrl = `${baseUrl}/accessible-migration/${tourSlug}`
+      } else if (tourSlug.includes('flamingo')) {
+        fullTourUrl = `${baseUrl}/flamingo-safari-tours/${tourSlug}`
+      } else {
+        // Default patterns
+        fullTourUrl = `${baseUrl}/budget-tours/${tourSlug}`
+      }
+    }
 
     const message =
       `🆕 *New Booking Confirmation*\n\n` +
@@ -236,7 +256,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       `📞 ${formData.phone}\n\n` +
       `🎫 *Booking ID:* ${bookingResult?.bookingId}\n` +
       `🏕️ *Tour:* ${tourTitle}\n` +
-      (tourUrl ? `🔗 *Tour Page:* ${tourUrl}\n` : ``) +
+      (fullTourUrl ? `🔗 *Tour Page:* ${fullTourUrl}\n` : ``) +
       `👥 *Travelers:* ${formData.travelers}\n` +
       `💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n` +
       `📅 *Date:* ${formData.date}\n\n` +
