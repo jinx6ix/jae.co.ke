@@ -1,6 +1,7 @@
 // app/sitemap.xml/route.tsx — MULTILINGUAL SITEMAP WITH ALL LANGUAGE VERSIONS
 // Includes: hreflang xhtml annotations, all language prefixes, all slug pages
 // NOTE: Only canonical URLs (no regional variants, no query params)
+import { accessibleTours } from "@/lib/accessiblemara"
 import { tours } from "@/lib/tours-data"
 import { vehicles } from "@/lib/vehicles-data"
 import { budgetTours } from "@/lib/budget-tours-data"
@@ -38,6 +39,7 @@ ${xDefault}
 export async function GET() {
   const today = new Date().toISOString().split("T")[0]
 
+  const safeAccessible = Array.isArray(accessibleTours) ? accessibleTours : []
   const safeTours = Array.isArray(tours) ? tours : []
   const safeBudget = Array.isArray(budgetTours) ? budgetTours : []
   const safeVehicles = Array.isArray(vehicles) ? vehicles : []
@@ -98,6 +100,7 @@ export async function GET() {
     { path: "/cheap-amboseli-tours", freq: "weekly", pri: "0.9" },
     { path: "/budget-lake-nakuru-safari", freq: "weekly", pri: "0.9" },
     { path: "/group-joining-safaris-kenya", freq: "weekly", pri: "0.9" },
+    { path: "/accessible-migration", freq: "weekly", pri: "0.9" },
     { path: "/fr/budget-masai-mara-safari", freq: "weekly", pri: "0.9" },
     { path: "/de/budget-masai-mara-safari", freq: "weekly", pri: "0.9" },
     { path: "/fr/cheap-amboseli-tours", freq: "weekly", pri: "0.9" },
@@ -122,6 +125,7 @@ export async function GET() {
   const dynamicEntries = [
     ...safeTours.map(t => ({ path: `/safari/${t.slug}`, freq: "weekly", pri: "0.9" })),
     ...safeBudget.map(t => ({ path: t.url, freq: "weekly", pri: "0.9" })),
+    ...safeAccessible.map(t => ({ path: t.url, freq: "weekly", pri: "0.9" })),
     ...safeVehicles.map(v => ({ path: `/vehicle-hire/${v.slug}`, freq: "weekly", pri: "0.9" })),
     ...safeDests.map(d => ({ path: `/destination/${d.slug}`, freq: "weekly", pri: "0.85" })),
     ...safeBlog.map(b => ({ path: `/blog/${b.slug}`, freq: "monthly", pri: "0.7" })),

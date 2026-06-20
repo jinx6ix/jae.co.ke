@@ -31,6 +31,41 @@ const ABSOLUTE_URL = "https://www.jaetravel.co.ke/budget-tours";
 const HERO_IMG = "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg";
 const featuredTours = budgetTours.slice(0, 6);
 
+// Special Offers - Easy to add more by copying a block
+const specialOffers = [
+  {
+    id: "offer-1",
+    title: "Masai Mara & Nakuru 4-Day Safari",
+    shortDesc: "Big Five in Masai Mara + Flamingos & Rhinos at Lake Nakuru",
+    image: "/offers.jpeg",
+    imageAlt: "Masai Mara and Lake Nakuru 4-Day Budget Safari with wildebeest and flamingos",
+    originalPrice: 930,
+    offerPrice: 750,
+    duration: "4 Days / 3 Nights",
+    highlights: ["2 National Parks", "Shared Group", "All Meals"],
+    bookingUrl: "/budget-tours/offers/masai-mara-nakuru-4-days-budget-shared-safari-special",
+    badge: "BEST VALUE",
+    active: true,
+  },
+  // Add more offers here in the future:
+  // {
+  //   id: "offer-2",
+  //   title: "Amboseli 3-Day Adventure",
+  //   shortDesc: "Elephants with Kilimanjaro backdrop",
+  //   image: "/your-image.jpg",
+  //   imageAlt: "...",
+  //   originalPrice: 699,
+  //   offerPrice: 599,
+  //   duration: "3 Days / 2 Nights",
+  //   highlights: ["Kilimanjaro Views", "Big Five", "All Meals"],
+  //   bookingUrl: "/budget-tours/offers/your-offer-slug",
+  //   badge: "POPULAR",
+  //   active: true,
+  // },
+];
+
+const activeOffers = specialOffers.filter(o => o.active);
+
 export const metadata: Metadata = {
   title: "Budget Safari Kenya 2026 | From $610/Person | JaeTravel",
   description: "Kenya budget safaris from $610. Masai Mara, Amboseli, Nakuru tours. All-inclusive.",
@@ -239,6 +274,125 @@ export default function BudgetToursPage() {
           </div>
         </div>
       </section>
+
+      {/* SPECIAL OFFERS SECTION */}
+      {activeOffers.length > 0 && (
+        <section className="py-8 md:py-12 bg-gradient-to-r from-green-700 via-emerald-700 to-teal-700">
+          <div className="container mx-auto px-4">
+            {/* Section Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4">
+                <span>🔥</span> LIMITED TIME OFFERS
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-2">
+                Exclusive Safari Deals
+              </h2>
+              <p className="text-white/80">Book now and save up to $180 per person</p>
+            </div>
+
+            {/* Offers Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 max-w-6xl mx-auto">
+              {activeOffers.map((offer) => (
+                <a
+                  key={offer.id}
+                  href={offer.bookingUrl}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col transform perspective-1000 hover:rotate-x-2 hover:rotate-y-2 hover:scale-[1.02]"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  {/* Image Section */}
+                  <div 
+                    className="relative w-full overflow-hidden"
+                    style={{ height: '240px', transformStyle: 'preserve-3d' }}
+                  >
+                    <img
+                      src={offer.image}
+                      alt={offer.imageAlt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+
+                    {/* Badge on image */}
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-yellow-500 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">
+                        {offer.badge}
+                      </span>
+                    </div>
+
+                    {/* Duration on image */}
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-white/90 backdrop-blur text-gray-900 text-sm font-medium px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                        <Clock className="h-4 w-4" />
+                        {offer.duration}
+                      </span>
+                    </div>
+
+                    {/* Price overlay on image */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="flex items-end justify-between">
+                        <div className="text-white drop-shadow-lg">
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-white/70 line-through text-sm">${offer.originalPrice}</span>
+                            <span className="text-2xl font-bold text-yellow-400 drop-shadow-md">${offer.offerPrice}</span>
+                          </div>
+                          <span className="text-xs text-white/80">per person</span>
+                        </div>
+                        <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                          Save ${offer.originalPrice - offer.offerPrice}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Gradient for text readability */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    {/* Title */}
+                    <h3 className="font-serif text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                      {offer.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      {offer.shortDesc}
+                    </p>
+
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {offer.highlights.map((highlight, i) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full"
+                        >
+                          <Check className="h-3 w-3" />
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <span className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-full text-sm w-full justify-center">
+                        View This Offer
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* View All Link */}
+            <div className="text-center mt-8">
+              <Link href="/offers" className="text-white/80 hover:text-white text-sm font-medium inline-flex items-center gap-1">
+                View All Special Offers
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* INTRO */}
       <section className="py-20 bg-white">

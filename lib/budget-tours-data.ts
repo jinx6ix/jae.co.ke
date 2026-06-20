@@ -377,8 +377,8 @@ Booking is straightforward through our WhatsApp booking system, with flexible de
 Don't miss this opportunity to experience Kenya's wildlife highlights at exceptional budget pricing. Whether you're seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, comprehensive Kenyan wildlife exposure, or simply the best value safari combining two iconic destinations, this 4-day budget shared safari delivers unforgettable experiences that will leave you with lifelong memories of Africa's magnificent wildlife. Book now for your 2026 adventure and discover why Kenya's diversity makes it the ultimate safari destination.`,
     metaDescription: "Book 4-day Masai Mara Nakuru budget safari Kenya 2026 from $610. Experience Big Five game drives and flamingo spectacles in one affordable two-park adventure.",
     keywords: ["Masai Mara Nakuru 4 days budget safari", "cheap two-park Kenya safari 2026", "affordable Mara and Nakuru tour", "budget shared safari Kenya", "Kenya wildlife combo from $610", "flamingos and Big Five safari", "4-day budget Kenya adventure"],
-    price: 610,
-    originalPrice: 750,
+    price: 930,
+    originalPrice: 1030,
     image: "/1000025509-1.jpg",
     url: "/budget-tours/masai-mara-nakuru-4-days-budget-shared-safari",
     bookingUrl: "/budget-tours/masai-mara-nakuru-4-days-budget-shared-safari#booking-form",
@@ -391,27 +391,27 @@ Don't miss this opportunity to experience Kenya's wildlife highlights at excepti
     itinerary: [
       {
         day: 1,
-        title: "Drive Nairobi to Masai Mara",
-        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return for dinner and overnight stay at Rhino Tourist Camp.",
-        meals: undefined
+        title: "Drive Nairobi to Lake Nakuru – Afternoon Game Drive",
+        content: "You will be picked up at your hotel/place of stay in Nairobi in the morning and your driver guide will meet and greet you, then escort you to the safari minivan and commence drive to Lake Nakuru National Park. Have a stopover at the Great Rift Valley viewpoint enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check-in and lunch at your hotel. After lunch, embark on an afternoon game drive in Lake Nakuru, famous for its flamingos, rhinos, and diverse birdlife. Return to the hotel for dinner and overnight stay in Nakuru.",
+        meals: "Lunch, Dinner"
       },
       {
         day: 2,
-        title: "Full day exploring Masai Mara National Reserve",
-        content: "This day you will depart after an early breakfast to Masai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the big 5 and an abundant of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay at Rhino Tourist Camp.",
-        meals: undefined
+        title: "Lake Nakuru to Maasai Mara – Maasai Village Visit",
+        content: "After an early breakfast, check out and drive to Maasai Mara National Reserve. Arrive at the camp in time for hot lunch. In the afternoon, you will have a cultural visit to a Maasai village where you will experience the traditional way of life of the Maasai people. Return to the camp for dinner and overnight stay.",
+        meals: "Breakfast, Lunch, Dinner"
       },
       {
         day: 3,
-        title: "Drive to Naivasha",
-        content: "After breakfast check out and proceed to drive to Naivasha with lunch on the way. ‘Lake Naivasha offers an accessible and captivating safari experience in Kenya’s Rift Valley. Known for its tranquil waters and abundant wildlife, this freshwater lake provides a unique adventure for nature enthusiasts and travelers seeking a serene escape.’ Arrive at Naivasha in the evening for dinner and overnight at Leisure Apex.",
-        meals: undefined
+        title: "Full Day Exploring Maasai Mara National Reserve",
+        content: "This day you will depart after an early breakfast to Maasai Mara Reserve for morning and afternoon game viewing drives. Picnic lunches will be served as you relax under a tree as you enjoy breathtaking views of the vast landscape and its beauty. Spend the day looking for the Big 5 and an abundance of wildlife that the Mara has to offer. You will also visit the Mara River where we are hopeful that you will have a chance to witness the great wildebeest migration as it happens. Thereafter you will return to the camp for dinner and overnight stay.",
+        meals: "Breakfast, Lunch, Dinner"
       },
       {
         day: 4,
-        title: "Lake Naivasha Boat Ride & Crescent Island Visit – Drive to Nairobi",
-        content: "After breakfast, depart for Lake Naivasha for a scenic boat ride, offering excellent views of hippos and diverse birdlife. Continue with a guided walking safari at Crescent Island, where you can walk among giraffes, zebras, wildebeest and antelopes in a beautiful, predator-free setting. Thereafter, begin your drive to Nairobi. Upon arrival you will be dropped off at Nairobi CBD.",
-        meals: undefined
+        title: "Maasai Mara – Drive Back to Nairobi",
+        content: "After breakfast, check out and begin your drive back to Nairobi, with en-route stopovers for refreshments and scenic views. Upon arrival, you will be dropped off at Nairobi CBD or your preferred location in Nairobi.",
+        meals: "Breakfast"
       }
     ],
     highlights: [
