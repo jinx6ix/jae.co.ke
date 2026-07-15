@@ -84,9 +84,9 @@ const TOURS: Tour[] = [
   {
     id: "jae-bgt-best-kenya-7d",
     title: "Best of Kenya 7-Day Budget Shared Safari 2026 – Full Circuit",
-    description: "Complete 7-day Kenya wildlife circuit: Masai Mara, Lake Nakuru, Lake Naivasha, and Amboseli. Maximum diversity, shared groups, budget camps, all meals. From $980.",
+    description: "Complete 7-day Kenya wildlife circuit: Masai Mara, Lake Nakuru, Lake Naivasha, and Amboseli. Maximum diversity, shared groups, budget camps, all meals. From $1471.",
     link: `${BASE}/budget-tours/best-of-kenya-7-days-budget-shared-safari`,
-    image_link: MARA_IMG, price: 980, destination: "Kenya",
+    image_link: MARA_IMG, price: 1471, destination: "Kenya",
     labels: ["budget-safari", "7-days", "full-circuit", "shared-group", "all-parks"],
   },
   {
