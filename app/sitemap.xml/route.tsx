@@ -91,6 +91,7 @@ export async function GET() {
     { path: "/short-safaris", freq: "weekly", pri: "0.8" },
     { path: "/other-services", freq: "monthly", pri: "0.7" },
     { path: "/terms", freq: "monthly", pri: "0.4" },
+    { path: "/privacy", freq: "yearly", pri: "0.3" },
     { path: "/privacy-policy", freq: "yearly", pri: "0.3" },
     { path: "/book-now", freq: "monthly", pri: "0.7" },
     { path: "/wheelchair-vehicle", freq: "weekly", pri: "0.9" },
