@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import TourCard from "../TourCard" // Assuming TourCard exists from homepage
+import TourCard from "../TourCard" // Assuming TourCard exists from homepagee
 import { tours } from "@/lib/tours-data" // Assuming this exists
 import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, Users as UsersIcon, Globe, Heart, Zap, Search, Camera, Binoculars, Leaf, Clock } from "lucide-react"
 import JsonLd from "@/components/JsonLd"
