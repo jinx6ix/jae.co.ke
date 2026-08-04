@@ -2696,7 +2696,7 @@ export const tours: Tour[] = [
   {
     "id": "54",
     "slug": "nairobi-national-park-tour",
-    "image": "/caption.jpg",
+    "image": "/capt.jpeg",
     "title": "جولة منتزه نيروبي الوطني",
     "description": "استكشف منتزه نيروبي الوطني، وهو ملاذ فريد للحياة البرية بالقرب من المدينة، موطن لوحيد القرن والأسود ومناظر السافانا المذهلة.",
     shortDescription: "جولة حياة برية لنصف يوم",

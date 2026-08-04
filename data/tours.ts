@@ -1817,7 +1817,7 @@ export const tours: Tour[] = [
   {
     "id": "56",
     "slug": "nairobi-national-park-tour",
-    "image": "/caption.jpg",
+    "image": "/capt.jpeg",
     "title": "Nairobi National Park Tour",
     "description": "Explore Nairobi National Park, a unique wildlife haven near the city, home to rhinos, lions, and stunning savanna views.",
     "price": 200,
