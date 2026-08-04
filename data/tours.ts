@@ -2048,7 +2048,7 @@ export const tours: Tour[] = [
   {
     "id": "61",
     "slug": "lake-nakuru-rhino-sanctuary",
-    "image": "/images (4).jpg",
+    "image": "/capt.jpeg",
     "title": "Lake Nakuru Rhino Sanctuary Experience",
     "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
     "price": 1200,
