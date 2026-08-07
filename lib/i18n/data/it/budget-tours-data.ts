@@ -168,7 +168,7 @@ export interface Tour {
       metaDescription: "Prenota il safari super economy di 3 giorni nel Masai Mara Kenya 2026 da $730. Campi potenziati, pasti migliori, Land Cruiser condiviso. Comfort migliore rispetto al budget base.",
       keywords: ["safari super economy Masai Mara", "safari low cost potenziato Kenya 2026", "campi economici migliori Masai Mara", "safari comfort accessibile", "tour low cost migliorato Masai Mara", "safari qualità low cost Kenya", "esperienza budget migliorata Mara"],
       price: 730,
-      originalPrice: 850,
+      originalPrice: 1020,
       image: "/pexels-gil-daix-2046153486-29339542-scaled.jpg",
       url: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari",
       bookingUrl: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari#booking-form",
@@ -276,7 +276,7 @@ export interface Tour {
       metaDescription: "Prenota il safari privato di 3 giorni a Samburu Kenya 2026 da $690. Avventura esclusiva nel Kenya settentrionale con veicolo privato, guida e itinerario personalizzato. Cerca i Cinque Speciali.",
       keywords: ["safari privato Samburu", "safari privato 3 giorni Kenya", "tour dei Cinque Speciali Samburu", "safari esclusivo Kenya settentrionale", "safari low cost privato Kenya", "Samburu National Reserve privato", "safari Kenya personalizzato conveniente"],
       price: 690,
-      originalPrice: 850,
+      originalPrice: 1020,
       image: "/sutirta-budiman-E8JdyPcSA8o-unsplash-5-scaled.jpg",
       url: "/budget-tours/samburu-3-days-private-safari",
       bookingUrl: "/budget-tours/samburu-3-days-private-safari#booking-form",
@@ -578,10 +578,10 @@ export interface Tour {
     {
       id: "6",
       slug: "masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
-      title: "Safari con Land Cruiser Condiviso di 5 Giorni Masai Mara - Nakuru e Naivasha Kenya 2026 - Avventura di Tre Parchi da $680",
-      description: "Safari low cost completo di 5 giorni che copre i Big Five del Masai Mara, i fenicotteri del Lago Nakuru e gli ippopotami del Lago Naivasha. Viaggia in Land Cruiser condivisi, soggiorna in campi economici, goditi il safari in barca incluso a partire da $680. Perfetta combinazione di tre parchi per la massima diversità faunistica.",
-      shortDescription: "Tre parchi iconici: predatori del Masai Mara, fenicotteri del Lago Nakuru, giro in barca con ippopotami a Naivasha. Land Cruiser condiviso, campi economici, tutti i pasti. Eccellente varietà faunistica. A partire da $680.",
-      longDescription: `Sperimenta la diversità faunistica del Kenya al meglio con il nostro safari completo con Land Cruiser condiviso di 5 giorni Masai Mara - Nakuru e Naivasha Kenya 2026. Questa eccezionale avventura di tre parchi, a partire da soli $680 a persona, combina le destinazioni faunistiche più iconiche del Kenya in un unico pacchetto conveniente che offre la massima varietà e valore faunistico. Dalle savane ricche di predatori del Masai Mara alle rive piene di fenicotteri del Lago Nakuru e alle acque popolate di ippopotami del Lago Naivasha, questo tour mostra la ricchezza ecologica del Kenya attraverso diversi ecosistemi mantenendo prezzi accessibili perfetti per i viaggiatori che desiderano un'esposizione completa senza costi di lusso.
+      title: "Safari con Land Cruiser Condiviso di 5 Giorni Masai Mara - Nakuru e Naivasha Kenya 2026 - Avventura di Tre Parchi da $850",
+      description: "Safari low cost completo di 5 giorni che copre i Big Five del Masai Mara, i fenicotteri del Lago Nakuru e gli ippopotami del Lago Naivasha. Viaggia in Land Cruiser condivisi, soggiorna in campi economici, goditi il safari in barca incluso a partire da $850. Perfetta combinazione di tre parchi per la massima diversità faunistica.",
+      shortDescription: "Tre parchi iconici: predatori del Masai Mara, fenicotteri del Lago Nakuru, giro in barca con ippopotami a Naivasha. Land Cruiser condiviso, campi economici, tutti i pasti. Eccellente varietà faunistica. A partire da $850.",
+      longDescription: `Sperimenta la diversità faunistica del Kenya al meglio con il nostro safari completo con Land Cruiser condiviso di 5 giorni Masai Mara - Nakuru e Naivasha Kenya 2026. Questa eccezionale avventura di tre parchi, a partire da soli $850 a persona, combina le destinazioni faunistiche più iconiche del Kenya in un unico pacchetto conveniente che offre la massima varietà e valore faunistico. Dalle savane ricche di predatori del Masai Mara alle rive piene di fenicotteri del Lago Nakuru e alle acque popolate di ippopotami del Lago Naivasha, questo tour mostra la ricchezza ecologica del Kenya attraverso diversi ecosistemi mantenendo prezzi accessibili perfetti per i viaggiatori che desiderano un'esposizione completa senza costi di lusso.
   
   Il tuo viaggio inizia a Nairobi mentre ti unisci ad altri appassionati di fauna selvatica in un Land Cruiser 4x4 condiviso dotato di tetti apribili per un'osservazione ottimale. Il viaggio panoramico verso il Masai Mara ti porta attraverso la drammatica Great Rift Valley, con soste fotografiche in punti panoramici che mostrano una delle caratteristiche geologiche più significative della Terra. Il Masai Mara National Reserve non ha bisogno di presentazioni: è il gioiello della fauna africana, famoso per l'alta densità di predatori, la spettacolare Grande Migrazione (luglio-ottobre) e i paesaggi di savana classici che definiscono l'esperienza safari africana. Qui trascorrerai del tempo di qualità tracciando i Big Five, osservando i comportamenti dei predatori e immergendoti in una delle migliori destinazioni faunistiche del mondo.
   
@@ -589,7 +589,7 @@ export interface Tour {
   
   Il Lago Naivasha fornisce la terza distinta esperienza di ecosistema: avventure di acqua dolce incentrate sul lago più alto della Rift Valley keniota. Il safari in barca incluso offre prospettive uniche sul comportamento degli ippopotami, le tecniche di caccia dell'aquila pescatrice e gli ecosistemi acquatici impossibili da sperimentare da terra. I safari a piedi opzionali a Crescent Island (costo aggiuntivo) consentono esperienze terrestri tra animali al pascolo senza predatori, fornendo approcci ravvicinati alla fauna selvatica unici in questo ambiente. Questa combinazione di game drive nel Masai Mara, avvistamento di fenicotteri/rinoceronti a Nakuru ed esperienze acquatiche a Naivasha crea una comprensione completa della fauna selvatica attraverso i vari ecosistemi del Kenya.
   
-  Questo pacchetto safari low cost Kenya 2026 rappresenta un valore eccezionale a $680. Ricevi diverse esperienze faunistiche in tre destinazioni di punta, guida professionale, alloggi confortevoli, safari in barca incluso e tutti i pasti. Il modello di gruppo condiviso (4-12 viaggiatori) riduce significativamente i costi individuali creando al contempo esperienze di viaggio sociali perfette per viaggiatori singoli, coppie o piccoli gruppi. Combinando queste tre destinazioni, sperimenti ecosistemi di savana, lago alcalino e acqua dolce in un itinerario efficiente che massimizza la varietà faunistica per giorno e per dollaro.
+  Questo pacchetto safari low cost Kenya 2026 rappresenta un valore eccezionale a $850. Ricevi diverse esperienze faunistiche in tre destinazioni di punta, guida professionale, alloggi confortevoli, safari in barca incluso e tutti i pasti. Il modello di gruppo condiviso (4-12 viaggiatori) riduce significativamente i costi individuali creando al contempo esperienze di viaggio sociali perfette per viaggiatori singoli, coppie o piccoli gruppi. Combinando queste tre destinazioni, sperimenti ecosistemi di savana, lago alcalino e acqua dolce in un itinerario efficiente che massimizza la varietà faunistica per giorno e per dollaro.
   
   Le opportunità educative abbondano in tutti e tre gli ecosistemi. Impara le relazioni predatore-preda nel Masai Mara, la biologia dei fenicotteri e la conservazione dei rinoceronti al Lago Nakuru, gli ecosistemi acquatici e il comportamento degli ippopotami a Naivasha e confronta gli adattamenti degli animali in diversi ambienti. L'educazione alla conservazione copre varie sfide e successi negli ecosistemi, mentre le interazioni culturali (opzionali) forniscono approfondimenti sui diversi rapporti umani con questi ambienti. Questo approccio educativo completo trasforma l'osservazione della fauna selvatica in una più profonda comprensione ecologica.
   
@@ -600,10 +600,10 @@ export interface Tour {
   La prenotazione è semplice tramite il nostro sistema WhatsApp con date di partenza flessibili. Raccomandiamo di prenotare 2-3 mesi in anticipo per l'alta stagione (luglio-ottobre) per assicurarsi le date preferite. Sconti per bambini, tariffe di gruppo e personalizzazioni sono disponibili su richiesta per questa popolare combinazione di tre parchi.
   
   Non perdere questa opportunità di sperimentare la diversità faunistica del Kenya attraverso molteplici ecosistemi a prezzi eccezionalmente economici. Che tu stia cercando l'azione dei predatori nel Masai Mara, gli spettacoli dei fenicotteri al Lago Nakuru, gli incontri con gli ippopotami a Naivasha, una comprensione completa della fauna selvatica o semplicemente la massima varietà in un unico pacchetto conveniente, questo safari con Land Cruiser condiviso di 5 giorni offre ricordi indimenticabili della magnifica fauna africana in ambienti vari. Prenota ora per la tua avventura 2026 e scopri perché la diversità ecologica del Kenya lo rende la destinazione safari definitiva.`,
-      metaDescription: "Prenota il safari di 5 giorni Masai Mara Nakuru Naivasha Kenya 2026 da $680. Big Five, fenicotteri, giro in barca con ippopotami in un'unica conveniente avventura di tre parchi da Nairobi.",
-      keywords: ["safari 5 giorni Masai Mara Nakuru Naivasha", "safari Kenya tre parchi economico 2026", "tour conveniente Mara Nakuru Naivasha", "safari con Land Cruiser condiviso low cost", "combo tre parchi Kenya da $680", "safari Big Five fenicotteri ippopotami", "avventura Kenya low cost 5 giorni"],
-      price: 680,
-      originalPrice: 850,
+      metaDescription: "Prenota il safari di 5 giorni Masai Mara Nakuru Naivasha Kenya 2026 da $850. Big Five, fenicotteri, giro in barca con ippopotami in un'unica conveniente avventura di tre parchi da Nairobi.",
+      keywords: ["safari 5 giorni Masai Mara Nakuru Naivasha", "safari Kenya tre parchi economico 2026", "tour conveniente Mara Nakuru Naivasha", "safari con Land Cruiser condiviso low cost", "combo tre parchi Kenya da $850", "safari Big Five fenicotteri ippopotami", "avventura Kenya low cost 5 giorni"],
+      price: 850,
+      originalPrice: 1020,
       image: "/grace-nandi-KzxdgYVkSdY-unsplash-1-scaled.jpg",
       url: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
       bookingUrl: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari#booking-form",
@@ -653,7 +653,7 @@ export interface Tour {
         "Trasporto con Land Cruiser 4x4 condiviso con tetto apribile",
         "Alloggi economici con tutti i pasti inclusi",
         "Guide safari professioniste di lingua inglese",
-        "Eccellente rapporto qualità-prezzo a $680 per un'esperienza completa di tre parchi",
+        "Eccellente rapporto qualità-prezzo a $850 per un'esperienza completa di tre parchi",
         "Partenze giornaliere da Nairobi con prenotazione flessibile"
       ],
       included: [

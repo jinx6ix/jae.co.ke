@@ -166,7 +166,7 @@ Don't miss this opportunity to experience Masai Mara with enhanced comfort at st
     metaDescription: "Book 3-day Masai Mara superior budget safari Kenya 2026 from $730. Upgraded camps, improved meals, shared Land Cruiser. Better comfort than basic budget.",
     keywords: ["Masai Mara superior budget safari", "upgraded budget safari Kenya 2026", "better budget camps Masai Mara", "affordable comfort safari", "Masai Mara improved budget tour", "quality budget safari Kenya", "enhanced budget experience Mara"],
     price: 730,
-    originalPrice: 850,
+    originalPrice: 1020,
     image: "/pexels-gil-daix-2046153486-29339542-scaled.jpg",
     url: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari",
     bookingUrl: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari#booking-form",
@@ -274,7 +274,7 @@ Don't miss this opportunity to experience Kenya's unique northern wilderness on 
     metaDescription: "Book 3-day Samburu private safari Kenya 2026 from $690. Exclusive northern Kenya adventure with private vehicle, guide, and personalized itinerary. Search for Special Five.",
     keywords: ["Samburu private safari", "3 days private safari Kenya", "Samburu Special Five tour", "exclusive northern Kenya safari", "private budget safari Kenya", "Samburu National Reserve private", "customized Kenya safari affordable"],
     price: 690,
-    originalPrice: 850,
+    originalPrice: 1020,
     image: "/sutirta-budiman-E8JdyPcSA8o-unsplash-5-scaled.jpg",
     url: "/budget-tours/samburu-3-days-private-safari",
     bookingUrl: "/budget-tours/samburu-3-days-private-safari#booking-form",
@@ -576,10 +576,10 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across ecos
   {
     id: "6",
     slug: "masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
-    title: "Masai Mara - Nakuru & Naivasha 5 Days Shared Land Cruiser Safari Kenya 2026 - Three-Park Adventure from $680",
-    description: "Comprehensive 5-day budget safari covering Masai Mara's Big Five, Lake Nakuru's flamingos, and Lake Naivasha's hippos. Travel in shared Land Cruisers, stay in budget camps, enjoy included boat safari from $680. Perfect three-park combination for maximum wildlife diversity.",
-    shortDescription: "Three iconic parks: Masai Mara predators, Lake Nakuru flamingos, Naivasha hippo boat ride. Shared Land Cruiser, budget camps, all meals. Excellent wildlife variety. From $680.",
-    longDescription: `Experience Kenya's wildlife diversity at its best on our comprehensive 5-Day Masai Mara - Nakuru & Naivasha Shared Land Cruiser Safari Kenya 2026. This exceptional three-park adventure, starting from just $680 per person, combines Kenya's most iconic wildlife destinations into one affordable package offering maximum wildlife variety and value. From the predator-rich savannahs of Masai Mara to the flamingo-filled shores of Lake Nakuru and the hippo-populated waters of Lake Naivasha, this tour showcases Kenya's ecological richness across different ecosystems while maintaining budget-friendly pricing perfect for travelers wanting comprehensive exposure without luxury costs.
+    title: "Masai Mara - Nakuru & Naivasha 5 Days Shared Land Cruiser Safari Kenya 2026 - Three-Park Adventure from $850",
+    description: "Comprehensive 5-day budget safari covering Masai Mara's Big Five, Lake Nakuru's flamingos, and Lake Naivasha's hippos. Travel in shared Land Cruisers, stay in budget camps, enjoy included boat safari from $850. Perfect three-park combination for maximum wildlife diversity.",
+    shortDescription: "Three iconic parks: Masai Mara predators, Lake Nakuru flamingos, Naivasha hippo boat ride. Shared Land Cruiser, budget camps, all meals. Excellent wildlife variety. From $850.",
+    longDescription: `Experience Kenya's wildlife diversity at its best on our comprehensive 5-Day Masai Mara - Nakuru & Naivasha Shared Land Cruiser Safari Kenya 2026. This exceptional three-park adventure, starting from just $850 per person, combines Kenya's most iconic wildlife destinations into one affordable package offering maximum wildlife variety and value. From the predator-rich savannahs of Masai Mara to the flamingo-filled shores of Lake Nakuru and the hippo-populated waters of Lake Naivasha, this tour showcases Kenya's ecological richness across different ecosystems while maintaining budget-friendly pricing perfect for travelers wanting comprehensive exposure without luxury costs.
 
 Your journey begins in Nairobi as you join fellow wildlife enthusiasts in a shared 4x4 Land Cruiser equipped with pop-up roofs for optimal game viewing. The scenic drive to Masai Mara takes you through the dramatic Great Rift Valley, with photo stops at viewpoints showcasing one of Earth's most significant geological features. Masai Mara National Reserve needs little introduction - it's Africa's wildlife crown jewel, famous for high predator densities, spectacular Great Migration (July-October), and classic savannah landscapes that define the African safari experience. Here you'll spend quality time tracking the Big Five, observing predator behaviors, and immersing in one of the world's premier wildlife destinations.
 
@@ -587,7 +587,7 @@ The transition to Lake Nakuru National Park introduces dramatically different wi
 
 Lake Naivasha provides the third distinct ecosystem experience - freshwater adventures centered around Kenya's highest Rift Valley lake. The included boat safari offers unique perspectives on hippo behavior, fish eagle hunting techniques, and aquatic ecosystems impossible to experience from land. Optional walking safaris on Crescent Island (additional cost) allow terrestrial experiences among grazing animals without predators, providing close wildlife approaches unique to this environment. This combination of Masai Mara game drives, Nakuru flamingo/rhino viewing, and Naivasha aquatic experiences creates comprehensive wildlife understanding across Kenya's varied ecosystems.
 
-This budget safari Kenya 2026 package represents exceptional value at $680. You receive diverse wildlife experiences across three premier destinations, professional guiding, comfortable accommodations, included boat safari, and all meals. The shared group model (4-12 travelers) significantly reduces individual costs while creating social travel experiences perfect for solo travelers, couples, or small groups. By combining these three destinations, you experience savannah, alkaline lake, and freshwater ecosystems in one efficient itinerary that maximizes wildlife variety per day and dollar.
+This budget safari Kenya 2026 package represents exceptional value at $850. You receive diverse wildlife experiences across three premier destinations, professional guiding, comfortable accommodations, included boat safari, and all meals. The shared group model (4-12 travelers) significantly reduces individual costs while creating social travel experiences perfect for solo travelers, couples, or small groups. By combining these three destinations, you experience savannah, alkaline lake, and freshwater ecosystems in one efficient itinerary that maximizes wildlife variety per day and dollar.
 
 Educational opportunities abound across all three ecosystems. Learn about predator-prey relationships in Masai Mara, flamingo biology and rhino conservation at Lake Nakuru, aquatic ecosystems and hippo behavior at Naivasha, and compare animal adaptations across different environments. Conservation education covers varied challenges and successes across ecosystems, while cultural interactions (optional) provide insights into different human relationships with these environments. This comprehensive educational approach transforms wildlife viewing into deeper ecological understanding.
 
@@ -598,10 +598,10 @@ This affordable Kenya safari 2026 is perfect for first-time visitors wanting com
 Booking is straightforward through our WhatsApp system with flexible departure dates. We recommend booking 2-3 months in advance for peak season (July-October) to secure preferred dates. Child discounts, group rates, and customizations are available upon request for this popular three-park combination.
 
 Don't miss this opportunity to experience Kenya's wildlife diversity across multiple ecosystems at exceptional budget pricing. Whether seeking predator action in Masai Mara, flamingo spectacles at Lake Nakuru, hippo encounters at Naivasha, comprehensive wildlife understanding, or simply maximum variety in one affordable package, this 5-day shared Land Cruiser safari delivers unforgettable memories of Africa's magnificent wildlife across varied environments. Book now for your 2026 adventure and discover why Kenya's ecological diversity makes it the ultimate safari destination.`,
-    metaDescription: "Book 5-day Masai Mara Nakuru Naivasha safari Kenya 2026 from $680. Big Five, flamingos, hippos boat ride in one affordable three-park adventure from Nairobi.",
-    keywords: ["Masai Mara Nakuru Naivasha 5 days safari", "cheap three-park Kenya safari 2026", "affordable Mara Nakuru Naivasha tour", "budget shared Land Cruiser safari", "Kenya three-park combo from $680", "Big Five flamingos hippos safari", "5-day budget Kenya adventure"],
-    price: 680,
-    originalPrice: 850,
+    metaDescription: "Book 5-day Masai Mara Nakuru Naivasha safari Kenya 2026 from $850. Big Five, flamingos, hippos boat ride in one affordable three-park adventure from Nairobi.",
+    keywords: ["Masai Mara Nakuru Naivasha 5 days safari", "cheap three-park Kenya safari 2026", "affordable Mara Nakuru Naivasha tour", "budget shared Land Cruiser safari", "Kenya three-park combo from $850", "Big Five flamingos hippos safari", "5-day budget Kenya adventure"],
+    price: 850,
+    originalPrice: 1020,
     image: "/grace-nandi-KzxdgYVkSdY-unsplash-1-scaled.jpg",
     url: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
     bookingUrl: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari#booking-form",
@@ -651,7 +651,7 @@ Don't miss this opportunity to experience Kenya's wildlife diversity across mult
       "Shared 4x4 Land Cruiser transport with pop-up roof",
       "Budget accommodations with all meals included",
       "Professional English-speaking safari guides",
-      "Excellent value at $680 for comprehensive three-park experience",
+      "Excellent value at $850 for comprehensive three-park experience",
       "Daily departures from Nairobi with flexible booking"
     ],
     included: [

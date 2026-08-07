@@ -168,7 +168,7 @@ export interface Tour {
       metaDescription: "Buchen Sie 3-tägige Masai-Mara-Superior-Budget-Safari Kenia 2026 ab $730. Aufgewertete Camps, bessere Mahlzeiten, geteilter Land Cruiser. Mehr Komfort als Basis-Budget.",
       keywords: ["Masai Mara Superior Budget Safari", "aufgewertete Budget Safari Kenia 2026", "bessere Budget Camps Masai Mara", "erschwingliche Komfort Safari", "Masai Mara verbesserte Budget Tour", "Qualitäts Budget Safari Kenia", "verbessertes Budget Erlebnis Mara"],
       price: 730,
-      originalPrice: 850,
+      originalPrice: 1020,
       image: "/pexels-gil-daix-2046153486-29339542-scaled.jpg",
       url: "/de/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari",
       bookingUrl: "/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari#booking-form",
@@ -276,7 +276,7 @@ export interface Tour {
       metaDescription: "Buchen Sie 3-tägige Samburu-Privat-Safari Kenia 2026 ab $690. Exklusives Nord-Kenia Abenteuer mit privatem Fahrzeug, Guide und personalisierter Reiseroute. Suche nach den Special Five.",
       keywords: ["Samburu Privatsafari", "3 Tage Privatsafari Kenia", "Samburu Special Five Tour", "exklusive Nordkenia Safari", "private Budget Safari Kenia", "Samburu Nationalreservat privat", "maßgeschneiderte Kenia Safari erschwinglich"],
       price: 690,
-      originalPrice: 850,
+      originalPrice: 1020,
       image: "/sutirta-budiman-E8JdyPcSA8o-unsplash-5-scaled.jpg",
       url: "/de/budget-tours/samburu-3-days-private-safari",
       bookingUrl: "/budget-tours/samburu-3-days-private-safari#booking-form",
@@ -578,10 +578,10 @@ export interface Tour {
     {
       id: "6",
       slug: "masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
-      title: "Masai Mara - Nakuru & Naivasha 5 Tage Shared Land Cruiser Safari Kenia 2026 - Drei-Park-Abenteuer ab $680",
-      description: "Umfassende 5-tägige Budget-Safari, die die Big Five der Masai Mara, die Flamingos des Nakuru-Sees und die Flusspferde des Naivashasees abdeckt. Reisen Sie in geteilten Land Cruisern, übernachten Sie in Budget-Camps, genießen Sie eine inbegriffene Bootssafari ab $680. Perfekte Drei-Park-Kombination für maximale Artenvielfalt.",
-      shortDescription: "Drei ikonische Parks: Raubtiere der Masai Mara, Flamingos am Nakuru-See, Flusspferd-Bootsfahrt auf Naivasha. Geteilter Land Cruiser, Budget-Camps, alle Mahlzeiten. Hervorragende Artenvielfalt. Ab $680.",
-      longDescription: `Erleben Sie die Vielfalt der kenianischen Tierwelt auf unserer umfassenden 5-tägigen Masai Mara - Nakuru & Naivasha Shared Land Cruiser Safari Kenia 2026. Dieses außergewöhnliche Drei-Park-Abenteuer, das bereits bei nur $680 pro Person beginnt, kombiniert die kultigsten Wildtierziele Kenias in einem erschwinglichen Paket, das maximale Artenvielfalt und Wert bietet. Von den raubtierreichen Savannen der Masai Mara über die flamingogesäumten Ufer des Nakuru-Sees bis hin zu den flusspferdreichen Gewässern des Naivashasees zeigt diese Tour den ökologischen Reichtum Kenias in verschiedenen Ökosystemen, während sie budgetfreundliche Preise beibehält – perfekt für Reisende, die eine umfassende Exposition ohne Luxuskosten wünschen.
+      title: "Masai Mara - Nakuru & Naivasha 5 Tage Shared Land Cruiser Safari Kenia 2026 - Drei-Park-Abenteuer ab $850",
+      description: "Umfassende 5-tägige Budget-Safari, die die Big Five der Masai Mara, die Flamingos des Nakuru-Sees und die Flusspferde des Naivashasees abdeckt. Reisen Sie in geteilten Land Cruisern, übernachten Sie in Budget-Camps, genießen Sie eine inbegriffene Bootssafari ab $850. Perfekte Drei-Park-Kombination für maximale Artenvielfalt.",
+      shortDescription: "Drei ikonische Parks: Raubtiere der Masai Mara, Flamingos am Nakuru-See, Flusspferd-Bootsfahrt auf Naivasha. Geteilter Land Cruiser, Budget-Camps, alle Mahlzeiten. Hervorragende Artenvielfalt. Ab $850.",
+      longDescription: `Erleben Sie die Vielfalt der kenianischen Tierwelt auf unserer umfassenden 5-tägigen Masai Mara - Nakuru & Naivasha Shared Land Cruiser Safari Kenia 2026. Dieses außergewöhnliche Drei-Park-Abenteuer, das bereits bei nur $850 pro Person beginnt, kombiniert die kultigsten Wildtierziele Kenias in einem erschwinglichen Paket, das maximale Artenvielfalt und Wert bietet. Von den raubtierreichen Savannen der Masai Mara über die flamingogesäumten Ufer des Nakuru-Sees bis hin zu den flusspferdreichen Gewässern des Naivashasees zeigt diese Tour den ökologischen Reichtum Kenias in verschiedenen Ökosystemen, während sie budgetfreundliche Preise beibehält – perfekt für Reisende, die eine umfassende Exposition ohne Luxuskosten wünschen.
   
   Ihre Reise beginnt in Nairobi, wo Sie sich anderen Wildtierbegeisterten in einem geteilten 4x4 Land Cruiser mit aufklappbarem Dach für optimale Tierbeobachtung anschließen. Die malerische Fahrt zur Masai Mara führt Sie durch den dramatischen Großen Grabenbruch mit Fotostopps an Aussichtspunkten, die eines der bedeutendsten geologischen Merkmale der Erde zeigen. Das Masai-Mara-Nationalreservat bedarf keiner großen Einführung – es ist das Kronjuwel der afrikanischen Tierwelt, berühmt für hohe Raubtierdichten, das spektakuläre Große Migrationsschauspiel (Juli-Oktober) und klassische Savannenlandschaften, die das afrikanische Safari-Erlebnis definieren. Hier verbringen Sie viel Zeit mit der Suche nach den Big Five, beobachten Raubtierverhalten und tauchen in eines der besten Wildtierziele der Welt ein.
   
@@ -589,7 +589,7 @@ export interface Tour {
   
   Der Naivashasee bietet die dritte, eigenständige Ökosystemerfahrung – Süßwasserabenteuer rund um den höchstgelegenen See des kenianischen Grabenbruchs. Die inbegriffene Bootssafari bietet einzigartige Perspektiven auf das Verhalten von Flusspferden, die Jagdtechniken von Seeadlern und aquatische Ökosysteme, die vom Land aus nicht erlebbar sind. Optionale Wander-Safaris auf der Crescent Island (gegen Aufpreis) ermöglichen terrestrische Erlebnisse unter grasenden Tieren ohne Raubtiere und bieten einzigartige Begegnungen aus nächster Nähe. Diese Kombination aus Pirschfahrten in der Masai Mara, Flamingo-/Nashornbeobachtung in Nakuru und Wassererlebnissen in Naivasha schafft ein umfassendes Verständnis der Tierwelt in verschiedenen kenianischen Ökosystemen.
   
-  Dieses Budget-Safari-Paket Kenia 2026 bietet ein außergewöhnliches Preis-Leistungs-Verhältnis bei $680. Sie erhalten vielfältige Tiererlebnisse in drei erstklassigen Reisezielen, professionelle Führung, komfortable Unterkünfte, eine inbegriffene Bootssafari und alle Mahlzeiten. Das gemeinsame Gruppenmodell (4-12 Reisende) senkt die individuellen Kosten erheblich und schafft soziale Reiseerlebnisse, die perfekt für Alleinreisende, Paare oder kleine Gruppen sind. Durch die Kombination dieser drei Reiseziele erleben Sie Savannen-, Alkalisee- und Süßwasserökosysteme in einer effizienten Reiseroute, die die Artenvielfalt pro Tag und Dollar maximiert.
+  Dieses Budget-Safari-Paket Kenia 2026 bietet ein außergewöhnliches Preis-Leistungs-Verhältnis bei $850. Sie erhalten vielfältige Tiererlebnisse in drei erstklassigen Reisezielen, professionelle Führung, komfortable Unterkünfte, eine inbegriffene Bootssafari und alle Mahlzeiten. Das gemeinsame Gruppenmodell (4-12 Reisende) senkt die individuellen Kosten erheblich und schafft soziale Reiseerlebnisse, die perfekt für Alleinreisende, Paare oder kleine Gruppen sind. Durch die Kombination dieser drei Reiseziele erleben Sie Savannen-, Alkalisee- und Süßwasserökosysteme in einer effizienten Reiseroute, die die Artenvielfalt pro Tag und Dollar maximiert.
   
   Überall gibt es Bildungsmöglichkeiten. Lernen Sie die Beziehung zwischen Raubtier und Beute in der Masai Mara, die Biologie der Flamingos und den Nashornschutz am Nakuru-See, aquatische Ökosysteme und das Verhalten von Flusspferden in Naivasha kennen und vergleichen Sie Tieranpassungen an verschiedene Umgebungen. Die Umwelterziehung deckt unterschiedliche Herausforderungen und Erfolge in den verschiedenen Ökosystemen ab, während kulturelle Begegnungen (optional) Einblicke in verschiedene menschliche Beziehungen zu diesen Umgebungen bieten. Dieser umfassende Bildungsansatz verwandelt die Tierbeobachtung in ein tieferes ökologisches Verständnis.
   
@@ -600,10 +600,10 @@ export interface Tour {
   Die Buchung ist unkompliziert über unser WhatsApp-System mit flexiblen Abreisedaten möglich. Wir empfehlen eine Buchung 2-3 Monate im Voraus für die Hauptsaison (Juli-Oktober), um Ihre Wunschtermine zu sichern. Kinderrabatte, Gruppentarife und Anpassungen sind auf Anfrage für diese beliebte Drei-Park-Kombination erhältlich.
   
   Verpassen Sie nicht diese Gelegenheit, die Vielfalt der kenianischen Tierwelt in mehreren Ökosystemen zu außergewöhnlichen Budgetpreisen zu erleben. Egal, ob Sie Raubtieraktionen in der Masai Mara, Flamingospektakel am Nakuru-See, Flusspferdbegegnungen in Naivasha, ein umfassendes Verständnis der Tierwelt oder einfach maximale Vielfalt in einem erschwinglichen Paket suchen – diese 5-tägige Shared Land Cruiser Safari liefert unvergessliche Erinnerungen an die großartige Tierwelt Afrikas in verschiedenen Umgebungen. Buchen Sie jetzt Ihr Abenteuer für 2026 und entdecken Sie, warum die ökologische Vielfalt Kenias das ultimative Safari-Ziel ausmacht.`,
-      metaDescription: "Buchen Sie 5-tägige Masai Mara Nakuru Naivasha Safari Kenia 2026 ab $680. Big Five, Flamingos, Flusspferd-Bootsfahrt in einem erschwinglichen Drei-Park-Abenteuer ab Nairobi.",
-      keywords: ["Masai Mara Nakuru Naivasha 5 Tage Safari", "preiswerte Drei-Park Kenia Safari 2026", "erschwingliche Mara Nakuru Naivasha Tour", "Budget Shared Land Cruiser Safari", "Kenia Drei-Park Kombi ab $680", "Big Five Flamingos Flusspferde Safari", "5-tägiges Budget Kenia Abenteuer"],
-      price: 680,
-      originalPrice: 850,
+      metaDescription: "Buchen Sie 5-tägige Masai Mara Nakuru Naivasha Safari Kenia 2026 ab $850. Big Five, Flamingos, Flusspferd-Bootsfahrt in einem erschwinglichen Drei-Park-Abenteuer ab Nairobi.",
+      keywords: ["Masai Mara Nakuru Naivasha 5 Tage Safari", "preiswerte Drei-Park Kenia Safari 2026", "erschwingliche Mara Nakuru Naivasha Tour", "Budget Shared Land Cruiser Safari", "Kenia Drei-Park Kombi ab $850", "Big Five Flamingos Flusspferde Safari", "5-tägiges Budget Kenia Abenteuer"],
+      price: 850,
+      originalPrice: 1020,
       image: "/grace-nandi-KzxdgYVkSdY-unsplash-1-scaled.jpg",
       url: "/de/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari",
       bookingUrl: "/budget-tours/masai-mara-nakuru-naivasha-5-days-shared-land-cruiser-safari#booking-form",
@@ -653,7 +653,7 @@ export interface Tour {
         "Gemeinsamer 4x4 Land Cruiser Transport mit aufklappbarem Dach",
         "Budget-Unterkünfte mit Vollpension",
         "Professionelle englischsprachige Safari-Guides",
-        "Hervorragendes Preis-Leistungs-Verhältnis bei $680 für ein umfassendes Drei-Park-Erlebnis",
+        "Hervorragendes Preis-Leistungs-Verhältnis bei $850 für ein umfassendes Drei-Park-Erlebnis",
         "Tägliche Abfahrten ab Nairobi mit flexibler Buchung"
       ],
       included: [
