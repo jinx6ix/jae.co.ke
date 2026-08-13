@@ -96,7 +96,7 @@ const transportSchema = {
           },
           "author": {
             "@type": "Person",
-            "name": "James Kimani"
+            "name": "Antony Waititu"
           },
           "datePublished": "2025-09-05",
           "reviewBody": "Used Jae Travel for group transport in Nairobi — comfortable minibus, professional driver, and punctual service. Great for corporate events and tours!"

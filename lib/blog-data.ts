@@ -237,7 +237,7 @@ Packing for family safaris requires extra planning. Bring sun protection, insect
 Best destinations for family safaris include the Masai Mara for its high wildlife density and shorter game drives, the Serengeti for its vast plains and diverse wildlife, and beach extensions in Zanzibar or Diani Beach for post-safari relaxation.
 
 The benefits of family safaris extend beyond the trip itself. Children develop appreciation for nature, learn about different cultures, gain confidence through new experiences, and create family bonds through shared adventures. Many families report that safari experiences inspire children's academic interests and career choices.`,
-    author: "James Mwangi",
+    author: "Antony  Mwangi",
     publishedAt: "2024-12-15",
     category: "Family Travel",
     image: "/kenya-safari-landscape.jpg",

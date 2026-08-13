@@ -565,7 +565,7 @@ export default function BigFivePage() {
             {[
               { name: "Michael Thompson", location: "USA", text: "Saw all Big Five in one trip! The accessible vehicle made it easy and comfortable.", rating: 5 },
               { name: "Anna Rodriguez", location: "Spain", text: "Incredible leopard sightings in Masai Mara. Guides knew exactly where to go.", rating: 5 },
-              { name: "James Kim", location: "Canada", text: "Rhino encounter in Ol Pejeta was life-changing. Perfect for wheelchair users.", rating: 5 },
+              { name: "Antony  Kim", location: "Canada", text: "Rhino encounter in Ol Pejeta was life-changing. Perfect for wheelchair users.", rating: 5 },
             ].map((t, i) => (
               <div key={i} className="rounded-lg bg-card p-6 shadow-sm">
                 <div className="mb-4 flex gap-1">

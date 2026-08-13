@@ -1615,7 +1615,7 @@ export default function DisabilityToursPage() {
                 disability: "مستخدم كرسي متحرك – تجربة تتبع الغوريلا",
                 text: "بكيت عندما رأيت الغوريلا الفضية من كرسيي المعدل. تجربة غيرت حياتي حقاً.",
                 rating: 5,
-                image: "/testimonial-james.jpg",
+                image: "/testimonial-Antony .jpg",
               },
             ].map((t, i) => (
               <Card key={i} className="border-2">

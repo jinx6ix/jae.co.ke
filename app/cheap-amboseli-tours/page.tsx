@@ -464,7 +464,7 @@ export default function CheapAmboseliToursPage() {
             {[
               { name: "Michael Torres", location: "Austin, TX, USA", text: "The Kilimanjaro backdrop made every photo absolutely stunning. Watching a herd of 50+ elephants walk past with the mountain behind was a once-in-a-lifetime moment. JaeTravel made it affordable without compromising on quality.", rating: 5, tour: "5-Day Masai Mara Naivasha Amboseli" },
               { name: "Anna Kowalski", location: "Warsaw, Poland", text: "Amboseli surprised me with its wildlife density — we saw lions, cheetahs, and massive elephant herds all in one day. The budget package was excellent value, the camp was clean, and our guide was incredibly knowledgeable.", rating: 5, tour: "6-Day Masai Mara Nakuru Amboseli" },
-              { name: "James Liu", location: "Toronto, Canada", text: "Professional operation from start to finish. The guide knew exactly where to position us for the best elephant sightings with Kilimanjaro views. We got incredible photos on our first morning.", rating: 5, tour: "5-Day Masai Mara Naivasha Amboseli" },
+              { name: "Antony  Liu", location: "Toronto, Canada", text: "Professional operation from start to finish. The guide knew exactly where to position us for the best elephant sightings with Kilimanjaro views. We got incredible photos on our first morning.", rating: 5, tour: "5-Day Masai Mara Naivasha Amboseli" },
             ].map((review, i) => (
               <div key={i} className="bg-white p-8 rounded-2xl shadow-md border">
                 <div className="flex mb-3">

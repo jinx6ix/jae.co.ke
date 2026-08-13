@@ -73,11 +73,11 @@ const aboutPageSchema = {
     },
     {
       "@type": "Person",
-      "@id": "https://www.jaetravel.co.ke/ar/team/james-kimani/#person",
+      "@id": "https://www.jaetravel.co.ke/ar/team/Antony -kimani/#person",
       "name": "أنتوني وايتيتو",
       "jobTitle": "المؤسس وكبير مرشدي السفاري",
       "worksFor": { "@id": "https://www.jaetravel.co.ke/ar/#organization" },
-      "image": "https://www.jaetravel.co.ke/team/james-kimani.jpg",
+      "image": "https://www.jaetravel.co.ke/team/Antony -kimani.jpg",
       "description": "ولد في منطقة ماساي مارا مع خبرة تزيد عن 22 عامًا في التوجيه. أسس جي تريل في 2008 لجعل السفاري في متناول الجميع.",
       "sameAs": []
     },
@@ -267,7 +267,7 @@ const teamMembers = [
     name: "أنتوني وايتيتو",
     role: "المؤسس وكبير مرشدي السفاري",
     bio: "ولد في منطقة ماساي مارا، يتمتع بخبرة تزيد عن 22 عامًا في التوجيه. أسس جي تريل في 2008 لجعل السفاري في متناول الجميع. يتقن الإنجليزية والسواحلية ولغة الماساي.",
-    image: "/team/james-kimani.jpg",
+    image: "/team/Antony -kimani.jpg",
   },
   {
     name: "سارة موانجي",

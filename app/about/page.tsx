@@ -23,7 +23,7 @@ const aboutPageSchema = {
       "foundingDate": "2008",
       "founder": {
         "@type": "Person",
-        "name": "James Kimani"
+        "name": "Antony Waititu"
       },
       "award": [
         "Kenya Tourism Award – Accessible Tourism 2023",
@@ -101,13 +101,13 @@ const aboutPageSchema = {
     // 5. Team Members as Person schema (properly linked)
     {
       "@type": "Person",
-      "@id": "https://www.jaetravel.co.ke/team/james-kimani/#person",
-      "name": "James Kimani",
+      "@id": "https://www.jaetravel.co.ke/team/Antony -kimani/#person",
+      "name": "Antony Waititu",
       "jobTitle": "Founder & Chief Safari Guide",
       "worksFor": {
         "@id": "https://www.jaetravel.co.ke/#organization"
       },
-      "image": "https://www.jaetravel.co.ke/team/james-kimani.jpg",
+      "image": "https://www.jaetravel.co.ke/team/Antony -kimani.jpg",
       "description": "Born in the Maasai Mara region with 22+ years guiding experience. Founded JaeTravel in 2008 to make safaris accessible to all."
     },
     {
@@ -302,8 +302,8 @@ const teamMembers = [
   {
     name: "Antony Waititu",
     role: "Founder & Chief Safari Guide",
-    bio: "Born in the Maasai Mara region, James has 22+ years guiding experience. He founded JaeTravel in 2008 to make safaris accessible to all. Fluent in English, Swahili, and Maa.",
-    image: "/team/james-kimani.jpg",
+    bio: "Born in the Maasai Mara region, Antony  has 22+ years guiding experience. He founded JaeTravel in 2008 to make safaris accessible to all. Fluent in English, Swahili, and Maa.",
+    image: "/team/Antony -kimani.jpg",
   },
   {
     name: "Sarah Mwangi",

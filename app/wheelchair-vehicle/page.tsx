@@ -191,7 +191,7 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     location: "London, UK",
-    text: "Our wheelchair accessible Land Cruiser in Masai Mara was exceptional. The hydraulic lift worked perfectly and our driver James was incredibly knowledgeable about both wildlife and accessibility needs.",
+    text: "Our wheelchair accessible Land Cruiser in Masai Mara was exceptional. The hydraulic lift worked perfectly and our driver Antony  was incredibly knowledgeable about both wildlife and accessibility needs.",
     rating: 5
   },
   {

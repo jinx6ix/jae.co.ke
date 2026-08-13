@@ -280,7 +280,7 @@ const schema = {
         {
           "@type": "Review",
           "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "author": { "@type": "Person", "name": "James Wilson" },
+          "author": { "@type": "Person", "name": "Antony  Wilson" },
           "datePublished": "2025-10-05",
           "reviewBody":
             "Accessible gorilla trekking Rwanda with sedan chair team – unforgettable wheelchair accessible tours in Kenya operator.",
@@ -1643,12 +1643,12 @@ export default function DisabilityToursPage() {
                   image: "/testimonial-maria.jpg",
                 },
                 {
-                  name: "James Wilson",
+                  name: "Antony  Wilson",
                   location: "UK",
                   disability: "Wheelchair User – Gorilla Trekking Experience",
                   text: "I cried when I saw the silverback gorilla from my adapted sedan chair. Truly life-changing.",
                   rating: 5,
-                  image: "/testimonial-james.jpg",
+                  image: "/testimonial-Antony .jpg",
                 },
               ].map((t, i) => (
                 <Card key={i} className="border-2">

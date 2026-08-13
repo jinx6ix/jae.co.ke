@@ -12,7 +12,7 @@ const testimonials = [
     location: "Maasai Mara"
   },
   {
-    name: "James & Sarah",
+    name: "Antony  & Sarah",
     role: "Adventure Couple",
     text: "Waking up to lions roaring and coffee brewing on the fire — unforgettable. The tent was comfier than a hotel!",
     location: "Amboseli"

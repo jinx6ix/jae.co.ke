@@ -431,7 +431,7 @@ function buildVehicleSchema(vehicle: any, slug: string) {
           worstRating: "1",
         },
         review: [
-          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "James O." }, datePublished: "2025-09-10", reviewBody: `The ${vehicle.name} was perfect for our Masai Mara safari. Spacious, reliable, and the pop-up roof made wildlife photography incredible.` },
+          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "Antony  O." }, datePublished: "2025-09-10", reviewBody: `The ${vehicle.name} was perfect for our Masai Mara safari. Spacious, reliable, and the pop-up roof made wildlife photography incredible.` },
           { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "Anna P." }, datePublished: "2025-08-22", reviewBody: `Hired the ${vehicle.name} for a week across Kenya and Tanzania. Excellent condition, very comfortable, and great value.` },
         ],
       },

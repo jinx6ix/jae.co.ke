@@ -94,7 +94,7 @@ const homepageSchema = {
         {
           "@type": "Review",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "James Okoth" },
+          "author": { "@type": "Person", "name": "Antony  Okoth" },
           "datePublished": "2026-02-20",
           "reviewBody": "2026 Masai Mara wheelchair accessible safari was perfect — 400kg lift, full medical kit, and expert guides."
         }
