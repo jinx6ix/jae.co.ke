@@ -61,7 +61,7 @@ export const tours: Tour[] = [
   },
   {
     id: "kenya-amboseli",
-    image: "/Amboseli-National-Park-Elephantsssss.jpg",
+    image: "/Amboseli.jpg",
     slug: "amboseli-safari",
     title: "Amboseli Safari Adventure",
     description: "Explore Amboseli National Park with guided game drives and spectacular views of Mount Kilimanjaro.",

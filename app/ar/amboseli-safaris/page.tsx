@@ -205,7 +205,7 @@ export default function AmboseliSafarisPage() {
         categoryOpts={{
           title: "رحلات سفاري منتزه أمبوسيلي الوطني في كينيا",
           description: "سفاري أمبوسيلي مع إطلالات على كليمنجارو. قطعان الفيلة، الحيوانات الخمسة الكبار، ونزل فاخرة.",
-          image: "/Amboseli-National-Park-Elephantsssss.jpg",
+          image: "/Amboseli.jpg",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("amboseli") || (t.title && t.title.toLowerCase().includes("amboseli")) || (t.description && t.description.toLowerCase().includes("amboseli"))) : [],
         }}
       />

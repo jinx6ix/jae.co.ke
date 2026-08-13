@@ -89,7 +89,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-amboseli",
     slug: "amboseli-safari",
-    image: "/Amboseli-National-Park-Elephantsssss.jpg",
+    image: "/Amboseli.jpg",
     title: "مغامرة سفاري أمبوسيلي",
     description: "استكشف منتزه أمبوسيلي الوطني مع جولات سفاري موجهة ومناظر خلابة لجبل كليمنجارو.",
     shortDescription: "رحلة سفاري لمدة 4 أيام مع مناظر جبل كليمنجارو",

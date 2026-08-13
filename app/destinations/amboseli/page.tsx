@@ -21,7 +21,7 @@ const destinationData = {
   name: "Amboseli National Park",
   country: "Kenya",
   tagline: "Where Elephants Roam with Kilimanjaro as Backdrop",
-  heroImage: "/Amboseli-National-Park-Elephantsssss.jpg",
+  heroImage: "/Amboseli.jpg",
   description: "Amboseli National Park is one of Kenya's most iconic safari destinations, offering spectacular views of Africa's highest mountain, Mount Kilimanjaro. The park is renowned for its large herds of elephants, diverse wildlife, and stunning landscapes.",
   highlights: [
     "Spectacular Kilimanjaro views",

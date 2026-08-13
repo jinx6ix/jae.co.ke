@@ -203,7 +203,7 @@ export default function AmboseliSafarisPage() {
         categoryOpts={{
           title: "Amboseli National Park Safaris Kenya",
           description: "Amboseli safari with Kilimanjaro views. Elephant herds, Big Five, and luxury lodges.",
-          image: "/Amboseli-National-Park-Elephantsssss.jpg",
+          image: "/Amboseli.jpg",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("amboseli") || t.title?.toLowerCase().includes("amboseli") || t.description?.toLowerCase().includes("amboseli")) : [],
         }}
       />
