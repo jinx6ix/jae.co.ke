@@ -52,7 +52,7 @@ const slides: Slide[] = [
   },
   {
     id: "serengeti",
-    image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
+    image: "/Safaris2.jpg",
     alt: "Endless plains of Serengeti with wildebeest migration in Tanzania",
     title: "Serengeti National Park",
     subtitle: "Home to the Big Five and the dramatic river crossings of the Great Migration",

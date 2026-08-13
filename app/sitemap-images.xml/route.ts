@@ -37,7 +37,7 @@ export async function GET() {
     { loc: `${BASE}/mountain-gorilla-trekking.jpg`, caption: "Mountain Gorilla Trekking", title: "Gorilla Trekking" },
     { loc: `${BASE}/kenya-safari-landscape.jpg`, caption: "Kenya Safari Landscape", title: "Safari" },
     { loc: `${BASE}/Amboseli.jpg`, caption: "Elephants in Amboseli", title: "Amboseli" },
-    { loc: `${BASE}/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg`, caption: "Serengeti Safari", title: "Serengeti" },
+    { loc: `${BASE}/Safaris2.jpg`, caption: "Serengeti Safari", title: "Serengeti" },
     { loc: `${BASE}/ngorongoro-header-3.jpg`, caption: "Ngorongoro Crater", title: "Ngorongoro" },
     { loc: `${BASE}/bwindi-forest-uganda-gorilla-safaris.jpg`, caption: "Bwindi Forest Uganda", title: "Bwindi" },
     { loc: `${BASE}/Volcanoes-National-Park-Rwanda-Natural-World-Kenya-Safaris.jpg`, caption: "Volcanoes NP Rwanda", title: "Volcanoes" },

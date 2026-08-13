@@ -135,7 +135,7 @@ export const tours: Tour[] = [
   {
     id: "tanzania-serengeti",
     slug: "serengeti-migration-tour",
-    image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
+    image: "/Safaris2.jpg",
     title: "رحلة سفاري هجرة سيرينجيتي",
     description: "شاهد الهجرة الكبرى في سيرينجيتي مع جولات موجهة ونُزل مريحة. تشمل جولات سفاري يومية ووجبات.",
     shortDescription: "رحلة لمدة 7 أيام لمشاهدة الهجرة في سيرينجيتي",

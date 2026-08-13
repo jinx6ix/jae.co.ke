@@ -52,7 +52,7 @@ const slides: Slide[] = [
   },
   {
     id: "serengeti",
-    image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
+    image: "/Safaris2.jpg",
     alt: "سهول سيرينجيتي اللامتناهية مع هجرة الحيوانات البرية في تنزانيا",
     title: "منتزه سيرينجيتي الوطني",
     subtitle: "موطن الخمسة الكبار ومعابر الأنهار الدراماتيكية للهجرة الكبرى",
