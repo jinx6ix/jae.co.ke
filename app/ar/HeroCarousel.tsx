@@ -22,7 +22,7 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: "masai-mara",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     alt: "غروب الشمس الذهبي فوق ماساي مارا مع هجرة الحيوانات البرية في كينيا",
     title: "شاهد الهجرة الكبرى",
     subtitle: "7 ملايين حافر تدوي عبر ماساي مارا — أعظم مشهد للحياة البرية في العالم",

@@ -31,7 +31,7 @@ export const generateMetadata = (): Metadata => ({
       "Witness dramatic Mara River crossings on a fully accessible safari in Kenya with adapted 4x4 vehicles and expert guides.",
     images: [
       {
-        url: "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
+        url: "https://www.jaetravel.co.ke/masaimara.jpeg",
         width: 1200,
         height: 630,
         alt: "Maasai Mara Great Migration river crossing with wildebeest herds",

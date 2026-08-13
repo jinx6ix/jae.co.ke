@@ -454,7 +454,7 @@ export default function BudgetToursPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Masai Mara National Reserve", emoji: "🦁", desc: "Kenya&apos;s most famous safari destination. World-renowned for Big Five sightings and the Great Migration (July-October). Lions, leopards, elephants, and dramatic river crossings.", price: "From $610", img: "/masai-mara-migration.jpg", href: "/budget-masai-mara-safari" },
+              { name: "Masai Mara National Reserve", emoji: "🦁", desc: "Kenya&apos;s most famous safari destination. World-renowned for Big Five sightings and the Great Migration (July-October). Lions, leopards, elephants, and dramatic river crossings.", price: "From $610", img: "/masaimara.jpeg", href: "/budget-masai-mara-safari" },
               { name: "Lake Nakuru National Park", emoji: "🦩", desc: "Famous for pink flamingos, black and white rhinos, and Rothschild giraffes. Excellent birding with 450+ species. Just 2-3 hours from Nairobi.", price: "From $610", img: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg", href: "/budget-lake-nakuru-safari" },
               { name: "Amboseli National Park", emoji: "🐘", desc: "Iconic elephants with Mt. Kilimanjaro backdrop. High predator density, 400+ bird species, and spectacular photography opportunities.", price: "From $750", img: "/amboseli_elephants_at_sun_set-2__1200w.jpg", href: "/cheap-amboseli-tours" },
               { name: "Lake Naivasha", emoji: "🦛", desc: "Boat rides among hippos, golden monkey tracking, and birding paradise. Often combined with Hell&apos;s Gate National Park for walking safaris.", price: "From $610", img: "/masai-mara-safari.jpg", href: "/budget-tours" },

@@ -59,7 +59,7 @@ export default function FrenchHomePage() {
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
-          <Image src="/masai-mara-migration.jpg" alt="Grande Migration Masai Mara Kenya" fill className="object-cover opacity-60" priority />
+          <Image src="/masaimara.jpeg" alt="Grande Migration Masai Mara Kenya" fill className="object-cover opacity-60" priority />
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6">
@@ -107,7 +107,7 @@ export default function FrenchHomePage() {
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Des expériences soigneusement sélectionnées pour chaque type de voyageur</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { href:"/fr/tour/masai-mara-luxury-safari", img:"/masai-mara-migration.jpg", title:"Safari Masai Mara", desc:"Grande Migration, Big Five et lodges de luxe", price:"À partir de 3 500 USD", badge:"Populaire" },
+            { href:"/fr/tour/masai-mara-luxury-safari", img:"/masaimara.jpeg", title:"Safari Masai Mara", desc:"Grande Migration, Big Five et lodges de luxe", price:"À partir de 3 500 USD", badge:"Populaire" },
             { href:"/fr/tour/gorilla-trekking-experience", img:"/mountain-gorilla-trekking.jpg", title:"Trekking Gorilles", desc:"Rencontre inoubliable avec les gorilles de montagne au Rwanda", price:"Sur demande", badge:"Expérience unique" },
             { href:"/fr/budget-tours/masai-mara-3-days-budget-land-cruiser-safari", img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg", title:"Safari Budget 3 Jours", desc:"Masai Mara abordable en Land Cruiser partagé", price:"À partir de 450 USD", badge:"Meilleur rapport qualité-prix" },
           ].map(({ href, img, title, desc, price, badge }) => (

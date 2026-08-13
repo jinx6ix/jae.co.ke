@@ -34,7 +34,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-masai-mara",
     slug: "masai-mara-luxury-safari",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     title: "Masai Mara Luxury Safari",
     description: "Experience the wildlife of Masai Mara with luxury accommodations and expert guides. Includes game drives and meals.",
     price: 3500,
@@ -1676,7 +1676,7 @@ export const tours: Tour[] = [
   {
     "id": "53",
     "slug": "safari-madoa-doa",
-    "image": "/Viaje-a-Kenia-Masai-Mara-32.jpg",
+    "image": "/madoadoa.jpeg",
     "title": "Safari Madoa Doa",
     "description": "Embark on an exclusive safari adventure through Kenya's premier wildlife reserves, spotting the Big Five in their natural habitat.",
     "price": 3200,
@@ -2207,7 +2207,7 @@ export const tours: Tour[] = [
   {
     "id": "64",
     "slug": "big-five-tsavo-adventure",
-    "image": "/Inverdoorn-54.jpg",
+    "image": "/lion2.jpeg",
     "title": "6-Day Tsavo Big Five Adventure",
     "description": "Explore Kenya's largest national park, Tsavo, divided into Tsavo East and Tsavo West. This 6-day adventure takes you through red elephant country, volcanic landscapes, and lush riverine forests in search of the Big Five and Tsavo's famous maneless lions.",
     "price": 2450,

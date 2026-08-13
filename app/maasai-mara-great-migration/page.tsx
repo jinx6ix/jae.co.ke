@@ -385,7 +385,7 @@ export default function MaasaiMaraGreatMigrationPage() {
         categoryOpts={{
           title: "Masai Mara Great Migration Safari 2026",
           description: "Witness the Great Wildebeest Migration in Masai Mara. 1.5M wildebeest cross July-October.",
-          image: "/masai-mara-migration.jpg",
+          image: "/masaimara.jpeg",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("mara") || t.title?.toLowerCase().includes("mara") || t.description?.toLowerCase().includes("mara")) : [],
         }}
       />

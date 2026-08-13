@@ -30,7 +30,7 @@ export const generateMetadata = (): Metadata => ({
       "شاهد معابر نهر مارا الدرامية في رحلة سفاري متاحة بالكامل في كينيا مع مركبات 4x4 مكيفة ومرشدين خبراء.",
     images: [
       {
-        url: "https://www.jaetravel.co.ke/masai-mara-migration.jpg",
+        url: "https://www.jaetravel.co.ke/masaimara.jpeg",
         width: 1200,
         height: 630,
         alt: "معبر نهر مارا للهجرة الكبرى مع قطعان الجاموس البري",

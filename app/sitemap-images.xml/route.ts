@@ -32,7 +32,7 @@ export async function GET() {
     { loc: `${BASE}/og-image.jpg`, caption: "JaeTravel Expeditions Safari Tours", title: "Homepage OG Image" },
     { loc: `${BASE}/logo.png`, caption: "JaeTravel Expeditions Logo", title: "Logo" },
     { loc: `${BASE}/accessible-safari-wheelchair.jpg`, caption: "Wheelchair Accessible Safari in Kenya", title: "Wheelchair Safari" },
-    { loc: `${BASE}/masai-mara-migration.jpg`, caption: "Masai Mara Great Migration", title: "Migration" },
+    { loc: `${BASE}/masaimara.jpeg`, caption: "Masai Mara Great Migration", title: "Migration" },
     { loc: `${BASE}/tanzania-serengeti.jpg`, caption: "Serengeti National Park", title: "Serengeti" },
     { loc: `${BASE}/mountain-gorilla-trekking.jpg`, caption: "Mountain Gorilla Trekking", title: "Gorilla Trekking" },
     { loc: `${BASE}/kenya-safari-landscape.jpg`, caption: "Kenya Safari Landscape", title: "Safari" },

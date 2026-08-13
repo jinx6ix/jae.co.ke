@@ -16,7 +16,7 @@ import { accessibleTours } from "@/lib/accessiblemara";
 
 const BASE_URL = "https://www.jaetravel.co.ke";
 const ABSOLUTE_URL = `${BASE_URL}/wildebeest-migration-safari-packages`;
-const HERO_IMG = `${BASE_URL}/masai-mara-migration.jpg`;
+const HERO_IMG = `${BASE_URL}/masaimara.jpeg`;
 
 interface CombinedTour {
   id: string;
@@ -171,7 +171,7 @@ export default function WildebeestMigrationSafariPage() {
       {/* HERO */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/masai-mara-migration.jpg" alt="Masai Mara Wildebeest Migration Safari Kenya 2026" fill className="object-cover brightness-50" priority sizes="100vw" quality={90} />
+          <Image src="/masaimara.jpeg" alt="Masai Mara Wildebeest Migration Safari Kenya 2026" fill className="object-cover brightness-50" priority sizes="100vw" quality={90} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-[1]" />
         <div className="container relative z-10 mx-auto px-4 text-center text-white">

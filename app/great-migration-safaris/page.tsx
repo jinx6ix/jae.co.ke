@@ -210,7 +210,7 @@ export default function GreatMigrationSafarisPage() {
         categoryOpts={{
           title: "Great Migration Safaris East Africa 2026",
           description: "Witness the greatest wildlife spectacle on Earth. Masai Mara and Serengeti packages.",
-          image: "/masai-mara-migration.jpg",
+          image: "/masaimara.jpeg",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("migration") || t.title?.toLowerCase().includes("migration") || t.description?.toLowerCase().includes("migration")) : [],
         }}
       />

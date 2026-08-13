@@ -211,7 +211,7 @@ export default function GreatMigrationSafarisPage() {
         categoryOpts={{
           title: "رحلات الهجرة الكبرى في شرق أفريقيا 2026",
           description: "شاهد أعظم مشهد بري على وجه الأرض. باقات ماساي مارا وسيرينجيتي.",
-          image: "/masai-mara-migration.jpg",
+          image: "/masaimara.jpeg",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("migration") || t.title?.toLowerCase().includes("هجرة") || t.description?.toLowerCase().includes("هجرة")) : [],
         }}
       />

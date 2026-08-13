@@ -22,7 +22,7 @@ export default function HindiHomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
-        <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="मसाई मारा महान प्रवास केन्या सफारी" fill className="object-cover opacity-60" priority /></div>
+        <div className="absolute inset-0"><Image src="/masaimara.jpeg" alt="मसाई मारा महान प्रवास केन्या सफारी" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ सत्यापित समीक्षाएं</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">पूर्वी अफ्रीका में<br className="hidden md:block" /> अविस्मरणीय सफारी 2026</h1>
@@ -36,7 +36,7 @@ export default function HindiHomePage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-serif font-bold text-center mb-12">लोकप्रिय टूर</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[{href:"/hi/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"मसाई मारा लक्जरी सफारी",desc:"महान प्रवास, बिग फाइव और लक्जरी लॉज",price:"$3,500 से"},{href:"/hi/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"गोरिल्ला ट्रेकिंग",desc:"रवांडा में पर्वतीय गोरिल्लाओं से अविस्मरणीय मुलाकात",price:"अनुरोध पर"},{href:"/hi/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3 दिन बजट सफारी",desc:"साझा Land Cruiser में किफायती मसाई मारा",price:"$950 से"}].map(({href,img,title,desc,price})=>(
+          {[{href:"/hi/tour/masai-mara-luxury-safari",img:"/masaimara.jpeg",title:"मसाई मारा लक्जरी सफारी",desc:"महान प्रवास, बिग फाइव और लक्जरी लॉज",price:"$3,500 से"},{href:"/hi/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"गोरिल्ला ट्रेकिंग",desc:"रवांडा में पर्वतीय गोरिल्लाओं से अविस्मरणीय मुलाकात",price:"अनुरोध पर"},{href:"/hi/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3 दिन बजट सफारी",desc:"साझा Land Cruiser में किफायती मसाई मारा",price:"$950 से"}].map(({href,img,title,desc,price})=>(
             <Link key={href} href={href} className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <div className="relative h-52"><Image src={img} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" /></div>
               <div className="p-5"><h3 className="font-serif font-bold text-xl mb-2">{title}</h3><p className="text-gray-600 text-sm mb-3">{desc}</p><p className="text-orange-500 font-bold">{price}</p></div>

@@ -22,7 +22,7 @@ export default function ChineseHomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
-        <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="马赛马拉大迁徙肯尼亚野生动物园" fill className="object-cover opacity-60" priority /></div>
+        <div className="absolute inset-0"><Image src="/masaimara.jpeg" alt="马赛马拉大迁徙肯尼亚野生动物园" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+条已验证评价</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">东非难忘的<br className="hidden md:block" />野生动物园之旅2026</h1>
@@ -36,7 +36,7 @@ export default function ChineseHomePage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-serif font-bold text-center mb-12">热门旅游</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[{href:"/zh/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"马赛马拉豪华野生动物园",desc:"大迁徙、五大兽和豪华营地",price:"起价3,500美元"},{href:"/zh/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"大猩猩徒步探险",desc:"在卢旺达与山地大猩猩的难忘相遇",price:"按需报价"},{href:"/zh/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3天经济野生动物园",desc:"共享Land Cruiser马赛马拉实惠之旅",price:"起价450美元"}].map(({href,img,title,desc,price})=>(
+          {[{href:"/zh/tour/masai-mara-luxury-safari",img:"/masaimara.jpeg",title:"马赛马拉豪华野生动物园",desc:"大迁徙、五大兽和豪华营地",price:"起价3,500美元"},{href:"/zh/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"大猩猩徒步探险",desc:"在卢旺达与山地大猩猩的难忘相遇",price:"按需报价"},{href:"/zh/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3天经济野生动物园",desc:"共享Land Cruiser马赛马拉实惠之旅",price:"起价450美元"}].map(({href,img,title,desc,price})=>(
             <Link key={href} href={href} className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <div className="relative h-52"><Image src={img} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" /></div>
               <div className="p-5"><h3 className="font-serif font-bold text-xl mb-2">{title}</h3><p className="text-gray-600 text-sm mb-3">{desc}</p><p className="text-orange-500 font-bold">{price}</p></div>

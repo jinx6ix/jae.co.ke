@@ -27,7 +27,7 @@ export default function GermanHomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
-        <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="Große Migration Masai Mara Kenia" fill className="object-cover opacity-60" priority /></div>
+        <div className="absolute inset-0"><Image src="/masaimara.jpeg" alt="Große Migration Masai Mara Kenia" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ verifizierte Bewertungen</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Unvergessliche Ostafrika<br className="hidden md:block" /> Safari 2026</h1>
@@ -54,7 +54,7 @@ export default function GermanHomePage() {
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Sorgfältig ausgewählte Erlebnisse für jeden Reisenden</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            {href:"/de/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"Masai Mara Luxus-Safari",desc:"Große Migration, Big Five und Luxuslodges",price:"Ab 3.500 USD",badge:"Beliebt"},
+            {href:"/de/tour/masai-mara-luxury-safari",img:"/masaimara.jpeg",title:"Masai Mara Luxus-Safari",desc:"Große Migration, Big Five und Luxuslodges",price:"Ab 3.500 USD",badge:"Beliebt"},
             {href:"/de/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"Gorilla-Trekking",desc:"Unvergessliche Begegnung mit Berggorillas in Ruanda",price:"Auf Anfrage",badge:"Einzigartiges Erlebnis"},
             {href:"/de/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"3-Tage Budget-Safari",desc:"Erschwingliche Masai Mara im geteilten Land Cruiser",price:"Ab 450 USD",badge:"Bestes Preis-Leistungs-Verhältnis"},
           ].map(({href,img,title,desc,price,badge})=>(

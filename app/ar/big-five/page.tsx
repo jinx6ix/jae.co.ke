@@ -213,7 +213,7 @@ export default function BigFivePage() {
   const featuredBigFiveTours = tours.filter(t => t.tags?.includes('big-five')).slice(0, 3) || [
     { id: 'big-five-mara', title: 'سفاري لمدة 7 أيام للخمسة الكبار في ماساي مارا', price: 2850, duration: '7 أيام', image: '/Big-5.jpg' },
     { id: 'big-five-amboseli', title: 'رحلة لمدة 5 أيام في أمبوسيلي – تركيز على الفيلة', price: 1950, duration: '5 أيام', image: '/african-lions-uganda-1024x683.webp' },
-    { id: 'big-five-tsavo', title: 'مغامرة لمدة 6 أيام للخمسة الكبار في تسافو', price: 2450, duration: '6 أيام', image: '/Inverdoorn-54.jpg' },
+    { id: 'big-five-tsavo', title: 'مغامرة لمدة 6 أيام للخمسة الكبار في تسافو', price: 2450, duration: '6 أيام', image: '/lion2.jpeg' },
   ];
 
   return (
@@ -333,7 +333,7 @@ export default function BigFivePage() {
               name="الأسد"
               description="الحيوان المفترس الأعلى ورمز القوة. تسود الزمر السافانا، وتقدم مطاردات دراماتيكية وتفاعلات عائلية أثناء رحلات السفاري."
               icon={Binoculars}
-              image="/Inverdoorn-54.jpg"
+              image="/lion2.jpeg"
               bestParks={["كينيا", "تنزانيا", "أوغندا"]}
             />
             <BigFiveCard

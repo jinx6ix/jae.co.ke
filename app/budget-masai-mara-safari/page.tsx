@@ -16,7 +16,7 @@ const TOURS_AVG = (TOURS.reduce((s, t) => s + t.rating, 0) / TOURS.length).toFix
 const TOTAL_REV = TOURS.reduce((s, t) => s + t.reviewCount, 0);
 
 const ABSOLUTE_URL = `${BASE_URL}/budget-masai-mara-safari`;
-const HERO_IMG = `${BASE_URL}/masai-mara-migration.jpg`;
+const HERO_IMG = `${BASE_URL}/masaimara.jpeg`;
 
 export const metadata: Metadata = {
   title: "Budget Masai Mara Safari 2026 | From $610/Person | JaeTravel",
@@ -78,7 +78,7 @@ export default function BudgetMasaiMaraSafariPage() {
       {/* HERO */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/masai-mara-migration.jpg" alt="Budget Masai Mara Safari 2026" fill className="object-cover brightness-50" priority sizes="100vw" quality={90} />
+          <Image src="/masaimara.jpeg" alt="Budget Masai Mara Safari 2026" fill className="object-cover brightness-50" priority sizes="100vw" quality={90} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-[1]" />
         <div className="container relative z-10 mx-auto px-4 text-center text-white">
@@ -300,7 +300,7 @@ export default function BudgetMasaiMaraSafariPage() {
               </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden aspect-video">
-              <Image src="/masai-mara-migration.jpg" alt="The Great Migration in Masai Mara" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/masaimara.jpeg" alt="The Great Migration in Masai Mara" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
           </div>
         </div>

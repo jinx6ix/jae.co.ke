@@ -32,7 +32,7 @@ Planning your safari during the migration requires booking well in advance, as l
     author: "Sarah Johnson",
     publishedAt: "2025-01-15",
     category: "Travel Tips",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     metaTitle: "Best Time to Visit Masai Mara for Great Migration 2025",
     metaDescription:
       "Plan your perfect Masai Mara safari with our comprehensive guide to the Great Migration. Learn the best months, what to expect, and expert tips for witnessing this natural wonder in Kenya.",
@@ -283,7 +283,7 @@ Specialized photography safaris offer advantages for serious photographers: cust
     author: "Rachel Omondi",
     publishedAt: "2024-12-10",
     category: "Photography",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     metaTitle: "Wildlife Photography Safari Tips East Africa Guide 2025",
     metaDescription:
       "Master wildlife photography on your East African safari. Expert tips on camera equipment, settings, composition, lighting, and techniques for capturing stunning safari images in Kenya and Tanzania.",

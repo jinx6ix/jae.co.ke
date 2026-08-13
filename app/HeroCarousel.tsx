@@ -22,7 +22,7 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: "masai-mara",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     alt: "Golden sunset over Masai Mara with wildebeest migration in Kenya",
     title: "Witness the Great Migration",
     subtitle: "7 million hooves thunder across the Masai Mara — the world's greatest wildlife spectacle",

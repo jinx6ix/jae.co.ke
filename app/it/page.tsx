@@ -22,7 +22,7 @@ export default function ItalianHomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
-        <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="Grande Migrazione Masai Mara Kenya" fill className="object-cover opacity-60" priority /></div>
+        <div className="absolute inset-0"><Image src="/masaimara.jpeg" alt="Grande Migrazione Masai Mara Kenya" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ recensioni verificate</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Safari Indimenticabili<br className="hidden md:block" /> in Africa Orientale 2026</h1>
@@ -36,7 +36,7 @@ export default function ItalianHomePage() {
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-serif font-bold text-center mb-12">Tour Popolari</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[{href:"/it/tour/masai-mara-luxury-safari",img:"/masai-mara-migration.jpg",title:"Safari Masai Mara di Lusso",desc:"Grande Migrazione, Big Five e lodge di lusso",price:"Da 3.500 USD"},{href:"/it/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"Trekking Gorilla",desc:"Incontro indimenticabile con gorilla di montagna",price:"Su richiesta"},{href:"/it/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"Safari Budget 3 Giorni",desc:"Masai Mara economico in Land Cruiser condiviso",price:"Da 450 USD"}].map(({href,img,title,desc,price})=>(
+          {[{href:"/it/tour/masai-mara-luxury-safari",img:"/masaimara.jpeg",title:"Safari Masai Mara di Lusso",desc:"Grande Migrazione, Big Five e lodge di lusso",price:"Da 3.500 USD"},{href:"/it/tour/gorilla-trekking-experience",img:"/mountain-gorilla-trekking.jpg",title:"Trekking Gorilla",desc:"Incontro indimenticabile con gorilla di montagna",price:"Su richiesta"},{href:"/it/budget-tours/masai-mara-3-days-budget-land-cruiser-safari",img:"/pexels-bharath-kumar-venkatesh-1417371218-30125343-scaled.jpg",title:"Safari Budget 3 Giorni",desc:"Masai Mara economico in Land Cruiser condiviso",price:"Da 450 USD"}].map(({href,img,title,desc,price})=>(
             <Link key={href} href={href} className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <div className="relative h-52"><Image src={img} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" /></div>
               <div className="p-5"><h3 className="font-serif font-bold text-xl mb-2">{title}</h3><p className="text-gray-600 text-sm mb-3">{desc}</p><p className="text-orange-500 font-bold">{price}</p></div>

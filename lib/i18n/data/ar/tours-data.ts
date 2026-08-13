@@ -39,7 +39,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-masai-mara",
     slug: "masai-mara-luxury-safari",
-    image: "/masai-mara-migration.jpg",
+    image: "/masaimara.jpeg",
     title: "رحلات سفاري ماساي مارا الفاخرة",
     description: "استمتع بتجربة الحياة البرية في ماساي مارا مع إقامة فاخرة ومرشدين خبراء. تشمل الجولات والوجبات.",
     shortDescription: "رحلة سفاري فاخرة لمدة 5 أيام في أشهر محمية طبيعية في كينيا",
@@ -2543,7 +2543,7 @@ export const tours: Tour[] = [
   {
     "id": "51",
     "slug": "safari-madoa-doa",
-    "image": "/Viaje-a-Kenia-Masai-Mara-32.jpg",
+    "image": "/madoadoa.jpeg",
     "title": "سفاري مادوا دوا",
     "description": "انطلق في مغامرة سفاري حصرية عبر محميات كينيا الطبيعية الرائدة، لمشاهدة الحيوانات الخمسة الكبار في بيئتها الطبيعية.",
     shortDescription: "سفاري حياة برية حصري لمدة 7 أيام",
@@ -3175,7 +3175,7 @@ export const tours: Tour[] = [
   {
     "id": "63",
     "slug": "big-five-tsavo-adventure",
-    "image": "/Inverdoorn-54.jpg",
+    "image": "/lion2.jpeg",
     "title": "مغامرة تسافو للحيوانات الخمسة الكبار لمدة 6 أيام",
     "description": "استكشف أكبر منتزه وطني في كينيا، تسافو، المقسم إلى تسافو إيست وتسافو ويست. تأخذك هذه المغامرة لمدة 6 أيام عبر بلاد الفيلة الحمراء والمناظر البركانية والغابات النهرية الخصبة بحثًا عن الحيوانات الخمسة الكبار وأسود تسافو الشهيرة التي لا تعرف الرجال.",
     "shortDescription": "سفاري الحيوانات الخمسة الكبار لمدة 6 أيام عبر تسافو إيست وويست",
