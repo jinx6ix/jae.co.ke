@@ -213,7 +213,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
                   <strong>JaeTravel Expeditions was born in 2008</strong> from a simple dream: to share the raw, breathtaking beauty of East Africa with the world — <em>without barriers</em>.
                 </p>
                 <p>
-                  Founder <strong>Antony Waititu</strong>, a Maasai guide with 20+ years in the bush, saw travelers with disabilities turned away from safaris. He refused to accept that. So he built a company that says <strong>yes</strong> — to wheelchair users, seniors, families, and everyone in between.
+                  Founder <strong>Antony Waititu</strong>, a guide with 20+ years in the bush, saw travelers with disabilities turned away from safaris. He refused to accept that. So he built a company that says <strong>yes</strong> — to wheelchair users, seniors, families, and everyone in between.
                 </p>
                 <p>
                   Today, we're proud to be <strong>East Africa's leading accessible safari operator</strong>, with a fleet of <strong>hydraulic-lift 4x4s</strong>, partnerships with <strong>barrier-free lodges</strong>, and a team trained in <strong>inclusive guiding</strong>. Explore our <a href="/disability-tours" className="text-primary hover:underline">accessible tour options</a>.
