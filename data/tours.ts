@@ -525,7 +525,7 @@ export const tours: Tour[] = [
   {
     id: "13",
     slug: "serengeti-wildlife-safari",
-    image: "/serengeti-day-trip.jpeg",
+    image: "/serengetii.jpg",
 
     title: "Serengeti Wildlife Safari",
     description: "Explore the endless plains of Serengeti and witness incredible wildlife diversity.",

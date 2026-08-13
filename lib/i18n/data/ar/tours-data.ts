@@ -877,7 +877,7 @@ export const tours: Tour[] = [
   {
     id: "13",
     slug: "serengeti-wildlife-safari",
-    image: "/serengeti-day-trip.jpeg",
+    image: "/serengetii.jpg",
     title: "سفاري الحياة البرية في سيرينجيتي",
     description: "استكشف السهول التي لا نهاية لها في سيرينجيتي وشاهد تنوعًا لا يصدق في الحياة البرية.",
     shortDescription: "استكشاف سيرينجيتي لمدة 7 أيام",
