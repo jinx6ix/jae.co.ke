@@ -310,7 +310,7 @@ export default function AboutClient({ faqs, teamMembers, values }: AboutClientPr
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">Meet Your Safari Family</h2>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Our team isn't just experienced — they're <strong>passionate locals</strong> who live and breathe East Africa. 
-              From Maasai warriors to conservation PhDs, they're here to make your safari unforgettable.
+              With a deep understanding of the region's culture, history, and wildlife, they're here to make your safari unforgettable.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">

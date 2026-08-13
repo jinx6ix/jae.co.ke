@@ -302,7 +302,7 @@ const teamMembers = [
   {
     name: "Antony Waititu",
     role: "Founder & Chief Safari Guide",
-    bio: "Born in the Maasai Mara region, Antony  has 22+ years guiding experience. He founded JaeTravel in 2008 to make safaris accessible to all. Fluent in English, Swahili, and Maa.",
+    bio: "Born in the Maasai Mara region, Antony  has 22+ years guiding experience. He founded JaeTravel in 2008 to make safaris accessible to all. Fluent in English and Swahili",
     image: "/team/Antony -kimani.jpg",
   },
   {
