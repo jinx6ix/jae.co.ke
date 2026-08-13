@@ -219,7 +219,7 @@ export default function BigFivePage() {
   // Mock featured Big Five tours - filter from tours data or hardcode
   const featuredBigFiveTours = tours.filter(t => t.tags?.includes('big-five')).slice(0, 3) || [
     { id: 'big-five-mara', title: '7-Day Big Five Masai Mara', price: 2850, duration: '7 days', image: '/Big-5.jpg' },
-    { id: 'big-five-amboseli', title: '5-Day Amboseli Elephant Focus', price: 1950, duration: '5 days', image: '/african-lions-uganda-1024x683.webp' },
+    { id: 'big-five-amboseli', title: '5-Day Amboseli Elephant Focus', price: 1950, duration: '5 days', image: '/african-lions.jpg' },
     { id: 'big-five-tsavo', title: '6-Day Tsavo Big Five Adventure', price: 2450, duration: '6 days', image: '/lion2.jpeg' },
   ];
 

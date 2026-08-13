@@ -3117,7 +3117,7 @@ export const tours: Tour[] = [
   {
     "id": "62",
     "slug": "big-five-amboseli-elephant",
-    "image": "/african-lions-uganda-1024x683.webp",
+    "image": "/african-lions.jpg",
     "title": "5-Day Amboseli Elephant Focus",
     "description": "Discover the majestic elephants of Amboseli against the breathtaking backdrop of Mount Kilimanjaro. This 5-day specialized safari focuses on Africa's largest elephant herds, offering unparalleled photography opportunities and intimate encounters with these gentle giants.",
     "shortDescription": "5-day elephant-focused safari in Amboseli",
