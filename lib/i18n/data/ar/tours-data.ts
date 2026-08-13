@@ -369,7 +369,7 @@ export const tours: Tour[] = [
   {
     id: "2",
     slug: "amboseli-elephant-safari",
-    image: "/amboseli-elephants-00007.jpg",
+    image: "/amboseli-elephant.jpg",
     title: "سفاري فيلة أمبوسيلي",
     description: "اقترب من الفيلة على خلفية جبل كليمنجارو في منتزه أمبوسيلي الوطني.",
     shortDescription: "رحلة سفاري لمدة 4 أيام تركز على الفيلة",

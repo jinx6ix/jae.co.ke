@@ -369,7 +369,7 @@ export const tours: Tour[] = [
   {
     id: "2",
     slug: "amboseli-elephant-safari",
-    image: "/amboseli-elephants-00007.jpg",
+    image: "/amboseli-elephant.jpg",
     title: "Amboseli Elephant Safari",
     description: "Get close to elephants with Mount Kilimanjaro backdrop in Amboseli National Park.",
     shortDescription: "4-day elephant-focused safari",
