@@ -16,6 +16,8 @@ interface SafariData {
     couple: number;
     group3: number;
     group4plus: number;
+    group5: number;
+    group6: number;
   };
   startPoint: string;
   endPoint: string;
@@ -338,7 +340,7 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
       {/* Pricing Section */}
       {activeTab === 'pricing' && (
         <section className="py-16 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-center mb-4">
               Transparent Pricing
             </h2>
@@ -346,12 +348,14 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
               No hidden fees • Best price guaranteed • Safari minivan vehicle
             </p>
 
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
               {[
                 { label: '1 Person', price: safariData.price.solo, desc: 'Private safari for solo traveler' },
                 { label: '2 Persons', price: safariData.price.couple, desc: 'Perfect for couples', best: true },
                 { label: '3 Persons', price: safariData.price.group3, desc: 'Great for small groups' },
-                { label: '4+ Persons', price: safariData.price.group4plus, desc: 'Best value for groups' }
+                { label: '4 Persons', price: safariData.price.group4plus, desc: 'Ideal for families' },
+                { label: '5 Persons', price: safariData.price.group5, desc: 'Save more with friends' },
+                { label: '6 Persons', price: safariData.price.group6, desc: 'Best value for groups' }
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -359,7 +363,7 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={`bg-white rounded-2xl shadow-xl overflow-hidden ${
-                    item.best ? 'border-2 border-orange-500 transform scale-105 relative' : ''
+                    item.best ? 'border-2 border-orange-500 transform scale-105 relative z-10' : ''
                   }`}
                 >
                   {item.best && (
@@ -367,18 +371,18 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
                       BEST VALUE
                     </div>
                   )}
-                  <div className={`p-6 text-center ${item.best ? 'bg-orange-50' : 'bg-gray-50'}`}>
-                    <h3 className="font-bold text-xl">{item.label}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+                  <div className={`p-4 text-center ${item.best ? 'bg-orange-50' : 'bg-gray-50'}`}>
+                    <h3 className="font-bold text-lg">{item.label}</h3>
+                    <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
                   </div>
-                  <div className="p-8 text-center">
-                    <div className="text-4xl font-bold text-orange-600 mb-2">
+                  <div className="p-6 text-center">
+                    <div className="text-3xl font-bold text-orange-600 mb-2">
                       ${item.price}
                     </div>
-                    <div className="text-sm text-gray-500 mb-6">per person</div>
+                    <div className="text-xs text-gray-500 mb-4">per person</div>
                     <Link
                       href={`/booking/1-day-mara-${item.label.toLowerCase().replace(' ', '-')}`}
-                      className="block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition-colors"
+                      className="block w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-semibold transition-colors text-sm"
                     >
                       Book Now
                     </Link>
