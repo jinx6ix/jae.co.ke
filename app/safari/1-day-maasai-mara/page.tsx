@@ -21,11 +21,13 @@ export default function OneDayMaasaiMaraPage() {
     title: "1 Day Maasai Mara Safari from Nairobi",
     duration: "1 Day / 0 Nights",
     price: {
-      base: 180,
-      solo: 350,
-      couple: 220,
-      group3: 190,
-      group4plus: 180
+      base: 80,
+      solo: 400,
+      couple: 200,
+      group3: 140,
+      group4plus: 100,
+      group5: 90,
+      group6: 80
     },
     startPoint: "Nairobi",
     endPoint: "Nairobi",
@@ -96,7 +98,7 @@ export default function OneDayMaasaiMaraPage() {
       }
     ],
     included: [
-      "Transport in safari van with pop-up roof",
+      "Transport in safari minivan with pop-up roof",
       "Professional English-speaking guide",
       "Game drives as per itinerary",
       "Packed lunch",
@@ -135,7 +137,7 @@ export default function OneDayMaasaiMaraPage() {
       },
       {
         question: "What is included in the 1 day safari price?",
-        answer: "The price includes transport in safari vehicle with pop-up roof, professional English-speaking guide, game drives, packed lunch, bottled water, and government taxes. Park entry fees ($80 per person) are excluded."
+        answer: "The price includes transport in safari minivan with pop-up roof, professional English-speaking guide, game drives, packed lunch, bottled water, and government taxes. Park entry fees ($80 per person) are excluded."
       },
       {
         question: "How long is the drive from Nairobi to Maasai Mara?",
@@ -151,7 +153,7 @@ export default function OneDayMaasaiMaraPage() {
       },
       {
         question: "What type of vehicle is used?",
-        answer: "We use safari vans with pop-up roofs for optimal game viewing. The vehicles are customized for safaris with large windows and comfortable seating."
+        answer: "We use safari minivans with pop-up roofs for optimal game viewing. The vehicles are customized for safaris with large windows and comfortable seating."
       },
       {
         question: "Is the safari wheelchair accessible?",
