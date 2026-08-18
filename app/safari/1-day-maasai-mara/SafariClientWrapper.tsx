@@ -150,8 +150,8 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
                 <div className="flex items-center gap-3">
                   <span className="text-3xl">🚐</span>
                   <div>
-                    <div className="font-bold text-xl">Free Pickup</div>
-                    <div className="text-sm text-gray-300">Nairobi hotels</div>
+                    <div className="font-bold text-xl">Safari Minivan</div>
+                    <div className="text-sm text-gray-300">Pop-up roof for game viewing</div>
                   </div>
                 </div>
               </div>
@@ -343,15 +343,15 @@ export default function SafariClientWrapper({ safariData }: SafariClientWrapperP
               Transparent Pricing
             </h2>
             <p className="text-center text-gray-600 mb-12">
-              No hidden fees • Best price guaranteed
+              No hidden fees • Best price guaranteed • Safari minivan vehicle
             </p>
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { label: 'Solo Traveler', price: safariData.price.solo, desc: 'Perfect for solo adventurers' },
-                { label: 'Couple', price: safariData.price.couple, desc: 'Best for romantic getaways', best: true },
-                { label: 'Group of 3', price: safariData.price.group3, desc: 'Great for small groups' },
-                { label: 'Group 4+', price: safariData.price.group4plus, desc: 'Best value for groups' }
+                { label: '1 Person', price: safariData.price.solo, desc: 'Private safari for solo traveler' },
+                { label: '2 Persons', price: safariData.price.couple, desc: 'Perfect for couples', best: true },
+                { label: '3 Persons', price: safariData.price.group3, desc: 'Great for small groups' },
+                { label: '4+ Persons', price: safariData.price.group4plus, desc: 'Best value for groups' }
               ].map((item, index) => (
                 <motion.div
                   key={index}
