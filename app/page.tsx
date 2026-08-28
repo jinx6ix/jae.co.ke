@@ -329,11 +329,13 @@ export default function HomePage() {
           __html: JSON.stringify(homepageSchema).replace(/</g, '\\u003c')
         }}
       />
-      <GooglePreferredSource />
-
       {/* Hero Carousel */}
       <HeroCarousel />
 
+      {/* Google Preferred Source */}
+      <div className="flex justify-center py-4">
+        <GooglePreferredSource />
+      </div>
       {/* Why Choose Us — keyword reinforced H1 + body */}
       <section className="border-b border-border bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
