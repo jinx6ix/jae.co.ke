@@ -1,7 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Newspaper } from "lucide-react";
+
+interface PreferredSourceClient {
+  init: (options: {
+    theme?: "light" | "dark";
+    lang?: string;
+  }) => void;
+
+  addPreferredSource: () => void;
+}
 
 interface GooglePreferredSourceProps {
   theme?: "light" | "dark";
@@ -10,7 +19,9 @@ interface GooglePreferredSourceProps {
 
 declare global {
   interface Window {
-    __googlePreferredSourceInitialized?: boolean;
+    PREFERRED_SOURCE?: Array<
+      (preferredSource: PreferredSourceClient) => void
+    >;
   }
 }
 
@@ -18,175 +29,117 @@ export function GooglePreferredSource({
   theme = "light",
   lang = "en",
 }: GooglePreferredSourceProps) {
-  const widgetRef = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    let connected = false;
 
-    const loadGoogleWidget = async () => {
-      try {
-        // Prevent duplicate initialization
-        if (window.__googlePreferredSourceInitialized) {
-          setReady(true);
-          return;
-        }
+    const register = (
+      preferredSource: PreferredSourceClient
+    ) => {
+      preferredSource.init({
+        theme,
+        lang,
+      });
 
-        // Load Google's publisher script
-        const existingScript = document.querySelector(
-          'script[src="https://news.google.com/swg/js/v1/publisher.js"]'
-        );
+      const button = buttonRef.current;
 
-        if (!existingScript) {
-          await new Promise<void>((resolve, reject) => {
-            const script = document.createElement("script");
-
-            script.src =
-              "https://news.google.com/swg/js/v1/publisher.js";
-
-            script.async = true;
-
-            script.onload = () => resolve();
-            script.onerror = () =>
-              reject(new Error("Failed to load Google Publisher script"));
-
-            document.head.appendChild(script);
-          });
-        }
-
-        if (cancelled) return;
-
-        // Give Google's script time to expose the widget
-        await new Promise((resolve) => setTimeout(resolve, 500));
-
-        if (cancelled) return;
-
-        window.__googlePreferredSourceInitialized = true;
-
-        setReady(true);
-      } catch (error) {
-        console.error(
-          "Google Preferred Source initialization failed:",
-          error
-        );
-
-        setReady(true);
+      if (!button || connected) {
+        return;
       }
+
+      connected = true;
+
+      const handleClick = () => {
+        preferredSource.addPreferredSource();
+      };
+
+      button.addEventListener("click", handleClick);
+
+      return () => {
+        button.removeEventListener("click", handleClick);
+      };
     };
 
-    loadGoogleWidget();
+    /*
+     * Google Preferred Sources exposes a callback queue.
+     *
+     * If Google's library has not loaded yet, this callback
+     * waits in the queue.
+     */
+    if (!window.PREFERRED_SOURCE) {
+      window.PREFERRED_SOURCE = [];
+    }
+
+    window.PREFERRED_SOURCE.push(register);
+
+    /*
+     * Safety fallback:
+     *
+     * If Google's library loaded before this component mounted,
+     * keep the callback queue available.
+     */
+    const interval = window.setInterval(() => {
+      if (window.PREFERRED_SOURCE) {
+        // Google handles the queue.
+      }
+    }, 500);
 
     return () => {
-      cancelled = true;
+      window.clearInterval(interval);
     };
-  }, []);
-
-  const handleClick = () => {
-    if (!widgetRef.current) return;
-
-    /*
-     * Google's Preferred Source widget creates an iframe inside
-     * this element. Clicking the hidden widget allows Google to
-     * handle the actual "Add as preferred source" action.
-     */
-
-    const iframe = widgetRef.current.querySelector(
-      "iframe"
-    ) as HTMLIFrameElement | null;
-
-    if (iframe) {
-      iframe.contentWindow?.postMessage(
-        {
-          type: "google-preferred-source-click",
-        },
-        "https://news.google.com"
-      );
-    }
-
-    /*
-     * If Google has not created the iframe yet, temporarily
-     * make the widget visible and trigger its button.
-     */
-    if (!iframe) {
-      const googleButton =
-        widgetRef.current.querySelector(
-          "button"
-        ) as HTMLButtonElement | null;
-
-      if (googleButton) {
-        googleButton.click();
-      }
-    }
-  };
+  }, [theme, lang]);
 
   return (
-    <>
-      {/* ------------------------------------------------------------ */}
-      {/* GOOGLE PREFERRED SOURCE WIDGET                               */}
-      {/* Hidden because we provide our own circular UI button.        */}
-      {/* ------------------------------------------------------------ */}
+    <button
+      ref={buttonRef}
+      id="google-preferred-source-button"
+      type="button"
+      aria-label="Add JaeTravel Expeditions as a Preferred Source"
+      title="Add JaeTravel Expeditions as a Preferred Source"
+      className="
+        fixed
+        right-5
+        bottom-24
+        z-[9999]
 
-      <div
-        ref={widgetRef}
-        google-add-preferred-source-btn=""
-        data-theme={theme}
-        data-lang={lang}
+        flex
+        h-12
+        w-12
+        items-center
+        justify-center
+
+        rounded-full
+        border
+        border-border
+        bg-background
+        text-foreground
+
+        shadow-lg
+
+        cursor-pointer
+
+        transition-all
+        duration-200
+
+        hover:scale-110
+        hover:bg-accent
+        hover:text-accent-foreground
+        hover:shadow-xl
+
+        active:scale-95
+
+        focus:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-primary
+        focus-visible:ring-offset-2
+      "
+    >
+      <Newspaper
+        className="h-5 w-5"
+        strokeWidth={2}
         aria-hidden="true"
-        style={{
-          position: "absolute",
-          width: "1px",
-          height: "1px",
-          overflow: "hidden",
-          opacity: 0,
-          pointerEvents: "none",
-        }}
       />
-
-      {/* ------------------------------------------------------------ */}
-      {/* FLOATING CIRCULAR BUTTON                                      */}
-      {/* ------------------------------------------------------------ */}
-
-      <button
-        type="button"
-        onClick={handleClick}
-        disabled={!ready}
-        aria-label="Add JaeTravel Expeditions as a preferred source on Google"
-        title="Add JaeTravel Expeditions as a preferred source on Google"
-        className="
-          fixed
-          right-5
-          bottom-24
-          z-[9999]
-          flex
-          h-12
-          w-12
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-border
-          bg-background
-          text-foreground
-          shadow-lg
-          transition-all
-          duration-200
-          hover:scale-110
-          hover:shadow-xl
-          active:scale-95
-          disabled:cursor-not-allowed
-          disabled:opacity-60
-          focus:outline-none
-          focus:ring-2
-          focus:ring-primary
-          focus:ring-offset-2
-        "
-      >
-        <Newspaper
-          className="h-5 w-5"
-          strokeWidth={2}
-          aria-hidden="true"
-        />
-      </button>
-    </>
+    </button>
   );
 }
