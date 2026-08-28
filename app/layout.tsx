@@ -513,6 +513,9 @@ export default async function RootLayout({
           id="google-preferred-source"
           strategy="afterInteractive"
           src="https://news.google.com/swg/js/v1/publisher.js"
+          {...{
+            "preferred-sources-control": "manual",
+          }}
         />
 
         {/* ---------------------------------------------------------------- */}
