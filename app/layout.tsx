@@ -17,6 +17,16 @@ import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import { headers } from "next/headers";
 
+// -----------------------------------------------------------------------------
+// GOOGLE PREFERRED SOURCE
+// -----------------------------------------------------------------------------
+
+import { GooglePreferredSource } from "@/components/google-preferred-source";
+
+// -----------------------------------------------------------------------------
+// VIEWPORT
+// -----------------------------------------------------------------------------
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -33,6 +43,10 @@ export const viewport: Viewport = {
   ],
 };
 
+// -----------------------------------------------------------------------------
+// FONTS
+// -----------------------------------------------------------------------------
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -47,7 +61,15 @@ const inter = Inter({
   preload: true,
 });
 
+// -----------------------------------------------------------------------------
+// BASE URL
+// -----------------------------------------------------------------------------
+
 const BASE = "https://www.jaetravel.co.ke";
+
+// -----------------------------------------------------------------------------
+// METADATA
+// -----------------------------------------------------------------------------
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
@@ -168,6 +190,10 @@ export const metadata: Metadata = {
     ].join(", "),
   },
 };
+
+// -----------------------------------------------------------------------------
+// ANALYTICS IDS
+// -----------------------------------------------------------------------------
 
 const GTM_ID = "GTM-52G2X6L5";
 const GA_ID = "G-2YLERP8F8B";
@@ -388,7 +414,10 @@ export default async function RootLayout({
         {/* BASIC SITE ICONS                                                  */}
         {/* ---------------------------------------------------------------- */}
 
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+        />
 
         <link
           rel="apple-touch-icon"
@@ -674,28 +703,62 @@ export default async function RootLayout({
               </div>
             }
           >
-            {/* HEADER */}
+            {/* ------------------------------------------------------------ */}
+            {/* HEADER                                                        */}
+            {/* ------------------------------------------------------------ */}
+
             <div className="header-wrapper">
               <Header />
             </div>
 
-            {/* MAIN CONTENT */}
+            {/* ------------------------------------------------------------ */}
+            {/* MAIN CONTENT                                                  */}
+            {/* ------------------------------------------------------------ */}
+
             <main className="min-h-screen flex justify-center">
               <div className="w-full max-w-7xl">
                 {children}
               </div>
             </main>
 
-            {/* FOOTER */}
+            {/* ------------------------------------------------------------ */}
+            {/* FOOTER                                                        */}
+            {/* ------------------------------------------------------------ */}
+
             <Footer />
 
-            {/* ANALYTICS */}
+            {/* ------------------------------------------------------------ */}
+            {/* ANALYTICS                                                     */}
+            {/* ------------------------------------------------------------ */}
+
             <AnalyticsTracker />
 
             <Analytics />
 
-            {/* DYNAMIC SCRIPTS */}
+            {/* ------------------------------------------------------------ */}
+            {/* DYNAMIC SCRIPTS                                                */}
+            {/* ------------------------------------------------------------ */}
+
             <DynamicScripts />
+
+            {/* ------------------------------------------------------------ */}
+            {/* GOOGLE PREFERRED SOURCE — FLOATING ON ALL PAGES              */}
+            {/* ------------------------------------------------------------ */}
+
+            <div
+              className="
+                fixed
+                bottom-5
+                right-5
+                z-[9999]
+              "
+              aria-label="Google Preferred Source"
+            >
+              <GooglePreferredSource
+                theme="light"
+                lang={locale}
+              />
+            </div>
           </Suspense>
         </OrderProvider>
       </body>
