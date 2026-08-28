@@ -6,6 +6,7 @@ import { Tour, tours } from "@/lib/tours-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { TourCard } from "@/components/tour-card"
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import { TourReviews } from "@/components/tour-reviews"
 import fs from "fs/promises"
 import { BookingForm } from "@/components/booking-form"
@@ -138,6 +139,7 @@ export default async function TourPage(props: TourPageProps) {
   return (
     <>
       <TourStructuredData tour={{ ...tour, duration: String(tour.duration || "Not specified") }} />
+      <GooglePreferredSource />
 
       <div className="pb-16">
         {/* Breadcrumb */}

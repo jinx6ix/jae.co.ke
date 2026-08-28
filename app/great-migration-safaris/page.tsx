@@ -36,6 +36,7 @@ import {
   Waves
 } from "lucide-react"
 import TourCard from "@/components/TourCard"
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import MigrationCalendar from "@/components/MigrationCalendar"
 import LiveWildlifeReport from "@/components/LiveWildlifeReport"
 import FaqSection from "@/components/FaqSection"
@@ -216,6 +217,7 @@ export default function GreatMigrationSafarisPage() {
       />
       {/* JSON-LD Script */}
       <JsonLd id="great-migration-safaris-schema" data={jsonLd} />
+      <GooglePreferredSource />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">

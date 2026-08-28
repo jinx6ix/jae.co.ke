@@ -39,6 +39,7 @@ import {
 } from "lucide-react"
 import TourCard from "@/components/TourCard"
 import MigrationCalendar from "@/components/MigrationCalendar"
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import LiveWildlifeReport from "@/components/LiveWildlifeReport"
 import FaqSection from "@/components/FaqSection"
 import TrustBadges from "@/components/TrustBadges"
@@ -208,7 +209,9 @@ export default function AmboseliSafarisPage() {
         }}
       />
       {/* JSON-LD Script */}
-      <JsonLd data={jsonLd} />
+      <JsonLd data={jsonLd} id={""} />
+
+      <GooglePreferredSource />
       
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">

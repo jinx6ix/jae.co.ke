@@ -10,6 +10,7 @@ import { destinations } from "@/lib/destinations-data"
 import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, UsersIcon, Globe, Heart, Zap } from "lucide-react"
 import { breadcrumbSchema } from "./breadcrumb-schema"
 import DestinationCard from "./destination/DestinationCard"
+import { GooglePreferredSource } from "@/components/google-preferred-source"
 
 // COMPLETE BULLET-PROOF HOMEPAGE SCHEMA — FULLY VALID + ENHANCED FOR ALL RICH RESULTS (Reviews, FAQ, Video, Breadcrumb)
 const homepageSchema = {
@@ -328,6 +329,7 @@ export default function HomePage() {
           __html: JSON.stringify(homepageSchema).replace(/</g, '\\u003c')
         }}
       />
+      <GooglePreferredSource />
 
       {/* Hero Carousel */}
       <HeroCarousel />

@@ -6,6 +6,7 @@ import { generateSafariSchema } from './schema';
 import { metadata as pageMetadata } from './metadata';
 import SafariClientWrapper from './SafariClientWrapper';
 import JsonLd from '@/components/JsonLd';
+import { GooglePreferredSource } from '@/components/google-preferred-source';
 
 // Export metadata for Next.js
 export { pageMetadata as metadata };
@@ -220,6 +221,7 @@ export default function OneDayMaasaiMaraPage() {
         id="structured-data" 
         data={generateSafariSchema()} 
       />
+      <GooglePreferredSource />
             
       <SafariClientWrapper safariData={safariData} />
     </>

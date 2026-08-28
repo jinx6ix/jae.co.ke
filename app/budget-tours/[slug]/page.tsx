@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 
 // Server Components
 import TourHero from "./components/TourHero";
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import TourOverview from "./components/TourOverview";
 import TourDescription from "./components/TourDescription";
 import TourHighlights from "./components/TourHighlights";
@@ -263,6 +264,8 @@ export default async function TourDetailPage(props: Props) {
     <div className="min-h-screen bg-white">
       {/* Structured Data */}
       <JsonLd id="structured-data" data={schema} />
+
+      <GooglePreferredSource />
 
       {/* Main Content Container with responsive padding */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

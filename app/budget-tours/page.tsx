@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { Button } from "@/components/ui/button";
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Check, DollarSign, Users, Shield, Phone, MapPin, Calendar, Camera,
@@ -223,6 +224,7 @@ export default function BudgetToursPage() {
     <div className="pb-16">
       <Script id="budget-tours-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <GoogleMerchantWidget />
+      <GooglePreferredSource />
 
       {/* HERO */}
       <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">

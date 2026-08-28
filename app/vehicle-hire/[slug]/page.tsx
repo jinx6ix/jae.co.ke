@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import { vehicles } from "@/lib/vehicles-data";
 import { Check, ArrowLeft, Users, Luggage, Fuel, Settings, ChevronRight } from "lucide-react";
 import { VehicleBookingForm } from "@/components/vehicle-booking-form";
@@ -133,6 +134,7 @@ export default async function VehicleDetailPage({
   return (
     <>
       <AllPageSEOSchema type="vehicle" data={vehicle} slug={vehicle.slug} />
+      <GooglePreferredSource />
 
       <div className="min-h-screen bg-background pb-20">
         {/* Breadcrumb */}

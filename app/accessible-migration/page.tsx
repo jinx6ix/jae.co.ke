@@ -2,6 +2,7 @@ import { accessibleTours } from "@/lib/accessiblemara"
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
+import { GooglePreferredSource } from "@/components/google-preferred-source";
 import { Button } from "@/components/ui/button"
 import { Star, MapPin, Clock, CheckCircle, Accessibility, Users, Calendar, Phone, Globe, ChevronRight, Utensils, Mountain, Play, Bird, DollarSign } from "lucide-react"
 
@@ -198,6 +199,8 @@ export default function AccessibleMigrationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+<GooglePreferredSource />
 
       <div className="min-h-screen bg-white">
         <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8 md:py-16 max-w-7xl">

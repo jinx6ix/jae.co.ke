@@ -2,6 +2,7 @@ import { accessibleTours, getTourBySlug } from "@/lib/accessiblemara"
 import type { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import AccessibleTourClient from "./AccessibleTourClient"
+import { GooglePreferredSource } from "@/components/google-preferred-source"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -138,6 +139,8 @@ export default async function AccessibleTourDetailPage(props: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+
+      <GooglePreferredSource />
       <AccessibleTourClient
         tour={tour}
         absoluteUrl={absoluteUrl}
