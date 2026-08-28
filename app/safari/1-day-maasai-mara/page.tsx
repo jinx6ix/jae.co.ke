@@ -1,701 +1,227 @@
-// app/layout.tsx — reads x-locale header from custom server
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import { generateSafariSchema } from './schema';
+import { metadata as pageMetadata } from './metadata';
+import SafariClientWrapper from './SafariClientWrapper';
+import JsonLd from '@/components/JsonLd';
 
-import type React from "react";
-import type { Viewport } from "next";
-import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { AnalyticsTracker } from "@/components/analytics-tracker";
-import Script from "next/script";
-import { Suspense } from "react";
-import AsyncCSSInitializer from "@/components/AsyncCSSInitializer";
-import { OrderProvider } from "@/components/OrderContext";
-import DynamicScripts from "@/components/DynamicScripts";
-import "./globals.css";
-import JsonLd from "@/components/JsonLd";
-import { headers } from "next/headers";
+// Export metadata for Next.js
+export { pageMetadata as metadata };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: [
-    {
-      media: "(prefers-color-scheme: light)",
-      color: "#f97316",
+// Generate static params for dynamic routes if needed
+export async function generateStaticParams() {
+  return [];
+}
+
+// Server component - fetches data and handles SEO
+export default function OneDayMaasaiMaraPage() {
+  const safariData = {
+    title: "1 Day Maasai Mara Safari from Nairobi",
+    duration: "1 Day / 0 Nights",
+    price: {
+      base: 80,
+      solo: 400,
+      couple: 200,
+      group3: 140,
+      group4plus: 100,
+      group5: 90,
+      group6: 80
     },
-    {
-      media: "(prefers-color-scheme: dark)",
-      color: "#ea580c",
-    },
-  ],
-};
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  preload: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
-
-const BASE = "https://www.jaetravel.co.ke";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(BASE),
-
-  title: {
-    default:
-      "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
-    template: "%s | JaeTravel Expeditions",
-  },
-
-  description:
-    "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda. Specializing in accessible tours, gorilla trekking, and luxury wildlife adventures.",
-
-  keywords: [
-    "East Africa Safari",
-    "Kenya Tours",
-    "Tanzania Safari",
-    "Rwanda Gorilla Trekking",
-    "Uganda Safari",
-    "Accessible Safari",
-    "Disability Travel",
-    "Wildlife Tours",
-    "Masai Mara",
-    "Serengeti",
-    "Great Migration",
-    "wheelchair safari Kenya",
-  ],
-
-  authors: [
-    {
-      name: "JaeTravel Expeditions",
-      url: BASE,
-    },
-  ],
-
-  creator: "JaeTravel Expeditions",
-  publisher: "JaeTravel Expeditions",
-
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: BASE,
-    siteName: "JaeTravel Expeditions",
-    title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description:
-      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
-    images: [
-      {
-        url: `${BASE}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "JaeTravel Expeditions - East Africa Safari Tours",
-      },
+    startPoint: "Nairobi",
+    endPoint: "Nairobi",
+    highlights: [
+      "Full-day game drive in Maasai Mara National Reserve",
+      "Big Five wildlife viewing (lions, elephants, leopards, buffalo, rhinos)",
+      "Professional English-speaking safari guide",
+      "Pickup and drop-off from Nairobi hotel",
+      "Packed lunch in the wild",
+      "Scenic drive via Great Rift Valley viewpoint",
+      "Photography opportunities with expert guidance",
+      "Over 500 bird species to spot"
     ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    site: "@jaetravelkenya",
-    creator: "@jaetravelkenya",
-    title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description:
-      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
-    images: [`${BASE}/og-image.jpg`],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+    itinerary: [
+      {
+        day: 1,
+        time: "4:30 AM - 5:00 AM",
+        title: "Pickup from Nairobi Hotel",
+        description: "Early morning pickup from your Nairobi hotel or residence. Our driver-guide will meet you at the lobby. Brief introduction and safety orientation before departure.",
+        icon: "🚐",
+        image: "/pickup.jpg",
+        imageAlt: "Safari vehicle pickup from Nairobi hotel for Maasai Mara day trip"
+      },
+      {
+        day: 1,
+        time: "5:00 AM - 8:30 AM",
+        title: "Drive to Maasai Mara via Great Rift Valley",
+        description: "Depart Nairobi and drive through the beautiful Kenyan countryside. Stop at the Great Rift Valley viewpoint for stunning photos and stretch break.",
+        icon: "🏞️",
+        image: "/great-rift-valley.jpg",
+        imageAlt: "Great Rift Valley viewpoint scenic stop on Nairobi to Maasai Mara drive"
+      },
+      {
+        day: 1,
+        time: "8:30 AM - 12:30 PM",
+        title: "Morning Game Drive",
+        description: "Enter Maasai Mara National Reserve. Begin your game drive spotting lions, elephants, giraffes, zebras, and more. Your guide will share insights about wildlife behavior.",
+        icon: "🦁",
+        image: "/morning-game-drive.jpg",
+        imageAlt: "Lion in Maasai Mara during morning game drive safari"
+      },
+      {
+        day: 1,
+        time: "12:30 PM - 1:30 PM",
+        title: "Picnic Lunch in the Wild",
+        description: "Enjoy a delicious packed lunch at a designated picnic site within the reserve, surrounded by the African savannah. Vegetarian options available.",
+        icon: "🥪",
+        image: "/picnic-lunch.jpg",
+        imageAlt: "Picnic lunch setup in Maasai Mara savannah with wildlife view"
+      },
+      {
+        day: 1,
+        time: "1:30 PM - 4:00 PM",
+        title: "Afternoon Game Drive",
+        description: "Continue exploring different areas of the park. Visit the Mara River to spot hippos and crocodiles. Search for cheetahs, leopards, and other predators.",
+        icon: "📸",
+        image: "/afternoon-game-drive.jpg",
+        imageAlt: "Elephant herd at Mara River during afternoon game drive"
+      },
+      {
+        day: 1,
+        time: "4:00 PM - 7:30 PM",
+        title: "Return Journey to Nairobi",
+        description: "Begin the drive back to Nairobi, with a short break along the way. Arrive in the evening and get dropped off at your hotel with unforgettable memories.",
+        icon: "🌇",
+        image: "/sunset-return.jpg",
+        imageAlt: "Sunset over African savannah during return journey from Maasai Mara"
+      }
+    ],
+    included: [
+      "Transport in safari minivan with pop-up roof",
+      "Professional English-speaking guide",
+      "Game drives as per itinerary",
+      "Packed lunch",
+      "Bottled drinking water",
+      "Government taxes and VAT",
+      "Pickup and drop-off in Nairobi"
+    ],
+    excluded: [
+      "Park entry fees ($80 per person)",
+      "Tips and gratuities (recommended $10 per person)",
+      "Personal expenses",
+      "Travel insurance",
+      "Beverages not mentioned",
+      "Masai village visit (optional)"
+    ],
+    optional: [
+      {
+        name: "Masai Village Visit",
+        price: 30,
+        description: "Visit a traditional Masai village and experience their culture, dances, and way of life."
+      },
+      {
+        name: "Hot Air Balloon Safari",
+        price: 450,
+        description: "Optional balloon safari over Maasai Mara with champagne breakfast (requires advance booking)."
+      }
+    ],
+    faqs: [
+      {
+        question: "What time does the 1 day Maasai Mara safari start?",
+        answer: "Pickup from your Nairobi hotel starts between 4:30-5:00 AM. The exact time depends on your hotel location. We recommend being ready by 4:30 AM for early departure to maximize game viewing time."
+      },
+      {
+        question: "Can I see the Big Five in one day?",
+        answer: "While possible, it's not guaranteed. Lions, elephants, and buffalo are commonly seen in Maasai Mara. Leopards and rhinos require luck and are less frequently spotted on day trips. However, our experienced guides know the best spots."
+      },
+      {
+        question: "What is included in the 1 day safari price?",
+        answer: "The price includes transport in safari minivan with pop-up roof, professional English-speaking guide, game drives, packed lunch, bottled water, and government taxes. Park entry fees ($80 per person) are excluded."
+      },
+      {
+        question: "How long is the drive from Nairobi to Maasai Mara?",
+        answer: "The drive takes approximately 5-6 hours each way, covering about 270 km round trip. The journey includes scenic stops at the Great Rift Valley viewpoint for photos."
+      },
+      {
+        question: "What should I bring for a day safari?",
+        answer: "Bring a camera, binoculars, sunscreen, hat, sunglasses, light jacket (mornings can be cold), and comfortable clothing in neutral colors. Don't forget your passport and some cash for tips and souvenirs."
+      },
+      {
+        question: "Are children allowed on this safari?",
+        answer: "Yes, children are welcome. Special rates apply for children under 12. Please inform us of children's ages when booking so we can prepare appropriately."
+      },
+      {
+        question: "What type of vehicle is used?",
+        answer: "We use safari minivans with pop-up roofs for optimal game viewing. The vehicles are customized for safaris with large windows and comfortable seating."
+      },
+      {
+        question: "Is the safari wheelchair accessible?",
+        answer: "Please contact us in advance to discuss accessibility options. Some vehicles and locations can accommodate travelers with limited mobility."
+      }
+    ],
+    reviews: [
+      {
+        name: "Sarah Johnson",
+        country: "United States",
+        rating: 5,
+        date: "January 15, 2026",
+        comment: "Absolutely incredible day! Saw lions, elephants, giraffes, and even a cheetah hunting. Our guide Joseph was knowledgeable and made sure we got the best views. Worth every penny!",
+        avatar: "/images/reviews/sarah.jpg"
+      },
+      {
+        name: "Michael Chen",
+        country: "Singapore",
+        rating: 5,
+        date: "December 10, 2025",
+        comment: "Perfect for travelers with limited time. Well organized from pickup to drop-off. Saw the Big Four (lion, elephant, buffalo, leopard). The packed lunch was surprisingly good!",
+        avatar: "/images/reviews/michael.jpg"
+      },
+      {
+        name: "Emma Watson",
+        country: "United Kingdom",
+        rating: 4.5,
+        date: "November 22, 2025",
+        comment: "Great experience! Long day but worth it. The guide was fantastic and spotted animals we would have missed. Comfortable vehicle and good lunch.",
+        avatar: "/images/reviews/emma.jpg"
+      },
+      {
+        name: "David Miller",
+        country: "Australia",
+        rating: 5,
+        date: "October 5, 2025",
+        comment: "Unforgettable day! The Mara is stunning. Saw lions with cubs, elephants bathing, and thousands of zebras. Highly recommend this day trip.",
+        avatar: "/images/reviews/david.jpg"
+      }
+    ],
+    images: {
+      hero: "/hero.jpg",
+      gallery: [
+        "/gallery-1.jpg",
+        "/gallery-2.jpg",
+        "/gallery-3.jpg",
+        "/gallery-4.jpg",
+        "/gallery-5.jpg",
+        "/gallery-6.jpg",
+        "/gallery-7.jpg",
+      ]
     },
-  },
-
-  verification: {
-    google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
-  },
-
-  alternates: {
-    canonical: BASE,
-
-    languages: {
-      en: BASE,
-      "en-US": BASE,
-      "en-GB": BASE,
-      "en-AU": BASE,
-      "en-CA": BASE,
-      fr: `${BASE}/fr`,
-      de: `${BASE}/de`,
-      it: `${BASE}/it`,
-      hi: `${BASE}/hi`,
-      ar: `${BASE}/ar`,
-      zh: `${BASE}/zh`,
-      "x-default": BASE,
+    video: {
+      youtubeId: "jwMhdq_Z_DM",
+      title: "1 Day Maasai Mara Safari Experience"
     },
-
-    types: {
-      "application/rss+xml": `${BASE}/blog/rss.xml`,
-    },
-  },
-
-  other: {
-    "geo.region": "KE-30",
-    "geo.placename": "Nairobi, Kenya",
-    "geo.position": "-1.286389;36.817223",
-    ICBM: "-1.286389, 36.817223",
-    "og:locale:alternate": [
-      "fr_FR",
-      "de_DE",
-      "it_IT",
-      "hi_IN",
-      "ar_AE",
-      "zh_CN",
-    ].join(", "),
-  },
-};
-
-const GTM_ID = "GTM-52G2X6L5";
-const GA_ID = "G-2YLERP8F8B";
-const AW_ID = "AW-17802463747";
-
-// -----------------------------------------------------------------------------
-// ORGANIZATION SCHEMA
-// -----------------------------------------------------------------------------
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-
-  "@graph": [
-    {
-      "@type": "TravelAgency",
-      "@id": `${BASE}/#organization`,
-
-      name: "JaeTravel Expeditions",
-
-      alternateName: [
-        "Jae Travel Kenya",
-        "JaeTravel Safaris",
-        "JaeTravel Accessible Safari",
-      ],
-
-      description:
-        "East Africa safari tours specializing in accessible travel, gorilla trekking, and wildlife adventures across Kenya, Tanzania, Rwanda, and Uganda.",
-
-      url: BASE,
-
-      logo: {
-        "@type": "ImageObject",
-        url: `${BASE}/logo.png`,
-        width: 512,
-        height: 512,
-      },
-
-      image: `${BASE}/og-image.jpg`,
-
-      telephone: "+254726485228",
-
-      email: "info@jaetravel.co.ke",
-
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "KE",
-        addressLocality: "Nairobi",
-        addressRegion: "Nairobi County",
-      },
-
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: -1.286389,
-        longitude: 36.817223,
-      },
-
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "07:00",
-        closes: "20:00",
-      },
-
-      sameAs: [
-        "https://www.facebook.com/JaeTravelExpeditions",
-        "https://www.instagram.com/jaetravelexpeditions/",
-        "https://www.tiktok.com/@jaetravelexpeditions",
-        "https://wa.me/254726485228",
-      ],
-
-      priceRange: "$$-$$$",
-
-      currenciesAccepted: "USD, EUR, GBP, KES",
-
-      paymentAccepted: "Cash, Credit Card, Bank Transfer, PayPal",
-
-      areaServed: [
-        "Kenya",
-        "Tanzania",
-        "Rwanda",
-        "Uganda",
-        "South Africa",
-        "UAE",
-        "India",
-        "UK",
-        "USA",
-        "France",
-        "Germany",
-        "Italy",
-        "China",
-      ],
-
-      knowsLanguage: [
-        "English",
-        "French",
-        "German",
-        "Italian",
-        "Hindi",
-        "Arabic",
-        "Chinese",
-        "Swahili",
-      ],
-
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        reviewCount: "723",
-      },
-
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "East Africa Safari Tours",
-
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "TouristTrip",
-              name: "Wildlife Safari Tours",
-              description: "Big Five and Great Migration",
-            },
-          },
-
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "TouristTrip",
-              name: "Gorilla Trekking",
-              description:
-                "Mountain gorilla encounters in Rwanda and Uganda",
-            },
-          },
-
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "TouristTrip",
-              name: "Accessible Safari Tours",
-              description:
-                "Wheelchair-adapted vehicles and inclusive travel",
-            },
-          },
-
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "TouristTrip",
-              name: "Budget Safari Tours",
-              description: "Affordable Kenya safaris from $950",
-            },
-          },
-        ],
-      },
-    },
-
-    {
-      "@type": "WebSite",
-
-      "@id": `${BASE}/#website`,
-
-      url: BASE,
-
-      name: "JaeTravel Expeditions",
-
-      publisher: {
-        "@id": `${BASE}/#organization`,
-      },
-
-      potentialAction: {
-        "@type": "SearchAction",
-
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${BASE}/tours?search={search_term_string}`,
-        },
-
-        "query-input": "required name=search_term_string",
-      },
-
-      inLanguage: ["en", "fr", "de", "it", "hi", "ar", "zh"],
-    },
-  ],
-};
-
-// -----------------------------------------------------------------------------
-// ROOT LAYOUT
-// -----------------------------------------------------------------------------
-
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const headersList = await headers();
-
-  const locale = headersList.get("x-locale") || "en";
-
-  const isRTL = locale === "ar";
+    pdfUrl: "/pdfs/1-day-maasai-mara-itinerary.pdf"
+  };
 
   return (
-    <html
-      lang={locale}
-      dir={isRTL ? "rtl" : "ltr"}
-      className={`${playfair.variable} ${inter.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        {/* ---------------------------------------------------------------- */}
-        {/* BASIC SITE ICONS                                                  */}
-        {/* ---------------------------------------------------------------- */}
-
-        <link rel="icon" href="/favicon.ico" />
-
-        <link
-          rel="apple-touch-icon"
-          href="/apple-touch-icon.png"
-        />
-
-        <link
-          rel="manifest"
-          href="/manifest.json"
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* PERFORMANCE / CONNECTIONS                                         */}
-        {/* ---------------------------------------------------------------- */}
-
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        <link
-          rel="dns-prefetch"
-          href="https://www.googletagmanager.com"
-        />
-
-        <link
-          rel="dns-prefetch"
-          href="https://analytics.ahrefs.com"
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* HREFLANG                                                          */}
-        {/* ---------------------------------------------------------------- */}
-
-        <link
-          rel="alternate"
-          hrefLang="en"
-          href={BASE}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="fr"
-          href={`${BASE}/fr`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="de"
-          href={`${BASE}/de`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="it"
-          href={`${BASE}/it`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="hi"
-          href={`${BASE}/hi`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="ar"
-          href={`${BASE}/ar`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="zh"
-          href={`${BASE}/zh`}
-        />
-
-        <link
-          rel="alternate"
-          hrefLang="x-default"
-          href={BASE}
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* STRUCTURED DATA                                                   */}
-        {/* ---------------------------------------------------------------- */}
-
-        <JsonLd
-          id="org-schema"
-          data={organizationSchema}
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* AHREFS ANALYTICS                                                  */}
-        {/* ---------------------------------------------------------------- */}
-
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="q74t4ci2dZznctEH4t8jCA"
-          defer
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE SEARCH CONSOLE                                             */}
-        {/* ---------------------------------------------------------------- */}
-
-        <meta
-          name="google-site-verification"
-          content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg"
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE PREFERRED SOURCE                                           */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          id="google-preferred-source"
-          strategy="afterInteractive"
-          src="https://news.google.com/swg/js/v1/publisher.js"
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE TAG MANAGER                                                */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){
-                w[l]=w[l]||[];
-                w[l].push({
-                  'gtm.start':new Date().getTime(),
-                  event:'gtm.js'
-                });
-
-                var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),
-                    dl=l!='dataLayer'?'&l='+l:'';
-
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-
-                f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${GTM_ID}');
-            `,
-          }}
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE ANALYTICS 4                                               */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        />
-
-        <Script
-          id="ga4-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer=window.dataLayer||[];
-
-              function gtag(){
-                dataLayer.push(arguments);
-              }
-
-              gtag('js',new Date());
-
-              gtag('config','${GA_ID}',{
-                page_path:window.location.pathname,
-                send_page_view:true,
-                transport_type:'beacon'
-              });
-            `,
-          }}
-        />
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE ADS                                                        */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${AW_ID}`}
-        />
-
-        <Script
-          id="google-ads-conversion"
-          strategy="afterInteractive"
-        >
-          {`
-            gtag('config', '${AW_ID}');
-          `}
-        </Script>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE ADS PAGE VIEW CONVERSION                                   */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          id="google-ads-pageview-conversion"
-          strategy="afterInteractive"
-        >
-          {`
-            gtag('event', 'conversion', {
-              'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
-              'value': 1.0,
-              'currency': 'USD'
-            });
-          `}
-        </Script>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE ADS CLICK CONVERSION HELPER                                */}
-        {/* ---------------------------------------------------------------- */}
-
-        <Script
-          id="google-ads-conversion-helper"
-          strategy="afterInteractive"
-        >
-          {`
-            function gtag_report_conversion(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-
-              gtag('event', 'conversion', {
-                'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
-                'value': 1.0,
-                'currency': 'USD',
-                'event_callback': callback
-              });
-
-              return false;
-            }
-          `}
-        </Script>
-      </head>
-
-      <body className="font-sans antialiased bg-background text-foreground">
-        {/* ---------------------------------------------------------------- */}
-        {/* GOOGLE TAG MANAGER NOSCRIPT                                       */}
-        {/* ---------------------------------------------------------------- */}
-
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{
-              display: "none",
-              visibility: "hidden",
-            }}
-            title="Google Tag Manager"
-          />
-        </noscript>
-
-        {/* ---------------------------------------------------------------- */}
-        {/* SITE INITIALIZATION                                               */}
-        {/* ---------------------------------------------------------------- */}
-
-        <AsyncCSSInitializer />
-
-        <OrderProvider>
-          <Suspense
-            fallback={
-              <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500" />
-              </div>
-            }
-          >
-            {/* HEADER */}
-            <div className="header-wrapper">
-              <Header />
-            </div>
-
-            {/* MAIN CONTENT */}
-            <main className="min-h-screen flex justify-center">
-              <div className="w-full max-w-7xl">
-                {children}
-              </div>
-            </main>
-
-            {/* FOOTER */}
-            <Footer />
-
-            {/* ANALYTICS */}
-            <AnalyticsTracker />
-
-            <Analytics />
-
-            {/* DYNAMIC SCRIPTS */}
-            <DynamicScripts />
-          </Suspense>
-        </OrderProvider>
-      </body>
-    </html>
+    <>
+      {/* JSON-LD Schema Injection */}
+      <JsonLd 
+        id="structured-data" 
+        data={generateSafariSchema()} 
+      />
+            
+      <SafariClientWrapper safariData={safariData} />
+    </>
   );
 }

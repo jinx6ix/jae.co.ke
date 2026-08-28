@@ -1,4 +1,5 @@
 // app/layout.tsx — reads x-locale header from custom server
+
 import type React from "react";
 import type { Viewport } from "next";
 import type { Metadata } from "next";
@@ -21,187 +22,585 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f97316" },
-    { media: "(prefers-color-scheme: dark)", color: "#ea580c" },
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "#f97316",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "#ea580c",
+    },
   ],
 };
 
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap", preload: true });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap", preload: true });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  preload: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
 
 const BASE = "https://www.jaetravel.co.ke";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
+
   title: {
-    default: "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
+    default:
+      "JaeTravel Expeditions | East Africa Safari Tours & Accessible Travel",
     template: "%s | JaeTravel Expeditions",
   },
-  description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda. Specializing in accessible tours, gorilla trekking, and luxury wildlife adventures.",
-  keywords: ["East Africa Safari","Kenya Tours","Tanzania Safari","Rwanda Gorilla Trekking","Uganda Safari","Accessible Safari","Disability Travel","Wildlife Tours","Masai Mara","Serengeti","Great Migration","wheelchair safari Kenya"],
-  authors: [{ name: "JaeTravel Expeditions", url: BASE }],
+
+  description:
+    "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda. Specializing in accessible tours, gorilla trekking, and luxury wildlife adventures.",
+
+  keywords: [
+    "East Africa Safari",
+    "Kenya Tours",
+    "Tanzania Safari",
+    "Rwanda Gorilla Trekking",
+    "Uganda Safari",
+    "Accessible Safari",
+    "Disability Travel",
+    "Wildlife Tours",
+    "Masai Mara",
+    "Serengeti",
+    "Great Migration",
+    "wheelchair safari Kenya",
+  ],
+
+  authors: [
+    {
+      name: "JaeTravel Expeditions",
+      url: BASE,
+    },
+  ],
+
   creator: "JaeTravel Expeditions",
   publisher: "JaeTravel Expeditions",
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: BASE,
     siteName: "JaeTravel Expeditions",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
-    images: [{ url: `${BASE}/og-image.jpg`, width: 1200, height: 630, alt: "JaeTravel Expeditions - East Africa Safari Tours" }],
+    description:
+      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
+    images: [
+      {
+        url: `${BASE}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "JaeTravel Expeditions - East Africa Safari Tours",
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     site: "@jaetravelkenya",
     creator: "@jaetravelkenya",
     title: "JaeTravel Expeditions | East Africa Safari Tours",
-    description: "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
+    description:
+      "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
     images: [`${BASE}/og-image.jpg`],
   },
+
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  verification: { google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" },
+
+  verification: {
+    google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg",
+  },
+
   alternates: {
     canonical: BASE,
+
     languages: {
-      "en":       BASE,
-      "en-US":    BASE,
-      "en-GB":    BASE,
-      "en-AU":    BASE,
-      "en-CA":    BASE,
-      "fr":       `${BASE}/fr`,
-      "de":       `${BASE}/de`,
-      "it":       `${BASE}/it`,
-      "hi":       `${BASE}/hi`,
-      "ar":       `${BASE}/ar`,
-      "zh":       `${BASE}/zh`,
+      en: BASE,
+      "en-US": BASE,
+      "en-GB": BASE,
+      "en-AU": BASE,
+      "en-CA": BASE,
+      fr: `${BASE}/fr`,
+      de: `${BASE}/de`,
+      it: `${BASE}/it`,
+      hi: `${BASE}/hi`,
+      ar: `${BASE}/ar`,
+      zh: `${BASE}/zh`,
       "x-default": BASE,
     },
-    types: { "application/rss+xml": `${BASE}/blog/rss.xml` },
+
+    types: {
+      "application/rss+xml": `${BASE}/blog/rss.xml`,
+    },
   },
+
   other: {
     "geo.region": "KE-30",
     "geo.placename": "Nairobi, Kenya",
     "geo.position": "-1.286389;36.817223",
-    "ICBM": "-1.286389, 36.817223",
-    "og:locale:alternate": ["fr_FR", "de_DE", "it_IT", "hi_IN", "ar_AE", "zh_CN"].join(", "),
+    ICBM: "-1.286389, 36.817223",
+    "og:locale:alternate": [
+      "fr_FR",
+      "de_DE",
+      "it_IT",
+      "hi_IN",
+      "ar_AE",
+      "zh_CN",
+    ].join(", "),
   },
 };
 
 const GTM_ID = "GTM-52G2X6L5";
 const GA_ID = "G-2YLERP8F8B";
-const AW_ID = "AW-17802463747";  // Google Ads conversion ID
+const AW_ID = "AW-17802463747";
+
+// -----------------------------------------------------------------------------
+// ORGANIZATION SCHEMA
+// -----------------------------------------------------------------------------
 
 const organizationSchema = {
   "@context": "https://schema.org",
+
   "@graph": [
     {
       "@type": "TravelAgency",
       "@id": `${BASE}/#organization`,
+
       name: "JaeTravel Expeditions",
-      alternateName: ["Jae Travel Kenya","JaeTravel Safaris","JaeTravel Accessible Safari"],
-      description: "East Africa safari tours specializing in accessible travel, gorilla trekking, and wildlife adventures across Kenya, Tanzania, Rwanda, and Uganda.",
+
+      alternateName: [
+        "Jae Travel Kenya",
+        "JaeTravel Safaris",
+        "JaeTravel Accessible Safari",
+      ],
+
+      description:
+        "East Africa safari tours specializing in accessible travel, gorilla trekking, and wildlife adventures across Kenya, Tanzania, Rwanda, and Uganda.",
+
       url: BASE,
-      logo: { "@type": "ImageObject", url: `${BASE}/logo.png`, width: 512, height: 512 },
+
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+
       image: `${BASE}/og-image.jpg`,
+
       telephone: "+254726485228",
+
       email: "info@jaetravel.co.ke",
-      address: { "@type": "PostalAddress", addressCountry: "KE", addressLocality: "Nairobi", addressRegion: "Nairobi County" },
-      geo: { "@type": "GeoCoordinates", latitude: -1.286389, longitude: 36.817223 },
+
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "KE",
+        addressLocality: "Nairobi",
+        addressRegion: "Nairobi County",
+      },
+
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -1.286389,
+        longitude: 36.817223,
+      },
+
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        opens: "07:00", closes: "20:00",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "07:00",
+        closes: "20:00",
       },
+
       sameAs: [
         "https://www.facebook.com/JaeTravelExpeditions",
         "https://www.instagram.com/jaetravelexpeditions/",
         "https://www.tiktok.com/@jaetravelexpeditions",
         "https://wa.me/254726485228",
       ],
+
       priceRange: "$$-$$$",
+
       currenciesAccepted: "USD, EUR, GBP, KES",
+
       paymentAccepted: "Cash, Credit Card, Bank Transfer, PayPal",
-      areaServed: ["Kenya","Tanzania","Rwanda","Uganda","South Africa","UAE","India","UK","USA","France","Germany","Italy","China"],
-      knowsLanguage: ["English","French","German","Italian","Hindi","Arabic","Chinese","Swahili"],
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", bestRating: "5", reviewCount: "723" },
+
+      areaServed: [
+        "Kenya",
+        "Tanzania",
+        "Rwanda",
+        "Uganda",
+        "South Africa",
+        "UAE",
+        "India",
+        "UK",
+        "USA",
+        "France",
+        "Germany",
+        "Italy",
+        "China",
+      ],
+
+      knowsLanguage: [
+        "English",
+        "French",
+        "German",
+        "Italian",
+        "Hindi",
+        "Arabic",
+        "Chinese",
+        "Swahili",
+      ],
+
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        reviewCount: "723",
+      },
+
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "East Africa Safari Tours",
+
         itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Wildlife Safari Tours", description: "Big Five and Great Migration" } },
-          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Gorilla Trekking", description: "Mountain gorilla encounters in Rwanda and Uganda" } },
-          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Accessible Safari Tours", description: "Wheelchair-adapted vehicles and inclusive travel" } },
-          { "@type": "Offer", itemOffered: { "@type": "TouristTrip", name: "Budget Safari Tours", description: "Affordable Kenya safaris from $950" } },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "TouristTrip",
+              name: "Wildlife Safari Tours",
+              description: "Big Five and Great Migration",
+            },
+          },
+
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "TouristTrip",
+              name: "Gorilla Trekking",
+              description:
+                "Mountain gorilla encounters in Rwanda and Uganda",
+            },
+          },
+
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "TouristTrip",
+              name: "Accessible Safari Tours",
+              description:
+                "Wheelchair-adapted vehicles and inclusive travel",
+            },
+          },
+
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "TouristTrip",
+              name: "Budget Safari Tours",
+              description: "Affordable Kenya safaris from $950",
+            },
+          },
         ],
       },
     },
+
     {
       "@type": "WebSite",
+
       "@id": `${BASE}/#website`,
+
       url: BASE,
+
       name: "JaeTravel Expeditions",
-      publisher: { "@id": `${BASE}/#organization` },
+
+      publisher: {
+        "@id": `${BASE}/#organization`,
+      },
+
       potentialAction: {
         "@type": "SearchAction",
-        target: { "@type": "EntryPoint", urlTemplate: `${BASE}/tours?search={search_term_string}` },
+
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${BASE}/tours?search={search_term_string}`,
+        },
+
         "query-input": "required name=search_term_string",
       },
-      inLanguage: ["en","fr","de","it","hi","ar","zh"],
+
+      inLanguage: ["en", "fr", "de", "it", "hi", "ar", "zh"],
     },
   ],
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+// -----------------------------------------------------------------------------
+// ROOT LAYOUT
+// -----------------------------------------------------------------------------
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const headersList = await headers();
+
   const locale = headersList.get("x-locale") || "en";
+
   const isRTL = locale === "ar";
 
   return (
-    <html lang={locale} dir={isRTL ? "rtl" : "ltr"} className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={isRTL ? "rtl" : "ltr"}
+      className={`${playfair.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        {/* ---------------------------------------------------------------- */}
+        {/* BASIC SITE ICONS                                                  */}
+        {/* ---------------------------------------------------------------- */}
+
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
-        <link rel="alternate" hrefLang="en" href={BASE} />
-        <link rel="alternate" hrefLang="fr" href={`${BASE}/fr`} />
-        <link rel="alternate" hrefLang="de" href={`${BASE}/de`} />
-        <link rel="alternate" hrefLang="it" href={`${BASE}/it`} />
-        <link rel="alternate" hrefLang="hi" href={`${BASE}/hi`} />
-        <link rel="alternate" hrefLang="ar" href={`${BASE}/ar`} />
-        <link rel="alternate" hrefLang="zh" href={`${BASE}/zh`} />
-        <link rel="alternate" hrefLang="x-default" href={BASE} />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-touch-icon.png"
+        />
 
-        <JsonLd id="org-schema" data={organizationSchema} />
+        <link
+          rel="manifest"
+          href="/manifest.json"
+        />
 
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="q74t4ci2dZznctEH4t8jCA" defer />
+        {/* ---------------------------------------------------------------- */}
+        {/* PERFORMANCE / CONNECTIONS                                         */}
+        {/* ---------------------------------------------------------------- */}
 
-        <meta name="google-site-verification" content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
 
-        {/* Google Tag Manager */}
-        <Script id="gtm-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');` }} />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
 
-        {/* GA4 (already defines window.dataLayer and gtag function) */}
-        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-        <Script id="ga4-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{page_path:window.location.pathname,send_page_view:true,transport_type:'beacon'});` }} />
+        <link
+          rel="dns-prefetch"
+          href="https://www.googletagmanager.com"
+        />
 
-        {/* Google Ads Conversion Tracking (AW-17802463747) */}
-        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${AW_ID}`} />
-        <Script id="google-ads-conversion" strategy="afterInteractive">
-          {`gtag('config', '${AW_ID}');`}
+        <link
+          rel="dns-prefetch"
+          href="https://analytics.ahrefs.com"
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* HREFLANG                                                          */}
+        {/* ---------------------------------------------------------------- */}
+
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href={BASE}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="fr"
+          href={`${BASE}/fr`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="de"
+          href={`${BASE}/de`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="it"
+          href={`${BASE}/it`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="hi"
+          href={`${BASE}/hi`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="ar"
+          href={`${BASE}/ar`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="zh"
+          href={`${BASE}/zh`}
+        />
+
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href={BASE}
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* STRUCTURED DATA                                                   */}
+        {/* ---------------------------------------------------------------- */}
+
+        <JsonLd
+          id="org-schema"
+          data={organizationSchema}
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* AHREFS ANALYTICS                                                  */}
+        {/* ---------------------------------------------------------------- */}
+
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="q74t4ci2dZznctEH4t8jCA"
+          defer
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE SEARCH CONSOLE                                             */}
+        {/* ---------------------------------------------------------------- */}
+
+        <meta
+          name="google-site-verification"
+          content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg"
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE PREFERRED SOURCE                                           */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          id="google-preferred-source"
+          strategy="afterInteractive"
+          src="https://news.google.com/swg/js/v1/publisher.js"
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE TAG MANAGER                                                */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({
+                  'gtm.start':new Date().getTime(),
+                  event:'gtm.js'
+                });
+
+                var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),
+                    dl=l!='dataLayer'?'&l='+l:'';
+
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${GTM_ID}');
+            `,
+          }}
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE ANALYTICS 4                                               */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        />
+
+        <Script
+          id="ga4-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer=window.dataLayer||[];
+
+              function gtag(){
+                dataLayer.push(arguments);
+              }
+
+              gtag('js',new Date());
+
+              gtag('config','${GA_ID}',{
+                page_path:window.location.pathname,
+                send_page_view:true,
+                transport_type:'beacon'
+              });
+            `,
+          }}
+        />
+
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE ADS                                                        */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${AW_ID}`}
+        />
+
+        <Script
+          id="google-ads-conversion"
+          strategy="afterInteractive"
+        >
+          {`
+            gtag('config', '${AW_ID}');
+          `}
         </Script>
 
-        {/* Google Ads Page View Conversion Event (fires automatically on page load) */}
-        <Script id="google-ads-pageview-conversion" strategy="afterInteractive">
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE ADS PAGE VIEW CONVERSION                                   */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          id="google-ads-pageview-conversion"
+          strategy="afterInteractive"
+        >
           {`
             gtag('event', 'conversion', {
               'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
@@ -211,8 +610,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           `}
         </Script>
 
-        {/* Google Ads helper function for click conversions (gtag_report_conversion) */}
-        <Script id="google-ads-conversion-helper" strategy="afterInteractive">
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE ADS CLICK CONVERSION HELPER                                */}
+        {/* ---------------------------------------------------------------- */}
+
+        <Script
+          id="google-ads-conversion-helper"
+          strategy="afterInteractive"
+        >
           {`
             function gtag_report_conversion(url) {
               var callback = function () {
@@ -220,33 +625,73 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   window.location = url;
                 }
               };
+
               gtag('event', 'conversion', {
-                  'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
-                  'value': 1.0,
-                  'currency': 'USD',
-                  'event_callback': callback
+                'send_to': 'AW-17802463747/fOiHCIqy-KgcEIOU8KhC',
+                'value': 1.0,
+                'currency': 'USD',
+                'event_callback': callback
               });
+
               return false;
             }
           `}
         </Script>
       </head>
+
       <body className="font-sans antialiased bg-background text-foreground">
+        {/* ---------------------------------------------------------------- */}
+        {/* GOOGLE TAG MANAGER NOSCRIPT                                       */}
+        {/* ---------------------------------------------------------------- */}
+
         <noscript>
-          <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager" />
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
+            title="Google Tag Manager"
+          />
         </noscript>
+
+        {/* ---------------------------------------------------------------- */}
+        {/* SITE INITIALIZATION                                               */}
+        {/* ---------------------------------------------------------------- */}
+
         <AsyncCSSInitializer />
+
         <OrderProvider>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500" /></div>}>
+          <Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500" />
+              </div>
+            }
+          >
+            {/* HEADER */}
             <div className="header-wrapper">
               <Header />
             </div>
+
+            {/* MAIN CONTENT */}
             <main className="min-h-screen flex justify-center">
-              <div className="w-full max-w-7xl">{children}</div>
+              <div className="w-full max-w-7xl">
+                {children}
+              </div>
             </main>
+
+            {/* FOOTER */}
             <Footer />
+
+            {/* ANALYTICS */}
             <AnalyticsTracker />
+
             <Analytics />
+
+            {/* DYNAMIC SCRIPTS */}
             <DynamicScripts />
           </Suspense>
         </OrderProvider>
