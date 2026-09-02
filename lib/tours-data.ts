@@ -39,7 +39,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-masai-mara",
     slug: "masai-mara-luxury-safari",
-    image: "/masaimara.jpeg",
+    image: "/masai-mara-migration.jpg",
     title: "Masai Mara Luxury Safari",
     description: "Experience the wildlife of Masai Mara with luxury accommodations and expert guides. Includes game drives and meals.",
     shortDescription: "5-day luxury safari in Kenya's most famous wildlife reserve",
@@ -89,7 +89,7 @@ export const tours: Tour[] = [
   {
     id: "kenya-amboseli",
     slug: "amboseli-safari",
-    image: "/Amboseli.jpg",
+    image: "/Amboseli-National-Park-Elephantsssss.jpg",
     title: "Amboseli Safari Adventure",
     description: "Explore Amboseli National Park with guided game drives and spectacular views of Mount Kilimanjaro.",
     shortDescription: "4-day safari with Mount Kilimanjaro views",
@@ -135,7 +135,7 @@ export const tours: Tour[] = [
   {
     id: "tanzania-serengeti",
     slug: "serengeti-migration-tour",
-    image: "/Safaris2.jpg",
+    image: "/Serengeti-National-Park-Africa-Kenya-Safaris2.jpg",
     title: "Serengeti Migration Safari",
     description: "Witness the Great Migration in Serengeti with guided tours and comfortable lodges. Includes daily game drives and meals.",
     shortDescription: "7-day migration viewing in Serengeti",
@@ -369,7 +369,7 @@ export const tours: Tour[] = [
   {
     id: "2",
     slug: "amboseli-elephant-safari",
-    image: "/amboseli-elephant.jpg",
+    image: "/amboseli-elephants-00007.jpg",
     title: "Amboseli Elephant Safari",
     description: "Get close to elephants with Mount Kilimanjaro backdrop in Amboseli National Park.",
     shortDescription: "4-day elephant-focused safari",
@@ -877,7 +877,7 @@ export const tours: Tour[] = [
   {
     id: "13",
     slug: "serengeti-wildlife-safari",
-    image: "/serengetii.jpg",
+    image: "/serengeti-day-trip.jpeg",
     title: "Serengeti Wildlife Safari",
     description: "Explore the endless plains of Serengeti and witness incredible wildlife diversity.",
     shortDescription: "7-day Serengeti exploration",
@@ -2543,7 +2543,7 @@ export const tours: Tour[] = [
   {
     "id": "51",
     "slug": "safari-madoa-doa",
-    "image": "/madoadoa.jpeg",
+    "image": "/Viaje-a-Kenia-Masai-Mara-32.jpg",
     "title": "Safari Madoa Doa",
     "description": "Embark on an exclusive safari adventure through Kenya's premier wildlife reserves, spotting the Big Five in their natural habitat.",
     shortDescription: "7-day exclusive wildlife safari",
@@ -2696,7 +2696,7 @@ export const tours: Tour[] = [
   {
     "id": "54",
     "slug": "nairobi-national-park-tour",
-    "image": "/capt.jpeg",
+    "image": "/caption.jpg",
     "title": "Nairobi National Park Tour",
     "description": "Explore Nairobi National Park, a unique wildlife haven near the city, home to rhinos, lions, and stunning savanna views.",
     shortDescription: "Half-day wildlife tour",
@@ -2947,7 +2947,7 @@ export const tours: Tour[] = [
   {
     "id": "59",
     "slug": "lake-nakuru-rhino-sanctuary",
-    "image": "/capt.jpeg",
+    "image": "/images (4).jpg",
     "title": "Lake Nakuru Rhino Sanctuary Experience",
     "description": "Explore the famous Lake Nakuru National Park, a protected sanctuary for black and white rhinos, and witness thousands of flamingos along the soda lake shores.",
     "shortDescription": "3-day rhino & birding safari in Kenya",
@@ -3117,7 +3117,7 @@ export const tours: Tour[] = [
   {
     "id": "62",
     "slug": "big-five-amboseli-elephant",
-    "image": "/african-lions.jpg",
+    "image": "/african-lions-uganda-1024x683.webp",
     "title": "5-Day Amboseli Elephant Focus",
     "description": "Discover the majestic elephants of Amboseli against the breathtaking backdrop of Mount Kilimanjaro. This 5-day specialized safari focuses on Africa's largest elephant herds, offering unparalleled photography opportunities and intimate encounters with these gentle giants.",
     "shortDescription": "5-day elephant-focused safari in Amboseli",
@@ -3175,7 +3175,7 @@ export const tours: Tour[] = [
   {
     "id": "63",
     "slug": "big-five-tsavo-adventure",
-    "image": "/lion2.jpeg",
+    "image": "/Inverdoorn-54.jpg",
     "title": "6-Day Tsavo Big Five Adventure",
     "description": "Explore Kenya's largest national park, Tsavo, divided into Tsavo East and Tsavo West. This 6-day adventure takes you through red elephant country, volcanic landscapes, and lush riverine forests in search of the Big Five and Tsavo's famous maneless lions.",
     "shortDescription": "6-day Big Five safari across Tsavo East & West",

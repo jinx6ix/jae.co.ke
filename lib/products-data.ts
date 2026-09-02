@@ -361,7 +361,7 @@ export const products = [
     id: "6",
     slug: "6-sustainable-travel-tips",
     name: "6 Sustainable Travel Tips: Your Guide to Responsible East African Adventure",
-    heroImage: "/amboseli-elephant.jpg",
+    heroImage: "/amboseli-elephants-00007.jpg",
     description: "Transform your East African adventure with our comprehensive guide featuring six essential eco-conscious strategies to travel responsibly, support local communities, and leave a positive conservation legacy.",
     details: "This isn't just a list - it's a philosophy for transformative travel. We've distilled decades of sustainable tourism experience into six actionable principles that benefit both traveler and host. Learn how to identify genuinely eco-friendly accommodations using our certification checklist. Discover which community tourism initiatives create meaningful economic impact versus 'poverty tourism.' Get insider tips on reducing your environmental footprint while maximizing cultural connections. We provide specific recommendations for ethical wildlife interactions, from gorilla trekking etiquette to responsible dolphin encounters. Learn how your spending choices can support women's cooperatives, youth education, and conservation research. Each tip includes practical examples, recommended operators, and common pitfalls to avoid. Whether you're a first-time visitor or a seasoned Africa traveler, this guide will deepen your experience while ensuring your tourism dollars create lasting positive change.",
     highlights: [

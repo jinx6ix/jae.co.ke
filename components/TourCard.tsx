@@ -15,8 +15,6 @@ interface TourCardProps {
   checkInText: string;
   href: string;
   badge?: string;
-
-  showOriginalPrice?: boolean;
   pickup?: string;
 }
 

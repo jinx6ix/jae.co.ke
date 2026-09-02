@@ -8,7 +8,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 
 const heroSlides = [
   {
-    image: "/masaimara.jpeg",
+    image: "/masai-mara-migration.jpg",
     title: "Discover the Magic of East Africa",
     subtitle: "Embark on unforgettable safari adventures across Kenya, Tanzania, Rwanda, and Uganda",
     cta: "Explore Tours",

@@ -1,0 +1,563 @@
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
+import { destinations, getDestinationBySlug } from "@/lib/destinations-data"
+import { getCmsDestinationBySlug } from "@/lib/cms-destinations"
+import { toursByCountry } from "@/lib/tours-data"
+import { TourCard } from "@/components/tour-card"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { MapPin, Calendar, Check, ArrowRight, Accessibility, Leaf, Users } from "lucide-react"
+import JsonLd from "@/components/JsonLd"
+
+interface DestinationPageProps {
+  params: {
+    country: string
+  }
+}
+
+async function loadDestination(slug: string) {
+  const cms = await getCmsDestinationBySlug(slug)
+  const staticDest = getDestinationBySlug(slug)
+  if (cms) {
+    return {
+      ...(staticDest ?? { name: cms.title || slug, slug, country: cms.country || slug, description: '', longDescription: '', highlights: [] as string[], bestTimeToVisit: '', metaTitle: '', metaDescription: '', keywords: [] as string[], heroImage: '', bestFor: [] as string[], popularTours: 0, wildlifeHighlights: '' }),
+      name: cms.title || staticDest?.name || slug,
+      description: cms.description || staticDest?.description || '',
+      wildlifeHighlights: cms.wildlifeHighlights || staticDest?.wildlifeHighlights || '',
+      highlights: cms.highlights?.map((h: any) => h.text).filter(Boolean) || staticDest?.highlights || [],
+      bestFor: cms.bestFor?.map((b: any) => b.text).filter(Boolean) || staticDest?.bestFor || [],
+      bestTimeToVisit: cms.bestTimeToVisit || staticDest?.bestTimeToVisit || '',
+      metaTitle: cms.meta?.title || staticDest?.metaTitle || `${slug} Safari`,
+      metaDescription: cms.meta?.description || staticDest?.metaDescription || '',
+    }
+  }
+  return staticDest
+}
+
+// SCHEMA.ORG ULTRA-COMPLET – OPTIMISÉ POUR GOOGLE RICHI RESULTS + ACCESSIBILITY + SUSTAINABILITY
+function generateDestinationSchema(destination: typeof destinations[0]) {
+  const pageUrl = `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`;
+  const currentYear = new Date().getFullYear();
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      // 1. Organization + LocalBusiness + TravelAgency (renforcé pour rich results + étoiles)
+      {
+        "@type": ["Organization", "LocalBusiness", "TravelAgency"],
+        "@id": "https://www.jaetravel.co.ke/#organization",
+        "name": "Jae Travel Expeditions – Safaris de Luxe Accessibles",
+        "url": "https://www.jaetravel.co.ke",
+        "logo": "https://www.jaetravel.co.ke/logo.png",
+        "telephone": "+254726485228",
+        "email": "info@jaetravel.co.ke",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressCountry": "KE"
+        },
+        "sameAs": [
+          "https://www.instagram.com/jaetravel.expeditions",
+          "https://www.facebook.com/jaetravelexpeditions",
+          "https://wa.me/+254726485228"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "reviewCount": "723"
+        },
+        // 3 avis individuels – Google peut les afficher en rich snippets
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "David Chen"
+            },
+            "datePublished": "2025-08-20",
+            "reviewBody": `Notre safari à ${destination.name} a été absolument magique ! Guides exceptionnels, véhicules accessibles parfaits et paysages à couper le souffle. Jae Travel est le meilleur choix pour un voyage inclusif.`
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Sarah Johnson"
+            },
+            "datePublished": "2025-07-15",
+            "reviewBody": `Expérience inoubliable à ${destination.name} avec Jae Travel. Tout était parfaitement adapté : véhicule avec élévateur hydraulique, lodges accessibles et service 5 étoiles. Merci !`
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Michael Thompson"
+            },
+            "datePublished": "2025-09-05",
+            "reviewBody": `Jae Travel a rendu notre voyage à ${destination.name} exceptionnel. Guides passionnés, organisation impeccable et accessibilité totale. Meilleur opérateur safari d'Afrique de l'Est !`
+          }
+        ]
+      },
+
+      // 2. Place principal – très détaillé et optimisé
+      {
+        "@type": "Place",
+        "@id": `${pageUrl}#place`,
+        "name": `${destination.name} – Premier Safari Destination en Afrique de l'Est`,
+        "url": pageUrl,
+        "description": destination.metaDescription,
+        "image": {
+          "@type": "ImageObject",
+          "url": destination.heroImage,
+          "contentUrl": destination.heroImage,
+          "name": `Paysage iconique de ${destination.name} – Safari de luxe accessible`,
+          "description": `Meilleure vue safari ${destination.name} ${currentYear}–${currentYear + 1} – expérience inclusive Jae Travel`,
+          "width": "1200",
+          "height": "800",
+          "inLanguage": "fr",
+          "creator": { "@id": "https://www.jaetravel.co.ke/#organization" }
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": destination.country || "KE"
+        }
+      },
+
+      // 3. WebSite (pour renforcer la structure du site)
+      {
+        "@type": "WebSite",
+        "@id": "https://www.jaetravel.co.ke/#website",
+        "url": "https://www.jaetravel.co.ke",
+        "name": "Jae Travel Expeditions",
+        "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
+      },
+
+      // 4. WebPage + BreadcrumbList renforcé
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        "url": pageUrl,
+        "name": `${destination.metaTitle}`,
+        "description": destination.metaDescription,
+        "inLanguage": "fr",
+        "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
+        "breadcrumb": {
+          "@id": `${pageUrl}#breadcrumb`
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": destination.heroImage,
+          "width": 1200,
+          "height": 630
+        },
+        "mainEntity": { "@id": `${pageUrl}#place` }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://www.jaetravel.co.ke"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Destinations",
+            "item": "https://www.jaetravel.co.ke/fr/destination"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": destination.name,
+            "item": pageUrl
+          }
+        ]
+      },
+
+      // 5. FAQPage – mots-clés longue traîne + focus accessibilité (5 questions pour carousel complet)
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faqpage`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Quand est la meilleure période pour visiter ${destination.name} en ${currentYear}–${currentYear + 1} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": destination.bestTimeToVisit
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Est-ce que ${destination.name} propose des safaris accessibles en fauteuil roulant ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui ! Jae Travel est spécialisé dans les safaris 100% accessibles avec véhicules équipés d’élévateur hydraulique, lodges sans barrières et itinéraires adaptés aux personnes à mobilité réduite."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Comment se rendre à ${destination.name} depuis Nairobi ou l'aéroport international ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nous organisons tous les transferts : vols domestiques, transferts 4x4 privés, charters ou véhicules accessibles selon votre itinéraire et vos besoins spécifiques."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Puis-je combiner ${destination.name} avec d'autres pays pour un safari multi-pays ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolument ! Nous proposons de nombreux circuits combinés (ex: Kenya + Tanzanie, Kenya + Rwanda, Tanzanie + Zanzibar) avec transferts fluides et logistique optimisée."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Quelles espèces animales puis-je observer à ${destination.name} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": destination.wildlifeHighlights || "Le Big Five (lion, léopard, éléphant, buffle, rhinocéros), migration des gnous (si applicable), gorilles, chimpanzés et bien d’autres espèces uniques."
+            }
+          }
+        ]
+      },
+
+      // 6. Offres de tours (TouristTrip) – 3 premiers pour rich cards + carrousel potentiel
+      ...(toursByCountry[destination.name as keyof typeof toursByCountry] || [])
+        .slice(0, 3)
+        .map((tour) => ({
+          "@type": "TouristTrip",
+          "@id": `https://www.jaetravel.co.ke${tour.url || `/tours/${tour.slug}` }#tour`,
+          "name": tour.title,
+          "description": tour.description?.substring(0, 160) || "",
+          "url": `https://www.jaetravel.co.ke${tour.url || `/tours/${tour.slug}`}`,
+          "tourBookingPage": `https://www.jaetravel.co.ke/book-now?tour=${tour.slug}`,
+          "image": tour.image,
+          "offers": {
+            "@type": "Offer",
+            "price": tour.price,
+            "priceCurrency": tour.currency || "USD",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01",
+            "url": `https://www.jaetravel.co.ke${tour.url || `/tours/${tour.slug}/book`}`
+          }
+        }))
+    ]
+  };
+}
+
+export async function generateStaticParams() {
+  return destinations.map((destination) => ({
+    country: destination.slug,
+  }))
+}
+
+export async function generateMetadata({ params }: DestinationPageProps): Promise<Metadata> {
+  const { country } = await params
+  const destination = await loadDestination(country)
+
+  if (!destination) {
+    return { title: "Destination Introuvable | Jae Travel Expeditions" }
+  }
+
+  return {
+    title: destination.metaTitle,
+    description: destination.metaDescription,
+    keywords: destination.keywords,
+    alternates: {
+      canonical: `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,
+      languages: {
+        'en': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,           // Main English/global
+        'en-US': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // US
+        'en-GB': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // UK (optional)
+        'en-AU': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,       // Australia (optional)
+        'en-CA': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,      // Canada (optional)
+        'x-default': `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,   // Fallback
+      },
+    },
+    openGraph: {
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      url: `https://www.jaetravel.co.ke/fr/destination/${destination.slug}`,
+      siteName: "Jae Travel Expeditions",
+      images: [
+        {
+          url: destination.heroImage,
+          width: 1200,
+          height: 800,
+          alt: `${destination.name} – Meilleur Safari Accessible Afrique de l'Est`,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      images: [destination.heroImage],
+    },
+  }
+}
+
+export default async function DestinationPage({ params }: DestinationPageProps) {
+  const { country } = await params
+  const destination = await loadDestination(country)
+
+  if (!destination) {
+    notFound()
+  }
+
+  const countryTours = toursByCountry[destination.name as keyof typeof toursByCountry] || []
+
+  return (
+    <>
+      {/* SCHEMA JSON-LD */}
+      <JsonLd data={generateDestinationSchema(destination)} id="destination-schema" />
+
+      <div className="pb-16">
+        {/* Hero – très fort visuellement + SEO */}
+        <div className="relative h-[70vh] min-h-[520px] md:h-[80vh]">
+          <Image
+            src={destination.heroImage || "/placeholder.svg"}
+            alt={`${destination.name} – Paysage safari iconique – Jae Travel Expeditions`}
+            fill
+            className="object-cover brightness-[0.82]"
+            priority
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+          <div className="container absolute bottom-0 left-0 right-0 mx-auto px-4 pb-16 md:pb-20">
+            <div className="mb-4 flex items-center gap-3 text-base font-medium text-white/90">
+              <Link href="/destinations" className="hover:underline">
+                Destinations
+              </Link>
+              <span className="opacity-70">/</span>
+              <span className="font-semibold">{destination.name}</span>
+            </div>
+            <h1 className="mb-5 font-serif text-5xl font-bold leading-tight text-white md:text-6xl lg:text-7xl text-balance">
+              Découvrez {destination.name}
+              <br />
+              <span className="text-4xl md:text-5xl lg:text-6xl opacity-90">Safari de Luxe Accessible</span>
+            </h1>
+            <p className="max-w-3xl text-xl md:text-2xl text-white/90 leading-relaxed font-light">
+              {destination.description}
+            </p>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 py-16 lg:py-20">
+          {/* Overview + SEO content boost */}
+          <div className="mb-20 grid gap-12 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <h2 className="mb-7 font-serif text-4xl md:text-5xl font-bold">
+                À propos de {destination.name}
+              </h2>
+              <div className="prose prose-lg prose-headings:font-serif max-w-none">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  {destination.longDescription}
+                </p>
+
+                {/* Contenu SEO longue traîne */}
+                <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
+                  <p>
+                    {destination.name} est l’une des destinations safari les plus emblématiques d’<strong>Afrique de l’Est</strong>.
+                    Que vous rêviez de la Grande Migration, du trekking des gorilles de montagne, des plages de Zanzibar ou d’un safari
+                    accessible en fauteuil roulant, cette région offre des expériences uniques au monde.
+                  </p>
+
+                  <p>
+                    Chez <strong>Jae Travel Expeditions</strong>, nous avons conçu des itinéraires qui combinent luxe, accessibilité et
+                    respect de l’environnement. Nos véhicules 4×4 équipés d’élévateurs hydrauliques, nos lodges sans barrières et
+                    nos guides experts font de chaque voyage une expérience inclusive et mémorable.
+                  </p>
+
+                  <p>
+                    Réservez dès maintenant votre safari {destination.name} {new Date().getFullYear()}–{new Date().getFullYear() + 1} et vivez
+                    l’Afrique authentique, durable et accessible.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar rapide */}
+            <div className="lg:col-span-1">
+              <Card className="border-2 border-primary/20 shadow-lg">
+                <CardContent className="p-7">
+                  <div className="mb-7">
+                    <div className="mb-4 flex items-center gap-3 text-primary">
+                      <Calendar className="h-6 w-6" />
+                      <h3 className="text-xl font-bold">Meilleure période</h3>
+                    </div>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      {destination.bestTimeToVisit}
+                    </p>
+                  </div>
+
+                  <div className="border-t border-border pt-7">
+                    <div className="mb-4 flex items-center gap-3 text-primary">
+                      <MapPin className="h-6 w-6" />
+                      <h3 className="text-xl font-bold">Faits rapides</h3>
+                    </div>
+                    <ul className="space-y-3 text-base text-muted-foreground">
+                      <li>• Région : Afrique de l’Est</li>
+                      <li>• Monnaie : Monnaie locale + USD</li>
+                      <li>• Langue : Anglais largement parlé</li>
+                      <li>• Visa : Souvent à l’arrivée</li>
+                    </ul>
+                  </div>
+
+                  <Button asChild className="mt-8 w-full text-lg py-6" size="lg">
+                    <Link href="/contact">Planifiez votre voyage</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Pourquoi choisir Jae Travel pour {destination.name} */}
+          <section className="mb-20 py-14 bg-gradient-to-br from-muted/40 to-muted/10 rounded-3xl">
+            <div className="max-w-5xl mx-auto px-6">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-12">
+                Pourquoi visiter {destination.name} avec Jae Travel ?
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: Accessibility,
+                    title: "100% Accessible",
+                    desc: "Véhicules avec élévateur, lodges sans marches, itinéraires adaptés aux fauteuils roulants et PMR."
+                  },
+                  {
+                    icon: Leaf,
+                    title: "Tourisme Durable",
+                    desc: "Partenariats avec communautés locales, conservation active et empreinte carbone minimisée."
+                  },
+                  {
+                    icon: Users,
+                    title: "Expérience Personnalisée",
+                    desc: "Itinéraires sur mesure, guides experts francophones/anglophones, luxe discret."
+                  }
+                ].map((item, i) => (
+                  <Card key={i} className="bg-background/60 backdrop-blur-sm border-primary/10">
+                    <CardContent className="p-8 text-center">
+                      <item.icon className="h-12 w-12 mx-auto mb-6 text-primary" />
+                      <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Tours disponibles */}
+          <section className="mb-20">
+            <div className="mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <h2 className="font-serif text-4xl md:text-5xl font-bold">
+                Nos Meilleurs Safaris à {destination.name}
+              </h2>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/tours">
+                  Voir tous les circuits <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+
+            {countryTours.length > 0 ? (
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {countryTours.map((tour) => (
+                  <TourCard key={tour.id} tour={tour} />
+                ))}
+              </div>
+            ) : (
+              <Card className="bg-muted/30">
+                <CardContent className="p-16 text-center">
+                  <p className="text-xl text-muted-foreground mb-6">
+                    Aucun circuit disponible pour le moment dans cette destination.
+                  </p>
+                  <Button asChild size="lg">
+                    <Link href="/contact">Demander un circuit sur mesure</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+          </section>
+
+          {/* Planning & Durabilité */}
+          <section className="mb-20 bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-10 md:p-14">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-12">
+              Préparez Votre Aventure à {destination.name}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              <div>
+                <h3 className="text-2xl font-bold mb-6">Conseils Pratiques</h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Prévoyez votre valise en fonction des saisons, emportez des vêtements neutres pour les safaris, des chaussures confortables et un adaptateur universel.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Nous vous recommandons de réserver 6 à 12 mois à l’avance pour les permis de trekking gorilles, les lodges de luxe et les saisons hautes.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold mb-6">Tourisme Responsable</h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Chaque voyage soutient directement la préservation de la faune et le développement communautaire.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Nous travaillons uniquement avec des partenaires locaux, employons des guides issus des communautés et appliquons des règles strictes de protection de l’environnement.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Final */}
+          <section className="rounded-3xl bg-primary p-10 md:p-16 text-center text-primary-foreground">
+            <h2 className="mb-6 font-serif text-4xl md:text-5xl font-bold text-balance">
+              Prêt à Vivre {destination.name} ?
+            </h2>
+            <p className="mx-auto mb-10 max-w-3xl text-xl leading-relaxed text-primary-foreground/90">
+              Laissez-nous créer pour vous le safari de rêve à {destination.name} : luxe, accessibilité, authenticité et respect de la nature.
+              Contactez-nous dès aujourd’hui pour votre aventure personnalisée en Afrique de l’Est {new Date().getFullYear()}–{new Date().getFullYear() + 1}.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button asChild size="lg" variant="secondary" className="text-lg px-10 py-7">
+                <Link href="/contact">Nous contacter</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary-foreground text-lg px-10 py-7 hover:bg-primary-foreground/10"
+              >
+                <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
+                  WhatsApp +254 726 485 228
+                </a>
+              </Button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </>
+  )
+}

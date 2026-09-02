@@ -2,13 +2,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
-import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST!,
-  port: Number(process.env.SMTP_PORT) || 465,
+  host: process.env.SITE_SMTP_HOST!,
+  port: Number(process.env.SITE_SMTP_PORT) || 465,
   secure: true,
-  auth: { user: process.env.SMTP_USER!, pass: process.env.SMTP_PASS! },
+  auth: { user: process.env.SITE_SMTP_USER!, pass: process.env.SITE_SMTP_PASS! },
   tls: { rejectUnauthorized: false },
 });
 
@@ -21,34 +20,14 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
     const inquiryId = `INQ${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`;
-    const baseUrl = getBaseUrl();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${data.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
-    // === Site link ===
-    // Prefer the page URL the contact form was actually submitted from
-    // (validated against the trusted-host allowlist). The inquiry form is
-    // not tied to a specific tour, so if no pageUrl is provided we fall
-    // back to the destination page based on the dropdown they picked,
-    // otherwise the homepage.
-    const trustedPageUrl = sanitizeTrustedPageUrl(data.pageUrl);
-    const DESTINATION_PATHS: Record<string, string> = {
-      kenya: '/tours?destination=kenya',
-      tanzania: '/tours?destination=tanzania',
-      rwanda: '/tours?destination=rwanda',
-      uganda: '/tours?destination=uganda',
-      accessible: '/tours?destination=accessible',
-      vehicle: '/vehicles',
-      custom: '/tours',
-    };
-    const interestKey = (data.country || '').toString().trim().toLowerCase();
-    const sitePath = DESTINATION_PATHS[interestKey] || '/';
-    const siteUrl = trustedPageUrl || `${baseUrl}${sitePath}`;
-
     // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {
-      from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
+      from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER}>`,
       to: data.email,
       subject: `Inquiry Received #${inquiryId} – Thank You!`,
       html: `
@@ -95,15 +74,7 @@ export async function POST(request: NextRequest) {
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${siteUrl}" class="btn" style="background:#0ea5e9;" target="_blank">Browse Our Tours</a>
-      </div>
-
-      <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:-10px;">
-        Or copy this link: <a href="${siteUrl}" style="color:#0ea5e9; word-break:break-all;">${siteUrl}</a>
-      </p>
-
-      <div style="text-align:center; margin:30px 0;">
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have inquiry #${inquiryId} — ${siteUrl}`)}" class="btn btn-wa" target="_blank">
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have inquiry #${inquiryId}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
       </div>
@@ -123,8 +94,8 @@ export async function POST(request: NextRequest) {
 
     // === ADMIN EMAIL (Green) ===
     const adminEmail = {
-      from: `"Inquiry System" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+      from: `"Inquiry System" <${process.env.SITE_SMTP_USER}>`,
+      to: process.env.SITE_SMTP_USER,
       subject: `New Inquiry #${inquiryId} – ${data.name}`,
       html: `
 <!DOCTYPE html>
@@ -172,13 +143,11 @@ export async function POST(request: NextRequest) {
           <tr><td class="label">ID:</td><td class="value"><span class="highlight">${inquiryId}</span></td></tr>
           <tr><td class="label">Interested In:</td><td class="value">${data.country || 'General'}</td></tr>
           <tr><td class="label">Message:</td><td class="value" style="font-style:italic; color:#6b7280;">${data.message}</td></tr>
-          <tr><td class="label">Suggested Page:</td><td class="value"><a href="${siteUrl}" style="color:#059669; word-break:break-all;" target="_blank">${siteUrl}</a></td></tr>
         </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-        <a href="${siteUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Suggested Page</a>
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${data.name}, thanks for your inquiry! Here are some options: ${siteUrl}`)}" class="btn btn-wa" target="_blank">
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${data.name}, thanks for your inquiry!`)}" class="btn btn-wa" target="_blank">
           Contact Customer
         </a>
       </div>

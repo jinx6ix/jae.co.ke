@@ -1,22 +1,18 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
-import { useOnlineBookingState } from "@/hooks/useOnlineBookingState"
-import type { OnlineBookingWriteInput } from "@/lib/online-bookings"
+import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
 
 interface BookingFormProps {
   tourTitle: string
   tourPrice: number
   tourDuration: string
   serviceType?: string
-  tourSlug?: string
-  tourUrl?: string
 }
 
 interface BookingResponse {
@@ -29,10 +25,9 @@ interface BookingResponse {
   whatsappLink?: string
   pdfUrl?: string
   downloadUrl?: string
-  tourUrl?: string
 }
 
-export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour", tourSlug, tourUrl }: BookingFormProps) {
+export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour" }: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,81 +39,6 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [bookingResult, setBookingResult] = useState<BookingResponse | null>(null)
-  const [resetCountdown, setResetCountdown] = useState<number | null>(null)
-  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const { dbWriteStatus, write, reset: resetDbWrite } = useOnlineBookingState()
-
-  const clearResetTimers = () => {
-    if (resetTimerRef.current) {
-      clearTimeout(resetTimerRef.current)
-      resetTimerRef.current = null
-    }
-    if (countdownIntervalRef.current) {
-      clearInterval(countdownIntervalRef.current)
-      countdownIntervalRef.current = null
-    }
-  }
-
-  const resetForm = () => {
-    clearResetTimers()
-    setResetCountdown(null)
-    setSubmitted(false)
-    setBookingResult(null)
-    resetDbWrite()
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      travelers: "2",
-      date: "",
-      message: "",
-    })
-  }
-
-  // Auto-reset the form 5 seconds after a successful submission so the user
-  // can immediately book another trip without having to click anything.
-  // The user can still click "Book Another Tour" / "✕" to reset early,
-  // and the timer is cleared on unmount or if the component re-submits.
-  useEffect(() => {
-    if (!submitted || dbWriteStatus === 'pending') {
-      clearResetTimers()
-      setResetCountdown(null)
-      return
-    }
-
-    // Don't auto-reset the failure panel — the user needs to read it.
-    if (dbWriteStatus === 'failed') {
-      clearResetTimers()
-      setResetCountdown(null)
-      return
-    }
-
-    const SECONDS = 5
-    setResetCountdown(SECONDS)
-
-    countdownIntervalRef.current = setInterval(() => {
-      setResetCountdown((prev) => (prev !== null && prev > 0 ? prev - 1 : prev))
-    }, 1000)
-
-    resetTimerRef.current = setTimeout(() => {
-      clearResetTimers()
-      setResetCountdown(null)
-      setSubmitted(false)
-      setBookingResult(null)
-      resetDbWrite()
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        travelers: "2",
-        date: "",
-        message: "",
-      })
-    }, SECONDS * 1000)
-
-    return clearResetTimers
-  }, [submitted, dbWriteStatus, resetDbWrite])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -126,7 +46,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     setSubmitted(false)
 
     try {
-      const response = await fetch("/api/bookings", {
+      const response = await fetch("/api/site-inquiries", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,8 +54,6 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
         body: JSON.stringify({
           serviceName: tourTitle,
           serviceType,
-          tourSlug,
-          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -154,37 +72,6 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       console.log("[Booking] API Response:", result)
 
       if (result.success) {
-        // Reuse the booking id from the email route as the dashboard's
-        // source_booking_id. A retried form upserts into the same row
-        // (source_booking_id is UNIQUE in online_bookings) instead of
-        // creating a duplicate.
-        const obInput: OnlineBookingWriteInput = {
-          source_booking_id: result.bookingId,
-          booking_kind: "tour",
-          tour_slug: tourSlug ?? null,
-          vehicle_slug: null,
-          service_name: tourTitle,
-          customer_name: formData.name,
-          customer_email: formData.email,
-          customer_phone: formData.phone,
-          customer_country: "Kenya",
-          departure_date: formData.date,
-          return_date: null,
-          adults: Number.parseInt(formData.travelers || "1") || 1,
-          total_price: tourPrice * Number.parseInt(formData.travelers || "1"),
-          currency: "USD",
-          pickup_location: null,
-          special_requests: formData.message || null,
-          source_url: typeof window !== "undefined" ? window.location.href : null,
-        };
-
-        // Awaited — we MUST know the dashboard write result before we can
-        // show the user a success card. The customer email has already gone
-        // out at this point, so a failure here is "the operator dashboard
-        // didn't see it" — not "the booking was lost". The UI is honest
-        // about which case applies.
-        await write(obInput);
-
         setBookingResult(result)
         setSubmitted(true)
       } else {
@@ -217,7 +104,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       return
     }
 
-    const directUrl = `${window.location.origin}/api/bookings/${bookingResult?.bookingId}/download?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}&service=${encodeURIComponent(tourTitle)}&startDate=${encodeURIComponent(formData.date)}&travelers=${formData.travelers}&total=${tourPrice * Number.parseInt(formData.travelers || "1")}`
+    const directUrl = `${window.location.origin}/api/site-inquiries/${bookingResult?.bookingId}/download?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}&service=${encodeURIComponent(tourTitle)}&startDate=${encodeURIComponent(formData.date)}&travelers=${formData.travelers}&total=${tourPrice * Number.parseInt(formData.travelers || "1")}`
     window.open(directUrl, "_blank")?.focus()
   }
 
@@ -227,153 +114,15 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       return
     }
 
-    // Determine the full tour URL
-    const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://www.jaetravel.co.ke"
-
-    let fullTourUrl = tourUrl
-
-    // If no direct tourUrl provided, construct from tourSlug
-    if (!fullTourUrl && tourSlug) {
-      // Check slug format to determine the correct URL pattern
-      if (tourSlug.includes('offer') || tourSlug.includes('special')) {
-        fullTourUrl = `${baseUrl}/budget-tours/offers/${tourSlug}`
-      } else if (tourSlug.includes('masai') || tourSlug.includes('mara') || tourSlug.includes('safari') || tourSlug.includes('kenya')) {
-        fullTourUrl = `${baseUrl}/budget-tours/${tourSlug}`
-      } else if (tourSlug.includes('accessible') || tourSlug.includes('disability')) {
-        fullTourUrl = `${baseUrl}/accessible-migration/${tourSlug}`
-      } else if (tourSlug.includes('flamingo')) {
-        fullTourUrl = `${baseUrl}/flamingo-safari-tours/${tourSlug}`
-      } else {
-        // Default patterns
-        fullTourUrl = `${baseUrl}/budget-tours/${tourSlug}`
-      }
-    }
-
-    const message =
-      `🆕 *New Booking Confirmation*\n\n` +
-      `👤 ${formData.name}\n` +
-      `📧 ${formData.email}\n` +
-      `📞 ${formData.phone}\n\n` +
-      `🎫 *Booking ID:* ${bookingResult?.bookingId}\n` +
-      `🏕️ *Tour:* ${tourTitle}\n` +
-      (fullTourUrl ? `🔗 *Tour Page:* ${fullTourUrl}\n` : ``) +
-      `👥 *Travelers:* ${formData.travelers}\n` +
-      `💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n` +
-      `📅 *Date:* ${formData.date}\n\n` +
-      `Please confirm details and arrange payment.`
-
+    const message = `🆕 *New Booking Confirmation*\n\n👤 ${formData.name}\n📧 ${formData.email}\n📞 ${formData.phone}\n\n🎫 *Booking ID:* ${bookingResult?.bookingId}\n🏕️ *Tour:* ${tourTitle}\n👥 *Travelers:* ${formData.travelers}\n💰 *Total:* $${tourPrice * Number.parseInt(formData.travelers || "1")}\n📅 *Date:* ${formData.date}\n\nPlease confirm details and arrange payment.`
+    
     const whatsappUrl = `https://wa.me/+254726485228?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")?.focus()
   }
 
-  if (submitted && bookingResult && dbWriteStatus === 'failed') {
-    return (
-      <div className="relative rounded-lg border border-amber-200 bg-amber-50 p-8 text-center animate-in fade-in duration-500">
-        <div className="absolute right-4 top-4">
-          <button
-            type="button"
-            onClick={resetForm}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-amber-500 transition-colors hover:bg-amber-100 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-            aria-label="Dismiss"
-            title="Dismiss"
-          >
-            <span className="text-lg leading-none">✕</span>
-          </button>
-        </div>
-
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-amber-100">
-          <AlertCircle className="h-12 w-12 text-amber-600" />
-        </div>
-
-        <h3 className="mb-3 text-3xl font-bold text-amber-700">Booking Received</h3>
-        <p className="mb-2 text-lg font-semibold text-amber-800">
-          Booking ID: <code className="bg-amber-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
-        </p>
-
-        <p className="mb-6 text-amber-700 text-sm leading-relaxed max-w-md mx-auto">
-          ✅ Your confirmation email has been sent to <strong>{formData.email}</strong>.<br />
-          ⚠️ We couldn&rsquo;t queue this in our system right now. Our team has been alerted and will follow up within 24 hours.
-        </p>
-
-        <div className="space-y-3 max-w-md mx-auto">
-          <Button
-            onClick={handleWhatsApp}
-            className="w-full justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white"
-            size="lg"
-          >
-            <Send className="h-5 w-5" />
-            Confirm via WhatsApp
-          </Button>
-
-          <Button
-            onClick={resetForm}
-            variant="outline"
-            className="w-full border-amber-300 text-amber-700 hover:bg-amber-50"
-            size="lg"
-          >
-            📝 Book Another Tour
-          </Button>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-amber-200">
-          <p className="text-xs text-amber-600 mb-2">Need immediate help?</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
-            <a
-              href="tel:+254726485228"
-              className="flex items-center gap-2 text-amber-700 hover:text-amber-800 font-medium"
-            >
-              📞 +254 726 485 228
-            </a>
-            <a
-              href="mailto:info@jaetravel.co.ke"
-              className="flex items-center gap-2 text-amber-700 hover:text-amber-800 font-medium"
-            >
-              ✉️ info@jaetravel.co.ke
-            </a>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (submitted && bookingResult && dbWriteStatus === 'pending') {
+  if (submitted && bookingResult) {
     return (
       <div className="rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
-          <Loader2 className="h-12 w-12 text-orange-600 animate-spin" />
-        </div>
-        <h3 className="mb-3 text-2xl font-bold text-orange-700">Recording your booking…</h3>
-        <p className="text-orange-700 text-sm">
-          Booking ID: <code className="bg-orange-100 px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
-        </p>
-      </div>
-    )
-  }
-
-  if (submitted && bookingResult && dbWriteStatus === 'recorded') {
-    return (
-      <div className="relative rounded-lg border border-orange-200 bg-orange-50 p-8 text-center animate-in fade-in duration-500">
-        {/* Auto-reset dismiss + countdown */}
-        <div className="absolute right-4 top-4 flex items-center gap-2">
-          {resetCountdown !== null && resetCountdown > 0 && (
-            <span
-              className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700"
-              aria-live="polite"
-            >
-              Resetting in {resetCountdown}s
-            </span>
-          )}
-          <button
-            type="button"
-            onClick={resetForm}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-orange-500 transition-colors hover:bg-orange-100 hover:text-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            aria-label="Dismiss and book another tour"
-            title="Book another tour"
-          >
-            <span className="text-lg leading-none">✕</span>
-          </button>
-        </div>
-
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
           <CheckCircle className="h-12 w-12 text-orange-600" />
         </div>
@@ -431,9 +180,20 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             Share on WhatsApp
           </Button>
           
-          <Button
-            onClick={resetForm}
-            variant="outline"
+          <Button 
+            onClick={() => {
+              setSubmitted(false)
+              setBookingResult(null)
+              setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                travelers: "2",
+                date: "",
+                message: "",
+              })
+            }} 
+            variant="outline" 
             className="w-full border-orange-300 text-orange-700 hover:bg-orange-50"
             size="lg"
           >

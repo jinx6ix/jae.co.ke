@@ -11,6 +11,14 @@ export interface BlogPost {
   metaTitle: string
   metaDescription: string
   keywords: string[]
+  relatedTours?: RelatedTour[]
+}
+
+export type RelatedTour = {
+  id: string
+  slug: string
+  title: string
+  source: 'tours' | 'budget-tours'
 }
 
 export const blogPosts: BlogPost[] = [
@@ -32,7 +40,7 @@ Planning your safari during the migration requires booking well in advance, as l
     author: "Sarah Johnson",
     publishedAt: "2025-01-15",
     category: "Travel Tips",
-    image: "/masaimara.jpeg",
+    image: "/masai-mara-migration.jpg",
     metaTitle: "Best Time to Visit Masai Mara for Great Migration 2025",
     metaDescription:
       "Plan your perfect Masai Mara safari with our comprehensive guide to the Great Migration. Learn the best months, what to expect, and expert tips for witnessing this natural wonder in Kenya.",
@@ -237,7 +245,7 @@ Packing for family safaris requires extra planning. Bring sun protection, insect
 Best destinations for family safaris include the Masai Mara for its high wildlife density and shorter game drives, the Serengeti for its vast plains and diverse wildlife, and beach extensions in Zanzibar or Diani Beach for post-safari relaxation.
 
 The benefits of family safaris extend beyond the trip itself. Children develop appreciation for nature, learn about different cultures, gain confidence through new experiences, and create family bonds through shared adventures. Many families report that safari experiences inspire children's academic interests and career choices.`,
-    author: "Antony  Mwangi",
+    author: "James Mwangi",
     publishedAt: "2024-12-15",
     category: "Family Travel",
     image: "/kenya-safari-landscape.jpg",
@@ -283,7 +291,7 @@ Specialized photography safaris offer advantages for serious photographers: cust
     author: "Rachel Omondi",
     publishedAt: "2024-12-10",
     category: "Photography",
-    image: "/masaimara.jpeg",
+    image: "/masai-mara-migration.jpg",
     metaTitle: "Wildlife Photography Safari Tips East Africa Guide 2025",
     metaDescription:
       "Master wildlife photography on your East African safari. Expert tips on camera equipment, settings, composition, lighting, and techniques for capturing stunning safari images in Kenya and Tanzania.",

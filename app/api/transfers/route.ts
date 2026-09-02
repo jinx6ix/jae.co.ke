@@ -2,15 +2,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { v4 as uuidv4 } from 'uuid';
-import { getBaseUrl, sanitizeTrustedPageUrl } from '@/lib/page-url';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST!,
-  port: Number(process.env.SMTP_PORT) || 465,
+  host: process.env.SITE_SMTP_HOST!,
+  port: Number(process.env.SITE_SMTP_PORT) || 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER!,
-    pass: process.env.SMTP_PASS!,
+    user: process.env.SITE_SMTP_USER!,
+    pass: process.env.SITE_SMTP_PASS!,
   },
   tls: { rejectUnauthorized: false },
 });
@@ -26,7 +25,7 @@ export async function POST(request: NextRequest) {
   try {
     bookingData = await request.json();
     const bookingId = `TR${Date.now()}-${uuidv4().slice(0, 8).toUpperCase()}`; // TR = Transfer
-    const baseUrl = getBaseUrl();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
     const totalPrice = parseFloat(bookingData.totalPrice || bookingData.price);
 
@@ -62,20 +61,9 @@ export async function POST(request: NextRequest) {
     const adminWhatsApp = `https://wa.me/254726485228`;
     const customerWhatsApp = `https://wa.me/${bookingData.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}`;
 
-    // === Service page link ===
-    // Prefer the page URL the form was actually submitted from (validated
-    // against the trusted-host allowlist). If the form forwards a service
-    // slug, surface the tour/transfer page as a fallback.
-    const trustedPageUrl = sanitizeTrustedPageUrl(bookingData.pageUrl);
-    const serviceSlug = typeof bookingData.serviceSlug === 'string' && bookingData.serviceSlug.trim()
-      ? bookingData.serviceSlug.trim()
-      : '';
-    const serviceUrl = trustedPageUrl
-      || (serviceSlug ? `${baseUrl}/safari/${serviceSlug}` : '');
-
     // === CUSTOMER EMAIL (Orange) ===
     const customerEmail = {
-      from: `"JaeTravel Expeditions" <${process.env.SMTP_USER}>`,
+      from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER}>`,
       to: bookingData.email,
       subject: `Transfer Booking #${bookingId} – ${bookingData.serviceName}`,
       html: `
@@ -125,14 +113,7 @@ export async function POST(request: NextRequest) {
           <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.message || 'None'}</td></tr>
         </table>
       </div>
-${serviceUrl ? `
-      <div style="text-align:center; margin:30px 0;">
-        <a href="${serviceUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Service Details</a>
-      </div>
-      <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:-10px;">
-        Or copy this link: <a href="${serviceUrl}" style="color:#0ea5e9; word-break:break-all;">${serviceUrl}</a>
-      </p>
-` : ''}
+
       <div style="text-align:center; margin:30px 0;">
         <a href="${clientPdfUrl}" class="btn">Download PDF</a>
       </div>
@@ -140,7 +121,7 @@ ${serviceUrl ? `
       <div style="background:#ecfdf5; border:1px solid #bbf7d0; border-radius:12px; padding:25px; text-align:center;">
         <h3 style="margin:0 0 15px; color:#059669; font-size:18px;">Need Help?</h3>
         <p>Chat with us:</p>
-        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have transfer #${bookingId}${serviceUrl ? ` — ${serviceUrl}` : ''}`)}" class="btn btn-wa" target="_blank">
+        <a href="${adminWhatsApp}?text=${encodeURIComponent(`Hi, I have transfer #${bookingId}`)}" class="btn btn-wa" target="_blank">
           Chat on WhatsApp
         </a>
       </div>
@@ -160,8 +141,8 @@ ${serviceUrl ? `
 
     // === ADMIN EMAIL (Green) ===
     const adminEmail = {
-      from: `"Transfer Booking" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+      from: `"Transfer Booking" <${process.env.SITE_SMTP_USER}>`,
+      to: process.env.SITE_SMTP_USER,
       subject: `New Transfer #${bookingId} – ${bookingData.name}`,
       html: `
 <!DOCTYPE html>
@@ -215,12 +196,12 @@ ${serviceUrl ? `
           <tr><td class="label">Travelers:</td><td class="value">${bookingData.travelers}</td></tr>
           <tr><td class="label">Total:</td><td class="value" style="font-weight:700; color:#059669; font-size:18px;">$${totalPrice.toLocaleString()}</td></tr>
           <tr><td class="label">Requests:</td><td class="value" style="font-style:italic; color:#6b7280;">${bookingData.message || 'None'}</td></tr>
-${serviceUrl ? `          <tr><td class="label">Service Page:</td><td class="value"><a href="${serviceUrl}" style="color:#059669; word-break:break-all;" target="_blank">${serviceUrl}</a></td></tr>\n` : ''}        </table>
+        </table>
       </div>
 
       <div style="text-align:center; margin:30px 0;">
-${serviceUrl ? `        <a href="${serviceUrl}" class="btn" style="background:#0ea5e9;" target="_blank">View Service Page</a>\n` : ''}        <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download PDF</a>
-        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your transfer #${bookingId} is confirmed!${serviceUrl ? ` Service: ${serviceUrl}` : ''}`)}" class="btn btn-wa" target="_blank">
+        <a href="${adminPdfUrl}" class="btn btn-pdf" target="_blank">Download PDF</a>
+        <a href="${customerWhatsApp}?text=${encodeURIComponent(`Hi ${bookingData.name}, your transfer #${bookingId} is confirmed!`)}" class="btn btn-wa" target="_blank">
           Contact Customer
         </a>
       </div>

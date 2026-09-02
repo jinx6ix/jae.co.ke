@@ -1,84 +1,92 @@
 // components/LanguageSwitcher.tsx
-"use client";
-
-import { usePathname, useRouter } from "next/navigation";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Globe, ChevronDown } from "lucide-react";
-
-// Define supported languages with their display names and flags (optional)
-const languages = [
-  { code: "en", name: "English", flag: "🇺🇸", pathPrefix: "" },        // no prefix for default
-  { code: "fr", name: "Français", flag: "🇫🇷", pathPrefix: "fr" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪", pathPrefix: "de" },
-  { code: "it", name: "Italiano", flag: "🇮🇹", pathPrefix: "it" },
-  { code: "hi", name: "हिन्दी", flag: "🇮🇳", pathPrefix: "hi" },
-  { code: "ar", name: "العربية", flag: "🇸🇦", pathPrefix: "ar" },
-  { code: "zh", name: "中文", flag: "🇨🇳", pathPrefix: "zh" },
-];
-
-// Helper to get the current locale from the pathname
-function getCurrentLocale(pathname: string): string {
-  const firstSegment = pathname.split("/")[1];
-  const found = languages.find((lang) => lang.pathPrefix === firstSegment);
-  return found ? found.code : "en";
-}
-
-// Helper to build the URL for a target locale while preserving the rest of the path
-function getLocalizedUrl(pathname: string, targetLocale: string): string {
-  const currentLocale = getCurrentLocale(pathname);
-  const targetLang = languages.find((l) => l.code === targetLocale);
-  if (!targetLang) return pathname;
-
-  // Remove the current locale prefix if present
-  let restPath = pathname;
-  if (currentLocale !== "en") {
-    const prefix = `/${currentLocale}`;
-    if (pathname.startsWith(prefix)) {
-      restPath = pathname.slice(prefix.length) || "/";
-    }
-  }
-
-  // Add the target locale prefix if not English
-  if (targetLocale === "en") {
-    return restPath === "/" ? "/" : restPath;
-  } else {
-    const newPath = `/${targetLang.pathPrefix}${restPath === "/" ? "" : restPath}`;
-    return newPath;
-  }
-}
+// Drop-in language switcher — add to Header component
+"use client"
+import { usePathname, useRouter } from "next/navigation"
+import { useState } from "react"
+import { localeConfig, locales, type Locale } from "@/lib/i18n/config"
 
 export function LanguageSwitcher() {
-  const pathname = usePathname();
-  const router = useRouter();
-  const currentLocale = getCurrentLocale(pathname);
+  const pathname = usePathname()
+  const router = useRouter()
+  const [open, setOpen] = useState(false)
 
-  const handleLanguageChange = (localeCode: string) => {
-    if (localeCode === currentLocale) return;
-    const newUrl = getLocalizedUrl(pathname, localeCode);
-    router.push(newUrl);
-  };
+  // Detect current locale from path
+  function getCurrentLocale(): Locale {
+    for (const locale of locales) {
+      if (locale === "en") continue
+      if (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) return locale
+    }
+    return "en"
+  }
 
-  const currentLang = languages.find((l) => l.code === currentLocale);
+  function getLocalizedPath(targetLocale: Locale): string {
+    const current = getCurrentLocale()
+    let path = pathname
+
+    // Strip current locale prefix
+    if (current !== "en") {
+      path = path.replace(new RegExp(`^/${current}`), "") || "/"
+    }
+
+    // Add target locale prefix
+    if (targetLocale === "en") return path
+    return `/${targetLocale}${path}`
+  }
+
+  const currentLocale = getCurrentLocale()
+  const currentConfig = localeConfig[currentLocale]
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-1 px-2 xl:px-3 py-2 text-sm font-medium text-gray-700 hover:text-amber-600 rounded-md transition-colors border border-gray-200">
-        <Globe className="h-4 w-4" />
-        <span className="hidden xl:inline">{currentLang?.name.slice(0, 2).toUpperCase()}</span>
-        <ChevronDown className="h-4 w-4" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        {languages.map((lang) => (
-          <DropdownMenuItem
-            key={lang.code}
-            className={`gap-2 cursor-pointer ${lang.code === currentLocale ? "bg-amber-50 text-amber-600" : ""}`}
-            onClick={() => handleLanguageChange(lang.code)}
-          >
-            <span>{lang.flag}</span>
-            <span>{lang.name}</span>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+    <div className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 hover:border-orange-400 hover:bg-orange-50 transition-colors text-sm font-medium"
+        aria-label="Select language"
+        aria-expanded={open}
+      >
+        <span className="text-base leading-none">{currentConfig.flag}</span>
+        <span className="hidden sm:inline text-gray-700">{currentConfig.nativeName}</span>
+        <svg className={`w-3.5 h-3.5 text-gray-500 transition-transform ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {open && (
+        <>
+          {/* Backdrop */}
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+
+          {/* Dropdown */}
+          <div className="absolute right-0 top-full mt-1 z-50 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden min-w-[180px]">
+            <div className="py-1">
+              {locales.map((locale) => {
+                const config = localeConfig[locale]
+                const isActive = locale === currentLocale
+                return (
+                  <button
+                    key={locale}
+                    onClick={() => { router.push(getLocalizedPath(locale)); setOpen(false) }}
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-orange-50 transition-colors ${isActive ? "bg-orange-50 text-orange-600 font-medium" : "text-gray-700"}`}
+                    lang={locale}
+                    hrefLang={locale}
+                  >
+                    <span className="text-lg leading-none">{config.flag}</span>
+                    <div className="text-left">
+                      <div className="font-medium">{config.nativeName}</div>
+                      <div className="text-xs text-gray-400">{config.name}</div>
+                    </div>
+                    {isActive && (
+                      <svg className="ml-auto w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  )
 }

@@ -80,7 +80,7 @@ export const reviews: Review[] = [
   {
     id: 6,
     tourId: 5,
-    author: "Antony  Wilson",
+    author: "James Wilson",
     country: "Canada",
     rating: 5,
     date: "2024-02-05",

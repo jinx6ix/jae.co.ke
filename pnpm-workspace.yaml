@@ -1,3 +1,4 @@
 allowBuilds:
-  esbuild: false
+  '@prisma/engines': false
+  prisma: false
   sharp: false

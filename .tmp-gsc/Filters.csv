@@ -1,0 +1,4 @@
+Filter,Value
+Search type,Web
+Date,Last 3 months
+Query,+^(who|what|when|where|why|how|which|whose|whom|is|are|was|were|do|does|did|can|could|will|would|should|shall|has|have|had)\s
