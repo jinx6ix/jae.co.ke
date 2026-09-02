@@ -175,23 +175,34 @@ export function toBlogPost(post: CmsBlogPost): BlogPost {
 export async function getAllPosts(): Promise<CmsBlogPost[]> {
   const getCached = unstable_cache(
     async () => {
-      const payload = await getPayload({ config })
-      // We use `overrideAccess: true` and filter `_status: published`
-      // explicitly to work around a MongoDB query-builder bug: the
-      // `authenticatedOrPublished` access layer AND-merges its own
-      // `_status` filter with the user's `where`, and the resulting
-      // compound query trips a `Cannot read 'type' of undefined` in
-      // the polymorphic `relatedTours` field's nested-path resolver.
-      // All ingest paths set `_status: 'published'`, so this is safe.
-      const result = await payload.find({
-        collection: 'posts',
-        where: { _status: { equals: 'published' } },
-        sort: '-publishedAt',
-        depth: 2,
-        limit: 100,
-        overrideAccess: true,
-      })
-      return result.docs as CmsBlogPost[]
+      // Defensive: the build runs `next build` in a Vercel region that
+      // may not be whitelisted in MongoDB Atlas, which would otherwise
+      // fail `generateStaticParams` for `/blog/[slug]`. Treat an
+      // unreachable CMS as "no CMS posts" so the static `blog-data.ts`
+      // array is the source of truth for that build. CMS-only slugs are
+      // still resolved at request time via ISR (revalidate: 3600).
+      try {
+        const payload = await getPayload({ config })
+        // We use `overrideAccess: true` and filter `_status: published`
+        // explicitly to work around a MongoDB query-builder bug: the
+        // `authenticatedOrPublished` access layer AND-merges its own
+        // `_status` filter with the user's `where`, and the resulting
+        // compound query trips a `Cannot read 'type' of undefined` in
+        // the polymorphic `relatedTours` field's nested-path resolver.
+        // All ingest paths set `_status: 'published'`, so this is safe.
+        const result = await payload.find({
+          collection: 'posts',
+          where: { _status: { equals: 'published' } },
+          sort: '-publishedAt',
+          depth: 2,
+          limit: 100,
+          overrideAccess: true,
+        })
+        return result.docs as CmsBlogPost[]
+      } catch (err) {
+        console.warn('[posts] getAllPosts: CMS unreachable, using static fallback only', err)
+        return [] as CmsBlogPost[]
+      }
     },
     ['all-posts'],
     {
@@ -205,23 +216,31 @@ export async function getAllPosts(): Promise<CmsBlogPost[]> {
 export async function getPostBySlug(slug: string): Promise<CmsBlogPost> {
   const getCached = unstable_cache(
     async () => {
-      const payload = await getPayload({ config })
-      // See `getAllPosts` for the `overrideAccess: true` rationale.
-      // We do NOT wrap in `and` — a top-level `_status` filter avoids
-      // the same MongoDB query-builder bug for this collection.
-      const result = await payload.find({
-        collection: 'posts',
-        where: {
-          and: [
-            { _status: { equals: 'published' } },
-            { slug: { equals: slug } },
-          ],
-        },
-        limit: 1,
-        depth: 2,
-        overrideAccess: true,
-      })
-      return result.docs[0] as CmsBlogPost | undefined
+      // See `getAllPosts` for the unreachable-CMS rationale. Returning
+      // `undefined` here lets the caller fall back to the static data
+      // instead of crashing the build.
+      try {
+        const payload = await getPayload({ config })
+        // See `getAllPosts` for the `overrideAccess: true` rationale.
+        // We do NOT wrap in `and` — a top-level `_status` filter avoids
+        // the same MongoDB query-builder bug for this collection.
+        const result = await payload.find({
+          collection: 'posts',
+          where: {
+            and: [
+              { _status: { equals: 'published' } },
+              { slug: { equals: slug } },
+            ],
+          },
+          limit: 1,
+          depth: 2,
+          overrideAccess: true,
+        })
+        return result.docs[0] as CmsBlogPost | undefined
+      } catch (err) {
+        console.warn(`[posts] getPostBySlug(${slug}): CMS unreachable`, err)
+        return undefined
+      }
     },
     ['post-by-slug', slug],
     {
@@ -235,8 +254,13 @@ export async function getPostBySlug(slug: string): Promise<CmsBlogPost> {
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {
-  const posts = await getAllPosts()
-  return posts.map((p) => (p as { slug?: string }).slug).filter((s): s is string => !!s)
+  try {
+    const posts = await getAllPosts()
+    return posts.map((p) => (p as { slug?: string }).slug).filter((s): s is string => !!s)
+  } catch (err) {
+    console.warn('[posts] getAllPostSlugs: CMS unreachable, using static slugs only', err)
+    return []
+  }
 }
 
 // ---------- Combined listing (CMS ∪ static fallback) ----------
