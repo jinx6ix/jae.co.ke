@@ -1,6 +1,7 @@
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { tours } from "@/lib/tours-data"
 import { Button } from "@/components/ui/button"
 import { Shield, Users, Clock, Car, Wifi, Accessibility, Star, Award, MapPin, CheckCircle, Phone, Mail, Calendar, Heart, Zap, Globe } from "lucide-react"
 import VehicleCard from "./VehicleCard"
