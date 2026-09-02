@@ -1,7 +1,9 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// =============================================================================
+// INTERFACES
+// =============================================================================
 interface Tour { id: string; title: string; durationDays: number; durationNights: number; }
 interface RateCard { id: string; season: string; currency: string; basedOn2: number; basedOn4: number; basedOn6: number; basedOn8: number; basedOn9?: number|null; basedOn10?: number|null; basedOn12?: number|null; markupPercent: number; }
 interface Client { id: string; name: string; agentId?: string|null; agent?: { id: string; name: string; company?: string|null }|null; }
@@ -20,258 +22,378 @@ interface Destination { id: number; name: string; }
 interface Props { tours: Tour[]; rateCards: (RateCard & { tourPackage: Tour })[]; clients?: Client[]; agents?: Agent[]; bookings?: Booking[]; hotels?: Hotel[]; destinations?: Destination[]; initialCostSheet?: any; }
 
 interface DayRow {
-  destinationId: number|null; hotelId: string; hotelName: string;
-  adultAccomTotal: number; childAccomTotal: number; singleRoomRate: number; thirdPersonRate: number;
-  parkFeeAdultTotal: number; parkFeeChildTotal: number; transportTotal: number;
-  hasFlight: boolean; flightAdultPP: number; flightChildPP: number;
-  isTriple: boolean; tripleRate: number;
-  selectedRateId: number|null; availableRates: RoomPrice[]; ratesLoading: boolean; ratesMatched: boolean;
+  destinationId: number|null;
+  hotelId: string;
+  hotelName: string;
+  adultAccomTotal: number;
+  childAccomTotal: number;
+  singleRoomRate: number;
+  thirdPersonRate: number;
+  parkFeeAdultTotal: number;
+  parkFeeChildTotal: number;
+  transportTotal: number;
+  hasFlight: boolean;
+  flightAdultPP: number;
+  flightChildPP: number;
+  isTriple: boolean;
+  tripleRate: number;
+  selectedRateId: number|null;
+  availableRates: RoomPrice[];
+  ratesLoading: boolean;
+  /** true when the lookup matched a season for this day's date; false when fallback was used. */
+  ratesMatched: boolean;
 }
 
 const BOARD_BASIS = [
-  { code: 'FB', label: 'Full Board' }, { code: 'HB', label: 'Half Board' },
-  { code: 'BB', label: 'Bed & Breakfast' }, { code: 'RO', label: 'Room Only' },
+  { code: 'FB', label: 'Full Board' },
+  { code: 'HB', label: 'Half Board' },
+  { code: 'BB', label: 'Bed & Breakfast' },
+  { code: 'RO', label: 'Room Only' },
 ];
 
 function emptyRow(): DayRow {
-  return { destinationId: null, hotelId: '', hotelName: '', adultAccomTotal: 0, childAccomTotal: 0,
-    singleRoomRate: 0, thirdPersonRate: 0, parkFeeAdultTotal: 0, parkFeeChildTotal: 0, transportTotal: 0,
-    hasFlight: false, flightAdultPP: 0, flightChildPP: 0, isTriple: false, tripleRate: 0,
-    selectedRateId: null, availableRates: [], ratesLoading: false, ratesMatched: false };
+  return {
+    destinationId: null,
+    hotelId: '',
+    hotelName: '',
+    adultAccomTotal: 0,
+    childAccomTotal: 0,
+    singleRoomRate: 0,
+    thirdPersonRate: 0,
+    parkFeeAdultTotal: 0,
+    parkFeeChildTotal: 0,
+    transportTotal: 0,
+    hasFlight: false,
+    flightAdultPP: 0,
+    flightChildPP: 0,
+    isTriple: false,
+    tripleRate: 0,
+    selectedRateId: null,
+    availableRates: [],
+    ratesLoading: false,
+    ratesMatched: false,
+  };
 }
 
-function fmt2(n: number) { return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-function fmtC(n: number, cur: string) { return `${cur} ${fmt2(n)}`; }
-
-// ─── NumberInput helper ───────────────────────────────────────────────────────
-function NumInput({ value, onChange, placeholder = '0', className = '' }: { value: number; onChange: (v: number) => void; placeholder?: string; className?: string }) {
-  return (
-    <input type="number" min={0} step="0.01" value={value || ''} onChange={e => onChange(Number(e.target.value))}
-      className={`w-full rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-sm font-mono text-right focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 transition ${className}`}
-      placeholder={placeholder} />
-  );
+function fmt2(n: number) {
+  return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-// ─── FieldLabel helper ────────────────────────────────────────────────────────
-function FL({ children }: { children: React.ReactNode }) {
-  return <p className="text-xs font-medium text-gray-500 mb-1">{children}</p>;
-}
-
-// ─── Section header ───────────────────────────────────────────────────────────
-function SectionTitle({ icon, title, sub }: { icon: string; title: string; sub?: string }) {
-  return (
-    <div className="flex items-center gap-2 mb-4">
-      <span className="text-base">{icon}</span>
-      <div>
-        <h3 className="text-sm font-semibold text-gray-800">{title}</h3>
-        {sub && <p className="text-xs text-gray-400">{sub}</p>}
-      </div>
-    </div>
-  );
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
 export default function RateCalculator({
-  tours, rateCards, clients = [], agents = [], bookings = [],
-  hotels: initHotels = [], destinations: initDests = [], initialCostSheet,
+  tours,
+  rateCards,
+  clients = [],
+  agents = [],
+  bookings = [],
+  hotels: initHotels = [],
+  destinations: initDests = [],
+  initialCostSheet,
 }: Props) {
   const [localHotels, setLocalHotels] = useState<Hotel[]>(initHotels);
-  const [localDests,  setLocalDests]  = useState<Destination[]>(initDests);
+  const [localDests, setLocalDests] = useState<Destination[]>(initDests);
   const [localClients, setLocalClients] = useState<Client[]>(clients);
+  // Bookings come from server props as a one-time snapshot. We mirror them in
+  // state and re-fetch on mount / focus so newly-created bookings appear
+  // without forcing the user to reload the page.
   const [localBookings, setLocalBookings] = useState<Booking[]>(bookings);
 
-  // Version management
+  // Cost sheet versioning
   const [costSheetsList, setCostSheetsList] = useState<any[]>([]);
   const [currentCostSheetId, setCurrentCostSheetId] = useState<string | null>(null);
   const [isLoadingSheet, setIsLoadingSheet] = useState(false);
 
-  // Linking
+  // Linking fields
   const [clientSearch, setClientSearch] = useState('');
   const [showClientDropdown, setShowClientDropdown] = useState(false);
   const clientInputRef = useRef<HTMLInputElement>(null);
   const clientDropdownRef = useRef<HTMLDivElement>(null);
   const [isCreatingClient, setIsCreatingClient] = useState(false);
-  const [clientId, setClientId]   = useState('');
-  const [agentId,  setAgentId]    = useState('');
+  const [clientId, setClientId] = useState('');
+  const [agentId, setAgentId] = useState('');
   const [bookingId, setBookingId] = useState('');
-  const [tourId,   setTourId]     = useState('');
+  const [tourId, setTourId] = useState('');
 
-  // Trip settings
-  const [numAdults,   setNumAdults]   = useState(0);
+  // Core settings
+  const [numAdults, setNumAdults] = useState(0);
   const [numChildren, setNumChildren] = useState(0);
-  const [numDays,     setNumDays]     = useState(1);
-  const [numNights,   setNumNights]   = useState(0);
-  const [currency,    setCurrency]    = useState('USD');
-  const [boardBasis,  setBoardBasis]  = useState('FB');
-  const [startDate,   setStartDate]   = useState('');
+  const [numDays, setNumDays] = useState(1);
+  const [numNights, setNumNights] = useState(0);
+  const [currency, setCurrency] = useState('USD');
+  const [boardBasis, setBoardBasis] = useState('FB');
+  const [startDate, setStartDate] = useState('');
   const [globalMarkup, setGlobalMarkup] = useState(10);
   const [notes, setNotes] = useState('');
 
   // Day rows
   const [dayRows, setDayRows] = useState<DayRow[]>([emptyRow()]);
 
-  // Extras
-  const [fileHandling,     setFileHandling]     = useState(0);
-  const [ecoBottle,        setEcoBottle]        = useState(0);
-  const [evacInsurance,    setEvacInsurance]    = useState(0);
-  const [extraItems,       setExtraItems]       = useState<{ label: string; cost: number }[]>([]);
-  const [maasaiVillage,    setMaasaiVillage]    = useState(false);
-  const [maasaiCostTotal,  setMaasaiCostTotal]  = useState(0);
-  const [arrivalTransfer,  setArrivalTransfer]  = useState(false);
-  const [arrivalTotal,     setArrivalTotal]     = useState(0);
-  const [departureTransfer,setDepartureTransfer]= useState(false);
-  const [departureTotal,   setDepartureTotal]   = useState(0);
+  // Global extras
+  const [fileHandling, setFileHandling] = useState(0);
+  const [ecoBottle, setEcoBottle] = useState(0);
+  const [evacInsurance, setEvacInsurance] = useState(0);
+  const [extraItems, setExtraItems] = useState<{ label: string; cost: number }[]>([]);
+  const [maasaiVillage, setMaasaiVillage] = useState(false);
+  const [maasaiCostTotal, setMaasaiCostTotal] = useState(0);
+  const [arrivalTransfer, setArrivalTransfer] = useState(false);
+  const [arrivalTotal, setArrivalTotal] = useState(0);
+  const [departureTransfer, setDepartureTransfer] = useState(false);
+  const [departureTotal, setDepartureTotal] = useState(0);
 
-  // Options table
+  // Option tables
   const [options, setOptions] = useState<{ pax: number; markup: number }[]>([]);
 
-  // UI
-  const [saving,    setSaving]    = useState(false);
-  const [saved,     setSaved]     = useState(false);
+  // UI state
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
   const [saveError, setSaveError] = useState('');
-  const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([0]));
 
-  // ── Computed ─────────────────────────────────────────────────────────────
+  // Computed
   const numPax = numAdults + numChildren;
   const maxDisplayPax = Math.min(numPax, 12);
   const filteredClients = localClients.filter(c =>
-    c.name.toLowerCase().includes(clientSearch.toLowerCase()));
-  const exactMatch = filteredClients.some(c =>
-    c.name.toLowerCase() === clientSearch.toLowerCase());
+    c.name.toLowerCase().includes(clientSearch.toLowerCase())
+  );
+  const exactMatch = filteredClients.some(c => c.name.toLowerCase() === clientSearch.toLowerCase());
 
-  function toggleDay(i: number) {
-    setExpandedDays(prev => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
-    });
-  }
-
-  // ── Effects ───────────────────────────────────────────────────────────────
+  // Close client dropdown
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (clientDropdownRef.current && !clientDropdownRef.current.contains(e.target as Node) &&
-          clientInputRef.current && !clientInputRef.current.contains(e.target as Node))
+    const handleClickOutside = (event: MouseEvent) => {
+      if (clientDropdownRef.current && !clientDropdownRef.current.contains(event.target as Node) &&
+          clientInputRef.current && !clientInputRef.current.contains(event.target as Node)) {
         setShowClientDropdown(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Options based on numPax
   useEffect(() => {
     if (numPax === 0) { setOptions([]); return; }
+    const newLength = maxDisplayPax;
     setOptions(prev => {
-      if (prev.length === maxDisplayPax && prev.every((o, i) => o.pax === i + 1)) return prev;
-      const next = [];
-      for (let p = 1; p <= maxDisplayPax; p++) {
-        const ex = prev.find(o => o.pax === p);
-        next.push({ pax: p, markup: ex?.markup ?? globalMarkup });
+      if (prev.length === newLength && prev.every((opt, idx) => opt.pax === idx + 1)) return prev;
+      const newOptions = [];
+      for (let p = 1; p <= newLength; p++) {
+        const existing = prev.find(opt => opt.pax === p);
+        newOptions.push({ pax: p, markup: existing?.markup ?? 10 });
       }
-      return next;
+      return newOptions;
     });
   }, [numPax, maxDisplayPax]);
 
+  // Auto-fill from tour
   useEffect(() => {
-    const t = tours.find(t => t.id === tourId);
+    const t = tours.find((t) => t.id === tourId);
     if (t) {
       setNumDays(t.durationDays);
       setNumNights(t.durationNights);
       setDayRows(Array.from({ length: t.durationDays }, () => emptyRow()));
-      setExpandedDays(new Set(Array.from({ length: t.durationDays }, (_, i) => i)));
     }
   }, [tourId, tours]);
 
   useEffect(() => {
-    setDayRows(prev => {
+    setDayRows((prev) => {
       if (prev.length === numDays) return prev;
       return Array.from({ length: numDays }, (_, i) => prev[i] || emptyRow());
     });
-    setExpandedDays(prev => {
-      const next = new Set(prev);
-      for (let i = prev.size; i < numDays; i++) next.add(i);
-      return next;
-    });
   }, [numDays]);
 
+  // Auto-fill from booking
   useEffect(() => {
     if (!bookingId) return;
-    const b = localBookings.find(b => b.id === bookingId);
+    const b = localBookings.find((b) => b.id === bookingId);
     if (!b) return;
     setClientId(b.clientId);
     setClientSearch(b.client.name);
     if (b.tourPackageId) setTourId(b.tourPackageId);
-    const c = localClients.find(c => c.id === b.clientId);
+    const c = localClients.find((c) => c.id === b.clientId);
     if (c?.agentId) setAgentId(c.agentId);
-    if (b.startDate) setStartDate(b.startDate.split('T')[0]);
+
+    // Reflect booking details: start date, pax, and day count (from start→end).
+    if (b.startDate) {
+      setStartDate(b.startDate.split('T')[0]);
+    }
     if (typeof b.numAdults === 'number') setNumAdults(b.numAdults);
     if (typeof b.numChildren === 'number') setNumChildren(b.numChildren);
     if (b.startDate && b.endDate) {
-      const days = Math.max(1, Math.round((new Date(b.endDate).getTime() - new Date(b.startDate).getTime()) / 86400000) + 1);
-      setNumDays(days); setNumNights(Math.max(0, days - 1));
+      const ms = new Date(b.endDate).getTime() - new Date(b.startDate).getTime();
+      const days = Math.max(1, Math.round(ms / 86400000) + 1); // inclusive of start day
+      setNumDays(days);
+      setNumNights(Math.max(0, days - 1));
     }
   }, [bookingId, localBookings, localClients]);
 
   useEffect(() => {
     if (!clientId) return;
-    const c = localClients.find(c => c.id === clientId);
+    const c = localClients.find((c) => c.id === clientId);
     if (c?.agentId) setAgentId(c.agentId);
   }, [clientId, localClients]);
 
   useEffect(() => {
-    if (numChildren === 0)
-      setDayRows(prev => prev.map(r => ({ ...r, childAccomTotal: 0, parkFeeChildTotal: 0, flightChildPP: 0 })));
+    if (numChildren === 0) {
+      setDayRows(prev => prev.map(row => ({
+        ...row,
+        childAccomTotal: 0,
+        parkFeeChildTotal: 0,
+        flightChildPP: 0,
+      })));
+    }
   }, [numChildren]);
 
   const fetchCostSheets = useCallback(async () => {
-    if (!clientId && !bookingId) { setCostSheetsList([]); return; }
+    if (!clientId && !bookingId) {
+      setCostSheetsList([]);
+      return;
+    }
     const params = new URLSearchParams();
     if (clientId) params.append('clientId', clientId);
     if (bookingId) params.append('bookingId', bookingId);
-    const res = await fetch(`/api/cost-sheets?${params}`);
+    const res = await fetch(`/api/cost-sheets?${params.toString()}`);
     const data = await res.json();
-    setCostSheetsList(Array.isArray(data) ? data : (data.data || []));
+    const sheets = Array.isArray(data) ? data : (data.data || []);
+    setCostSheetsList(sheets);
   }, [clientId, bookingId]);
 
   const loadCostSheet = useCallback(async (sheetId: string) => {
     if (!sheetId) return;
     setIsLoadingSheet(true);
     try {
-      const sheet = await fetch(`/api/cost-sheets/${sheetId}`).then(r => r.json());
+      const res = await fetch(`/api/cost-sheets/${sheetId}`);
+      const sheet = await res.json();
       if (!sheet.id) return;
       setCurrentCostSheetId(sheet.id);
-      setClientId(sheet.clientId || ''); setClientSearch(sheet.client?.name || '');
-      setAgentId(sheet.agentId || ''); setBookingId(sheet.bookingId || '');
+      setClientId(sheet.clientId || '');
+      setClientSearch(sheet.client?.name || '');
+      setAgentId(sheet.agentId || '');
+      setBookingId(sheet.bookingId || '');
       setTourId(sheet.booking?.tourPackageId || '');
-      setNumAdults(sheet.numAdults || 0); setNumChildren(sheet.numChildren || 0);
-      setNumDays(sheet.days || 1); setBoardBasis(sheet.boardBasis || 'FB');
-      setCurrency(sheet.currency || 'USD'); setGlobalMarkup(sheet.markupPercent || 10);
-      setFileHandling(sheet.fileHandlingFee || 0); setEcoBottle(sheet.ecoBottle || 0);
+      setNumAdults(sheet.numAdults || 0);
+      setNumChildren(sheet.numChildren || 0);
+      setNumDays(sheet.days || 1);
+      setBoardBasis(sheet.boardBasis || 'FB');
+      setCurrency(sheet.currency || 'USD');
+      setGlobalMarkup(sheet.markupPercent || 10);
+      setFileHandling(sheet.fileHandlingFee || 0);
+      setEcoBottle(sheet.ecoBottle || 0);
       setEvacInsurance(sheet.evacInsurance || 0);
-      setArrivalTransfer(sheet.arrivalTransfer > 0); setArrivalTotal(sheet.arrivalTransfer || 0);
-      setDepartureTransfer(sheet.departureTransfer > 0); setDepartureTotal(sheet.departureTransfer || 0);
-      setMaasaiVillage(!!sheet.maasaiVillage); setMaasaiCostTotal(sheet.maasaiCost || 0);
+      setArrivalTransfer(sheet.arrivalTransfer > 0);
+      setArrivalTotal(sheet.arrivalTransfer || 0);
+      setDepartureTransfer(sheet.departureTransfer > 0);
+      setDepartureTotal(sheet.departureTransfer || 0);
+      setMaasaiVillage(!!sheet.maasaiVillage);
+      setMaasaiCostTotal(sheet.maasaiCost || 0);
       setNotes(sheet.notes || '');
-      let extrasArr = []; try { extrasArr = JSON.parse(sheet.extras || '[]'); } catch {}
+      let extrasArr = [];
+      try { extrasArr = JSON.parse(sheet.extras || '[]'); } catch {}
       setExtraItems(extrasArr);
-      let parsedRows = []; try { parsedRows = JSON.parse(sheet.dayRows || '[]'); } catch {}
+      let parsedRows = [];
+      try { parsedRows = JSON.parse(sheet.dayRows || '[]'); } catch {}
       const newRows = parsedRows.map((row: any) => ({
-        ...emptyRow(), destinationId: row.destinationId ?? null, hotelId: row.hotelId || '',
-        hotelName: row.hotelName || '', adultAccomTotal: row.adultAccomTotal ?? 0,
-        childAccomTotal: row.childAccomTotal ?? 0, singleRoomRate: row.singleRoomRate ?? 0,
-        thirdPersonRate: row.thirdPersonRate ?? 0, parkFeeAdultTotal: row.parkFeeAdultTotal ?? 0,
-        parkFeeChildTotal: row.parkFeeChildTotal ?? 0, transportTotal: row.transportTotal ?? 0,
-        hasFlight: !!row.hasFlight, flightAdultPP: row.flightAdultPP ?? 0,
-        flightChildPP: row.flightChildPP ?? 0, isTriple: row.isTriple ?? false,
-        tripleRate: row.tripleRate ?? 0, selectedRateId: row.selectedRateId ?? null,
+        ...emptyRow(),
+        destinationId: row.destinationId ?? null,
+        hotelId: row.hotelId || '',
+        hotelName: row.hotelName || '',
+        adultAccomTotal: row.adultAccomTotal ?? row.adultTotal ?? 0,
+        childAccomTotal: row.childAccomTotal ?? row.childTotal ?? 0,
+        thirdPersonRate: row.thirdPersonRate ?? 0,
+        parkFeeAdultTotal: row.parkFeeAdultTotal ?? 0,
+        parkFeeChildTotal: row.parkFeeChildTotal ?? 0,
+        transportTotal: row.transportTotal ?? 0,
+        hasFlight: !!row.hasFlight,
+        flightAdultPP: row.flightAdultPP ?? 0,
+        flightChildPP: row.flightChildPP ?? 0,
+        isTriple: row.isTriple ?? false,
+        tripleRate: row.tripleRate ?? 0,
+        selectedRateId: row.selectedRateId ?? null,
+        singleRoomRate: row.singleRoomRate ?? 0,
       }));
       setDayRows(newRows);
-      setExpandedDays(new Set(newRows.map((_: any, i: number) => i)));
-    } catch (err) { console.error('Failed to load cost sheet', err); }
-    finally { setIsLoadingSheet(false); }
+    } catch (err) {
+      console.error('Failed to load cost sheet', err);
+    } finally {
+      setIsLoadingSheet(false);
+    }
   }, []);
 
-  useEffect(() => { if (initialCostSheet) loadCostSheet(initialCostSheet.id); }, [initialCostSheet, loadCostSheet]);
-  useEffect(() => { fetchCostSheets(); }, [fetchCostSheets]);
+  useEffect(() => {
+    if (initialCostSheet) loadCostSheet(initialCostSheet.id);
+  }, [initialCostSheet, loadCostSheet]);
+
+  useEffect(() => {
+    fetchCostSheets();
+  }, [fetchCostSheets]);
+
+  function updateRow(i: number, patch: Partial<DayRow>) {
+    setDayRows((prev) => prev.map((r, j) => (j === i ? { ...r, ...patch } : r)));
+  }
+
+  const fetchRates = useCallback(
+    async (i: number, hotelId: string, board: string, date?: string) => {
+      if (!hotelId) return;
+      updateRow(i, { ratesLoading: true, availableRates: [], ratesMatched: false });
+      try {
+        const url = `/api/safari-rates/lookup?hotelId=${hotelId}&boardBasis=${board}${date ? `&date=${date}` : ''}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        updateRow(i, {
+          ratesLoading: false,
+          availableRates: data.prices || [],
+          ratesMatched: data.matched === true,
+        });
+      } catch {
+        updateRow(i, { ratesLoading: false, ratesMatched: false });
+      }
+    },
+    []
+  );
+
+  function dayDate(i: number) {
+    if (!startDate) return undefined;
+    return new Date(new Date(startDate).getTime() + i * 86400000).toISOString().split('T')[0];
+  }
+
+  function onHotelChange(i: number, hotelId: string) {
+    const hotel = localHotels.find((h) => String(h.id) === hotelId);
+    updateRow(i, {
+      hotelId,
+      hotelName: hotel?.name || '',
+      destinationId: hotel?.county?.id ?? dayRows[i].destinationId,
+      adultAccomTotal: 0,
+      childAccomTotal: 0,
+      singleRoomRate: 0,
+      thirdPersonRate: 0,
+      selectedRateId: null,
+      isTriple: false,
+      tripleRate: 0,
+    });
+    if (hotelId) fetchRates(i, hotelId, boardBasis, dayDate(i));
+  }
+
+  function onRoomPriceSelect(i: number, priceId: string) {
+    const price = dayRows[i].availableRates.find((p) => String(p.id) === priceId);
+    if (!price) return;
+    let tripleRate = 0;
+    let thirdPersonRate = price.thirdAdultRate || 0;
+    if (price.thirdAdultRate && price.ratePerPersonSharing) {
+      tripleRate = (price.ratePerPersonSharing * 2) + price.thirdAdultRate;
+    }
+    updateRow(i, {
+      selectedRateId: price.id,
+      adultAccomTotal: price.ratePerPersonSharing || 0,
+      childAccomTotal: numChildren > 0 ? (price.childRate || 0) : 0,
+      singleRoomRate: price.singleRoomRate || 0,
+      thirdPersonRate: thirdPersonRate,
+      tripleRate: tripleRate,
+    });
+  }
+
+  useEffect(() => {
+    if (!startDate) return;
+    dayRows.forEach((row, i) => {
+      if (row.hotelId) fetchRates(i, row.hotelId, boardBasis, dayDate(i));
+    });
+  }, [startDate, boardBasis]);
 
   const refreshData = async () => {
     const [h, d, c, b] = await Promise.all([
@@ -286,373 +408,599 @@ export default function RateCalculator({
     setLocalBookings(Array.isArray(b) ? b : []);
   };
 
+  // Refresh on mount and whenever the tab regains focus — so that clients or
+  // bookings created in another tab/page show up here without a manual reload.
   useEffect(() => {
     refreshData();
     const onFocus = () => refreshData();
     const onVisible = () => { if (document.visibilityState === 'visible') refreshData(); };
     window.addEventListener('focus', onFocus);
     document.addEventListener('visibilitychange', onVisible);
-    return () => { window.removeEventListener('focus', onFocus); document.removeEventListener('visibilitychange', onVisible); };
+    return () => {
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, []);
 
-  // ── Row helpers ───────────────────────────────────────────────────────────
-  function updateRow(i: number, patch: Partial<DayRow>) {
-    setDayRows(prev => prev.map((r, j) => j === i ? { ...r, ...patch } : r));
-  }
-
-  const fetchRates = useCallback(async (i: number, hotelId: string, board: string, date?: string) => {
-    if (!hotelId) return;
-    updateRow(i, { ratesLoading: true, availableRates: [], ratesMatched: false });
-    try {
-      const data = await fetch(`/api/safari-rates/lookup?hotelId=${hotelId}&boardBasis=${board}${date ? `&date=${date}` : ''}`).then(r => r.json());
-      updateRow(i, { ratesLoading: false, availableRates: data.prices || [], ratesMatched: data.matched === true });
-    } catch { updateRow(i, { ratesLoading: false, ratesMatched: false }); }
-  }, []);
-
-  function dayDate(i: number) {
-    if (!startDate) return undefined;
-    return new Date(new Date(startDate).getTime() + i * 86400000).toISOString().split('T')[0];
-  }
-
-  function onHotelChange(i: number, hotelId: string) {
-    const hotel = localHotels.find(h => String(h.id) === hotelId);
-    updateRow(i, { hotelId, hotelName: hotel?.name || '', destinationId: hotel?.county?.id ?? dayRows[i].destinationId,
-      adultAccomTotal: 0, childAccomTotal: 0, singleRoomRate: 0, thirdPersonRate: 0,
-      selectedRateId: null, isTriple: false, tripleRate: 0 });
-    if (hotelId) fetchRates(i, hotelId, boardBasis, dayDate(i));
-  }
-
-  function onRoomPriceSelect(i: number, priceId: string) {
-    const price = dayRows[i].availableRates.find(p => String(p.id) === priceId);
-    if (!price) return;
-    const tripleRate = price.thirdAdultRate && price.ratePerPersonSharing
-      ? price.ratePerPersonSharing * 2 + price.thirdAdultRate : 0;
-    updateRow(i, { selectedRateId: price.id, adultAccomTotal: price.ratePerPersonSharing || 0,
-      childAccomTotal: numChildren > 0 ? price.childRate || 0 : 0,
-      singleRoomRate: price.singleRoomRate || 0, thirdPersonRate: price.thirdAdultRate || 0, tripleRate });
-  }
-
-  useEffect(() => {
-    if (!startDate) return;
-    dayRows.forEach((row, i) => { if (row.hotelId) fetchRates(i, row.hotelId, boardBasis, dayDate(i)); });
-  }, [startDate, boardBasis]);
-
-  // ── Client helpers ────────────────────────────────────────────────────────
   const createClient = async (name: string) => {
     setIsCreatingClient(true);
     try {
-      const res = await fetch('/api/clients', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, agentId: agentId || null }) });
+      const res = await fetch('/api/clients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, agentId: agentId || null }),
+      });
       if (res.ok) {
-        const nc = await res.json();
-        setLocalClients(prev => [...prev, nc]);
-        setClientId(nc.id); setClientSearch(nc.name); return nc;
+        const newClient = await res.json();
+        setLocalClients(prev => [...prev, newClient]);
+        setClientId(newClient.id);
+        setClientSearch(newClient.name);
+        return newClient;
+      } else {
+        throw new Error('Failed to create client');
       }
-    } catch { alert('Could not create client. Please try again.'); }
-    finally { setIsCreatingClient(false); }
-    return null;
-  };
-
-  const handleClientSelect = async (client: Client | null, typedName: string) => {
-    if (client) { setClientId(client.id); setClientSearch(client.name); setShowClientDropdown(false); }
-    else if (typedName.trim()) {
-      const nc = await createClient(typedName.trim());
-      if (nc) { setClientId(nc.id); setClientSearch(nc.name); setShowClientDropdown(false); }
+    } catch (err) {
+      console.error(err);
+      alert('Could not create client. Please try again.');
+      return null;
+    } finally {
+      setIsCreatingClient(false);
     }
   };
 
-  // ── Accommodation group total ─────────────────────────────────────────────
-  function getAccomGroup(row: DayRow): number {
-    if (row.isTriple) return row.tripleRate;
-    if (numAdults === 1 && row.singleRoomRate > 0) return row.singleRoomRate;
-    if (numAdults > 1 && row.singleRoomRate > 0) return row.adultAccomTotal * (numAdults - 1) + row.singleRoomRate;
-    return row.adultAccomTotal * numAdults;
-  }
+  const handleClientSelect = async (client: Client | null, typedName: string) => {
+    if (client) {
+      setClientId(client.id);
+      setClientSearch(client.name);
+      setShowClientDropdown(false);
+    } else if (typedName.trim()) {
+      const newClient = await createClient(typedName.trim());
+      if (newClient) {
+        setClientId(newClient.id);
+        setClientSearch(newClient.name);
+        setShowClientDropdown(false);
+      }
+    }
+  };
 
-  function getSelectedRate(row: DayRow) {
+  function getSelectedRate(row: DayRow): RoomPrice | undefined {
     if (!row.selectedRateId) return undefined;
     return row.availableRates.find(r => r.id === row.selectedRateId);
   }
 
-  // ── Rolling totals ────────────────────────────────────────────────────────
-  const accomGroupTotal    = dayRows.reduce((s, r) => s + getAccomGroup(r), 0);
-  const parkGroupTotal     = dayRows.reduce((s, r) => s + r.parkFeeAdultTotal + r.parkFeeChildTotal, 0);
-  const transportGroupTotal = dayRows.reduce((s, r) => s + r.transportTotal, 0);
-  const flightGroupTotal   = dayRows.reduce((s, r) => s + (r.hasFlight ? r.flightAdultPP * numAdults + r.flightChildPP * numChildren : 0), 0);
-  const extrasGroupTotal   = extraItems.reduce((s, e) => s + e.cost, 0) + fileHandling + ecoBottle + evacInsurance
-    + (maasaiVillage ? maasaiCostTotal : 0) + (arrivalTransfer ? arrivalTotal : 0) + (departureTransfer ? departureTotal : 0);
-  const flightAndExtrasGroupTotal = flightGroupTotal + extrasGroupTotal;
-  const subtotal = accomGroupTotal + parkGroupTotal + transportGroupTotal + flightGroupTotal + extrasGroupTotal;
-  const markupAmount = subtotal * (globalMarkup / 100);
-  const grandTotal = subtotal + markupAmount;
-  const adultUnits = numAdults + numChildren * 0.5;
-  const perAdult = adultUnits > 0 ? grandTotal / adultUnits : 0;
-  const perChild = numChildren > 0 ? perAdult * 0.5 : 0;
+  function getAccommodationGroupTotal(row: DayRow): number {
+    if (row.isTriple) {
+      return row.tripleRate;
+    }
+    if (numAdults === 1 && row.singleRoomRate > 0) {
+      return row.singleRoomRate;
+    }
+    if (numAdults > 1 && row.singleRoomRate > 0) {
+      return (row.adultAccomTotal || 0) * (numAdults - 1) + row.singleRoomRate;
+    }
+    return (row.adultAccomTotal || 0) * numAdults;
+  }
 
-  const optionResults = options.map(opt => {
+  const accomGroupTotal = dayRows.reduce((s, r) => s + getAccommodationGroupTotal(r), 0);
+  const parkGroupTotal = dayRows.reduce((s, r) => s + r.parkFeeAdultTotal + r.parkFeeChildTotal, 0);
+  const transportGroupTotal = dayRows.reduce((s, r) => s + r.transportTotal, 0);
+  const flightGroupTotal = dayRows.reduce((s, r) => s + (r.hasFlight ? r.flightAdultPP * numAdults + r.flightChildPP * numChildren : 0), 0);
+  const extrasGroupTotal = extraItems.reduce((s, e) => s + e.cost, 0) + fileHandling + ecoBottle + evacInsurance + (maasaiVillage ? maasaiCostTotal : 0) + (arrivalTransfer ? arrivalTotal : 0) + (departureTransfer ? departureTotal : 0);
+  const flightAndExtrasGroupTotal = flightGroupTotal + extrasGroupTotal;
+
+  const accomPerPersonSum = dayRows.reduce((s, r) => s + r.adultAccomTotal + r.childAccomTotal, 0);
+
+  const optionResults = options.map((opt) => {
     const pax = opt.pax;
-    const accomT = dayRows.reduce((s, r) => s + getAccomGroup(r), 0);
-    const transT = dayRows.reduce((s, r) => s + r.transportTotal, 0);
-    const base = (accomT / pax) + (parkGroupTotal / pax) + (transT / pax) + (flightAndExtrasGroupTotal / pax);
-    const markedUp = base * (1 + opt.markup / 100);
-    return { ...opt, perPersonBase: base, markedUp, profit: markedUp - base };
+    const accomTotal = dayRows.reduce((s, r) => s + getAccommodationGroupTotal(r), 0);
+    const transportTotal = dayRows.reduce((s, r) => s + r.transportTotal, 0);
+    const basePerPerson = (accomTotal / pax) + parkGroupTotal + (transportTotal / pax) + flightAndExtrasGroupTotal;
+    const markedUp = basePerPerson * (1 + globalMarkup / 100);
+    const profit = markedUp - basePerPerson;
+    return { ...opt, perPersonBase: basePerPerson, markedUp, profit };
   });
 
-  const selectedTour    = tours.find(t => t.id === tourId);
-  const selectedClientObj = localClients.find(c => c.id === clientId);
-  const selectedAgent   = agents.find(a => a.id === agentId);
-  const selectedBooking = localBookings.find(b => b.id === bookingId);
-  const currentIndex    = costSheetsList.findIndex(s => s.id === currentCostSheetId);
+  const selectedTour = tours.find((t) => t.id === tourId);
+  const selectedClientObj = localClients.find((c) => c.id === clientId);
+  const selectedAgent = agents.find((a) => a.id === agentId);
+  const selectedBooking = localBookings.find((b) => b.id === bookingId);
 
-  // ── Payload builder ───────────────────────────────────────────────────────
   function buildPayload() {
-    const safe = (n: number) => isNaN(n) ? 0 : n;
+    const safe = (n: number) => (isNaN(n) ? 0 : n);
+    const dayRowsJson = JSON.stringify(dayRows.map(r => ({
+      destinationId: r.destinationId,
+      hotelId: r.hotelId,
+      hotelName: r.hotelName,
+      adultAccomTotal: r.adultAccomTotal,
+      childAccomTotal: r.childAccomTotal,
+      singleRoomRate: r.singleRoomRate,
+      thirdPersonRate: r.thirdPersonRate,
+      parkFeeAdultTotal: r.parkFeeAdultTotal,
+      parkFeeChildTotal: r.parkFeeChildTotal,
+      transportTotal: r.transportTotal,
+      hasFlight: r.hasFlight,
+      flightAdultPP: r.flightAdultPP,
+      flightChildPP: r.flightChildPP,
+      isTriple: r.isTriple,
+      tripleRate: r.tripleRate,
+      selectedRateId: r.selectedRateId,
+    })));
+    const extrasJson = JSON.stringify(extraItems.filter(e => e.cost > 0));
+    const subtotal = accomGroupTotal + parkGroupTotal + transportGroupTotal + flightGroupTotal + extrasGroupTotal;
+    const markupAmount = subtotal * (globalMarkup / 100);
+    const grandTotal = subtotal + markupAmount;
+    const adultUnits = numAdults + numChildren * 0.5;
+    const perAdult = adultUnits > 0 ? grandTotal / adultUnits : 0;
+    const perChild = numChildren > 0 ? perAdult * 0.5 : 0;
     return {
-      bookingId: bookingId || null, clientId: clientId || null, agentId: agentId || null,
+      bookingId: bookingId || null,
+      clientId: clientId || null,
+      agentId: agentId || null,
       bookingRef: selectedBooking?.bookingRef || null,
       tourTitle: selectedTour?.title || 'Custom Tour',
-      days: numDays, numAdults, numChildren, numPax, boardBasis, currency,
-      dayRows: JSON.stringify(dayRows.map(r => ({
-        destinationId: r.destinationId, hotelId: r.hotelId, hotelName: r.hotelName,
-        adultAccomTotal: r.adultAccomTotal, childAccomTotal: r.childAccomTotal,
-        singleRoomRate: r.singleRoomRate, thirdPersonRate: r.thirdPersonRate,
-        parkFeeAdultTotal: r.parkFeeAdultTotal, parkFeeChildTotal: r.parkFeeChildTotal,
-        transportTotal: r.transportTotal, hasFlight: r.hasFlight,
-        flightAdultPP: r.flightAdultPP, flightChildPP: r.flightChildPP,
-        isTriple: r.isTriple, tripleRate: r.tripleRate, selectedRateId: r.selectedRateId,
-      }))),
-      fileHandlingFee: fileHandling, ecoBottle, evacInsurance,
-      arrivalTransfer: arrivalTotal, departureTransfer: departureTotal,
-      extras: JSON.stringify(extraItems.filter(e => e.cost > 0)),
-      maasaiVillage, maasaiCost: maasaiCostTotal,
-      subtotal: safe(subtotal), markupPercent: globalMarkup,
-      markupAmount: safe(markupAmount), totalCost: safe(grandTotal),
-      perAdultCost: safe(perAdult), perChildCost: safe(perChild), notes,
+      days: numDays,
+      numAdults,
+      numChildren,
+      numPax,
+      boardBasis,
+      currency,
+      dayRows: dayRowsJson,
+      fileHandlingFee: fileHandling,
+      ecoBottle,
+      evacInsurance,
+      arrivalTransfer: arrivalTotal,
+      departureTransfer: departureTotal,
+      extras: extrasJson,
+      maasaiVillage,
+      maasaiCost: maasaiCostTotal,
+      subtotal: safe(subtotal),
+      markupPercent: globalMarkup,
+      markupAmount: safe(markupAmount),
+      totalCost: safe(grandTotal),
+      perAdultCost: safe(perAdult),
+      perChildCost: safe(perChild),
+      notes: notes,
     };
   }
 
   async function handleSave() {
     setSaving(true); setSaved(false); setSaveError('');
+    const payload = buildPayload();
     try {
-      const res = currentCostSheetId
-        ? await fetch(`/api/cost-sheets/${currentCostSheetId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(buildPayload()) })
-        : await fetch('/api/cost-sheets', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(buildPayload()) });
+      let res;
+      if (currentCostSheetId) {
+        res = await fetch(`/api/cost-sheets/${currentCostSheetId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        res = await fetch('/api/cost-sheets', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      }
       if (res.ok) {
         const updated = await res.json();
-        setCurrentCostSheetId(updated.id); setSaved(true);
-        await fetchCostSheets(); setTimeout(() => setSaved(false), 3000);
-      } else { const err = await res.json(); setSaveError(err.error || `Save failed (${res.status})`); }
-    } catch (err: any) { setSaveError(err.message || 'Network error'); }
-    finally { setSaving(false); }
+        setCurrentCostSheetId(updated.id);
+        setSaved(true);
+        await fetchCostSheets();
+        setTimeout(() => setSaved(false), 3000);
+      } else {
+        const err = await res.json();
+        setSaveError(err.error || `Save failed (${res.status})`);
+      }
+    } catch (err: any) {
+      setSaveError(err.message || 'Network error');
+    } finally {
+      setSaving(false);
+    }
   }
 
   async function handleSaveAsNew() {
     setSaving(true); setSaved(false); setSaveError('');
+    const payload = buildPayload();
+    delete (payload as any).id;
     try {
-      const res = await fetch('/api/cost-sheets', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(buildPayload()) });
+      const res = await fetch('/api/cost-sheets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
       if (res.ok) {
-        const ns = await res.json();
-        setCurrentCostSheetId(ns.id); setSaved(true);
-        await fetchCostSheets(); setTimeout(() => setSaved(false), 3000);
-      } else { const err = await res.json(); setSaveError(err.error || `Save failed (${res.status})`); }
-    } catch (err: any) { setSaveError(err.message || 'Network error'); }
-    finally { setSaving(false); }
+        const newSheet = await res.json();
+        setCurrentCostSheetId(newSheet.id);
+        setSaved(true);
+        await fetchCostSheets();
+        setTimeout(() => setSaved(false), 3000);
+      } else {
+        const err = await res.json();
+        setSaveError(err.error || `Save failed (${res.status})`);
+      }
+    } catch (err: any) {
+      setSaveError(err.message || 'Network error');
+    } finally {
+      setSaving(false);
+    }
   }
-}
-  // =============================================================================
-  // RENDER
-  // =============================================================================
-  return (
-    <div className="space-y-4">
 
-      {/* Header / Save bar */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
-            <h2 className="text-xl font-bold text-gray-900">Cost Calculator</h2>
-            <p className="text-sm text-gray-500 mt-0.5">
-              {selectedClientObj
-                ? <span className="font-medium text-orange-700">{selectedClientObj.name}</span>
-                : <span className="italic text-gray-400">No client selected</span>}
-              {selectedTour && <span className="text-gray-400"> · {selectedTour.title}</span>}
-              {numDays > 0 && numNights > 0 && <span className="text-gray-400"> · {numDays}D/{numNights}N</span>}
-              {currentCostSheetId && currentIndex >= 0 && (
-                <span className="ml-2 text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
-                  v{currentIndex + 1} of {costSheetsList.length}
-                </span>
-              )}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <button onClick={refreshData}
-              className="text-xs text-gray-400 hover:text-gray-600 px-2.5 py-1.5 rounded-lg hover:bg-gray-100 transition">
-              ↺ Refresh
-            </button>
+  const currentIndex = costSheetsList.findIndex(s => s.id === currentCostSheetId);
+  const goPrev = () => { if (currentIndex > 0) loadCostSheet(costSheetsList[currentIndex - 1].id); };
+  const goNext = () => { if (currentIndex < costSheetsList.length - 1) loadCostSheet(costSheetsList[currentIndex + 1].id); };
+
+  return (
+    <div className="space-y-5">
+      <div className="card bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200">
+        <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
+          <h2 className="font-bold text-gray-800 text-lg">💰 Cost Calculator (Excel‑style)</h2>
+          <div className="flex gap-2 items-center flex-wrap">
+            <button type="button" onClick={refreshData} className="text-xs text-blue-500 hover:underline">🔄 Refresh Data</button>
             {costSheetsList.length > 0 && (
-              <select
-                className="text-sm border border-gray-200 rounded-lg px-2.5 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-orange-300 max-w-xs"
-                value={currentCostSheetId || ''} onChange={e => loadCostSheet(e.target.value)} disabled={isLoadingSheet}>
-                <option value="">— Load version —</option>
-                {costSheetsList.map((s, idx) => (
-                  <option key={s.id} value={s.id}>
-                    {new Date(s.createdAt).toLocaleDateString()} · v{idx + 1} · {s.tourTitle}
-                  </option>
+              <div className="flex items-center gap-2">
+                <select
+                  className="input text-sm w-48"
+                  value={currentCostSheetId || ''}
+                  onChange={e => loadCostSheet(e.target.value)}
+                  disabled={isLoadingSheet}
+                >
+                  <option value="">— Select version —</option>
+                  {costSheetsList.map((s, idx) => (
+                    <option key={s.id} value={s.id}>
+                      {new Date(s.createdAt).toLocaleDateString()} – {s.tourTitle} (v{idx+1})
+                    </option>
+                  ))}
+                </select>
+                <span className="text-xs text-gray-500">
+                  {currentIndex >= 0 ? `Version ${currentIndex+1} of ${costSheetsList.length}` : ''}
+                </span>
+                <button
+                  onClick={goPrev}
+                  disabled={currentIndex <= 0 || isLoadingSheet}
+                  className="px-2 py-1 text-xs bg-gray-200 rounded disabled:opacity-50"
+                >
+                  ◀ Prev
+                </button>
+                <button
+                  onClick={goNext}
+                  disabled={currentIndex >= costSheetsList.length-1 || isLoadingSheet}
+                  className="px-2 py-1 text-xs bg-gray-200 rounded disabled:opacity-50"
+                >
+                  Next ▶
+                </button>
+              </div>
+            )}
+            <button onClick={handleSaveAsNew} disabled={saving} className="btn-secondary text-sm">📑 Save as New Version</button>
+            <button onClick={handleSave} disabled={saving} className="btn-primary text-sm">{saving ? 'Saving…' : '💾 Save Costing Sheet'}</button>
+          </div>
+        </div>
+
+        {saved && <div className="mb-4 bg-green-50 border border-green-200 text-green-700 rounded-lg px-4 py-2 text-sm">✓ Saved{selectedClientObj ? ` and linked to ${selectedClientObj.name}` : ''}.</div>}
+        {saveError && <div className="mb-4 bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-2 text-sm">{saveError}</div>}
+
+        {/* Section 1: Link to Client / Booking */}
+        <div className="bg-white rounded-xl border border-orange-100 p-4 mb-5">
+          <p className="text-xs font-semibold text-orange-700 uppercase tracking-wide mb-3">🔗 Link to Client / Booking</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="relative">
+              <label className="label text-xs">Client *</label>
+              <input
+                ref={clientInputRef}
+                type="text"
+                className="input text-sm"
+                value={clientSearch}
+                onChange={(e) => {
+                  setClientSearch(e.target.value);
+                  setShowClientDropdown(true);
+                  if (!e.target.value) setClientId('');
+                }}
+                onFocus={() => setShowClientDropdown(true)}
+                placeholder="Type client name..."
+                autoComplete="off"
+              />
+              {showClientDropdown && (filteredClients.length > 0 || clientSearch.trim()) && (
+                <div ref={clientDropdownRef} className="absolute z-10 mt-1 w-full max-h-60 overflow-auto bg-white border border-gray-200 rounded shadow-lg">
+                  {filteredClients.map(c => (
+                    <div key={c.id} className="px-3 py-2 hover:bg-orange-50 cursor-pointer text-sm" onClick={() => handleClientSelect(c, '')}>{c.name}</div>
+                  ))}
+                  {!exactMatch && clientSearch.trim() && (
+                    <div className="px-3 py-2 hover:bg-orange-50 cursor-pointer text-sm text-orange-600 border-t" onClick={() => handleClientSelect(null, clientSearch)}>+ Create new client: "{clientSearch}"</div>
+                  )}
+                  {isCreatingClient && <div className="px-3 py-2 text-gray-400 text-sm">Creating...</div>}
+                </div>
+              )}
+            </div>
+            <div>
+              <label className="label text-xs">Agent</label>
+              <select className="input text-sm" value={agentId} onChange={e => setAgentId(e.target.value)}>
+                <option value="">— No agent —</option>
+                {agents.map(a => <option key={a.id} value={a.id}>{a.name}{a.company ? ` (${a.company})` : ''}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="label text-xs">Booking (optional)</label>
+              <select className="input text-sm" value={bookingId} onChange={e => setBookingId(e.target.value)}>
+                <option value="">— Standalone —</option>
+                {(clientId ? localBookings.filter(b => b.clientId === clientId) : localBookings).map(b => (
+                  <option key={b.id} value={b.id}>{b.bookingRef} · {b.client.name}</option>
                 ))}
               </select>
-            )}
-            {costSheetsList.length > 1 && (
-              <div className="flex gap-1">
-                <button onClick={() => currentIndex > 0 && loadCostSheet(costSheetsList[currentIndex - 1].id)}
-                  disabled={currentIndex <= 0 || isLoadingSheet}
-                  className="px-2.5 py-1.5 text-xs border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-30 transition">◀</button>
-                <button onClick={() => currentIndex < costSheetsList.length - 1 && loadCostSheet(costSheetsList[currentIndex + 1].id)}
-                  disabled={currentIndex >= costSheetsList.length - 1 || isLoadingSheet}
-                  className="px-2.5 py-1.5 text-xs border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-30 transition">▶</button>
-              </div>
-            )}
-            <button onClick={handleSaveAsNew} disabled={saving}
-              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50 transition disabled:opacity-50">
-              Copy
-            </button>
-            <button onClick={handleSave} disabled={saving}
-              className="px-4 py-1.5 text-sm bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white rounded-lg font-semibold transition disabled:opacity-50 shadow-sm">
-              {saving ? 'Saving…' : currentCostSheetId ? 'Update' : 'Save'}
-            </button>
+            </div>
+            <div>
+              <label className="label text-xs">Tour Package</label>
+              <select className="input text-sm" value={tourId} onChange={e => setTourId(e.target.value)}>
+                <option value="">— Manual —</option>
+                {tours.map(t => <option key={t.id} value={t.id}>{t.title}</option>)}
+              </select>
+            </div>
           </div>
+          {(selectedClientObj || selectedAgent || selectedBooking) && (
+            <div className="mt-3 flex gap-4 text-xs text-gray-500">
+              {selectedAgent && <span>🤝 <strong>{selectedAgent.name}</strong>{selectedAgent.company ? ` (${selectedAgent.company})` : ''}</span>}
+              {selectedClientObj && <span>👤 <strong>{selectedClientObj.name}</strong></span>}
+              {selectedBooking && <span>📋 <strong>{selectedBooking.bookingRef}</strong></span>}
+            </div>
+          )}
         </div>
-        {saved && <div className="mt-3 text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2">✓ Saved{selectedClientObj ? ` and linked to ${selectedClientObj.name}` : ''}.</div>}
-        {saveError && <div className="mt-3 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{saveError}</div>}
-      </div>
 
-      {/* Context: Client / Booking / Tour */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
-        <h3 className="text-sm font-semibold text-gray-700 mb-4">Link to Client & Booking</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {/* Client autocomplete */}
-          <div className="relative">
-            <FL>Client *</FL>
-            <input ref={clientInputRef} type="text"
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 transition"
-              value={clientSearch}
-              onChange={e => { setClientSearch(e.target.value); setShowClientDropdown(true); if (!e.target.value) setClientId(''); }}
-              onFocus={() => setShowClientDropdown(true)}
-              placeholder="Type to search or create…"
-              autoComplete="off" />
-            {showClientDropdown && (filteredClients.length > 0 || clientSearch.trim()) && (
-              <div ref={clientDropdownRef}
-                className="absolute z-20 mt-1 w-full max-h-56 overflow-auto bg-white border border-gray-200 rounded-xl shadow-lg">
-                {filteredClients.map(c => (
-                  <div key={c.id}
-                    className="px-3 py-2 hover:bg-orange-50 cursor-pointer text-sm text-gray-800"
-                    onClick={() => handleClientSelect(c, '')}>
-                    {c.name}
-                  </div>
-                ))}
-                {!exactMatch && clientSearch.trim() && (
-                  <div className="px-3 py-2 hover:bg-orange-50 cursor-pointer text-sm text-orange-600 border-t border-gray-100 font-medium"
-                    onClick={() => handleClientSelect(null, clientSearch)}>
-                    + Create "{clientSearch}"
-                  </div>
-                )}
-                {isCreatingClient && <div className="px-3 py-2 text-gray-400 text-sm">Creating…</div>}
-              </div>
-            )}
-          </div>
-          {/* Agent */}
-          <div>
-            <FL>Agent</FL>
-            <select className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition bg-white"
-              value={agentId} onChange={e => setAgentId(e.target.value)}>
-              <option value="">— No agent —</option>
-              {agents.map(a => <option key={a.id} value={a.id}>{a.name}{a.company ? ` (${a.company})` : ''}</option>)}
-            </select>
-          </div>
-          {/* Booking */}
-          <div>
-            <FL>Booking (optional)</FL>
-            <select className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition bg-white"
-              value={bookingId} onChange={e => setBookingId(e.target.value)}>
-              <option value="">— Standalone —</option>
-              {(clientId ? localBookings.filter(b => b.clientId === clientId) : localBookings).map(b => (
-                <option key={b.id} value={b.id}>{b.bookingRef} · {b.client.name}</option>
-              ))}
-            </select>
-          </div>
-          {/* Tour */}
-          <div>
-            <FL>Tour Package</FL>
-            <select className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition bg-white"
-              value={tourId} onChange={e => setTourId(e.target.value)}>
-              <option value="">— Manual —</option>
-              {tours.map(t => <option key={t.id} value={t.id}>{t.title}</option>)}
-            </select>
-          </div>
+        {/* Section 2: Core settings */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 mb-5">
+          <div><label className="label text-xs">Adults</label><input type="number" min={0} value={numAdults} onChange={e => setNumAdults(Number(e.target.value))} className="input" /></div>
+          <div><label className="label text-xs">Children</label><input type="number" min={0} value={numChildren} onChange={e => setNumChildren(Number(e.target.value))} className="input" /><p className="text-xs text-gray-400 mt-0.5">Total: {numPax}</p></div>
+          <div><label className="label text-xs">Days</label><input type="number" min={1} value={numDays} onChange={e => setNumDays(Number(e.target.value))} className="input" /></div>
+          <div><label className="label text-xs">Start Date</label><input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="input" /></div>
+          <div><label className="label text-xs">Board Basis</label><select className="input" value={boardBasis} onChange={e => setBoardBasis(e.target.value)}>{BOARD_BASIS.map(b => <option key={b.code} value={b.code}>{b.label}</option>)}</select></div>
+          <div><label className="label text-xs">Currency</label><select className="input" value={currency} onChange={e => setCurrency(e.target.value)}>{['USD','KES','EUR','GBP'].map(c => <option key={c}>{c}</option>)}</select></div>
+          <div><label className="label text-xs">Markup %</label><input type="number" min={0} max={100} value={globalMarkup} onChange={e => setGlobalMarkup(Number(e.target.value))} className="input" /></div>
         </div>
-        {/* Context pills */}
-        {(selectedClientObj || selectedAgent || selectedBooking) && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {selectedAgent && (
-              <span className="inline-flex items-center gap-1.5 text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-full">
-                🤝 {selectedAgent.name}{selectedAgent.company ? ` · ${selectedAgent.company}` : ''}
-              </span>
-            )}
-            {selectedClientObj && (
-              <span className="inline-flex items-center gap-1.5 text-xs bg-orange-50 text-orange-700 border border-orange-200 px-2.5 py-1 rounded-full">
-                👤 {selectedClientObj.name}
-              </span>
-            )}
-            {selectedBooking && (
-              <span className="inline-flex items-center gap-1.5 text-xs bg-green-50 text-green-700 border border-green-200 px-2.5 py-1 rounded-full">
-                📋 {selectedBooking.bookingRef}
-              </span>
-            )}
-          </div>
-        )}
-      </div>
 
-      {/* Trip Settings */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
-        <h3 className="text-sm font-semibold text-gray-700 mb-4">Trip Details</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-          <div>
-            <FL>Adults</FL>
-            <input type="number" min={0} value={numAdults || ''} onChange={e => setNumAdults(Number(e.target.value))}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm font-mono text-center focus:outline-none focus:ring-2 focus:ring-orange-300 transition" />
+        {/* Section 3: Day‑by‑day table */}
+        <div className="mb-5">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold text-gray-700 text-sm">🏕 Properties & Costs — Day by Day</h3>
+            <p className="text-xs text-gray-400">Accommodation = per person · Park/Transport = group total · ✈️ = flight per person</p>
           </div>
-          <div>
-            <FL>Children <span className="text-gray-400 font-normal">({numPax} total)</span></FL>
-            <input type="number" min={0} value={numChildren || ''} onChange={e => setNumChildren(Number(e.target.value))}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm font-mono text-center focus:outline-none focus:ring-2 focus:ring-orange-300 transition" />
+          <div className="overflow-x-auto rounded-xl border border-orange-100">
+            <table className="w-full text-xs">
+              <thead className="bg-orange-100">
+                <tr>
+                  <th className="px-2 py-2 text-left font-semibold text-gray-600 w-14">Day</th>
+                  <th className="px-2 py-2 text-left font-semibold text-gray-600 w-28">Destination</th>
+                  <th className="px-2 py-2 text-left font-semibold text-gray-600">Hotel / Accommodation</th>
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Accom (per adult)</th>
+                  {numChildren > 0 && <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Accom (per child)</th>}
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Single Room</th>
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">3rd Person</th>
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-20">Triple?</th>
+                  {dayRows.some(r => r.isTriple) && (
+                    <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Triple Rate (per room)</th>
+                  )}
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Park Fees (group total)</th>
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Transport (group total)</th>
+                  <th className="px-2 py-2 text-center font-semibold text-gray-600 w-20">✈️</th>
+                  {dayRows.some(r => r.hasFlight) && (
+                    <>
+                      <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Flight (per adult)</th>
+                      <th className="px-2 py-2 text-center font-semibold text-gray-600 w-28">Flight (per child)</th>
+                    </>
+                  )}
+                  <th className="px-2 py-2 text-right font-semibold text-gray-600 w-28">Day Total</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-orange-50">
+                {dayRows.map((row, i) => {
+                  const dayDate = startDate ? new Date(new Date(startDate).getTime() + i * 86400000).toISOString().split('T')[0] : undefined;
+                  const flightAdultDayTotal = row.hasFlight ? row.flightAdultPP * numAdults : 0;
+                  const flightChildDayTotal = row.hasFlight ? row.flightChildPP * numChildren : 0;
+                  const accomGroup = getAccommodationGroupTotal(row);
+                  const dayTotalBase = (getAccommodationGroupTotal(row) / numAdults) + row.parkFeeAdultTotal + row.parkFeeChildTotal + (row.transportTotal / numAdults) + flightAdultDayTotal + flightChildDayTotal;
+                  const selectedRate = getSelectedRate(row);
+                  const tripleRateDefault = (selectedRate?.thirdAdultRate && selectedRate?.ratePerPersonSharing)
+                    ? (selectedRate.ratePerPersonSharing * 2 + selectedRate.thirdAdultRate)
+                    : (row.adultAccomTotal > 0 && row.thirdPersonRate > 0)
+                      ? (row.adultAccomTotal * 2 + row.thirdPersonRate)
+                      : row.tripleRate;
+                  return (
+                    <tr key={i} className="hover:bg-orange-50/40">
+                      <td className="px-2 py-2">
+                        <span className="bg-orange-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">{i+1}</span>
+                        {dayDate && <p className="text-gray-400 text-xs mt-0.5 whitespace-nowrap">{new Date(dayDate).toLocaleDateString('en-KE',{day:'numeric',month:'short'})}</p>}
+                      </td>
+                      <td className="px-2 py-2">
+                        <select value={row.destinationId ?? ''} onChange={e => updateRow(i, { destinationId: e.target.value ? Number(e.target.value) : null, hotelId: '', hotelName: '', availableRates: [] })} className="input py-1 text-xs w-full">
+                          <option value="">— Select destination —</option>
+                          {localDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+                        </select>
+                      </td>
+                      <td className="px-2 py-2 min-w-[180px]">
+                        <select className="input py-1 text-xs w-full" value={row.hotelId} onChange={e => onHotelChange(i, e.target.value)}>
+                          <option value="">— Select hotel —</option>
+                          {localHotels.filter(h => !row.destinationId || h.county.id === row.destinationId).map(h => (
+                            <option key={h.id} value={h.id}>{h.name} · {h.county.name}{h.stars ? ` ${'★'.repeat(h.stars)}` : ''}</option>
+                          ))}
+                        </select>
+{row.ratesLoading && <p className="text-orange-400 text-xs mt-1 flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 border-2 border-orange-400 border-t-transparent rounded-full animate-spin"/>Loading rates…</p>}
+                        {!row.ratesLoading && row.availableRates.length > 0 && (
+                          <select className="input py-1 text-xs w-full mt-1 border-orange-200 bg-orange-50" onChange={e => onRoomPriceSelect(i, e.target.value)} value={row.selectedRateId || ''}>
+                            <option value="">↑ Pick rate → auto‑fills totals</option>
+                            {row.availableRates.map(p => (
+                              <option key={p.id} value={p.id}>
+                                {p.roomType.name}: {p.ratePerPersonSharing ?? '?'}/adult · {p.childRate ?? 0}/child {p.thirdAdultRate ? `· triple: ${p.thirdAdultRate}` : ''} ({p.season?.name})
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                        {!row.ratesLoading && row.availableRates.length === 0 && row.hotelId && startDate && (
+                          <p className="text-red-400 text-xs mt-1">No rates found for {dayDate}.</p>
+                        )}
+                        {!row.ratesMatched && row.availableRates.length > 0 && startDate && (
+                          <p className="text-yellow-600 text-xs mt-1">⚠ No rate covers {dayDate} — showing <em>all</em> seasons. Verify before saving.</p>
+                        )}
+                        {!row.hotelId && <input value={row.hotelName} onChange={e => updateRow(i, { hotelName: e.target.value })} className="input py-1 text-xs w-full mt-1" placeholder="Or type manually"/>}
+                      </td>
+                      <td className="px-2 py-2 text-center">
+                        <input
+                          type="number"
+                          min={0}
+                          step="0.01"
+                          value={row.adultAccomTotal || ''}
+                          onChange={e => updateRow(i, { adultAccomTotal: Number(e.target.value) })}
+                          className="input py-1 text-xs font-mono text-center w-full"
+                          placeholder="0"
+                        />
+                        <span className="text-gray-400 text-xs block">per adult</span>
+                      </td>
+                      {numChildren > 0 && <td className="px-2 py-2"><input type="number" min={0} step="0.01" value={row.childAccomTotal || ''} onChange={e => updateRow(i, { childAccomTotal: Number(e.target.value) })} className="input py-1 text-xs font-mono text-center w-full" placeholder="0"/><span className="text-gray-400 text-xs block text-center">per child</span></td>}
+                      <td className="px-2 py-2 text-center">
+                        <input
+                          type="number"
+                          min={0}
+                          step="0.01"
+                          value={row.singleRoomRate || ''}
+                          onChange={e => updateRow(i, { singleRoomRate: Number(e.target.value) })}
+                          className="input py-1 text-xs font-mono text-center w-full"
+                          placeholder="0"
+                        />
+                        <span className="text-gray-400 text-xs block">single room</span>
+                      </td>
+                      <td className="px-2 py-2 text-center">
+                        <input
+                          type="number"
+                          min={0}
+                          step="0.01"
+                          value={row.thirdPersonRate || ''}
+                          onChange={e => {
+                            const newThirdPersonRate = Number(e.target.value);
+                            let tripleRate = row.tripleRate;
+                            if (row.isTriple && row.adultAccomTotal > 0) {
+                              tripleRate = (row.adultAccomTotal * 2) + newThirdPersonRate;
+                            }
+                            updateRow(i, { thirdPersonRate: newThirdPersonRate, tripleRate });
+                          }}
+                          className="input py-1 text-xs font-mono text-center w-full"
+                          placeholder="0"
+                        />
+                        <span className="text-gray-400 text-xs block">3rd person</span>
+                      </td>
+                      <td className="px-2 py-2 text-center">
+                        <input
+                          type="checkbox"
+                          checked={row.isTriple}
+                          onChange={e => {
+                            const newTriple = e.target.checked;
+                            let tripleRate = row.tripleRate;
+                            if (newTriple && tripleRate === 0) {
+                              if (selectedRate?.thirdAdultRate && selectedRate.ratePerPersonSharing) {
+                                tripleRate = (selectedRate.ratePerPersonSharing * 2) + selectedRate.thirdAdultRate;
+                              } else if (row.adultAccomTotal > 0 && row.thirdPersonRate > 0) {
+                                tripleRate = (row.adultAccomTotal * 2) + row.thirdPersonRate;
+                              }
+                            }
+                            updateRow(i, { isTriple: newTriple, tripleRate: newTriple ? tripleRate : 0 });
+                          }}
+                          className="w-4 h-4"
+                        />
+                        <span className="text-xs text-gray-400 block">Triple room</span>
+                      </td>
+                      {row.isTriple && (
+                        <td className="px-2 py-2 text-center">
+                          <input
+                            type="number"
+                            min={0}
+                            step="0.01"
+                            value={row.tripleRate || ''}
+                            onChange={e => updateRow(i, { tripleRate: Number(e.target.value) })}
+                            className="input py-1 text-xs font-mono text-center w-full"
+                            placeholder="0"
+                          />
+                          <span className="text-gray-400 text-xs block">total for triple room</span>
+                        </td>
+                      )}
+                      <td className="px-2 py-2"><input type="number" min={0} step="0.01" value={row.parkFeeAdultTotal || ''} onChange={e => updateRow(i, { parkFeeAdultTotal: Number(e.target.value) })} className="input py-1 text-xs font-mono text-center w-full" placeholder="0"/></td>
+                      <td className="px-2 py-2"><input type="number" min={0} step="0.01" value={row.transportTotal || ''} onChange={e => updateRow(i, { transportTotal: Number(e.target.value) })} className="input py-1 text-xs font-mono text-center w-full" placeholder="0"/></td>
+                      <td className="px-2 py-2 text-center"><input type="checkbox" checked={row.hasFlight} onChange={e => updateRow(i, { hasFlight: e.target.checked })} className="w-4 h-4"/></td>
+                      {row.hasFlight && (
+                        <>
+                          <td className="px-2 py-2"><input type="number" min={0} step="0.01" value={row.flightAdultPP || ''} onChange={e => updateRow(i, { flightAdultPP: Number(e.target.value) })} className="input py-1 text-xs font-mono text-center w-full" placeholder="0"/>{row.flightAdultPP > 0 && <p className="text-gray-400 text-xs text-center mt-0.5">={fmt2(flightAdultDayTotal)} total</p>}</td>
+                          <td className="px-2 py-2"><input type="number" min={0} step="0.01" value={row.flightChildPP || ''} onChange={e => updateRow(i, { flightChildPP: Number(e.target.value) })} className="input py-1 text-xs font-mono text-center w-full" placeholder="0"/>{numChildren > 0 && row.flightChildPP > 0 && <p className="text-gray-400 text-xs text-center mt-0.5">={fmt2(flightChildDayTotal)} total</p>}</td>
+                        </>
+                      )}
+                      <td className="px-2 py-2 text-right"><p className="font-mono font-bold text-gray-800">{currency} {fmt2(dayTotalBase)}</p><p className="text-gray-400 text-xs">{numPax > 0 ? fmt2(dayTotalBase / numPax) : '0'}/pax</p></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-          <div>
-            <FL>Days</FL>
-            <input type="number" min={1} value={numDays || ''} onChange={e => setNumDays(Number(e.target.value))}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm font-mono text-center focus:outline-none focus:ring-2 focus:ring-orange-300 transition" />
+        </div>
+
+        {/* Extras sections (unchanged) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+          <div><label className="label">File Handling Fees ({currency}) – total</label><input type="number" min={0} value={fileHandling||''} onChange={e => setFileHandling(Number(e.target.value))} className="input font-mono" placeholder="0" /></div>
+          <div><label className="label">Eco Bottle + Water ({currency}) – total</label><input type="number" min={0} value={ecoBottle||''} onChange={e => setEcoBottle(Number(e.target.value))} className="input font-mono" placeholder="0" /></div>
+          <div><label className="label">Evacuation Insurance ({currency}) – total</label><input type="number" min={0} value={evacInsurance||''} onChange={e => setEvacInsurance(Number(e.target.value))} className="input font-mono" placeholder="0" /></div>
+        </div>
+
+        <div className="border border-orange-100 rounded-xl p-4 mb-5 space-y-3 bg-white">
+          <p className="text-sm font-semibold text-gray-700">Transfers <span className="text-xs font-normal text-gray-400">— enter TOTAL cost (not per person)</span></p>
+          <div className="flex items-center gap-3 flex-wrap">
+            <label className="flex items-center gap-2 cursor-pointer min-w-[200px]"><input type="checkbox" checked={arrivalTransfer} onChange={e => setArrivalTransfer(e.target.checked)} className="rounded" /><span className="text-sm font-medium text-gray-700">Arrival Transfer (Day 1)</span></label>
+            {arrivalTransfer && <div className="flex items-center gap-2"><span className="text-xs text-gray-500">Total {currency}:</span><input type="number" min={0} step="0.01" value={arrivalTotal||''} onChange={e => setArrivalTotal(Number(e.target.value))} className="input w-28 font-mono text-sm" placeholder="0" /></div>}
           </div>
-          <div>
-            <FL>Start Date</FL>
-            <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition" />
+          <div className="flex items-center gap-3 flex-wrap">
+            <label className="flex items-center gap-2 cursor-pointer min-w-[200px]"><input type="checkbox" checked={departureTransfer} onChange={e => setDepartureTransfer(e.target.checked)} className="rounded" /><span className="text-sm font-medium text-gray-700">Departure Transfer (Last Day)</span></label>
+            {departureTransfer && <div className="flex items-center gap-2"><span className="text-xs text-gray-500">Total {currency}:</span><input type="number" min={0} step="0.01" value={departureTotal||''} onChange={e => setDepartureTotal(Number(e.target.value))} className="input w-28 font-mono text-sm" placeholder="0" /></div>}
           </div>
-          <div>
-            <FL>Board</FL>
-            <select value={boardBasis} onChange={e => setBoardBasis(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-300 transition">
-              {BOARD_BASIS.map(b => <option key={b.code} value={b.code}>{b.label}</option>)}
-            </select>
+        </div>
+
+        <div className="flex items-center gap-4 mb-4 p-3 bg-white rounded-lg border border-orange-100">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer"><input type="checkbox" checked={maasaiVillage} onChange={e => setMaasaiVillage(e.target.checked)} className="rounded" />Maasai Village (optional)</label>
+          {maasaiVillage && <div className="flex items-center gap-2"><span className="text-xs text-gray-500">Total {currency}:</span><input type="number" min={0} value={maasaiCostTotal||''} onChange={e => setMaasaiCostTotal(Number(e.target.value))} className="input w-24 text-xs py-1.5 font-mono" /></div>}
+        </div>
+
+        <div className="mb-5">
+          <div className="flex items-center justify-between mb-2"><label className="text-sm font-medium text-gray-700">Additional Extras <span className="text-xs font-normal text-gray-400">(enter total per item)</span></label><button type="button" onClick={() => setExtraItems(p => [...p, {label:'',cost:0}])} className="text-orange-500 text-xs hover:underline">+ Add Item</button></div>
+          {extraItems.map((ex, idx) => (
+            <div key={idx} className="flex gap-2 mb-2 items-center">
+              <input value={ex.label} onChange={e => setExtraItems(p => p.map((x,j) => j===idx?{...x,label:e.target.value}:x))} className="input flex-1 text-sm" placeholder="Description" />
+              <input type="number" min={0} value={ex.cost||''} onChange={e => setExtraItems(p => p.map((x,j) => j===idx?{...x,cost:Number(e.target.value)}:x))} className="input w-32 font-mono text-sm" placeholder={currency} />
+              <button type="button" onClick={() => setExtraItems(p => p.filter((_,j)=>j!==idx))} className="text-red-400 hover:text-red-600 text-lg px-2">×</button>
+            </div>
+          ))}
+        </div>
+
+        {/* Totals section */}
+        <div className="bg-white rounded-xl border border-orange-100 overflow-hidden mb-5">
+          <div className="px-4 py-2 bg-orange-50 border-b border-orange-100 font-semibold text-gray-700">📊 Totals for the calculation (no markup)</div>
+          <div className="p-4 flex flex-wrap gap-4 text-sm">
+            <div><span className="text-gray-500">Accommodation (group total):</span> {currency} {fmt2(accomGroupTotal)}</div>
+            <div><span className="text-gray-500">Park Fees (group total):</span> {currency} {fmt2(parkGroupTotal)}</div>
+            <div><span className="text-gray-500">Transport (group total):</span> {currency} {fmt2(transportGroupTotal)}</div>
+            <div><span className="text-gray-500">Flights & Extras (group total):</span> {currency} {fmt2(flightAndExtrasGroupTotal)}</div>
           </div>
-          <div>
-            <FL>Currency</FL>
-            <select value={currency} onChange={e => setCurrency(e.target.value)}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-300 transition">
-              {['USD','KES','EUR','GBP'].map(c => <option key={c}>{c}</option>)}
-            </select>
-          </div>
-          <div>
-            <FL>Markup %</FL>
-            <input type="number" min={0} max={200} value={globalMarkup || ''} onChange={e => setGlobalMarkup(Number(e.target.value))}
-              className="w-full rounded-lg border border-gray-200 px-2.5 py-1.5 text-sm font-mono text-center focus:outline-none focus:ring-2 focus:ring-orange-300 transition" />
+          <div className="px-4 py-2 bg-orange-50 border-t border-orange-100 font-semibold text-gray-700">Option Tables – Per Person Sharing (P.P.S)</div>
+          <div className="overflow-x-auto">
+            {numPax === 0 ? (
+              <div className="p-4 text-center text-gray-400 text-sm">Enter at least 1 adult or child to see pricing options.</div>
+            ) : (
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50"><tr><th className="p-2 text-left">Pax</th><th className="p-2 text-left">Per Person Sharing (base)</th><th className="p-2 text-left">Markup %</th><th className="p-2 text-left">Marked Up</th><th className="p-2 text-left">Profit</th></tr></thead>
+                <tbody>
+                  {optionResults.map((opt, idx) => (
+                    <tr key={opt.pax} className="border-b">
+                      <td className="p-2 font-medium">{opt.pax} people</td>
+                      <td className="p-2 font-mono">{currency} {fmt2(opt.perPersonBase)}</td>
+                      <td className="p-2 font-mono text-gray-500">{globalMarkup}%</td>
+                      <td className="p-2 font-mono">{currency} {fmt2(opt.markedUp)}</td>
+                      <td className={`p-2 font-mono ${opt.profit >= 0 ? 'text-green-600' : 'text-red-600'}`}>{currency} {fmt2(opt.profit)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>
-  // __JSX_START__
+    </div>
+  );
+}

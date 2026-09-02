@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { buildHreflangAlternates, BASE_URL } from "@/lib/i18n/config"
-import { CmsPage } from "../../_components/CmsPage"
+import { CmsPage } from "../_components/CmsPage"
 
 export const metadata: Metadata = {
   title: "पूर्वी अफ्रीका सफारी 2026 | मसाई मारा, गोरिल्ला ट्रेकिंग | जेट्रेवल एक्सपीडिशन",

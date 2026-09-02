@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { buildHreflangAlternates, BASE_URL } from "@/lib/i18n/config"
-import { CmsPage } from "../../_components/CmsPage"
+import { CmsPage } from "../_components/CmsPage"
 
 export const metadata: Metadata = {
   title: "Safari Africa Orientale 2026 | Masai Mara, Gorilla & Safari Accessibili | JaeTravel Spedizioni",

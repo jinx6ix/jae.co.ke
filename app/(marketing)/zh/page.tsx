@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { buildHreflangAlternates, BASE_URL } from "@/lib/i18n/config"
-import { CmsPage } from "../../_components/CmsPage"
+import { CmsPage } from "../_components/CmsPage"
 
 export const metadata: Metadata = {
   title: "东非野生动物园2026 | 马赛马拉、大猩猩徒步 | 捷旅探险",
