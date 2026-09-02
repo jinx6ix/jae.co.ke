@@ -15,6 +15,21 @@ export interface PublicHotel {
   fromPricePerNight: number | null;
   currency: string;
   budgetTier: 'BUDGET' | 'MID_RANGE' | 'LUXURY' | null;
+  roomTypes?: PublicRoomType[];
+}
+
+export interface PublicRoomType {
+  id: number;
+  name: string;
+  maxOccupancy: number;
+}
+
+export interface PublicCounty {
+  id: number;
+  name: string;
+  region: string | null;
+  parkFee: number | null;
+  parkFeeCurrency: string;
 }
 
 export interface PublicTourDay {
@@ -40,6 +55,39 @@ export interface QuoteSelection {
   nights: number;
 }
 
+export interface ChildInput {
+  age: number;
+  extraBed: boolean;
+}
+
+export interface RouteLegInput {
+  countyId: number;
+  countyName: string;
+  nights: number;
+}
+
+export interface LegHotelInput {
+  countyId: number;
+  hotelId: number;
+  roomTypeId: number;
+  boardBasis: 'FB' | 'HB' | 'BB' | 'AI';
+  /**
+   * When the hotel/room-type has no rate on record in the database, the
+   * client can supply their own USD/person/night rate (the number the
+   * customer was already quoted elsewhere). The server uses it instead of
+   * the missing DB row, and flags it on the persisted cost sheet so staff
+   * can confirm before sending the final quote.
+   */
+  clientRatePerPersonSharing?: number | null;
+}
+
+export interface ActivityInput {
+  /** 0-based day index across the whole trip. */
+  dayIndex: number;
+  description: string;
+  costPerPerson: number;
+}
+
 export interface QuoteRequest {
   name: string;
   email: string;
@@ -52,6 +100,21 @@ export interface QuoteRequest {
   selections: QuoteSelection[];
   notes?: string;
   website?: string; // honeypot field — always leave empty
+
+  // ── New multi-leg builder fields (all optional for back-compat) ──
+  /** Children with ages + extra-bed flag. 13+ should be counted as adults
+   *  (not included here). When present, overrides numChildren. */
+  children?: ChildInput[];
+  /** Ordered destination legs. Sum of nights must equal end - start. */
+  route?: RouteLegInput[];
+  /** 1:1 with route. */
+  hotels?: LegHotelInput[];
+  /** Per-day extras (game drives, sundowners, etc.). */
+  activities?: ActivityInput[];
+  /** Minivan vs. landcruiser for transport pricing. */
+  vehicle?: 'MINIVAN' | 'LANDCRUISER';
+  /** Override the default 10% markup. */
+  markupPercent?: number;
 }
 
 export interface QuoteResult {
@@ -71,6 +134,35 @@ export interface QuoteResult {
     lineTotal: number;
   }>;
   anyUnmatchedSeason: boolean;
+  // New structured breakdown — the result page renders from this when
+  // the multi-leg builder was used; falls back to `breakdown` otherwise.
+  structuredBreakdown?: {
+    accommodation: number;
+    parkFees: number;
+    transport: number;
+    extras: number;
+    subtotal: number;
+    markup: number;
+    total: number;
+    perPerson: number;
+    pax: number;
+    currency: string;
+    vehicle: 'MINIVAN' | 'LANDCRUISER';
+    days: number;
+    transportIsBaseline: true;
+    byLeg: Array<{
+      legIndex: number;
+      countyName: string;
+      hotelName: string;
+      nights: number;
+      accommodation: number;
+      parkFees: number;
+      matched: boolean;
+      currency: string;
+      clientSuppliedRate?: boolean;
+      clientRatePerPersonSharing?: number;
+    }>;
+  };
 }
 
 async function jaedbFetch<T>(path: string, init?: RequestInit): Promise<T> {
@@ -88,13 +180,23 @@ async function jaedbFetch<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json();
 }
 
-export function fetchPublicHotels(params?: { county?: string; tier?: string; q?: string }): Promise<PublicHotel[]> {
+export function fetchPublicHotels(params?: {
+  county?: string;
+  tier?: string;
+  q?: string;
+  roomTypeId?: number;
+}): Promise<PublicHotel[]> {
   const qs = new URLSearchParams();
   if (params?.county) qs.set('county', params.county);
   if (params?.tier) qs.set('tier', params.tier);
   if (params?.q) qs.set('q', params.q);
+  if (params?.roomTypeId != null) qs.set('roomTypeId', String(params.roomTypeId));
   const suffix = qs.toString() ? `?${qs.toString()}` : '';
   return jaedbFetch<PublicHotel[]>(`/api/public/hotels${suffix}`);
+}
+
+export function fetchPublicCounties(): Promise<PublicCounty[]> {
+  return jaedbFetch<PublicCounty[]>('/api/public/counties');
 }
 
 export function fetchPublicTours(): Promise<PublicTour[]> {

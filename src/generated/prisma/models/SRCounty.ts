@@ -28,16 +28,20 @@ export type AggregateSRCounty = {
 
 export type SRCountyAvgAggregateOutputType = {
   id: number | null
+  parkFee: number | null
 }
 
 export type SRCountySumAggregateOutputType = {
   id: number | null
+  parkFee: number | null
 }
 
 export type SRCountyMinAggregateOutputType = {
   id: number | null
   name: string | null
   region: string | null
+  parkFee: number | null
+  parkFeeCurrency: string | null
   createdAt: Date | null
 }
 
@@ -45,6 +49,8 @@ export type SRCountyMaxAggregateOutputType = {
   id: number | null
   name: string | null
   region: string | null
+  parkFee: number | null
+  parkFeeCurrency: string | null
   createdAt: Date | null
 }
 
@@ -52,6 +58,8 @@ export type SRCountyCountAggregateOutputType = {
   id: number
   name: number
   region: number
+  parkFee: number
+  parkFeeCurrency: number
   createdAt: number
   _all: number
 }
@@ -59,16 +67,20 @@ export type SRCountyCountAggregateOutputType = {
 
 export type SRCountyAvgAggregateInputType = {
   id?: true
+  parkFee?: true
 }
 
 export type SRCountySumAggregateInputType = {
   id?: true
+  parkFee?: true
 }
 
 export type SRCountyMinAggregateInputType = {
   id?: true
   name?: true
   region?: true
+  parkFee?: true
+  parkFeeCurrency?: true
   createdAt?: true
 }
 
@@ -76,6 +88,8 @@ export type SRCountyMaxAggregateInputType = {
   id?: true
   name?: true
   region?: true
+  parkFee?: true
+  parkFeeCurrency?: true
   createdAt?: true
 }
 
@@ -83,6 +97,8 @@ export type SRCountyCountAggregateInputType = {
   id?: true
   name?: true
   region?: true
+  parkFee?: true
+  parkFeeCurrency?: true
   createdAt?: true
   _all?: true
 }
@@ -177,6 +193,8 @@ export type SRCountyGroupByOutputType = {
   id: number
   name: string
   region: string | null
+  parkFee: number | null
+  parkFeeCurrency: string | null
   createdAt: Date
   _count: SRCountyCountAggregateOutputType | null
   _avg: SRCountyAvgAggregateOutputType | null
@@ -207,6 +225,8 @@ export type SRCountyWhereInput = {
   id?: Prisma.IntFilter<"SRCounty"> | number
   name?: Prisma.StringFilter<"SRCounty"> | string
   region?: Prisma.StringNullableFilter<"SRCounty"> | string | null
+  parkFee?: Prisma.FloatNullableFilter<"SRCounty"> | number | null
+  parkFeeCurrency?: Prisma.StringNullableFilter<"SRCounty"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SRCounty"> | Date | string
   hotels?: Prisma.SRHotelListRelationFilter
 }
@@ -215,6 +235,8 @@ export type SRCountyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   region?: Prisma.SortOrderInput | Prisma.SortOrder
+  parkFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  parkFeeCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   hotels?: Prisma.SRHotelOrderByRelationAggregateInput
 }
@@ -226,6 +248,8 @@ export type SRCountyWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SRCountyWhereInput[]
   NOT?: Prisma.SRCountyWhereInput | Prisma.SRCountyWhereInput[]
   region?: Prisma.StringNullableFilter<"SRCounty"> | string | null
+  parkFee?: Prisma.FloatNullableFilter<"SRCounty"> | number | null
+  parkFeeCurrency?: Prisma.StringNullableFilter<"SRCounty"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SRCounty"> | Date | string
   hotels?: Prisma.SRHotelListRelationFilter
 }, "id" | "name">
@@ -234,6 +258,8 @@ export type SRCountyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   region?: Prisma.SortOrderInput | Prisma.SortOrder
+  parkFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  parkFeeCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.SRCountyCountOrderByAggregateInput
   _avg?: Prisma.SRCountyAvgOrderByAggregateInput
@@ -249,12 +275,16 @@ export type SRCountyScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"SRCounty"> | number
   name?: Prisma.StringWithAggregatesFilter<"SRCounty"> | string
   region?: Prisma.StringNullableWithAggregatesFilter<"SRCounty"> | string | null
+  parkFee?: Prisma.FloatNullableWithAggregatesFilter<"SRCounty"> | number | null
+  parkFeeCurrency?: Prisma.StringNullableWithAggregatesFilter<"SRCounty"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SRCounty"> | Date | string
 }
 
 export type SRCountyCreateInput = {
   name: string
   region?: string | null
+  parkFee?: number | null
+  parkFeeCurrency?: string | null
   createdAt?: Date | string
   hotels?: Prisma.SRHotelCreateNestedManyWithoutCountyInput
 }
@@ -263,6 +293,8 @@ export type SRCountyUncheckedCreateInput = {
   id?: number
   name: string
   region?: string | null
+  parkFee?: number | null
+  parkFeeCurrency?: string | null
   createdAt?: Date | string
   hotels?: Prisma.SRHotelUncheckedCreateNestedManyWithoutCountyInput
 }
@@ -270,6 +302,8 @@ export type SRCountyUncheckedCreateInput = {
 export type SRCountyUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hotels?: Prisma.SRHotelUpdateManyWithoutCountyNestedInput
 }
@@ -278,6 +312,8 @@ export type SRCountyUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hotels?: Prisma.SRHotelUncheckedUpdateManyWithoutCountyNestedInput
 }
@@ -286,12 +322,16 @@ export type SRCountyCreateManyInput = {
   id?: number
   name: string
   region?: string | null
+  parkFee?: number | null
+  parkFeeCurrency?: string | null
   createdAt?: Date | string
 }
 
 export type SRCountyUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -299,6 +339,8 @@ export type SRCountyUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -306,17 +348,22 @@ export type SRCountyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   region?: Prisma.SortOrder
+  parkFee?: Prisma.SortOrder
+  parkFeeCurrency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type SRCountyAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  parkFee?: Prisma.SortOrder
 }
 
 export type SRCountyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   region?: Prisma.SortOrder
+  parkFee?: Prisma.SortOrder
+  parkFeeCurrency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -324,11 +371,14 @@ export type SRCountyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   region?: Prisma.SortOrder
+  parkFee?: Prisma.SortOrder
+  parkFeeCurrency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type SRCountySumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  parkFee?: Prisma.SortOrder
 }
 
 export type SRCountyScalarRelationFilter = {
@@ -353,6 +403,8 @@ export type SRCountyUpdateOneRequiredWithoutHotelsNestedInput = {
 export type SRCountyCreateWithoutHotelsInput = {
   name: string
   region?: string | null
+  parkFee?: number | null
+  parkFeeCurrency?: string | null
   createdAt?: Date | string
 }
 
@@ -360,6 +412,8 @@ export type SRCountyUncheckedCreateWithoutHotelsInput = {
   id?: number
   name: string
   region?: string | null
+  parkFee?: number | null
+  parkFeeCurrency?: string | null
   createdAt?: Date | string
 }
 
@@ -382,6 +436,8 @@ export type SRCountyUpdateToOneWithWhereWithoutHotelsInput = {
 export type SRCountyUpdateWithoutHotelsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -389,6 +445,8 @@ export type SRCountyUncheckedUpdateWithoutHotelsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parkFee?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  parkFeeCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -427,6 +485,8 @@ export type SRCountySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   name?: boolean
   region?: boolean
+  parkFee?: boolean
+  parkFeeCurrency?: boolean
   createdAt?: boolean
   hotels?: boolean | Prisma.SRCounty$hotelsArgs<ExtArgs>
   _count?: boolean | Prisma.SRCountyCountOutputTypeDefaultArgs<ExtArgs>
@@ -436,6 +496,8 @@ export type SRCountySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   name?: boolean
   region?: boolean
+  parkFee?: boolean
+  parkFeeCurrency?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["sRCounty"]>
 
@@ -443,6 +505,8 @@ export type SRCountySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   name?: boolean
   region?: boolean
+  parkFee?: boolean
+  parkFeeCurrency?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["sRCounty"]>
 
@@ -450,10 +514,12 @@ export type SRCountySelectScalar = {
   id?: boolean
   name?: boolean
   region?: boolean
+  parkFee?: boolean
+  parkFeeCurrency?: boolean
   createdAt?: boolean
 }
 
-export type SRCountyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "region" | "createdAt", ExtArgs["result"]["sRCounty"]>
+export type SRCountyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "region" | "parkFee" | "parkFeeCurrency" | "createdAt", ExtArgs["result"]["sRCounty"]>
 export type SRCountyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   hotels?: boolean | Prisma.SRCounty$hotelsArgs<ExtArgs>
   _count?: boolean | Prisma.SRCountyCountOutputTypeDefaultArgs<ExtArgs>
@@ -470,6 +536,8 @@ export type $SRCountyPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: number
     name: string
     region: string | null
+    parkFee: number | null
+    parkFeeCurrency: string | null
     createdAt: Date
   }, ExtArgs["result"]["sRCounty"]>
   composites: {}
@@ -898,6 +966,8 @@ export interface SRCountyFieldRefs {
   readonly id: Prisma.FieldRef<"SRCounty", 'Int'>
   readonly name: Prisma.FieldRef<"SRCounty", 'String'>
   readonly region: Prisma.FieldRef<"SRCounty", 'String'>
+  readonly parkFee: Prisma.FieldRef<"SRCounty", 'Float'>
+  readonly parkFeeCurrency: Prisma.FieldRef<"SRCounty", 'String'>
   readonly createdAt: Prisma.FieldRef<"SRCounty", 'DateTime'>
 }
     

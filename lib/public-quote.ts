@@ -86,6 +86,95 @@ export async function getRateForStay(
   };
 }
 
+/**
+ * Date-aware lookup for a SPECIFIC roomTypeId + stay date + boardBasis.
+ * Returns the full SRRoomPrice row so the calculator can use childRate
+ * and thirdAdultRate in addition to ratePerPersonSharing.
+ *
+ * - "matched" = true  : found a season that contains the date.
+ * - "matched" = false : fell back to the cheapest matching row of that
+ *                       room type, regardless of season. (Same fallback
+ *                       semantics as getRateForStay above; the
+ *                       dayRows shape preserves the flag so staff can
+ *                       see when fallback was used.)
+ *
+ * Returns null when the room type has no rate row at all — the
+ * front-end then hides that room type from the user.
+ */
+export async function getRoomPriceForStay(
+  hotelId: number,
+  date: Date,
+  roomTypeId: number,
+  boardBasis = 'FB',
+): Promise<{
+  pricePerNight: number;
+  currency: string;
+  ratePerPersonSharing: number | null;
+  singleRoomRate: number | null;
+  childRate: number | null;
+  thirdAdultRate: number | null;
+  matched: boolean;
+} | null> {
+  const inSeason = await prisma.sRRoomPrice.findFirst({
+    where: {
+      boardBasis,
+      roomTypeId,
+      season: { startDate: { lte: date }, endDate: { gte: date } },
+    },
+    select: {
+      ratePerPersonSharing: true,
+      singleRoomRate: true,
+      childRate: true,
+      thirdAdultRate: true,
+      currency: true,
+    },
+  });
+  if (inSeason) {
+    return {
+      pricePerNight: inSeason.ratePerPersonSharing ?? 0,
+      currency: inSeason.currency,
+      ratePerPersonSharing: inSeason.ratePerPersonSharing,
+      singleRoomRate: inSeason.singleRoomRate,
+      childRate: inSeason.childRate,
+      thirdAdultRate: inSeason.thirdAdultRate,
+      matched: true,
+    };
+  }
+
+  const fallback = await prisma.sRRoomPrice.findFirst({
+    where: { boardBasis, roomTypeId },
+    select: {
+      ratePerPersonSharing: true,
+      singleRoomRate: true,
+      childRate: true,
+      thirdAdultRate: true,
+      currency: true,
+    },
+  });
+  if (!fallback) return null;
+  return {
+    pricePerNight: fallback.ratePerPersonSharing ?? 0,
+    currency: fallback.currency,
+    ratePerPersonSharing: fallback.ratePerPersonSharing,
+    singleRoomRate: fallback.singleRoomRate,
+    childRate: fallback.childRate,
+    thirdAdultRate: fallback.thirdAdultRate,
+    matched: false,
+  };
+}
+
+/** Park fee for a county, in the county's currency. Null when not set. */
+export async function getParkFeeForCounty(
+  countyId: number,
+): Promise<{ amount: number; currency: string } | null> {
+  const county = await prisma.sRCounty.findUnique({
+    where: { id: countyId },
+    select: { parkFee: true, parkFeeCurrency: true },
+  });
+  if (!county || county.parkFee == null || county.parkFee <= 0) return null;
+  return { amount: county.parkFee, currency: county.parkFeeCurrency ?? "USD" };
+}
+
 /** Simple in-memory rate limit for the public write endpoint.
  * NOTE: resets on every deploy/restart and doesn't share state across
  * serverless instances — fine as a first guard, not a substitute for

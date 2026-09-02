@@ -334,11 +334,13 @@ model CostSheet {
 }
 
 model SRCounty {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  region    String?
-  createdAt DateTime  @default(now())
-  hotels    SRHotel[]
+  id              Int       @id @default(autoincrement())
+  name            String    @unique
+  region          String?
+  parkFee         Float?    @default(0)        @map("park_fee")
+  parkFeeCurrency String?   @default("USD")   @map("park_fee_currency")
+  createdAt       DateTime  @default(now())
+  hotels          SRHotel[]
 
   @@map("sr_counties")
 }

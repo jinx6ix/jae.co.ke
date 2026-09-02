@@ -1,0 +1,364 @@
+npm notice run jaetravel-platform@1.0.0 build
+npm notice run next build
+▲ Next.js 16.2.10 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.9min
+  Skipping validation of types
+  Finished TypeScript config validation in 427ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/1014) ...
+  Generating static pages using 7 workers (209/1014) 
+  Generating static pages using 7 workers (253/1014) 
+  Generating static pages using 7 workers (506/1014) 
+  Generating static pages using 7 workers (760/1014) 
+✓ Generating static pages using 7 workers (1014/1014) in 3.4min
+  Finalizing page optimization ...
+
+Route (app)                                                                                           Revalidate  Expire
+┌ ○ /                                                                                                         1h      1y
+├ ○ /_not-found
+├ ƒ /[...path]
+├ ○ /6-sustainable-travel-tips-2                                                                              1h      1y
+├ ○ /about                                                                                                    1h      1y
+├ ƒ /admin/[[...segments]]
+├ ○ /adventure-trekking                                                                                       1h      1y
+├ ○ /amboseli-safaris                                                                                         1h      1y
+├ ƒ /api/agents
+├ ƒ /api/agents/[id]
+├ ƒ /api/agents/models
+├ ƒ /api/agents/run
+├ ƒ /api/agents/runs
+├ ƒ /api/agents/runs/[id]
+├ ƒ /api/agents/runs/[id]/confirm
+├ ƒ /api/auth/[...nextauth]
+├ ƒ /api/bookings
+├ ƒ /api/bookings/[id]
+├ ƒ /api/clients
+├ ƒ /api/clients/[id]
+├ ƒ /api/cost-sheets
+├ ƒ /api/cost-sheets/[id]
+├ ƒ /api/cost-sheets/[id]/csv
+├ ƒ /api/cost-sheets/[id]/invoice
+├ ƒ /api/cost-sheets/[id]/pdf
+├ ƒ /api/cost-sheets/list
+├ ƒ /api/download-pdf
+├ ƒ /api/embed/[token]
+├ ƒ /api/inquiries
+├ ƒ /api/invoices
+├ ƒ /api/invoices/[id]
+├ ƒ /api/invoices/[id]/pdf
+├ ƒ /api/itineraries
+├ ƒ /api/itineraries/[id]
+├ ƒ /api/itineraries/[id]/debug-images
+├ ƒ /api/itineraries/[id]/embed
+├ ƒ /api/itineraries/[id]/pdf
+├ ƒ /api/itineraries/from-source
+├ ƒ /api/itinerary-images
+├ ƒ /api/itinerary-images/[id]
+├ ƒ /api/logs
+├ ƒ /api/logs/stream
+├ ƒ /api/pdf/[id]
+├ ƒ /api/properties
+├ ƒ /api/public/hotels
+├ ƒ /api/public/quote
+├ ƒ /api/public/tours
+├ ƒ /api/rate-cards/csv
+├ ƒ /api/rates
+├ ƒ /api/reports/export
+├ ƒ /api/revalidate
+├ ƒ /api/safari-rates/counties
+├ ƒ /api/safari-rates/destinations
+├ ƒ /api/safari-rates/hotels
+├ ƒ /api/safari-rates/lookup
+├ ƒ /api/safari-rates/prices
+├ ƒ /api/safari-rates/room-types
+├ ƒ /api/safari-rates/search
+├ ƒ /api/safari-rates/seasons
+├ ƒ /api/search
+├ ƒ /api/site-inquiries
+├ ƒ /api/site-inquiries/[id]/download
+├ ƒ /api/site-tours/french
+├ ƒ /api/tours
+├ ƒ /api/tours/[id]/days
+├ ƒ /api/transfers
+├ ƒ /api/users
+├ ƒ /api/users/[id]
+├ ƒ /api/vehicle-hire/[vehicleId]
+├ ƒ /api/vehicles
+├ ƒ /api/vouchers
+├ ƒ /api/vouchers/[id]
+├ ƒ /api/vouchers/[id]/send
+├ ○ /ar                                                                                                       1h      1y
+├ ○ /ar/about                                                                                                 1h      1y
+├ ● /ar/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /ar/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /ar/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /ar/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /ar/contact                                                                                               1h      1y
+├ ● /ar/tour/[slug]                                                                                           1h      1y
+│ ├ /ar/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /ar/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /ar/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /ar/tours                                                                                                 1h      1y
+├ ● /ar/vehicle-hire/[slug]                                                                                   1h      1y
+│ ├ /ar/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+│ ├ /ar/vehicle-hire/toyota-prado                                                                             1h      1y
+│ ├ /ar/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+│ └ [+3 more paths]
+├ ○ /beach-holidays                                                                                           1h      1y
+├ ○ /big-five                                                                                                 1h      1y
+├ ○ /birdwatching-safaris-east-africa                                                                         1h      1y
+├ ○ /blog                                                                                                     1h      1y
+├ ○ /blog-2                                                                                                   1h      1y
+├ ● /blog/[slug]                                                                                              1h      1y
+│ ├ /blog/is-travelling-across-east-africa-on-top-of-your-wish-list-we-at-safari-fantasy-will-give-y          1h      1y
+│ ├ /blog/how-does-jaha-get-to-earth                                                                          1h      1y
+│ ├ /blog/what-happened-at-keumbu                                                                             1h      1y
+│ └ [+79 more paths]
+├ ○ /blog/blog-gallery                                                                                        1h      1y
+├ ○ /book-now                                                                                                 1h      1y
+├ ● /booking/[slug]                                                                                           1h      1y
+│ ├ /booking/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /booking/amboseli-safari                                                                                  1h      1y
+│ ├ /booking/serengeti-migration-tour                                                                         1h      1y
+│ └ [+67 more paths]
+├ ○ /budget-tours                                                                                             1h      1y
+├ ● /budget-tours/[slug]                                                                                      1h      1y
+│ ├ /budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                                1h      1y
+│ ├ /budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                                1h      1y
+│ ├ /budget-tours/samburu-3-days-private-safari                                                               1h      1y
+│ └ [+11 more paths]
+├ ○ /checkout/success                                                                                         1h      1y
+├ ƒ /cms-api/[...slug]
+├ ƒ /cms-api/graphql
+├ ƒ /cms-api/graphql-playground
+├ ○ /contact                                                                                                  1h      1y
+├ ○ /cultural-tours                                                                                           1h      1y
+├ ƒ /dashboard
+├ ○ /dashboard/admin/users
+├ ƒ /dashboard/admin/users/[id]/edit
+├ ○ /dashboard/admin/users/new
+├ ○ /dashboard/agents
+├ ƒ /dashboard/agents/[id]/edit
+├ ○ /dashboard/agents/new
+├ ƒ /dashboard/ai-agents
+├ ƒ /dashboard/ai-agents/[id]
+├ ƒ /dashboard/bookings
+├ ƒ /dashboard/bookings/[id]
+├ ƒ /dashboard/bookings/[id]/edit
+├ ○ /dashboard/bookings/new
+├ ƒ /dashboard/clients
+├ ƒ /dashboard/clients/[id]
+├ ƒ /dashboard/clients/[id]/edit
+├ ○ /dashboard/clients/new
+├ ○ /dashboard/cost-sheets
+├ ƒ /dashboard/cost-sheets/[id]
+├ ƒ /dashboard/costing
+├ ○ /dashboard/costing/new
+├ ○ /dashboard/invoices
+├ ƒ /dashboard/invoices/[id]
+├ ƒ /dashboard/invoices/[id]/edit
+├ ○ /dashboard/invoices/new
+├ ƒ /dashboard/itineraries
+├ ƒ /dashboard/itineraries/[id]
+├ ƒ /dashboard/itineraries/[id]/edit
+├ ƒ /dashboard/itineraries/[id]/embed
+├ ○ /dashboard/itineraries/from-source
+├ ○ /dashboard/itineraries/new
+├ ○ /dashboard/logs
+├ ○ /dashboard/reports
+├ ƒ /dashboard/safari-rates
+├ ○ /dashboard/safari-rates/hotels
+├ ○ /dashboard/safari-rates/prices
+├ ○ /dashboard/safari-rates/search
+├ ○ /dashboard/safari-rates/seasons
+├ ƒ /dashboard/tours
+├ ƒ /dashboard/tours/[id]
+├ ○ /dashboard/tours/new
+├ ƒ /dashboard/vouchers
+├ ƒ /dashboard/vouchers/[id]
+├ ƒ /dashboard/vouchers/[id]/edit
+├ ○ /dashboard/vouchers/amend
+├ ○ /dashboard/vouchers/new
+├ ○ /de                                                                                                       1h      1y
+├ ○ /de/about                                                                                                 1h      1y
+├ ● /de/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /de/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /de/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /de/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /de/contact                                                                                               1h      1y
+├ ● /de/tour/[slug]                                                                                           1h      1y
+│ ├ /de/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /de/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /de/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /de/tours                                                                                                 1h      1y
+├ ● /de/vehicle-hire/[slug]                                                                                   1h      1y
+│ ├ /de/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+│ ├ /de/vehicle-hire/toyota-prado                                                                             1h      1y
+│ ├ /de/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+│ └ [+3 more paths]
+├ ○ /destination                                                                                              1h      1y
+├ ● /destination/[country]                                                                                    1h      1y
+│ ├ /destination/kenya                                                                                        1h      1y
+│ ├ /destination/tanzania                                                                                     1h      1y
+│ ├ /destination/rwanda                                                                                       1h      1y
+│ └ /destination/uganda                                                                                       1h      1y
+├ ○ /destinations                                                                                             1h      1y
+├ ● /destinations/[country]                                                                                   1h      1y
+│ ├ /destinations/kenya                                                                                       1h      1y
+│ ├ /destinations/tanzania                                                                                    1h      1y
+│ ├ /destinations/rwanda                                                                                      1h      1y
+│ └ /destinations/uganda                                                                                      1h      1y
+├ ○ /disability-tours                                                                                         1h      1y
+├ ƒ /embed/itineraries/[token]
+├ ○ /flamingo-safari-tours                                                                                    1h      1y
+├ ○ /fr                                                                                                       1h      1y
+├ ○ /fr/about                                                                                                 1h      1y
+├ ● /fr/author/[slug]
+├ ● /fr/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /fr/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /fr/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /fr/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /fr/contact                                                                                               1h      1y
+├ ● /fr/destination/[country]                                                                                 1h      1y
+│ ├ /fr/destination/kenya                                                                                     1h      1y
+│ ├ /fr/destination/tanzania                                                                                  1h      1y
+│ ├ /fr/destination/rwanda                                                                                    1h      1y
+│ └ /fr/destination/uganda                                                                                    1h      1y
+├ ● /fr/produit/[slug]                                                                                        1h      1y
+│ ├ /fr/produit/best-of-kenya-tanzania                                                                        1h      1y
+│ ├ /fr/produit/safari-simba                                                                                  1h      1y
+│ ├ /fr/produit/safari-twiga                                                                                  1h      1y
+│ └ [+8 more paths]
+├ ● /fr/tour/[slug]                                                                                           1h      1y
+│ ├ /fr/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /fr/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /fr/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /fr/tours                                                                                                 1h      1y
+├ ○ /fr/toyota-prado                                                                                          1h      1y
+├ ● /fr/vehicle-hire/[slug]                                                                                   1h      1y
+│ ├ /fr/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+│ ├ /fr/vehicle-hire/toyota-prado                                                                             1h      1y
+│ ├ /fr/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+│ └ [+3 more paths]
+├ ○ /gorilla-trekking-tours                                                                                   1h      1y
+├ ○ /great-migration-safaris                                                                                  1h      1y
+├ ○ /hi                                                                                                       1h      1y
+├ ○ /hi/about                                                                                                 1h      1y
+├ ● /hi/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /hi/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /hi/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /hi/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /hi/contact                                                                                               1h      1y
+├ ● /hi/tour/[slug]                                                                                           1h      1y
+│ ├ /hi/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /hi/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /hi/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /hi/tours                                                                                                 1h      1y
+├ ● /hi/vehicle-hire/[slug]                                                                                   1h      1y
+│ ├ /hi/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+│ ├ /hi/vehicle-hire/toyota-prado                                                                             1h      1y
+│ ├ /hi/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+│ └ [+3 more paths]
+├ ○ /it                                                                                                       1h      1y
+├ ○ /it/about                                                                                                 1h      1y
+├ ● /it/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /it/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /it/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /it/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /it/contact                                                                                               1h      1y
+├ ● /it/tour/[slug]                                                                                           1h      1y
+│ ├ /it/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /it/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /it/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /it/tours                                                                                                 1h      1y
+├ ● /it/vehicle-hire/[slug]                                                                                   1h      1y
+│ ├ /it/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+│ ├ /it/vehicle-hire/toyota-prado                                                                             1h      1y
+│ ├ /it/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+│ └ [+3 more paths]
+├ ○ /itinerary-builder                                                                                        1h      1y
+├ ○ /kenya-circuit-safaris                                                                                    1h      1y
+├ ○ /kenya-safari-packages                                                                                    1h      1y
+├ ○ /login
+├ ○ /luxury-roof-top-camping                                                                                  1h      1y
+├ ○ /maasai-mara-great-migration                                                                              1h      1y
+├ ○ /manifest.json
+├ ○ /ngorongoro-safaris                                                                                       1h      1y
+├ ○ /other-services                                                                                           1h      1y
+├ ● /product/[slug]                                                                                           1h      1y
+│ ├ /product/best-of-kenya-tanzania                                                                           1h      1y
+│ ├ /product/safari-simba                                                                                     1h      1y
+│ ├ /product/safari-twiga                                                                                     1h      1y
+│ └ [+8 more paths]
+├ ƒ /robots.txt
+├ ○ /safari/1-day-maasai-mara                                                                                 1h      1y
+├ ○ /safari/7-days-luxury-kenya                                                                               1h      1y
+├ ○ /serengeti-safaris                                                                                        1h      1y
+├ ƒ /services/[id]
+├ ○ /short-safaris                                                                                            1h      1y
+├ ƒ /sitemap.xml
+├ ○ /tanzania-circuit-safaris                                                                                 1h      1y
+├ ○ /terms                                                                                                    1h      1y
+├ ○ /tour                                                                                                     1h      1y
+├ ● /tour/[slug]                                                                                              1h      1y
+│ ├ /tour/masai-mara-luxury-safari                                                                            1h      1y
+│ ├ /tour/amboseli-safari                                                                                     1h      1y
+│ ├ /tour/serengeti-migration-tour                                                                            1h      1y
+│ └ [+66 more paths]
+├ ○ /tours                                                                                                    1h      1y
+├ ● /tours/[slug]                                                                                             1h      1y
+│ ├ /tours/masai-mara-luxury-safari                                                                           1h      1y
+│ ├ /tours/amboseli-safari                                                                                    1h      1y
+│ ├ /tours/serengeti-migration-tour                                                                           1h      1y
+│ └ [+66 more paths]
+├ ○ /toyota-landcruiser                                                                                       1h      1y
+├ ○ /toyota-prado                                                                                             1h      1y
+├ ○ /uganda-circuit-safaris                                                                                   1h      1y
+├ ○ /vehicle-hire                                                                                             1h      1y
+├ ● /vehicle-hire/[slug]                                                                                      1h      1y
+│ ├ /vehicle-hire/toyota-landcruiser                                                                          1h      1y
+│ ├ /vehicle-hire/toyota-prado                                                                                1h      1y
+│ ├ /vehicle-hire/luxury-roof-top-camping                                                                     1h      1y
+│ └ [+3 more paths]
+├ ƒ /vehicles/[slug]
+├ ○ /wheelchair-accessible-maasai-mara-migration                                                              1h      1y
+├ ○ /wheelchair-accessible-safari-landcruiser                                                                 1h      1y
+├ ○ /wheelchair-vehicle                                                                                       1h      1y
+├ ○ /zh                                                                                                       1h      1y
+├ ○ /zh/about                                                                                                 1h      1y
+├ ● /zh/budget-tours/[slug]                                                                                   1h      1y
+│ ├ /zh/budget-tours/masai-mara-3-days-budget-land-cruiser-safari                                             1h      1y
+│ ├ /zh/budget-tours/masai-mara-3-days-superior-budget-shared-land-cruiser-safari                             1h      1y
+│ ├ /zh/budget-tours/samburu-3-days-private-safari                                                            1h      1y
+│ └ [+11 more paths]
+├ ○ /zh/contact                                                                                               1h      1y
+├ ● /zh/tour/[slug]                                                                                           1h      1y
+│ ├ /zh/tour/masai-mara-luxury-safari                                                                         1h      1y
+│ ├ /zh/tour/amboseli-safari                                                                                  1h      1y
+│ ├ /zh/tour/serengeti-migration-tour                                                                         1h      1y
+│ └ [+66 more paths]
+├ ○ /zh/tours                                                                                                 1h      1y
+└ ● /zh/vehicle-hire/[slug]                                                                                   1h      1y
+  ├ /zh/vehicle-hire/toyota-landcruiser                                                                       1h      1y
+  ├ /zh/vehicle-hire/toyota-prado                                                                             1h      1y
+  ├ /zh/vehicle-hire/luxury-roof-top-camping                                                                  1h      1y
+  └ [+3 more paths]
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

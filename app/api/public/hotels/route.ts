@@ -71,17 +71,27 @@ interface HotelsQuery {
   county: string | null;
   tier: string | null;
   q: string | null;
+  roomTypeId: string | null;
 }
 
 async function loadHotelsUncached(query: HotelsQuery) {
-  const { county, tier, q } = query;
+  const { county, tier, q, roomTypeId } = query;
 
   const hotels = await prisma.sRHotel.findMany({
     where: {
       ...(county ? { county: { name: { equals: county, mode: 'insensitive' } } } : {}),
       ...(q ? { name: { contains: q, mode: 'insensitive' } } : {}),
+      ...(roomTypeId
+        ? { roomTypes: { some: { id: Number(roomTypeId) } } }
+        : {}),
     },
-    include: { county: true },
+    include: {
+      county: true,
+      roomTypes: {
+        orderBy: { maxOccupancy: 'asc' },
+        select: { id: true, name: true, maxOccupancy: true },
+      },
+    },
     orderBy: { name: 'asc' },
   });
 
@@ -100,6 +110,11 @@ async function loadHotelsUncached(query: HotelsQuery) {
       fromPricePerNight: rate?.pricePerNight ?? null,
       currency: rate?.currency ?? 'USD',
       budgetTier: rate ? classifyTier(rate.pricePerNight) : null,
+      roomTypes: hotel.roomTypes.map((rt) => ({
+        id: rt.id,
+        name: rt.name,
+        maxOccupancy: rt.maxOccupancy,
+      })),
     };
   });
 
@@ -133,6 +148,7 @@ export async function GET(req: NextRequest) {
     county: searchParams.get('county'),
     tier: searchParams.get('tier'),
     q: searchParams.get('q'),
+    roomTypeId: searchParams.get('roomTypeId'),
   };
 
   // Force a fresh fetch on the server (no `next: { revalidate }`

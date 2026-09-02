@@ -426,6 +426,8 @@ export const SRCountyScalarFieldEnum = {
   id: 'id',
   name: 'name',
   region: 'region',
+  parkFee: 'parkFee',
+  parkFeeCurrency: 'parkFeeCurrency',
   createdAt: 'createdAt'
 } as const
 

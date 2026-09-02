@@ -66,9 +66,35 @@ type Props = {
   searchParams: Promise<{ p?: string; post_type?: string }>
 }
 
+// Path prefixes the marketing catch-all must NOT swallow. Each of
+// these has its own dedicated route handler elsewhere in the app
+// (Payload admin, NextAuth, the CMS API), and the catch-all has
+// higher runtime priority over those handlers when both match the
+// same URL. Returning notFound() up front lets the framework fall
+// through to the real handler.
+const RESERVED_PREFIXES = new Set([
+  "admin",
+  "api",
+  "cms-api",
+  "dashboard",
+  "payload",
+  "_next",
+  "_vercel",
+  "media",
+  "static",
+  "favicon.ico",
+  "robots.txt",
+  "sitemap.xml",
+])
+
 export default async function CatchAllPage({ params, searchParams }: Props) {
   const { path: segments } = await params
   const { p: postId, post_type: postType } = await searchParams
+
+  // 0. Reserved prefixes — let the dedicated route handle it.
+  if (segments[0] && RESERVED_PREFIXES.has(segments[0])) {
+    notFound()
+  }
 
   // 1. CMS Pages — most new traffic lands here.
   const slug = segments.join("/")
