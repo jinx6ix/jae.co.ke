@@ -14,7 +14,7 @@
 //   one of the "adult pax" and are charged ratePerPersonSharing.
 // - MARKUP_PERCENT: 10% margin on the whole subtotal (accommodation + park
 //   fees + transport + activities), applied after the sum.
-// - TRANSPORT_RATES: KES per day for the whole vehicle (not per person).
+// - TRANSPORT_RATES: USD per day for the whole vehicle (not per person).
 //   Safari operators hire a vehicle for the trip, then divide the cost
 //   across pax on the per-person line. The marketing result page flags
 //   this as a baseline ("staff will confirm the final rate per season")
@@ -41,7 +41,7 @@ export const MARKUP_PERCENT = 10;
 export const TRANSPORT_RATES = {
   MINIVAN: 150,
   LANDCRUISER: 200,
-} as const; // KES per day for the whole vehicle
+} as const; // USD per day for the whole vehicle
 
 export type Vehicle = keyof typeof TRANSPORT_RATES;
 

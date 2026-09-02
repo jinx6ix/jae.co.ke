@@ -922,11 +922,11 @@ export default function DisabilityToursPage() {
             <Accessibility className="h-10 w-10" />
           </div>
 
-          <h1 className="mb-6 font-serif text-5xl font-bold leading-tight text-balance md:text-6xl lg:text-7xl">
+          <h1 className="mb-6 font-serif text-3xl font-bold leading-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
             Wheelchair Accessible Safari Kenya 2026 – Inclusive Adventures for All
           </h1>
 
-          <div className="max-w-5xl mx-auto pl-70">
+          <div className="max-w-5xl mx-auto">
             <p className="mb-8 text-xl leading-relaxed text-white/90 text-pretty">
               Kenya's #1 operator for <strong>wheelchair accessible safari Kenya</strong> and{" "}
               <strong>wheelchair accessible tours in Kenya</strong>. German hydraulic lift 4x4
@@ -936,13 +936,13 @@ export default function DisabilityToursPage() {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="min-w-[220px] text-lg">
+            <Button asChild size="lg" className="w-full text-lg sm:w-auto sm:min-w-[220px]">
               <Link href="#itineraries">View 2026 Itineraries</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="min-w-[220px]">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto sm:min-w-[220px]">
               <Link href="/contact">Free Accessibility Consultation</Link>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="min-w-[220px]">
+            <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto sm:min-w-[220px]">
               <a href="https://wa.me/+254726485228" target="_blank" rel="noopener noreferrer">
                 <Phone className="mr-2 h-5 w-5" /> WhatsApp Now
               </a>
@@ -1002,7 +1002,7 @@ export default function DisabilityToursPage() {
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             Kenya's Most Advanced Wheelchair Accessible Safari Vehicles 2026
           </h2>
-          <div className="max-w-5xl mx-auto text-center mb-12 pl-70">
+          <div className="max-w-5xl mx-auto text-center mb-12">
             <p className="text-lg text-muted-foreground">
               German hydraulic lifts with 400kg capacity – the only fleet built exclusively for
               full-time wheelchair users on <strong>wheelchair accessible safari Kenya</strong>.
@@ -1074,13 +1074,13 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* ========== COMPARISON TABLE with pl-60 ========== */}
+      {/* ========== COMPARISON TABLE with ========== */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             Why Travelers Choose JaeTravel for Wheelchair Accessible Safari Kenya
           </h2>
-          <div className="max-w-5xl mx-auto overflow-x-auto pl-60">
+          <div className="max-w-5xl mx-auto overflow-x-auto">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -1127,13 +1127,13 @@ export default function DisabilityToursPage() {
         </div>
       </section>
 
-      {/* ========== 2026 DATES TABLE with pl-60 ========== */}
+      {/* ========== 2026 DATES TABLE with ========== */}
       <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             2026 Wheelchair Accessible Safari Kenya Dates – Masai Mara & Gorilla Trekking
           </h2>
-          <div className="max-w-5xl mx-auto overflow-x-auto pl-60">
+          <div className="max-w-5xl mx-auto overflow-x-auto">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -1177,7 +1177,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Comprehensive Accessibility Features for Your Safari
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Every aspect of your <strong>wheelchair accessible safari Kenya</strong> is designed
                 with your needs in mind – from vehicles to lodges to guides.
@@ -1215,7 +1215,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Wheelchair Accessible Safari Itineraries Kenya 2026
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Every itinerary includes <strong>wheelchair accessible safari vehicles</strong>,
                 barrier-free camps, and trained support staff for{" "}
@@ -1307,7 +1307,7 @@ export default function DisabilityToursPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <div className="max-w-3xl mx-auto pl-70 mb-6">
+            <div className="max-w-3xl mx-auto mb-6">
               <p className="text-muted-foreground leading-relaxed">
                 Don't see your perfect <strong>wheelchair accessible safari</strong> itinerary? We
                 specialize in custom routes designed specifically for your accessibility needs.
@@ -1327,7 +1327,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Why Choose Jae Travel for Your Wheelchair Accessible Safari
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 We don't just accommodate disabilities – we specialize in creating exceptional{" "}
                 <strong>wheelchair accessible safari</strong> experiences.
@@ -1389,7 +1389,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Wheelchair Accessible Safari Destinations in East Africa
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Explore our top destinations for <strong>wheelchair accessible tours in Kenya</strong>{" "}
                 and beyond – each vetted for accessibility features and wildlife experiences.
@@ -1442,7 +1442,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               When to Go: Seasonal Guide for Wheelchair Accessible Safaris
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Understanding Kenya's seasons helps you plan the perfect{" "}
                 <strong>wheelchair accessible safari Kenya 2026</strong> experience.
@@ -1501,7 +1501,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Accessibility Features by Disability Type
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Every traveler is unique. We tailor your <strong>wheelchair accessible safari Kenya</strong>{" "}
                 to your specific needs and preferences.
@@ -1544,7 +1544,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               What's Included in Every Wheelchair Accessible Safari
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 From arrival to departure – everything is covered with wheelchair accessibility at the core.
               </p>
@@ -1583,7 +1583,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Featured Wheelchair Accessible Safari Tours
             </h2>
-            <div className="max-w-4xl mx-auto pl-70">
+            <div className="max-w-4xl mx-auto">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Choose from our most popular wheelchair accessible safari packages or let us design a custom itinerary.
               </p>
@@ -1608,7 +1608,7 @@ export default function DisabilityToursPage() {
           )}
 
           <div className="mt-12 text-center">
-            <div className="max-w-3xl mx-auto pl-70 mb-6">
+            <div className="max-w-3xl mx-auto mb-6">
               <p className="text-muted-foreground leading-relaxed">
                 Can't find your ideal itinerary? We specialize in custom wheelchair accessible safaris.
               </p>
@@ -1733,7 +1733,7 @@ export default function DisabilityToursPage() {
             <h2 className="mb-4 font-serif text-3xl font-bold md:text-4xl text-balance">
               Your Wheelchair Accessible Safari Kenya 2026 Awaits
             </h2>
-            <div className="max-w-3xl mx-auto pl-70 mb-8">
+            <div className="max-w-3xl mx-auto mb-8">
               <p className="text-lg leading-relaxed text-primary-foreground/90 text-pretty">
                 Let our experts design a safe, comfortable, thrilling safari tailored to your needs – from first inquiry to final game drive.
               </p>

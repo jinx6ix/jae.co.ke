@@ -313,7 +313,7 @@ export default function HomePage() {
             Wheelchair Accessible Safari Kenya 2026 - Premier Accessible Tours &amp; Wildlife Adventures
           </h1>
           
-          <div className="mb-12 max-w-5xl mx-auto text-center space-y-6 pl-70">
+          <div className="mb-12 max-w-5xl mx-auto text-center space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Welcome to JaeTravel Expeditions — Kenya&apos;s #1 operator for <strong>wheelchair accessible safari Kenya</strong> and <strong>wheelchair accessible tours in Kenya</strong>. 
               Our German hydraulic lift vehicles and disability-friendly lodges make the Masai Mara Great Migration, Serengeti, and gorilla trekking fully accessible.
@@ -371,21 +371,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Special Offers Section — fully preserved + keywords with pl-70 and pl-60 */}
+      {/* Special Offers Section — fully preserved + keywords with and */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Limited-Time Safari Special Offers
             </h2>
-            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-70">
+            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
                 Save on <strong>Great Migration game drives</strong>, <strong>wheelchair accessible safari</strong> packages in Kenya, Tanzania, Rwanda &amp; Uganda.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Don&apos;t miss our exclusive <strong>safari packages</strong> designed for <strong>wheelchair accessible tours in Kenya</strong> with fully adapted 
               <strong> safari vehicles</strong> and stays at luxurious <strong>disability-friendly lodges</strong>.
@@ -422,14 +422,14 @@ export default function HomePage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Featured East Africa Safari Experiences
             </h2>
-            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-70">
+            <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed text-pretty">
                 Handpicked <strong>safari experiences</strong> with comfortable <strong>camps and lodges</strong> and optional <strong>wheelchair accessible safari vehicles</strong>.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Our carefully curated selection of <strong>East Africa safari</strong> adventures with <strong>wheelchair accessible tours in Kenya</strong>.
             </p>
@@ -456,7 +456,7 @@ export default function HomePage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold">Explore East Africa&apos;s Premier Safari Destinations</h2>
             
-            <div className="max-w-5xl mx-auto space-y-6 pl-70">
+            <div className="max-w-5xl mx-auto space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 East Africa offers some of the world&apos;s most spectacular safari destinations for <strong>wheelchair accessible safari Kenya</strong>.
               </p>
@@ -532,12 +532,12 @@ export default function HomePage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Wheelchair Accessible Tours in Kenya - Barrier-Free Safari Adventures
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty pl-70">
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Experience the ultimate <strong>wheelchair accessible safari Kenya</strong> with our specially designed tours.
             </p>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               As pioneers in <strong>accessible travel Africa</strong>, we&apos;ve developed the most comprehensive 
               <strong> wheelchair accessible tours and safaris</strong> in East Africa.
@@ -576,7 +576,7 @@ export default function HomePage() {
           <h2 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
             Kenya&apos;s Most Advanced Wheelchair Accessible Safari Vehicles 2026
           </h2>
-          <div className="max-w-4xl mx-auto text-center mb-12 pl-70">
+          <div className="max-w-4xl mx-auto text-center mb-12">
             <p className="text-lg text-muted-foreground">
               German-engineered hydraulic lifts with 400kg capacity — the only fleet built exclusively for full-time wheelchair users on <strong>wheelchair accessible safari Kenya</strong>.
             </p>
@@ -594,7 +594,7 @@ export default function HomePage() {
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             Why Travelers Choose JaeTravel for Wheelchair Accessible Safari Kenya
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto pl-60">
+          <div className="max-w-4xl mx-auto overflow-x-auto">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -622,7 +622,7 @@ export default function HomePage() {
           <h2 className="mb-8 text-center font-serif text-4xl font-bold text-balance">
             2026 Wheelchair Accessible Safari Kenya Dates — Masai Mara Great Migration &amp; Gorilla Trekking
           </h2>
-          <div className="max-w-4xl mx-auto overflow-x-auto pl-60">
+          <div className="max-w-4xl mx-auto overflow-x-auto">
             <table className="w-full border-collapse text-sm bg-card rounded-xl overflow-hidden shadow-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
@@ -651,12 +651,12 @@ export default function HomePage() {
             <h2 className="mb-4 font-serif text-4xl font-bold text-balance">
               Affordable Safari Adventures Without Compromise
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty pl-70">
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
               Experience the magic of Africa with our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> that can be upgraded with <strong>wheelchair accessible safari vehicles</strong>.
             </p>
           </div>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Our <Link href="/budget-tours" className="text-primary hover:underline">budget tours</Link> include comfortable accommodations and daily <strong>game drives</strong>.
             </p>
@@ -773,14 +773,14 @@ export default function HomePage() {
             What Our Safari Guests Say
           </h2>
 
-          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto text-center space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Hear from travelers who have experienced our <strong>wheelchair accessible tours in Kenya</strong>.
             </p>
           </div>
 
           <section className="mb-8 scroll-mt-32">
-            <h2 className="font-serif text-2xl md:text-6xl font-bold mb-12 text-balance">
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mb-12 text-balance">
               Why Jae Travel Offers the Kenya Best Safari Experience
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
@@ -791,7 +791,7 @@ export default function HomePage() {
           </section>
 
           <section className="mb-8 scroll-mt-32">
-            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-12 text-balance">
+            <h2 className="font-serif text-3xl md:text-5xl font-bold mb-12 text-balance">
               Discover the Best Safari in Africa for 2026
             </h2>
             <div className="prose prose-lg max-w-none text-sm leading-relaxed text-muted-foreground space-y-6">
@@ -848,7 +848,7 @@ export default function HomePage() {
             Whether you&apos;re dreaming of classic <strong>game drives</strong> or a fully <strong>wheelchair accessible safari</strong>, contact us today.
           </p>
 
-          <div className="mb-8 max-w-5xl mx-auto space-y-4 pl-60">
+          <div className="mb-8 max-w-5xl mx-auto space-y-4">
             <p className="text-muted-foreground leading-relaxed">
               Your dream <strong>African safari</strong> awaits with <strong>wheelchair accessible safari vehicles</strong> and <strong>disability-friendly lodges</strong>.
             </p>

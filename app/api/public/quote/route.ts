@@ -326,7 +326,7 @@ async function handleMultiLegQuote(
         maxOccupancy: roomType.maxOccupancy,
       },
       occupants,
-      parkFeePerPersonPerDay: parkFee?.amount,
+      parkFeePerPersonPerDay: leg.includeParkFee === false ? undefined : parkFee?.amount,
     });
     legMeta.push({
       countyName: leg.countyName,

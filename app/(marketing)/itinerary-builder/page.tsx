@@ -44,6 +44,13 @@ interface LegSelectionState {
   countyName: string;
   parkFee: number | null;
   parkFeeCurrency: string;
+  /**
+   * Park fees are per-person per day and are a separate line item from
+   * accommodation. Some travelers (e.g. residents, children under a
+   * certain age, or those holding a multi-entry pass) don't pay them.
+   * Default true to match legacy behaviour; the user can opt a leg out.
+   */
+  includeParkFee: boolean;
   nights: number;
   hotelId: number | null;
   hotelName: string | null;
@@ -161,6 +168,7 @@ export default function ItineraryBuilderPage() {
             countyName: "",
             parkFee: null,
             parkFeeCurrency: "USD",
+            includeParkFee: true,
             nights: 1,
             hotelId: null,
             hotelName: null,
@@ -283,6 +291,7 @@ export default function ItineraryBuilderPage() {
         countyName: counties[0]?.name ?? "",
         parkFee: counties[0]?.parkFee ?? null,
         parkFeeCurrency: counties[0]?.parkFeeCurrency ?? "USD",
+        includeParkFee: true,
         nights: 1,
         hotelId: null,
         hotelName: null,
@@ -324,6 +333,7 @@ export default function ItineraryBuilderPage() {
             countyName: c?.name ?? "",
             parkFee: c?.parkFee ?? null,
             parkFeeCurrency: c?.parkFeeCurrency ?? "USD",
+            includeParkFee: true,
             hotelId: null,
             hotelName: null,
             roomTypeId: null,
@@ -438,7 +448,7 @@ export default function ItineraryBuilderPage() {
         leg,
         nightTotal,
         legAccommodation: nightTotal * leg.nights,
-        legParkFees: (leg.parkFee ?? 0) * leg.nights * pax,
+        legParkFees: leg.includeParkFee ? (leg.parkFee ?? 0) * leg.nights * pax : 0,
       };
     });
 
@@ -492,6 +502,7 @@ export default function ItineraryBuilderPage() {
         countyId: l.countyId,
         countyName: l.countyName,
         nights: l.nights,
+        includeParkFee: l.includeParkFee,
       }));
       const hotels: LegHotelInput[] = legs.map((l) => ({
         countyId: l.countyId,
@@ -592,8 +603,8 @@ export default function ItineraryBuilderPage() {
                   value={vehicle}
                   onChange={(e) => setVehicle(e.target.value as Vehicle)}
                 >
-                  <option value="MINIVAN">Tour van (KES {TRANSPORT_RATES.MINIVAN}/day for the vehicle)</option>
-                  <option value="LANDCRUISER">Landcruiser (KES {TRANSPORT_RATES.LANDCRUISER}/day for the vehicle)</option>
+                  <option value="MINIVAN">Tour van (USD {TRANSPORT_RATES.MINIVAN}/day for the vehicle)</option>
+                  <option value="LANDCRUISER">Landcruiser (USD {TRANSPORT_RATES.LANDCRUISER}/day for the vehicle)</option>
                 </select>
               </div>
             </div>
@@ -737,6 +748,20 @@ export default function ItineraryBuilderPage() {
                           />
                         </div>
                       </div>
+                      {leg.parkFee ? (
+                        <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer select-none">
+                          <input
+                            type="checkbox"
+                            className="h-4 w-4 rounded border-input accent-primary"
+                            checked={leg.includeParkFee}
+                            onChange={(e) => updateLeg(idx, { includeParkFee: e.target.checked })}
+                          />
+                          Include park fees for this destination
+                          <span className="text-foreground/70">
+                            ({leg.parkFeeCurrency} {leg.parkFee}/pp/day)
+                          </span>
+                        </label>
+                      ) : null}
                     </div>
                   );
                 })}
@@ -800,6 +825,17 @@ export default function ItineraryBuilderPage() {
                       <span className="text-xs text-muted-foreground"> · park fee {leg.parkFeeCurrency} {leg.parkFee}/pp/day</span>
                     ) : null}
                   </div>
+                  {leg.parkFee ? (
+                    <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-input accent-primary"
+                        checked={leg.includeParkFee}
+                        onChange={(e) => updateLeg(idx, { includeParkFee: e.target.checked })}
+                      />
+                      Include park fees for this destination
+                    </label>
+                  ) : null}
                   {loading && (
                     <div className="space-y-1">
                       <Skeleton className="h-9 w-full" />
@@ -1149,7 +1185,7 @@ export default function ItineraryBuilderPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             <SummaryRow label="Trip" value={`${startDate} → ${endDate} · ${totalNights}n · ${pax} pax`} />
-            <SummaryRow label="Vehicle" value={`${vehicle} (KES ${TRANSPORT_RATES[vehicle]}/day, ${totalDays} day${totalDays === 1 ? "" : "s"})`} />
+            <SummaryRow label="Vehicle" value={`${vehicle} (USD ${TRANSPORT_RATES[vehicle]}/day, ${totalDays} day${totalDays === 1 ? "" : "s"})`} />
             <Separator />
             <div className="space-y-2">
               {reviewBreakdown.legs.map(({ leg, nightTotal, legAccommodation, legParkFees }, i) => (
@@ -1173,7 +1209,14 @@ export default function ItineraryBuilderPage() {
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>Per night (room): {leg.currency} {nightTotal.toLocaleString()}</span>
                     {leg.parkFee ? (
-                      <span>Park fees: {leg.currency} {legParkFees.toLocaleString()}</span>
+                      <span>
+                        Park fees: {leg.currency} {legParkFees.toLocaleString()}
+                        {!leg.includeParkFee && (
+                          <span className="ml-2 rounded-full border border-amber-300 bg-amber-50 text-amber-800 px-1.5 py-0.5 text-[10px]">
+                            excluded
+                          </span>
+                        )}
+                      </span>
                     ) : null}
                   </div>
                 </div>

@@ -64,6 +64,12 @@ export interface RouteLegInput {
   countyId: number;
   countyName: string;
   nights: number;
+  /**
+   * When false, the server-side quote calculator should skip the
+   * per-person-per-day park fee for this leg entirely. Defaults to
+   * true when omitted (matches the legacy behaviour).
+   */
+  includeParkFee?: boolean;
 }
 
 export interface LegHotelInput {
