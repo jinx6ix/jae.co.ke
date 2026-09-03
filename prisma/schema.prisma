@@ -460,3 +460,29 @@ model ItineraryEmbed {
 
   @@index([token])
 }
+
+// One row per connected social account. The access token is encrypted at
+// rest with AES-256-GCM (see lib/instagram/crypto.ts) using the
+// TOKEN_ENCRYPTION_KEY env var. The unique (platform, externalId)
+// constraint means reconnecting the same account overwrites in place —
+// the audit fields (lastRefreshedAt, refreshCount) are preserved.
+model SocialAccount {
+  id               String    @id @default(cuid())
+  platform         String    // 'instagram' | 'facebook' | (future)
+  externalId       String    // IG business account numeric id, FB page id, etc.
+  displayName      String?   // @handle for IG, page name for FB — UI/debug only
+  pageId           String?   // FB page id the IG business account is attached to
+  pageName         String?
+  accessTokenEnc   String    // AES-256-GCM, base64. Never logged, never returned to the client.
+  expiresAt        DateTime? // null = no expiry (page-level token, never refreshes)
+  scopes           String?   // CSV of OAuth scopes granted at mint time
+  connectedById    String?   // optional, points at User.id at connect time
+  connectedByEmail String?   // snapshot — survives User deletion
+  lastRefreshedAt  DateTime?
+  refreshCount     Int       @default(0)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@unique([platform, externalId])
+  @@index([platform])
+}

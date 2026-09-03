@@ -13,6 +13,7 @@ import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { Statistics } from '../../blocks/Statistics/config'
 import { Testimonials } from '../../blocks/Testimonials/config'
 import { TourGrid } from '../../blocks/TourGrid/config'
+import { VideoBlock } from '../../blocks/VideoBlock/config'
 import { hero } from '@cms/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -113,6 +114,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 BlogArchive,
                 Statistics,
                 Testimonials,
+                VideoBlock,
               ],
               required: true,
               admin: {

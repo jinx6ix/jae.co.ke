@@ -166,3 +166,8 @@ export type AgentMessage = Prisma.AgentMessageModel
  * 
  */
 export type ItineraryEmbed = Prisma.ItineraryEmbedModel
+/**
+ * Model SocialAccount
+ * 
+ */
+export type SocialAccount = Prisma.SocialAccountModel

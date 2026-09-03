@@ -13,6 +13,7 @@ import { MediaBlock } from '@cms/blocks/MediaBlock/Component'
 import { StatisticsBlock } from '@cms/blocks/Statistics/Component'
 import { TestimonialsBlock } from '@cms/blocks/Testimonials/Component'
 import { TourGridBlock } from '@cms/blocks/TourGrid/Component'
+import { VideoBlockComponent } from '@cms/blocks/VideoBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +27,7 @@ const blockComponents = {
   statistics: StatisticsBlock,
   testimonials: TestimonialsBlock,
   tourGrid: TourGridBlock,
+  videoBlock: VideoBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

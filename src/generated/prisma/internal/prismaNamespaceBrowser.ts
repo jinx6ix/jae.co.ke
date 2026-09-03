@@ -75,7 +75,8 @@ export const ModelName = {
   Log: 'Log',
   AgentRun: 'AgentRun',
   AgentMessage: 'AgentMessage',
-  ItineraryEmbed: 'ItineraryEmbed'
+  ItineraryEmbed: 'ItineraryEmbed',
+  SocialAccount: 'SocialAccount'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -544,6 +545,27 @@ export const ItineraryEmbedScalarFieldEnum = {
 } as const
 
 export type ItineraryEmbedScalarFieldEnum = (typeof ItineraryEmbedScalarFieldEnum)[keyof typeof ItineraryEmbedScalarFieldEnum]
+
+
+export const SocialAccountScalarFieldEnum = {
+  id: 'id',
+  platform: 'platform',
+  externalId: 'externalId',
+  displayName: 'displayName',
+  pageId: 'pageId',
+  pageName: 'pageName',
+  accessTokenEnc: 'accessTokenEnc',
+  expiresAt: 'expiresAt',
+  scopes: 'scopes',
+  connectedById: 'connectedById',
+  connectedByEmail: 'connectedByEmail',
+  lastRefreshedAt: 'lastRefreshedAt',
+  refreshCount: 'refreshCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SocialAccountScalarFieldEnum = (typeof SocialAccountScalarFieldEnum)[keyof typeof SocialAccountScalarFieldEnum]
 
 
 export const SortOrder = {

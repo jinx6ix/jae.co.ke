@@ -17,6 +17,8 @@
     "cms:migrate-pages": "tsx scripts/migrate-pages-to-cms.ts",
     "cms:ingest-media": "tsx scripts/ingest-marketing-media.ts",
     "cms:ingest-query-posts": "tsx scripts/ingest-query-driven-posts.ts",
+    "ig:mint": "tsx scripts/mint-instagram-token.ts",
+    "ig:smoke": "NODE_OPTIONS=--conditions=react-server tsx scripts/smoke-test-instagram-store.ts",
     "cms": "payload"
   },
   "dependencies": {
@@ -102,6 +104,7 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
     "resend": "^6.2.0",
+    "server-only": "^0.0.1",
     "sharp": "0.34.2",
     "sonner": "^1.7.4",
     "tailwind-merge": "^3.4.0",

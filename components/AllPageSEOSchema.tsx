@@ -21,6 +21,69 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const BASE = "https://www.jaetravel.co.ke"
+const YOUTUBE_CHANNEL_URL =
+  process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL || `${BASE}/youtube`
+const INSTAGRAM_HANDLE = process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE || null
+
+// ── Videos (VideoObject) ──────────────────────────────────────────────────────
+// Pages that have a VideoBlock pass an array of populated Video docs here.
+// We emit one real VideoObject per video (the data editors actually chose)
+// instead of the hard-coded `contentUrl: ${BASE}/videos/<slug>.mp4` that
+// previously pointed at files that don't exist. The hard-coded single entry
+// is kept as a fallback for legacy pages that haven't been updated yet —
+// the moment `videos` is non-empty, the real entries win.
+
+export interface VideoSchemaInput {
+  id?: number | string
+  provider: "youtube" | "instagram"
+  externalId: string
+  url: string
+  title?: string | null
+  description?: string | null
+  thumbnailUrl?: string | null
+  publishedAt?: string | null
+  durationSeconds?: number | null
+}
+
+function toISO8601Duration(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds <= 0) return "PT0S"
+  const h = Math.floor(seconds / 3600)
+  const m = Math.floor((seconds % 3600) / 60)
+  const s = Math.floor(seconds % 60)
+  let out = "PT"
+  if (h) out += `${h}H`
+  if (m) out += `${m}M`
+  if (s || (!h && !m)) out += `${s}S`
+  return out
+}
+
+function buildVideoObjects(
+  videos: VideoSchemaInput[] | undefined,
+  pageUrl: string,
+  fallback: object,
+): object[] {
+  if (!videos || videos.length === 0) return [fallback]
+  return videos.map((v) => {
+    const isYouTube = v.provider === "youtube"
+    return {
+      "@type": "VideoObject",
+      "@id": `${pageUrl}#video-${v.externalId}`,
+      name: v.title || (isYouTube ? "Safari video" : "Instagram reel"),
+      description: v.description || undefined,
+      thumbnailUrl: v.thumbnailUrl ? [v.thumbnailUrl] : undefined,
+      uploadDate: v.publishedAt || undefined,
+      duration:
+        isYouTube && v.durationSeconds
+          ? toISO8601Duration(v.durationSeconds)
+          : undefined,
+      contentUrl: v.url,
+      embedUrl: isYouTube
+        ? `https://www.youtube-nocookie.com/embed/${v.externalId}`
+        : `${v.url.replace(/\/$/, "")}/embed/`,
+      publisher: { "@id": `${BASE}/#organization` },
+    }
+  })
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function abs(path?: string) {
@@ -45,6 +108,17 @@ const MERCHANT = {
   telephone: "+254726485228",
   email: "info@jaetravel.co.ke",
   logo: { "@type": "ImageObject", url: `${BASE}/logo.png`, width: 512, height: 512 },
+  // Cross-link the brand to its owned social properties. Google uses
+  // sameAs to confirm entity identity — listing the YouTube channel here
+  // is what makes the channel show up as a related property in the brand
+  // Knowledge Panel and unlocks YouTube subscriber attribution.
+  sameAs: [
+    YOUTUBE_CHANNEL_URL,
+    `${BASE}/facebook`,
+    `${BASE}/twitter`,
+    `${BASE}/tiktok`,
+    INSTAGRAM_HANDLE ? `https://www.instagram.com/${INSTAGRAM_HANDLE.replace(/^@/, '')}/` : `${BASE}/instagram`,
+  ].filter(Boolean),
   address: {
     "@type": "PostalAddress",
     streetAddress: "Nairobi CBD",
@@ -107,7 +181,7 @@ const SHIPPING_DETAILS = {
 // ─────────────────────────────────────────────────────────────────────────────
 // TOUR PAGE SCHEMA — all 8 enhancements
 // ─────────────────────────────────────────────────────────────────────────────
-function buildTourSchema(tour: any, slug: string) {
+function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
   const url = `${BASE}/tour/${slug}`
   const imageUrl = abs(tour.image)
   const price = tour.price ?? 0
@@ -380,7 +454,7 @@ function buildTourSchema(tour: any, slug: string) {
 // ─────────────────────────────────────────────────────────────────────────────
 // VEHICLE HIRE PAGE SCHEMA — all 8 enhancements
 // ─────────────────────────────────────────────────────────────────────────────
-function buildVehicleSchema(vehicle: any, slug: string) {
+function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInput[]) {
   const url = `${BASE}/vehicle-hire/${slug}`
   const imageUrl = abs(vehicle.image)
 
@@ -452,7 +526,7 @@ function buildVehicleSchema(vehicle: any, slug: string) {
       },
 
       // VIDEO
-      {
+      ...buildVideoObjects(videos, url, {
         "@type": "VideoObject",
         "@id": `${url}#video`,
         name: `${vehicle.name} Safari Vehicle — Full Walkthrough`,
@@ -465,7 +539,7 @@ function buildVehicleSchema(vehicle: any, slug: string) {
         publisher: MERCHANT,
         isFamilyFriendly: true,
         isAccessibleForFree: true,
-      },
+      }),
 
       // BREADCRUMBS
       {
@@ -511,7 +585,7 @@ function buildVehicleSchema(vehicle: any, slug: string) {
 // ─────────────────────────────────────────────────────────────────────────────
 // BUDGET TOUR PAGE SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
-function buildBudgetTourSchema(tour: any, slug: string) {
+function buildBudgetTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
   const url = `${BASE}/budget-tours/${slug}`
   const imageUrl = abs(tour.image)
 
@@ -563,7 +637,7 @@ function buildBudgetTourSchema(tour: any, slug: string) {
       { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${tour.title}`, caption: `${tour.title} | JaeTravel Expeditions`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true },
 
       // VIDEO
-      { "@type": "VideoObject", "@id": `${url}#video`, name: `${tour.title} — Safari Highlights`, description: `See what to expect on the ${tour.title}. Real footage from this Kenya budget safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/budget-safari-highlights.mp4`, uploadDate: "2024-04-01", duration: "PT3M00S", publisher: MERCHANT, isFamilyFriendly: true },
+      ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${tour.title} — Safari Highlights`, description: `See what to expect on the ${tour.title}. Real footage from this Kenya budget safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/budget-safari-highlights.mp4`, uploadDate: "2024-04-01", duration: "PT3M00S", publisher: MERCHANT, isFamilyFriendly: true }),
 
       // EVENTS — departure dates
       { "@type": "Event", name: `${tour.title} — Daily Departures`, description: `Daily departures from Nairobi for the ${tour.title}. Book your spot now.`, startDate: today(), endDate: nextYear(), eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", location: { "@type": "Place", name: "Nairobi, Kenya — Masai Mara National Reserve", address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" } }, organizer: MERCHANT, offers: { "@type": "Offer", url, price: tour.price, priceCurrency: "USD", availability: "https://schema.org/InStock" } },
@@ -592,7 +666,7 @@ function buildBudgetTourSchema(tour: any, slug: string) {
 // ─────────────────────────────────────────────────────────────────────────────
 // BLOG POST SCHEMA — complete Article + all enhancements
 // ─────────────────────────────────────────────────────────────────────────────
-function buildBlogSchema(post: any, slug: string) {
+function buildBlogSchema(post: any, slug: string, videos?: VideoSchemaInput[]) {
   const url = `${BASE}/blog/${slug}`
   const imageUrl = abs(post.image)
 
@@ -625,7 +699,7 @@ function buildBlogSchema(post: any, slug: string) {
       { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: post.title, caption: `${post.title} | JaeTravel Expeditions Blog`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true, inLanguage: "en" },
 
       // VIDEO (optional — many blog posts have embedded videos)
-      { "@type": "VideoObject", "@id": `${url}#video`, name: `${post.title} — Video`, description: `Video companion to the blog post: ${post.title}`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/blog-companion.mp4`, uploadDate: post.publishedAt || "2024-01-01", duration: "PT4M00S", publisher: MERCHANT },
+      ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${post.title} — Video`, description: `Video companion to the blog post: ${post.title}`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/blog-companion.mp4`, uploadDate: post.publishedAt || "2024-01-01", duration: "PT4M00S", publisher: MERCHANT }),
 
       // BREADCRUMBS
       { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: BASE }, { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog` }, { "@type": "ListItem", position: 3, name: post.title, item: url }] },
@@ -648,7 +722,7 @@ function buildBlogSchema(post: any, slug: string) {
 // ─────────────────────────────────────────────────────────────────────────────
 // DESTINATION PAGE SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
-function buildDestinationSchema(destination: any, slug: string) {
+function buildDestinationSchema(destination: any, slug: string, videos?: VideoSchemaInput[]) {
   const url = `${BASE}/destinations/${slug}`
   const imageUrl = abs(destination.heroImage)
 
@@ -673,7 +747,7 @@ function buildDestinationSchema(destination: any, slug: string) {
       { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${destination.name} Safari — JaeTravel Expeditions`, caption: `${destination.name} wildlife and safari landscapes`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true },
 
       // VIDEO
-      { "@type": "VideoObject", "@id": `${url}#video`, name: `${destination.name} Safari Guide — JaeTravel Expeditions`, description: `Complete safari guide to ${destination.name}. Best time to visit, wildlife highlights, and what to expect on your safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/${slug}-guide.mp4`, uploadDate: "2024-05-01", duration: "PT5M00S", publisher: MERCHANT },
+      ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${destination.name} Safari Guide — JaeTravel Expeditions`, description: `Complete safari guide to ${destination.name}. Best time to visit, wildlife highlights, and what to expect on your safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/${slug}-guide.mp4`, uploadDate: "2024-05-01", duration: "PT5M00S", publisher: MERCHANT }),
 
       // EVENTS
       { "@type": "Event", name: `${destination.name} Wildlife Safari — ${new Date().getFullYear()}`, description: `Annual safari season in ${destination.name}. Book your wildlife experience with JaeTravel Expeditions.`, startDate: `${new Date().getFullYear()}-01-01`, endDate: `${new Date().getFullYear()}-12-31`, eventStatus: "https://schema.org/EventScheduled", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", location: { "@type": "Place", name: destination.name, address: { "@type": "PostalAddress", addressCountry: destination.country === "Kenya" ? "KE" : "TZ" } }, organizer: MERCHANT, offers: { "@type": "AggregateOffer", lowPrice: "450", highPrice: "8000", priceCurrency: "USD", availability: "https://schema.org/InStock" } },
@@ -697,7 +771,10 @@ function buildDestinationSchema(destination: any, slug: string) {
 // ─────────────────────────────────────────────────────────────────────────────
 // CATEGORY PAGE SCHEMA (gorilla-trekking-tours, serengeti-safaris etc.)
 // ─────────────────────────────────────────────────────────────────────────────
-function buildCategoryPageSchema(opts: { title: string; description: string; slug: string; image: string; tours: any[] }) {
+function buildCategoryPageSchema(
+  opts: { title: string; description: string; slug: string; image: string; tours: any[] },
+  videos?: VideoSchemaInput[],
+) {
   const url = `${BASE}/${opts.slug}`
   const imageUrl = abs(opts.image)
 
@@ -709,7 +786,7 @@ function buildCategoryPageSchema(opts: { title: string; description: string; slu
       // IMAGE
       { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: opts.title, caption: `${opts.title} | JaeTravel Expeditions`, representativeOfPage: true },
       // VIDEO
-      { "@type": "VideoObject", "@id": `${url}#video`, name: `${opts.title} — Safari Video Guide`, description: `Complete guide to ${opts.title.toLowerCase()}. See wildlife, itineraries and what to expect.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/${opts.slug}.mp4`, uploadDate: "2024-06-01", duration: "PT4M30S", publisher: MERCHANT },
+      ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${opts.title} — Safari Video Guide`, description: `Complete guide to ${opts.title.toLowerCase()}. See wildlife, itineraries and what to expect.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/${opts.slug}.mp4`, uploadDate: "2024-06-01", duration: "PT4M30S", publisher: MERCHANT }),
       // BREADCRUMBS
       { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: BASE }, { "@type": "ListItem", position: 2, name: opts.title, item: url }] },
       // FAQ
@@ -731,18 +808,21 @@ interface Props {
   data?: any
   slug?: string
   categoryOpts?: { title: string; description: string; image: string; tours: any[] }
+  /** Videos attached via VideoBlock. When present, real VideoObject entries
+   *  replace the hard-coded fallback. */
+  videos?: VideoSchemaInput[]
 }
 
-export function AllPageSEOSchema({ type, data, slug = "", categoryOpts }: Props) {
+export function AllPageSEOSchema({ type, data, slug = "", categoryOpts, videos }: Props) {
   let schema: object
 
   switch (type) {
-    case "tour":         schema = buildTourSchema(data, slug); break
-    case "vehicle":      schema = buildVehicleSchema(data, slug); break
-    case "budget-tour":  schema = buildBudgetTourSchema(data, slug); break
-    case "blog":         schema = buildBlogSchema(data, slug); break
-    case "destination":  schema = buildDestinationSchema(data, slug); break
-    case "category":     schema = buildCategoryPageSchema({ ...(categoryOpts!), slug }); break
+    case "tour":         schema = buildTourSchema(data, slug, videos); break
+    case "vehicle":      schema = buildVehicleSchema(data, slug, videos); break
+    case "budget-tour":  schema = buildBudgetTourSchema(data, slug, videos); break
+    case "blog":         schema = buildBlogSchema(data, slug, videos); break
+    case "destination":  schema = buildDestinationSchema(data, slug, videos); break
+    case "category":     schema = buildCategoryPageSchema({ ...(categoryOpts!), slug }, videos); break
     default:             return null
   }
 

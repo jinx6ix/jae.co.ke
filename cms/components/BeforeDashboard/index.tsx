@@ -1,7 +1,12 @@
+'use client'
+
 import { Banner } from '@payloadcms/ui/elements/Banner'
 import React from 'react'
 
+import { ConnectInstagram } from './ConnectInstagram'
+import { InstagramTokenMint } from './InstagramTokenMint'
 import { SeedButton } from './SeedButton'
+import { VideoSyncControls } from './VideoSyncControls'
 import './index.scss'
 
 const baseClass = 'before-dashboard'
@@ -62,6 +67,9 @@ const BeforeDashboard: React.FC = () => {
         custom component
       </a>
       , you can remove it at any time by updating your <strong>payload.config</strong>.
+      <VideoSyncControls />
+      <ConnectInstagram />
+      <InstagramTokenMint />
     </div>
   )
 }

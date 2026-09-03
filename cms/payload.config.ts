@@ -12,6 +12,7 @@ import { Destinations } from './collections/Destinations'
 import { Products } from './collections/Products'
 import { BudgetTours } from './collections/BudgetTours'
 import { Media } from './collections/Media'
+import { Videos } from './collections/Videos'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
@@ -70,7 +71,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.PAYLOAD_DATABASE_URL || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Tours, Hotels, Vehicles, Destinations, Products, BudgetTours],
+  collections: [Pages, Posts, Media, Categories, Users, Tours, Hotels, Vehicles, Destinations, Products, BudgetTours, Videos],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,

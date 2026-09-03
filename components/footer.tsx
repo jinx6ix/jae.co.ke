@@ -3,7 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import { YouTubeSubscribe } from "./YouTubeSubscribe"
 
 export function Footer() {
   return (
@@ -27,16 +28,47 @@ export function Footer() {
               Your trusted partner for unforgettable safari experiences across East Africa. 
               Specializing in accessible and inclusive travel.
             </p>
-            <div className="flex gap-3">
-              <a href="#" title="Follow Us" className="text-muted-foreground transition-colors hover:text-primary">
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.facebook.com/JaeTravelExpeditions"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on Facebook"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" title="Follow Us" className="text-muted-foreground transition-colors hover:text-primary">
+              <a
+                href="https://www.instagram.com/jaetravelexpeditions/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on Instagram"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" title="Email Us" className="text-muted-foreground transition-colors hover:text-primary">
+              <a
+                href={
+                  (process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL ||
+                    "https://www.youtube.com/@jaetravelexpeditions") + "?sub_confirmation=1"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Subscribe on YouTube"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@jaetravelexpeditions"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on TikTok"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
                 <Twitter className="h-5 w-5" />
               </a>
+              <YouTubeSubscribe className="ml-1" />
             </div>
           </div>
 

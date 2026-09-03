@@ -52,7 +52,13 @@ User-agent: Applebot
 Allow: /
 
 # ── Sitemaps ──
+# Point at the index; the index points at the per-content children
+# (sitemap.xml, sitemap-images.xml, sitemap-videos.xml). This is the
+# layout Google Search Console's Sitemaps report expects.
+Sitemap: ${base}/sitemap-index.xml
 Sitemap: ${base}/sitemap.xml
+Sitemap: ${base}/sitemap-images.xml
+Sitemap: ${base}/sitemap-videos.xml
 Host: ${base}
 `
   return new Response(txt, {

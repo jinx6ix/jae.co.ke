@@ -74,7 +74,11 @@ const organizationSchema = {
         "https://www.instagram.com/jaetravelexpeditions/",
         "https://www.tiktok.com/@jaetravelexpeditions",
         "https://wa.me/254726485228",
-      ],
+        // YouTube channel — read from env if set, otherwise skip. The
+        // `?sub_confirmation=1` querystring converts the click into a
+        // one-tap subscribe confirmation on YouTube's side.
+        process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL,
+      ].filter(Boolean),
       priceRange: "$$-$$$",
       currenciesAccepted: "USD, EUR, GBP, KES",
       paymentAccepted: "Cash, Credit Card, Bank Transfer, PayPal",
