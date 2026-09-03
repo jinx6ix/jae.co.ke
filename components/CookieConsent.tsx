@@ -148,7 +148,7 @@ export function CookieConsent() {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-lg"
+      className="fixed inset-x-0 bottom-0 z-[2147483647] border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-lg"
     >
       <div className="mx-auto max-w-7xl px-4 py-4 md:py-5">
         {view === 'banner' && (

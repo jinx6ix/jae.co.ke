@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Newspaper } from "lucide-react";
+import { useConsent } from "@/lib/use-consent";
 
 interface PreferredSourceClient {
   init: (options: {
@@ -29,6 +30,10 @@ export function GooglePreferredSource({
   theme = "light",
   lang = "en",
 }: GooglePreferredSourceProps) {
+  // Hide while the cookie consent banner is showing — this button
+  // sits at bottom-right (right-5 bottom-24) and would overlap the
+  // banner's action buttons.
+  const consent = useConsent();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -89,6 +94,8 @@ export function GooglePreferredSource({
       window.clearInterval(interval);
     };
   }, [theme, lang]);
+
+  if (consent === null) return null;
 
   return (
     <button

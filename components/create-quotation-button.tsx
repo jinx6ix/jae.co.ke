@@ -15,8 +15,16 @@
 
 import Link from "next/link";
 import { FileText } from "lucide-react";
+import { useConsent } from "@/lib/use-consent";
 
 export function CreateQuotationButton({ className = "" }: { className?: string }) {
+  // Hide while the cookie consent banner is showing — the button
+  // sits at bottom-right and would cover the banner's action
+  // buttons, making "Accept all" / "Reject all" / "Customize"
+  // unreachable.
+  const consent = useConsent();
+  if (consent === null) return null;
+
   return (
     <Link
       href="/itinerary-builder"
