@@ -15,6 +15,7 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { syncFromSource } from './hooks/syncFromSource'
+import { revalidateDelete, revalidateVideo } from './hooks/revalidateVideo'
 
 export const Videos: CollectionConfig = {
   slug: 'videos',
@@ -118,5 +119,12 @@ export const Videos: CollectionConfig = {
     // (e.g. title edits on YouTube get picked up next time the editor opens
     // the doc and hits Save).
     beforeChange: [syncFromSource],
+    // Bust the videos sitemap cache the moment a video changes status, is
+    // deleted, or has its provider/url edited. Without this the
+    // sitemap-videos.xml route is only as fresh as its revalidate window
+    // (1h by default), so a freshly-published IG post can sit unindexed for
+    // up to an hour even though the row is in Mongo.
+    afterChange: [revalidateVideo],
+    afterDelete: [revalidateDelete],
   },
 }

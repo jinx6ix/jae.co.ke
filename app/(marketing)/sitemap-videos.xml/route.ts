@@ -31,11 +31,18 @@
 // broaden if it suppresses results we want later.
 
 import { getPayload } from 'payload'
+import { unstable_cache } from 'next/cache'
 import config from '@payload-config'
 import type { Video } from '@cms/payload-types'
 
+// 1h fallback revalidation. The real-time invalidation is driven by
+// revalidateTag('videos-sitemap') from cms/collections/Videos/hooks/revalidateVideo.ts
+// and cms/collections/Pages/hooks/revalidatePage.ts (which fires when
+// a page with a videoBlock is published or deleted). The unstable_cache
+// wrapper below subscribes to that tag so a new IG reel becomes
+// indexable within seconds of being saved in the CMS, not after the
+// 1h revalidate window expires.
 export const revalidate = 3600
-export const dynamic = 'force-dynamic'
 
 const BASE = 'https://www.jaetravel.co.ke'
 const ALLOWED_COUNTRIES = 'KE TZ UG RW'
@@ -151,13 +158,31 @@ async function fetchPagesWithVideoBlocks(): Promise<PageVideoHit[]> {
   return out
 }
 
+// Cache-wrapped fetchers. The 'videos-sitemap' tag ties the cache
+// entry to revalidateTag('videos-sitemap') calls from the CMS hooks
+// (cms/collections/Videos/hooks/revalidateVideo.ts and
+// cms/collections/Pages/hooks/revalidatePage.ts). The 1h revalidate
+// is a safety net for any code path that mutates videos without
+// firing the hook (none today, but defensive).
+const getCachedVideos = unstable_cache(
+  async () => fetchAllVideos(),
+  ['sitemap-videos:all-videos'],
+  { tags: ['videos-sitemap'], revalidate: 3600 },
+)
+
+const getCachedPageHits = unstable_cache(
+  async () => fetchPagesWithVideoBlocks(),
+  ['sitemap-videos:page-hits'],
+  { tags: ['videos-sitemap'], revalidate: 3600 },
+)
+
 export async function GET() {
   const blocks: string[] = []
 
   let allVideos: VideoLike[] = []
   let pageHits: PageVideoHit[] = []
   try {
-    [allVideos, pageHits] = await Promise.all([fetchAllVideos(), fetchPagesWithVideoBlocks()])
+    [allVideos, pageHits] = await Promise.all([getCachedVideos(), getCachedPageHits()])
   } catch (err) {
     console.warn('[sitemap-videos] CMS fetch failed, emitting empty sitemap:', err)
   }

@@ -4,6 +4,18 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { Page } from '../../../payload-types'
 
+/**
+ * Walk the page's layout array and return true if it contains at least
+ * one VideoBlock. Used to decide whether a page change should also bust
+ * the videos sitemap — the sitemap emits one <url> per (page, video)
+ * pair where the page has a videoBlock, so the cache for the videos
+ * sitemap must invalidate on any page change that touches videoBlocks.
+ */
+function hasVideoBlock(doc: { layout?: unknown } | null | undefined): boolean {
+  const layout = Array.isArray(doc?.layout) ? (doc!.layout as Array<{ blockType?: string }>) : []
+  return layout.some((b) => b?.blockType === 'videoBlock')
+}
+
 export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   doc,
   previousDoc,
@@ -21,6 +33,13 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       revalidateTag(`page:${doc.slug}`)
       revalidateTag('pages')
       revalidateTag('pages-sitemap', 'max')
+
+      // If the page references any videos via a videoBlock, the videos
+      // sitemap embeds (page, video) pairs that point at this URL.
+      // Bust it so a new video added to the block is emitted immediately.
+      if (hasVideoBlock(doc)) {
+        revalidateTag('videos-sitemap', 'max')
+      }
     }
 
     // If the page was previously published, we need to revalidate the old path
@@ -33,6 +52,9 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       revalidateTag(`page:${previousDoc.slug}`)
       revalidateTag('pages')
       revalidateTag('pages-sitemap', 'max')
+      if (hasVideoBlock(previousDoc as { layout?: unknown })) {
+        revalidateTag('videos-sitemap', 'max')
+      }
     }
   }
   return doc
@@ -45,6 +67,9 @@ export const revalidateDelete: CollectionAfterDeleteHook<Page> = ({ doc, req: { 
     if (doc?.slug) revalidateTag(`page:${doc.slug}`)
     revalidateTag('pages')
     revalidateTag('pages-sitemap', 'max')
+    if (hasVideoBlock(doc as { layout?: unknown } | null)) {
+      revalidateTag('videos-sitemap', 'max')
+    }
   }
 
   return doc
