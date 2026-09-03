@@ -38,6 +38,7 @@ import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import { GooglePreferredSource } from "@/components/GooglePreferredSource"
 import { CreateQuotationButton } from "@/components/create-quotation-button"
+import { CookieConsent } from "@/components/CookieConsent"
 import { BrandShell } from "./_components/BrandShell"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
@@ -153,9 +154,6 @@ export const metadata: Metadata = {
   },
 }
 
-const GTM_ID = "GTM-52G2X6L5"
-const GA_ID = "G-2YLERP8F8B"
-
 export default function MarketingLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -171,8 +169,6 @@ export default function MarketingLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
                 {/* ---------------------------------------------------------------- */}
         {/* GOOGLE PREFERRED SOURCE                                           */}
@@ -200,32 +196,12 @@ export default function MarketingLayout({
           content="KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg"
         />
 
-        {/* Ahrefs Analytics */}
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="q74t4ci2dZznctEH4t8jCA"
-          defer
-        />
-
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        />
-        <Script
-          id="ga4-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{page_path:window.location.pathname,send_page_view:true,transport_type:'beacon'});`,
-          }}
-        />
+        {/* GTM / GA4 / Ahrefs scripts are loaded dynamically by
+            <CookieConsent /> ONLY when the user has granted
+            analytics / marketing consent. They are intentionally
+            absent from <head> — loading them before consent is what
+            the ICO and Kenya DPA fine for. dns-prefetch is also
+            deferred for the same reason. */}
 
         {/* Subscribe-with-Google publisher client. Loaded with
             `data-preferred-sources-control="manual"` so the SwG
@@ -241,15 +217,6 @@ export default function MarketingLayout({
       </head>
 
       <body className="font-sans antialiased bg-background text-foreground">
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-            title="Google Tag Manager"
-          />
-        </noscript>
         <OrderProvider>
           <Suspense
             fallback={
@@ -268,6 +235,7 @@ export default function MarketingLayout({
             <AnalyticsTracker />
             <Analytics />
             <DynamicScripts />
+            <CookieConsent />
 
             {/* Floating buttons — z-index 2147483600 lives in
                 each component, so they sit on top of the Sonner

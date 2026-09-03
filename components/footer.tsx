@@ -5,6 +5,7 @@ import Link from "next/link"
 import Script from "next/script"
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react"
 import { YouTubeSubscribe } from "./YouTubeSubscribe"
+import { reopenConsent } from "@/lib/consent"
 
 export function Footer() {
   return (
@@ -240,7 +241,20 @@ export function Footer() {
 
         {/* Footer Bottom */}
         <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} JaeTravel Expeditions. All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <p>&copy; {new Date().getFullYear()} JaeTravel Expeditions. All rights reserved.</p>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <Link href="/privacy" className="transition-colors hover:text-primary">
+              Privacy policy
+            </Link>
+            <button
+              type="button"
+              onClick={reopenConsent}
+              className="transition-colors hover:text-primary"
+            >
+              Cookie settings
+            </button>
+          </div>
         </div>
       </div>
     </footer>
