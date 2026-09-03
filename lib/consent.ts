@@ -28,8 +28,12 @@ export const setConsent = (selection: Omit<ConsentSelection, 'necessary' | 'upda
     updatedAt: Date.now(),
     version: 1,
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(consent))
-  window.dispatchEvent(new Event('consentchange'))
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent))
+    window.dispatchEvent(new Event('consentchange'))
+  } catch (e) {
+    console.error('Failed to set consent:', e)
+  }
 }
 
 export const hasConsentedTo = (category: 'analytics' | 'marketing'): boolean => {

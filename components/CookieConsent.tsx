@@ -96,6 +96,7 @@ export function CookieConsent() {
   useEffect(() => {
     const sync = () => {
       const c = getConsent()
+      console.log("CookieConsent sync called, c=", c);
       setConsentState(c)
       if (!c) {
         setView('banner')
@@ -130,15 +131,43 @@ export function CookieConsent() {
   }, [consent])
 
   const acceptAll = useCallback(() => {
-    setConsent({ analytics: true, marketing: true })
+    console.log("[CookieConsent] acceptAll clicked")
+    try {
+      setConsent({ analytics: true, marketing: true })
+      // Also update local state directly so the banner hides
+      // immediately, without waiting for the consentchange event
+      // round-trip. The listener will re-sync and confirm.
+      const c = getConsent()
+      setConsentState(c)
+      setView('hidden')
+      console.log("[CookieConsent] acceptAll: state updated, c=", c)
+    } catch (e) {
+      console.error("[CookieConsent] acceptAll: setConsent threw", e)
+    }
   }, [])
 
   const rejectAll = useCallback(() => {
-    setConsent({ analytics: false, marketing: false })
+    console.log("[CookieConsent] rejectAll clicked")
+    try {
+      setConsent({ analytics: false, marketing: false })
+      const c = getConsent()
+      setConsentState(c)
+      setView('hidden')
+    } catch (e) {
+      console.error("[CookieConsent] rejectAll: setConsent threw", e)
+    }
   }, [])
 
   const saveCustom = useCallback(() => {
-    setConsent({ analytics: pendingAnalytics, marketing: pendingMarketing })
+    console.log("[CookieConsent] saveCustom clicked")
+    try {
+      setConsent({ analytics: pendingAnalytics, marketing: pendingMarketing })
+      const c = getConsent()
+      setConsentState(c)
+      setView('hidden')
+    } catch (e) {
+      console.error("[CookieConsent] saveCustom: setConsent threw", e)
+    }
   }, [pendingAnalytics, pendingMarketing])
 
   if (view === 'hidden' || consent) return null
