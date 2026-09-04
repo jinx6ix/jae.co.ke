@@ -42,15 +42,15 @@ function fmtDate(d: string | null | undefined) {
   catch { return String(d); }
 }
 
-export default function FlightVoucherPDF({ voucher }: { voucher: any }) {
+export default function FlightVoucherPDF({ voucher, logoSrc }: { voucher: any; logoSrc?: string }) {
   return (
     <Document title={`Flight Voucher ${voucher.voucherNo}`}>
       <Page size="A4" style={s.page}>
 
         {/* Logos */}
         <View style={s.header}>
-          <Image style={s.logo} src="/logos/logo.jpg" />
-          <Image style={s.logo} src="/logos/logo.jpg" />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
         </View>
 
         {/* F L I G H T  V O U C H E R */}

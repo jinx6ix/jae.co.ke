@@ -65,7 +65,7 @@ function fmtDate(d: string | null | undefined) {
   } catch { return String(d); }
 }
 
-export default function HotelVoucherPDF({ voucher }: { voucher: any }) {
+export default function HotelVoucherPDF({ voucher, logoSrc }: { voucher: any; logoSrc?: string }) {
   const hotelName = voucher.hotelName || voucher.property?.name || '—';
   const issueDate = fmtDate(voucher.issuedDate);
   const checkIn   = fmtDate(voucher.checkIn);
@@ -77,8 +77,8 @@ export default function HotelVoucherPDF({ voucher }: { voucher: any }) {
 
         {/* ── Dual logos ──────────────────────────────────────────────── */}
         <View style={s.header}>
-          <Image style={s.logo} src="/logos/logo.jpg" />
-          <Image style={s.logo} src="/logos/logo.jpg" />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
         </View>
 
         {/* ── Voucher No ─────────────────────────────────────────────── */}

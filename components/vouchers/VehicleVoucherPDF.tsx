@@ -39,7 +39,7 @@ function fmtDate(d: string | null | undefined) {
   catch { return String(d); }
 }
 
-export default function VehicleVoucherPDF({ voucher }: { voucher: any }) {
+export default function VehicleVoucherPDF({ voucher, logoSrc }: { voucher: any; logoSrc?: string }) {
   const vehicleName = voucher.vehicleName || voucher.vehicle?.name || voucher.vehicleType || '—';
   const issueDate   = fmtDate(voucher.issuedDate);
   const pickupDate  = fmtDate(voucher.pickupDate);
@@ -51,8 +51,8 @@ export default function VehicleVoucherPDF({ voucher }: { voucher: any }) {
 
         {/* Logos */}
         <View style={s.header}>
-          <Image style={s.logo} src="/logos/logo.jpg" />
-          <Image style={s.logo} src="/logos/logo.jpg" />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
+          <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
         </View>
 
         <Text style={s.voucherNo}>Voucher No: {voucher.voucherNo}</Text>

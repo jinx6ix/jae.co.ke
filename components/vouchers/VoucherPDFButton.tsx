@@ -48,6 +48,28 @@ function voucherFilename(voucher: any): string {
   return `${client}_${hotel}.pdf`;
 }
 
+// Module-level cache for the inlined logo data URL. @react-pdf/renderer's
+// <Image> resolves a string src against the local filesystem when the src
+// starts with "/", which throws ENOENT on Windows. Converting the logo to
+// a data URL lets pdf().toBlob() render it without any I/O, and we cache
+// the conversion so the second click is instant.
+let logoDataUrlPromise: Promise<string> | null = null;
+async function getLogoDataUrl(): Promise<string> {
+  if (logoDataUrlPromise) return logoDataUrlPromise;
+  logoDataUrlPromise = (async () => {
+    const res = await fetch('/logos/logo.jpg');
+    if (!res.ok) throw new Error(`Failed to fetch logo: ${res.status}`);
+    const blob = await res.blob();
+    return await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result));
+      reader.onerror = () => reject(reader.error || new Error('FileReader failed'));
+      reader.readAsDataURL(blob);
+    });
+  })();
+  return logoDataUrlPromise;
+}
+
 export default function VoucherPDFButton({ voucher }: { voucher: any }) {
   const [loading, setLoading] = useState(false);
 
@@ -60,7 +82,8 @@ export default function VoucherPDFButton({ voucher }: { voucher: any }) {
       // for the lifetime of the click, so we can revoke it after triggering
       // the download and avoid the "stale blob URL" warnings some browsers
       // show with long-lived usePDF URLs.
-      const blob = await pdf(<Doc voucher={voucher} />).toBlob();
+      const logoSrc = await getLogoDataUrl();
+      const blob = await pdf(<Doc voucher={voucher} logoSrc={logoSrc} />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -71,8 +94,16 @@ export default function VoucherPDFButton({ voucher }: { voucher: any }) {
       // Give the browser a tick to start the download before revoking.
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (err) {
+      // Log the real error to the console for debugging; the user gets a
+      // concise message including the actual reason. The old generic
+      // "Could not generate the PDF. Please try again." hid the underlying
+      // cause (in practice: an ENOENT from <Image src="/logos/..."> on
+      // Windows, which the data-URL fix below addresses).
       console.error('[VoucherPDFButton] failed to generate PDF', err);
-      alert('Could not generate the PDF. Please try again.');
+      const msg = err instanceof Error ? err.message : String(err);
+      window.alert(
+        `Could not generate the PDF.\n\nReason: ${msg}\n\nPlease refresh the page and try again, or contact support if the issue persists.`,
+      );
     } finally {
       setLoading(false);
     }
