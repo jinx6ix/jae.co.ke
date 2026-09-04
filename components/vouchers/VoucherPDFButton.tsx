@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { pdf } from '@react-pdf/renderer';
+import { pdf, Font } from '@react-pdf/renderer';
 import HotelVoucherPDF from './HotelVoucherPDF';
 import VehicleVoucherPDF from './VehicleVoucherPDF';
 import FlightVoucherPDF from './FlightVoucherPDF';
@@ -48,11 +48,38 @@ function voucherFilename(voucher: any): string {
   return `${client}_${hotel}.pdf`;
 }
 
-// Module-level cache for the inlined logo data URL. @react-pdf/renderer's
-// <Image> resolves a string src against the local filesystem when the src
-// starts with "/", which throws ENOENT on Windows. Converting the logo to
-// a data URL lets pdf().toBlob() render it without any I/O, and we cache
-// the conversion so the second click is instant.
+// ─── Asset pre-loading ─────────────────────────────────────────────────────
+// Both of these run before pdf().toBlob() is called so the renderer doesn't
+// have to hit the network or filesystem during PDF generation.
+
+// @react-pdf/renderer's browser bundle no longer auto-registers the standard
+// PDF fonts (Helvetica, Helvetica-Bold, …) — it throws
+// "Standard font 'Helvetica' is not registered. Call registerStdFonts()…"
+// because the browser pdfkit build is shipped without the font binaries
+// (size / licensing). The fix is to register our own TTF under the same
+// family names that the existing PDF components already use. We use Geist
+// (SIL OFL, already a dependency) so the PDF keeps the same visual feel as
+// the rest of the dashboard.
+const FONT_REG = [
+  { url: '/fonts/Geist-Regular.ttf', family: 'Helvetica' },
+  { url: '/fonts/Geist-Bold.ttf',    family: 'Helvetica-Bold' },
+] as const;
+
+let fontsRegisteredPromise: Promise<void> | null = null;
+async function ensureFontsRegistered(): Promise<void> {
+  if (fontsRegisteredPromise) return fontsRegisteredPromise;
+  fontsRegisteredPromise = (async () => {
+    for (const { url, family } of FONT_REG) {
+      // Idempotent: Font.register is a no-op if the same family/src is
+      // registered again, so a second click on the same button is safe.
+      Font.register({ family, src: url });
+    }
+  })();
+  return fontsRegisteredPromise;
+}
+
+// Logo data URL — see comment below on why we can't pass a /logos/... path
+// directly to <Image src=…> in the browser bundle.
 let logoDataUrlPromise: Promise<string> | null = null;
 async function getLogoDataUrl(): Promise<string> {
   if (logoDataUrlPromise) return logoDataUrlPromise;
@@ -77,12 +104,11 @@ export default function VoucherPDFButton({ voucher }: { voucher: any }) {
     const Doc = PDFComponents[voucher.type as keyof typeof PDFComponents] || VehicleVoucherPDF;
     setLoading(true);
     try {
-      // Generate the PDF on demand and create a one-shot blob URL. This is
-      // more reliable than the legacy usePDF() hook — the URL exists only
-      // for the lifetime of the click, so we can revoke it after triggering
-      // the download and avoid the "stale blob URL" warnings some browsers
-      // show with long-lived usePDF URLs.
-      const logoSrc = await getLogoDataUrl();
+      // Run the two pre-flight loads in parallel — both just hit /public.
+      const [, logoSrc] = await Promise.all([
+        ensureFontsRegistered(),
+        getLogoDataUrl(),
+      ]);
       const blob = await pdf(<Doc voucher={voucher} logoSrc={logoSrc} />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -95,10 +121,10 @@ export default function VoucherPDFButton({ voucher }: { voucher: any }) {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (err) {
       // Log the real error to the console for debugging; the user gets a
-      // concise message including the actual reason. The old generic
-      // "Could not generate the PDF. Please try again." hid the underlying
-      // cause (in practice: an ENOENT from <Image src="/logos/..."> on
-      // Windows, which the data-URL fix below addresses).
+      // concise message including the actual reason. Earlier versions hid
+      // the underlying cause behind a generic "Please try again." — this
+      // includes the actual exception so the next failure is easier to
+      // diagnose without devtools.
       console.error('[VoucherPDFButton] failed to generate PDF', err);
       const msg = err instanceof Error ? err.message : String(err);
       window.alert(
