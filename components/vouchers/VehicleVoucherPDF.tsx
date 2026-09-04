@@ -49,7 +49,9 @@ export default function VehicleVoucherPDF({ voucher, logoSrc }: { voucher: any; 
     <Document title={`Vehicle Voucher ${voucher.voucherNo}`}>
       <Page size="A4" style={s.page}>
 
-        {/* Logos */}
+        {/* Logos — logoSrc is a base64 data URL passed in by VoucherPDFButton
+            so @react-pdf/renderer doesn't have to read a filesystem path on
+            Windows (which it can't do from the browser). */}
         <View style={s.header}>
           <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
           <Image style={s.logo} src={logoSrc || '/logos/logo.jpg'} />
