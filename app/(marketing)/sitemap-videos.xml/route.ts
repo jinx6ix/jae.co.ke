@@ -21,9 +21,16 @@
 //
 // Required fields we emit:
 //   <video:thumbnail_loc>, <video:title>, <video:description>,
-//   <video:content_loc>, <video:player_loc>, <video:duration>
-//   (for YouTube only), <video:view_count>, <video:publication_date>,
-//   <video:family_friendly>, <video:restriction relationship="allow">
+//   <video:content_loc>  (only when we have a raw video file URL —
+//                        currently only for self-hosted mp4s; we omit
+//                        it for YouTube/Instagram because neither
+//                        platform exposes the raw bytes without auth,
+//                        and Google rejects content_loc when it points
+//                        at the same permalink as <loc>)
+//   <video:player_loc>   (always — YT nocookie embed, or IG embed)
+//   <video:duration>     (for YouTube only)
+//   <video:family_friendly>, <video:restriction relationship="allow">,
+//   <video:publication_date>
 //
 // We restrict the video to KE TZ UG RW — the markets JaeTravel serves
 // most directly. This is conservative (we miss IN/UAE/EU/USA traffic
@@ -73,6 +80,20 @@ function ytEmbedUrl(externalId: string): string {
   return `https://www.youtube-nocookie.com/embed/${externalId}`
 }
 
+function igEmbedUrl(permalink: string): string {
+  // IG permalinks look like https://www.instagram.com/reel/ABC123/ or
+  // https://www.instagram.com/p/ABC123/. The embed endpoint is /p/{id}/embed/.
+  try {
+    const u = new URL(permalink)
+    // /reel/{id}/ -> /p/{id}/embed/   ;   /p/{id}/ -> /p/{id}/embed/
+    const m = u.pathname.match(/^\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)\/?$/)
+    if (m) return `https://www.instagram.com/p/${m[1]}/embed/`
+  } catch {
+    // fall through
+  }
+  return permalink
+}
+
 function durationToIso(seconds: number | null | undefined): string | null {
   if (!seconds || seconds <= 0) return null
   const h = Math.floor(seconds / 3600)
@@ -85,8 +106,25 @@ function buildVideoEntry(video: VideoLike, pageUrl: string): string {
   const title = (video.title || '').trim() || 'Untitled video'
   const description = (video.description || '').trim() || `Watch on ${video.provider === 'instagram' ? 'Instagram' : 'YouTube'}.`
   const thumb = video.thumbnailUrl || ''
-  const contentLoc = video.url || ''
-  const playerLoc = video.provider === 'youtube' && video.externalId ? ytEmbedUrl(video.externalId) : contentLoc
+
+  // <video:player_loc> must point to a player that plays the video —
+  // never to the canonical permalink that <loc> already points to (that
+  // was the 146-instance warning: "value of <video:content_loc> or
+  // <video:player_loc> is the same as your <loc> value").
+  let playerLoc = ''
+  if (video.provider === 'youtube' && video.externalId) {
+    playerLoc = ytEmbedUrl(video.externalId)
+  } else if (video.provider === 'instagram' && video.url) {
+    playerLoc = igEmbedUrl(video.url)
+  }
+
+  // <video:content_loc> must point to raw video bytes. YouTube and
+  // Instagram do NOT expose the raw .mp4 without auth, so emitting the
+  // permalink here is what triggers the warning. We omit content_loc
+  // for those two providers. (A future self-hosted video provider with
+  // a real .mp4 URL could fill this in.)
+  const contentLoc: string | null = null
+
   const duration = video.provider === 'youtube' ? durationToIso(video.durationSeconds) : null
   const pubDate = video.publishedAt ? new Date(video.publishedAt).toISOString() : ''
 
@@ -94,7 +132,9 @@ function buildVideoEntry(video: VideoLike, pageUrl: string): string {
   lines.push(`    <video:thumbnail_loc>${escapeXml(thumb)}</video:thumbnail_loc>`)
   lines.push(`    <video:title>${escapeXml(title)}</video:title>`)
   lines.push(`    <video:description>${escapeXml(description.slice(0, 2048))}</video:description>`)
-  lines.push(`    <video:content_loc>${escapeXml(contentLoc)}</video:content_loc>`)
+  if (contentLoc) {
+    lines.push(`    <video:content_loc>${escapeXml(contentLoc)}</video:content_loc>`)
+  }
   if (playerLoc) {
     lines.push(`    <video:player_loc allow_embed="yes">${escapeXml(playerLoc)}</video:player_loc>`)
   }
