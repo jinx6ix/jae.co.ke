@@ -31,12 +31,18 @@ interface ChildSitemap {
   lastmod: string
 }
 
-async function getChildLastmods(): Promise<{ images: string; videos: string; pages: string }> {
+async function getChildLastmods(): Promise<{
+  images: string
+  videos: string
+  pages: string
+  videoCount: number
+}> {
   // Default to today; will be tightened per-source below.
   const today = new Date().toISOString().split('T')[0]
   let images = today
   let videos = today
   let pages = today
+  let videoCount = 0
 
   try {
     const payload = await getPayload({ config })
@@ -64,7 +70,9 @@ async function getChildLastmods(): Promise<{ images: string; videos: string; pag
     const newestPost = postsRes.docs[0] as { updatedAt?: string } | undefined
     if (newestPost?.updatedAt) images = newestPost.updatedAt.split('T')[0]
 
-    // Videos — drive sitemap-videos.xml lastmod.
+    // Videos — drive sitemap-videos.xml lastmod. Also count them so we
+    // can skip the child entry entirely when the collection is empty
+    // (an empty <urlset> triggers "Missing XML tag: url" in GSC).
     const videosRes = await payload.find({
       collection: 'videos',
       limit: 1,
@@ -72,6 +80,7 @@ async function getChildLastmods(): Promise<{ images: string; videos: string; pag
       depth: 0,
       overrideAccess: true,
     })
+    videoCount = videosRes.totalDocs ?? videosRes.docs.length
     const newestVideo = videosRes.docs[0] as { syncedAt?: string } | undefined
     if (newestVideo?.syncedAt) videos = newestVideo.syncedAt.split('T')[0]
   } catch (err) {
@@ -80,16 +89,23 @@ async function getChildLastmods(): Promise<{ images: string; videos: string; pag
     console.warn('[sitemap-index] CMS lastmod lookup failed:', err)
   }
 
-  return { images, videos, pages }
+  return { images, videos, pages, videoCount }
 }
 
 export async function GET() {
-  const { images, videos, pages } = await getChildLastmods()
+  const { images, videos, pages, videoCount } = await getChildLastmods()
   const children: ChildSitemap[] = [
     { loc: `${BASE}/sitemap.xml`, lastmod: pages },
     { loc: `${BASE}/sitemap-images.xml`, lastmod: images },
-    { loc: `${BASE}/sitemap-videos.xml`, lastmod: videos },
   ]
+
+  // Only advertise the video sitemap when there are actual videos in the
+  // CMS. Google rejects a <urlset> with zero <url> children, so listing
+  // an empty child sitemap causes the persistent "Missing XML tag: url"
+  // error in Search Console.
+  if (videoCount > 0) {
+    children.push({ loc: `${BASE}/sitemap-videos.xml`, lastmod: videos })
+  }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
