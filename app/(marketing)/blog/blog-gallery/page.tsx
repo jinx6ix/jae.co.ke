@@ -4,10 +4,21 @@ import JsonLd from "@/components/JsonLd";
 import { getAllVideos } from "@/lib/videos"
 import { GalleryItem } from "@/lib/gallery-data"
 
-// ... (gallerySchema remains the same)
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.jaetravel.co.ke/blog/blog-gallery",
+  "name": "Safari Photo & Video Gallery",
+  "description": "Immerse yourself in the beauty of East Africa through our curated collection of safari photos and videos.",
+  "url": "https://www.jaetravel.co.ke/blog/blog-gallery"
+}
 
 export const metadata: Metadata = {
-  // ... (metadata remains the same)
+  title: "Safari Photo & Video Gallery | JaeTravel Expeditions",
+  description: "Immerse yourself in the beauty of East Africa through our curated collection of safari photos and videos.",
+  alternates: {
+    canonical: "https://www.jaetravel.co.ke/blog/blog-gallery",
+  },
 }
 
 export default async function GalleryPage() {
