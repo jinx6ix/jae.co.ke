@@ -104,6 +104,11 @@ function buildVideoEntry(video: PublicVideo): string {
   const duration = video.provider === 'youtube' ? durationToIso(video.durationSeconds) : null
   const pubDate = video.publishedAt ? new Date(video.publishedAt).toISOString() : ''
 
+  if (!playerLoc) {
+    console.warn(`[sitemap-videos] Skipping video ${video.slug} due to missing player_loc`)
+    return ''
+  }
+
   const lines: string[] = []
   lines.push(`    <video:thumbnail_loc>${escapeXml(thumb)}</video:thumbnail_loc>`)
   lines.push(`    <video:title>${escapeXml(title)}</video:title>`)
