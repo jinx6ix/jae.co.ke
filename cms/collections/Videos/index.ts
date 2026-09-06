@@ -15,6 +15,7 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { syncFromSource } from './hooks/syncFromSource'
+import { defaultSlug } from './hooks/defaultSlug'
 import { revalidateDelete, revalidateVideo } from './hooks/revalidateVideo'
 
 export const Videos: CollectionConfig = {
@@ -64,6 +65,21 @@ export const Videos: CollectionConfig = {
       required: true,
       admin: {
         description: 'Canonical share URL (https://www.youtube.com/watch?v=... or https://www.instagram.com/reel/...).',
+      },
+    },
+    {
+      // URL slug for the public /watch/[slug] page. The beforeChange hook
+      // slugifies the title when blank; editors can override by typing a
+      // value before saving. Indexed + unique so the sitemap can resolve
+      // each video to exactly one on-domain URL.
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      index: true,
+      admin: {
+        description:
+          'URL-safe identifier used in /watch/{slug}. Auto-generated from the title on save if left blank. Lowercase letters, digits, and dashes only.',
       },
     },
     {
@@ -118,7 +134,11 @@ export const Videos: CollectionConfig = {
     // Re-sync from the source API on every save so the metadata stays current
     // (e.g. title edits on YouTube get picked up next time the editor opens
     // the doc and hits Save).
-    beforeChange: [syncFromSource],
+    // Order matters: syncFromSource populates `title` from the
+    // YouTube/IG API; defaultSlug then derives a URL slug from that
+    // title. Skip either hook for bulk-import writes by setting
+    // data.skipSync (syncFromSource already respects it).
+    beforeChange: [syncFromSource, defaultSlug],
     // Bust the videos sitemap cache the moment a video changes status, is
     // deleted, or has its provider/url edited. Without this the
     // sitemap-videos.xml route is only as fresh as its revalidate window

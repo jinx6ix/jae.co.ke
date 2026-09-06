@@ -22,6 +22,7 @@ import { budgetTours } from '@/lib/budget-tours-data'
 import { destinations } from '@/lib/destinations-data'
 import { blogPosts } from '@/lib/blog-data'
 import { getAllBlogSlugs } from '@/lib/posts'
+import { getAllVideos } from '@/lib/videos'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 3600
@@ -51,6 +52,15 @@ export async function GET() {
   } catch {
     cmsBlogSlugs = []
   }
+
+  let videoSlugs: string[] = []
+  try {
+    const videos = await getAllVideos()
+    videoSlugs = videos.map(v => v.slug)
+  } catch {
+    videoSlugs = []
+  }
+
   const staticBlogSlugs = safeBlog.map((b) => b.slug)
   const allBlogSlugs = Array.from(new Set([...cmsBlogSlugs, ...staticBlogSlugs]))
 
@@ -106,6 +116,7 @@ export async function GET() {
     })),
     ...safeBlog.map((b) => ({ path: `/blog/${b.slug}`, freq: 'monthly', pri: '0.7' })),
     ...allBlogSlugs.map((s) => ({ path: `/blog/${s}`, freq: 'monthly', pri: '0.7' })),
+    ...videoSlugs.map((s) => ({ path: `/watch/${s}`, freq: 'weekly', pri: '0.8' })),
   ]
 
   const allEntries = [...staticPages, ...dynamicEntries]
