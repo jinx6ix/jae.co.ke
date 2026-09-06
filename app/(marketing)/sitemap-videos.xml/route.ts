@@ -143,6 +143,8 @@ export async function GET() {
     if (entry) blocks.push(entry)
   }
 
+  console.log(`[sitemap-videos] Found ${allVideos.length} videos, ${blocks.length} valid entries.`);
+
   // Google requires at least one <url> inside <urlset>. An empty <urlset>
   // triggers "Missing XML tag: url". Return 404 so Google gracefully
   // drops the child sitemap until the index stops listing it (see

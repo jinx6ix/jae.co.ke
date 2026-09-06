@@ -7,19 +7,23 @@ import { GalleryFilters } from "@/components/gallery-filters"
 import { MediaModal } from "@/components/media-modal"
 import { Camera, Video, MapPin, Calendar, User } from "lucide-react"
 
-export default function GalleryP() {
+export default function GalleryP({ extraItems = [] }: { extraItems?: GalleryItem[] }) {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedCountry, setSelectedCountry] = useState("All")
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  const items = useMemo(() => {
+    return [...galleryItems, ...extraItems]
+  }, [extraItems])
+
   const filteredItems = useMemo(() => {
-    return galleryItems.filter((item) => {
+    return items.filter((item) => {
       const categoryMatch = selectedCategory === "All" || item.category === selectedCategory
       const countryMatch = selectedCountry === "All" || item.country === selectedCountry
       return categoryMatch && countryMatch
     })
-  }, [selectedCategory, selectedCountry])
+  }, [items, selectedCategory, selectedCountry])
 
   const openMedia = (item: GalleryItem, index: number) => {
     setSelectedItem(item)
@@ -80,7 +84,7 @@ export default function GalleryP() {
                     {filteredItems.length} stunning images and videos
                   </p>
                 </div>
-                
+
                 <GalleryFilters
                   categories={galleryCategories}
                   countries={galleryCountries}
