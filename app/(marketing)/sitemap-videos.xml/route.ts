@@ -85,7 +85,13 @@ function durationToIso(seconds: number | null | undefined): string | null {
 function buildVideoEntry(video: PublicVideo): string {
   const title = (video.title || '').trim() || 'Untitled video'
   const description = (video.description || '').trim() || `Watch on ${video.provider === 'instagram' ? 'Instagram' : 'YouTube'}.`
-  const thumb = video.thumbnailUrl || ''
+  // Fail-safe: ensure we always have a thumbnail. If blank, skip to avoid
+  // invalid XML generation that triggers "Missing XML tag" errors in GSC.
+  const thumb = (video.thumbnailUrl || '').trim()
+  if (!thumb) {
+    console.warn(`[sitemap-videos] Skipping video ${video.slug} due to missing thumbnail`)
+    return ''
+  }
   const pageUrl = `${BASE}/watch/${video.slug}`
 
   let playerLoc = ''
@@ -128,7 +134,8 @@ export async function GET() {
   }
 
   for (const v of allVideos) {
-    blocks.push(buildVideoEntry(v))
+    const entry = buildVideoEntry(v)
+    if (entry) blocks.push(entry)
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

@@ -801,10 +801,33 @@ function buildCategoryPageSchema(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// VIDEO PAGE SCHEMA
+// ─────────────────────────────────────────────────────────────────────────────
+function buildVideoSchema(video: VideoSchemaInput, slug: string) {
+  const url = `${BASE}/watch/${slug}`
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${url}#video`,
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: video.thumbnailUrl,
+    uploadDate: video.publishedAt,
+    duration: video.durationSeconds ? toISO8601Duration(video.durationSeconds) : undefined,
+    contentUrl: video.url,
+    embedUrl: video.provider === "youtube"
+      ? `https://www.youtube-nocookie.com/embed/${video.externalId}`
+      : `${video.url.replace(/\/$/, "")}/embed/`,
+    publisher: MERCHANT,
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // MAIN EXPORTED COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 interface Props {
-  type: "tour" | "vehicle" | "budget-tour" | "blog" | "destination" | "category"
+  type: "tour" | "vehicle" | "budget-tour" | "blog" | "destination" | "category" | "video"
   data?: any
   slug?: string
   categoryOpts?: { title: string; description: string; image: string; tours: any[] }
@@ -823,6 +846,7 @@ export function AllPageSEOSchema({ type, data, slug = "", categoryOpts, videos }
     case "blog":         schema = buildBlogSchema(data, slug, videos); break
     case "destination":  schema = buildDestinationSchema(data, slug, videos); break
     case "category":     schema = buildCategoryPageSchema({ ...(categoryOpts!), slug }, videos); break
+    case "video":        schema = buildVideoSchema(data, slug); break
     default:             return null
   }
 
