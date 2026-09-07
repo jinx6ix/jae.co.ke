@@ -15,6 +15,12 @@ interface BookingFormProps {
   slug?: string             // Optional: useful for generating download URLs
 }
 
+interface EmailStatus {
+  client: "sent" | "failed" | "skipped"
+  info: "sent" | "failed" | "skipped"
+  it: "sent" | "failed" | "skipped"
+}
+
 interface BookingResponse {
   success: boolean
   bookingId: string
@@ -22,6 +28,7 @@ interface BookingResponse {
   emailsSent?: boolean
   customerEmailSent?: boolean
   adminEmailSent?: boolean
+  emailStatus?: EmailStatus
   whatsappLink?: string
   pdfUrl?: string
   downloadUrl?: string
@@ -162,22 +169,30 @@ export default function BookingForm({
         </p>
 
         {/* Status Badges */}
-        <div className="mb-8 grid grid-cols-2 gap-4 max-w-md mx-auto">
+        <div className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-md mx-auto">
           <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
-            bookingResult.customerEmailSent 
-              ? "bg-green-50 border-green-200 text-green-700" 
+            bookingResult.customerEmailSent
+              ? "bg-green-50 border-green-200 text-green-700"
               : "bg-yellow-50 border-yellow-200 text-yellow-700"
           }`}>
             <Mail className="h-4 w-4" />
             {bookingResult.customerEmailSent ? "Email Sent" : "Email Sending..."}
           </div>
           <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
-            bookingResult.adminEmailSent 
-              ? "bg-green-50 border-green-200 text-green-700" 
+            bookingResult.emailStatus?.info === "sent"
+              ? "bg-green-50 border-green-200 text-green-700"
               : "bg-yellow-50 border-yellow-200 text-yellow-700"
           }`}>
             <Users className="h-4 w-4" />
-            {bookingResult.adminEmailSent ? "Admin Notified" : "Admin Notifying..."}
+            {bookingResult.emailStatus?.info === "sent" ? "Info@ Notified" : "Info@ Notifying..."}
+          </div>
+          <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
+            bookingResult.emailStatus?.it === "sent"
+              ? "bg-green-50 border-green-200 text-green-700"
+              : "bg-yellow-50 border-yellow-200 text-yellow-700"
+          }`}>
+            <Users className="h-4 w-4" />
+            {bookingResult.emailStatus?.it === "sent" ? "IT Notified" : "IT Notifying..."}
           </div>
         </div>
 
