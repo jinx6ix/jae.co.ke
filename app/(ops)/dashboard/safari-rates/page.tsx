@@ -25,16 +25,16 @@ export default async function SafariRatesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">🏨 Safari Rates Manager</h1>
           <p className="text-gray-500 text-sm">Kenya hotel contract rates — {hotelCount} hotels across {countyCount} destinations</p>
         </div>
-        <Link href="/dashboard/safari-rates/search" className="btn-primary">🔍 Search Rates</Link>
+        <Link href="/dashboard/safari-rates/search" className="btn-primary self-start sm:self-auto">🔍 Search Rates</Link>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {[
           { label: 'Hotels / Camps', value: hotelCount, icon: '🏕️', href: '/dashboard/safari-rates/hotels' },
           { label: 'Destinations', value: countyCount, icon: '📍', href: '/dashboard/safari-rates/search' },
@@ -93,12 +93,12 @@ export default async function SafariRatesPage() {
       )}
 
       {/* Recent hotels */}
-      <div className="card p-0 overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+      <div className="card p-0 overflow-hidden overflow-x-auto">
+        <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-semibold text-gray-800">Hotels</h2>
           <Link href="/dashboard/safari-rates/hotels" className="text-orange-500 text-sm hover:underline">Manage all →</Link>
         </div>
-        <table className="w-full text-sm">
+        <table className="w-full text-sm min-w-[560px]">
           <thead className="bg-gray-50 border-b border-gray-100">
             <tr>
               {['Hotel','Category','Stars','County','Room Types'].map(h=>(

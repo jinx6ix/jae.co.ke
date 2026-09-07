@@ -187,7 +187,7 @@ export default function InvoiceDetailPage() {
         </div>
 
         {/* Bill To + Booking / Client */}
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Bill To</p>
             <p className="font-bold text-gray-800">{invoice.billTo}</p>
@@ -303,7 +303,7 @@ export default function InvoiceDetailPage() {
 
               {/* Fixed costs & extras */}
               {(cs.fileHandlingFee > 0 || cs.ecoBottle > 0 || cs.evacInsurance > 0 || cs.arrivalTransfer > 0 || cs.departureTransfer > 0 || cs.maasaiVillage || extras.length > 0) && (
-                <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-xs mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-xs mb-4">
                   {cs.fileHandlingFee > 0 && <div className="flex justify-between"><span>File Handling</span><span className="font-mono">{currency} {fmt2(cs.fileHandlingFee)}</span></div>}
                   {cs.ecoBottle > 0 && <div className="flex justify-between"><span>Eco Bottle</span><span className="font-mono">{currency} {fmt2(cs.ecoBottle)}</span></div>}
                   {cs.evacInsurance > 0 && <div className="flex justify-between"><span>Evac Insurance</span><span className="font-mono">{currency} {fmt2(cs.evacInsurance)}</span></div>}
@@ -339,7 +339,8 @@ export default function InvoiceDetailPage() {
         {lineItems.length > 0 && (
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Invoice Items</p>
-            <table className="w-full text-sm border rounded-lg overflow-hidden">
+            <div className="overflow-x-auto border rounded-lg">
+            <table className="w-full text-sm min-w-[480px]">
               <thead className="bg-gray-50 border-b">
                 <tr>
                   <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Description</th>
@@ -359,6 +360,7 @@ export default function InvoiceDetailPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
 

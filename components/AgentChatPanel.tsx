@@ -147,7 +147,7 @@ export default function AgentChatPanel() {
 
       {/* Drawer */}
       {open && (
-        <div className="fixed bottom-24 right-5 z-50 w-96 max-h-[75vh] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col print:hidden">
+        <div className="fixed bottom-24 right-2 left-2 z-50 sm:left-auto sm:right-5 sm:w-96 sm:max-w-[calc(100vw-2.5rem)] max-h-[75vh] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col print:hidden">
           <div className="px-4 py-3 border-b flex items-center justify-between">
             <div>
               <p className="font-bold text-gray-800 text-sm">AI Agents</p>

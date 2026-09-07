@@ -51,7 +51,7 @@ export default function NewClientPage() {
       <form onSubmit={handleSubmit} className="card space-y-4">
         {error && <div className="bg-red-50 text-red-700 border border-red-200 rounded-lg p-3 text-sm">{error}</div>}
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="col-span-2">
             <label className="label">Full Name *</label>
             <input name="name" required className="input" placeholder="Ms. Christina Cosandier" />

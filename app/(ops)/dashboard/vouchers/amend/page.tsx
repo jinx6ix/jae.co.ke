@@ -132,7 +132,7 @@ export default function AmendVoucherPage() {
           <div>
             <label className="label">Update Booking Status</label>
             <p className="text-xs text-gray-400 mb-3">This will be reflected on the PDF — the voucher will show the selected action prominently.</p>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {STATUS_OPTS.map(opt => (
                 <button key={opt.value} type="button"
                   onClick={() => setNewStatus(opt.value as any)}
@@ -162,7 +162,7 @@ export default function AmendVoucherPage() {
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button onClick={applyStatus} disabled={saving} className={`btn-primary ${
               newStatus === 'cancel' ? 'bg-red-600 hover:bg-red-700' :
               newStatus === 'amend'  ? 'bg-orange-500 hover:bg-orange-600' : ''

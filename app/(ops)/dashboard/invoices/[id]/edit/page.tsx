@@ -131,7 +131,7 @@ export default function EditInvoicePage() {
         {/* Booking / Client Link */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Link to Booking or Client (optional)</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Booking</label>
               <select className="input" value={bookingId} onChange={e => setBookingId(e.target.value)}>
@@ -152,7 +152,7 @@ export default function EditInvoicePage() {
         {/* Bill To */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Bill To</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Name *</label>
               <input required className="input" value={billTo} onChange={e => setBillTo(e.target.value)}/>
@@ -171,7 +171,7 @@ export default function EditInvoicePage() {
         {/* Invoice details */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Invoice Details</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Invoice Date</label>
               <input type="date" className="input" value={invoiceDate} onChange={e => setInvoiceDate(e.target.value)}/>
@@ -296,7 +296,7 @@ export default function EditInvoicePage() {
             onChange={e => setNotes(e.target.value)} placeholder="Any notes to include on the invoice…"/>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">
             {saving ? 'Saving…' : 'Save Changes'}
           </button>

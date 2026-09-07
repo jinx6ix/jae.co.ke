@@ -60,11 +60,11 @@ export default async function AIAgentRunDetail({ params, searchParams }: { param
         return pending ? <ConfirmActions runId={run.id} question={pending.content} /> : null;
       })()}
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-lg font-semibold text-gray-800">{showTrace ? 'Conversation trace' : 'Answer'}</h2>
         <Link
           href={`/dashboard/ai-agents/${run.id}${showTrace ? '' : '?trace=1'}`}
-          className="text-xs text-gray-400 hover:text-gray-600 underline"
+          className="text-xs text-gray-400 hover:text-gray-600 underline self-start sm:self-auto"
         >
           {showTrace ? 'Hide process — show just the answer' : 'Show full agent process'}
         </Link>

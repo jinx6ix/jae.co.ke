@@ -43,7 +43,7 @@ export default function ItinerariesClient({ itineraries }: { itineraries: Itiner
             {query ? ` of ${itineraries.length}` : ''}
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/dashboard/itineraries/from-source" className="btn-secondary">
             <Globe size={14} /> From Source
           </Link>
@@ -74,7 +74,7 @@ export default function ItinerariesClient({ itineraries }: { itineraries: Itiner
         )}
         {filtered.map(it => (
           <div key={it.id} className="card hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="font-semibold text-gray-900">{it.title}</h3>
@@ -103,7 +103,7 @@ export default function ItinerariesClient({ itineraries }: { itineraries: Itiner
                   {it.days[0] && ` · Starts in ${it.days[0].destination}`}
                 </p>
               </div>
-              <div className="flex gap-2 flex-shrink-0">
+              <div className="flex gap-2 flex-wrap flex-shrink-0">
                 <Link href={`/dashboard/itineraries/${it.id}`} className="btn-secondary text-xs py-1.5 px-3">
                   View
                 </Link>

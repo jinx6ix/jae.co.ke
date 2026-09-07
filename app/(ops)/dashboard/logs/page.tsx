@@ -239,8 +239,8 @@ export default function LogsPage() {
     <div className="flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
       {/* Fixed Header - does not scroll with content */}
       <div className="shrink-0 bg-white border-b shadow-sm z-20">
-        <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-3 min-w-0">
             <h1 className="text-2xl font-bold text-gray-900">Application Logs</h1>
             <span className={`w-2 h-2 rounded-full ${connected ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} title={connected ? 'Live' : 'Disconnected'} />
             <span className="text-sm text-gray-500">{total} total</span>
@@ -280,11 +280,11 @@ export default function LogsPage() {
       </div>
 
       {/* Scrollable content area */}
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-col flex-1 min-h-0 lg:flex-row">
         {/* Left Panel - Log List (scrolls independently) */}
         <div
           ref={logsScrollRef}
-          className="flex-1 overflow-y-auto bg-gray-50 scrollbar-thin"
+          className="flex-1 overflow-auto bg-gray-50 scrollbar-thin"
         >
           {loading && logs.length === 0 ? (
             <div className="flex justify-center py-20"><div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" /></div>
@@ -294,7 +294,8 @@ export default function LogsPage() {
               <p>No logs yet</p>
             </div>
           ) : (
-            <table className="w-full text-sm">
+            <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[640px]">
               <thead className="sticky top-0 bg-white border-b shadow-sm z-10">
                 <tr>
                   <th className="px-3 py-2 text-left text-xs font-semibold text-gray-500 w-24">Time</th>
@@ -331,12 +332,13 @@ export default function LogsPage() {
                 })}
               </tbody>
             </table>
+            </div>
           )}
           <div ref={bottomRef} className="h-px" />
         </div>
 
         {/* Right Panel - Detail View (scrolls independently) */}
-        <div className="w-[420px] shrink-0">
+        <div className="w-full shrink-0 lg:w-[420px]">
           {selectedLog ? (
             <LogDetailPanel log={selectedLog} onClose={() => setSelectedLog(null)} />
           ) : (

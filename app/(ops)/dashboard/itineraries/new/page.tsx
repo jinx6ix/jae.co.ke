@@ -223,7 +223,7 @@ export default function NewItineraryPage() {
 
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Itinerary Setup</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Booking (optional)</label>
               <select
@@ -286,7 +286,7 @@ export default function NewItineraryPage() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label text-xs">Destination *</label>
                   <input
@@ -359,7 +359,7 @@ export default function NewItineraryPage() {
           ))}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">
             {saving ? 'Saving…' : 'Save Itinerary'}
           </button>

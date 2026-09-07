@@ -61,31 +61,31 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="max-w-5xl space-y-5">
       {/* Header */}
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard/bookings" className="text-gray-400 hover:text-gray-600 text-sm">← Bookings</Link>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-gray-900">{booking.bookingRef}</h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex items-center gap-3 min-w-0">
+          <Link href="/dashboard/bookings" className="text-gray-400 hover:text-gray-600 text-sm shrink-0">← Bookings</Link>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-2xl font-bold text-gray-900 break-all sm:break-normal">{booking.bookingRef}</h1>
               <span className={statusColors[booking.status]}>{booking.status.replace('_', ' ')}</span>
             </div>
-            <p className="text-gray-500 text-sm mt-0.5">{booking.client.name}</p>
+            <p className="text-gray-500 text-sm mt-0.5 truncate">{booking.client.name}</p>
           </div>
         </div>
-        <div className="flex gap-2">
-          <Link href={`/dashboard/vouchers/new?type=HOTEL&bookingId=${booking.id}`} className="btn-secondary text-sm">+ Hotel Voucher</Link>
-          <Link href={`/dashboard/vouchers/new?type=VEHICLE&bookingId=${booking.id}`} className="btn-secondary text-sm">+ Vehicle Voucher</Link>
-          <Link href={`/dashboard/vouchers/new?type=FLIGHT&bookingId=${booking.id}`} className="btn-secondary text-sm">+ Flight Voucher</Link>
+        <div className="flex flex-wrap gap-2">
+          <Link href={`/dashboard/vouchers/new?type=HOTEL&bookingId=${booking.id}`} className="btn-secondary text-xs sm:text-sm">+ Hotel Voucher</Link>
+          <Link href={`/dashboard/vouchers/new?type=VEHICLE&bookingId=${booking.id}`} className="btn-secondary text-xs sm:text-sm">+ Vehicle Voucher</Link>
+          <Link href={`/dashboard/vouchers/new?type=FLIGHT&bookingId=${booking.id}`} className="btn-secondary text-xs sm:text-sm">+ Flight Voucher</Link>
           {!booking.itinerary && (
-            <Link href={`/dashboard/itineraries/new?bookingId=${booking.id}`} className="btn-secondary text-sm">+ Itinerary</Link>
+            <Link href={`/dashboard/itineraries/new?bookingId=${booking.id}`} className="btn-secondary text-xs sm:text-sm">+ Itinerary</Link>
           )}
-          <Link href={`/dashboard/bookings/${booking.id}/edit`} className="btn-primary text-sm">Edit</Link>
+          <Link href={`/dashboard/bookings/${booking.id}/edit`} className="btn-primary text-xs sm:text-sm">Edit</Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {/* Left: Booking info */}
-        <div className="col-span-1 space-y-4">
+        <div className="space-y-4 lg:col-span-1">
           <div className="card space-y-3">
             <h2 className="font-semibold text-gray-800">Booking Info</h2>
             {[
@@ -138,10 +138,10 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {/* Right: Vouchers + Itinerary */}
-        <div className="col-span-2 space-y-4">
+        <div className="space-y-4 lg:col-span-2">
           {/* Invoices */}
           <div className="card p-0 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-semibold text-gray-800">Invoices ({invoices.length})</h2>
               <Link href={`/dashboard/invoices/new?bookingId=${id}`} className="text-orange-500 text-xs hover:underline">+ New Invoice</Link>
             </div>
@@ -150,7 +150,8 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
                 No invoices yet. <Link href={`/dashboard/invoices/new?bookingId=${id}`} className="text-orange-500 hover:underline">Create one →</Link>
               </div>
             ) : (
-              <table className="w-full text-sm">
+              <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[640px]">
                 <thead className="bg-gray-50 border-b border-gray-100">
                   <tr>
                     {['Invoice No', 'Amount', 'Deposit', 'Balance', 'Status', 'Due', ''].map(h => (
@@ -183,17 +184,19 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
                   })}
                 </tbody>
               </table>
+              </div>
             )}
           </div>
 
           {/* Cost Sheets */}
           {costSheets.length > 0 && (
             <div className="card p-0 overflow-hidden">
-              <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+              <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
                 <h2 className="font-semibold text-gray-800">Costing Sheets ({costSheets.length})</h2>
                 <Link href="/dashboard/costing" className="text-orange-500 text-xs hover:underline">+ New Costing</Link>
               </div>
-              <table className="w-full text-sm">
+              <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[480px]">
                 <thead className="bg-gray-50 border-b border-gray-100">
                   <tr>
                     {['Tour', 'Pax', 'Total Cost', 'Per Adult', 'Date', ''].map(h => (
@@ -216,14 +219,15 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           )}
 
           {/* Vouchers */}
           <div className="card p-0 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+            <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-semibold text-gray-800">Vouchers ({booking.vouchers.length})</h2>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Link href={`/dashboard/vouchers/new?type=HOTEL&bookingId=${booking.id}`} className="text-orange-500 text-xs hover:underline">+ Hotel</Link>
                 <Link href={`/dashboard/vouchers/new?type=VEHICLE&bookingId=${booking.id}`} className="text-orange-500 text-xs hover:underline">+ Vehicle</Link>
               </div>
@@ -231,7 +235,8 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
             {booking.vouchers.length === 0 ? (
               <p className="text-gray-400 text-sm text-center py-6">No vouchers yet</p>
             ) : (
-              <table className="w-full text-sm">
+              <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[560px]">
                 <thead className="bg-gray-50 border-b border-gray-100">
                   <tr>
                     {['Voucher No', 'Type', 'Details', 'Dates', ''].map(h => (
@@ -266,13 +271,14 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
                   ))}
                 </tbody>
               </table>
+              </div>
             )}
           </div>
 
           {/* Itinerary */}
           {booking.itinerary ? (
             <div className="card">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h2 className="font-semibold text-gray-800">Itinerary: {booking.itinerary.title}</h2>
                 <Link href={`/dashboard/itineraries/${booking.itinerary.id}`} className="text-orange-500 text-sm hover:underline">View Full →</Link>
               </div>

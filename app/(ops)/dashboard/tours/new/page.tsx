@@ -119,7 +119,7 @@ export default function NewTourPage() {
             <label className="label">Description</label>
             <textarea name="description" rows={3} className="input resize-none" placeholder="Brief description for proposals…" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Duration (Days) *</label>
               <input name="durationDays" type="number" min={1} required defaultValue={1} className="input"
@@ -161,7 +161,7 @@ export default function NewTourPage() {
             <label className="label">Highlights</label>
             <div className="space-y-2">
               {highlights.map((h, i) => (
-                <div key={i} className="flex gap-2">
+                <div key={i} className="flex flex-wrap gap-2">
                   <input value={h} onChange={e => setHighlights(prev => prev.map((v, j) => j === i ? e.target.value : v))}
                     className="input text-sm" placeholder="e.g. Big Five Spotting" />
                   <button type="button" onClick={() => setHighlights(prev => prev.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600">×</button>
@@ -187,7 +187,7 @@ export default function NewTourPage() {
                     className="text-red-400 hover:text-red-600 text-xs">Remove</button>
                 )}
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label text-xs">Day Title *</label>
                   <input value={day.title} onChange={e => updateDay(i, 'title', e.target.value)} required className="input" placeholder="Masai Mara National Reserve" />
@@ -218,7 +218,7 @@ export default function NewTourPage() {
           ))}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Create Tour Package'}</button>
           <Link href="/dashboard/tours" className="btn-secondary">Cancel</Link>
         </div>

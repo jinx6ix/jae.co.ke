@@ -295,7 +295,7 @@ export default function CostSheetDetailPage() {
           <Link href="/dashboard/cost-sheets" className="text-gray-400 hover:text-gray-600 text-sm">← Costing Sheets</Link>
           <h1 className="text-2xl font-bold text-gray-900">{isEditing ? 'Edit Cost Sheet' : sheet.tourTitle}</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {!isEditing ? (
             <>
               <button onClick={() => setIsEditing(true)} className="btn-secondary text-sm">✏️ Edit Inline</button>
@@ -321,7 +321,7 @@ export default function CostSheetDetailPage() {
           <div className="text-right"><p className="text-3xl font-bold text-orange-500">COST SHEET</p><p className="text-sm font-mono font-bold mt-1">{sheet.id.slice(-8).toUpperCase()}</p><p className="text-xs text-gray-400">Created: {new Date(sheet.createdAt).toLocaleDateString()}</p></div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div><p className="text-xs font-bold text-gray-500 uppercase mb-2">Client</p>{isEditing ? <input className="input w-full" value={editable.clientId} onChange={e => setEditable({...editable, clientId: e.target.value})} placeholder="Client ID" /> : <p className="font-bold text-gray-800">{clientName || sheet.client?.name || '—'}</p>}</div>
           <div><p className="text-xs font-bold text-gray-500 uppercase mb-2">Agent</p>{isEditing ? <input className="input w-full" value={editable.agentId} onChange={e => setEditable({...editable, agentId: e.target.value})} placeholder="Agent ID" /> : <p className="text-gray-800">{agentName || sheet.agent?.name || '—'}</p>}</div>
         </div>
@@ -330,8 +330,8 @@ export default function CostSheetDetailPage() {
           {isEditing ? (
             <div className="space-y-3">
               <div><label className="text-sm font-medium">Tour Title</label><input className="input w-full" value={editable.tourTitle} onChange={e => setEditable({...editable, tourTitle: e.target.value})} /></div>
-              <div className="grid grid-cols-3 gap-3"><div><label>Days</label><input type="number" className="input w-full" value={editable.days} onChange={e => setEditable({...editable, days: Number(e.target.value)})} /></div><div><label>Adults</label><input type="number" className="input w-full" value={editable.numAdults} onChange={e => setEditable({...editable, numAdults: Number(e.target.value)})} /></div><div><label>Children</label><input type="number" className="input w-full" value={editable.numChildren} onChange={e => setEditable({...editable, numChildren: Number(e.target.value)})} /></div></div>
-              <div className="grid grid-cols-2 gap-3"><div><label>Board Basis</label><select className="input w-full" value={editable.boardBasis} onChange={e => setEditable({...editable, boardBasis: e.target.value})}><option>FB</option><option>HB</option><option>BB</option><option>RO</option></select></div><div><label>Currency</label><select className="input w-full" value={editable.currency} onChange={e => setEditable({...editable, currency: e.target.value})}><option>USD</option><option>KES</option><option>EUR</option><option>GBP</option></select></div></div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3"><div><label>Days</label><input type="number" className="input w-full" value={editable.days} onChange={e => setEditable({...editable, days: Number(e.target.value)})} /></div><div><label>Adults</label><input type="number" className="input w-full" value={editable.numAdults} onChange={e => setEditable({...editable, numAdults: Number(e.target.value)})} /></div><div><label>Children</label><input type="number" className="input w-full" value={editable.numChildren} onChange={e => setEditable({...editable, numChildren: Number(e.target.value)})} /></div></div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2"><div><label>Board Basis</label><select className="input w-full" value={editable.boardBasis} onChange={e => setEditable({...editable, boardBasis: e.target.value})}><option>FB</option><option>HB</option><option>BB</option><option>RO</option></select></div><div><label>Currency</label><select className="input w-full" value={editable.currency} onChange={e => setEditable({...editable, currency: e.target.value})}><option>USD</option><option>KES</option><option>EUR</option><option>GBP</option></select></div></div>
               <div><label>Markup (%)</label><input type="number" className="input w-full" value={editable.markupPercent} onChange={e => setEditable({...editable, markupPercent: Number(e.target.value)})} /></div>
             </div>
           ) : (
@@ -425,7 +425,7 @@ export default function CostSheetDetailPage() {
         <div className="border-t pt-4"><h3 className="text-sm font-bold text-gray-700 mb-3">Fixed Costs & Extras</h3>
           {isEditing ? (
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div><label>File Handling</label><input type="number" className="input w-full" value={editable.fileHandlingFee} onChange={e => setEditable({...editable, fileHandlingFee: Number(e.target.value)})} /></div>
                 <div><label>Eco Bottle</label><input type="number" className="input w-full" value={editable.ecoBottle} onChange={e => setEditable({...editable, ecoBottle: Number(e.target.value)})} /></div>
                 <div><label>Evac Insurance</label><input type="number" className="input w-full" value={editable.evacInsurance} onChange={e => setEditable({...editable, evacInsurance: Number(e.target.value)})} /></div>
@@ -448,7 +448,7 @@ export default function CostSheetDetailPage() {
           )}
         </div>
 
-        <div className="flex justify-end"><div className="w-80 space-y-2">
+        <div className="flex justify-start md:justify-end"><div className="w-full space-y-2 md:w-80">
           {editable.numChildren > 0 && <div className="flex justify-between text-sm"><span>Per Child Cost</span><span className="font-mono">{currentCurrency} {fmt2(calcSubtotal * 0.5)}</span></div>}
           <div className="flex justify-between text-base font-bold border-t-2 border-orange-200 pt-2">
             <span>Per Adult Cost</span><span className="font-mono text-orange-600">{currentCurrency} {fmt2(calcSubtotal)}</span>

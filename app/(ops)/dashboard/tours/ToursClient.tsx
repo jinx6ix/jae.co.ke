@@ -81,7 +81,7 @@ export default function ToursClient({ tours }: { tours: TourRow[] }) {
 
           return (
             <div key={tour.id} className="card hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2.5 flex-wrap mb-2">
                     <h3 className="font-bold text-gray-900 text-base">{tour.title}</h3>
@@ -138,7 +138,7 @@ export default function ToursClient({ tours }: { tours: TourRow[] }) {
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2 ml-2 flex-shrink-0">
+                <div className="flex flex-row gap-2 md:flex-col md:ml-2 md:flex-shrink-0">
                   <Link href={`/dashboard/tours/${tour.id}`} className="btn-secondary text-xs py-1.5 px-3">View</Link>
                   <Link href={`/dashboard/tours/${tour.id}/edit`} className="btn-secondary text-xs py-1.5 px-3">Edit</Link>
                   <Link href={`/dashboard/costing/new?tourId=${tour.id}`} className="btn-secondary text-xs py-1.5 px-3 text-orange-600">+ Rate</Link>

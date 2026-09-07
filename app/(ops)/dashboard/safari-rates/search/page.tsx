@@ -117,12 +117,12 @@ export default function SafariRatesSearchPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">🏨 Safari Rates — Search</h1>
           <p className="text-gray-500 text-sm">Contract rates across Kenya destinations</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/dashboard/safari-rates/hotels" className="btn-secondary text-sm">Manage Hotels</Link>
           <Link href="/dashboard/safari-rates/prices" className="btn-secondary text-sm">Enter Prices</Link>
         </div>
@@ -186,8 +186,8 @@ export default function SafariRatesSearchPage() {
             </select>
           </div>
         </div>
-        <div className="flex justify-between items-center mt-4">
-          <div className="flex gap-2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center mt-4">
+          <div className="flex flex-wrap gap-2">
             <button onClick={search} disabled={loading} className="btn-primary">
               {loading ? 'Searching…' : '🔍 Search'}
             </button>
@@ -224,9 +224,9 @@ export default function SafariRatesSearchPage() {
               const minRate = Math.min(...prices.map(p => p.ratePerPersonSharing ?? Infinity));
               return (
                 <div key={key} className="card p-0 overflow-hidden">
-                  <div className="px-5 py-4 bg-gray-50 border-b border-gray-200 flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-2">
+                  <div className="px-5 py-4 bg-gray-50 border-b border-gray-200 flex flex-wrap items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-bold text-gray-900">{hotel.name}</h3>
                         {hotel.category && <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">{hotel.category}</span>}
                       </div>
@@ -236,7 +236,8 @@ export default function SafariRatesSearchPage() {
                       </p>
                     </div>
                   </div>
-                  <table className="w-full text-sm">
+                  <div className="overflow-x-auto">
+                  <table className="w-full text-sm min-w-[820px]">
                     <thead className="bg-gray-50 border-b border-gray-100">
                       <tr>
                         {['Room Type','Season','Period','Board','Per Person Sharing','Single','Child','Third Adult', nights>0?`${nights}N Total`:''].filter(Boolean).map(h => (
@@ -266,6 +267,7 @@ export default function SafariRatesSearchPage() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </div>
               );
             })}

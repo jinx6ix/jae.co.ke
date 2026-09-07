@@ -37,13 +37,13 @@ export default async function VoucherDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="max-w-4xl space-y-5">
-      <div className="flex items-center justify-between no-print">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between no-print">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Link href="/dashboard/vouchers" className="text-gray-400 hover:text-gray-600 text-sm">← Vouchers</Link>
-          <h1 className="text-2xl font-bold text-gray-900">Voucher {voucher.voucherNo}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">Voucher {voucher.voucherNo}</h1>
           <span className={voucher.status === 'ACTIVE' ? 'badge-confirmed' : 'badge-cancelled'}>{voucher.status}</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <VoucherPDFButton voucher={voucherData as any} />
           <SendEmailButton voucherId={voucher.id} clientName={voucher.clientName} />
           <Link href={`/dashboard/vouchers/${voucher.id}/edit`} className="btn-secondary">Edit</Link>
@@ -82,7 +82,7 @@ export default async function VoucherDetailPage({ params }: { params: Promise<{ 
 
         {/* Footer / Signature */}
         <div className="mt-10 pt-6 border-t border-gray-200">
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
               <p className="text-sm text-gray-600 mb-4">Signed</p>
               <p className="text-sm font-semibold text-orange-600">For: Jae Travel Expeditions</p>
@@ -129,7 +129,7 @@ function FlightVoucherBody({ voucher }: { voucher: any }) {
         <p className="font-bold text-sm text-gray-700">No. of children under 12 years <span className="text-orange-600">{voucher.numChildren ?? 0}</span></p>
       </div>
       <p className="font-bold text-green-700 text-base">Please Book</p>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <p className="font-bold text-sm text-gray-700">Departure:</p>
           <p className="text-orange-600 font-semibold">{fmt(voucher.departureDate)}</p>
@@ -155,7 +155,7 @@ function FlightVoucherBody({ voucher }: { voucher: any }) {
 function HotelVoucherBody({ voucher }: { voucher: any }) {
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Hotel Name</p>
           <p className="text-orange-600 font-semibold text-lg">{voucher.property?.name || voucher.hotelName || '—'}</p>
@@ -171,7 +171,7 @@ function HotelVoucherBody({ voucher }: { voucher: any }) {
         <span className="text-sm">{voucher.clientName}</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <p className="font-bold text-sm text-gray-700">No. of Adults: <span className="text-orange-600">{voucher.numAdults}</span></p>
         </div>
@@ -182,7 +182,7 @@ function HotelVoucherBody({ voucher }: { voucher: any }) {
 
       <div className="border border-gray-200 rounded-lg p-4">
         <p className="font-bold text-orange-600 mb-3">Please Book</p>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
           {[
             ['TWINS', voucher.numTwins],
             ['DOUBLES', voucher.numDoubles],
@@ -196,7 +196,7 @@ function HotelVoucherBody({ voucher }: { voucher: any }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <p className="font-bold text-sm text-gray-700">Check in:</p>
           <p className="text-orange-600 font-semibold">
@@ -227,7 +227,7 @@ function HotelVoucherBody({ voucher }: { voucher: any }) {
 function VehicleVoucherBody({ voucher }: { voucher: any }) {
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Vehicle</p>
           <p className="text-orange-600 font-semibold text-lg">{voucher.vehicle?.name || voucher.vehicleName || voucher.vehicleType || '—'}</p>
@@ -243,7 +243,7 @@ function VehicleVoucherBody({ voucher }: { voucher: any }) {
         <span className="text-sm">{voucher.clientName}</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <p className="font-bold text-sm text-gray-700">No. of Passengers: <span className="text-orange-600">{voucher.numAdults}</span></p>
         </div>
@@ -254,7 +254,7 @@ function VehicleVoucherBody({ voucher }: { voucher: any }) {
         )}
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <p className="font-bold text-sm text-gray-700">Pickup Date:</p>
           <p className="text-orange-600 font-semibold">

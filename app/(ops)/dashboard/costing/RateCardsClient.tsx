@@ -35,16 +35,17 @@ export default function RateCardsClient({ rateCards }: { rateCards: RateCardRow[
 
   return (
     <div className="card p-0 overflow-hidden overflow-x-auto">
-      <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between gap-4">
+      <div className="px-5 py-4 border-b border-gray-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="font-semibold text-gray-800">Rate Cards</h2>
         <SearchInput
           value={q}
           onChange={setQ}
           placeholder="Search by tour, season, currency…"
-          widthClass="w-72"
+          widthClass="w-full sm:w-72"
         />
       </div>
-      <table className="w-full text-sm">
+      <div className="overflow-x-auto">
+      <table className="w-full text-sm min-w-[860px]">
         <thead className="bg-gray-50 border-b border-gray-200">
           <tr>
             {['Tour', 'Season', 'Valid Period', '2 Pax', '4 Pax', '6 Pax', '8 Pax', '9 Pax', 'Markup', 'Currency', ''].map(h => (
@@ -78,7 +79,7 @@ export default function RateCardsClient({ rateCards }: { rateCards: RateCardRow[
               <td className="px-4 py-3 text-gray-600">{rc.markupPercent}%</td>
               <td className="px-4 py-3 text-gray-600">{rc.currency}</td>
               <td className="px-4 py-3">
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <Link href={`/dashboard/costing/${rc.id}/edit`} className="text-orange-500 hover:underline text-xs">Edit</Link>
                 </div>
               </td>
@@ -86,6 +87,7 @@ export default function RateCardsClient({ rateCards }: { rateCards: RateCardRow[
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

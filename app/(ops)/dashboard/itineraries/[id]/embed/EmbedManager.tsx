@@ -38,7 +38,7 @@ export default function EmbedManager({ itineraryId, embeds: initial, baseUrl }: 
     <div className="space-y-5">
       <form onSubmit={create} className="card p-5 space-y-4">
         <h2 className="font-semibold text-gray-800">Create new embed</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           <div>
             <label className="label text-xs">Label</label>
             <input className="input" value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Public" />
@@ -53,8 +53,8 @@ export default function EmbedManager({ itineraryId, embeds: initial, baseUrl }: 
         </div>
       </form>
 
-      <div className="card p-0 overflow-hidden">
-        <table className="w-full text-sm">
+      <div className="card p-0 overflow-hidden overflow-x-auto">
+        <table className="w-full text-sm min-w-[640px]">
           <thead className="bg-gray-50 border-b">
             <tr className="text-left text-xs uppercase tracking-wide text-gray-500">
               <th className="px-4 py-3">Label</th>

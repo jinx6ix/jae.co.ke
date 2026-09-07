@@ -1,6 +1,5 @@
 // app/budget-tours/[slug]/components/TourCTA.tsx
 import BookingButtons from "./BookingButtons"; // Client component
-import { Phone } from "lucide-react";
 
 interface TourCTAProps {
   tour: {
@@ -8,6 +7,8 @@ interface TourCTAProps {
     price: number;
     originalPrice?: number;
     bookingUrl: string;
+    duration: string;
+    slug?: string;
   };
 }
 
@@ -19,10 +20,10 @@ export default function TourCTA({ tour }: TourCTAProps) {
           Ready for Your Adventure?
         </h2>
         <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed">
-          Book your {tour.title} today and secure the best price for 2026. 
+          Book your {tour.title} today and secure the best price for 2026.
           Limited spots available for this popular budget safari.
         </p>
-        
+
         <div className="mb-10">
           <div className="inline-flex items-baseline gap-3">
             <span className="text-5xl font-bold">${tour.price}</span>
@@ -33,9 +34,8 @@ export default function TourCTA({ tour }: TourCTAProps) {
           <p className="mt-2 text-white/80">per person • All-inclusive package</p>
         </div>
 
-        <BookingButtons tour={{ ...tour, bookingUrl: "https://example.com/booking" }} />
         <BookingButtons tour={tour} />
-        
+
         <p className="mt-8 text-sm text-white/70">
           Free cancellation up to 30 days before departure • Best price guarantee
         </p>

@@ -82,7 +82,7 @@ export default function ItineraryFromSource() {
         <h1 className="text-2xl font-bold text-gray-900">Generate from Source</h1>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setMode('url')}
           className={`flex-1 card text-left p-5 transition ${mode === 'url' ? 'border-orange-400 ring-2 ring-orange-200' : 'hover:border-orange-300'}`}
@@ -109,7 +109,7 @@ export default function ItineraryFromSource() {
           <form onSubmit={submitUrl} className="space-y-3">
             <label className="label text-xs">Website URL</label>
             <input className="input" value={url || ''} onChange={(e) => setUrl(e.target.value)} placeholder="https://example.com/7-day-kenya-safari" />
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button type="submit" disabled={busy} className="btn-primary">{busy ? '⏳ Working…' : 'Generate itinerary'}</button>
               <Link href="/dashboard/itineraries" className="btn-secondary">Cancel</Link>
             </div>
@@ -118,7 +118,7 @@ export default function ItineraryFromSource() {
           <form onSubmit={submitPdf} className="space-y-3">
             <label className="label text-xs">PDF file</label>
             <input type="file" name="pdfFile" accept="application/pdf" className="input" key={mode} />
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button type="submit" disabled={uploading || busy} className="btn-primary">{uploading || busy ? '⏳ Working…' : 'Generate itinerary'}</button>
               <Link href="/dashboard/itineraries" className="btn-secondary">Cancel</Link>
             </div>

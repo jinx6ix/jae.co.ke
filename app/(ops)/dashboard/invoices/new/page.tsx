@@ -153,7 +153,7 @@ export default function NewInvoicePage() {
         {/* Bill To */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Bill To</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2"><label className="label">Name *</label><input required className="input" value={billTo} onChange={e => setBillTo(e.target.value)} placeholder="Client / Company name"/></div>
             <div><label className="label">Email</label><input type="email" className="input" value={billToEmail} onChange={e => setBillToEmail(e.target.value)}/></div>
             <div><label className="label">Phone</label><input className="input" value={billToPhone} onChange={e => setBillToPhone(e.target.value)}/></div>
@@ -163,7 +163,7 @@ export default function NewInvoicePage() {
         {/* Invoice Details */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Invoice Details</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><label className="label">Invoice Date</label><input type="date" className="input" value={invoiceDate} onChange={e => setInvoiceDate(e.target.value)}/></div>
             <div><label className="label">Due Date *</label><input type="date" required className="input" value={dueDate} onChange={e => setDueDate(e.target.value)}/></div>
             <div><label className="label">Currency</label><select className="input" value={currency} onChange={e => setCurrency(e.target.value)}>
@@ -249,7 +249,7 @@ export default function NewInvoicePage() {
           <textarea className="input resize-none h-20" value={notes} onChange={e => setNotes(e.target.value)} placeholder="Any notes to include on the invoice…"/>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Create Invoice'}</button>
           <Link href="/dashboard/invoices" className="btn-secondary">Cancel</Link>
         </div>

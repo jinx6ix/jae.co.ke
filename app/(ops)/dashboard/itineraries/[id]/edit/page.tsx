@@ -194,7 +194,7 @@ export default function EditItineraryPage() {
               </button>
             </div>
           ) : (
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <select
                 className="input flex-1"
                 value=""
@@ -227,7 +227,7 @@ export default function EditItineraryPage() {
                   <button type="button" onClick={() => removeDay(i)} className="text-red-400 hover:text-red-600 text-xs font-medium">✕ Remove Day</button>
                 )}
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="label text-xs">Destination</label>
                   <input value={day.destination} onChange={e => updateDay(i, 'destination', e.target.value)} className="input" />
@@ -273,7 +273,7 @@ export default function EditItineraryPage() {
           ))}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Save Changes'}</button>
           <Link href={`/dashboard/itineraries/${id}`} className="btn-secondary">Cancel</Link>
         </div>

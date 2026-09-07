@@ -154,12 +154,12 @@ export default function HotelsPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link href="/dashboard/safari-rates" className="text-gray-400 hover:text-gray-600 text-sm">← Safari Rates</Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-1">Hotels & Camps ({hotels.length})</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/dashboard/safari-rates/prices" className="btn-secondary text-sm">💰 Enter Prices</Link>
           <button onClick={()=>setShowDestForm(!showDestForm)} className="btn-secondary text-sm">{showDestForm ? '✕ Cancel Destination' : '+ Add Destination'}</button>
           <button onClick={()=>setShowForm(!showForm)} className="btn-primary">+ Add Hotel</button>
@@ -169,7 +169,7 @@ export default function HotelsPage() {
       {showDestForm && (
         <form onSubmit={saveDestination} className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Add Destination / Area</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Destination Name *</label>
               <input required className="input" value={destForm.name} onChange={e=>setDestForm(f=>({...f,name:e.target.value}))} placeholder="e.g. Maasai Mara" />
@@ -179,7 +179,7 @@ export default function HotelsPage() {
               <input className="input" value={destForm.region} onChange={e=>setDestForm(f=>({...f,region:e.target.value}))} placeholder="e.g. Narok County" />
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button type="submit" disabled={savingDest} className="btn-primary">{savingDest?'Saving…':'Save Destination'}</button>
             <button type="button" onClick={()=>setShowDestForm(false)} className="btn-secondary">Cancel</button>
           </div>
@@ -189,7 +189,7 @@ export default function HotelsPage() {
       {showForm && (
         <form onSubmit={save} className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Add Hotel / Camp</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Destination *</label>
               <div className="flex gap-2 items-center">
@@ -218,24 +218,24 @@ export default function HotelsPage() {
               </select>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button type="submit" disabled={saving} className="btn-primary">{saving?'Saving…':'Save Hotel'}</button>
             <button type="button" onClick={()=>setShowForm(false)} className="btn-secondary">Cancel</button>
           </div>
         </form>
       )}
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <SearchInput
           value={filter}
           onChange={setFilter}
           placeholder="Filter by name or destination…"
-          widthClass="max-w-sm"
+          widthClass="w-full sm:max-w-sm"
         />
       </div>
 
       <div className="card p-0 overflow-hidden overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm min-w-[640px]">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {['Hotel / Camp','Category','Stars','Destination','Room Types'].map(h=>(

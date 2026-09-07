@@ -137,18 +137,18 @@ export default function SeasonsPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link href="/dashboard/safari-rates" className="text-gray-400 hover:text-gray-600 text-sm">← Safari Rates</Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-1">Seasons ({seasons.length})</h1>
         </div>
-        <button onClick={()=>setShowForm(!showForm)} className="btn-primary">+ Add Season</button>
+        <button onClick={()=>setShowForm(!showForm)} className="btn-primary self-start sm:self-auto">+ Add Season</button>
       </div>
 
       {showForm && (
         <form onSubmit={save} className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Add Season</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Hotel *</label>
               <select required className="input" value={form.hotelId} onChange={e=>setForm(f=>({...f,hotelId:e.target.value}))}>
@@ -169,7 +169,7 @@ export default function SeasonsPage() {
               <input required type="date" className="input" value={form.endDate} onChange={e=>setForm(f=>({...f,endDate:e.target.value}))} />
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button type="submit" disabled={saving} className="btn-primary">{saving?'Saving…':'Save Season'}</button>
             <button type="button" onClick={()=>setShowForm(false)} className="btn-secondary">Cancel</button>
           </div>
@@ -201,7 +201,7 @@ export default function SeasonsPage() {
                 <label className="label">End Date *</label>
                 <input required type="date" className="input" value={editForm.endDate} onChange={e=>setEditForm(f=>({...f,endDate:e.target.value}))} />
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <button type="submit" disabled={savingEdit} className="btn-primary">{savingEdit ? 'Saving…' : 'Update Season'}</button>
                 <button type="button" onClick={() => setEditingSeason(null)} className="btn-secondary">Cancel</button>
               </div>
@@ -211,13 +211,13 @@ export default function SeasonsPage() {
       )}
 
       {/* Search input */}
-      <div className="flex gap-2 items-center">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         <label className="label mb-0">Search:</label>
         <SearchInput
           value={searchTerm}
           onChange={setSearchTerm}
           placeholder="Hotel or season name..."
-          widthClass="max-w-sm"
+          widthClass="w-full sm:max-w-sm"
         />
       </div>
 

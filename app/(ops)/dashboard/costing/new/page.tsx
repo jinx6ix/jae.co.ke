@@ -62,7 +62,7 @@ export default function NewRateCardPage() {
 
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Rate Card Details</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Tour Package *</label>
               <select name="tourPackageId" required className="input">
@@ -106,7 +106,7 @@ export default function NewRateCardPage() {
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Per-Person Rates (pre-markup)</h2>
           <p className="text-sm text-gray-500">Enter cost per person for each group size. These match your costing sheet "Based on N people" columns.</p>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[2, 4, 6, 8, 9, 10, 12].map((n) => (
               <div key={n}>
                 <label className="label">Based on {n} People {n <= 8 ? '*' : ''}</label>
@@ -120,7 +120,7 @@ export default function NewRateCardPage() {
         {/* Includes / Excludes */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Included / Excluded</h2>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="label">Included Items</label>
               {includes.map((item, i) => (
@@ -149,7 +149,7 @@ export default function NewRateCardPage() {
           <textarea name="notes" rows={2} className="input resize-none" placeholder="Any notes about this rate card…" />
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Save Rate Card'}</button>
           <Link href="/dashboard/costing" className="btn-secondary">Cancel</Link>
         </div>

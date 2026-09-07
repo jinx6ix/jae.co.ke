@@ -29,12 +29,12 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
 
   return (
     <div className="max-w-4xl space-y-5">
-      <div className="flex items-center justify-between no-print">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between no-print">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Link href="/dashboard/itineraries" className="text-gray-400 hover:text-gray-600 text-sm">← Itineraries</Link>
-          <h1 className="text-2xl font-bold text-gray-900">{itinerary.title}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">{itinerary.title}</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href={`/dashboard/itineraries/${itinerary.id}/embed`} className="btn-secondary text-sm">🔗 Embed</Link>
           <Link href={`/dashboard/itineraries/${itinerary.id}/edit`} className="btn-secondary">Edit</Link>
           <Link href={`/api/itineraries/${itinerary.id}/pdf`} target="_blank" className="btn-primary">⬇ Download PDF</Link>
@@ -100,8 +100,8 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
         {/* Day-by-Day Summary Table */}
         <div className="px-8 py-6 border-b border-gray-100">
           <h3 className="font-bold text-gray-800 text-lg mb-4">Day by Day Summary</h3>
-          <div className="overflow-hidden rounded-lg border border-gray-200">
-            <table className="w-full text-sm">
+          <div className="overflow-hidden overflow-x-auto rounded-lg border border-gray-200">
+            <table className="w-full text-sm min-w-[480px]">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="text-left px-4 py-2.5 font-semibold text-gray-700">Day</th>
@@ -153,7 +153,7 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
                 <h3 className="text-xl font-bold text-gray-800">{day.destination}</h3>
               </div>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="col-span-2">
                   {day.notes && <p className="text-gray-600 text-sm mb-4 leading-relaxed">{day.notes}</p>}
                   {activities.length > 0 && (

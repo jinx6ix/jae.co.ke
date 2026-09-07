@@ -36,12 +36,12 @@ export default async function RatesPage({ searchParams }: { searchParams: Promis
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Rates & Costing</h1>
           <p className="text-gray-500 text-sm mt-0.5">Build a linked costing sheet for any client</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <a href="/api/rate-cards/csv" className="btn-secondary"><Download size={14} /> CSV</a>
           <Link href="/dashboard/costing/new" className="btn-primary"><PlusCircle size={14} /> New Rate Card</Link>
         </div>

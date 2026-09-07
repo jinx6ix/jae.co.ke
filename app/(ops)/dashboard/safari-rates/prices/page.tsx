@@ -315,12 +315,12 @@ export default function PricesPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link href="/dashboard/safari-rates" className="text-gray-400 hover:text-gray-600 text-sm">← Safari Rates</Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-1">Enter Contract Prices</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href="/dashboard/safari-rates/hotels" className="btn-secondary text-sm">🏨 Manage Hotels</Link>
           <button onClick={()=>setShowForm(!showForm)} className="btn-primary">+ Add Price</button>
         </div>
@@ -329,7 +329,7 @@ export default function PricesPage() {
       {showForm && (
         <form onSubmit={save} className="card space-y-4">
           <h2 className="font-semibold text-gray-800">{editingId ? '✏️ Edit Price' : 'Add / Update Price'}</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Hotel (to filter rooms/seasons) *</label>
               <div className="relative" ref={hotelDropdownRef}>
@@ -420,7 +420,7 @@ export default function PricesPage() {
                 <div className="space-y-2 border rounded p-3 bg-gray-50 mt-1">
                   <input type="text" placeholder="Room type name" className="input text-sm" value={newRoomName} onChange={e=>setNewRoomName(e.target.value)} />
                   <input type="number" placeholder="Max occupancy" className="input text-sm" value={newRoomMaxOccupancy} onChange={e=>setNewRoomMaxOccupancy(e.target.value)} />
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button type="button" onClick={editingRoom ? handleUpdateRoom : handleAddRoom} disabled={savingRoom} className="btn-primary text-sm py-1">
                       {savingRoom ? 'Saving...' : (editingRoom ? 'Update' : 'Add')}
                     </button>
@@ -462,7 +462,7 @@ export default function PricesPage() {
                   <input type="text" placeholder="Season name" className="input text-sm" value={newSeasonName} onChange={e=>setNewSeasonName(e.target.value)} />
                   <input type="date" placeholder="Start date" className="input text-sm" value={newSeasonStart} onChange={e=>setNewSeasonStart(e.target.value)} />
                   <input type="date" placeholder="End date" className="input text-sm" value={newSeasonEnd} onChange={e=>setNewSeasonEnd(e.target.value)} />
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button type="button" onClick={editingSeason ? handleUpdateSeason : handleAddSeason} disabled={savingSeason} className="btn-primary text-sm py-1">
                       {savingSeason ? 'Saving...' : (editingSeason ? 'Update' : 'Add')}
                     </button>
@@ -495,7 +495,7 @@ export default function PricesPage() {
               </select>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button type="submit" disabled={saving} className="btn-primary">{saving?'Saving…':'Save Price'}</button>
             <button type="button" onClick={()=>{ setShowForm(false); setEditingId(null); setAddingRoom(false); setEditingRoom(null); setAddingSeason(false); setEditingSeason(null); }} className="btn-secondary">Cancel</button>
           </div>
@@ -503,13 +503,13 @@ export default function PricesPage() {
       )}
 
       {/* Global search input (filters price table + management cards) */}
-      <div className="flex gap-2 items-center">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         <label className="label mb-0">Filter by Hotel:</label>
         <SearchInput
           value={globalHotelSearch}
           onChange={setGlobalHotelSearch}
           placeholder="Type hotel name..."
-          widthClass="max-w-sm"
+          widthClass="w-full sm:max-w-sm"
         />
       </div>
 
@@ -553,12 +553,12 @@ export default function PricesPage() {
       </div>
 
       {/* Management cards – filtered by global hotel search + optional card‑specific search */}
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Manage Room Types */}
         <div className="card">
           <div className="flex justify-between items-center mb-2">
             <h2 className="font-semibold text-gray-800">Manage Room Types</h2>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input
                 type="text"
                 placeholder="Search within results..."
@@ -602,7 +602,7 @@ export default function PricesPage() {
         <div className="card">
           <div className="flex justify-between items-center mb-2">
             <h2 className="font-semibold text-gray-800">Manage Seasons</h2>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input
                 type="text"
                 placeholder="Search within results..."

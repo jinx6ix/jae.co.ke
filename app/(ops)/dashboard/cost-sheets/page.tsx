@@ -159,20 +159,20 @@ export default function CostSheetsPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Costing Sheets</h1>
           <p className="text-gray-500 text-sm mt-0.5">All saved cost calculations linked to clients & bookings</p>
         </div>
-        <Link href="/dashboard/costing" className="btn-primary">+ New Costing Sheet</Link>
+        <Link href="/dashboard/costing" className="btn-primary self-start sm:self-auto">+ New Costing Sheet</Link>
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <input value={q} onChange={e => setQ(e.target.value)} className="input max-w-xs" placeholder="Search by client, booking ref, tour…" />
       </div>
 
-      <div className="card p-0 overflow-hidden">
-        <table className="w-full text-sm">
+      <div className="card p-0 overflow-hidden overflow-x-auto">
+        <table className="w-full text-sm min-w-[960px]">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {['Tour / Package', 'Client', 'Booking', 'Pax', 'Days', 'Board', 'Grand Total', 'Per Adult', 'Markup', 'Created', ''].map(h => (
@@ -219,7 +219,7 @@ export default function CostSheetsPage() {
                 <td className="px-4 py-3 text-xs text-gray-500">{s.markupPercent}%</td>
                 <td className="px-4 py-3 text-xs text-gray-400">{new Date(s.createdAt).toLocaleDateString('en-KE')}</td>
                 <td className="px-4 py-3">
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <Link href={`/dashboard/cost-sheets/${s.id}`} className="text-orange-500 hover:underline text-xs font-medium">View</Link>
                     <button onClick={() => handleDelete(s.id, s.tourTitle)} disabled={deleting === s.id} className="text-red-400 hover:text-red-600 text-xs">
                       {deleting === s.id ? '…' : 'Delete'}

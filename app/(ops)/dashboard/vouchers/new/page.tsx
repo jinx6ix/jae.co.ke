@@ -226,7 +226,7 @@ export default function NewVoucherPage() {
         </div>
 
         {/* Client picker */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="label">Client *</label>
             <select
@@ -260,7 +260,7 @@ export default function NewVoucherPage() {
 
         {/* ── HOTEL (with two‑way date ↔ nights calculation) ── */}
         {voucherType === 'HOTEL' && (<>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Hotel / Camp Name *</label>
               <input name="hotelName" required className="input font-medium"
@@ -331,7 +331,7 @@ export default function NewVoucherPage() {
           </div>
           <div>
             <label className="label">Room Configuration</label>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {['Twins','Doubles','Singles','Triples'].map(t => (
                 <div key={t}>
                   <p className="text-xs text-gray-500 mb-1">{t}</p>
@@ -345,7 +345,7 @@ export default function NewVoucherPage() {
 
         {/* ── VEHICLE (unchanged) ───────────────────────────────────── */}
         {voucherType === 'VEHICLE' && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Vehicle Name / Description *</label>
               <input required className="input font-medium"
@@ -411,7 +411,7 @@ export default function NewVoucherPage() {
 
         {/* ── FLIGHT (unchanged) ────────────────────────────────────── */}
         {voucherType === 'FLIGHT' && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Airline / Flight Name *</label>
               <input name="flightName" required className="input font-medium"

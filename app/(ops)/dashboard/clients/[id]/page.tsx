@@ -25,22 +25,22 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
 
   return (
     <div className="max-w-4xl space-y-5">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Link href="/dashboard/clients" className="text-gray-400 hover:text-gray-600 text-sm">← Clients</Link>
-          <h1 className="text-2xl font-bold text-gray-900">{client.name}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">{client.name}</h1>
           {client.isResident
             ? <span className="badge-confirmed">Resident</span>
             : <span className="badge-enquiry">Non-Resident</span>}
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href={`/dashboard/clients/${client.id}/edit`} className="btn-secondary">Edit</Link>
           <Link href={`/dashboard/bookings/new?clientId=${client.id}`} className="btn-primary">+ New Booking</Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-1 card space-y-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-1 card space-y-3">
           <h2 className="font-semibold text-gray-800">Client Details</h2>
           {[
             { label: 'Email', value: client.email },
@@ -61,12 +61,13 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
           )}
         </div>
 
-        <div className="col-span-2 card p-0 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+        <div className="lg:col-span-2 card p-0 overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
             <h2 className="font-semibold text-gray-800">Booking History ({client.bookings.length})</h2>
             <Link href={`/dashboard/bookings/new?clientId=${client.id}`} className="text-orange-500 text-sm hover:underline">+ Add</Link>
           </div>
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[640px]">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
                 {['Ref', 'Tour', 'Dates', 'Pax', 'Status', ''].map(h => (
@@ -94,6 +95,7 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>

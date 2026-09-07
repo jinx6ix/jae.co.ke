@@ -50,12 +50,12 @@ export default function UsersPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
           <p className="text-gray-500 text-sm mt-0.5">Admin only — manage team access</p>
         </div>
-        <Link href="/dashboard/admin/users/new" className="btn-primary">+ New User</Link>
+        <Link href="/dashboard/admin/users/new" className="btn-primary self-start sm:self-auto">+ New User</Link>
       </div>
 
       <SearchInput

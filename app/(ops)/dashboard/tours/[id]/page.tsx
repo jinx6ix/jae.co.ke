@@ -26,10 +26,10 @@ export default async function TourDetailPage({ params }: { params: Promise<{ id:
 
   return (
     <div className="max-w-5xl space-y-5">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Link href="/dashboard/tours" className="text-gray-400 hover:text-gray-600 text-sm">← Tours</Link>
-          <div>
+          <div className="min-w-0">
             <h1 className="text-2xl font-bold text-gray-900">{tour.title}</h1>
             <p className="text-gray-500 text-sm mt-0.5">
               {tour.durationDays} days / {tour.durationNights} nights ·{' '}
@@ -38,13 +38,13 @@ export default async function TourDetailPage({ params }: { params: Promise<{ id:
             </p>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link href={`/dashboard/costing/new?tourId=${tour.id}`} className="btn-secondary">+ Rate Card</Link>
           <Link href={`/dashboard/tours/${tour.id}/edit`} className="btn-primary">Edit</Link>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* Info */}
         <div className="col-span-1 space-y-4">
           <div className="card">
@@ -80,7 +80,7 @@ export default async function TourDetailPage({ params }: { params: Promise<{ id:
                       </span>
                       <span className="text-xs text-gray-400">{rc.currency}</span>
                     </div>
-                    <div className="grid grid-cols-4 gap-1 text-xs text-gray-600 mt-1">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-1 text-xs text-gray-600 mt-1">
                       <div className="text-center"><p className="text-gray-400">2px</p><p className="font-mono font-medium">{rc.basedOn2}</p></div>
                       <div className="text-center"><p className="text-gray-400">4px</p><p className="font-mono font-medium">{rc.basedOn4}</p></div>
                       <div className="text-center"><p className="text-gray-400">6px</p><p className="font-mono font-medium">{rc.basedOn6}</p></div>

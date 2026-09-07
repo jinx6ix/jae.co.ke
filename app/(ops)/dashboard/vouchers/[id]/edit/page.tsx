@@ -130,10 +130,10 @@ export default function EditVoucherPage() {
 
   return (
     <div className="max-w-2xl space-y-5">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-3 min-w-0">
           <Link href={`/dashboard/vouchers/${id}`} className="text-gray-400 hover:text-gray-600 text-sm">← Voucher</Link>
-          <h1 className="text-2xl font-bold text-gray-900">Edit {voucher.voucherNo}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 truncate">Edit {voucher.voucherNo}</h1>
           <span className={`text-xs font-bold px-2 py-0.5 rounded ${typeColor}`}>{voucher.type}</span>
         </div>
         <button type="button" onClick={handleDelete} disabled={deleting}
@@ -147,7 +147,7 @@ export default function EditVoucherPage() {
 
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">General</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Status</label>
               <select className="input" value={f.status} onChange={e => set('status', e.target.value)}>
@@ -196,7 +196,7 @@ export default function EditVoucherPage() {
         {voucher.type === 'HOTEL' && (
           <div className="card space-y-4">
             <h2 className="font-semibold text-gray-800">🏨 Hotel / Accommodation</h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="col-span-2">
                 <label className="label">Select Hotel from Database</label>
                 <select className="input" value={selHotelId} onChange={e => {
@@ -240,7 +240,7 @@ export default function EditVoucherPage() {
         {voucher.type === 'VEHICLE' && (
           <div className="card space-y-4">
             <h2 className="font-semibold text-gray-800">🚐 Vehicle / Transfer</h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="col-span-2">
                 <label className="label">Select Vehicle</label>
                 <select className="input" value={f.vehicleId} onChange={e => {
@@ -267,7 +267,7 @@ export default function EditVoucherPage() {
         {voucher.type === 'FLIGHT' && (
           <div className="card space-y-4">
             <h2 className="font-semibold text-gray-800">✈️ Flight</h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="col-span-2"><label className="label">Airline / Flight Name</label><input className="input" value={f.flightName} onChange={e => set('flightName', e.target.value)} placeholder="e.g. Kenya Airways KQ101" /></div>
               <div className="col-span-2"><label className="label">Schedule / Route</label><input className="input" value={f.flightSchedule} onChange={e => set('flightSchedule', e.target.value)} placeholder="e.g. NBO → MRE 07:00 – 08:00" /></div>
               <div><label className="label">Departure Date</label><input type="date" className="input" value={f.departureDate} onChange={e => set('departureDate', e.target.value)} /></div>
@@ -278,7 +278,7 @@ export default function EditVoucherPage() {
           </div>
         )}
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Save Changes'}</button>
           <Link href={`/dashboard/vouchers/${id}`} className="btn-secondary">Cancel</Link>
         </div>

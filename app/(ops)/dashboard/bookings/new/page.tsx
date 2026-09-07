@@ -99,7 +99,7 @@ export default function NewBookingPage() {
         {/* Client & Tour */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-800">Booking Details</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="label">Client *</label>
               <select name="clientId" required className="input" value={clientId} onChange={e => setClientId(e.target.value)}>
@@ -158,7 +158,7 @@ export default function NewBookingPage() {
                 const totalPax = numAdults + numChildren;
                 let rate = totalPax <= 2 ? rc.basedOn2 : totalPax <= 4 ? rc.basedOn4 : totalPax <= 6 ? rc.basedOn6 : totalPax <= 8 ? rc.basedOn8 : rc.basedOn10 || rc.basedOn8;
                 return (
-                  <label key={rc.id} className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-colors ${selectedRate?.id === rc.id ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                  <label key={rc.id} className={`flex flex-col gap-2 p-3 border rounded-lg cursor-pointer transition-colors sm:flex-row sm:items-center sm:justify-between ${selectedRate?.id === rc.id ? 'border-orange-400 bg-orange-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                     <div className="flex items-center gap-3">
                       <input type="radio" name="rateCardId" value={rc.id} checked={selectedRate?.id === rc.id} onChange={() => setSelectedRate(rc)} />
                       <div>
@@ -195,7 +195,7 @@ export default function NewBookingPage() {
           </div>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button type="submit" disabled={saving} className="btn-primary">
             {saving ? 'Creating…' : 'Create Booking'}
           </button>

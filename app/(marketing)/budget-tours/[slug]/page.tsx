@@ -400,14 +400,17 @@ export default async function TourDetailPage(props: Props) {
                     {/* Quick action buttons for mobile/tablet */}
                     <div className="mt-6 space-y-3">
                       <a
-                        href={tour.bookingUrl || '#'}
+                        href="#booking-form"
                         className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200"
                       >
                         Book This Tour
                       </a>
-                      <button className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200">
+                      <a
+                        href="mailto:info@jaetravel.co.ke?subject=Quote%20Request%20-%20Masai%20Mara%20Nakuru%204%20Days"
+                        className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200"
+                      >
                         Request Quote
-                      </button>
+                      </a>
                     </div>
                   </div>
 
@@ -429,6 +432,9 @@ export default async function TourDetailPage(props: Props) {
         </div>
       </main>
 
+      {/* Booking CTA Section with the booking form */}
+      <TourCTA tour={tour} />
+
       {/* Desktop Sticky CTA - Hidden on mobile, visible on desktop scroll */}
       <div className="hidden lg:block fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg transform transition-transform duration-300 translate-y-0 hover:shadow-xl z-40">
         <div className="max-w-7xl mx-auto px-8 py-4">
@@ -440,14 +446,17 @@ export default async function TourDetailPage(props: Props) {
             </div>
             <div className="flex items-center gap-4">
               <a
-                href={tour.bookingUrl || '#'}
+                href="#booking-form"
                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
               >
                 Book Now
               </a>
-              <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
+              <a
+                href="mailto:info@jaetravel.co.ke?subject=Safari%20Inquiry"
+                className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-colors duration-200"
+              >
                 Inquiry
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -461,7 +470,7 @@ export default async function TourDetailPage(props: Props) {
             <p className="text-lg font-bold text-gray-900">${tour.price}</p>
           </div>
           <a
-            href={tour.bookingUrl || '#'}
+            href="#booking-form"
             className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-center py-3 px-4 rounded-lg transition-colors duration-200"
           >
             Book Now
