@@ -30,6 +30,24 @@ export interface EmailDispatchStatus {
   it: EmailStatus;
   /** Company WhatsApp number notification. */
   whatsapp: EmailStatus;
+  /**
+   * Diagnostic — full SMTP error per recipient (only populated when the
+   * recipient status is 'failed'). The route strips this from the
+   * public response so end-users never see it, but the Vercel log
+   * captures the whole thing for debugging.
+   */
+  errors?: {
+    client?: SmtpErrorSummary;
+    info?: SmtpErrorSummary;
+    it?: SmtpErrorSummary;
+  };
+}
+
+export interface SmtpErrorSummary {
+  code?: string;
+  response?: string;
+  responseCode?: number;
+  message?: string;
 }
 
 export type BookingKind = 'tour' | 'transfer' | 'inquiry' | 'quote';
@@ -548,5 +566,25 @@ export async function sendBookingEmails(input: BookingEmailInput): Promise<Email
     info: toStatus(infoRes),
     it: toStatus(itRes),
     whatsapp: toStatus(whatsappRes),
+    errors: {
+      client: (custRes as PromiseRejectedResult).reason
+        ? extractError((custRes as PromiseRejectedResult).reason)
+        : undefined,
+      info: (infoRes as PromiseRejectedResult).reason
+        ? extractError((infoRes as PromiseRejectedResult).reason)
+        : undefined,
+      it: (itRes as PromiseRejectedResult).reason
+        ? extractError((itRes as PromiseRejectedResult).reason)
+        : undefined,
+    },
+  };
+}
+
+function extractError(reason: any): SmtpErrorSummary {
+  return {
+    code: reason?.code,
+    response: reason?.response,
+    responseCode: reason?.responseCode,
+    message: reason?.message,
   };
 }

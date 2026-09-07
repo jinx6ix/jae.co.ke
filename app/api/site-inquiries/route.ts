@@ -74,6 +74,13 @@ export async function POST(request: NextRequest) {
     console.log(
       `[site-inquiries] ${bookingId} status: client=${emailStatus.client} info=${emailStatus.info} it=${emailStatus.it} whatsapp=${emailStatus.whatsapp}`,
     );
+    // One-line per-recipient error summary so the cause is visible
+    // in Vercel logs without needing to dive into the helper.
+    if (emailStatus.errors) {
+      if (emailStatus.errors.client) console.log(`[site-inquiries] client SMTP error: code=${emailStatus.errors.client.code} response=${emailStatus.errors.client.response} message=${emailStatus.errors.client.message}`);
+      if (emailStatus.errors.info) console.log(`[site-inquiries] info@ SMTP error: code=${emailStatus.errors.info.code} response=${emailStatus.errors.info.response} message=${emailStatus.errors.info.message}`);
+      if (emailStatus.errors.it) console.log(`[site-inquiries] it@ SMTP error: code=${emailStatus.errors.it.code} response=${emailStatus.errors.it.response} message=${emailStatus.errors.it.message}`);
+    }
 
     return NextResponse.json({
       success: true,
