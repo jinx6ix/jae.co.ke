@@ -1,18 +1,19 @@
 // lib/email/booking-emails.ts
 //
-// Shared email helper for the site's booking / inquiry / transfer / quote
-// flows. Replaces ~250 lines of duplicated HTML + a nodemailer transporter
-// across the four route handlers under app/api/{site-inquiries, transfers,
-// inquiries, public/quote}.
+// Shared email + WhatsApp helper for the site's booking / inquiry /
+// transfer flows. Used by the four route handlers under
+// app/api/{site-inquiries, transfers, inquiries, public/quote}.
 //
 // What it does:
-//   1. Lazily creates a single nodemailer transporter from SITE_SMTP_* env
-//      vars (same pattern as lib/agents/notify.ts).
+//   1. Lazily creates a single nodemailer transporter from SITE_SMTP_*
+//      env vars (same pattern as lib/agents/notify.ts).
 //   2. Renders three messages from one BookingEmailInput:
 //        - the customer confirmation (orange template)
 //        - an internal-team copy sent to info@jaetravel.co.ke
 //        - an internal-team copy sent to it@jaetravel.co.ke
-//   3. Sends all three with Promise.allSettled so one failed recipient
+//   3. Sends a WhatsApp message to the company phone via the CallMeBot
+//      API so the team gets pinged on the channel they actually watch.
+//   4. Sends everything with Promise.allSettled so one failed recipient
 //      doesn't abort the others, and returns a per-recipient status.
 //
 // The two admin copies share the same body (booking summary + WhatsApp
@@ -27,6 +28,8 @@ export interface EmailDispatchStatus {
   client: EmailStatus;
   info: EmailStatus;
   it: EmailStatus;
+  /** Company WhatsApp number notification. */
+  whatsapp: EmailStatus;
 }
 
 export type BookingKind = 'tour' | 'transfer' | 'inquiry' | 'quote';
@@ -59,6 +62,12 @@ export interface BookingEmailInput {
   customerWhatsApp?: string;
   /** Static wa.me/254726485228 link. */
   adminWhatsApp: string;
+  /**
+   * Company phone number that should receive the WhatsApp notification.
+   * Defaults to "+254726485228" — the JaeTravel reservations line.
+   * Used by the CallMeBot dispatch (see `sendBookingWhatsApp`).
+   */
+  companyWhatsAppNumber?: string;
 }
 
 const INFO_ADDRESS = 'info@jaetravel.co.ke';
@@ -361,8 +370,92 @@ function buildAdminHtml(input: BookingEmailInput, recipientLabel: string): strin
 }
 
 /**
- * Send the three confirmation emails for a booking. Safe to call when
- * SMTP isn't configured — every status will come back as `'skipped'`.
+ * Build the human-readable WhatsApp message text that gets sent to the
+ * company phone for every new booking. Kept short because WhatsApp previews
+ * look best under ~600 chars, and because some gateways truncate at 1024.
+ */
+function buildBookingWhatsAppText(input: BookingEmailInput): string {
+  const { bookingId, bookingKind, customer, service, transfer } = input;
+  const kindLabel =
+    bookingKind === 'transfer' ? 'Transfer'
+    : bookingKind === 'inquiry' ? 'Inquiry'
+    : bookingKind === 'quote' ? 'Quote'
+    : 'Booking';
+
+  const transferLine = bookingKind === 'transfer' && transfer
+    ? `🚐 ${transfer.pickup} → ${transfer.dropoff}\n`
+    : '';
+
+  const reqLine = service.specialRequirements
+    ? `\n📝 Notes: ${service.specialRequirements}`
+    : '';
+
+  return [
+    `🆕 *New ${kindLabel} #${bookingId}*`,
+    ``,
+    `👤 ${customer.name}`,
+    `📧 ${customer.email}`,
+    `📞 ${customer.phone}`,
+    ``,
+    `🏞️ ${service.name}`,
+    `📅 ${service.startDate}`,
+    `👥 ${service.travelers} traveler${service.travelers > 1 ? 's' : ''}`,
+    `💰 $${Number(service.totalPrice).toLocaleString()}`,
+    transferLine.trimEnd(),
+    reqLine,
+  ].filter((l) => l !== '').join('\n').trimEnd();
+}
+
+/**
+ * Send a WhatsApp message to the company phone via CallMeBot's free
+ * gateway (https://www.callmebot.com). To enable, the company phone must
+ * be registered with CallMeBot ONE TIME:
+ *
+ *   1. From the company phone, send "I allow callmebot to send me messages"
+ *      via WhatsApp to +34 644 59 71 47.
+ *   2. CallMeBot replies with an API key.
+ *   3. Set CALLMEBOT_API_KEY=<that-key> in the env (Vercel dashboard +
+ *      .env). Also set CALLMEBOT_PHONE if the company phone is not the
+ *      default +254726485228.
+ *
+ * If CALLMEBOT_API_KEY is missing or CallMeBot returns a non-2xx, the
+ * function returns 'skipped' or 'failed' so the rest of the booking
+ * flow continues normally — the email send is the authoritative channel.
+ */
+async function sendBookingWhatsApp(
+  input: BookingEmailInput,
+): Promise<EmailStatus> {
+  const apiKey = process.env.CALLMEBOT_API_KEY;
+  if (!apiKey) {
+    return 'skipped';
+  }
+  const phone = (input.companyWhatsAppNumber || '+254726485228').replace(/[^0-9]/g, '');
+  const text = buildBookingWhatsAppText(input);
+
+  const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apiKey)}`;
+
+  try {
+    const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+    if (!res.ok) {
+      console.error(`[booking-whatsapp] CallMeBot HTTP ${res.status} for ${input.bookingId}`);
+      return 'failed';
+    }
+    const body = await res.text();
+    if (!/message\s*sent/i.test(body)) {
+      console.error(`[booking-whatsapp] CallMeBot unexpected response for ${input.bookingId}: ${body.slice(0, 200)}`);
+      return 'failed';
+    }
+    return 'sent';
+  } catch (err: any) {
+    console.error(`[booking-whatsapp] CallMeBot fetch failed for ${input.bookingId}:`, err?.message);
+    return 'failed';
+  }
+}
+
+/**
+ * Send the three confirmation emails + the company WhatsApp notification
+ * for a booking. Safe to call when neither channel is configured — every
+ * status will come back as `'skipped'`.
  *
  * Returns per-recipient status so the caller can surface it in the API
  * response and (optionally) the UI.
@@ -372,7 +465,9 @@ export async function sendBookingEmails(input: BookingEmailInput): Promise<Email
   const transporter = getTransporter();
 
   if (!transporter) {
-    return { client: 'skipped', info: 'skipped', it: 'skipped' };
+    // No SMTP, but we can still try the WhatsApp channel independently.
+    const whatsappStatus = await sendBookingWhatsApp(input);
+    return { client: 'skipped', info: 'skipped', it: 'skipped', whatsapp: whatsappStatus };
   }
 
   const customerSubject = formatSubject(input.bookingKind, input.bookingId, input.customer.name, input.service.name);
@@ -403,10 +498,11 @@ export async function sendBookingEmails(input: BookingEmailInput): Promise<Email
     html: itHtml,
   };
 
-  const [custRes, infoRes, itRes] = await Promise.allSettled([
+  const [custRes, infoRes, itRes, whatsappRes] = await Promise.allSettled([
     transporter.sendMail(customerMsg),
     transporter.sendMail(infoMsg),
     transporter.sendMail(itMsg),
+    sendBookingWhatsApp(input),
   ]);
 
   const toStatus = (r: PromiseSettledResult<unknown>): EmailStatus =>
@@ -417,12 +513,13 @@ export async function sendBookingEmails(input: BookingEmailInput): Promise<Email
   if (itRes.status === 'rejected') console.error('[booking-emails] it@ send failed:', (itRes as PromiseRejectedResult).reason?.message);
 
   console.log(
-    `[booking-emails] ${input.bookingId} → client:${toStatus(custRes)} info@:${toStatus(infoRes)} it@:${toStatus(itRes)}`,
+    `[booking-emails] ${input.bookingId} → client:${toStatus(custRes)} info@:${toStatus(infoRes)} it@:${toStatus(itRes)} whatsapp:${toStatus(whatsappRes)}`,
   );
 
   return {
     client: toStatus(custRes),
     info: toStatus(infoRes),
     it: toStatus(itRes),
+    whatsapp: toStatus(whatsappRes),
   };
 }

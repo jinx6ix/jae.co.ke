@@ -19,6 +19,7 @@ interface EmailStatus {
   client: "sent" | "failed" | "skipped"
   info: "sent" | "failed" | "skipped"
   it: "sent" | "failed" | "skipped"
+  whatsapp: "sent" | "failed" | "skipped"
 }
 
 interface BookingResponse {
@@ -193,6 +194,20 @@ export default function BookingForm({
           }`}>
             <Users className="h-4 w-4" />
             {bookingResult.emailStatus?.it === "sent" ? "IT Notified" : "IT Notifying..."}
+          </div>
+          <div className={`flex items-center justify-center gap-2 rounded-lg border p-3 text-sm font-medium ${
+            bookingResult.emailStatus?.whatsapp === "sent"
+              ? "bg-green-50 border-green-200 text-green-700"
+              : bookingResult.emailStatus?.whatsapp === "failed"
+              ? "bg-red-50 border-red-200 text-red-700"
+              : "bg-yellow-50 border-yellow-200 text-yellow-700"
+          }`}>
+            <Phone className="h-4 w-4" />
+            {bookingResult.emailStatus?.whatsapp === "sent"
+              ? "WhatsApp Sent"
+              : bookingResult.emailStatus?.whatsapp === "failed"
+              ? "WhatsApp Failed"
+              : "WhatsApp Skipped"}
           </div>
         </div>
 

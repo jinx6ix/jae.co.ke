@@ -69,6 +69,11 @@ export async function POST(request: NextRequest) {
     // Backward-compat booleans for the existing <BookingForm> UI.
     const customerEmailSent = emailStatus.client === 'sent';
     const adminEmailSent = emailStatus.info === 'sent' || emailStatus.it === 'sent';
+    const whatsappSent = emailStatus.whatsapp === 'sent';
+
+    console.log(
+      `[site-inquiries] ${bookingId} status: client=${emailStatus.client} info=${emailStatus.info} it=${emailStatus.it} whatsapp=${emailStatus.whatsapp}`,
+    );
 
     return NextResponse.json({
       success: true,
@@ -76,6 +81,7 @@ export async function POST(request: NextRequest) {
       message: customerEmailSent ? 'Check your email!' : 'Booking saved!',
       customerEmailSent,
       adminEmailSent,
+      whatsappSent,
       emailStatus,
       pdfUrl: `/api/bookings/${bookingId}/download?...`, // same as clientPdfUrl
       whatsappLink: adminWhatsApp,
