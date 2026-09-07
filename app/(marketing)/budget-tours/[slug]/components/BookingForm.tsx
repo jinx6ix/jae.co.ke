@@ -151,7 +151,7 @@ export default function BookingForm({
 
   if (submitted && bookingResult) {
     return (
-      <div id="booking-form" className="rounded-xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-8 text-center shadow-sm animate-in fade-in duration-500 scroll-mt-24">
+      <div className="rounded-xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-8 text-center shadow-sm animate-in fade-in duration-500 scroll-mt-24">
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
           <CheckCircle className="h-12 w-12 text-orange-600" />
         </div>
@@ -246,7 +246,7 @@ export default function BookingForm({
   }
 
   return (
-    <form id="booking-form" onSubmit={handleSubmit} className="space-y-8 rounded-xl border border-orange-200 bg-white p-8 shadow-sm scroll-mt-24">
+    <form onSubmit={handleSubmit} className="space-y-8 rounded-xl border border-orange-200 bg-white p-8 shadow-sm scroll-mt-24">
       <div className="text-center sm:text-left">
         <h3 className="text-2xl font-bold text-orange-800">
           Book <span className="text-orange-600">{tourTitle}</span>

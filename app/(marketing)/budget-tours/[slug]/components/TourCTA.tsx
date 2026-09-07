@@ -1,4 +1,7 @@
 // app/budget-tours/[slug]/components/TourCTA.tsx
+// Server component. The `id="booking-form"` wrapper is server-rendered into
+// the static HTML so the sticky / sidebar "Book Now" anchor links always
+// resolve, even before the client-side form hydrates.
 import BookingButtons from "./BookingButtons"; // Client component
 
 interface TourCTAProps {
@@ -14,7 +17,10 @@ interface TourCTAProps {
 
 export default function TourCTA({ tour }: TourCTAProps) {
   return (
-    <section className="py-16 bg-gradient-to-r from-primary to-primary/90 text-white">
+    <section
+      id="booking-form"
+      className="py-16 bg-gradient-to-r from-primary to-primary/90 text-white scroll-mt-24"
+    >
       <div className="container mx-auto px-4 text-center">
         <h2 className="mb-6 font-serif text-4xl font-bold">
           Ready for Your Adventure?
