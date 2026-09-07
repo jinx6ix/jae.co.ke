@@ -512,6 +512,33 @@ export async function sendBookingEmails(input: BookingEmailInput): Promise<Email
   if (infoRes.status === 'rejected') console.error('[booking-emails] info@ send failed:', (infoRes as PromiseRejectedResult).reason?.message);
   if (itRes.status === 'rejected') console.error('[booking-emails] it@ send failed:', (itRes as PromiseRejectedResult).reason?.message);
 
+  // Surface the full SMTP error (code/response) so the team can see WHY
+  // each recipient failed in Vercel → Logs. Without this, "failed" is
+  // opaque and you have to guess between missing env, wrong creds,
+  // wrong port, firewall, etc.
+  const dumpErr = (label: string, r: PromiseSettledResult<unknown>) => {
+    if (r.status !== 'rejected') return;
+    const reason: any = (r as PromiseRejectedResult).reason;
+    console.error(
+      `[booking-emails] ${label} full error:`,
+      JSON.stringify({
+        name: reason?.name,
+        code: reason?.code,
+        command: reason?.command,
+        response: reason?.response,
+        responseCode: reason?.responseCode,
+        message: reason?.message,
+      }),
+    );
+  };
+  dumpErr('customer', custRes);
+  dumpErr('info@', infoRes);
+  dumpErr('it@', itRes);
+
+  console.log(
+    `[booking-emails] smtp env: host=${process.env.SITE_SMTP_HOST || '(unset)'} port=${process.env.SITE_SMTP_PORT || '(unset)'} user=${process.env.SITE_SMTP_USER || '(unset)'} pass=${process.env.SITE_SMTP_PASS ? `${process.env.SITE_SMTP_PASS.length} chars` : '(unset)'}`,
+  );
+
   console.log(
     `[booking-emails] ${input.bookingId} → client:${toStatus(custRes)} info@:${toStatus(infoRes)} it@:${toStatus(itRes)} whatsapp:${toStatus(whatsappRes)}`,
   );
