@@ -1,4 +1,6 @@
 // app/budget-tours/[slug]/components/BookingButtons.tsx
+'use client'
+
 import { Phone } from "lucide-react"
 import BookingForm from "./BookingForm"
 
