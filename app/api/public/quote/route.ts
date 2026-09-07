@@ -27,6 +27,28 @@ import {
   type QuoteLegInput,
   type Vehicle,
 } from '@/lib/pricing-rules';
+import nodemailer from 'nodemailer';
+
+// Shared SMTP transport — same env vars the inquiries / transfers /
+// site-inquiries routes use. Created lazily so missing env in a non-email
+// build doesn't crash the rest of the route.
+let _bookingTransporter: ReturnType<typeof nodemailer.createTransport> | null = null;
+function getBookingTransporter() {
+  if (_bookingTransporter) return _bookingTransporter;
+  const host = process.env.SITE_SMTP_HOST;
+  const port = Number(process.env.SITE_SMTP_PORT) || 465;
+  const user = process.env.SITE_SMTP_USER;
+  const pass = process.env.SITE_SMTP_PASS;
+  if (!host || !user || !pass) return null;
+  _bookingTransporter = nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+    tls: { rejectUnauthorized: false },
+  });
+  return _bookingTransporter;
+}
 
 interface HotelSelection {
   hotelId: number;
@@ -526,6 +548,26 @@ async function persistAndRespond(args: {
     },
   });
 
+  // Send confirmation emails to the client + info@ + it@ before
+  // responding. We do NOT short-circuit on email failure — the booking
+  // is already persisted, and the customer should still get their
+  // bookingRef back. Each send is best-effort and logged server-side.
+  const emailStatus = await sendBookingEmails({
+    name,
+    email,
+    phone: body.phone,
+    bookingRef,
+    startDate: start,
+    endDate: end,
+    numAdults,
+    numChildren,
+    totalCost,
+    perPersonCost,
+    currency,
+    selections: rated,
+    notes: buildNotes(body),
+  });
+
   return NextResponse.json(
     {
       bookingRef,
@@ -536,6 +578,7 @@ async function persistAndRespond(args: {
       selections: rated,
       anyUnmatchedSeason: rated.some((r) => !r.matched),
       structuredBreakdown,
+      emailStatus,
     },
     { status: 201 }
   );
@@ -584,4 +627,190 @@ function buildNotes(body: QuoteRequestBody): string {
     }
   }
   return parts.join('\n');
+}
+
+// ── Booking confirmation emails ────────────────────────────────────
+//
+// Sends three emails using the same SITE_SMTP_* transport as the
+// inquiries / transfers routes:
+//   1. The client — confirmation + booking ref
+//   2. info@jaetravel.co.ke — full enquiry details for sales follow-up
+//   3. it@jaetravel.co.ke — booking ref + total, so the IT team can
+//      keep an eye on operational health of incoming bookings
+//
+// All three are best-effort. If SMTP env is not configured, we log a
+// warning and return `emailStatus: 'skipped'` so the API still replies
+// with the bookingRef and the customer is not stuck on a spinner.
+interface BookingEmailArgs {
+  name: string;
+  email: string;
+  phone?: string | null;
+  bookingRef: string;
+  startDate: Date;
+  endDate: Date;
+  numAdults: number;
+  numChildren: number;
+  totalCost: number;
+  perPersonCost: number;
+  currency: string;
+  selections: Array<{ hotelName: string; county: string | null; nights: number; pricePerNight: number; currency: string }>;
+  notes: string;
+}
+
+async function sendBookingEmails(args: BookingEmailArgs): Promise<{
+  client: 'sent' | 'failed' | 'skipped';
+  info: 'sent' | 'failed' | 'skipped';
+  it: 'sent' | 'failed' | 'skipped';
+}> {
+  const t = getBookingTransporter();
+  if (!t) {
+    console.warn('[quote] SMTP env not configured — skipping booking emails for', args.bookingRef);
+    return { client: 'skipped', info: 'skipped', it: 'skipped' };
+  }
+
+  const fromAddr = process.env.SITE_SMTP_USER!;
+  const fmtDate = (d: Date) => d.toISOString().split('T')[0];
+  const fmtMoney = (n: number) => `${args.currency} ${n.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+  const selectionsRows = args.selections
+    .map(
+      (s) =>
+        `<tr>
+          <td style="padding:8px 0;">${s.hotelName}${s.county ? ` <span style="color:#6b7280;">(${s.county})</span>` : ''}</td>
+          <td style="padding:8px 0; text-align:right;">${s.nights}</td>
+          <td style="padding:8px 0; text-align:right;">${fmtMoney(s.pricePerNight)}</td>
+        </tr>`,
+    )
+    .join('');
+
+  // 1. Client email
+  const clientHtml = `
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"/></head>
+<body style="margin:0; padding:0; font-family: 'Segoe UI', Tahoma, sans-serif; background:#f9fafb; color:#1f2937;">
+  <div style="max-width:600px; margin:20px auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
+    <div style="background:linear-gradient(135deg,#f97316,#fb923c); color:white; padding:32px 24px; text-align:center;">
+      <h1 style="margin:0; font-size:28px;">Booking Received!</h1>
+      <p style="margin:6px 0 0; opacity:0.95;">JaeTravel Expeditions</p>
+    </div>
+    <div style="padding:32px 24px;">
+      <p style="font-size:16px;">Hi <strong>${args.name}</strong>,</p>
+      <p>Thank you for choosing JaeTravel Expeditions. Your booking enquiry has been received. Our safari consultants will be in touch within <strong>24 hours</strong> to finalise your itinerary.</p>
+
+      <div style="background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:20px; margin:20px 0;">
+        <h2 style="margin:0 0 12px; color:#92400e; font-size:18px; border-bottom:2px solid #fbbf24; padding-bottom:6px;">Your Enquiry</h2>
+        <table style="width:100%; font-size:15px;">
+          <tr><td style="padding:6px 0; color:#92400e; font-weight:600;">Reference:</td><td><code style="background:#fef3c7; padding:4px 8px; border-radius:4px;">${args.bookingRef}</code></td></tr>
+          <tr><td style="padding:6px 0; color:#92400e; font-weight:600;">Dates:</td><td>${fmtDate(args.startDate)} → ${fmtDate(args.endDate)}</td></tr>
+          <tr><td style="padding:6px 0; color:#92400e; font-weight:600;">Guests:</td><td>${args.numAdults} adult${args.numAdults === 1 ? '' : 's'}${args.numChildren ? `, ${args.numChildren} child${args.numChildren === 1 ? '' : 'ren'}` : ''}</td></tr>
+          <tr><td style="padding:6px 0; color:#92400e; font-weight:600;">Total:</td><td><strong style="color:#dc2626; font-size:17px;">${fmtMoney(args.totalCost)}</strong></td></tr>
+          <tr><td style="padding:6px 0; color:#92400e; font-weight:600;">Per person:</td><td>${fmtMoney(args.perPersonCost)}</td></tr>
+        </table>
+      </div>
+
+      ${args.selections.length ? `
+      <h3 style="margin:24px 0 8px; color:#1f2937;">Selected Stays</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead><tr style="background:#f3f4f6;"><th style="text-align:left; padding:8px;">Hotel</th><th style="text-align:right; padding:8px;">Nights</th><th style="text-align:right; padding:8px;">/night</th></tr></thead>
+        <tbody>${selectionsRows}</tbody>
+      </table>` : ''}
+
+      <p style="margin-top:24px;">If you have any questions in the meantime, just reply to this email or reach us on WhatsApp:</p>
+      <p style="text-align:center; margin:20px 0;">
+        <a href="https://wa.me/254726485228" style="display:inline-block; background:#25D366; color:white; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Chat on WhatsApp</a>
+      </p>
+    </div>
+    <div style="background:#f3f4f6; padding:24px; text-align:center; font-size:13px; color:#6b7280; border-top:1px solid #e5e7eb;">
+      <p style="margin:0;">© 2025 JaeTravel Expeditions | TTA/0036 | Nairobi, Kenya</p>
+      <p style="margin:6px 0 0;">
+        <a href="tel:+254726485228" style="color:#f97316; text-decoration:none;">+254 726 485 228</a> |
+        <a href="mailto:info@jaetravel.co.ke" style="color:#f97316; text-decoration:none;">info@jaetravel.co.ke</a>
+      </p>
+    </div>
+  </div>
+</body></html>`;
+
+  // 2. info@ email — full enquiry, sales follow-up
+  const infoHtml = `
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"/></head>
+<body style="margin:0; padding:0; font-family: 'Segoe UI', Tahoma, sans-serif; background:#f9fafb; color:#1f2937;">
+  <div style="max-width:600px; margin:20px auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
+    <div style="background:linear-gradient(135deg,#059669,#10b981); color:white; padding:32px 24px; text-align:center;">
+      <h1 style="margin:0; font-size:28px;">New Booking Enquiry!</h1>
+      <p style="margin:6px 0 0; opacity:0.95;">JaeTravel Expeditions</p>
+    </div>
+    <div style="padding:32px 24px;">
+      <h2 style="margin:0 0 12px; color:#059669; font-size:20px;">Customer</h2>
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:20px; margin-bottom:20px;">
+        <table style="width:100%; font-size:15px;">
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600; width:120px;">Name:</td><td><strong>${args.name}</strong></td></tr>
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Email:</td><td><a href="mailto:${args.email}" style="color:#059669;">${args.email}</a></td></tr>
+          ${args.phone ? `<tr><td style="padding:6px 0; color:#166534; font-weight:600;">Phone:</td><td><a href="tel:${args.phone}" style="color:#059669;">${args.phone}</a></td></tr>` : ''}
+        </table>
+      </div>
+
+      <h2 style="margin:0 0 12px; color:#059669; font-size:20px;">Trip</h2>
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:20px; margin-bottom:20px;">
+        <table style="width:100%; font-size:15px;">
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Reference:</td><td><code style="background:#d1fae5; padding:4px 8px; border-radius:4px;">${args.bookingRef}</code></td></tr>
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Dates:</td><td>${fmtDate(args.startDate)} → ${fmtDate(args.endDate)}</td></tr>
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Guests:</td><td>${args.numAdults} adult${args.numAdults === 1 ? '' : 's'}${args.numChildren ? `, ${args.numChildren} child${args.numChildren === 1 ? '' : 'ren'}` : ''}</td></tr>
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Total:</td><td><strong style="color:#059669; font-size:17px;">${fmtMoney(args.totalCost)}</strong></td></tr>
+          <tr><td style="padding:6px 0; color:#166534; font-weight:600;">Per person:</td><td>${fmtMoney(args.perPersonCost)}</td></tr>
+        </table>
+      </div>
+
+      ${args.selections.length ? `
+      <h3 style="margin:0 0 8px; color:#1f2937;">Selected Stays</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:14px; margin-bottom:20px;">
+        <thead><tr style="background:#f3f4f6;"><th style="text-align:left; padding:8px;">Hotel</th><th style="text-align:right; padding:8px;">Nights</th><th style="text-align:right; padding:8px;">/night</th></tr></thead>
+        <tbody>${selectionsRows}</tbody>
+      </table>` : ''}
+
+      ${args.notes ? `<h3 style="margin:0 0 8px; color:#1f2937;">Notes</h3><pre style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:12px; font-family:inherit; white-space:pre-wrap; font-size:13px;">${args.notes.replace(/</g, '&lt;')}</pre>` : ''}
+
+      <p style="text-align:center; margin-top:20px;">
+        ${args.phone ? `<a href="https://wa.me/${args.phone.replace(/[^0-9]/g, '').replace(/^0/, '254')}" style="display:inline-block; background:#25D366; color:white; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Contact Customer</a>` : ''}
+      </p>
+    </div>
+    <div style="background:#f3f4f6; padding:24px; text-align:center; font-size:13px; color:#6b7280;">
+      <p style="margin:0;">JaeTravel Booking System</p>
+    </div>
+  </div>
+</body></html>`;
+
+  // 3. IT email — booking ref + total only, lightweight
+  const itHtml = `
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"/></head>
+<body style="font-family: 'Segoe UI', Tahoma, sans-serif; color:#1f2937;">
+  <h2>New booking enquiry received</h2>
+  <table style="border-collapse:collapse; font-size:14px;">
+    <tr><td style="padding:4px 12px 4px 0; color:#6b7280;">Reference:</td><td><code>${args.bookingRef}</code></td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:#6b7280;">Customer:</td><td>${args.name} &lt;${args.email}&gt;${args.phone ? ` (${args.phone})` : ''}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:#6b7280;">Dates:</td><td>${fmtDate(args.startDate)} → ${fmtDate(args.endDate)}</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:#6b7280;">Guests:</td><td>${args.numAdults}A / ${args.numChildren}C</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:#6b7280;">Total:</td><td><strong>${fmtMoney(args.totalCost)}</strong></td></tr>
+  </table>
+  <p style="font-size:13px; color:#6b7280;">Automated notification from the public quote/booking endpoint.</p>
+</body></html>`;
+
+  const sends = [
+    { key: 'client' as const, msg: { from: `"JaeTravel Expeditions" <${fromAddr}>`, to: args.email, subject: `Booking Enquiry #${args.bookingRef} – Received!`, html: clientHtml } },
+    { key: 'info' as const,   msg: { from: `"JaeTravel Bookings" <${fromAddr}>`, to: 'info@jaetravel.co.ke', subject: `New Booking #${args.bookingRef} – ${args.name}`, html: infoHtml } },
+    { key: 'it' as const,     msg: { from: `"JaeTravel Bookings" <${fromAddr}>`, to: 'it@jaetravel.co.ke',   subject: `[IT] New booking ${args.bookingRef} – ${fmtMoney(args.totalCost)}`, html: itHtml } },
+  ];
+
+  const results = await Promise.allSettled(sends.map((s) => t.sendMail(s.msg)));
+  const status = { client: 'skipped' as 'sent' | 'failed' | 'skipped', info: 'skipped' as 'sent' | 'failed' | 'skipped', it: 'skipped' as 'sent' | 'failed' | 'skipped' };
+  results.forEach((r, i) => {
+    const key = sends[i].key;
+    if (r.status === 'fulfilled') status[key] = 'sent';
+    else {
+      status[key] = 'failed';
+      console.error(`[quote] Failed to send ${key} email for ${args.bookingRef}:`, r.reason);
+    }
+  });
+  return status;
 }
