@@ -5,14 +5,14 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { fileURLToPath } from 'url'
+// import path from 'path' <-- No longer needed for staticDir
+// import { fileURLToPath } from 'url' <-- No longer needed
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+// const filename = fileURLToPath(import.meta.url) <-- Remove
+// const dirname = path.dirname(filename) <-- Remove
 
 // Brand assets the marketing site reads via `getBrandUrl()` in
 // `lib/brand-media.ts`. When one of these filenames is uploaded
@@ -114,8 +114,6 @@ export const Media: CollectionConfig = {
     afterDelete: [afterDelete],
   },
   upload: {
-    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    staticDir: path.resolve(dirname, '../../public/media'),
     adminThumbnail: 'thumbnail',
     focalPoint: true,
     imageSizes: [

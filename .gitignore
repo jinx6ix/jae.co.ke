@@ -116,3 +116,5 @@ yarn-error.log*
 /*.dylib
 /*.test
 /*.out
+.vercel
+.env*
