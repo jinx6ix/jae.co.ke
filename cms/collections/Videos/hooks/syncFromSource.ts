@@ -18,8 +18,6 @@
 import type { CollectionBeforeChangeHook } from 'payload'
 
 import { fetchVideoMeta } from '../../../../lib/youtube'
-import { fetchMediaMeta } from '../../../../lib/instagram'
-import { getAccountTokens } from '../../../../lib/instagram/account-store'
 
 export const syncFromSource: CollectionBeforeChangeHook = async ({
   data,
@@ -56,6 +54,8 @@ export const syncFromSource: CollectionBeforeChangeHook = async ({
       }
     }
     if (data.provider === 'instagram') {
+      const { fetchMediaMeta } = await import('../../../../lib/instagram')
+      const { getAccountTokens } = await import('../../../../lib/instagram/account-store')
       // Read the long-lived token from the encrypted store. Falls back
       // to the env-var pair (legacy bootstrap path) only when no row
       // exists — same logic as /api/video-sync/instagram.
