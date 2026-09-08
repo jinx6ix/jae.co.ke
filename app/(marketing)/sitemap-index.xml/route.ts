@@ -153,12 +153,7 @@ async function getSitemapInfo() {
   try {
     const videos = await payload.find({
       collection: 'videos',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 100,
+      limit: 1000,
       sort: '-publishedAt',
       depth: 0,
       overrideAccess: true,

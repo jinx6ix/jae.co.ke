@@ -1,41 +1,27 @@
 // app/(marketing)/sitemap-videos.xml/route.ts
-//
-// Google Video Sitemap for JaeTravel Expeditions.
-//
-// Public video architecture:
-//
-//   YouTube / Instagram
-//          ↓
-//      Payload CMS
-//          ↓
-//   /watch/[slug]
-//          ↓
-//   VideoObject JSON-LD
-//          ↓
-//   sitemap-videos.xml
-//
-// IMPORTANT:
-// - Only published videos are included.
-// - No Payload admin/CMS URLs are included.
-// - No fake /videos/*.mp4 URLs are generated.
-// - YouTube and Instagram remain the actual video hosts.
-// - /watch/[slug] is the public JaeTravel watch page.
-// - No geographic restriction is applied.
-// - A temporary CMS failure returns a valid HTTP 500 rather than
-//   pretending that there are zero videos.
-// - An actually empty published video collection returns valid XML
-//   rather than a 404 sitemap.
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
-import type { PublicVideo } from '@/lib/videos'
-
+export const dynamic = 'force-dynamic'
 export const revalidate = 3600
 
 const BASE = 'https://www.jaetravel.co.ke'
 
-const PAGE_SIZE = 100
+interface VideoDocument {
+  slug?: string | null
+  title?: string | null
+  description?: string | null
+  thumbnailUrl?: string | null
+  publishedAt?: string | null
+
+  provider?: 'youtube' | 'instagram' | null
+  externalId?: string | null
+  externalUrl?: string | null
+
+  duration?: number | null
+  durationSeconds?: number | null
+}
 
 function escapeXml(value: string): string {
   return value
@@ -46,452 +32,263 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;')
 }
 
-/**
- * Convert a YouTube duration in seconds to ISO 8601.
- */
-function durationToIso(
-  seconds: number | null | undefined,
-): string | null {
-  if (
-    typeof seconds !== 'number' ||
-    !Number.isFinite(seconds) ||
-    seconds <= 0
-  ) {
+function normalizeUrl(value: string): string {
+  return value.trim()
+}
+
+function youtubeEmbedUrl(video: VideoDocument): string | null {
+  if (video.externalId) {
+    return `https://www.youtube.com/embed/${encodeURIComponent(
+      video.externalId,
+    )}`
+  }
+
+  if (video.externalUrl) {
+    try {
+      const url = new URL(video.externalUrl)
+
+      const host = url.hostname.toLowerCase()
+
+      if (
+        host === 'youtube.com' ||
+        host === 'www.youtube.com' ||
+        host === 'youtu.be' ||
+        host === 'www.youtu.be'
+      ) {
+        let id = ''
+
+        if (host.includes('youtu.be')) {
+          id = url.pathname.replace(/^\/+/, '')
+        } else {
+          id = url.searchParams.get('v') || ''
+        }
+
+        if (id) {
+          return `https://www.youtube.com/embed/${encodeURIComponent(id)}`
+        }
+      }
+    } catch {
+      return null
+    }
+  }
+
+  return null
+}
+
+function instagramEmbedUrl(video: VideoDocument): string | null {
+  if (video.externalUrl) {
+    try {
+      const url = new URL(video.externalUrl)
+
+      const host = url.hostname.toLowerCase()
+
+      if (
+        host === 'instagram.com' ||
+        host === 'www.instagram.com'
+      ) {
+        return `${url.origin}${url.pathname}embed`
+      }
+    } catch {
+      return null
+    }
+  }
+
+  return null
+}
+
+function getPlayerUrl(video: VideoDocument): string | null {
+  if (video.provider === 'youtube') {
+    return youtubeEmbedUrl(video)
+  }
+
+  if (video.provider === 'instagram') {
+    return instagramEmbedUrl(video)
+  }
+
+  return null
+}
+
+function durationToIso(duration: unknown): string | null {
+  if (typeof duration !== 'number' || !Number.isFinite(duration)) {
     return null
   }
 
-  const total = Math.floor(seconds)
+  if (duration <= 0) {
+    return null
+  }
 
-  const hours = Math.floor(total / 3600)
+  const seconds = Math.floor(duration)
 
-  const minutes = Math.floor(
-    (total % 3600) / 60,
-  )
+  const hours = Math.floor(seconds / 3600)
+  const minutes = Math.floor((seconds % 3600) / 60)
+  const remainingSeconds = seconds % 60
 
-  const remainingSeconds =
-    total % 60
-
-  let value = 'PT'
+  let result = 'PT'
 
   if (hours > 0) {
-    value += `${hours}H`
+    result += `${hours}H`
   }
 
   if (minutes > 0) {
-    value += `${minutes}M`
+    result += `${minutes}M`
   }
 
-  if (
-    remainingSeconds > 0 ||
-    (hours === 0 && minutes === 0)
-  ) {
-    value += `${remainingSeconds}S`
+  if (remainingSeconds > 0 || result === 'PT') {
+    result += `${remainingSeconds}S`
   }
 
-  return value
+  return result
 }
 
-/**
- * YouTube privacy-enhanced player.
- */
-function youtubeEmbedUrl(
-  externalId: string,
-): string {
-  return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(
-    externalId,
-  )}`
-}
+function buildVideoEntry(video: VideoDocument): string | null {
+  const slug = video.slug?.trim()
+  const title = video.title?.trim()
+  const thumbnailUrl = video.thumbnailUrl?.trim()
+  const publishedAt = video.publishedAt?.trim()
+  const playerUrl = getPlayerUrl(video)
 
-/**
- * Convert an Instagram permalink to the public embed URL.
- *
- * Supports:
- *   /reel/ID/
- *   /reels/ID/
- *   /p/ID/
- */
-function instagramEmbedUrl(
-  url: string,
-): string | null {
-  try {
-    const parsed = new URL(url)
-
-    const match =
-      parsed.pathname.match(
-        /^\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)\/?$/,
-      )
-
-    if (!match) {
-      return null
-    }
-
-    return `https://www.instagram.com/p/${match[1]}/embed/`
-  } catch {
-    return null
-  }
-}
-
-/**
- * Validate the minimum information required for a video
- * sitemap entry.
- */
-function isValidVideo(
-  video: PublicVideo,
-): boolean {
-  if (!video.slug) {
-    return false
-  }
-
-  if (!video.thumbnailUrl) {
-    return false
-  }
-
-  if (!video.title) {
-    return false
-  }
-
-  if (!video.publishedAt) {
-    return false
-  }
-
-  if (
-    video.provider === 'youtube' &&
-    !video.externalId
-  ) {
-    return false
-  }
-
-  if (
-    video.provider === 'instagram' &&
-    !video.url
-  ) {
-    return false
-  }
-
-  return true
-}
-
-/**
- * Build one <video:video> entry.
- */
-function buildVideoEntry(
-  video: PublicVideo,
-): string | null {
-  if (!isValidVideo(video)) {
-    console.warn(
-      `[sitemap-videos] Skipping invalid video: ${video.slug}`,
-    )
-
+  // A video sitemap entry requires enough information to
+  // identify an actual public video.
+  if (!slug || !title || !thumbnailUrl || !publishedAt || !playerUrl) {
     return null
   }
 
-  const pageUrl =
-    `${BASE}/watch/${encodeURIComponent(video.slug)}`
-
-  const title =
-    video.title?.trim() ||
-    'JaeTravel Expeditions Video'
+  const watchUrl = `${BASE}/watch/${encodeURIComponent(slug)}`
 
   const description =
     video.description?.trim() ||
-    `Watch ${title} on JaeTravel Expeditions.`
-
-  const thumbnail =
-    video.thumbnailUrl!.trim()
-
-  let playerLoc: string | null = null
-
-  if (
-    video.provider === 'youtube' &&
-    video.externalId
-  ) {
-    playerLoc =
-      youtubeEmbedUrl(video.externalId)
-  }
-
-  if (
-    video.provider === 'instagram' &&
-    video.url
-  ) {
-    playerLoc =
-      instagramEmbedUrl(video.url)
-  }
-
-  if (!playerLoc) {
-    console.warn(
-      `[sitemap-videos] No player URL for ${video.slug}`,
-    )
-
-    return null
-  }
-
-  const publicationDate =
-    new Date(video.publishedAt!)
-
-  if (
-    Number.isNaN(
-      publicationDate.getTime(),
-    )
-  ) {
-    console.warn(
-      `[sitemap-videos] Invalid publication date for ${video.slug}`,
-    )
-
-    return null
-  }
+    `${title} — JaeTravel Expeditions`
 
   const duration =
-    video.provider === 'youtube'
-      ? durationToIso(video.durationSeconds)
-      : null
+    durationToIso(video.duration) ||
+    durationToIso(video.durationSeconds)
 
-  const lines: string[] = []
+  const publicationDate = new Date(publishedAt)
 
-  lines.push(
+  if (Number.isNaN(publicationDate.getTime())) {
+    return null
+  }
+
+  const lines = [
+    '  <url>',
+    `    <loc>${escapeXml(watchUrl)}</loc>`,
+    '    <video:video>',
     `      <video:thumbnail_loc>${escapeXml(
-      thumbnail,
+      normalizeUrl(thumbnailUrl),
     )}</video:thumbnail_loc>`,
-  )
-
-  lines.push(
-    `      <video:title>${escapeXml(
-      title,
-    )}</video:title>`,
-  )
-
-  lines.push(
-    `      <video:description>${escapeXml(
-      description.slice(0, 2048),
-    )}</video:description>`,
-  )
-
-  lines.push(
-    `      <video:player_loc allow_embed="yes">${escapeXml(
-      playerLoc,
-    )}</video:player_loc>`,
-  )
+    `      <video:title>${escapeXml(title)}</video:title>`,
+    `      <video:description>${escapeXml(description)}</video:description>`,
+    `      <video:player_loc>${escapeXml(playerUrl)}</video:player_loc>`,
+    `      <video:publication_date>${publicationDate.toISOString()}</video:publication_date>`,
+  ]
 
   if (duration) {
-    lines.push(
-      `      <video:duration>${duration}</video:duration>`,
-    )
+    lines.push(`      <video:duration>${duration}</video:duration>`)
   }
 
   lines.push(
-    `      <video:publication_date>${publicationDate.toISOString()}</video:publication_date>`,
+    '      <video:family_friendly>yes</video:family_friendly>',
+    '    </video:video>',
+    '  </url>',
   )
 
-  lines.push(
-    `      <video:family_friendly>yes</video:family_friendly>`,
-  )
-
-  return `  <url>
-    <loc>${escapeXml(pageUrl)}</loc>
-    <video:video>
-${lines.join('\n')}
-    </video:video>
-  </url>`
-}
-
-/**
- * Fetch published videos directly.
- *
- * This intentionally does NOT use getAllVideos() because that helper
- * catches errors and returns [], which could make a database failure
- * look like a legitimate empty sitemap.
- */
-async function fetchPublishedVideos(): Promise<PublicVideo[]> {
-  const payload = await getPayload({
-    config,
-  })
-
-  const videos: PublicVideo[] = []
-
-  let page = 1
-
-  while (true) {
-    const result = await payload.find({
-      collection: 'videos',
-
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-
-      page,
-
-      limit: PAGE_SIZE,
-
-      depth: 0,
-
-      overrideAccess: true,
-
-      sort: '-publishedAt',
-    })
-
-    for (const doc of result.docs) {
-      const raw =
-        doc as unknown as Record<string, unknown>
-
-      const slug =
-        typeof raw.slug === 'string'
-          ? raw.slug.trim()
-          : ''
-
-      if (!slug) {
-        continue
-      }
-
-      const provider =
-        typeof raw.provider === 'string'
-          ? raw.provider
-          : 'youtube'
-
-      const externalId =
-        typeof raw.externalId === 'string'
-          ? raw.externalId.trim()
-          : ''
-
-      const url =
-        typeof raw.url === 'string'
-          ? raw.url.trim()
-          : ''
-
-      const title =
-        typeof raw.title === 'string'
-          ? raw.title.trim()
-          : null
-
-      const description =
-        typeof raw.description === 'string'
-          ? raw.description.trim()
-          : null
-
-      const thumbnailUrl =
-        typeof raw.thumbnailUrl === 'string'
-          ? raw.thumbnailUrl.trim()
-          : null
-
-      const publishedAt =
-        typeof raw.publishedAt === 'string'
-          ? raw.publishedAt
-          : null
-
-      const durationSeconds =
-        typeof raw.durationSeconds === 'number'
-          ? raw.durationSeconds
-          : null
-
-      const syncedAt =
-        typeof raw.syncedAt === 'string'
-          ? raw.syncedAt
-          : null
-
-      videos.push({
-        id:
-          (raw.id as number | string | undefined) ??
-          '',
-
-        provider:
-          provider as PublicVideo['provider'],
-
-        externalId,
-
-        url,
-
-        slug,
-
-        title,
-
-        description,
-
-        thumbnailUrl,
-
-        publishedAt,
-
-        durationSeconds,
-
-        syncedAt,
-      })
-    }
-
-    if (
-      result.hasNextPage !== true ||
-      result.nextPage == null
-    ) {
-      break
-    }
-
-    page = result.nextPage
-  }
-
-  return videos
+  return lines.join('\n')
 }
 
 export async function GET() {
   try {
-    const allVideos =
-      await fetchPublishedVideos()
+    console.log('[sitemap-videos] Starting generation')
 
-    const entries = allVideos
-      .map(buildVideoEntry)
-      .filter(
-        (entry): entry is string =>
-          Boolean(entry),
-      )
+    const payload = await getPayload({ config })
+
+    console.log('[sitemap-videos] Payload initialized')
+
+    /*
+     * IMPORTANT:
+     *
+     * The Videos collection does not use Payload drafts/versions,
+     * so it does NOT have the automatically generated `_status` field.
+     *
+     * We therefore fetch the video documents normally and use
+     * `publishedAt` as the publication indicator.
+     */
+    const result = await payload.find({
+      collection: 'videos',
+      limit: 1000,
+      depth: 0,
+      sort: '-publishedAt',
+      overrideAccess: true,
+    })
 
     console.log(
-      `[sitemap-videos] Published videos: ${allVideos.length}; valid entries: ${entries.length}`,
+      `[sitemap-videos] Payload returned ${result.docs.length} documents`,
     )
 
-    /**
-     * IMPORTANT:
-     * An empty sitemap is still valid XML.
+    const entries: string[] = []
+
+    for (const document of result.docs) {
+      const video = document as VideoDocument
+
+      // Only videos with a publication date are considered public.
+      if (!video.publishedAt) {
+        continue
+      }
+
+      const entry = buildVideoEntry(video)
+
+      if (entry) {
+        entries.push(entry)
+      }
+    }
+
+    console.log(
+      `[sitemap-videos] Generated ${entries.length} valid video entries`,
+    )
+
+    /*
+     * Never return an empty <urlset>.
      *
-     * Do NOT return 404 here.
-     *
-     * The sitemap index controls whether this sitemap is linked.
+     * If there are currently no valid public videos, returning 404
+     * is preferable to returning malformed XML.
      */
-    const body = `<?xml version="1.0" encoding="UTF-8"?>
+    if (entries.length === 0) {
+      return new Response(
+        'No published videos available for sitemap.',
+        {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': 'no-store',
+          },
+        },
+      )
+    }
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+>
 ${entries.join('\n')}
 </urlset>`
 
-    return new Response(body, {
+    return new Response(xml, {
       status: 200,
-
       headers: {
-        'Content-Type':
-          'application/xml; charset=utf-8',
-
-        'Cache-Control':
-          'public, max-age=3600, s-maxage=3600',
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
       },
     })
   } catch (error) {
-    console.error(
-      '[sitemap-videos] Failed to generate sitemap:',
-      error,
-    )
+    console.error('[sitemap-videos] FAILED:', error)
 
-    /**
-     * A CMS/database failure is a server error, not
-     * an empty sitemap.
-     */
     return new Response(
       'Unable to generate video sitemap',
       {
         status: 500,
-
         headers: {
-          'Content-Type':
-            'text/plain; charset=utf-8',
-
-          'Cache-Control':
-            'no-store',
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Cache-Control': 'no-store',
         },
       },
     )
