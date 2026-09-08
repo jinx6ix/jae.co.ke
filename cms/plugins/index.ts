@@ -29,7 +29,7 @@ export const plugins: Plugin[] = [
   ...(process.env.BLOB_READ_WRITE_TOKEN?.startsWith('vercel_blob_rw_')
     ? [
         vercelBlobStorage({
-          enabled: true,
+    /*      enabled: true,  */
           collections: {
             media: true,
           },
