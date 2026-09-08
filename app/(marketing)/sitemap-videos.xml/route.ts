@@ -440,12 +440,26 @@ export async function GET() {
      */
     if (blocks.length === 0) {
       return new Response(
-        'No published videos available for sitemap.',
+        JSON.stringify(
+          {
+            message: 'No valid videos available for sitemap',
+            totalPayloadVideos: result.docs.length,
+            skipped: {
+              noDate: skippedNoDate,
+              noSlug: skippedNoSlug,
+              noThumbnail: skippedNoThumbnail,
+              noPlayer: skippedNoPlayer,
+              badDate: skippedBadDate,
+            },
+          },
+          null,
+          2,
+        ),
         {
           status: 404,
           headers: {
             'Content-Type':
-              'text/plain; charset=utf-8',
+              'application/json; charset=utf-8',
             'Cache-Control':
               'no-store',
           },

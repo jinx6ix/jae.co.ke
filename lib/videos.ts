@@ -1,184 +1,190 @@
+
 // lib/videos.ts
 //
-// Public video helpers for JaeTravel.
-// Videos are hosted externally on YouTube or Instagram.
-// Payload stores the metadata and the public JaeTravel page is:
+// Public video data access.
 //
-//   /watch/[slug]
+// The Videos collection does NOT use Payload drafts/versions, so there is
+// no `_status` field to filter on. A video is considered published/public
+// when it has a publishedAt value.
 //
-// IMPORTANT:
-// - Only published Payload videos are exposed.
-// - Draft videos are never returned to public pages or sitemaps.
-// - Payload access control is intentionally bypassed here because we
-//   explicitly enforce `_status: published` in every public query.
-// - The helpers are cached and invalidated through the videos-sitemap tag.
+// This module is used by:
+//   - /watch/[slug]
+//   - video metadata / SEO
+//   - sitemap generation
+//   - video sitemap generation
+//
+// The collection itself is:
+//   cms/collections/Videos/index.ts
+//
+// Important:
+// - Do not query `_status` here.
+// - Existing videos have now been backfilled with slugs.
+// - Instagram videos may have an empty title, so normalization provides
+//   a safe fallback title.
+// - Cache invalidation uses the `videos-sitemap` tag.
 
 import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
+
 import config from '@payload-config'
 
-export type VideoProvider = 'youtube' | 'instagram' | (string & {})
-
 export interface PublicVideo {
-  id: number | string
-  provider: VideoProvider
+  id: string
+  provider: 'youtube' | 'instagram'
   externalId: string
   url: string
   slug: string
-  title: string | null
-  description: string | null
-  thumbnailUrl: string | null
-  publishedAt: string | null
-  durationSeconds: number | null
-  syncedAt: string | null
+  title: string
+  description: string
+  thumbnailUrl: string
+  publishedAt: string
+  durationSeconds?: number | null
 }
 
-const COLLECTION = 'videos' as const
-
-const PAGE_SIZE = 100
+type PayloadVideo = {
+  id?: string
+  provider?: 'youtube' | 'instagram' | string | null
+  externalId?: string | null
+  url?: string | null
+  slug?: string | null
+  title?: string | null
+  description?: string | null
+  thumbnailUrl?: string | null
+  publishedAt?: string | null
+  durationSeconds?: number | null
+}
 
 /**
- * Normalize a Payload video document into the small public shape used
- * by pages, metadata and sitemaps.
+ * Convert a Payload video document into the safe public shape.
+ *
+ * Returns null when the document doesn't contain enough information
+ * to create a valid public video page/sitemap entry.
  */
-function normalizeVideo(raw: unknown): PublicVideo | null {
-  if (!raw || typeof raw !== 'object') return null
+function normalizeVideo(raw: PayloadVideo): PublicVideo | null {
+  const id = raw.id?.toString().trim()
+  const provider = raw.provider
+  const externalId = raw.externalId?.toString().trim()
+  const url = raw.url?.toString().trim()
+  const slug = raw.slug?.toString().trim()
+  const thumbnailUrl = raw.thumbnailUrl?.toString().trim()
+  const publishedAt = raw.publishedAt?.toString().trim()
 
-  const r = raw as Record<string, unknown>
+  if (!id) return null
 
-  const id = (r.id as number | string | undefined) ?? ''
+  if (provider !== 'youtube' && provider !== 'instagram') {
+    return null
+  }
 
-  const slug =
-    typeof r.slug === 'string'
-      ? r.slug.trim()
-      : ''
-
+  if (!externalId) return null
+  if (!url) return null
   if (!slug) return null
+  if (!thumbnailUrl) return null
+  if (!publishedAt) return null
+
+  const title = raw.title?.toString().trim() || ''
+
+  const description = raw.description?.toString().trim() || ''
+
+  // Instagram records in the current database can have an empty title.
+  // Use the first useful description line as a better fallback.
+  const fallbackTitle =
+    title ||
+    description
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find(Boolean) ||
+    `${provider === 'youtube' ? 'YouTube' : 'Instagram'} video`
 
   return {
     id,
-
-    provider:
-      typeof r.provider === 'string'
-        ? (r.provider as VideoProvider)
-        : 'youtube',
-
-    externalId:
-      typeof r.externalId === 'string'
-        ? r.externalId.trim()
-        : '',
-
-    url:
-      typeof r.url === 'string'
-        ? r.url.trim()
-        : '',
-
+    provider,
+    externalId,
+    url,
     slug,
-
-    title:
-      typeof r.title === 'string'
-        ? r.title.trim()
-        : null,
-
-    description:
-      typeof r.description === 'string'
-        ? r.description.trim()
-        : null,
-
-    thumbnailUrl:
-      typeof r.thumbnailUrl === 'string'
-        ? r.thumbnailUrl.trim()
-        : null,
-
-    publishedAt:
-      typeof r.publishedAt === 'string'
-        ? r.publishedAt
-        : null,
-
+    title: fallbackTitle,
+    description,
+    thumbnailUrl,
+    publishedAt,
     durationSeconds:
-      typeof r.durationSeconds === 'number'
-        ? r.durationSeconds
-        : null,
-
-    syncedAt:
-      typeof r.syncedAt === 'string'
-        ? r.syncedAt
+      typeof raw.durationSeconds === 'number' &&
+      Number.isFinite(raw.durationSeconds) &&
+      raw.durationSeconds >= 0
+        ? raw.durationSeconds
         : null,
   }
 }
 
 /**
- * Fetch all published video slugs.
+ * Create the Payload client.
+ */
+async function getPayloadClient() {
+  return getPayload({
+    config,
+  })
+}
+
+/**
+ * Fetch every public video slug.
  *
- * Pagination prevents the old hard 1000-record ceiling.
+ * The Videos collection doesn't have Payload drafts enabled, therefore
+ * `_status` must NOT be used here.
  */
 async function fetchAllVideoSlugs(): Promise<string[]> {
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
 
-  const slugs: string[] = []
-
-  let page = 1
-
-  while (true) {
-    const result = await payload.find({
-      collection: COLLECTION,
-
-      where: {
-        _status: {
-          equals: 'published',
-        },
+  const result = await payload.find({
+    collection: 'videos',
+    limit: 1000,
+    depth: 0,
+    overrideAccess: true,
+    where: {
+      publishedAt: {
+        exists: true,
       },
+    },
+  })
 
-      page,
-      limit: PAGE_SIZE,
-
-      depth: 0,
-
-      overrideAccess: true,
-    })
-
-    for (const doc of result.docs) {
-      const raw = doc as unknown as Record<string, unknown>
-
-      if (typeof raw.slug === 'string') {
-        const slug = raw.slug.trim()
-
-        if (slug) {
-          slugs.push(slug)
-        }
-      }
-    }
-
-    if (
-      result.hasNextPage !== true ||
-      result.nextPage == null
-    ) {
-      break
-    }
-
-    page = result.nextPage
-  }
-
-  return [...new Set(slugs)]
+  return result.docs
+    .map((doc) => normalizeVideo(doc as PayloadVideo))
+    .filter((video): video is PublicVideo => video !== null)
+    .map((video) => video.slug)
 }
 
 /**
- * Fetch one published video by public slug.
+ * Cached list of public video slugs.
+ *
+ * Used by generateStaticParams() for /watch/[slug].
  */
-async function fetchVideoBySlug(
-  slug: string,
-): Promise<PublicVideo | null> {
-  const payload = await getPayload({ config })
+export const getAllVideoSlugs = unstable_cache(
+  async () => fetchAllVideoSlugs(),
+  ['videos-all-slugs'],
+  {
+    tags: ['videos-sitemap'],
+    revalidate: 300,
+  },
+)
 
+/**
+ * Fetch a single public video by slug.
+ *
+ * A video must:
+ * - have the requested slug
+ * - have publishedAt set
+ */
+async function fetchVideoBySlug(slug: string): Promise<PublicVideo | null> {
   const cleanSlug = slug.trim()
 
   if (!cleanSlug) {
     return null
   }
 
-  const result = await payload.find({
-    collection: COLLECTION,
+  const payload = await getPayloadClient()
 
+  const result = await payload.find({
+    collection: 'videos',
+    limit: 1,
+    depth: 0,
+    overrideAccess: true,
     where: {
       and: [
         {
@@ -187,18 +193,12 @@ async function fetchVideoBySlug(
           },
         },
         {
-          _status: {
-            equals: 'published',
+          publishedAt: {
+            exists: true,
           },
         },
       ],
     },
-
-    limit: 1,
-
-    depth: 0,
-
-    overrideAccess: true,
   })
 
   const doc = result.docs[0]
@@ -207,154 +207,60 @@ async function fetchVideoBySlug(
     return null
   }
 
-  return normalizeVideo(doc)
+  return normalizeVideo(doc as PayloadVideo)
 }
 
 /**
- * Fetch all published videos.
+ * Cached public video lookup.
  *
- * This is used by:
- * - sitemap-videos.xml
- * - video indexes
- * - other public discovery surfaces
+ * Used by:
+ * - /watch/[slug]
+ * - generateMetadata()
+ * - video SEO schema
+ */
+export const getVideoBySlug = unstable_cache(
+  async (slug: string) => fetchVideoBySlug(slug),
+  ['video-by-slug'],
+  {
+    tags: ['videos-sitemap'],
+    revalidate: 300,
+  },
+)
+
+/**
+ * Fetch all public videos.
  *
- * Only published records are returned.
+ * Used by sitemap/SEO code and other public-facing video listings.
  */
 async function fetchAllVideos(): Promise<PublicVideo[]> {
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
 
-  const videos: PublicVideo[] = []
-
-  let page = 1
-
-  while (true) {
-    const result = await payload.find({
-      collection: COLLECTION,
-
-      where: {
-        _status: {
-          equals: 'published',
-        },
+  const result = await payload.find({
+    collection: 'videos',
+    limit: 1000,
+    depth: 0,
+    overrideAccess: true,
+    where: {
+      publishedAt: {
+        exists: true,
       },
+    },
+    sort: '-publishedAt',
+  })
 
-      page,
-      limit: PAGE_SIZE,
-
-      depth: 0,
-
-      overrideAccess: true,
-    })
-
-    for (const doc of result.docs) {
-      const video = normalizeVideo(doc)
-
-      if (video) {
-        videos.push(video)
-      }
-    }
-
-    if (
-      result.hasNextPage !== true ||
-      result.nextPage == null
-    ) {
-      break
-    }
-
-    page = result.nextPage
-  }
-
-  return videos
+  return result.docs
+    .map((doc) => normalizeVideo(doc as PayloadVideo))
+    .filter((video): video is PublicVideo => video !== null)
 }
 
 /**
- * Cached public slug list.
+ * Cached list of all public videos.
  */
-const getCachedAllSlugs = unstable_cache(
-  async () => fetchAllVideoSlugs(),
-  ['videos:all-slugs'],
-  {
-    tags: ['videos-sitemap'],
-    revalidate: 3600,
-  },
-)
-
-/**
- * Cached single-video lookup.
- */
-const getCachedBySlug = unstable_cache(
-  async (slug: string) => fetchVideoBySlug(slug),
-  ['videos:by-slug'],
-  {
-    tags: ['videos-sitemap'],
-    revalidate: 3600,
-  },
-)
-
-/**
- * Cached complete published-video list.
- */
-const getCachedAll = unstable_cache(
+export const getAllVideos = unstable_cache(
   async () => fetchAllVideos(),
-  ['videos:all'],
+  ['videos-all'],
   {
     tags: ['videos-sitemap'],
-    revalidate: 3600,
+    revalidate: 300,
   },
 )
-
-/**
- * Public list of video slugs.
- */
-export async function getAllVideoSlugs(): Promise<string[]> {
-  try {
-    return await getCachedAllSlugs()
-  } catch (err) {
-    console.error(
-      '[lib/videos] getAllVideoSlugs failed:',
-      err,
-    )
-
-    // Returning [] here is safe for page generation.
-    // The sitemap itself does NOT use this helper, so a database
-    // failure cannot silently become a fake empty sitemap.
-    return []
-  }
-}
-
-/**
- * Public lookup by slug.
- */
-export async function getVideoBySlug(
-  slug: string,
-): Promise<PublicVideo | null> {
-  try {
-    return await getCachedBySlug(slug)
-  } catch (err) {
-    console.error(
-      '[lib/videos] getVideoBySlug failed:',
-      err,
-    )
-
-    return null
-  }
-}
-
-/**
- * Public list of all published videos.
- *
- * NOTE:
- * The sitemap route can choose to query directly if it needs
- * to distinguish between "no videos" and "database failure".
- */
-export async function getAllVideos(): Promise<PublicVideo[]> {
-  try {
-    return await getCachedAll()
-  } catch (err) {
-    console.error(
-      '[lib/videos] getAllVideos failed:',
-      err,
-    )
-
-    return []
-  }
-}
