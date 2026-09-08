@@ -62,27 +62,91 @@ function buildVideoObjects(
   pageUrl: string,
   fallback: object,
 ): object[] {
-  if (!videos || videos.length === 0) return [fallback]
-  return videos.map((v) => {
-    const isYouTube = v.provider === "youtube"
-    return {
-      "@type": "VideoObject",
-      "@id": `${pageUrl}#video-${v.externalId}`,
-      name: v.title || (isYouTube ? "Safari video" : "Instagram reel"),
-      description: v.description || undefined,
-      thumbnailUrl: v.thumbnailUrl ? [v.thumbnailUrl] : undefined,
-      uploadDate: v.publishedAt || undefined,
-      duration:
-        isYouTube && v.durationSeconds
-          ? toISO8601Duration(v.durationSeconds)
-          : undefined,
-      contentUrl: v.url,
-      embedUrl: isYouTube
-        ? `https://www.youtube-nocookie.com/embed/${v.externalId}`
-        : `${v.url.replace(/\/$/, "")}/embed/`,
-      publisher: { "@id": `${BASE}/#organization` },
-    }
-  })
+  if (
+    !videos ||
+    videos.length === 0
+  ) {
+    return [fallback]
+  }
+
+  return videos
+    .filter(
+      (v) =>
+        Boolean(v.externalId) &&
+        Boolean(v.thumbnailUrl) &&
+        Boolean(v.publishedAt),
+    )
+    .map((v) => {
+      const isYouTube =
+        v.provider === "youtube"
+
+      const embedUrl =
+        isYouTube
+          ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(
+              v.externalId,
+            )}`
+          : getInstagramEmbedUrl(
+              v.url,
+            )
+
+      const videoUrl =
+        `${pageUrl}#video-${encodeURIComponent(
+          v.externalId,
+        )}`
+
+      return {
+        "@type": "VideoObject",
+
+        "@id": videoUrl,
+
+        name:
+          v.title ||
+          (isYouTube
+            ? "Safari video"
+            : "Instagram reel"),
+
+        description:
+          v.description ||
+          undefined,
+
+        thumbnailUrl:
+          v.thumbnailUrl
+            ? [v.thumbnailUrl]
+            : undefined,
+
+        uploadDate:
+          v.publishedAt ||
+          undefined,
+
+        duration:
+          isYouTube &&
+          v.durationSeconds
+            ? toISO8601Duration(
+                v.durationSeconds,
+              )
+            : undefined,
+
+        /**
+         * This is the JaeTravel page containing
+         * the video.
+         */
+        url: pageUrl,
+
+        /**
+         * This is the external video player.
+         */
+        embedUrl,
+
+        publisher: {
+          "@id":
+            `${BASE}/#organization`,
+        },
+
+        isFamilyFriendly: true,
+
+        isAccessibleForFree: true,
+      }
+    })
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -803,24 +867,118 @@ function buildCategoryPageSchema(
 // ─────────────────────────────────────────────────────────────────────────────
 // VIDEO PAGE SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
-function buildVideoSchema(video: VideoSchemaInput, slug: string) {
-  const url = `${BASE}/watch/${slug}`
 
-  return {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "@id": `${url}#video`,
-    name: video.title,
-    description: video.description,
-    thumbnailUrl: video.thumbnailUrl,
-    uploadDate: video.publishedAt,
-    duration: video.durationSeconds ? toISO8601Duration(video.durationSeconds) : undefined,
-    contentUrl: video.url,
-    embedUrl: video.provider === "youtube"
-      ? `https://www.youtube-nocookie.com/embed/${video.externalId}`
-      : `${video.url.replace(/\/$/, "")}/embed/`,
-    publisher: MERCHANT,
+function getInstagramEmbedUrl(
+  url: string,
+): string {
+  try {
+    const parsed =
+      new URL(url)
+
+    const match =
+      parsed.pathname.match(
+        /^\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)\/?$/,
+      )
+
+    if (match) {
+      return `https://www.instagram.com/p/${match[1]}/embed/`
+    }
+  } catch {
+    // Fall through.
   }
+
+  return url
+}
+
+function buildVideoSchema(
+  video: VideoSchemaInput,
+  slug: string,
+) {
+  const url =
+    `${BASE}/watch/${slug}`
+
+  const isYouTube =
+    video.provider === 'youtube'
+
+  const embedUrl =
+    isYouTube
+      ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(
+          video.externalId,
+        )}`
+      : getInstagramEmbedUrl(
+          video.url,
+        )
+
+  const schema: Record<
+    string,
+    unknown
+  > = {
+    "@context": "https://schema.org",
+
+    "@type": "VideoObject",
+
+    "@id": `${url}#video`,
+
+    name:
+      video.title ||
+      (isYouTube
+        ? "JaeTravel YouTube Video"
+        : "JaeTravel Instagram Reel"),
+
+    description:
+      video.description ||
+      `Watch this JaeTravel Expeditions video.`,
+
+    thumbnailUrl:
+      video.thumbnailUrl
+        ? [video.thumbnailUrl]
+        : undefined,
+
+    uploadDate:
+      video.publishedAt ||
+      undefined,
+
+    duration:
+      isYouTube &&
+      video.durationSeconds
+        ? toISO8601Duration(
+            video.durationSeconds,
+          )
+        : undefined,
+
+    /**
+     * This is the public JaeTravel page where the
+     * video can be watched.
+     */
+    url,
+
+    /**
+     * This is the actual external player.
+     */
+    embedUrl,
+
+    publisher: MERCHANT,
+
+    isFamilyFriendly: true,
+
+    isAccessibleForFree: true,
+
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  }
+
+  /**
+   * Do NOT add:
+   *
+   * contentUrl: video.url
+   *
+   * because video.url is a YouTube/Instagram webpage,
+   * not a direct MP4/video-file URL.
+   */
+
+  return schema
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

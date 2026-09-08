@@ -78,6 +78,7 @@ export interface Config {
     destinations: Destination;
     products: Product;
     'budget-tours': BudgetTour;
+    videos: Video;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -106,6 +107,7 @@ export interface Config {
     destinations: DestinationsSelect<false> | DestinationsSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     'budget-tours': BudgetToursSelect<false> | BudgetToursSelect<true>;
+    videos: VideosSelect<false> | VideosSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -229,6 +231,7 @@ export interface Page {
     | BlogArchiveBlock
     | StatisticsBlock
     | TestimonialsBlock
+    | VideoBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1087,6 +1090,77 @@ export interface TestimonialsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  /**
+   * Optional H2 above the videos (e.g. "Watch our safaris in action").
+   */
+  heading?: string | null;
+  /**
+   * Pick videos from the library. Use a maximum of 6 per block for best layout.
+   */
+  videos: (string | Video)[];
+  /**
+   * How the videos should be laid out on the page.
+   */
+  layout?: ('grid' | 'stack' | 'carousel') | null;
+  /**
+   * Render the title and description below each video.
+   */
+  showCaptions?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "videos".
+ */
+export interface Video {
+  id: string;
+  /**
+   * Where this video is hosted.
+   */
+  provider: 'youtube' | 'instagram';
+  /**
+   * YouTube video id (the part after ?v=) or Instagram media id. The sync hook uses this to fetch title, description, thumbnail, and date.
+   */
+  externalId: string;
+  /**
+   * Canonical share URL (https://www.youtube.com/watch?v=... or https://www.instagram.com/reel/...).
+   */
+  url: string;
+  /**
+   * URL-safe identifier used in /watch/{slug}. Auto-generated from the title on save if left blank. Lowercase letters, digits, and dashes only.
+   */
+  slug: string;
+  /**
+   * Auto-filled from the API on save. You can override.
+   */
+  title?: string | null;
+  /**
+   * Auto-filled from the API on save. Used as the VideoObject description in JSON-LD.
+   */
+  description?: string | null;
+  /**
+   * Auto-filled from the API. Used as the VideoObject thumbnail (maxres for YouTube).
+   */
+  thumbnailUrl?: string | null;
+  publishedAt?: string | null;
+  /**
+   * YouTube only. Surfaced in the VideoObject schema as ISO 8601 duration.
+   */
+  durationSeconds?: number | null;
+  /**
+   * Last time the sync hook refreshed metadata from the source API.
+   */
+  syncedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hotels".
  */
 export interface Hotel {
@@ -1576,6 +1650,10 @@ export interface PayloadLockedDocument {
         value: string | BudgetTour;
       } | null)
     | ({
+        relationTo: 'videos';
+        value: string | Video;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1680,6 +1758,7 @@ export interface PagesSelect<T extends boolean = true> {
         blogArchive?: T | BlogArchiveBlockSelect<T>;
         statistics?: T | StatisticsBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
+        videoBlock?: T | VideoBlockSelect<T>;
       };
   meta?:
     | T
@@ -1866,6 +1945,18 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
         photo?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  heading?: T;
+  videos?: T;
+  layout?: T;
+  showCaptions?: T;
   id?: T;
   blockName?: T;
 }
@@ -2282,6 +2373,24 @@ export interface BudgetToursSelect<T extends boolean = true> {
       };
   generateSlug?: T;
   slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "videos_select".
+ */
+export interface VideosSelect<T extends boolean = true> {
+  provider?: T;
+  externalId?: T;
+  url?: T;
+  slug?: T;
+  title?: T;
+  description?: T;
+  thumbnailUrl?: T;
+  publishedAt?: T;
+  durationSeconds?: T;
+  syncedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
