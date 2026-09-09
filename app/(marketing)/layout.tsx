@@ -132,7 +132,6 @@ export const metadata: Metadata = {
   },
   verification: { google: "KxqG_F7q2oNg53VVm3kfIKzr782vQl7AfAH7Q3X4Ssg" },
   alternates: {
-    canonical: BASE,
     languages: {
       en: BASE,
       fr: `${BASE}/fr`,
