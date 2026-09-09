@@ -205,7 +205,6 @@ export async function BrandShell() {
         <link key={l.code} rel="alternate" hrefLang={l.code} href={l.href} />
       ))}
       <link rel="alternate" hrefLang="x-default" href={BASE} />
-      <link rel="canonical" href={BASE} />
 
       {/* Brand schema */}
       <script
