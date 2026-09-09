@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
     ? tour.image
     : `${baseUrl}${tour.image || `/placeholder.svg?key=tour-${tour.id}`}`
 
-  const url = `${baseUrl}/safari/${tour.slug}`
+  const url = `${baseUrl}/tour/${tour.slug}`
 
   return {
     title: safeTitle,
