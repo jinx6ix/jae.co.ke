@@ -977,7 +977,7 @@ export default function DisabilityToursPage() {
                 </div>
                 <div>
                   <p className="text-lg leading-relaxed text-muted-foreground">
-                    From the Great Migration viewed from your wheelchair to gorilla encounters in
+                    From the <a href="/wheelchair-accessible-maasai-mara-migration" class="text-primary underline font-semibold">Great Migration</a> viewed from your wheelchair to gorilla encounters in
                     Rwanda – we make it possible.
                   </p>
                 </div>
@@ -1004,7 +1004,7 @@ export default function DisabilityToursPage() {
           </h2>
           <div className="max-w-5xl mx-auto text-center mb-12">
             <p className="text-lg text-muted-foreground">
-              German hydraulic lifts with 400kg capacity – the only fleet built exclusively for
+              German hydraulic lifts with 400kg capacity – the only fleet of <a href="/wheelchair-vehicle" class="text-primary underline font-semibold">wheelchair-accessible safari vehicles</a> built exclusively for
               full-time wheelchair users on <strong>wheelchair accessible safari Kenya</strong>.
             </p>
           </div>

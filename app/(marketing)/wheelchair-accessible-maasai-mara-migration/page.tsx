@@ -80,7 +80,7 @@ This is not a singular event but rather a continuous, year-round cycle driven by
 
 For travelers with mobility impairments, witnessing this spectacle has historically been nearly impossible due to inaccessible vehicles and infrastructure. JaeTravel Expeditions has revolutionized accessible African tourism by pioneering Kenya's first and only fleet of fully wheelchair-accessible Great Migration safari vehicles. Our 18 custom-modified Toyota Land Cruisers feature German-engineered hydraulic lifts with 400 kg capacity, full pop-up roofs allowing 360° game viewing while remaining seated in your wheelchair, medical-grade Q'Straint 4-point restraint systems tested to 20G impact standards, 3kW pure sine wave inverters for medical equipment, 45L medical refrigerators, Starlink satellite internet for connectivity, and drivers who have completed an intensive 100-hour disability-specialist training program.
 
-Since our founding in 2018, JaeTravel Expeditions has successfully guided over 720 wheelchair users and travelers with limited mobility to witness multiple Mara River crossings per day. Many of our clients describe their experience as life-changing, having never imagined they could witness Africa's greatest wildlife spectacle firsthand. Our commitment to accessibility extends beyond vehicles to include partnerships with accessible lodges, trained staff, and comprehensive emergency protocols that make JaeTravel Expeditions the leading choice for accessible Kenya safari experiences.`
+Since our founding in 2018, JaeTravel Expeditions has successfully guided over 720 wheelchair users and travelers with limited mobility to witness multiple Mara River crossings per day. Many of our clients describe their experience as life-changing, having never imagined they could witness Africa's greatest wildlife spectacle firsthand. Our commitment to accessibility extends beyond vehicles to include partnerships with accessible lodges, trained staff, and comprehensive emergency protocols that make JaeTravel Expeditions the leading choice for <a href="/disability-tours" class="text-orange-900 underline font-semibold">accessible Kenya safari experiences</a>.`
   },
   {
     h2: "Maasai Mara Great Migration 2026: Complete Month-by-Month Timeline & Expert Predictions by JaeTravel Expeditions",
@@ -182,7 +182,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 <h3 class="text-xl font-bold text-orange-900">Pioneers in Accessible Safari Technology</h3>
 </div>
 </div>
-<p class="text-orange-800">JaeTravel Expeditions introduced East Africa's first fully wheelchair-accessible safari vehicles in 2018. Our continuous innovation in adaptive vehicle technology ensures that we maintain the highest standards of accessibility, safety, and comfort for all our clients experiencing the Maasai Mara Great Migration.</p>
+<p class="text-orange-800">JaeTravel Expeditions introduced East Africa's first fully <a href="/wheelchair-vehicle" class="text-orange-900 underline font-semibold">wheelchair-accessible safari vehicles</a> in 2018. Our continuous innovation in <a href="/wheelchair-accessible-safari-landcruiser" class="text-orange-900 underline font-semibold">adaptive safari Land Cruiser technology</a> ensures that we maintain the highest standards of accessibility, safety, and comfort for all our clients experiencing the Maasai Mara Great Migration.</p>
 </div>
 
 <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-200">
@@ -224,7 +224,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 
 <div class="bg-gradient-to-br from-orange-100 to-amber-200 p-6 rounded-2xl border border-orange-400 my-8">
 <h3 class="text-2xl font-bold text-orange-900 mb-4 text-center">JaeTravel Expeditions: More Than a Safari - A Movement</h3>
-<p class="text-orange-800 text-center">We're not just providing accessible safaris; we're championing a movement toward inclusive travel in Africa. JaeTravel Expeditions actively advocates for improved accessibility standards across the tourism industry, shares our engineering innovations with other operators, and works with local communities to create lasting positive change. When you choose JaeTravel Expeditions, you're supporting a vision of Africa where everyone can experience its wonders, regardless of mobility challenges.</p>
+<p class="text-orange-800 text-center">We're not just providing accessible safaris; we're championing a movement toward inclusive travel in Africa. JaeTravel Expeditions actively advocates for improved accessibility standards across the tourism industry, shares our engineering innovations with other operators, and works with communities to create lasting positive change. When you choose JaeTravel Expeditions, you're supporting a vision of Africa—which you can explore more of on our <a href="/" class="text-orange-900 underline font-semibold">homepage</a>—where everyone can experience its wonders, regardless of mobility challenges.</p>
 </div>`
   },
   {
