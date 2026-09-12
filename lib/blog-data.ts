@@ -63,7 +63,7 @@ Planning your safari during the migration requires booking well in advance, as l
     title: "Complete Guide to Accessible Safaris in East Africa",
     excerpt:
       "Everything you need to know about planning an accessible safari adventure in Kenya, Tanzania, Rwanda, and Uganda for travelers with disabilities.",
-    content: `Accessible travel in East Africa has evolved significantly, making safari adventures possible for travelers with mobility challenges, visual impairments, and other disabilities. This comprehensive guide covers everything you need to know about planning an inclusive safari experience.
+    content: `Accessible travel in East Africa has evolved significantly, making safari adventures possible for travelers with mobility challenges, visual impairments, and other disabilities. This comprehensive guide covers everything you need to know about planning an inclusive <a href="/" class="text-primary underline font-semibold">accessible safaris across East Africa</a> experience.
 
 Wheelchair-accessible safaris are now available across Kenya, Tanzania, Rwanda, and Uganda. Specialized tour operators provide modified 4x4 vehicles with hydraulic lifts, ramps, and spacious interiors to accommodate wheelchairs. These adapted safari vehicles maintain the same game-viewing capabilities as standard vehicles, with pop-up roofs and large windows.
 
