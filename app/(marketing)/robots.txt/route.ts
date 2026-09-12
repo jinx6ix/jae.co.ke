@@ -36,7 +36,6 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /draft/
 Disallow: /checkout/
-Disallow: /book-now/
 
 # ── AI crawlers — allow for AI search visibility ──
 User-agent: GPTBot
