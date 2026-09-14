@@ -47,7 +47,7 @@ export interface EmailDispatchStatus {
   };
 }
 
-export type BookingKind = 'tour' | 'transfer' | 'inquiry' | 'quote';
+export type BookingKind = 'tour' | 'transfer' | 'inquiry' | 'quote' | 'vehicle';
 
 export interface BookingEmailInput {
   bookingId: string;
@@ -147,6 +147,8 @@ function formatSubject(
     case 'quote':
       return `Quote Request #${id} – ${what}`;
 
+    case 'vehicle':
+      return `Vehicle Booking #${id} – ${what}`;
     case 'tour':
     default:
       return `Booking Confirmed #${id} – ${what}`;
@@ -169,6 +171,8 @@ function formatAdminSubject(
     case 'quote':
       return `New Quote #${id} – ${who}`;
 
+    case 'vehicle':
+      return `Vehicle Booking #${id} – ${what}`;
     case 'tour':
     default:
       return `New Booking #${id} – ${who}`;
@@ -179,7 +183,7 @@ function formatAdminSubject(
 // Email headlines
 // ---------------------------------------------------------------------
 
-function buildKindHeadline(kind: BookingKind): string {
+function buildKindHeadline(kind: BookingKind, id: string, what: string): string {
   switch (kind) {
     case 'transfer':
       return 'Transfer Confirmed!';
@@ -190,13 +194,15 @@ function buildKindHeadline(kind: BookingKind): string {
     case 'quote':
       return 'Quote Request Received!';
 
+    case 'vehicle':
+      return `Vehicle Booking #${id} – ${what}`;
     case 'tour':
     default:
       return 'Booking Confirmed!';
   }
 }
 
-function buildKindAdminHeadline(kind: BookingKind): string {
+function buildKindAdminHeadline(kind: BookingKind, id: string, what: string): string {
   switch (kind) {
     case 'transfer':
       return 'New Transfer!';
@@ -207,6 +213,8 @@ function buildKindAdminHeadline(kind: BookingKind): string {
     case 'quote':
       return 'New Quote!';
 
+    case 'vehicle':
+      return `Vehicle Booking #${id} – ${what}`;
     case 'tour':
     default:
       return 'New Booking!';
@@ -404,7 +412,7 @@ function buildCustomerHtml(
 
     <div class="header">
       <h1>
-        ${escapeHtml(buildKindHeadline(bookingKind))}
+        ${escapeHtml(buildKindHeadline(bookingKind, bookingId, service.name))}
       </h1>
 
       <p style="margin:8px 0 0; opacity:0.95;">
@@ -706,7 +714,7 @@ function buildAdminHtml(
 
   <title>
     ${escapeHtml(
-      buildKindAdminHeadline(bookingKind),
+      buildKindAdminHeadline(bookingKind, bookingId, service.name),
     )} #${escapeHtml(bookingId)}
   </title>
 
@@ -821,7 +829,7 @@ function buildAdminHtml(
 
       <h1>
         ${escapeHtml(
-          buildKindAdminHeadline(bookingKind),
+          buildKindAdminHeadline(bookingKind, bookingId, service.name),
         )}
       </h1>
 
