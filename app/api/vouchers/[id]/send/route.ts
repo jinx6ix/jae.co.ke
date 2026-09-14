@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     user: 'marketing@jaetravel.co.ke',
     pass: '3t9caO[z${}%n&3u',
   },
-  tls: { rejectUnauthorized: false },
+  tls: { secure: true },
 });
 
 // Verify only once (optional, helps debug)
