@@ -1,32 +1,23 @@
 // app/api/vehicle-hire/[vehicleId]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { getSiteSmtpFrom, getSiteSmtpTransporter } from '@/lib/email/smtp';
 import { v4 as uuidv4 } from 'uuid';
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SITE_SMTP_HOST!,
-  port: Number(process.env.SITE_SMTP_PORT) || 465,
-  secure: true,
-  auth: {
-    user: process.env.SITE_SMTP_USER!,
-    pass: process.env.SITE_SMTP_PASS!,
-  },
-  tls: { secure: true },
-});
-
-// Verify SMTP on startup
-transporter.verify((err, success) => {
-  if (err) {
-    console.error('SMTP Connection FAILED:', err.message);
-  } else {
-    console.log('SMTP READY – Vehicle Hire Emails will send!');
+async function getVehicleTransporter() {
+  const transporter = getSiteSmtpTransporter();
+  if (!transporter) {
+    throw new Error('SMTP is not configured. Set SITE_SMTP_HOST, SITE_SMTP_PORT, SITE_SMTP_USER and SITE_SMTP_PASS.');
   }
-});
+  await transporter.verify();
+  if (!getSiteSmtpFrom()) throw new Error("SMTP sender is not configured.");
+  return transporter;
+}
 
 export async function POST(request: NextRequest) {
   let bookingData: any;
 
   try {
+    const transporter = await getVehicleTransporter();
     bookingData = await request.json();
     const { searchParams } = new URL(request.url);
     const vehicleId = searchParams.get('vehicleId') || bookingData.vehicleId?.toString();
@@ -76,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     // === CUSTOMER EMAIL (Orange Theme) ===
     const customerEmail = {
-      from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER}>`,
+      from: `"JaeTravel Expeditions" <${getSiteSmtpFrom()}>`,
       to: bookingData.email,
       subject: `Vehicle Booking #${bookingId} – ${bookingData.vehicleName}`,
       html: `
@@ -157,8 +148,8 @@ export async function POST(request: NextRequest) {
 
     // === ADMIN EMAIL (Green Theme) ===
     const adminEmail = {
-      from: `"Vehicle Booking" <${process.env.SITE_SMTP_USER}>`,
-      to: process.env.SITE_SMTP_USER,
+      from: `"Vehicle Booking" <${getSiteSmtpFrom()}>`,
+      to: getSiteSmtpFrom(),
       subject: `New Vehicle Booking #${bookingId} – ${bookingData.name}`,
       html: `
 <!DOCTYPE html>

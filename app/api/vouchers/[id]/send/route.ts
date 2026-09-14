@@ -1,26 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import nodemailer from 'nodemailer';
-
-// === EXACT SAME TRANSPORTER AS WORKING TRANSFERS API ===
-const transporter = nodemailer.createTransport({
-  host: '84.16.249.171',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'marketing@jaetravel.co.ke',
-    pass: '3t9caO[z${}%n&3u',
-  },
-  tls: { secure: true },
-});
-
-// Verify only once (optional, helps debug)
-transporter.verify((err) => {
-  if (err) console.error('SMTP verify failed:', err.message);
-  else console.log('SMTP ready for vouchers');
-});
+import { getSiteSmtpFrom, getSiteSmtpTransporter } from '@/lib/email/smtp';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -29,6 +12,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
   try {
     const { email } = await req.json();
+    const transporter = getSiteSmtpTransporter();
+    if (!transporter) throw new Error("SMTP is not configured. Set SITE_SMTP_HOST, SITE_SMTP_PORT, SITE_SMTP_USER and SITE_SMTP_PASS.");
+    await transporter.verify();
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Valid email address is required' }, { status: 400 });
     }
@@ -66,7 +52,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     `;
 
     await transporter.sendMail({
-      from: `"Jae Travel Expeditions" <info@jaetravel.co.ke>`,
+      from: `"Jae Travel Expeditions" <${getSiteSmtpFrom() || "info@jaetravel.co.ke"}>`,
       to: email,
       subject: `Voucher ${voucher.voucherNo} from Jae Travel`,
       html,

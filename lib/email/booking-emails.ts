@@ -22,7 +22,7 @@
 // IMPORTANT:
 //   This module never logs SITE_SMTP_PASS.
 
-import nodemailer from 'nodemailer';
+import { getSiteSmtpFrom, getSiteSmtpTransporter, resetSiteSmtpTransporter } from './smtp';
 
 export type EmailStatus = 'sent' | 'failed' | 'skipped';
 
@@ -88,84 +88,14 @@ const IT_ADDRESS = 'it@jaetravel.co.ke';
 // SMTP transporter
 // ---------------------------------------------------------------------
 
-let _transporter: ReturnType<typeof nodemailer.createTransport> | null =
-  null;
-
-let _transporterConfigKey: string | null = null;
-
-function getTransporter(): ReturnType<typeof nodemailer.createTransport> | null {
-  const host = process.env.SITE_SMTP_HOST?.trim();
-  const port = Number(process.env.SITE_SMTP_PORT) || 465;
-  const user = process.env.SITE_SMTP_USER?.trim();
-  const pass = process.env.SITE_SMTP_PASS;
-
-  // Never expose the password.
+function getTransporter() {
   console.log('[booking-emails] SMTP configuration check:', {
-    host: host || '(unset)',
-    port,
-    user: user || '(unset)',
-    passwordConfigured: Boolean(pass),
+    host: process.env.SITE_SMTP_HOST?.trim() || '(unset)',
+    port: Number(process.env.SITE_SMTP_PORT) || 465,
+    user: getSiteSmtpFrom() || '(unset)',
+    passwordConfigured: Boolean(process.env.SITE_SMTP_PASS),
   });
-
-  if (!host || !user || !pass) {
-    console.error(
-      '[booking-emails] SMTP configuration is incomplete. Required: SITE_SMTP_HOST, SITE_SMTP_PORT, SITE_SMTP_USER, SITE_SMTP_PASS',
-    );
-
-    return null;
-  }
-
-  /*
-   * Recreate the transporter if the host/port/user configuration changes.
-   *
-   * We intentionally do NOT use the old _transporterChecked boolean,
-   * because that could permanently cache a failed/missing configuration.
-   */
-  const configKey = `${host}:${port}:${user}`;
-
-  if (_transporter && _transporterConfigKey === configKey) {
-    return _transporter;
-  }
-
-  const secure = port === 465;
-
-  console.log('[booking-emails] Creating SMTP transporter:', {
-    host,
-    port,
-    secure,
-    user,
-  });
-
-  _transporter = nodemailer.createTransport({
-    host,
-    port,
-
-    // 465 = SSL/TLS immediately
-    // 587 = plain connection followed by STARTTLS
-    secure,
-
-    ...(port === 587
-      ? {
-          requireTLS: true,
-        }
-      : {}),
-
-    auth: {
-      user,
-      pass,
-    },
-
-    /*
-     * Do not disable TLS certificate validation.
-     *
-     * If the mail server has a certificate problem, the error will now
-     * be visible in Vercel logs instead of being silently ignored.
-     */
-  });
-
-  _transporterConfigKey = configKey;
-
-  return _transporter;
+  return getSiteSmtpTransporter();
 }
 
 // ---------------------------------------------------------------------
@@ -1468,8 +1398,7 @@ export async function sendBookingEmails(
      * Clear the transporter so a later request gets a fresh
      * connection instead of reusing a known-bad transporter.
      */
-    _transporter = null;
-    _transporterConfigKey = null;
+    resetSiteSmtpTransporter();
 
     const whatsappStatus =
       await sendBookingWhatsApp(input);
@@ -1525,7 +1454,7 @@ export async function sendBookingEmails(
   // ---------------------------------------------------------------
 
   const customerMsg = {
-    from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER?.trim() || 'noreply@jaetravel.co.ke'}>`,
+    from: `"JaeTravel Expeditions" <${getSiteSmtpFrom() || 'noreply@jaetravel.co.ke'}>`,
 
     to: customerEmail,
 
@@ -1560,7 +1489,7 @@ export async function sendBookingEmails(
   // ---------------------------------------------------------------
 
   const infoMsg = {
-    from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER?.trim() || 'noreply@jaetravel.co.ke'}>`,
+    from: `"JaeTravel Expeditions" <${getSiteSmtpFrom() || 'noreply@jaetravel.co.ke'}>`,
 
     to: INFO_ADDRESS,
 
@@ -1593,7 +1522,7 @@ export async function sendBookingEmails(
   // ---------------------------------------------------------------
 
   const itMsg = {
-    from: `"JaeTravel Expeditions" <${process.env.SITE_SMTP_USER?.trim() || 'noreply@jaetravel.co.ke'}>`,
+    from: `"JaeTravel Expeditions" <${getSiteSmtpFrom() || 'noreply@jaetravel.co.ke'}>`,
 
     to: IT_ADDRESS,
 

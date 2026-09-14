@@ -27,7 +27,7 @@ import {
   type QuoteLegInput,
   type Vehicle,
 } from '@/lib/pricing-rules';
-import nodemailer from 'nodemailer';
+import { getSiteSmtpFrom, getSiteSmtpTransporter } from '@/lib/email/smtp';
 
 // Shared SMTP transport — same env vars used by the other email routes.
 // For cPanel's recommended SSL/TLS SMTP configuration:
@@ -40,42 +40,8 @@ import nodemailer from 'nodemailer';
 // presented by the mail server does not match the hostname, we want the
 // error to be visible rather than silently accepting an invalid certificate.
 
-let _bookingTransporter: ReturnType<typeof nodemailer.createTransport> | null = null;
-let _bookingTransporterSignature: string | null = null;
-
 function getBookingTransporter() {
-  const host = process.env.SITE_SMTP_HOST?.trim();
-  const port = Number(process.env.SITE_SMTP_PORT) || 465;
-  const user = process.env.SITE_SMTP_USER?.trim();
-  const pass = process.env.SITE_SMTP_PASS;
-
-  if (!host || !user || !pass) {
-    return null;
-  }
-
-  const signature = `${host}|${port}|${user}|${pass}`;
-
-  // Recreate the transporter if the environment configuration changes.
-  if (_bookingTransporter && _bookingTransporterSignature === signature) {
-    return _bookingTransporter;
-  }
-
-  _bookingTransporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: {
-      user,
-      pass,
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 20000,
-  });
-
-  _bookingTransporterSignature = signature;
-
-  return _bookingTransporter;
+  return getSiteSmtpTransporter();
 }
 
 interface HotelSelection {
