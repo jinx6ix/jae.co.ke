@@ -103,6 +103,19 @@ export function MediaModal({
             className="max-h-[90vh] w-auto max-w-[90vw] object-contain rounded-lg"
             priority
           />
+        ) : item.provider ? (
+            <div className="w-[90vw] h-[90vh] max-w-[800px] max-h-[500px]">
+              <iframe
+                src={
+                  item.provider === 'youtube'
+                    ? `https://www.youtube.com/embed/${item.externalId}`
+                    : `https://www.instagram.com/p/${item.externalId}/embed/`
+                }
+                className="w-full h-full rounded-lg"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
         ) : (
           <div className="relative group">
             <video

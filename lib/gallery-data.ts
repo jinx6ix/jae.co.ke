@@ -11,6 +11,8 @@ export interface GalleryItem {
   alt: string
   photographer?: string
   date: string
+  provider?: 'youtube' | 'instagram'
+  externalId?: string
 }
 
 export const galleryItems: GalleryItem[] = [

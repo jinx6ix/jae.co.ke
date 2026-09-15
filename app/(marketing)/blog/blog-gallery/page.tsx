@@ -35,6 +35,8 @@ export default async function GalleryPage() {
     tags: [],
     alt: v.title || "Video",
     date: v.publishedAt || v.syncedAt || new Date().toISOString(),
+    provider: (v.provider as 'youtube' | 'instagram') || undefined,
+    externalId: v.externalId || undefined,
   }))
 
   return (
