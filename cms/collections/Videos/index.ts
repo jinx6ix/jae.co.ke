@@ -17,6 +17,7 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { syncFromSource } from './hooks/syncFromSource'
 import { defaultSlug } from './hooks/defaultSlug'
 import { revalidateDelete, revalidateVideo } from './hooks/revalidateVideo'
+import { registerSocialIndexing } from './hooks/registerSocialIndexing'
 
 export const Videos: CollectionConfig = {
   slug: 'videos',
@@ -144,7 +145,7 @@ export const Videos: CollectionConfig = {
     // sitemap-videos.xml route is only as fresh as its revalidate window
     // (1h by default), so a freshly-published IG post can sit unindexed for
     // up to an hour even though the row is in Mongo.
-    afterChange: [revalidateVideo],
+    afterChange: [revalidateVideo, registerSocialIndexing],
     afterDelete: [revalidateDelete],
   },
 }
