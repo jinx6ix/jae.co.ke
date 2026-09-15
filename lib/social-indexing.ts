@@ -33,7 +33,7 @@ export async function registerSocialAsset({
   // Use try-catch to ensure we don't block the publishing if registration fails
   try {
     const existing = await payload.find({
-      collection: 'socialIndexingAssets', // Wait, this needs to be a collection in Payload CMS
+      collection: 'social-indexing-assets', // Fixed slug
       where: {
         socialUrl: { equals: socialUrl },
       },
@@ -46,7 +46,7 @@ export async function registerSocialAsset({
     }
 
     await payload.create({
-      collection: 'socialIndexingAssets',
+      collection: 'social-indexing-assets', // Fixed slug
       data: {
         platform,
         socialUrl,

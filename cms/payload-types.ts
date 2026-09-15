@@ -79,6 +79,7 @@ export interface Config {
     products: Product;
     'budget-tours': BudgetTour;
     videos: Video;
+    'social-indexing-assets': SocialIndexingAsset;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -108,6 +109,7 @@ export interface Config {
     products: ProductsSelect<false> | ProductsSelect<true>;
     'budget-tours': BudgetToursSelect<false> | BudgetToursSelect<true>;
     videos: VideosSelect<false> | VideosSelect<true>;
+    'social-indexing-assets': SocialIndexingAssetsSelect<false> | SocialIndexingAssetsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1417,6 +1419,31 @@ export interface Product {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-indexing-assets".
+ */
+export interface SocialIndexingAsset {
+  id: string;
+  platform: 'instagram' | 'youtube';
+  socialUrl: string;
+  discoveryStatus: 'pending' | 'checking' | 'discovered' | 'not_discovered' | 'unavailable' | 'error';
+  publishedAt?: string | null;
+  accountUrl?: string | null;
+  contentId?: string | null;
+  contentType?: string | null;
+  externalId?: string | null;
+  title?: string | null;
+  caption?: string | null;
+  description?: string | null;
+  targetKeyword?: string | null;
+  targetUrl?: string | null;
+  firstDiscoveredAt?: string | null;
+  lastCheckedAt?: string | null;
+  lastError?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1652,6 +1679,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'videos';
         value: string | Video;
+      } | null)
+    | ({
+        relationTo: 'social-indexing-assets';
+        value: string | SocialIndexingAsset;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2391,6 +2422,30 @@ export interface VideosSelect<T extends boolean = true> {
   publishedAt?: T;
   durationSeconds?: T;
   syncedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-indexing-assets_select".
+ */
+export interface SocialIndexingAssetsSelect<T extends boolean = true> {
+  platform?: T;
+  socialUrl?: T;
+  discoveryStatus?: T;
+  publishedAt?: T;
+  accountUrl?: T;
+  contentId?: T;
+  contentType?: T;
+  externalId?: T;
+  title?: T;
+  caption?: T;
+  description?: T;
+  targetKeyword?: T;
+  targetUrl?: T;
+  firstDiscoveredAt?: T;
+  lastCheckedAt?: T;
+  lastError?: T;
   updatedAt?: T;
   createdAt?: T;
 }
