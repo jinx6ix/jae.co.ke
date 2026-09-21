@@ -203,14 +203,14 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-12 w-12 text-green-600" />
         </div>
-        
+
         <h3 className="mb-3 text-3xl font-bold text-green-600">Booking Confirmed! 🎉</h3>
         <p className="mb-2 text-lg font-semibold text-muted-foreground">
           Booking ID: <code className="bg-muted px-2 py-1 rounded font-mono text-sm">{bookingResult.bookingId}</code>
         </p>
-        
+
         <p className="mb-6 text-muted-foreground text-sm leading-relaxed max-w-md mx-auto">
-          Thank you for booking <strong>{tourTitle}</strong>! 
+          Thank you for booking <strong>{tourTitle}</strong>!
           <br />
           ✅ Confirmation email sent to {formData.email}
           <br />
@@ -322,6 +322,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             </a>
           </div>
         </div>
+      </div>
       </>
     )
   }
