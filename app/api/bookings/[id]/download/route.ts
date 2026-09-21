@@ -14,9 +14,10 @@ function extractPhoneNumber(phone: string): string {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const { searchParams } = new URL(request.url);
     const name = searchParams.get('name') || 'Customer';
     const email = searchParams.get('email') || '';
