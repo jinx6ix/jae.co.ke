@@ -22,8 +22,13 @@ export function CreateQuotationButton({ className = "" }: { className?: string }
   // sits at bottom-right and would cover the banner's action
   // buttons, making "Accept all" / "Reject all" / "Customize"
   // unreachable.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const consent = useConsent();
-  if (consent === null) return null;
+  if (!mounted || consent === null) return null;
 
   return (
     <Link
