@@ -130,20 +130,25 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   // ✅ FIXED: Proper download handler
   const handleDownload = () => {
     if (bookingResult?.pdfUrl) {
-      // Use pdfUrl from API response
-      const downloadUrl = `${window.location.origin}${bookingResult.pdfUrl}`
+      // Use pdfUrl from API response. Check if it's already absolute (it should be).
+      const downloadUrl = bookingResult.pdfUrl.startsWith('http')
+        ? bookingResult.pdfUrl
+        : `${window.location.origin}${bookingResult.pdfUrl}`;
       window.open(downloadUrl, "_blank")?.focus()
       return
     }
-    
+
     if (bookingResult?.downloadUrl) {
-      // Fallback for legacy field
-      window.open(bookingResult.downloadUrl, "_blank")?.focus()
+      // Fallback for legacy field. Check if it's already absolute.
+      const downloadUrl = bookingResult.downloadUrl.startsWith('http')
+        ? bookingResult.downloadUrl
+        : `${window.location.origin}${bookingResult.downloadUrl}`;
+      window.open(downloadUrl, "_blank")?.focus()
       return
     }
 
     // Direct PDF download URL construction
-    const directUrl = `${window.location.origin}/api/site-inquiries/${bookingResult?.bookingId}/download?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}&service=${encodeURIComponent(tourTitle)}&startDate=${encodeURIComponent(formData.date)}&travelers=${formData.travelers}&total=${tourPrice * Number.parseInt(formData.travelers || "1")}`
+    const directUrl = `${window.location.origin}/api/bookings/${bookingResult?.bookingId}/download?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone)}&service=${encodeURIComponent(tourTitle)}&startDate=${encodeURIComponent(formData.date)}&travelers=${formData.travelers}&total=${tourPrice * Number.parseInt(formData.travelers || "1")}`
     window.open(directUrl, "_blank")?.focus()
   }
 
