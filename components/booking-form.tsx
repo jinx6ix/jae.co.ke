@@ -322,7 +322,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             </a>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 
