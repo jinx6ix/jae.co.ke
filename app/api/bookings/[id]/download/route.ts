@@ -46,9 +46,9 @@ export async function GET(
         headers.set('Content-Length', pdfBuffer.length.toString());
         headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
 
-        resolve(NextResponse.json(pdfBuffer, { 
-          status: 200, 
-          headers 
+        resolve(new NextResponse(pdfBuffer, {
+          status: 200,
+          headers
         }));
       });
       doc.on('error', reject);
@@ -62,6 +62,9 @@ export async function GET(
       } catch (logoError) {
         console.warn('[PDF] Logo not found, continuing without logo');
       }
+
+      // Explicitly set font to ensure Helvetica is loaded from standard fonts
+      doc.font('Helvetica');
 
       // Title
       doc.fontSize(24)
