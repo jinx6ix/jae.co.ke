@@ -13,7 +13,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   try {
     const { email } = await req.json();
     const transporter = getSiteSmtpTransporter();
-    if (!transporter) throw new Error("SMTP is not configured. Set SITE_SMTP_HOST, SITE_SMTP_PORT, SITE_SMTP_USER and SITE_SMTP_PASS.");
+    if (!transporter) throw new Error("SMTP is not configured. Set SMTP_HOST, SMTP_PORT, SMTP_USER and SMTP_PASS.");
     await transporter.verify();
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Valid email address is required' }, { status: 400 });

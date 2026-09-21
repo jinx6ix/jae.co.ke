@@ -9,16 +9,16 @@ let transporter: SiteSmtpTransporter | null = null;
 let configKey: string | null = null;
 
 export function getSiteSmtpTransporter(): SiteSmtpTransporter | null {
-  const host = process.env.SITE_SMTP_HOST?.trim();
-  const port = Number(process.env.SITE_SMTP_PORT || 465);
-  const user = process.env.SITE_SMTP_USER?.trim();
-  const pass = process.env.SITE_SMTP_PASS;
+  const host = process.env.SMTP_HOST?.trim();
+  const port = Number(process.env.SMTP_PORT || 465);
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS;
   if (!host || !user || !pass) {
-    console.error("[smtp] Missing SITE_SMTP_HOST, SITE_SMTP_USER or SITE_SMTP_PASS");
+    console.error("[smtp] Missing SMTP_HOST, SMTP_USER or SMTP_PASS");
     return null;
   }
   if (!Number.isFinite(port) || port <= 0) {
-    console.error("[smtp] Invalid SITE_SMTP_PORT:", process.env.SITE_SMTP_PORT);
+    console.error("[smtp] Invalid SMTP_PORT:", process.env.SMTP_PORT);
     return null;
   }
   const key = `${host}|${port}|${user}|${pass}`;
@@ -43,5 +43,5 @@ export function resetSiteSmtpTransporter(): void {
 }
 
 export function getSiteSmtpFrom(): string | null {
-  return process.env.SITE_SMTP_USER?.trim() || null;
+  return process.env.SMTP_USER?.trim() || null;
 }

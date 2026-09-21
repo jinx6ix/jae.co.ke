@@ -34,7 +34,7 @@ import { getSiteSmtpFrom, getSiteSmtpTransporter } from '@/lib/email/smtp';
 function getTransporter() {
   const transporter = getSiteSmtpTransporter();
   if (!transporter) {
-    throw new Error('SITE_SMTP_HOST / SITE_SMTP_USER / SITE_SMTP_PASS are not set — cannot send email notifications.');
+    throw new Error('SMTP_HOST / SMTP_USER / SMTP_PASS are not set — cannot send email notifications.');
   }
   return transporter;
 }

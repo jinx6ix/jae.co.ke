@@ -10,17 +10,17 @@
 //   4. Optional WhatsApp notification through CallMeBot
 //
 // SMTP configuration:
-//   SITE_SMTP_HOST
-//   SITE_SMTP_PORT
-//   SITE_SMTP_USER
-//   SITE_SMTP_PASS
+//   SMTP_HOST
+//   SMTP_PORT
+//   SMTP_USER
+//   SMTP_PASS
 //
 // Supported SMTP:
 //   Port 465 = implicit SSL/TLS
 //   Port 587 = STARTTLS
 //
 // IMPORTANT:
-//   This module never logs SITE_SMTP_PASS.
+//   This module never logs SMTP_PASS.
 
 import { getSiteSmtpFrom, getSiteSmtpTransporter, resetSiteSmtpTransporter } from './smtp';
 
@@ -90,10 +90,10 @@ const IT_ADDRESS = 'it@jaetravel.co.ke';
 
 function getTransporter() {
   console.log('[booking-emails] SMTP configuration check:', {
-    host: process.env.SITE_SMTP_HOST?.trim() || '(unset)',
-    port: Number(process.env.SITE_SMTP_PORT) || 465,
+    host: process.env.SMTP_HOST?.trim() || '(unset)',
+    port: Number(process.env.SMTP_PORT) || 465,
     user: getSiteSmtpFrom() || '(unset)',
-    passwordConfigured: Boolean(process.env.SITE_SMTP_PASS),
+    passwordConfigured: Boolean(process.env.SMTP_PASS),
   });
   return getSiteSmtpTransporter();
 }
