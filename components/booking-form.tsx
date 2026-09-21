@@ -1,7 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -127,6 +128,31 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
     }))
   }
 
+  // ✅ Google Customer Reviews Opt-in
+  useEffect(() => {
+    if (submitted && bookingResult) {
+      // Define the render function for Google Customer Reviews
+      (window as any).renderOptIn = function() {
+        if ((window as any).gapi) {
+          (window as any).gapi.load('surveyoptin', function() {
+            (window as any).gapi.surveyoptin.render({
+              "merchant_id": 5694347760,
+              "order_id": bookingResult.bookingId,
+              "email": formData.email,
+              "delivery_country": "KE",
+              "estimated_delivery_date": formData.date,
+            });
+          });
+        }
+      };
+
+      // Trigger render if script is already loaded
+      if ((window as any).gapi) {
+        (window as any).renderOptIn();
+      }
+    }
+  }, [submitted, bookingResult, formData.email, formData.date]);
+
   // ✅ FIXED: Proper download handler
   const handleDownload = () => {
     if (bookingResult?.pdfUrl) {
@@ -168,7 +194,12 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
 
   if (submitted && bookingResult) {
     return (
-      <div className="rounded-lg border border-border bg-card p-8 text-center animate-in fade-in duration-500">
+      <>
+        <Script
+          src="https://apis.google.com/js/platform.js?onload=renderOptIn"
+          strategy="afterInteractive"
+        />
+        <div className="rounded-lg border border-border bg-card p-8 text-center animate-in fade-in duration-500">
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-12 w-12 text-green-600" />
         </div>
