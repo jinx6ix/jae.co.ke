@@ -159,6 +159,18 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Google Merchant Widget */}
+        <Script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer />
+        <Script id="merchantWidgetInit" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+          merchantWidgetScript.addEventListener('load', function () {
+            merchantwidget.start({
+                 merchant_id: 5694347760,
+                 position: 'BOTTOM_LEFT'
+            });
+          });`
+        }} />
+
         {/* Partner Logos */}
         <div className="mt-16">
           <h3 className="mb-6 text-center text-lg font-semibold">Official Partners & Affiliations</h3>
