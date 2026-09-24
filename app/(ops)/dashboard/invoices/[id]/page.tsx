@@ -196,6 +196,11 @@ export default function InvoiceDetailPage() {
             {invoice.billToEmail && <p className="text-sm text-gray-600">{invoice.billToEmail}</p>}
             {invoice.billToPhone && <p className="text-sm text-gray-600">{invoice.billToPhone}</p>}
             {invoice.customerAddress && <p className="text-sm text-gray-600 whitespace-pre-wrap">{invoice.customerAddress}</p>}
+            {invoice.depositRequired > 0 && (
+              <p className="mt-2 text-sm font-bold text-red-600">
+                Deposit Required: {invoice.currency} {fmt2(invoice.depositRequired)} {invoice.subtotal > 0 ? `(${Math.round((invoice.depositRequired / invoice.subtotal) * 100)}%)` : ''}
+              </p>
+            )}
           </div>
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
@@ -388,12 +393,6 @@ export default function InvoiceDetailPage() {
               <div className="flex justify-between text-sm text-green-600">
                 <span>Deposit Received</span>
                 <span className="font-mono">− {invoice.currency} {fmt2(invoice.depositReceived)}</span>
-              </div>
-            )}
-            {invoice.depositRequired > 0 && (
-              <div className="flex justify-between text-sm text-orange-600">
-                <span>Deposit Required {invoice.subtotal > 0 ? `(${Math.round((invoice.depositRequired / invoice.subtotal) * 100)}%)` : ''}</span>
-                <span className="font-mono">{invoice.currency} {fmt2(invoice.depositRequired)}</span>
               </div>
             )}
             <div className={`flex justify-between text-base font-bold border-t-2 pt-2 ${balanceDue <= 0 ? 'text-green-600' : 'text-orange-600'}`}>

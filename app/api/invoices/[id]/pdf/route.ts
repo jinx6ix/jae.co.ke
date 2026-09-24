@@ -188,6 +188,7 @@ function InvoicePDF({ invoice }: { invoice: any }) {
     invoice.billToEmail && React.createElement(Text, { key: 'bt3', style: S.body }, invoice.billToEmail),
     invoice.billToPhone && React.createElement(Text, { key: 'bt4', style: S.body }, invoice.billToPhone),
     invoice.customerAddress && React.createElement(Text, { key: 'bt5', style: S.body }, invoice.customerAddress),
+    invoice.depositRequired > 0 && React.createElement(Text, { key: 'bt6', style: [S.body, S.bold, { color: '#dc2626' }] }, `Deposit Required: ${currency} ${fmt2(invoice.depositRequired)} ${invoice.subtotal > 0 ? '(' + Math.round((invoice.depositRequired / invoice.subtotal) * 100) + '%)' : ''}`),
   ];
 
   // Build right section (booking/client)
@@ -310,10 +311,6 @@ function InvoicePDF({ invoice }: { invoice: any }) {
     invoice.taxAmount > 0 && React.createElement(View, { key: 'lit2', style: S.totRow },
       React.createElement(Text, { style: S.totLabel }, 'Tax'),
       React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.taxAmount)}`),
-    ),
-    invoice.depositRequired > 0 && React.createElement(View, { key: 'lit2.5', style: S.totRow },
-      React.createElement(Text, { style: S.totLabel }, `Deposit Required ${invoice.subtotal > 0 ? '(' + Math.round((invoice.depositRequired / invoice.subtotal) * 100) + '%)' : ''}`),
-      React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.depositRequired)}`),
     ),
     invoice.depositReceived > 0 && React.createElement(View, { key: 'lit2.6', style: S.totRow },
       React.createElement(Text, { style: S.totLabel }, 'Deposit Received'),
