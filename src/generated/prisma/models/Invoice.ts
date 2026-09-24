@@ -30,6 +30,7 @@ export type InvoiceAvgAggregateOutputType = {
   subtotal: number | null
   taxAmount: number | null
   depositReceived: number | null
+  depositRequired: number | null
   totalAmount: number | null
   amountPaid: number | null
 }
@@ -38,6 +39,7 @@ export type InvoiceSumAggregateOutputType = {
   subtotal: number | null
   taxAmount: number | null
   depositReceived: number | null
+  depositRequired: number | null
   totalAmount: number | null
   amountPaid: number | null
 }
@@ -51,12 +53,14 @@ export type InvoiceMinAggregateOutputType = {
   billTo: string | null
   billToEmail: string | null
   billToPhone: string | null
+  customerAddress: string | null
   invoiceDate: Date | null
   dueDate: Date | null
   lineItems: string | null
   subtotal: number | null
   taxAmount: number | null
   depositReceived: number | null
+  depositRequired: number | null
   totalAmount: number | null
   amountPaid: number | null
   currency: string | null
@@ -76,12 +80,14 @@ export type InvoiceMaxAggregateOutputType = {
   billTo: string | null
   billToEmail: string | null
   billToPhone: string | null
+  customerAddress: string | null
   invoiceDate: Date | null
   dueDate: Date | null
   lineItems: string | null
   subtotal: number | null
   taxAmount: number | null
   depositReceived: number | null
+  depositRequired: number | null
   totalAmount: number | null
   amountPaid: number | null
   currency: string | null
@@ -101,12 +107,14 @@ export type InvoiceCountAggregateOutputType = {
   billTo: number
   billToEmail: number
   billToPhone: number
+  customerAddress: number
   invoiceDate: number
   dueDate: number
   lineItems: number
   subtotal: number
   taxAmount: number
   depositReceived: number
+  depositRequired: number
   totalAmount: number
   amountPaid: number
   currency: number
@@ -123,6 +131,7 @@ export type InvoiceAvgAggregateInputType = {
   subtotal?: true
   taxAmount?: true
   depositReceived?: true
+  depositRequired?: true
   totalAmount?: true
   amountPaid?: true
 }
@@ -131,6 +140,7 @@ export type InvoiceSumAggregateInputType = {
   subtotal?: true
   taxAmount?: true
   depositReceived?: true
+  depositRequired?: true
   totalAmount?: true
   amountPaid?: true
 }
@@ -144,12 +154,14 @@ export type InvoiceMinAggregateInputType = {
   billTo?: true
   billToEmail?: true
   billToPhone?: true
+  customerAddress?: true
   invoiceDate?: true
   dueDate?: true
   lineItems?: true
   subtotal?: true
   taxAmount?: true
   depositReceived?: true
+  depositRequired?: true
   totalAmount?: true
   amountPaid?: true
   currency?: true
@@ -169,12 +181,14 @@ export type InvoiceMaxAggregateInputType = {
   billTo?: true
   billToEmail?: true
   billToPhone?: true
+  customerAddress?: true
   invoiceDate?: true
   dueDate?: true
   lineItems?: true
   subtotal?: true
   taxAmount?: true
   depositReceived?: true
+  depositRequired?: true
   totalAmount?: true
   amountPaid?: true
   currency?: true
@@ -194,12 +208,14 @@ export type InvoiceCountAggregateInputType = {
   billTo?: true
   billToEmail?: true
   billToPhone?: true
+  customerAddress?: true
   invoiceDate?: true
   dueDate?: true
   lineItems?: true
   subtotal?: true
   taxAmount?: true
   depositReceived?: true
+  depositRequired?: true
   totalAmount?: true
   amountPaid?: true
   currency?: true
@@ -306,12 +322,14 @@ export type InvoiceGroupByOutputType = {
   billTo: string
   billToEmail: string | null
   billToPhone: string | null
+  customerAddress: string | null
   invoiceDate: Date
-  dueDate: Date
+  dueDate: Date | null
   lineItems: string
   subtotal: number
   taxAmount: number
   depositReceived: number
+  depositRequired: number
   totalAmount: number
   amountPaid: number
   currency: string
@@ -354,12 +372,14 @@ export type InvoiceWhereInput = {
   billTo?: Prisma.StringFilter<"Invoice"> | string
   billToEmail?: Prisma.StringNullableFilter<"Invoice"> | string | null
   billToPhone?: Prisma.StringNullableFilter<"Invoice"> | string | null
+  customerAddress?: Prisma.StringNullableFilter<"Invoice"> | string | null
   invoiceDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
-  dueDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
+  dueDate?: Prisma.DateTimeNullableFilter<"Invoice"> | Date | string | null
   lineItems?: Prisma.StringFilter<"Invoice"> | string
   subtotal?: Prisma.FloatFilter<"Invoice"> | number
   taxAmount?: Prisma.FloatFilter<"Invoice"> | number
   depositReceived?: Prisma.FloatFilter<"Invoice"> | number
+  depositRequired?: Prisma.FloatFilter<"Invoice"> | number
   totalAmount?: Prisma.FloatFilter<"Invoice"> | number
   amountPaid?: Prisma.FloatFilter<"Invoice"> | number
   currency?: Prisma.StringFilter<"Invoice"> | string
@@ -382,12 +402,14 @@ export type InvoiceOrderByWithRelationInput = {
   billTo?: Prisma.SortOrder
   billToEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   billToPhone?: Prisma.SortOrderInput | Prisma.SortOrder
+  customerAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   invoiceDate?: Prisma.SortOrder
-  dueDate?: Prisma.SortOrder
+  dueDate?: Prisma.SortOrderInput | Prisma.SortOrder
   lineItems?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -413,12 +435,14 @@ export type InvoiceWhereUniqueInput = Prisma.AtLeast<{
   billTo?: Prisma.StringFilter<"Invoice"> | string
   billToEmail?: Prisma.StringNullableFilter<"Invoice"> | string | null
   billToPhone?: Prisma.StringNullableFilter<"Invoice"> | string | null
+  customerAddress?: Prisma.StringNullableFilter<"Invoice"> | string | null
   invoiceDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
-  dueDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
+  dueDate?: Prisma.DateTimeNullableFilter<"Invoice"> | Date | string | null
   lineItems?: Prisma.StringFilter<"Invoice"> | string
   subtotal?: Prisma.FloatFilter<"Invoice"> | number
   taxAmount?: Prisma.FloatFilter<"Invoice"> | number
   depositReceived?: Prisma.FloatFilter<"Invoice"> | number
+  depositRequired?: Prisma.FloatFilter<"Invoice"> | number
   totalAmount?: Prisma.FloatFilter<"Invoice"> | number
   amountPaid?: Prisma.FloatFilter<"Invoice"> | number
   currency?: Prisma.StringFilter<"Invoice"> | string
@@ -441,12 +465,14 @@ export type InvoiceOrderByWithAggregationInput = {
   billTo?: Prisma.SortOrder
   billToEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   billToPhone?: Prisma.SortOrderInput | Prisma.SortOrder
+  customerAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   invoiceDate?: Prisma.SortOrder
-  dueDate?: Prisma.SortOrder
+  dueDate?: Prisma.SortOrderInput | Prisma.SortOrder
   lineItems?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -474,12 +500,14 @@ export type InvoiceScalarWhereWithAggregatesInput = {
   billTo?: Prisma.StringWithAggregatesFilter<"Invoice"> | string
   billToEmail?: Prisma.StringNullableWithAggregatesFilter<"Invoice"> | string | null
   billToPhone?: Prisma.StringNullableWithAggregatesFilter<"Invoice"> | string | null
+  customerAddress?: Prisma.StringNullableWithAggregatesFilter<"Invoice"> | string | null
   invoiceDate?: Prisma.DateTimeWithAggregatesFilter<"Invoice"> | Date | string
-  dueDate?: Prisma.DateTimeWithAggregatesFilter<"Invoice"> | Date | string
+  dueDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Invoice"> | Date | string | null
   lineItems?: Prisma.StringWithAggregatesFilter<"Invoice"> | string
   subtotal?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
   taxAmount?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
   depositReceived?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
+  depositRequired?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
   totalAmount?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
   amountPaid?: Prisma.FloatWithAggregatesFilter<"Invoice"> | number
   currency?: Prisma.StringWithAggregatesFilter<"Invoice"> | string
@@ -496,12 +524,14 @@ export type InvoiceCreateInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -524,12 +554,14 @@ export type InvoiceUncheckedCreateInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -546,12 +578,14 @@ export type InvoiceUpdateInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -574,12 +608,14 @@ export type InvoiceUncheckedUpdateInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -599,12 +635,14 @@ export type InvoiceCreateManyInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -621,12 +659,14 @@ export type InvoiceUpdateManyMutationInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -646,12 +686,14 @@ export type InvoiceUncheckedUpdateManyInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -681,12 +723,14 @@ export type InvoiceCountOrderByAggregateInput = {
   billTo?: Prisma.SortOrder
   billToEmail?: Prisma.SortOrder
   billToPhone?: Prisma.SortOrder
+  customerAddress?: Prisma.SortOrder
   invoiceDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
   lineItems?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -701,6 +745,7 @@ export type InvoiceAvgOrderByAggregateInput = {
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
 }
@@ -714,12 +759,14 @@ export type InvoiceMaxOrderByAggregateInput = {
   billTo?: Prisma.SortOrder
   billToEmail?: Prisma.SortOrder
   billToPhone?: Prisma.SortOrder
+  customerAddress?: Prisma.SortOrder
   invoiceDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
   lineItems?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -739,12 +786,14 @@ export type InvoiceMinOrderByAggregateInput = {
   billTo?: Prisma.SortOrder
   billToEmail?: Prisma.SortOrder
   billToPhone?: Prisma.SortOrder
+  customerAddress?: Prisma.SortOrder
   invoiceDate?: Prisma.SortOrder
   dueDate?: Prisma.SortOrder
   lineItems?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -759,6 +808,7 @@ export type InvoiceSumOrderByAggregateInput = {
   subtotal?: Prisma.SortOrder
   taxAmount?: Prisma.SortOrder
   depositReceived?: Prisma.SortOrder
+  depositRequired?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   amountPaid?: Prisma.SortOrder
 }
@@ -895,12 +945,14 @@ export type InvoiceCreateWithoutClientInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -921,12 +973,14 @@ export type InvoiceUncheckedCreateWithoutClientInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -975,12 +1029,14 @@ export type InvoiceScalarWhereInput = {
   billTo?: Prisma.StringFilter<"Invoice"> | string
   billToEmail?: Prisma.StringNullableFilter<"Invoice"> | string | null
   billToPhone?: Prisma.StringNullableFilter<"Invoice"> | string | null
+  customerAddress?: Prisma.StringNullableFilter<"Invoice"> | string | null
   invoiceDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
-  dueDate?: Prisma.DateTimeFilter<"Invoice"> | Date | string
+  dueDate?: Prisma.DateTimeNullableFilter<"Invoice"> | Date | string | null
   lineItems?: Prisma.StringFilter<"Invoice"> | string
   subtotal?: Prisma.FloatFilter<"Invoice"> | number
   taxAmount?: Prisma.FloatFilter<"Invoice"> | number
   depositReceived?: Prisma.FloatFilter<"Invoice"> | number
+  depositRequired?: Prisma.FloatFilter<"Invoice"> | number
   totalAmount?: Prisma.FloatFilter<"Invoice"> | number
   amountPaid?: Prisma.FloatFilter<"Invoice"> | number
   currency?: Prisma.StringFilter<"Invoice"> | string
@@ -997,12 +1053,14 @@ export type InvoiceCreateWithoutBookingInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1023,12 +1081,14 @@ export type InvoiceUncheckedCreateWithoutBookingInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1071,12 +1131,14 @@ export type InvoiceCreateWithoutCostSheetInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1097,12 +1159,14 @@ export type InvoiceUncheckedCreateWithoutCostSheetInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1147,12 +1211,14 @@ export type InvoiceCreateManyClientInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1169,12 +1235,14 @@ export type InvoiceUpdateWithoutClientInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1195,12 +1263,14 @@ export type InvoiceUncheckedUpdateWithoutClientInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1219,12 +1289,14 @@ export type InvoiceUncheckedUpdateManyWithoutClientInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1243,12 +1315,14 @@ export type InvoiceCreateManyBookingInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1265,12 +1339,14 @@ export type InvoiceUpdateWithoutBookingInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1291,12 +1367,14 @@ export type InvoiceUncheckedUpdateWithoutBookingInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1315,12 +1393,14 @@ export type InvoiceUncheckedUpdateManyWithoutBookingInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1339,12 +1419,14 @@ export type InvoiceCreateManyCostSheetInput = {
   billTo: string
   billToEmail?: string | null
   billToPhone?: string | null
+  customerAddress?: string | null
   invoiceDate?: Date | string
-  dueDate: Date | string
+  dueDate?: Date | string | null
   lineItems: string
   subtotal: number
   taxAmount?: number
   depositReceived?: number
+  depositRequired?: number
   totalAmount: number
   amountPaid?: number
   currency?: string
@@ -1361,12 +1443,14 @@ export type InvoiceUpdateWithoutCostSheetInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1387,12 +1471,14 @@ export type InvoiceUncheckedUpdateWithoutCostSheetInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1411,12 +1497,14 @@ export type InvoiceUncheckedUpdateManyWithoutCostSheetInput = {
   billTo?: Prisma.StringFieldUpdateOperationsInput | string
   billToEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   billToPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoiceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lineItems?: Prisma.StringFieldUpdateOperationsInput | string
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   taxAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   depositReceived?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositRequired?: Prisma.FloatFieldUpdateOperationsInput | number
   totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   amountPaid?: Prisma.FloatFieldUpdateOperationsInput | number
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1438,12 +1526,14 @@ export type InvoiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   billTo?: boolean
   billToEmail?: boolean
   billToPhone?: boolean
+  customerAddress?: boolean
   invoiceDate?: boolean
   dueDate?: boolean
   lineItems?: boolean
   subtotal?: boolean
   taxAmount?: boolean
   depositReceived?: boolean
+  depositRequired?: boolean
   totalAmount?: boolean
   amountPaid?: boolean
   currency?: boolean
@@ -1466,12 +1556,14 @@ export type InvoiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   billTo?: boolean
   billToEmail?: boolean
   billToPhone?: boolean
+  customerAddress?: boolean
   invoiceDate?: boolean
   dueDate?: boolean
   lineItems?: boolean
   subtotal?: boolean
   taxAmount?: boolean
   depositReceived?: boolean
+  depositRequired?: boolean
   totalAmount?: boolean
   amountPaid?: boolean
   currency?: boolean
@@ -1494,12 +1586,14 @@ export type InvoiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   billTo?: boolean
   billToEmail?: boolean
   billToPhone?: boolean
+  customerAddress?: boolean
   invoiceDate?: boolean
   dueDate?: boolean
   lineItems?: boolean
   subtotal?: boolean
   taxAmount?: boolean
   depositReceived?: boolean
+  depositRequired?: boolean
   totalAmount?: boolean
   amountPaid?: boolean
   currency?: boolean
@@ -1522,12 +1616,14 @@ export type InvoiceSelectScalar = {
   billTo?: boolean
   billToEmail?: boolean
   billToPhone?: boolean
+  customerAddress?: boolean
   invoiceDate?: boolean
   dueDate?: boolean
   lineItems?: boolean
   subtotal?: boolean
   taxAmount?: boolean
   depositReceived?: boolean
+  depositRequired?: boolean
   totalAmount?: boolean
   amountPaid?: boolean
   currency?: boolean
@@ -1538,7 +1634,7 @@ export type InvoiceSelectScalar = {
   updatedAt?: boolean
 }
 
-export type InvoiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "invoiceNo" | "bookingId" | "clientId" | "costSheetId" | "billTo" | "billToEmail" | "billToPhone" | "invoiceDate" | "dueDate" | "lineItems" | "subtotal" | "taxAmount" | "depositReceived" | "totalAmount" | "amountPaid" | "currency" | "paymentInstructions" | "notes" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["invoice"]>
+export type InvoiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "invoiceNo" | "bookingId" | "clientId" | "costSheetId" | "billTo" | "billToEmail" | "billToPhone" | "customerAddress" | "invoiceDate" | "dueDate" | "lineItems" | "subtotal" | "taxAmount" | "depositReceived" | "depositRequired" | "totalAmount" | "amountPaid" | "currency" | "paymentInstructions" | "notes" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["invoice"]>
 export type InvoiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.Invoice$bookingArgs<ExtArgs>
   client?: boolean | Prisma.Invoice$clientArgs<ExtArgs>
@@ -1571,12 +1667,14 @@ export type $InvoicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     billTo: string
     billToEmail: string | null
     billToPhone: string | null
+    customerAddress: string | null
     invoiceDate: Date
-    dueDate: Date
+    dueDate: Date | null
     lineItems: string
     subtotal: number
     taxAmount: number
     depositReceived: number
+    depositRequired: number
     totalAmount: number
     amountPaid: number
     currency: string
@@ -2019,12 +2117,14 @@ export interface InvoiceFieldRefs {
   readonly billTo: Prisma.FieldRef<"Invoice", 'String'>
   readonly billToEmail: Prisma.FieldRef<"Invoice", 'String'>
   readonly billToPhone: Prisma.FieldRef<"Invoice", 'String'>
+  readonly customerAddress: Prisma.FieldRef<"Invoice", 'String'>
   readonly invoiceDate: Prisma.FieldRef<"Invoice", 'DateTime'>
   readonly dueDate: Prisma.FieldRef<"Invoice", 'DateTime'>
   readonly lineItems: Prisma.FieldRef<"Invoice", 'String'>
   readonly subtotal: Prisma.FieldRef<"Invoice", 'Float'>
   readonly taxAmount: Prisma.FieldRef<"Invoice", 'Float'>
   readonly depositReceived: Prisma.FieldRef<"Invoice", 'Float'>
+  readonly depositRequired: Prisma.FieldRef<"Invoice", 'Float'>
   readonly totalAmount: Prisma.FieldRef<"Invoice", 'Float'>
   readonly amountPaid: Prisma.FieldRef<"Invoice", 'Float'>
   readonly currency: Prisma.FieldRef<"Invoice", 'String'>

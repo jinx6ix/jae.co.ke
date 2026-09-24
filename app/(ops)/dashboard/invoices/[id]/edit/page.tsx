@@ -21,11 +21,13 @@ export default function EditInvoicePage() {
   const [billTo,      setBillTo]      = useState('');
   const [billToEmail, setBillToEmail] = useState('');
   const [billToPhone, setBillToPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
   const [currency,    setCurrency]    = useState('USD');
   const [invoiceDate, setInvoiceDate] = useState('');
   const [dueDate,     setDueDate]     = useState('');
   const [status,      setStatus]      = useState('DRAFT');
   const [depositReceived, setDepositReceived] = useState(0);
+  const [depositRequired, setDepositRequired] = useState(0);
   const [taxRate,     setTaxRate]     = useState(0);
   const [paymentInstructions, setPaymentInstructions] = useState('');
   const [notes,       setNotes]       = useState('');
@@ -46,11 +48,13 @@ export default function EditInvoicePage() {
       setBillTo(inv.billTo || '');
       setBillToEmail(inv.billToEmail || '');
       setBillToPhone(inv.billToPhone || '');
+      setCustomerAddress(inv.customerAddress || '');
       setCurrency(inv.currency || 'USD');
       setInvoiceDate(inv.invoiceDate ? new Date(inv.invoiceDate).toISOString().split('T')[0] : '');
       setDueDate(inv.dueDate ? new Date(inv.dueDate).toISOString().split('T')[0] : '');
       setStatus(inv.status || 'DRAFT');
       setDepositReceived(inv.depositReceived || 0);
+      setDepositRequired(inv.depositRequired || 0);
       setPaymentInstructions(inv.paymentInstructions || '');
       setNotes(inv.notes || '');
       setOriginalTax(inv.taxAmount || 0);
@@ -94,10 +98,10 @@ export default function EditInvoicePage() {
       body: JSON.stringify({
         bookingId: bookingId || null,
         clientId: clientId || null,
-        billTo, billToEmail, billToPhone,
+        billTo, billToEmail, billToPhone, customerAddress,
         invoiceDate, dueDate, status,
         lineItems: items, subtotal, taxAmount, totalAmount,
-        depositReceived, amountPaid: depositReceived,
+        depositReceived, depositRequired, amountPaid: depositReceived,
         currency, paymentInstructions, notes,
       }),
     });
@@ -165,6 +169,10 @@ export default function EditInvoicePage() {
               <label className="label">Phone</label>
               <input className="input" value={billToPhone} onChange={e => setBillToPhone(e.target.value)}/>
             </div>
+            <div className="col-span-2">
+              <label className="label">Address</label>
+              <input className="input" value={customerAddress} onChange={e => setCustomerAddress(e.target.value)} placeholder="Client address"/>
+            </div>
           </div>
         </div>
 
@@ -177,8 +185,12 @@ export default function EditInvoicePage() {
               <input type="date" className="input" value={invoiceDate} onChange={e => setInvoiceDate(e.target.value)}/>
             </div>
             <div>
-              <label className="label">Due Date *</label>
-              <input type="date" required className="input" value={dueDate} onChange={e => setDueDate(e.target.value)}/>
+              <label className="label">Due Date</label>
+              <input type="date" className="input" value={dueDate} onChange={e => setDueDate(e.target.value)}/>
+            </div>
+            <div>
+              <label className="label">Deposit Required</label>
+              <input type="number" min={0} step="0.01" className="input" value={depositRequired || ''} onChange={e => setDepositRequired(Number(e.target.value))} placeholder="0.00"/>
             </div>
             <div>
               <label className="label">Currency</label>

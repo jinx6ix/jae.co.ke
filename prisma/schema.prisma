@@ -275,12 +275,14 @@ model Invoice {
   billTo              String
   billToEmail         String?
   billToPhone         String?
+  customerAddress     String?
   invoiceDate         DateTime  @default(now())
-  dueDate             DateTime
+  dueDate             DateTime?
   lineItems           String
   subtotal            Float
   taxAmount           Float     @default(0)
   depositReceived     Float     @default(0)
+  depositRequired     Float     @default(0)
   totalAmount         Float
   amountPaid          Float     @default(0)
   currency            String    @default("KES")
