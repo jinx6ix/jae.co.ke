@@ -451,7 +451,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 
   try {
     const buffer = await renderToBuffer(InvoicePDF({ invoice }) as any);
-    const filename = `Invoice_${invoice.invoiceNo}.pdf`;
+    const filename = `${invoice.billTo.replace(/\s+/g, '_')}_${invoice.invoiceNo}.pdf`;
     return new NextResponse(buffer as any, {
       status: 200,
       headers: {

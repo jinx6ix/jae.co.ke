@@ -100,7 +100,7 @@ export default function InvoiceDetailPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Invoice_${invoice?.invoiceNo}.pdf`;
+      a.download = `${invoice?.billTo.replace(/\s+/g, '_')}_${invoice?.invoiceNo}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
