@@ -392,7 +392,7 @@ export default function InvoiceDetailPage() {
             )}
             {invoice.depositRequired > 0 && (
               <div className="flex justify-between text-sm text-orange-600">
-                <span>Deposit Required</span>
+                <span>Deposit Required {invoice.subtotal > 0 ? `(${Math.round((invoice.depositRequired / invoice.subtotal) * 100)}%)` : ''}</span>
                 <span className="font-mono">{invoice.currency} {fmt2(invoice.depositRequired)}</span>
               </div>
             )}

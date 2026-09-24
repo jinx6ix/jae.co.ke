@@ -39,7 +39,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
         bookingId:           body.bookingId           !== undefined ? (body.bookingId || null) : undefined,
         costSheetId:         body.costSheetId         !== undefined ? (body.costSheetId || null) : undefined,
         invoiceDate:         body.invoiceDate ? new Date(body.invoiceDate) : undefined,
-        dueDate:             body.dueDate ? new Date(body.dueDate) : (body.dueDate === null ? null : undefined),
+        dueDate:             body.dueDate ? new Date(body.dueDate) : (body.dueDate === null || body.dueDate === '' ? null : undefined),
         lineItems:           body.lineItems ? JSON.stringify(body.lineItems) : undefined,
         subtotal:            body.subtotal  !== undefined ? Number(body.subtotal)  : undefined,
         taxAmount:           body.taxAmount !== undefined ? Number(body.taxAmount) : undefined,

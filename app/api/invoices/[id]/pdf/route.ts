@@ -312,7 +312,7 @@ function InvoicePDF({ invoice }: { invoice: any }) {
       React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.taxAmount)}`),
     ),
     invoice.depositRequired > 0 && React.createElement(View, { key: 'lit2.5', style: S.totRow },
-      React.createElement(Text, { style: S.totLabel }, 'Deposit Required'),
+      React.createElement(Text, { style: S.totLabel }, `Deposit Required ${invoice.subtotal > 0 ? '(' + Math.round((invoice.depositRequired / invoice.subtotal) * 100) + '%)' : ''}`),
       React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.depositRequired)}`),
     ),
     invoice.depositReceived > 0 && React.createElement(View, { key: 'lit2.6', style: S.totRow },
