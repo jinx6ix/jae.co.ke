@@ -181,7 +181,7 @@ export default function InvoiceDetailPage() {
               Date: {new Date(invoice.invoiceDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
             <p className="text-xs text-gray-400">
-              Due: {new Date(invoice.dueDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' })}
+              Due: {invoice.dueDate ? new Date(invoice.dueDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}
             </p>
           </div>
         </div>
@@ -193,6 +193,7 @@ export default function InvoiceDetailPage() {
             <p className="font-bold text-gray-800">{invoice.billTo}</p>
             {invoice.billToEmail && <p className="text-sm text-gray-600">{invoice.billToEmail}</p>}
             {invoice.billToPhone && <p className="text-sm text-gray-600">{invoice.billToPhone}</p>}
+            {invoice.customerAddress && <p className="text-sm text-gray-600">{invoice.customerAddress}</p>}
           </div>
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
@@ -385,6 +386,12 @@ export default function InvoiceDetailPage() {
               <div className="flex justify-between text-sm text-green-600">
                 <span>Deposit Received</span>
                 <span className="font-mono">− {invoice.currency} {fmt2(invoice.depositReceived)}</span>
+              </div>
+            )}
+            {invoice.depositRequired > 0 && (
+              <div className="flex justify-between text-sm text-orange-600">
+                <span>Deposit Required</span>
+                <span className="font-mono">{invoice.currency} {fmt2(invoice.depositRequired)}</span>
               </div>
             )}
             <div className={`flex justify-between text-base font-bold border-t-2 pt-2 ${balanceDue <= 0 ? 'text-green-600' : 'text-orange-600'}`}>

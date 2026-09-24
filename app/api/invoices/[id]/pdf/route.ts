@@ -187,6 +187,7 @@ function InvoicePDF({ invoice }: { invoice: any }) {
     React.createElement(Text, { key: 'bt2', style: S.body }, invoice.billTo),
     invoice.billToEmail && React.createElement(Text, { key: 'bt3', style: S.body }, invoice.billToEmail),
     invoice.billToPhone && React.createElement(Text, { key: 'bt4', style: S.body }, invoice.billToPhone),
+    invoice.customerAddress && React.createElement(Text, { key: 'bt5', style: S.body }, invoice.customerAddress),
   ];
 
   // Build right section (booking/client)
@@ -310,6 +311,14 @@ function InvoicePDF({ invoice }: { invoice: any }) {
       React.createElement(Text, { style: S.totLabel }, 'Tax'),
       React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.taxAmount)}`),
     ),
+    invoice.depositRequired > 0 && React.createElement(View, { key: 'lit2.5', style: S.totRow },
+      React.createElement(Text, { style: S.totLabel }, 'Deposit Required'),
+      React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.depositRequired)}`),
+    ),
+    invoice.depositReceived > 0 && React.createElement(View, { key: 'lit2.6', style: S.totRow },
+      React.createElement(Text, { style: S.totLabel }, 'Deposit Received'),
+      React.createElement(Text, { style: S.totValue }, `${currency} ${fmt2(invoice.depositReceived)}`),
+    ),
     React.createElement(View, { key: 'lit3', style: S.totFinal },
       React.createElement(Text, { style: { ...S.totLabel, fontFamily: 'Helvetica-Bold' } }, 'Total Amount'),
       React.createElement(Text, { style: { ...S.totValue, fontSize: 11 } }, `${currency} ${fmt2(invoice.totalAmount)}`),
@@ -368,7 +377,7 @@ function InvoicePDF({ invoice }: { invoice: any }) {
           rightSection ? React.createElement(View, { style: { flex: 1 } }, ...rightSection) : null,
           React.createElement(View, { style: { flex: 1 } },
             React.createElement(Text, { style: S.sectionTitle }, 'Details'),
-            React.createElement(Text, { style: S.body }, 'Due: ' + fmt(invoice.dueDate)),
+            React.createElement(Text, { style: S.body }, 'Due: ' + (invoice.dueDate ? fmt(invoice.dueDate) : 'N/A')),
           ),
         ),
       ),
