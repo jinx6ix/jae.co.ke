@@ -1,7 +1,6 @@
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
-  // runtime base is resolved automatically by the generated client
 }
 
 datasource db {
@@ -9,17 +8,17 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(cuid())
-  name         String
-  email        String    @unique
-  password     String
-  role         String    @default("EMPLOYEE")
-  isActive     Boolean   @default(true)
-  lastLoginAt  DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  bookings     Booking[]
-  vouchers     Voucher[]
+  id          String    @id @default(cuid())
+  name        String
+  email       String    @unique
+  password    String
+  role        String    @default("EMPLOYEE")
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  lastLoginAt DateTime?
+  bookings    Booking[]
+  vouchers    Voucher[]
 }
 
 model Agent {
@@ -53,8 +52,8 @@ model Client {
   bookings    Booking[]
   agent       Agent?      @relation(fields: [agentId], references: [id])
   costSheets  CostSheet[]
-  vouchers    Voucher[]
   invoices    Invoice[]
+  vouchers    Voucher[]
 }
 
 model Destination {
@@ -64,6 +63,9 @@ model Destination {
   description String?
   highlights  String?
   createdAt   DateTime  @default(now())
+  isWheelchairAccessible         Boolean  @default(false)
+  accessibilityVerificationLevel String   @default("F")
+  accessibilityNotes             String?
   tourDays    TourDay[]
 }
 
@@ -108,7 +110,6 @@ model RateCard {
   basedOn4      Float
   basedOn6      Float
   basedOn8      Float
-  basedOn9      Float?
   basedOn10     Float?
   basedOn12     Float?
   markupPercent Float       @default(10)
@@ -118,6 +119,7 @@ model RateCard {
   notes         String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+  basedOn9      Float?
   tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id], onDelete: Cascade)
 }
 
@@ -149,6 +151,9 @@ model Vehicle {
   notes       String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  isWheelchairAccessible         Boolean  @default(false)
+  accessibilityVerificationLevel String   @default("F")
+  accessibilityNotes             String?
   vouchers    Voucher[]
 }
 
@@ -181,12 +186,12 @@ model Booking {
 }
 
 model Itinerary {
-  id        String         @id @default(cuid())
-  bookingId String?  @unique           // 👈 add this
+  id        String           @id @default(cuid())
+  bookingId String?          @unique
   title     String
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
-  booking   Booking?       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  booking   Booking?         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   days      ItineraryDay[]
   embeds    ItineraryEmbed[]
 }
@@ -267,71 +272,71 @@ model Voucher {
 }
 
 model Invoice {
-  id                  String    @id @default(cuid())
-  invoiceNo           String    @unique
+  id                  String     @id @default(cuid())
+  invoiceNo           String     @unique
   bookingId           String?
-  clientId            String?
-  costSheetId         String?
   billTo              String
   billToEmail         String?
   billToPhone         String?
-  customerAddress     String?
-  invoiceDate         DateTime  @default(now())
+  invoiceDate         DateTime   @default(now())
   dueDate             DateTime?
   lineItems           String
   subtotal            Float
-  taxAmount           Float     @default(0)
-  depositReceived     Float     @default(0)
-  depositRequired     Float     @default(0)
+  taxAmount           Float      @default(0)
+  depositReceived     Float      @default(0)
   totalAmount         Float
-  amountPaid          Float     @default(0)
-  currency            String    @default("KES")
+  amountPaid          Float      @default(0)
+  currency            String     @default("KES")
   paymentInstructions String?
   notes               String?
-  status              String    @default("DRAFT")
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
-  booking             Booking?  @relation(fields: [bookingId], references: [id])
-  client              Client?   @relation(fields: [clientId], references: [id])
+  status              String     @default("DRAFT")
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  clientId            String?
+  costSheetId         String?
+  customerAddress     String?
+  depositRequired     Float?     @default(0)
+  booking             Booking?   @relation(fields: [bookingId], references: [id])
+  client              Client?    @relation(fields: [clientId], references: [id])
   costSheet           CostSheet? @relation(fields: [costSheetId], references: [id])
 }
 
 model CostSheet {
-  id                String   @id @default(cuid())
+  id                String    @id @default(cuid())
   bookingRef        String?
   tourTitle         String
   days              Int
   numPax            Int
   extras            String?
-  fileHandlingFee   Float    @default(0)
-  ecoBottle         Float    @default(0)
-  evacInsurance     Float    @default(0)
+  fileHandlingFee   Float     @default(0)
+  ecoBottle         Float     @default(0)
+  evacInsurance     Float     @default(0)
   subtotal          Float
-  markupPercent     Float    @default(10)
+  markupPercent     Float     @default(10)
   markupAmount      Float
   totalCost         Float
-  currency          String   @default("USD")
+  currency          String    @default("USD")
   notes             String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
   agentId           String?
-  arrivalTransfer   Float    @default(0)
-  boardBasis        String   @default("FB")
+  arrivalTransfer   Float     @default(0)
+  boardBasis        String    @default("FB")
   bookingId         String?
   clientId          String?
-  dayRows           String   @default("[]")
-  departureTransfer Float    @default(0)
-  flightCostPP      Float    @default(0)
-  maasaiCost        Float    @default(0)
-  maasaiVillage     Boolean  @default(false)
-  numAdults         Int      @default(1)
-  numChildren       Int      @default(0)
+  dayRows           String    @default("[]")
+  departureTransfer Float     @default(0)
+  flightCostPP      Float     @default(0)
+  maasaiCost        Float     @default(0)
+  maasaiVillage     Boolean   @default(false)
+  numAdults         Int       @default(1)
+  numChildren       Int       @default(0)
   perAdultCost      Float
-  perChildCost      Float    @default(0)
-  isOutdated        Boolean  @default(false)
-  agent             Agent?   @relation(fields: [agentId], references: [id])
-  booking           Booking? @relation(fields: [bookingId], references: [id])
-  client            Client?  @relation(fields: [clientId], references: [id])
+  perChildCost      Float     @default(0)
+  isOutdated        Boolean   @default(false)
+  agent             Agent?    @relation(fields: [agentId], references: [id])
+  booking           Booking?  @relation(fields: [bookingId], references: [id])
+  client            Client?   @relation(fields: [clientId], references: [id])
   invoices          Invoice[]
 }
 
@@ -339,9 +344,9 @@ model SRCounty {
   id              Int       @id @default(autoincrement())
   name            String    @unique
   region          String?
-  parkFee         Float?    @default(0)        @map("park_fee")
-  parkFeeCurrency String?   @default("USD")   @map("park_fee_currency")
   createdAt       DateTime  @default(now())
+  parkFee         Float?    @default(0) @map("park_fee")
+  parkFeeCurrency String?   @default("USD") @map("park_fee_currency")
   hotels          SRHotel[]
 
   @@map("sr_counties")
@@ -424,67 +429,253 @@ model Log {
 }
 
 model AgentRun {
-  id        String   @id @default(cuid())
-  origin    String   // dashboard that started it
+  id        String         @id @default(cuid())
+  origin    String
   prompt    String
-  status    String   @default("running") // running | done | error
+  status    String         @default("running")
   summary   String?
-  steps     Int      @default(0)
+  steps     Int            @default(0)
   userId    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
   messages  AgentMessage[]
 }
 
 model AgentMessage {
   id        String   @id @default(cuid())
   runId     String
-  agent     String   // orchestrator | cost-sheet | itinerary | invoice | rate-intel | itinerary-gen | monitor | ui
-  kind      String   // system | user | handoff | tool | assistant | audit | error
+  agent     String
+  kind      String
   content   String
   payload   Json?
   createdAt DateTime @default(now())
-
   run       AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
 
   @@index([runId, createdAt])
 }
 
 model ItineraryEmbed {
-  id          String    @id @default(cuid())
-  token       String    @unique
-  label       String    @default("Public")
+  id          String     @id @default(cuid())
+  token       String     @unique
+  label       String     @default("Public")
   itineraryId String?
   expiresAt   DateTime?
-  createdAt   DateTime  @default(now())
-  visits      Int       @default(0)
+  createdAt   DateTime   @default(now())
+  visits      Int        @default(0)
   itinerary   Itinerary? @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
 
   @@index([token])
 }
 
-// One row per connected social account. The access token is encrypted at
-// rest with AES-256-GCM (see lib/instagram/crypto.ts) using the
-// TOKEN_ENCRYPTION_KEY env var. The unique (platform, externalId)
-// constraint means reconnecting the same account overwrites in place —
-// the audit fields (lastRefreshedAt, refreshCount) are preserved.
 model SocialAccount {
   id               String    @id @default(cuid())
-  platform         String    // 'instagram' | 'facebook' | (future)
-  externalId       String    // IG business account numeric id, FB page id, etc.
-  displayName      String?   // @handle for IG, page name for FB — UI/debug only
-  pageId           String?   // FB page id the IG business account is attached to
+  platform         String
+  externalId       String
+  displayName      String?
+  pageId           String?
   pageName         String?
-  accessTokenEnc   String    // AES-256-GCM, base64. Never logged, never returned to the client.
-  expiresAt        DateTime? // null = no expiry (page-level token, never refreshes)
-  scopes           String?   // CSV of OAuth scopes granted at mint time
-  connectedById    String?   // optional, points at User.id at connect time
-  connectedByEmail String?   // snapshot — survives User deletion
+  accessTokenEnc   String
+  expiresAt        DateTime?
+  scopes           String?
+  connectedById    String?
+  connectedByEmail String?
   lastRefreshedAt  DateTime?
   refreshCount     Int       @default(0)
   createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  updatedAt        DateTime  @default(now()) @updatedAt
 
   @@unique([platform, externalId])
   @@index([platform])
+}
+
+model AgentComment {
+  id          String   @id
+  agent       String
+  bookingId   String?
+  costSheetId String?
+  invoiceId   String?
+  clientId    String?
+  kind        String
+  body        String
+  payload     Json?
+  resolved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([bookingId, createdAt])
+  @@index([clientId, createdAt])
+  @@index([costSheetId, createdAt])
+  @@index([invoiceId, createdAt])
+}
+
+model AgentEvent {
+  id        String   @id
+  topic     String
+  actorId   String
+  runId     String?
+  payload   Json
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([topic])
+}
+
+model AgentPermission {
+  id           String   @id
+  agent        String
+  module       String
+  capability   String
+  riskTier     String?
+  approverRole String?
+  createdAt    DateTime @default(now())
+
+  @@unique([agent, module, capability])
+  @@index([agent])
+}
+
+model AgentRefinement {
+  id          String   @id
+  agent       String
+  promptNorm  String
+  outcomeKind String   @default("success")
+  payload     Json
+  hits        Int      @default(0)
+  status      String   @default("positive")
+  lastHitAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([agent, status, hits])
+  @@index([promptNorm])
+}
+
+model AgentRouteExample {
+  id                String              @id
+  promptNorm        String
+  intent            String
+  primaryAgents     String[]
+  analystKind       String?
+  analystEntity     String?
+  analystWindow     String?
+  status            String              @default("positive")
+  createdByUserId   String?
+  createdAt         DateTime            @default(now())
+  RoutingExampleUse RoutingExampleUse[]
+
+  @@index([promptNorm])
+  @@index([status, createdAt])
+}
+
+model ClassifierDecision {
+  id              String   @id
+  promptNorm      String
+  intentPredicted String
+  confidence      Float
+  source          String
+  accepted        Boolean?
+  lastHitAt       DateTime @default(now())
+
+  @@index([intentPredicted, lastHitAt])
+  @@index([promptNorm])
+}
+
+model Notification {
+  id            String    @id
+  recipientId   String?
+  recipientKind String
+  sourceAgent   String
+  priority      String
+  type          String
+  topic         String
+  bookingId     String?
+  body          String
+  payload       Json?
+  actionUrl     String?
+  expiresAt     DateTime?
+  status        String    @default("unread")
+  createdAt     DateTime  @default(now())
+
+  @@index([bookingId])
+  @@index([priority, status])
+  @@index([recipientId, status, createdAt])
+}
+
+model QueryExample {
+  id          String   @id
+  patternNorm String
+  queryName   String
+  hits        Int      @default(0)
+  lastHitAt   DateTime @default(now())
+  status      String   @default("positive")
+  createdAt   DateTime @default(now())
+
+  @@index([patternNorm])
+  @@index([status, hits])
+}
+
+model RoutingExampleUse {
+  id                String            @id
+  exampleId         String
+  runId             String
+  hitAt             DateTime          @default(now())
+  AgentRouteExample AgentRouteExample @relation(fields: [exampleId], references: [id], onDelete: Cascade)
+
+  @@index([exampleId])
+  @@index([runId])
+}
+
+model UserConversation {
+  id        String   @id
+  userId    String
+  agent     String
+  role      String
+  content   String
+  payload   Json?
+  topic     String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model UserMemory {
+  id          String   @id
+  userId      String   @unique
+  digest      String
+  payload     Json?
+  lastBuiltAt DateTime @default(now())
+}
+
+model UserPhrasingPreference {
+  userId         String   @id
+  tone           String   @default("balanced")
+  currencyFormat String   @default("USD")
+  language       String   @default("en")
+  highlights     Boolean  @default(true)
+  updatedAt      DateTime
+}
+
+model UserPreferences {
+  id         String   @id
+  userId     String   @unique
+  timezone   String   @default("Africa/Nairobi")
+  briefing   Boolean  @default(true)
+  digest     Boolean  @default(true)
+  escalation Boolean  @default(true)
+  payload    Json?
+  updatedAt  DateTime
+}
+
+model UserTask {
+  id               String    @id
+  assigneeId       String
+  title            String
+  body             String?
+  dueAt            DateTime?
+  status           String    @default("open")
+  relatedBookingId String?
+  generatedByAgent String?
+  payload          Json?
+  createdAt        DateTime  @default(now())
+  completedAt      DateTime?
+
+  @@index([assigneeId, status])
+  @@index([relatedBookingId])
 }

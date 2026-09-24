@@ -31,6 +31,9 @@ export type DestinationMinAggregateOutputType = {
   description: string | null
   highlights: string | null
   createdAt: Date | null
+  isWheelchairAccessible: boolean | null
+  accessibilityVerificationLevel: string | null
+  accessibilityNotes: string | null
 }
 
 export type DestinationMaxAggregateOutputType = {
@@ -40,6 +43,9 @@ export type DestinationMaxAggregateOutputType = {
   description: string | null
   highlights: string | null
   createdAt: Date | null
+  isWheelchairAccessible: boolean | null
+  accessibilityVerificationLevel: string | null
+  accessibilityNotes: string | null
 }
 
 export type DestinationCountAggregateOutputType = {
@@ -49,6 +55,9 @@ export type DestinationCountAggregateOutputType = {
   description: number
   highlights: number
   createdAt: number
+  isWheelchairAccessible: number
+  accessibilityVerificationLevel: number
+  accessibilityNotes: number
   _all: number
 }
 
@@ -60,6 +69,9 @@ export type DestinationMinAggregateInputType = {
   description?: true
   highlights?: true
   createdAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
 }
 
 export type DestinationMaxAggregateInputType = {
@@ -69,6 +81,9 @@ export type DestinationMaxAggregateInputType = {
   description?: true
   highlights?: true
   createdAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
 }
 
 export type DestinationCountAggregateInputType = {
@@ -78,6 +93,9 @@ export type DestinationCountAggregateInputType = {
   description?: true
   highlights?: true
   createdAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
   _all?: true
 }
 
@@ -160,6 +178,9 @@ export type DestinationGroupByOutputType = {
   description: string | null
   highlights: string | null
   createdAt: Date
+  isWheelchairAccessible: boolean
+  accessibilityVerificationLevel: string
+  accessibilityNotes: string | null
   _count: DestinationCountAggregateOutputType | null
   _min: DestinationMinAggregateOutputType | null
   _max: DestinationMaxAggregateOutputType | null
@@ -190,6 +211,9 @@ export type DestinationWhereInput = {
   description?: Prisma.StringNullableFilter<"Destination"> | string | null
   highlights?: Prisma.StringNullableFilter<"Destination"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Destination"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolFilter<"Destination"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringFilter<"Destination"> | string
+  accessibilityNotes?: Prisma.StringNullableFilter<"Destination"> | string | null
   tourDays?: Prisma.TourDayListRelationFilter
 }
 
@@ -200,6 +224,9 @@ export type DestinationOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   highlights?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   tourDays?: Prisma.TourDayOrderByRelationAggregateInput
 }
 
@@ -213,6 +240,9 @@ export type DestinationWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Destination"> | string | null
   highlights?: Prisma.StringNullableFilter<"Destination"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Destination"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolFilter<"Destination"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringFilter<"Destination"> | string
+  accessibilityNotes?: Prisma.StringNullableFilter<"Destination"> | string | null
   tourDays?: Prisma.TourDayListRelationFilter
 }, "id">
 
@@ -223,6 +253,9 @@ export type DestinationOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   highlights?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DestinationCountOrderByAggregateInput
   _max?: Prisma.DestinationMaxOrderByAggregateInput
   _min?: Prisma.DestinationMinOrderByAggregateInput
@@ -238,6 +271,9 @@ export type DestinationScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Destination"> | string | null
   highlights?: Prisma.StringNullableWithAggregatesFilter<"Destination"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Destination"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolWithAggregatesFilter<"Destination"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringWithAggregatesFilter<"Destination"> | string
+  accessibilityNotes?: Prisma.StringNullableWithAggregatesFilter<"Destination"> | string | null
 }
 
 export type DestinationCreateInput = {
@@ -247,6 +283,9 @@ export type DestinationCreateInput = {
   description?: string | null
   highlights?: string | null
   createdAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
   tourDays?: Prisma.TourDayCreateNestedManyWithoutDestinationInput
 }
 
@@ -257,6 +296,9 @@ export type DestinationUncheckedCreateInput = {
   description?: string | null
   highlights?: string | null
   createdAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
   tourDays?: Prisma.TourDayUncheckedCreateNestedManyWithoutDestinationInput
 }
 
@@ -267,6 +309,9 @@ export type DestinationUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourDays?: Prisma.TourDayUpdateManyWithoutDestinationNestedInput
 }
 
@@ -277,6 +322,9 @@ export type DestinationUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tourDays?: Prisma.TourDayUncheckedUpdateManyWithoutDestinationNestedInput
 }
 
@@ -287,6 +335,9 @@ export type DestinationCreateManyInput = {
   description?: string | null
   highlights?: string | null
   createdAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type DestinationUpdateManyMutationInput = {
@@ -296,6 +347,9 @@ export type DestinationUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DestinationUncheckedUpdateManyInput = {
@@ -305,6 +359,9 @@ export type DestinationUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DestinationCountOrderByAggregateInput = {
@@ -314,6 +371,9 @@ export type DestinationCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   highlights?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type DestinationMaxOrderByAggregateInput = {
@@ -323,6 +383,9 @@ export type DestinationMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   highlights?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type DestinationMinOrderByAggregateInput = {
@@ -332,6 +395,9 @@ export type DestinationMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   highlights?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type DestinationNullableScalarRelationFilter = {
@@ -362,6 +428,9 @@ export type DestinationCreateWithoutTourDaysInput = {
   description?: string | null
   highlights?: string | null
   createdAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type DestinationUncheckedCreateWithoutTourDaysInput = {
@@ -371,6 +440,9 @@ export type DestinationUncheckedCreateWithoutTourDaysInput = {
   description?: string | null
   highlights?: string | null
   createdAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type DestinationCreateOrConnectWithoutTourDaysInput = {
@@ -396,6 +468,9 @@ export type DestinationUpdateWithoutTourDaysInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DestinationUncheckedUpdateWithoutTourDaysInput = {
@@ -405,6 +480,9 @@ export type DestinationUncheckedUpdateWithoutTourDaysInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   highlights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -445,6 +523,9 @@ export type DestinationSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   description?: boolean
   highlights?: boolean
   createdAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
   tourDays?: boolean | Prisma.Destination$tourDaysArgs<ExtArgs>
   _count?: boolean | Prisma.DestinationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["destination"]>
@@ -456,6 +537,9 @@ export type DestinationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   description?: boolean
   highlights?: boolean
   createdAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }, ExtArgs["result"]["destination"]>
 
 export type DestinationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -465,6 +549,9 @@ export type DestinationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   description?: boolean
   highlights?: boolean
   createdAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }, ExtArgs["result"]["destination"]>
 
 export type DestinationSelectScalar = {
@@ -474,9 +561,12 @@ export type DestinationSelectScalar = {
   description?: boolean
   highlights?: boolean
   createdAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }
 
-export type DestinationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "country" | "description" | "highlights" | "createdAt", ExtArgs["result"]["destination"]>
+export type DestinationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "country" | "description" | "highlights" | "createdAt" | "isWheelchairAccessible" | "accessibilityVerificationLevel" | "accessibilityNotes", ExtArgs["result"]["destination"]>
 export type DestinationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tourDays?: boolean | Prisma.Destination$tourDaysArgs<ExtArgs>
   _count?: boolean | Prisma.DestinationCountOutputTypeDefaultArgs<ExtArgs>
@@ -496,6 +586,9 @@ export type $DestinationPayload<ExtArgs extends runtime.Types.Extensions.Interna
     description: string | null
     highlights: string | null
     createdAt: Date
+    isWheelchairAccessible: boolean
+    accessibilityVerificationLevel: string
+    accessibilityNotes: string | null
   }, ExtArgs["result"]["destination"]>
   composites: {}
 }
@@ -926,6 +1019,9 @@ export interface DestinationFieldRefs {
   readonly description: Prisma.FieldRef<"Destination", 'String'>
   readonly highlights: Prisma.FieldRef<"Destination", 'String'>
   readonly createdAt: Prisma.FieldRef<"Destination", 'DateTime'>
+  readonly isWheelchairAccessible: Prisma.FieldRef<"Destination", 'Boolean'>
+  readonly accessibilityVerificationLevel: Prisma.FieldRef<"Destination", 'String'>
+  readonly accessibilityNotes: Prisma.FieldRef<"Destination", 'String'>
 }
     
 

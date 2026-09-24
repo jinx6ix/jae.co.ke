@@ -2459,7 +2459,10 @@ export const DestinationScalarFieldEnum = {
   country: 'country',
   description: 'description',
   highlights: 'highlights',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  isWheelchairAccessible: 'isWheelchairAccessible',
+  accessibilityVerificationLevel: 'accessibilityVerificationLevel',
+  accessibilityNotes: 'accessibilityNotes'
 } as const
 
 export type DestinationScalarFieldEnum = (typeof DestinationScalarFieldEnum)[keyof typeof DestinationScalarFieldEnum]
@@ -2551,7 +2554,10 @@ export const VehicleScalarFieldEnum = {
   currency: 'currency',
   notes: 'notes',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isWheelchairAccessible: 'isWheelchairAccessible',
+  accessibilityVerificationLevel: 'accessibilityVerificationLevel',
+  accessibilityNotes: 'accessibilityNotes'
 } as const
 
 export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]

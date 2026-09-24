@@ -70,6 +70,11 @@ export async function getAllPagesPath() {
     { path: '/wheelchair-vehicle', title: 'Wheelchair Vehicle' },
     { path: '/toyota-landcruiser', title: 'Toyota Landcruiser' },
     { path: '/toyota-prado', title: 'Toyota Prado' },
+    { path: '/accessible-tourism-research', title: 'Accessible Tourism Research' },
+    { path: '/accessible-safari-index', title: 'Accessible Safari Index' },
+    { path: '/accessible-safari-methodology', title: 'Accessible Safari Methodology' },
+    { path: '/accessible-safari-report-2026', title: 'Kenya Accessible Safari Report 2026' },
+    { path: '/accessible-safaris', title: 'Accessible Safaris' },
   ];
 
   const dynamicEntries = [

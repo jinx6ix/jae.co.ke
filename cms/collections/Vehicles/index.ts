@@ -69,6 +69,22 @@ export const Vehicles: CollectionConfig<'vehicles'> = {
       fields: [{ name: 'text', type: 'text' }],
     },
     {
+      name: 'accessibility',
+      label: 'Accessibility Research',
+      type: 'group',
+      fields: [
+        { name: 'isWheelchairAccessible', type: 'checkbox', label: 'Is Wheelchair Accessible?' },
+        {
+          name: 'accessibilityVerificationLevel',
+          type: 'select',
+          options: ['A', 'B', 'C', 'D', 'E', 'F'],
+          defaultValue: 'F',
+          admin: { description: 'A=On-Site, B=Documentary, C=Operator Confirmed, D=Third-Party, E=Traveler Report, F=Unknown' }
+        },
+        { name: 'accessibilityNotes', type: 'textarea' },
+      ],
+    },
+    {
       name: 'gallery',
       type: 'array',
       fields: [

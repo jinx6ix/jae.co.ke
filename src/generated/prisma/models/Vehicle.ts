@@ -48,6 +48,9 @@ export type VehicleMinAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isWheelchairAccessible: boolean | null
+  accessibilityVerificationLevel: string | null
+  accessibilityNotes: string | null
 }
 
 export type VehicleMaxAggregateOutputType = {
@@ -62,6 +65,9 @@ export type VehicleMaxAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  isWheelchairAccessible: boolean | null
+  accessibilityVerificationLevel: string | null
+  accessibilityNotes: string | null
 }
 
 export type VehicleCountAggregateOutputType = {
@@ -76,6 +82,9 @@ export type VehicleCountAggregateOutputType = {
   notes: number
   createdAt: number
   updatedAt: number
+  isWheelchairAccessible: number
+  accessibilityVerificationLevel: number
+  accessibilityNotes: number
   _all: number
 }
 
@@ -102,6 +111,9 @@ export type VehicleMinAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
 }
 
 export type VehicleMaxAggregateInputType = {
@@ -116,6 +128,9 @@ export type VehicleMaxAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
 }
 
 export type VehicleCountAggregateInputType = {
@@ -130,6 +145,9 @@ export type VehicleCountAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  isWheelchairAccessible?: true
+  accessibilityVerificationLevel?: true
+  accessibilityNotes?: true
   _all?: true
 }
 
@@ -231,6 +249,9 @@ export type VehicleGroupByOutputType = {
   notes: string | null
   createdAt: Date
   updatedAt: Date
+  isWheelchairAccessible: boolean
+  accessibilityVerificationLevel: string
+  accessibilityNotes: string | null
   _count: VehicleCountAggregateOutputType | null
   _avg: VehicleAvgAggregateOutputType | null
   _sum: VehicleSumAggregateOutputType | null
@@ -268,6 +289,9 @@ export type VehicleWhereInput = {
   notes?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolFilter<"Vehicle"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringFilter<"Vehicle"> | string
+  accessibilityNotes?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   vouchers?: Prisma.VoucherListRelationFilter
 }
 
@@ -283,6 +307,9 @@ export type VehicleOrderByWithRelationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   vouchers?: Prisma.VoucherOrderByRelationAggregateInput
 }
 
@@ -301,6 +328,9 @@ export type VehicleWhereUniqueInput = Prisma.AtLeast<{
   notes?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolFilter<"Vehicle"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringFilter<"Vehicle"> | string
+  accessibilityNotes?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   vouchers?: Prisma.VoucherListRelationFilter
 }, "id">
 
@@ -316,6 +346,9 @@ export type VehicleOrderByWithAggregationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.VehicleCountOrderByAggregateInput
   _avg?: Prisma.VehicleAvgOrderByAggregateInput
   _max?: Prisma.VehicleMaxOrderByAggregateInput
@@ -338,6 +371,9 @@ export type VehicleScalarWhereWithAggregatesInput = {
   notes?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
+  isWheelchairAccessible?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
+  accessibilityVerificationLevel?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
+  accessibilityNotes?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
 }
 
 export type VehicleCreateInput = {
@@ -352,6 +388,9 @@ export type VehicleCreateInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
   vouchers?: Prisma.VoucherCreateNestedManyWithoutVehicleInput
 }
 
@@ -367,6 +406,9 @@ export type VehicleUncheckedCreateInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
   vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutVehicleInput
 }
 
@@ -382,6 +424,9 @@ export type VehicleUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vouchers?: Prisma.VoucherUpdateManyWithoutVehicleNestedInput
 }
 
@@ -397,6 +442,9 @@ export type VehicleUncheckedUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutVehicleNestedInput
 }
 
@@ -412,6 +460,9 @@ export type VehicleCreateManyInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type VehicleUpdateManyMutationInput = {
@@ -426,6 +477,9 @@ export type VehicleUpdateManyMutationInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type VehicleUncheckedUpdateManyInput = {
@@ -440,6 +494,9 @@ export type VehicleUncheckedUpdateManyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type VehicleCountOrderByAggregateInput = {
@@ -454,6 +511,9 @@ export type VehicleCountOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type VehicleAvgOrderByAggregateInput = {
@@ -473,6 +533,9 @@ export type VehicleMaxOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type VehicleMinOrderByAggregateInput = {
@@ -487,6 +550,9 @@ export type VehicleMinOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isWheelchairAccessible?: Prisma.SortOrder
+  accessibilityVerificationLevel?: Prisma.SortOrder
+  accessibilityNotes?: Prisma.SortOrder
 }
 
 export type VehicleSumOrderByAggregateInput = {
@@ -527,6 +593,9 @@ export type VehicleCreateWithoutVouchersInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type VehicleUncheckedCreateWithoutVouchersInput = {
@@ -541,6 +610,9 @@ export type VehicleUncheckedCreateWithoutVouchersInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: string
+  accessibilityNotes?: string | null
 }
 
 export type VehicleCreateOrConnectWithoutVouchersInput = {
@@ -571,6 +643,9 @@ export type VehicleUpdateWithoutVouchersInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type VehicleUncheckedUpdateWithoutVouchersInput = {
@@ -585,6 +660,9 @@ export type VehicleUncheckedUpdateWithoutVouchersInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isWheelchairAccessible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessibilityVerificationLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  accessibilityNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -630,6 +708,9 @@ export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
   vouchers?: boolean | Prisma.Vehicle$vouchersArgs<ExtArgs>
   _count?: boolean | Prisma.VehicleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicle"]>
@@ -646,6 +727,9 @@ export type VehicleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }, ExtArgs["result"]["vehicle"]>
 
 export type VehicleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -660,6 +744,9 @@ export type VehicleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }, ExtArgs["result"]["vehicle"]>
 
 export type VehicleSelectScalar = {
@@ -674,9 +761,12 @@ export type VehicleSelectScalar = {
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isWheelchairAccessible?: boolean
+  accessibilityVerificationLevel?: boolean
+  accessibilityNotes?: boolean
 }
 
-export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "seats" | "regPlate" | "isAvailable" | "ratePerDay" | "currency" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
+export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "seats" | "regPlate" | "isAvailable" | "ratePerDay" | "currency" | "notes" | "createdAt" | "updatedAt" | "isWheelchairAccessible" | "accessibilityVerificationLevel" | "accessibilityNotes", ExtArgs["result"]["vehicle"]>
 export type VehicleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vouchers?: boolean | Prisma.Vehicle$vouchersArgs<ExtArgs>
   _count?: boolean | Prisma.VehicleCountOutputTypeDefaultArgs<ExtArgs>
@@ -701,6 +791,9 @@ export type $VehiclePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     notes: string | null
     createdAt: Date
     updatedAt: Date
+    isWheelchairAccessible: boolean
+    accessibilityVerificationLevel: string
+    accessibilityNotes: string | null
   }, ExtArgs["result"]["vehicle"]>
   composites: {}
 }
@@ -1136,6 +1229,9 @@ export interface VehicleFieldRefs {
   readonly notes: Prisma.FieldRef<"Vehicle", 'String'>
   readonly createdAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
+  readonly isWheelchairAccessible: Prisma.FieldRef<"Vehicle", 'Boolean'>
+  readonly accessibilityVerificationLevel: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly accessibilityNotes: Prisma.FieldRef<"Vehicle", 'String'>
 }
     
 

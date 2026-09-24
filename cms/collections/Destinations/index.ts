@@ -85,6 +85,22 @@ export const Destinations: CollectionConfig<'destinations'> = {
       admin: { description: 'Traveller types this destination is best for.' },
     },
     {
+      name: 'accessibility',
+      label: 'Accessibility Research',
+      type: 'group',
+      fields: [
+        { name: 'isWheelchairAccessible', type: 'checkbox', label: 'Is Wheelchair Accessible?' },
+        {
+          name: 'accessibilityVerificationLevel',
+          type: 'select',
+          options: ['A', 'B', 'C', 'D', 'E', 'F'],
+          defaultValue: 'F',
+          admin: { description: 'A=On-Site, B=Documentary, C=Operator Confirmed, D=Third-Party, E=Traveler Report, F=Unknown' }
+        },
+        { name: 'accessibilityNotes', type: 'textarea' },
+      ],
+    },
+    {
       name: 'popularTours',
       type: 'number',
       admin: { description: 'Cached count of published tours tagged for this country.' },
