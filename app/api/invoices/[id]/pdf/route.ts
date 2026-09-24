@@ -377,7 +377,7 @@ function InvoicePDF({ invoice }: { invoice: any }) {
           rightSection ? React.createElement(View, { style: { flex: 1 } }, ...rightSection) : null,
           React.createElement(View, { style: { flex: 1 } },
             React.createElement(Text, { style: S.sectionTitle }, 'Details'),
-            React.createElement(Text, { style: S.body }, 'Due: ' + (invoice.dueDate ? fmt(invoice.dueDate) : 'N/A')),
+            invoice.dueDate ? React.createElement(Text, { style: S.body }, 'Due: ' + fmt(invoice.dueDate)) : null,
           ),
         ),
       ),

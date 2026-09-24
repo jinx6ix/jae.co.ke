@@ -180,9 +180,11 @@ export default function InvoiceDetailPage() {
             <p className="text-xs text-gray-400 mt-1">
               Date: {new Date(invoice.invoiceDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
-            <p className="text-xs text-gray-400">
-              Due: {invoice.dueDate ? new Date(invoice.dueDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' }) : 'N/A'}
-            </p>
+            {invoice.dueDate && (
+              <p className="text-xs text-gray-400">
+                Due: {new Date(invoice.dueDate).toLocaleDateString('en-KE', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+            )}
           </div>
         </div>
 
@@ -193,7 +195,7 @@ export default function InvoiceDetailPage() {
             <p className="font-bold text-gray-800">{invoice.billTo}</p>
             {invoice.billToEmail && <p className="text-sm text-gray-600">{invoice.billToEmail}</p>}
             {invoice.billToPhone && <p className="text-sm text-gray-600">{invoice.billToPhone}</p>}
-            {invoice.customerAddress && <p className="text-sm text-gray-600">{invoice.customerAddress}</p>}
+            {invoice.customerAddress && <p className="text-sm text-gray-600 whitespace-pre-wrap">{invoice.customerAddress}</p>}
           </div>
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">

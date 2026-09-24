@@ -28,6 +28,7 @@ export default function EditInvoicePage() {
   const [status,      setStatus]      = useState('DRAFT');
   const [depositReceived, setDepositReceived] = useState(0);
   const [depositRequired, setDepositRequired] = useState(0);
+  const [depositPct, setDepositPct] = useState(0);
   const [taxRate,     setTaxRate]     = useState(0);
   const [paymentInstructions, setPaymentInstructions] = useState('');
   const [notes,       setNotes]       = useState('');
@@ -55,6 +56,9 @@ export default function EditInvoicePage() {
       setStatus(inv.status || 'DRAFT');
       setDepositReceived(inv.depositReceived || 0);
       setDepositRequired(inv.depositRequired || 0);
+      if (inv.subtotal > 0 && inv.depositRequired > 0) {
+        setDepositPct(Math.round((inv.depositRequired / inv.subtotal) * 100));
+      }
       setPaymentInstructions(inv.paymentInstructions || '');
       setNotes(inv.notes || '');
       setOriginalTax(inv.taxAmount || 0);
@@ -171,7 +175,7 @@ export default function EditInvoicePage() {
             </div>
             <div className="col-span-2">
               <label className="label">Address</label>
-              <input className="input" value={customerAddress} onChange={e => setCustomerAddress(e.target.value)} placeholder="Client address"/>
+              <textarea className="input" value={customerAddress} onChange={e => setCustomerAddress(e.target.value)} placeholder="Client address" rows={3}/>
             </div>
           </div>
         </div>
@@ -190,7 +194,19 @@ export default function EditInvoicePage() {
             </div>
             <div>
               <label className="label">Deposit Required</label>
-              <input type="number" min={0} step="0.01" className="input" value={depositRequired || ''} onChange={e => setDepositRequired(Number(e.target.value))} placeholder="0.00"/>
+              <div className="flex gap-2">
+                <input type="number" min={0} step="0.01" className="input" value={depositRequired || ''} onChange={e => {
+                  const val = Number(e.target.value);
+                  setDepositRequired(val);
+                  setDepositPct(subtotal > 0 ? Math.round((val / subtotal) * 100) : 0);
+                }} placeholder="0.00"/>
+                <input type="number" min={0} max={100} className="input w-20" value={depositPct || ''} onChange={e => {
+                  const pct = Number(e.target.value);
+                  setDepositPct(pct);
+                  setDepositRequired(subtotal * (pct / 100));
+                }} placeholder="%"/>
+                <span className="text-sm text-gray-400 self-center">%</span>
+              </div>
             </div>
             <div>
               <label className="label">Currency</label>

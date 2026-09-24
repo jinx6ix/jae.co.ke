@@ -25,6 +25,7 @@ export default function NewInvoicePage() {
   const [status, setStatus] = useState('DRAFT');
   const [depositReceived, setDepositReceived] = useState(0);
   const [depositRequired, setDepositRequired] = useState(0);
+  const [depositPct, setDepositPct] = useState(0);
   const [taxRate, setTaxRate] = useState(0);
   const [paymentInstructions, setPaymentInstructions] = useState(
     'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA'
@@ -160,7 +161,10 @@ export default function NewInvoicePage() {
             <div className="col-span-2"><label className="label">Name *</label><input required className="input" value={billTo} onChange={e => setBillTo(e.target.value)} placeholder="Client / Company name"/></div>
             <div><label className="label">Email</label><input type="email" className="input" value={billToEmail} onChange={e => setBillToEmail(e.target.value)}/></div>
             <div><label className="label">Phone</label><input className="input" value={billToPhone} onChange={e => setBillToPhone(e.target.value)}/></div>
-            <div className="col-span-2"><label className="label">Address</label><input className="input" value={customerAddress} onChange={e => setCustomerAddress(e.target.value)} placeholder="Client address"/></div>
+            <div className="col-span-2">
+              <label className="label">Address</label>
+              <textarea className="input" value={customerAddress} onChange={e => setCustomerAddress(e.target.value)} placeholder="Client address" rows={3}/>
+            </div>
           </div>
         </div>
 
@@ -170,7 +174,22 @@ export default function NewInvoicePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><label className="label">Invoice Date</label><input type="date" className="input" value={invoiceDate} onChange={e => setInvoiceDate(e.target.value)}/></div>
             <div><label className="label">Due Date</label><input type="date" className="input" value={dueDate} onChange={e => setDueDate(e.target.value)}/></div>
-            <div><label className="label">Deposit Required</label><input type="number" min={0} step="0.01" className="input" value={depositRequired || ''} onChange={e => setDepositRequired(Number(e.target.value))} placeholder="0.00"/></div>
+            <div>
+              <label className="label">Deposit Required</label>
+              <div className="flex gap-2">
+                <input type="number" min={0} step="0.01" className="input" value={depositRequired || ''} onChange={e => {
+                  const val = Number(e.target.value);
+                  setDepositRequired(val);
+                  setDepositPct(subtotal > 0 ? Math.round((val / subtotal) * 100) : 0);
+                }} placeholder="0.00"/>
+                <input type="number" min={0} max={100} className="input w-20" value={depositPct || ''} onChange={e => {
+                  const pct = Number(e.target.value);
+                  setDepositPct(pct);
+                  setDepositRequired(subtotal * (pct / 100));
+                }} placeholder="%"/>
+                <span className="text-sm text-gray-400 self-center">%</span>
+              </div>
+            </div>
             <div><label className="label">Currency</label><select className="input" value={currency} onChange={e => setCurrency(e.target.value)}>
               {['USD','KES','EUR','GBP'].map(c => <option key={c}>{c}</option>)}
             </select></div>
