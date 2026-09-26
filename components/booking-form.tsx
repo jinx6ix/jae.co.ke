@@ -69,7 +69,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
 
       try {
         // Forward to n8n Webhook
-        await fetch("/api/book", {
+        const webhookResponse = await fetch("/api/book", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,6 +83,11 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             specialRequirements: formData.message,
           }),
         });
+
+        if (!webhookResponse.ok) {
+          console.error("[Booking] Webhook failed", await webhookResponse.json());
+          throw new Error("Booking notification failed.");
+        }
 
         const response = await fetch("/api/site-inquiries", {
         method: "POST",
