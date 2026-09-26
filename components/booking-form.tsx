@@ -67,8 +67,24 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       })
     }
 
-    try {
-      const response = await fetch("/api/site-inquiries", {
+      try {
+        // Forward to n8n Webhook
+        await fetch("/api/book", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            serviceName: tourTitle,
+            startDate: formData.date,
+            specialRequirements: formData.message,
+          }),
+        });
+
+        const response = await fetch("/api/site-inquiries", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
