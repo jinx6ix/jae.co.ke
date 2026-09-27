@@ -174,6 +174,37 @@ export async function POST(request: NextRequest) {
     });
 
     // ---------------------------------------------------------------
+    // 9.5. Forward to n8n Webhook
+    // ---------------------------------------------------------------
+    try {
+      const webhookUrl = process.env.N8N_BOOKING_WEBHOOK_URL;
+      if (webhookUrl) {
+        const n8nPayload = {
+          name: name,
+          email: email,
+          phone: phone,
+          tourName: serviceName,
+          dates: startDate,
+          message: bookingData.specialRequirements || '',
+        };
+
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(n8nPayload),
+        });
+        console.log(`[site-inquiries] ${bookingId} forwarded to n8n`);
+      } else {
+        console.warn(`[site-inquiries] ${bookingId} n8n webhook URL missing`);
+      }
+    } catch (n8nError) {
+      console.error(`[site-inquiries] ${bookingId} n8n webhook forward failed:`, n8nError);
+      // Suppress error to avoid failing the booking
+    }
+
+    // ---------------------------------------------------------------
     // 10. Determine notification status
     // ---------------------------------------------------------------
     const customerEmailSent = emailStatus.client === 'sent';
