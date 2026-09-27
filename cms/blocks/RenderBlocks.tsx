@@ -34,14 +34,16 @@ export async function RenderBlocks({ blocks }: { blocks: Page['layout'][0][] }) 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
   if (hasBlocks) {
+    console.log('Available block components:', Object.keys(blockComponents))
     return (
       <Fragment>
         {blocks.map((block, index) => {
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
+            console.log(`Rendering block: ${blockType}, Component: ${!!Block}`)
             if (Block) {
               return (
                 <div className="my-16" key={index}>
