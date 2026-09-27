@@ -25,7 +25,7 @@ type Props = {
   fallback?: React.ReactNode
 }
 
-export const CmsPage: React.FC<Props> = async ({ slug, locale, fallback }) => {
+export async function CmsPage({ slug, locale, fallback }: Props) {
   let page: Page | null = null
   try {
     page = await getPageBySlug(slug, locale)

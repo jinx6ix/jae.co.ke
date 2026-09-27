@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TourOperatorsPage() {
+export default async function TourOperatorsPage() {
   return (
     <>
       <CmsPage
