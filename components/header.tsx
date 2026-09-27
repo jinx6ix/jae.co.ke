@@ -1,5 +1,6 @@
 "use client"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
+import { FileText } from "lucide-react"
 
 import Link from "next/link"
 import Image from "next/image"
@@ -110,6 +111,15 @@ export function Header() {
 
         {/* Desktop Right Section - Visible from lg breakpoint */}
         <div className="hidden lg:flex items-center justify-end gap-2 xl:gap-4 flex-shrink-0 min-w-[200px] xl:min-w-[240px]">
+          {/* Build My Safari Button */}
+          <Link
+            href="/itinerary-builder"
+            className="flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/5 transition hover:bg-orange-600 whitespace-nowrap"
+          >
+            <FileText className="h-4 w-4" />
+            Build my safari
+          </Link>
+
           {/* Language Selector */}
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 px-2 xl:px-3 py-2 text-sm font-medium text-gray-700 hover:text-amber-600 rounded-md transition-colors border border-gray-200">
@@ -161,14 +171,23 @@ export function Header() {
           <div className="container mx-auto px-4 py-4 max-w-7xl">
             <nav className="flex flex-col gap-3">
               {/* Main Links */}
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-base font-medium text-gray-900 hover:text-amber-600 py-2 border-b border-gray-100"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
-              
+
+              <Link
+                href="/itinerary-builder"
+                className="flex items-center gap-2 text-base font-medium text-orange-600 hover:text-orange-700 py-2 border-b border-gray-100"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <FileText className="h-5 w-5" />
+                Build my safari
+              </Link>
+
               {/* Tours Section */}
               <div className="border-b border-gray-100">
                 <button 

@@ -236,10 +236,7 @@ export default function MarketingLayout({
             <DynamicScripts />
             <CookieConsent />
 
-            {/* Floating buttons — z-index 2147483600 lives in
-                each component, so they sit on top of the Sonner
-                Toaster and the Google merchant widget. */}
-            <CreateQuotationButton />
+            {/* GooglePreferredSource now sits elsewhere or is handled differently */}
             <GooglePreferredSource />
 
             <Toaster position="top-center" richColors />
