@@ -1257,6 +1257,14 @@ export interface Vehicle {
         id?: string | null;
       }[]
     | null;
+  accessibility?: {
+    isWheelchairAccessible?: boolean | null;
+    /**
+     * A=On-Site, B=Documentary, C=Operator Confirmed, D=Third-Party, E=Traveler Report, F=Unknown
+     */
+    accessibilityVerificationLevel?: ('A' | 'B' | 'C' | 'D' | 'E' | 'F') | null;
+    accessibilityNotes?: string | null;
+  };
   gallery?:
     | {
         image: string | Media;
@@ -1339,6 +1347,14 @@ export interface Destination {
         id?: string | null;
       }[]
     | null;
+  accessibility?: {
+    isWheelchairAccessible?: boolean | null;
+    /**
+     * A=On-Site, B=Documentary, C=Operator Confirmed, D=Third-Party, E=Traveler Report, F=Unknown
+     */
+    accessibilityVerificationLevel?: ('A' | 'B' | 'C' | 'D' | 'E' | 'F') | null;
+    accessibilityNotes?: string | null;
+  };
   /**
    * Cached count of published tours tagged for this country.
    */
@@ -2250,6 +2266,13 @@ export interface VehiclesSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
+  accessibility?:
+    | T
+    | {
+        isWheelchairAccessible?: T;
+        accessibilityVerificationLevel?: T;
+        accessibilityNotes?: T;
+      };
   gallery?:
     | T
     | {
@@ -2292,6 +2315,13 @@ export interface DestinationsSelect<T extends boolean = true> {
     | {
         text?: T;
         id?: T;
+      };
+  accessibility?:
+    | T
+    | {
+        isWheelchairAccessible?: T;
+        accessibilityVerificationLevel?: T;
+        accessibilityNotes?: T;
       };
   popularTours?: T;
   heroImage?: T;

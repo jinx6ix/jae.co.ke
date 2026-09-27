@@ -45,6 +45,7 @@ export async function getAllPagesPath() {
     { path: '/blog', title: 'Blog' },
     { path: '/about', title: 'About' },
     { path: '/contact', title: 'Contact' },
+    { path: '/tour-operators-in-kenya', title: 'Tour Operators in Kenya' },
     { path: '/maasai-mara-great-migration', title: 'Maasai Mara Great Migration' },
     { path: '/wheelchair-accessible-safari-landcruiser', title: 'Wheelchair Accessible Safari Landcruiser' },
     { path: '/wheelchair-accessible-maasai-mara-migration', title: 'Wheelchair Accessible Maasai Mara Migration' },

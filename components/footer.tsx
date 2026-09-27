@@ -78,6 +78,11 @@ export function Footer() {
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/tour-operators-in-kenya" className="text-muted-foreground transition-colors hover:text-primary">
+                  Tour Operators in Kenya
+                </Link>
+              </li>
+              <li>
                 <Link href="/tours" className="text-muted-foreground transition-colors hover:text-primary">
                   All Tours
                 </Link>
