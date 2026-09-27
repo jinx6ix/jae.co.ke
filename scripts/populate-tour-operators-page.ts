@@ -102,12 +102,14 @@ async function populateTourOperatorsPage() {
                         ],
                       },
                       {
-                        type: 'list',
-                        listType: 'bullet',
-                        format: '',
-                        indent: 0,
-                        version: 1,
-                        children: [
+                          type: 'list',
+                          listType: 'bullet',
+                          tag: 'ul',
+                          start: 1,
+                          format: '',
+                          indent: 0,
+                          version: 1,
+                          children: [
                             { type: 'listitem', format: '', indent: 0, version: 1, children: [{ type: 'text', text: 'Authentic Licensing: Full accreditation with the Kenya Association of Tour Operators (KATO) and Kenya Wildlife Service (KWS).', format: 0, version: 1, mode: 'normal' }] },
                             { type: 'listitem', format: '', indent: 0, version: 1, children: [{ type: 'text', text: 'Safety Infrastructure: Robust safety protocols, reliable vehicles, and 24/7 support.', format: 0, version: 1, mode: 'normal' }] },
                             { type: 'listitem', format: '', indent: 0, version: 1, children: [{ type: 'text', text: 'Expertise: Experienced, certified driver-guides who know the land, the wildlife, and local cultures.', format: 0, version: 1, mode: 'normal' }] },

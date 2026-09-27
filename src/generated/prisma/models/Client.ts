@@ -233,8 +233,8 @@ export type ClientWhereInput = {
   bookings?: Prisma.BookingListRelationFilter
   agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   costSheets?: Prisma.CostSheetListRelationFilter
-  vouchers?: Prisma.VoucherListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
+  vouchers?: Prisma.VoucherListRelationFilter
 }
 
 export type ClientOrderByWithRelationInput = {
@@ -252,8 +252,8 @@ export type ClientOrderByWithRelationInput = {
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   agent?: Prisma.AgentOrderByWithRelationInput
   costSheets?: Prisma.CostSheetOrderByRelationAggregateInput
-  vouchers?: Prisma.VoucherOrderByRelationAggregateInput
   invoices?: Prisma.InvoiceOrderByRelationAggregateInput
+  vouchers?: Prisma.VoucherOrderByRelationAggregateInput
 }
 
 export type ClientWhereUniqueInput = Prisma.AtLeast<{
@@ -274,8 +274,8 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   costSheets?: Prisma.CostSheetListRelationFilter
-  vouchers?: Prisma.VoucherListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
+  vouchers?: Prisma.VoucherListRelationFilter
 }, "id">
 
 export type ClientOrderByWithAggregationInput = {
@@ -326,8 +326,8 @@ export type ClientCreateInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   agent?: Prisma.AgentCreateNestedOneWithoutClientsInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
 }
 
 export type ClientUncheckedCreateInput = {
@@ -344,8 +344,8 @@ export type ClientUncheckedCreateInput = {
   agentId?: string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
 }
 
 export type ClientUpdateInput = {
@@ -362,8 +362,8 @@ export type ClientUpdateInput = {
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   agent?: Prisma.AgentUpdateOneWithoutClientsNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateInput = {
@@ -380,8 +380,8 @@ export type ClientUncheckedUpdateInput = {
   agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
 }
 
 export type ClientCreateManyInput = {
@@ -604,8 +604,8 @@ export type ClientCreateWithoutAgentInput = {
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
 }
 
 export type ClientUncheckedCreateWithoutAgentInput = {
@@ -621,8 +621,8 @@ export type ClientUncheckedCreateWithoutAgentInput = {
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
 }
 
 export type ClientCreateOrConnectWithoutAgentInput = {
@@ -681,8 +681,8 @@ export type ClientCreateWithoutBookingsInput = {
   updatedAt?: Date | string
   agent?: Prisma.AgentCreateNestedOneWithoutClientsInput
   costSheets?: Prisma.CostSheetCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
 }
 
 export type ClientUncheckedCreateWithoutBookingsInput = {
@@ -698,8 +698,8 @@ export type ClientUncheckedCreateWithoutBookingsInput = {
   updatedAt?: Date | string
   agentId?: string | null
   costSheets?: Prisma.CostSheetUncheckedCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
 }
 
 export type ClientCreateOrConnectWithoutBookingsInput = {
@@ -731,8 +731,8 @@ export type ClientUpdateWithoutBookingsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agent?: Prisma.AgentUpdateOneWithoutClientsNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateWithoutBookingsInput = {
@@ -748,8 +748,8 @@ export type ClientUncheckedUpdateWithoutBookingsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
 }
 
 export type ClientCreateWithoutVouchersInput = {
@@ -933,8 +933,8 @@ export type ClientCreateWithoutCostSheetsInput = {
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   agent?: Prisma.AgentCreateNestedOneWithoutClientsInput
-  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherCreateNestedManyWithoutClientInput
 }
 
 export type ClientUncheckedCreateWithoutCostSheetsInput = {
@@ -950,8 +950,8 @@ export type ClientUncheckedCreateWithoutCostSheetsInput = {
   updatedAt?: Date | string
   agentId?: string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
-  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutClientInput
+  vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutClientInput
 }
 
 export type ClientCreateOrConnectWithoutCostSheetsInput = {
@@ -983,8 +983,8 @@ export type ClientUpdateWithoutCostSheetsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   agent?: Prisma.AgentUpdateOneWithoutClientsNestedInput
-  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateWithoutCostSheetsInput = {
@@ -1000,8 +1000,8 @@ export type ClientUncheckedUpdateWithoutCostSheetsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
 }
 
 export type ClientCreateManyAgentInput = {
@@ -1030,8 +1030,8 @@ export type ClientUpdateWithoutAgentInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   costSheets?: Prisma.CostSheetUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateWithoutAgentInput = {
@@ -1047,8 +1047,8 @@ export type ClientUncheckedUpdateWithoutAgentInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   costSheets?: Prisma.CostSheetUncheckedUpdateManyWithoutClientNestedInput
-  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutClientNestedInput
+  vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateManyWithoutAgentInput = {
@@ -1072,15 +1072,15 @@ export type ClientUncheckedUpdateManyWithoutAgentInput = {
 export type ClientCountOutputType = {
   bookings: number
   costSheets: number
-  vouchers: number
   invoices: number
+  vouchers: number
 }
 
 export type ClientCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | ClientCountOutputTypeCountBookingsArgs
   costSheets?: boolean | ClientCountOutputTypeCountCostSheetsArgs
-  vouchers?: boolean | ClientCountOutputTypeCountVouchersArgs
   invoices?: boolean | ClientCountOutputTypeCountInvoicesArgs
+  vouchers?: boolean | ClientCountOutputTypeCountVouchersArgs
 }
 
 /**
@@ -1110,15 +1110,15 @@ export type ClientCountOutputTypeCountCostSheetsArgs<ExtArgs extends runtime.Typ
 /**
  * ClientCountOutputType without action
  */
-export type ClientCountOutputTypeCountVouchersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.VoucherWhereInput
+export type ClientCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InvoiceWhereInput
 }
 
 /**
  * ClientCountOutputType without action
  */
-export type ClientCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.InvoiceWhereInput
+export type ClientCountOutputTypeCountVouchersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VoucherWhereInput
 }
 
 
@@ -1137,8 +1137,8 @@ export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   bookings?: boolean | Prisma.Client$bookingsArgs<ExtArgs>
   agent?: boolean | Prisma.Client$agentArgs<ExtArgs>
   costSheets?: boolean | Prisma.Client$costSheetsArgs<ExtArgs>
-  vouchers?: boolean | Prisma.Client$vouchersArgs<ExtArgs>
   invoices?: boolean | Prisma.Client$invoicesArgs<ExtArgs>
+  vouchers?: boolean | Prisma.Client$vouchersArgs<ExtArgs>
   _count?: boolean | Prisma.ClientCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
@@ -1191,8 +1191,8 @@ export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   bookings?: boolean | Prisma.Client$bookingsArgs<ExtArgs>
   agent?: boolean | Prisma.Client$agentArgs<ExtArgs>
   costSheets?: boolean | Prisma.Client$costSheetsArgs<ExtArgs>
-  vouchers?: boolean | Prisma.Client$vouchersArgs<ExtArgs>
   invoices?: boolean | Prisma.Client$invoicesArgs<ExtArgs>
+  vouchers?: boolean | Prisma.Client$vouchersArgs<ExtArgs>
   _count?: boolean | Prisma.ClientCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ClientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1208,8 +1208,8 @@ export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     agent: Prisma.$AgentPayload<ExtArgs> | null
     costSheets: Prisma.$CostSheetPayload<ExtArgs>[]
-    vouchers: Prisma.$VoucherPayload<ExtArgs>[]
     invoices: Prisma.$InvoicePayload<ExtArgs>[]
+    vouchers: Prisma.$VoucherPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1620,8 +1620,8 @@ export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.T
   bookings<T extends Prisma.Client$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   agent<T extends Prisma.Client$agentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$agentArgs<ExtArgs>>): Prisma.Prisma__AgentClient<runtime.Types.Result.GetResult<Prisma.$AgentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   costSheets<T extends Prisma.Client$costSheetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$costSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CostSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  vouchers<T extends Prisma.Client$vouchersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$vouchersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invoices<T extends Prisma.Client$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  vouchers<T extends Prisma.Client$vouchersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$vouchersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VoucherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2130,30 +2130,6 @@ export type Client$costSheetsArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Client.vouchers
- */
-export type Client$vouchersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Voucher
-   */
-  select?: Prisma.VoucherSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Voucher
-   */
-  omit?: Prisma.VoucherOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VoucherInclude<ExtArgs> | null
-  where?: Prisma.VoucherWhereInput
-  orderBy?: Prisma.VoucherOrderByWithRelationInput | Prisma.VoucherOrderByWithRelationInput[]
-  cursor?: Prisma.VoucherWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.VoucherScalarFieldEnum | Prisma.VoucherScalarFieldEnum[]
-}
-
-/**
  * Client.invoices
  */
 export type Client$invoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2175,6 +2151,30 @@ export type Client$invoicesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.InvoiceScalarFieldEnum | Prisma.InvoiceScalarFieldEnum[]
+}
+
+/**
+ * Client.vouchers
+ */
+export type Client$vouchersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Voucher
+   */
+  select?: Prisma.VoucherSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Voucher
+   */
+  omit?: Prisma.VoucherOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VoucherInclude<ExtArgs> | null
+  where?: Prisma.VoucherWhereInput
+  orderBy?: Prisma.VoucherOrderByWithRelationInput | Prisma.VoucherOrderByWithRelationInput[]
+  cursor?: Prisma.VoucherWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VoucherScalarFieldEnum | Prisma.VoucherScalarFieldEnum[]
 }
 
 /**

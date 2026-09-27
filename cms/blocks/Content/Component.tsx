@@ -1,6 +1,7 @@
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 import { cn } from '@cms/utilities/ui'
 import React from 'react'
-import RichText from '@cms/components/RichText'
 
 import type { ContentBlock as ContentBlockProps } from '@cms/payload-types'
 

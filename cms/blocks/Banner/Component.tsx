@@ -2,7 +2,8 @@ import type { BannerBlock as BannerBlockProps } from 'src/payload-types'
 
 import { cn } from '@cms/utilities/ui'
 import React from 'react'
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 
 type Props = {
   className?: string

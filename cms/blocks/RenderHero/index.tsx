@@ -9,6 +9,8 @@ import { CMSLink } from '@cms/components/Link'
 import { Media } from '@cms/components/Media'
 import RichText from '@cms/components/RichText'
 
+// ... (remove the dynamic import)
+
 type HeroType = NonNullable<Page['hero']>['type']
 
 // RenderHero handles the four hero variants configured in

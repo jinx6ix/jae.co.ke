@@ -2,7 +2,8 @@ import React from 'react'
 
 import type { CallToActionBlock as CTABlockProps } from '@cms/payload-types'
 
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 import { CMSLink } from '@cms/components/Link'
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {

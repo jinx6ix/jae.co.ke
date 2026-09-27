@@ -147,3 +147,73 @@ export type ItineraryEmbed = Prisma.ItineraryEmbedModel
  * 
  */
 export type SocialAccount = Prisma.SocialAccountModel
+/**
+ * Model AgentComment
+ * 
+ */
+export type AgentComment = Prisma.AgentCommentModel
+/**
+ * Model AgentEvent
+ * 
+ */
+export type AgentEvent = Prisma.AgentEventModel
+/**
+ * Model AgentPermission
+ * 
+ */
+export type AgentPermission = Prisma.AgentPermissionModel
+/**
+ * Model AgentRefinement
+ * 
+ */
+export type AgentRefinement = Prisma.AgentRefinementModel
+/**
+ * Model AgentRouteExample
+ * 
+ */
+export type AgentRouteExample = Prisma.AgentRouteExampleModel
+/**
+ * Model ClassifierDecision
+ * 
+ */
+export type ClassifierDecision = Prisma.ClassifierDecisionModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model QueryExample
+ * 
+ */
+export type QueryExample = Prisma.QueryExampleModel
+/**
+ * Model RoutingExampleUse
+ * 
+ */
+export type RoutingExampleUse = Prisma.RoutingExampleUseModel
+/**
+ * Model UserConversation
+ * 
+ */
+export type UserConversation = Prisma.UserConversationModel
+/**
+ * Model UserMemory
+ * 
+ */
+export type UserMemory = Prisma.UserMemoryModel
+/**
+ * Model UserPhrasingPreference
+ * 
+ */
+export type UserPhrasingPreference = Prisma.UserPhrasingPreferenceModel
+/**
+ * Model UserPreferences
+ * 
+ */
+export type UserPreferences = Prisma.UserPreferencesModel
+/**
+ * Model UserTask
+ * 
+ */
+export type UserTask = Prisma.UserTaskModel

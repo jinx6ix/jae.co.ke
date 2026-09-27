@@ -6,7 +6,8 @@ import type { Page } from '@cms/payload-types'
 
 import { CMSLink } from '@cms/components/Link'
 import { Media } from '@cms/components/Media'
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 
 export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   const { setHeaderTheme } = useHeaderTheme()

@@ -31,9 +31,9 @@ export type UserMinAggregateOutputType = {
   password: string | null
   role: string | null
   isActive: boolean | null
-  lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  lastLoginAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -43,9 +43,9 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   role: string | null
   isActive: boolean | null
-  lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  lastLoginAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -55,9 +55,9 @@ export type UserCountAggregateOutputType = {
   password: number
   role: number
   isActive: number
-  lastLoginAt: number
   createdAt: number
   updatedAt: number
+  lastLoginAt: number
   _all: number
 }
 
@@ -69,9 +69,9 @@ export type UserMinAggregateInputType = {
   password?: true
   role?: true
   isActive?: true
-  lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  lastLoginAt?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -81,9 +81,9 @@ export type UserMaxAggregateInputType = {
   password?: true
   role?: true
   isActive?: true
-  lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  lastLoginAt?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -93,9 +93,9 @@ export type UserCountAggregateInputType = {
   password?: true
   role?: true
   isActive?: true
-  lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
+  lastLoginAt?: true
   _all?: true
 }
 
@@ -178,9 +178,9 @@ export type UserGroupByOutputType = {
   password: string
   role: string
   isActive: boolean
-  lastLoginAt: Date | null
   createdAt: Date
   updatedAt: Date
+  lastLoginAt: Date | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -211,9 +211,9 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.StringFilter<"User"> | string
   isActive?: Prisma.BoolFilter<"User"> | boolean
-  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   bookings?: Prisma.BookingListRelationFilter
   vouchers?: Prisma.VoucherListRelationFilter
 }
@@ -225,9 +225,9 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   vouchers?: Prisma.VoucherOrderByRelationAggregateInput
 }
@@ -242,9 +242,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.StringFilter<"User"> | string
   isActive?: Prisma.BoolFilter<"User"> | boolean
-  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   bookings?: Prisma.BookingListRelationFilter
   vouchers?: Prisma.VoucherListRelationFilter
 }, "id" | "email">
@@ -256,9 +256,9 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -274,9 +274,9 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.StringWithAggregatesFilter<"User"> | string
   isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
 export type UserCreateInput = {
@@ -286,9 +286,9 @@ export type UserCreateInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutAssignedToInput
   vouchers?: Prisma.VoucherCreateNestedManyWithoutCreatedByInput
 }
@@ -300,9 +300,9 @@ export type UserUncheckedCreateInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutAssignedToInput
   vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutCreatedByInput
 }
@@ -314,9 +314,9 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutAssignedToNestedInput
   vouchers?: Prisma.VoucherUpdateManyWithoutCreatedByNestedInput
 }
@@ -328,9 +328,9 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutAssignedToNestedInput
   vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutCreatedByNestedInput
 }
@@ -342,9 +342,9 @@ export type UserCreateManyInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -354,9 +354,9 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -366,9 +366,9 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -378,9 +378,9 @@ export type UserCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -390,9 +390,9 @@ export type UserMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -402,9 +402,9 @@ export type UserMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  lastLoginAt?: Prisma.SortOrder
 }
 
 export type UserNullableScalarRelationFilter = {
@@ -425,12 +425,12 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type UserCreateNestedOneWithoutBookingsInput = {
@@ -470,9 +470,9 @@ export type UserCreateWithoutBookingsInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   vouchers?: Prisma.VoucherCreateNestedManyWithoutCreatedByInput
 }
 
@@ -483,9 +483,9 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   vouchers?: Prisma.VoucherUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
@@ -512,9 +512,9 @@ export type UserUpdateWithoutBookingsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   vouchers?: Prisma.VoucherUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -525,9 +525,9 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   vouchers?: Prisma.VoucherUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
@@ -538,9 +538,9 @@ export type UserCreateWithoutVouchersInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutAssignedToInput
 }
 
@@ -551,9 +551,9 @@ export type UserUncheckedCreateWithoutVouchersInput = {
   password: string
   role?: string
   isActive?: boolean
-  lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutAssignedToInput
 }
 
@@ -580,9 +580,9 @@ export type UserUpdateWithoutVouchersInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutAssignedToNestedInput
 }
 
@@ -593,9 +593,9 @@ export type UserUncheckedUpdateWithoutVouchersInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutAssignedToNestedInput
 }
 
@@ -646,9 +646,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   role?: boolean
   isActive?: boolean
-  lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  lastLoginAt?: boolean
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   vouchers?: boolean | Prisma.User$vouchersArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -661,9 +661,9 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   isActive?: boolean
-  lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  lastLoginAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -673,9 +673,9 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   isActive?: boolean
-  lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  lastLoginAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -685,12 +685,12 @@ export type UserSelectScalar = {
   password?: boolean
   role?: boolean
   isActive?: boolean
-  lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  lastLoginAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "isActive" | "lastLoginAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "isActive" | "createdAt" | "updatedAt" | "lastLoginAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   vouchers?: boolean | Prisma.User$vouchersArgs<ExtArgs>
@@ -712,9 +712,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     role: string
     isActive: boolean
-    lastLoginAt: Date | null
     createdAt: Date
     updatedAt: Date
+    lastLoginAt: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1146,9 +1146,9 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'String'>
   readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
-  readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 

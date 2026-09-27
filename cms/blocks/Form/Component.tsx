@@ -4,7 +4,8 @@ import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-b
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 import { Button } from '@cms/components/ui/button'
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 

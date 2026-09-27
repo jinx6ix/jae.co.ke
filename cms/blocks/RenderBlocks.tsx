@@ -1,63 +1,73 @@
 import React, { Fragment } from 'react'
-
 import type { Page } from '@cms/payload-types'
-
-import { ArchiveBlock } from '@cms/blocks/ArchiveBlock/Component'
-import { BlogArchiveBlock } from '@cms/blocks/BlogArchive/Component'
-import { CallToActionBlock } from '@cms/blocks/CallToAction/Component'
-import { ContentBlock } from '@cms/blocks/Content/Component'
-import { DestinationGridBlock } from '@cms/blocks/DestinationGrid/Component'
-import { FaqBlock } from '@cms/blocks/Faq/Component'
-import { FormBlock } from '@cms/blocks/Form/Component'
-import { MediaBlock } from '@cms/blocks/MediaBlock/Component'
-import { StatisticsBlock } from '@cms/blocks/Statistics/Component'
-import { TestimonialsBlock } from '@cms/blocks/Testimonials/Component'
-import { TourGridBlock } from '@cms/blocks/TourGrid/Component'
-import { VideoBlockComponent } from '@cms/blocks/VideoBlock/Component'
-
-const blockComponents = {
-  archive: ArchiveBlock,
-  blogArchive: BlogArchiveBlock,
-  content: ContentBlock,
-  cta: CallToActionBlock,
-  destinationGrid: DestinationGridBlock,
-  faq: FaqBlock,
-  formBlock: FormBlock,
-  mediaBlock: MediaBlock,
-  statistics: StatisticsBlock,
-  testimonials: TestimonialsBlock,
-  tourGrid: TourGridBlock,
-  videoBlock: VideoBlockComponent,
-}
 
 export async function RenderBlocks({ blocks }: { blocks: Page['layout'][0][] }) {
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
-  if (hasBlocks) {
-    console.log('Available block components:', Object.keys(blockComponents))
-    return (
-      <Fragment>
-        {blocks.map((block, index) => {
-          const { blockType } = block
+  if (!hasBlocks) return null
 
-          if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as keyof typeof blockComponents]
+  const renderedBlocks = await Promise.all(
+    blocks.map(async (block, index) => {
+      if (!block) return null
+      const { blockType } = block
+      let BlockComponent: any = null
 
-            console.log(`Rendering block: ${blockType}, Component: ${!!Block}`)
-            if (Block) {
-              return (
-                <div className="my-16" key={index}>
-                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
-                </div>
-              )
-            }
-          }
-          return null
-        })}
-      </Fragment>
-    )
-  }
+      try {
+        switch (blockType) {
+          case 'archive':
+            BlockComponent = (await import('@cms/blocks/ArchiveBlock/Component')).ArchiveBlock
+            break
+          case 'blogArchive':
+            BlockComponent = (await import('@cms/blocks/BlogArchive/Component')).BlogArchiveBlock
+            break
+          case 'cta':
+            BlockComponent = (await import('@cms/blocks/CallToAction/Component')).CallToActionBlock
+            break
+          case 'content':
+            BlockComponent = (await import('@cms/blocks/Content/Component')).ContentBlock
+            break
+          case 'destinationGrid':
+            BlockComponent = (await import('@cms/blocks/DestinationGrid/Component')).DestinationGridBlock
+            break
+          case 'faq':
+            BlockComponent = (await import('@cms/blocks/Faq/Component')).FaqBlock
+            break
+          case 'formBlock':
+            BlockComponent = (await import('@cms/blocks/Form/Component')).FormBlock
+            break
+          case 'mediaBlock':
+            BlockComponent = (await import('@cms/blocks/MediaBlock/Component')).MediaBlock
+            break
+          case 'statistics':
+            BlockComponent = (await import('@cms/blocks/Statistics/Component')).StatisticsBlock
+            break
+          case 'testimonials':
+            BlockComponent = (await import('@cms/blocks/Testimonials/Component')).TestimonialsBlock
+            break
+          case 'tourGrid':
+            BlockComponent = (await import('@cms/blocks/TourGrid/Component')).TourGridBlock
+            break
+          case 'videoBlock':
+            BlockComponent = (await import('@cms/blocks/VideoBlock/Component')).VideoBlockComponent
+            break
+          default:
+            return null
+        }
+      } catch (e) {
+        console.error(`Failed to load block ${blockType}:`, e)
+        return null
+      }
 
-  return null
+      if (!BlockComponent) return null
+
+      return (
+        <div className="my-16" key={index}>
+          {/* @ts-expect-error */}
+          <BlockComponent {...block} disableInnerContainer />
+        </div>
+      )
+    }),
+  )
+
+  return <Fragment>{renderedBlocks}</Fragment>
 }

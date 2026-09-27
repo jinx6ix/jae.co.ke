@@ -1,8 +1,9 @@
 import type { StaticImageData } from 'next/image'
 
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 import { cn } from '@cms/utilities/ui'
 import React from 'react'
-import RichText from '@cms/components/RichText'
 
 import type { MediaBlock as MediaBlockProps } from '@cms/payload-types'
 

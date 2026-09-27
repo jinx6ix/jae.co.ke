@@ -2,7 +2,8 @@ import React from 'react'
 
 import type { Page } from '@cms/payload-types'
 
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 
 type LowImpactHeroType =
   | {

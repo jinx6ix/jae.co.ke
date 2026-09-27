@@ -3,7 +3,8 @@ import type { Post, ArchiveBlock as ArchiveBlockProps } from '@cms/payload-types
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 
 import { CollectionArchive } from '@cms/components/CollectionArchive'
 

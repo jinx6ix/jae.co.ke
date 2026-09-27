@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
-import RichText from '@cms/components/RichText'
+import dynamic from 'next/dynamic'
+const RichText = dynamic(() => import('@cms/components/RichText'), { ssr: true })
 
 import type { Post } from '@cms/payload-types'
 

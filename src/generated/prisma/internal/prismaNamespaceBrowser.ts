@@ -76,7 +76,21 @@ export const ModelName = {
   AgentRun: 'AgentRun',
   AgentMessage: 'AgentMessage',
   ItineraryEmbed: 'ItineraryEmbed',
-  SocialAccount: 'SocialAccount'
+  SocialAccount: 'SocialAccount',
+  AgentComment: 'AgentComment',
+  AgentEvent: 'AgentEvent',
+  AgentPermission: 'AgentPermission',
+  AgentRefinement: 'AgentRefinement',
+  AgentRouteExample: 'AgentRouteExample',
+  ClassifierDecision: 'ClassifierDecision',
+  Notification: 'Notification',
+  QueryExample: 'QueryExample',
+  RoutingExampleUse: 'RoutingExampleUse',
+  UserConversation: 'UserConversation',
+  UserMemory: 'UserMemory',
+  UserPhrasingPreference: 'UserPhrasingPreference',
+  UserPreferences: 'UserPreferences',
+  UserTask: 'UserTask'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -102,9 +116,9 @@ export const UserScalarFieldEnum = {
   password: 'password',
   role: 'role',
   isActive: 'isActive',
-  lastLoginAt: 'lastLoginAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  lastLoginAt: 'lastLoginAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -200,7 +214,6 @@ export const RateCardScalarFieldEnum = {
   basedOn4: 'basedOn4',
   basedOn6: 'basedOn6',
   basedOn8: 'basedOn8',
-  basedOn9: 'basedOn9',
   basedOn10: 'basedOn10',
   basedOn12: 'basedOn12',
   markupPercent: 'markupPercent',
@@ -209,7 +222,8 @@ export const RateCardScalarFieldEnum = {
   excludes: 'excludes',
   notes: 'notes',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  basedOn9: 'basedOn9'
 } as const
 
 export type RateCardScalarFieldEnum = (typeof RateCardScalarFieldEnum)[keyof typeof RateCardScalarFieldEnum]
@@ -367,19 +381,15 @@ export const InvoiceScalarFieldEnum = {
   id: 'id',
   invoiceNo: 'invoiceNo',
   bookingId: 'bookingId',
-  clientId: 'clientId',
-  costSheetId: 'costSheetId',
   billTo: 'billTo',
   billToEmail: 'billToEmail',
   billToPhone: 'billToPhone',
-  customerAddress: 'customerAddress',
   invoiceDate: 'invoiceDate',
   dueDate: 'dueDate',
   lineItems: 'lineItems',
   subtotal: 'subtotal',
   taxAmount: 'taxAmount',
   depositReceived: 'depositReceived',
-  depositRequired: 'depositRequired',
   totalAmount: 'totalAmount',
   amountPaid: 'amountPaid',
   currency: 'currency',
@@ -387,7 +397,11 @@ export const InvoiceScalarFieldEnum = {
   notes: 'notes',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  clientId: 'clientId',
+  costSheetId: 'costSheetId',
+  customerAddress: 'customerAddress',
+  depositRequired: 'depositRequired'
 } as const
 
 export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeof InvoiceScalarFieldEnum]
@@ -435,9 +449,9 @@ export const SRCountyScalarFieldEnum = {
   id: 'id',
   name: 'name',
   region: 'region',
+  createdAt: 'createdAt',
   parkFee: 'parkFee',
-  parkFeeCurrency: 'parkFeeCurrency',
-  createdAt: 'createdAt'
+  parkFeeCurrency: 'parkFeeCurrency'
 } as const
 
 export type SRCountyScalarFieldEnum = (typeof SRCountyScalarFieldEnum)[keyof typeof SRCountyScalarFieldEnum]
@@ -576,6 +590,203 @@ export const SocialAccountScalarFieldEnum = {
 export type SocialAccountScalarFieldEnum = (typeof SocialAccountScalarFieldEnum)[keyof typeof SocialAccountScalarFieldEnum]
 
 
+export const AgentCommentScalarFieldEnum = {
+  id: 'id',
+  agent: 'agent',
+  bookingId: 'bookingId',
+  costSheetId: 'costSheetId',
+  invoiceId: 'invoiceId',
+  clientId: 'clientId',
+  kind: 'kind',
+  body: 'body',
+  payload: 'payload',
+  resolved: 'resolved',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentCommentScalarFieldEnum = (typeof AgentCommentScalarFieldEnum)[keyof typeof AgentCommentScalarFieldEnum]
+
+
+export const AgentEventScalarFieldEnum = {
+  id: 'id',
+  topic: 'topic',
+  actorId: 'actorId',
+  runId: 'runId',
+  payload: 'payload',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentEventScalarFieldEnum = (typeof AgentEventScalarFieldEnum)[keyof typeof AgentEventScalarFieldEnum]
+
+
+export const AgentPermissionScalarFieldEnum = {
+  id: 'id',
+  agent: 'agent',
+  module: 'module',
+  capability: 'capability',
+  riskTier: 'riskTier',
+  approverRole: 'approverRole',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentPermissionScalarFieldEnum = (typeof AgentPermissionScalarFieldEnum)[keyof typeof AgentPermissionScalarFieldEnum]
+
+
+export const AgentRefinementScalarFieldEnum = {
+  id: 'id',
+  agent: 'agent',
+  promptNorm: 'promptNorm',
+  outcomeKind: 'outcomeKind',
+  payload: 'payload',
+  hits: 'hits',
+  status: 'status',
+  lastHitAt: 'lastHitAt',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentRefinementScalarFieldEnum = (typeof AgentRefinementScalarFieldEnum)[keyof typeof AgentRefinementScalarFieldEnum]
+
+
+export const AgentRouteExampleScalarFieldEnum = {
+  id: 'id',
+  promptNorm: 'promptNorm',
+  intent: 'intent',
+  primaryAgents: 'primaryAgents',
+  analystKind: 'analystKind',
+  analystEntity: 'analystEntity',
+  analystWindow: 'analystWindow',
+  status: 'status',
+  createdByUserId: 'createdByUserId',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentRouteExampleScalarFieldEnum = (typeof AgentRouteExampleScalarFieldEnum)[keyof typeof AgentRouteExampleScalarFieldEnum]
+
+
+export const ClassifierDecisionScalarFieldEnum = {
+  id: 'id',
+  promptNorm: 'promptNorm',
+  intentPredicted: 'intentPredicted',
+  confidence: 'confidence',
+  source: 'source',
+  accepted: 'accepted',
+  lastHitAt: 'lastHitAt'
+} as const
+
+export type ClassifierDecisionScalarFieldEnum = (typeof ClassifierDecisionScalarFieldEnum)[keyof typeof ClassifierDecisionScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  recipientId: 'recipientId',
+  recipientKind: 'recipientKind',
+  sourceAgent: 'sourceAgent',
+  priority: 'priority',
+  type: 'type',
+  topic: 'topic',
+  bookingId: 'bookingId',
+  body: 'body',
+  payload: 'payload',
+  actionUrl: 'actionUrl',
+  expiresAt: 'expiresAt',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const QueryExampleScalarFieldEnum = {
+  id: 'id',
+  patternNorm: 'patternNorm',
+  queryName: 'queryName',
+  hits: 'hits',
+  lastHitAt: 'lastHitAt',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type QueryExampleScalarFieldEnum = (typeof QueryExampleScalarFieldEnum)[keyof typeof QueryExampleScalarFieldEnum]
+
+
+export const RoutingExampleUseScalarFieldEnum = {
+  id: 'id',
+  exampleId: 'exampleId',
+  runId: 'runId',
+  hitAt: 'hitAt'
+} as const
+
+export type RoutingExampleUseScalarFieldEnum = (typeof RoutingExampleUseScalarFieldEnum)[keyof typeof RoutingExampleUseScalarFieldEnum]
+
+
+export const UserConversationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  agent: 'agent',
+  role: 'role',
+  content: 'content',
+  payload: 'payload',
+  topic: 'topic',
+  createdAt: 'createdAt'
+} as const
+
+export type UserConversationScalarFieldEnum = (typeof UserConversationScalarFieldEnum)[keyof typeof UserConversationScalarFieldEnum]
+
+
+export const UserMemoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  digest: 'digest',
+  payload: 'payload',
+  lastBuiltAt: 'lastBuiltAt'
+} as const
+
+export type UserMemoryScalarFieldEnum = (typeof UserMemoryScalarFieldEnum)[keyof typeof UserMemoryScalarFieldEnum]
+
+
+export const UserPhrasingPreferenceScalarFieldEnum = {
+  userId: 'userId',
+  tone: 'tone',
+  currencyFormat: 'currencyFormat',
+  language: 'language',
+  highlights: 'highlights',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserPhrasingPreferenceScalarFieldEnum = (typeof UserPhrasingPreferenceScalarFieldEnum)[keyof typeof UserPhrasingPreferenceScalarFieldEnum]
+
+
+export const UserPreferencesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  timezone: 'timezone',
+  briefing: 'briefing',
+  digest: 'digest',
+  escalation: 'escalation',
+  payload: 'payload',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserPreferencesScalarFieldEnum = (typeof UserPreferencesScalarFieldEnum)[keyof typeof UserPreferencesScalarFieldEnum]
+
+
+export const UserTaskScalarFieldEnum = {
+  id: 'id',
+  assigneeId: 'assigneeId',
+  title: 'title',
+  body: 'body',
+  dueAt: 'dueAt',
+  status: 'status',
+  relatedBookingId: 'relatedBookingId',
+  generatedByAgent: 'generatedByAgent',
+  payload: 'payload',
+  createdAt: 'createdAt',
+  completedAt: 'completedAt'
+} as const
+
+export type UserTaskScalarFieldEnum = (typeof UserTaskScalarFieldEnum)[keyof typeof UserTaskScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -590,6 +801,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

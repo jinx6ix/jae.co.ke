@@ -11,15 +11,13 @@ import {
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
 
-import { CodeBlock, CodeBlockProps } from '@cms/blocks/Code/Component'
+import { CodeBlockProps } from '@cms/blocks/Code/Component'
 
 import type {
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from '@cms/payload-types'
-import { BannerBlock } from '@cms/blocks/Banner/Component'
-import { CallToActionBlock } from '@cms/blocks/CallToAction/Component'
 import { cn } from '@cms/utilities/ui'
 
 type NodeTypes =
@@ -39,19 +37,31 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
-    banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
-    mediaBlock: ({ node }) => (
-      <MediaBlock
-        className="col-start-1 col-span-3"
-        imgClassName="m-0"
-        {...node.fields}
-        captionClassName="mx-auto max-w-[48rem]"
-        enableGutter={false}
-        disableInnerContainer={true}
-      />
-    ),
-    code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
-    cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    banner: async ({ node }) => {
+      const { BannerBlock } = await import('@cms/blocks/Banner/Component')
+      return <BannerBlock className="col-start-2 mb-4" {...node.fields} />
+    },
+    mediaBlock: async ({ node }) => {
+      const { MediaBlock } = await import('@cms/blocks/MediaBlock/Component')
+      return (
+        <MediaBlock
+          className="col-start-1 col-span-3"
+          imgClassName="m-0"
+          {...node.fields}
+          captionClassName="mx-auto max-w-[48rem]"
+          enableGutter={false}
+          disableInnerContainer={true}
+        />
+      )
+    },
+    code: async ({ node }) => {
+      const { CodeBlock } = await import('@cms/blocks/Code/Component')
+      return <CodeBlock className="col-start-2" {...node.fields} />
+    },
+    cta: async ({ node }) => {
+      const { CallToActionBlock } = await import('@cms/blocks/CallToAction/Component')
+      return <CallToActionBlock {...node.fields} />
+    },
   },
 })
 

@@ -31,10 +31,10 @@ export type RateCardAvgAggregateOutputType = {
   basedOn4: number | null
   basedOn6: number | null
   basedOn8: number | null
-  basedOn9: number | null
   basedOn10: number | null
   basedOn12: number | null
   markupPercent: number | null
+  basedOn9: number | null
 }
 
 export type RateCardSumAggregateOutputType = {
@@ -42,10 +42,10 @@ export type RateCardSumAggregateOutputType = {
   basedOn4: number | null
   basedOn6: number | null
   basedOn8: number | null
-  basedOn9: number | null
   basedOn10: number | null
   basedOn12: number | null
   markupPercent: number | null
+  basedOn9: number | null
 }
 
 export type RateCardMinAggregateOutputType = {
@@ -58,7 +58,6 @@ export type RateCardMinAggregateOutputType = {
   basedOn4: number | null
   basedOn6: number | null
   basedOn8: number | null
-  basedOn9: number | null
   basedOn10: number | null
   basedOn12: number | null
   markupPercent: number | null
@@ -68,6 +67,7 @@ export type RateCardMinAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  basedOn9: number | null
 }
 
 export type RateCardMaxAggregateOutputType = {
@@ -80,7 +80,6 @@ export type RateCardMaxAggregateOutputType = {
   basedOn4: number | null
   basedOn6: number | null
   basedOn8: number | null
-  basedOn9: number | null
   basedOn10: number | null
   basedOn12: number | null
   markupPercent: number | null
@@ -90,6 +89,7 @@ export type RateCardMaxAggregateOutputType = {
   notes: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  basedOn9: number | null
 }
 
 export type RateCardCountAggregateOutputType = {
@@ -102,7 +102,6 @@ export type RateCardCountAggregateOutputType = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9: number
   basedOn10: number
   basedOn12: number
   markupPercent: number
@@ -112,6 +111,7 @@ export type RateCardCountAggregateOutputType = {
   notes: number
   createdAt: number
   updatedAt: number
+  basedOn9: number
   _all: number
 }
 
@@ -121,10 +121,10 @@ export type RateCardAvgAggregateInputType = {
   basedOn4?: true
   basedOn6?: true
   basedOn8?: true
-  basedOn9?: true
   basedOn10?: true
   basedOn12?: true
   markupPercent?: true
+  basedOn9?: true
 }
 
 export type RateCardSumAggregateInputType = {
@@ -132,10 +132,10 @@ export type RateCardSumAggregateInputType = {
   basedOn4?: true
   basedOn6?: true
   basedOn8?: true
-  basedOn9?: true
   basedOn10?: true
   basedOn12?: true
   markupPercent?: true
+  basedOn9?: true
 }
 
 export type RateCardMinAggregateInputType = {
@@ -148,7 +148,6 @@ export type RateCardMinAggregateInputType = {
   basedOn4?: true
   basedOn6?: true
   basedOn8?: true
-  basedOn9?: true
   basedOn10?: true
   basedOn12?: true
   markupPercent?: true
@@ -158,6 +157,7 @@ export type RateCardMinAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  basedOn9?: true
 }
 
 export type RateCardMaxAggregateInputType = {
@@ -170,7 +170,6 @@ export type RateCardMaxAggregateInputType = {
   basedOn4?: true
   basedOn6?: true
   basedOn8?: true
-  basedOn9?: true
   basedOn10?: true
   basedOn12?: true
   markupPercent?: true
@@ -180,6 +179,7 @@ export type RateCardMaxAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  basedOn9?: true
 }
 
 export type RateCardCountAggregateInputType = {
@@ -192,7 +192,6 @@ export type RateCardCountAggregateInputType = {
   basedOn4?: true
   basedOn6?: true
   basedOn8?: true
-  basedOn9?: true
   basedOn10?: true
   basedOn12?: true
   markupPercent?: true
@@ -202,6 +201,7 @@ export type RateCardCountAggregateInputType = {
   notes?: true
   createdAt?: true
   updatedAt?: true
+  basedOn9?: true
   _all?: true
 }
 
@@ -301,7 +301,6 @@ export type RateCardGroupByOutputType = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9: number | null
   basedOn10: number | null
   basedOn12: number | null
   markupPercent: number
@@ -311,6 +310,7 @@ export type RateCardGroupByOutputType = {
   notes: string | null
   createdAt: Date
   updatedAt: Date
+  basedOn9: number | null
   _count: RateCardCountAggregateOutputType | null
   _avg: RateCardAvgAggregateOutputType | null
   _sum: RateCardSumAggregateOutputType | null
@@ -346,7 +346,6 @@ export type RateCardWhereInput = {
   basedOn4?: Prisma.FloatFilter<"RateCard"> | number
   basedOn6?: Prisma.FloatFilter<"RateCard"> | number
   basedOn8?: Prisma.FloatFilter<"RateCard"> | number
-  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn10?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn12?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   markupPercent?: Prisma.FloatFilter<"RateCard"> | number
@@ -356,6 +355,7 @@ export type RateCardWhereInput = {
   notes?: Prisma.StringNullableFilter<"RateCard"> | string | null
   createdAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
+  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   tourPackage?: Prisma.XOR<Prisma.TourPackageScalarRelationFilter, Prisma.TourPackageWhereInput>
 }
 
@@ -369,7 +369,6 @@ export type RateCardOrderByWithRelationInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrderInput | Prisma.SortOrder
   basedOn10?: Prisma.SortOrderInput | Prisma.SortOrder
   basedOn12?: Prisma.SortOrderInput | Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
@@ -379,6 +378,7 @@ export type RateCardOrderByWithRelationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrderInput | Prisma.SortOrder
   tourPackage?: Prisma.TourPackageOrderByWithRelationInput
 }
 
@@ -395,7 +395,6 @@ export type RateCardWhereUniqueInput = Prisma.AtLeast<{
   basedOn4?: Prisma.FloatFilter<"RateCard"> | number
   basedOn6?: Prisma.FloatFilter<"RateCard"> | number
   basedOn8?: Prisma.FloatFilter<"RateCard"> | number
-  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn10?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn12?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   markupPercent?: Prisma.FloatFilter<"RateCard"> | number
@@ -405,6 +404,7 @@ export type RateCardWhereUniqueInput = Prisma.AtLeast<{
   notes?: Prisma.StringNullableFilter<"RateCard"> | string | null
   createdAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
+  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   tourPackage?: Prisma.XOR<Prisma.TourPackageScalarRelationFilter, Prisma.TourPackageWhereInput>
 }, "id">
 
@@ -418,7 +418,6 @@ export type RateCardOrderByWithAggregationInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrderInput | Prisma.SortOrder
   basedOn10?: Prisma.SortOrderInput | Prisma.SortOrder
   basedOn12?: Prisma.SortOrderInput | Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
@@ -428,6 +427,7 @@ export type RateCardOrderByWithAggregationInput = {
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.RateCardCountOrderByAggregateInput
   _avg?: Prisma.RateCardAvgOrderByAggregateInput
   _max?: Prisma.RateCardMaxOrderByAggregateInput
@@ -448,7 +448,6 @@ export type RateCardScalarWhereWithAggregatesInput = {
   basedOn4?: Prisma.FloatWithAggregatesFilter<"RateCard"> | number
   basedOn6?: Prisma.FloatWithAggregatesFilter<"RateCard"> | number
   basedOn8?: Prisma.FloatWithAggregatesFilter<"RateCard"> | number
-  basedOn9?: Prisma.FloatNullableWithAggregatesFilter<"RateCard"> | number | null
   basedOn10?: Prisma.FloatNullableWithAggregatesFilter<"RateCard"> | number | null
   basedOn12?: Prisma.FloatNullableWithAggregatesFilter<"RateCard"> | number | null
   markupPercent?: Prisma.FloatWithAggregatesFilter<"RateCard"> | number
@@ -458,6 +457,7 @@ export type RateCardScalarWhereWithAggregatesInput = {
   notes?: Prisma.StringNullableWithAggregatesFilter<"RateCard"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RateCard"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RateCard"> | Date | string
+  basedOn9?: Prisma.FloatNullableWithAggregatesFilter<"RateCard"> | number | null
 }
 
 export type RateCardCreateInput = {
@@ -469,7 +469,6 @@ export type RateCardCreateInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -479,6 +478,7 @@ export type RateCardCreateInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
   tourPackage: Prisma.TourPackageCreateNestedOneWithoutRateCardsInput
 }
 
@@ -492,7 +492,6 @@ export type RateCardUncheckedCreateInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -502,6 +501,7 @@ export type RateCardUncheckedCreateInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
 }
 
 export type RateCardUpdateInput = {
@@ -513,7 +513,6 @@ export type RateCardUpdateInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -523,6 +522,7 @@ export type RateCardUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tourPackage?: Prisma.TourPackageUpdateOneRequiredWithoutRateCardsNestedInput
 }
 
@@ -536,7 +536,6 @@ export type RateCardUncheckedUpdateInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -546,6 +545,7 @@ export type RateCardUncheckedUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RateCardCreateManyInput = {
@@ -558,7 +558,6 @@ export type RateCardCreateManyInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -568,6 +567,7 @@ export type RateCardCreateManyInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
 }
 
 export type RateCardUpdateManyMutationInput = {
@@ -579,7 +579,6 @@ export type RateCardUpdateManyMutationInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -589,6 +588,7 @@ export type RateCardUpdateManyMutationInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RateCardUncheckedUpdateManyInput = {
@@ -601,7 +601,6 @@ export type RateCardUncheckedUpdateManyInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -611,6 +610,7 @@ export type RateCardUncheckedUpdateManyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RateCardListRelationFilter = {
@@ -633,7 +633,6 @@ export type RateCardCountOrderByAggregateInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrder
   basedOn10?: Prisma.SortOrder
   basedOn12?: Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
@@ -643,6 +642,7 @@ export type RateCardCountOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrder
 }
 
 export type RateCardAvgOrderByAggregateInput = {
@@ -650,10 +650,10 @@ export type RateCardAvgOrderByAggregateInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrder
   basedOn10?: Prisma.SortOrder
   basedOn12?: Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrder
 }
 
 export type RateCardMaxOrderByAggregateInput = {
@@ -666,7 +666,6 @@ export type RateCardMaxOrderByAggregateInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrder
   basedOn10?: Prisma.SortOrder
   basedOn12?: Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
@@ -676,6 +675,7 @@ export type RateCardMaxOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrder
 }
 
 export type RateCardMinOrderByAggregateInput = {
@@ -688,7 +688,6 @@ export type RateCardMinOrderByAggregateInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrder
   basedOn10?: Prisma.SortOrder
   basedOn12?: Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
@@ -698,6 +697,7 @@ export type RateCardMinOrderByAggregateInput = {
   notes?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrder
 }
 
 export type RateCardSumOrderByAggregateInput = {
@@ -705,10 +705,10 @@ export type RateCardSumOrderByAggregateInput = {
   basedOn4?: Prisma.SortOrder
   basedOn6?: Prisma.SortOrder
   basedOn8?: Prisma.SortOrder
-  basedOn9?: Prisma.SortOrder
   basedOn10?: Prisma.SortOrder
   basedOn12?: Prisma.SortOrder
   markupPercent?: Prisma.SortOrder
+  basedOn9?: Prisma.SortOrder
 }
 
 export type RateCardCreateNestedManyWithoutTourPackageInput = {
@@ -778,7 +778,6 @@ export type RateCardCreateWithoutTourPackageInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -788,6 +787,7 @@ export type RateCardCreateWithoutTourPackageInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
 }
 
 export type RateCardUncheckedCreateWithoutTourPackageInput = {
@@ -799,7 +799,6 @@ export type RateCardUncheckedCreateWithoutTourPackageInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -809,6 +808,7 @@ export type RateCardUncheckedCreateWithoutTourPackageInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
 }
 
 export type RateCardCreateOrConnectWithoutTourPackageInput = {
@@ -850,7 +850,6 @@ export type RateCardScalarWhereInput = {
   basedOn4?: Prisma.FloatFilter<"RateCard"> | number
   basedOn6?: Prisma.FloatFilter<"RateCard"> | number
   basedOn8?: Prisma.FloatFilter<"RateCard"> | number
-  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn10?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   basedOn12?: Prisma.FloatNullableFilter<"RateCard"> | number | null
   markupPercent?: Prisma.FloatFilter<"RateCard"> | number
@@ -860,6 +859,7 @@ export type RateCardScalarWhereInput = {
   notes?: Prisma.StringNullableFilter<"RateCard"> | string | null
   createdAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RateCard"> | Date | string
+  basedOn9?: Prisma.FloatNullableFilter<"RateCard"> | number | null
 }
 
 export type RateCardCreateManyTourPackageInput = {
@@ -871,7 +871,6 @@ export type RateCardCreateManyTourPackageInput = {
   basedOn4: number
   basedOn6: number
   basedOn8: number
-  basedOn9?: number | null
   basedOn10?: number | null
   basedOn12?: number | null
   markupPercent?: number
@@ -881,6 +880,7 @@ export type RateCardCreateManyTourPackageInput = {
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  basedOn9?: number | null
 }
 
 export type RateCardUpdateWithoutTourPackageInput = {
@@ -892,7 +892,6 @@ export type RateCardUpdateWithoutTourPackageInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -902,6 +901,7 @@ export type RateCardUpdateWithoutTourPackageInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RateCardUncheckedUpdateWithoutTourPackageInput = {
@@ -913,7 +913,6 @@ export type RateCardUncheckedUpdateWithoutTourPackageInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -923,6 +922,7 @@ export type RateCardUncheckedUpdateWithoutTourPackageInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type RateCardUncheckedUpdateManyWithoutTourPackageInput = {
@@ -934,7 +934,6 @@ export type RateCardUncheckedUpdateManyWithoutTourPackageInput = {
   basedOn4?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn6?: Prisma.FloatFieldUpdateOperationsInput | number
   basedOn8?: Prisma.FloatFieldUpdateOperationsInput | number
-  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   basedOn12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   markupPercent?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -944,6 +943,7 @@ export type RateCardUncheckedUpdateManyWithoutTourPackageInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  basedOn9?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 
@@ -958,7 +958,6 @@ export type RateCardSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   basedOn4?: boolean
   basedOn6?: boolean
   basedOn8?: boolean
-  basedOn9?: boolean
   basedOn10?: boolean
   basedOn12?: boolean
   markupPercent?: boolean
@@ -968,6 +967,7 @@ export type RateCardSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  basedOn9?: boolean
   tourPackage?: boolean | Prisma.TourPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rateCard"]>
 
@@ -981,7 +981,6 @@ export type RateCardSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   basedOn4?: boolean
   basedOn6?: boolean
   basedOn8?: boolean
-  basedOn9?: boolean
   basedOn10?: boolean
   basedOn12?: boolean
   markupPercent?: boolean
@@ -991,6 +990,7 @@ export type RateCardSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  basedOn9?: boolean
   tourPackage?: boolean | Prisma.TourPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rateCard"]>
 
@@ -1004,7 +1004,6 @@ export type RateCardSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   basedOn4?: boolean
   basedOn6?: boolean
   basedOn8?: boolean
-  basedOn9?: boolean
   basedOn10?: boolean
   basedOn12?: boolean
   markupPercent?: boolean
@@ -1014,6 +1013,7 @@ export type RateCardSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  basedOn9?: boolean
   tourPackage?: boolean | Prisma.TourPackageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rateCard"]>
 
@@ -1027,7 +1027,6 @@ export type RateCardSelectScalar = {
   basedOn4?: boolean
   basedOn6?: boolean
   basedOn8?: boolean
-  basedOn9?: boolean
   basedOn10?: boolean
   basedOn12?: boolean
   markupPercent?: boolean
@@ -1037,9 +1036,10 @@ export type RateCardSelectScalar = {
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  basedOn9?: boolean
 }
 
-export type RateCardOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tourPackageId" | "season" | "validFrom" | "validTo" | "basedOn2" | "basedOn4" | "basedOn6" | "basedOn8" | "basedOn9" | "basedOn10" | "basedOn12" | "markupPercent" | "currency" | "includes" | "excludes" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["rateCard"]>
+export type RateCardOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tourPackageId" | "season" | "validFrom" | "validTo" | "basedOn2" | "basedOn4" | "basedOn6" | "basedOn8" | "basedOn10" | "basedOn12" | "markupPercent" | "currency" | "includes" | "excludes" | "notes" | "createdAt" | "updatedAt" | "basedOn9", ExtArgs["result"]["rateCard"]>
 export type RateCardInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tourPackage?: boolean | Prisma.TourPackageDefaultArgs<ExtArgs>
 }
@@ -1065,7 +1065,6 @@ export type $RateCardPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     basedOn4: number
     basedOn6: number
     basedOn8: number
-    basedOn9: number | null
     basedOn10: number | null
     basedOn12: number | null
     markupPercent: number
@@ -1075,6 +1074,7 @@ export type $RateCardPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     notes: string | null
     createdAt: Date
     updatedAt: Date
+    basedOn9: number | null
   }, ExtArgs["result"]["rateCard"]>
   composites: {}
 }
@@ -1508,7 +1508,6 @@ export interface RateCardFieldRefs {
   readonly basedOn4: Prisma.FieldRef<"RateCard", 'Float'>
   readonly basedOn6: Prisma.FieldRef<"RateCard", 'Float'>
   readonly basedOn8: Prisma.FieldRef<"RateCard", 'Float'>
-  readonly basedOn9: Prisma.FieldRef<"RateCard", 'Float'>
   readonly basedOn10: Prisma.FieldRef<"RateCard", 'Float'>
   readonly basedOn12: Prisma.FieldRef<"RateCard", 'Float'>
   readonly markupPercent: Prisma.FieldRef<"RateCard", 'Float'>
@@ -1518,6 +1517,7 @@ export interface RateCardFieldRefs {
   readonly notes: Prisma.FieldRef<"RateCard", 'String'>
   readonly createdAt: Prisma.FieldRef<"RateCard", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"RateCard", 'DateTime'>
+  readonly basedOn9: Prisma.FieldRef<"RateCard", 'Float'>
 }
     
 
