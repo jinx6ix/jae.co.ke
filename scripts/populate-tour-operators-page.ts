@@ -122,13 +122,8 @@ async function populateTourOperatorsPage() {
       },
       {
         blockType: 'faq',
-        title: 'Frequently Asked Questions',
-        layout: 'grid',
-        showContactCta: true,
-        contactCtaText: 'Contact JaeTravel Today',
-        contactCtaLink: '/contact',
-        injectJsonLd: true,
-        faqs: [
+        heading: 'Frequently Asked Questions',
+        items: [
           {
             question: 'How far in advance should I book my safari?',
             answer: 'For the Great Migration season, we recommend 6–12 months in advance to secure the best lodges and campsites.',
@@ -148,7 +143,14 @@ async function populateTourOperatorsPage() {
   }
 
   if (existing.docs.length > 0) {
-    console.log('Skipping: Page already exists.')
+    console.log('Updating existing page...')
+    await payload.update({
+      collection: 'pages',
+      id: existing.docs[0].id,
+      data: pageData,
+      context: { disableRevalidate: true },
+    })
+    console.log('Page updated successfully!')
   } else {
     await payload.create({
       collection: 'pages',
