@@ -172,7 +172,7 @@ function formatAdminSubject(
       return `New Quote #${id} – ${who}`;
 
     case 'vehicle':
-      return `Vehicle Booking #${id} – ${what}`;
+      return `Vehicle Booking #${id} – ${_what}`;
     case 'tour':
     default:
       return `New Booking #${id} – ${who}`;
