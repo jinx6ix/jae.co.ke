@@ -334,6 +334,7 @@ model CostSheet {
   perAdultCost      Float
   perChildCost      Float     @default(0)
   isOutdated        Boolean   @default(false)
+  source            String?
   agent             Agent?    @relation(fields: [agentId], references: [id])
   booking           Booking?  @relation(fields: [bookingId], references: [id])
   client            Client?   @relation(fields: [clientId], references: [id])

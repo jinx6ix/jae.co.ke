@@ -99,6 +99,7 @@ export type CostSheetMinAggregateOutputType = {
   perAdultCost: number | null
   perChildCost: number | null
   isOutdated: boolean | null
+  source: string | null
 }
 
 export type CostSheetMaxAggregateOutputType = {
@@ -134,6 +135,7 @@ export type CostSheetMaxAggregateOutputType = {
   perAdultCost: number | null
   perChildCost: number | null
   isOutdated: boolean | null
+  source: string | null
 }
 
 export type CostSheetCountAggregateOutputType = {
@@ -169,6 +171,7 @@ export type CostSheetCountAggregateOutputType = {
   perAdultCost: number
   perChildCost: number
   isOutdated: number
+  source: number
   _all: number
 }
 
@@ -246,6 +249,7 @@ export type CostSheetMinAggregateInputType = {
   perAdultCost?: true
   perChildCost?: true
   isOutdated?: true
+  source?: true
 }
 
 export type CostSheetMaxAggregateInputType = {
@@ -281,6 +285,7 @@ export type CostSheetMaxAggregateInputType = {
   perAdultCost?: true
   perChildCost?: true
   isOutdated?: true
+  source?: true
 }
 
 export type CostSheetCountAggregateInputType = {
@@ -316,6 +321,7 @@ export type CostSheetCountAggregateInputType = {
   perAdultCost?: true
   perChildCost?: true
   isOutdated?: true
+  source?: true
   _all?: true
 }
 
@@ -438,6 +444,7 @@ export type CostSheetGroupByOutputType = {
   perAdultCost: number
   perChildCost: number
   isOutdated: boolean
+  source: string | null
   _count: CostSheetCountAggregateOutputType | null
   _avg: CostSheetAvgAggregateOutputType | null
   _sum: CostSheetSumAggregateOutputType | null
@@ -496,6 +503,7 @@ export type CostSheetWhereInput = {
   perAdultCost?: Prisma.FloatFilter<"CostSheet"> | number
   perChildCost?: Prisma.FloatFilter<"CostSheet"> | number
   isOutdated?: Prisma.BoolFilter<"CostSheet"> | boolean
+  source?: Prisma.StringNullableFilter<"CostSheet"> | string | null
   agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   booking?: Prisma.XOR<Prisma.BookingNullableScalarRelationFilter, Prisma.BookingWhereInput> | null
   client?: Prisma.XOR<Prisma.ClientNullableScalarRelationFilter, Prisma.ClientWhereInput> | null
@@ -535,6 +543,7 @@ export type CostSheetOrderByWithRelationInput = {
   perAdultCost?: Prisma.SortOrder
   perChildCost?: Prisma.SortOrder
   isOutdated?: Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
   agent?: Prisma.AgentOrderByWithRelationInput
   booking?: Prisma.BookingOrderByWithRelationInput
   client?: Prisma.ClientOrderByWithRelationInput
@@ -577,6 +586,7 @@ export type CostSheetWhereUniqueInput = Prisma.AtLeast<{
   perAdultCost?: Prisma.FloatFilter<"CostSheet"> | number
   perChildCost?: Prisma.FloatFilter<"CostSheet"> | number
   isOutdated?: Prisma.BoolFilter<"CostSheet"> | boolean
+  source?: Prisma.StringNullableFilter<"CostSheet"> | string | null
   agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   booking?: Prisma.XOR<Prisma.BookingNullableScalarRelationFilter, Prisma.BookingWhereInput> | null
   client?: Prisma.XOR<Prisma.ClientNullableScalarRelationFilter, Prisma.ClientWhereInput> | null
@@ -616,6 +626,7 @@ export type CostSheetOrderByWithAggregationInput = {
   perAdultCost?: Prisma.SortOrder
   perChildCost?: Prisma.SortOrder
   isOutdated?: Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CostSheetCountOrderByAggregateInput
   _avg?: Prisma.CostSheetAvgOrderByAggregateInput
   _max?: Prisma.CostSheetMaxOrderByAggregateInput
@@ -659,6 +670,7 @@ export type CostSheetScalarWhereWithAggregatesInput = {
   perAdultCost?: Prisma.FloatWithAggregatesFilter<"CostSheet"> | number
   perChildCost?: Prisma.FloatWithAggregatesFilter<"CostSheet"> | number
   isOutdated?: Prisma.BoolWithAggregatesFilter<"CostSheet"> | boolean
+  source?: Prisma.StringNullableWithAggregatesFilter<"CostSheet"> | string | null
 }
 
 export type CostSheetCreateInput = {
@@ -691,6 +703,7 @@ export type CostSheetCreateInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   agent?: Prisma.AgentCreateNestedOneWithoutCostSheetsInput
   booking?: Prisma.BookingCreateNestedOneWithoutCostSheetsInput
   client?: Prisma.ClientCreateNestedOneWithoutCostSheetsInput
@@ -730,6 +743,7 @@ export type CostSheetUncheckedCreateInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCostSheetInput
 }
 
@@ -763,6 +777,7 @@ export type CostSheetUpdateInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agent?: Prisma.AgentUpdateOneWithoutCostSheetsNestedInput
   booking?: Prisma.BookingUpdateOneWithoutCostSheetsNestedInput
   client?: Prisma.ClientUpdateOneWithoutCostSheetsNestedInput
@@ -802,6 +817,7 @@ export type CostSheetUncheckedUpdateInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCostSheetNestedInput
 }
 
@@ -838,6 +854,7 @@ export type CostSheetCreateManyInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
 }
 
 export type CostSheetUpdateManyMutationInput = {
@@ -870,6 +887,7 @@ export type CostSheetUpdateManyMutationInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CostSheetUncheckedUpdateManyInput = {
@@ -905,6 +923,7 @@ export type CostSheetUncheckedUpdateManyInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CostSheetListRelationFilter = {
@@ -955,6 +974,7 @@ export type CostSheetCountOrderByAggregateInput = {
   perAdultCost?: Prisma.SortOrder
   perChildCost?: Prisma.SortOrder
   isOutdated?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type CostSheetAvgOrderByAggregateInput = {
@@ -1010,6 +1030,7 @@ export type CostSheetMaxOrderByAggregateInput = {
   perAdultCost?: Prisma.SortOrder
   perChildCost?: Prisma.SortOrder
   isOutdated?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type CostSheetMinOrderByAggregateInput = {
@@ -1045,6 +1066,7 @@ export type CostSheetMinOrderByAggregateInput = {
   perAdultCost?: Prisma.SortOrder
   perChildCost?: Prisma.SortOrder
   isOutdated?: Prisma.SortOrder
+  source?: Prisma.SortOrder
 }
 
 export type CostSheetSumOrderByAggregateInput = {
@@ -1239,6 +1261,7 @@ export type CostSheetCreateWithoutAgentInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   booking?: Prisma.BookingCreateNestedOneWithoutCostSheetsInput
   client?: Prisma.ClientCreateNestedOneWithoutCostSheetsInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCostSheetInput
@@ -1276,6 +1299,7 @@ export type CostSheetUncheckedCreateWithoutAgentInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCostSheetInput
 }
 
@@ -1341,6 +1365,7 @@ export type CostSheetScalarWhereInput = {
   perAdultCost?: Prisma.FloatFilter<"CostSheet"> | number
   perChildCost?: Prisma.FloatFilter<"CostSheet"> | number
   isOutdated?: Prisma.BoolFilter<"CostSheet"> | boolean
+  source?: Prisma.StringNullableFilter<"CostSheet"> | string | null
 }
 
 export type CostSheetCreateWithoutClientInput = {
@@ -1373,6 +1398,7 @@ export type CostSheetCreateWithoutClientInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   agent?: Prisma.AgentCreateNestedOneWithoutCostSheetsInput
   booking?: Prisma.BookingCreateNestedOneWithoutCostSheetsInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCostSheetInput
@@ -1410,6 +1436,7 @@ export type CostSheetUncheckedCreateWithoutClientInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCostSheetInput
 }
 
@@ -1469,6 +1496,7 @@ export type CostSheetCreateWithoutBookingInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   agent?: Prisma.AgentCreateNestedOneWithoutCostSheetsInput
   client?: Prisma.ClientCreateNestedOneWithoutCostSheetsInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCostSheetInput
@@ -1506,6 +1534,7 @@ export type CostSheetUncheckedCreateWithoutBookingInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCostSheetInput
 }
 
@@ -1565,6 +1594,7 @@ export type CostSheetCreateWithoutInvoicesInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
   agent?: Prisma.AgentCreateNestedOneWithoutCostSheetsInput
   booking?: Prisma.BookingCreateNestedOneWithoutCostSheetsInput
   client?: Prisma.ClientCreateNestedOneWithoutCostSheetsInput
@@ -1603,6 +1633,7 @@ export type CostSheetUncheckedCreateWithoutInvoicesInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
 }
 
 export type CostSheetCreateOrConnectWithoutInvoicesInput = {
@@ -1651,6 +1682,7 @@ export type CostSheetUpdateWithoutInvoicesInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agent?: Prisma.AgentUpdateOneWithoutCostSheetsNestedInput
   booking?: Prisma.BookingUpdateOneWithoutCostSheetsNestedInput
   client?: Prisma.ClientUpdateOneWithoutCostSheetsNestedInput
@@ -1689,6 +1721,7 @@ export type CostSheetUncheckedUpdateWithoutInvoicesInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CostSheetCreateManyAgentInput = {
@@ -1723,6 +1756,7 @@ export type CostSheetCreateManyAgentInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
 }
 
 export type CostSheetUpdateWithoutAgentInput = {
@@ -1755,6 +1789,7 @@ export type CostSheetUpdateWithoutAgentInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   booking?: Prisma.BookingUpdateOneWithoutCostSheetsNestedInput
   client?: Prisma.ClientUpdateOneWithoutCostSheetsNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCostSheetNestedInput
@@ -1792,6 +1827,7 @@ export type CostSheetUncheckedUpdateWithoutAgentInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCostSheetNestedInput
 }
 
@@ -1827,6 +1863,7 @@ export type CostSheetUncheckedUpdateManyWithoutAgentInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CostSheetCreateManyClientInput = {
@@ -1861,6 +1898,7 @@ export type CostSheetCreateManyClientInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
 }
 
 export type CostSheetUpdateWithoutClientInput = {
@@ -1893,6 +1931,7 @@ export type CostSheetUpdateWithoutClientInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agent?: Prisma.AgentUpdateOneWithoutCostSheetsNestedInput
   booking?: Prisma.BookingUpdateOneWithoutCostSheetsNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCostSheetNestedInput
@@ -1930,6 +1969,7 @@ export type CostSheetUncheckedUpdateWithoutClientInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCostSheetNestedInput
 }
 
@@ -1965,6 +2005,7 @@ export type CostSheetUncheckedUpdateManyWithoutClientInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CostSheetCreateManyBookingInput = {
@@ -1999,6 +2040,7 @@ export type CostSheetCreateManyBookingInput = {
   perAdultCost: number
   perChildCost?: number
   isOutdated?: boolean
+  source?: string | null
 }
 
 export type CostSheetUpdateWithoutBookingInput = {
@@ -2031,6 +2073,7 @@ export type CostSheetUpdateWithoutBookingInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agent?: Prisma.AgentUpdateOneWithoutCostSheetsNestedInput
   client?: Prisma.ClientUpdateOneWithoutCostSheetsNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCostSheetNestedInput
@@ -2068,6 +2111,7 @@ export type CostSheetUncheckedUpdateWithoutBookingInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCostSheetNestedInput
 }
 
@@ -2103,6 +2147,7 @@ export type CostSheetUncheckedUpdateManyWithoutBookingInput = {
   perAdultCost?: Prisma.FloatFieldUpdateOperationsInput | number
   perChildCost?: Prisma.FloatFieldUpdateOperationsInput | number
   isOutdated?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -2169,6 +2214,7 @@ export type CostSheetSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   perAdultCost?: boolean
   perChildCost?: boolean
   isOutdated?: boolean
+  source?: boolean
   agent?: boolean | Prisma.CostSheet$agentArgs<ExtArgs>
   booking?: boolean | Prisma.CostSheet$bookingArgs<ExtArgs>
   client?: boolean | Prisma.CostSheet$clientArgs<ExtArgs>
@@ -2209,6 +2255,7 @@ export type CostSheetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   perAdultCost?: boolean
   perChildCost?: boolean
   isOutdated?: boolean
+  source?: boolean
   agent?: boolean | Prisma.CostSheet$agentArgs<ExtArgs>
   booking?: boolean | Prisma.CostSheet$bookingArgs<ExtArgs>
   client?: boolean | Prisma.CostSheet$clientArgs<ExtArgs>
@@ -2247,6 +2294,7 @@ export type CostSheetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   perAdultCost?: boolean
   perChildCost?: boolean
   isOutdated?: boolean
+  source?: boolean
   agent?: boolean | Prisma.CostSheet$agentArgs<ExtArgs>
   booking?: boolean | Prisma.CostSheet$bookingArgs<ExtArgs>
   client?: boolean | Prisma.CostSheet$clientArgs<ExtArgs>
@@ -2285,9 +2333,10 @@ export type CostSheetSelectScalar = {
   perAdultCost?: boolean
   perChildCost?: boolean
   isOutdated?: boolean
+  source?: boolean
 }
 
-export type CostSheetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingRef" | "tourTitle" | "days" | "numPax" | "extras" | "fileHandlingFee" | "ecoBottle" | "evacInsurance" | "subtotal" | "markupPercent" | "markupAmount" | "totalCost" | "currency" | "notes" | "createdAt" | "updatedAt" | "agentId" | "arrivalTransfer" | "boardBasis" | "bookingId" | "clientId" | "dayRows" | "departureTransfer" | "flightCostPP" | "maasaiCost" | "maasaiVillage" | "numAdults" | "numChildren" | "perAdultCost" | "perChildCost" | "isOutdated", ExtArgs["result"]["costSheet"]>
+export type CostSheetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingRef" | "tourTitle" | "days" | "numPax" | "extras" | "fileHandlingFee" | "ecoBottle" | "evacInsurance" | "subtotal" | "markupPercent" | "markupAmount" | "totalCost" | "currency" | "notes" | "createdAt" | "updatedAt" | "agentId" | "arrivalTransfer" | "boardBasis" | "bookingId" | "clientId" | "dayRows" | "departureTransfer" | "flightCostPP" | "maasaiCost" | "maasaiVillage" | "numAdults" | "numChildren" | "perAdultCost" | "perChildCost" | "isOutdated" | "source", ExtArgs["result"]["costSheet"]>
 export type CostSheetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agent?: boolean | Prisma.CostSheet$agentArgs<ExtArgs>
   booking?: boolean | Prisma.CostSheet$bookingArgs<ExtArgs>
@@ -2347,6 +2396,7 @@ export type $CostSheetPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     perAdultCost: number
     perChildCost: number
     isOutdated: boolean
+    source: string | null
   }, ExtArgs["result"]["costSheet"]>
   composites: {}
 }
@@ -2806,6 +2856,7 @@ export interface CostSheetFieldRefs {
   readonly perAdultCost: Prisma.FieldRef<"CostSheet", 'Float'>
   readonly perChildCost: Prisma.FieldRef<"CostSheet", 'Float'>
   readonly isOutdated: Prisma.FieldRef<"CostSheet", 'Boolean'>
+  readonly source: Prisma.FieldRef<"CostSheet", 'String'>
 }
     
 

@@ -65,6 +65,7 @@ export async function POST(req: NextRequest) {
         perAdultCost:     Number(body.perAdultCost),
         perChildCost:     Number(body.perChildCost) || 0,
         notes:            body.notes || null,
+        source:           body.source || null,
       },
       include: {
         client:  { select: { id: true, name: true } },

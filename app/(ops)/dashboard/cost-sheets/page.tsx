@@ -47,6 +47,7 @@ interface CostSheet {
   departureTransfer?: number;
   maasaiVillage?: boolean;
   maasaiCost?: number;
+  source?: string | null;
 }
 
 function parseDayRows(raw: unknown): DayRowRaw[] {
@@ -154,7 +155,8 @@ export default function CostSheetsPage() {
     !q || s.tourTitle.toLowerCase().includes(q.toLowerCase()) ||
     s.client?.name.toLowerCase().includes(q.toLowerCase()) ||
     s.booking?.bookingRef.toLowerCase().includes(q.toLowerCase()) ||
-    s.agent?.name.toLowerCase().includes(q.toLowerCase())
+    s.agent?.name.toLowerCase().includes(q.toLowerCase()) ||
+    s.source?.toLowerCase().includes(q.toLowerCase())
   );
 
   return (
@@ -175,15 +177,15 @@ export default function CostSheetsPage() {
         <table className="w-full text-sm min-w-[960px]">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              {['Tour / Package', 'Client', 'Booking', 'Pax', 'Days', 'Board', 'Grand Total', 'Per Adult', 'Markup', 'Created', ''].map(h => (
+              {['Tour / Package', 'Client', 'Booking', 'Pax', 'Days', 'Board', 'Grand Total', 'Per Adult', 'Markup', 'Source', 'Created', ''].map(h => (
                 <th key={h} className="text-left px-4 py-3 font-medium text-gray-600 text-xs">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {loading && <tr><td colSpan={11} className="text-center py-10 text-gray-400">Loading…</td></tr>}
+            {loading && <tr><td colSpan={12} className="text-center py-10 text-gray-400">Loading…</td></tr>}
             {!loading && filtered.length === 0 && (
-              <tr><td colSpan={11} className="text-center py-10 text-gray-400">No costing sheets yet. <Link href="/dashboard/costing" className="text-orange-500 hover:underline">Create one →</Link></td></tr>
+              <tr><td colSpan={12} className="text-center py-10 text-gray-400">No costing sheets yet. <Link href="/dashboard/costing" className="text-orange-500 hover:underline">Create one →</Link></td></tr>
             )}
             {filtered.map(s => {
               const c = computed.find(x => x.id === s.id);
@@ -217,6 +219,7 @@ export default function CostSheetsPage() {
                   {s.currency} {fmt2(perAdult)}
                 </td>
                 <td className="px-4 py-3 text-xs text-gray-500">{s.markupPercent}%</td>
+                <td className="px-4 py-3 text-xs text-gray-500">{s.source || '-'}</td>
                 <td className="px-4 py-3 text-xs text-gray-400">{new Date(s.createdAt).toLocaleDateString('en-KE')}</td>
                 <td className="px-4 py-3">
                   <div className="flex flex-wrap gap-2">

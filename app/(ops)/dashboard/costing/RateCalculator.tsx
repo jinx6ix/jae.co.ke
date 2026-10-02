@@ -121,6 +121,7 @@ export default function RateCalculator({
   const [currency, setCurrency] = useState('USD');
   const [boardBasis, setBoardBasis] = useState('FB');
   const [startDate, setStartDate] = useState('');
+  const [source, setSource] = useState('');
   const [globalMarkup, setGlobalMarkup] = useState(10);
   const [notes, setNotes] = useState('');
 
@@ -284,6 +285,7 @@ export default function RateCalculator({
       setMaasaiVillage(!!sheet.maasaiVillage);
       setMaasaiCostTotal(sheet.maasaiCost || 0);
       setNotes(sheet.notes || '');
+      setSource(sheet.source || '');
       let extrasArr = [];
       try { extrasArr = JSON.parse(sheet.extras || '[]'); } catch {}
       setExtraItems(extrasArr);
@@ -560,6 +562,7 @@ export default function RateCalculator({
       perAdultCost: safe(perAdult),
       perChildCost: safe(perChild),
       notes: notes,
+      source: source,
     };
   }
 
@@ -744,11 +747,12 @@ export default function RateCalculator({
         </div>
 
         {/* Section 2: Core settings */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3 mb-5">
           <div><label className="label text-xs">Adults</label><input type="number" min={0} value={numAdults} onChange={e => setNumAdults(Number(e.target.value))} className="input" /></div>
           <div><label className="label text-xs">Children</label><input type="number" min={0} value={numChildren} onChange={e => setNumChildren(Number(e.target.value))} className="input" /><p className="text-xs text-gray-400 mt-0.5">Total: {numPax}</p></div>
           <div><label className="label text-xs">Days</label><input type="number" min={1} value={numDays} onChange={e => setNumDays(Number(e.target.value))} className="input" /></div>
           <div><label className="label text-xs">Start Date</label><input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="input" /></div>
+          <div><label className="label text-xs">Source</label><input type="text" value={source} onChange={e => setSource(e.target.value)} className="input" placeholder="Website" /></div>
           <div><label className="label text-xs">Board Basis</label><select className="input" value={boardBasis} onChange={e => setBoardBasis(e.target.value)}>{BOARD_BASIS.map(b => <option key={b.code} value={b.code}>{b.label}</option>)}</select></div>
           <div><label className="label text-xs">Currency</label><select className="input" value={currency} onChange={e => setCurrency(e.target.value)}>{['USD','KES','EUR','GBP'].map(c => <option key={c}>{c}</option>)}</select></div>
           <div><label className="label text-xs">Markup %</label><input type="number" min={0} max={100} value={globalMarkup} onChange={e => setGlobalMarkup(Number(e.target.value))} className="input" /></div>

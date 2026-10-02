@@ -439,7 +439,8 @@ export const CostSheetScalarFieldEnum = {
   numChildren: 'numChildren',
   perAdultCost: 'perAdultCost',
   perChildCost: 'perChildCost',
-  isOutdated: 'isOutdated'
+  isOutdated: 'isOutdated',
+  source: 'source'
 } as const
 
 export type CostSheetScalarFieldEnum = (typeof CostSheetScalarFieldEnum)[keyof typeof CostSheetScalarFieldEnum]
