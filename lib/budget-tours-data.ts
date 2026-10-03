@@ -74,7 +74,7 @@ Don't miss this opportunity to experience Masai Mara's wonders at budget pricing
       {
         day: 1,
         title: "Pick up at Hotel and drive to Masai Mara National Reserve",
-        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, embark on an evening game drive to Masai Mara in search for the big 5 among other wildlife. Return at dusk for dinner and overnight stay at Rhino Tourist Camp.",
+        content: "You will be picked up at your hotel/place of stay in Nairobi at 7:00 am and your driver guide will meet and greet you and afterwards escort you to the car and commence drive southwest to Masai Mara. Have a stopover at the great Rift Valley view point enroute where you will have a breathtaking view of the floor of the Rift Valley. Arrive for check in and hot lunch at the camp. After lunch, you may opt for an optional Maasai village visit at an extra cost of 30 USD per person. Return at dusk for dinner and overnight stay at Rhino Tourist Camp.",
         meals: undefined
       },
       {
