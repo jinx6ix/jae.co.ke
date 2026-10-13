@@ -217,15 +217,23 @@ export default function NewInvoicePage() {
             <table className="w-full text-sm">
               <thead className="bg-gray-50"><tr>
                 <th className="text-left px-3 py-2 text-xs font-medium text-gray-600">Description</th>
-                <th className="text-center px-3 py-2 text-xs font-medium text-gray-600 w-16">Qty</th>
+                <th className="text-center px-3 py-2 text-xs font-medium text-gray-600 w-24">Qty</th>
                 <th className="text-right px-3 py-2 text-xs font-medium text-gray-600 w-32">Unit Price</th>
                 <th className="text-right px-3 py-2 text-xs font-medium text-gray-600 w-32">Total</th>
                 <th className="w-8"/>
               </tr></thead>
               <tbody>
                 {items.map((item, i) => (
-                  <tr key={i} className="border-t border-gray-100">
-                    <td className="px-3 py-2"><input className="input text-sm py-1.5 w-full" value={item.description} onChange={e => setItem(i, { description: e.target.value })} placeholder="e.g. Safari Package"/></td>
+                  <tr key={i} className="border-t border-gray-100 align-top">
+                    <td className="px-3 py-2">
+                      <textarea
+                        className="input text-sm py-1.5 w-full resize-y font-sans"
+                        rows={2}
+                        value={item.description}
+                        onChange={e => setItem(i, { description: e.target.value })}
+                        placeholder="e.g. Safari Package&#10;• Day 1: Arrival & briefing&#10;• Day 2: Game drive"
+                      />
+                    </td>
                     <td className="px-3 py-2"><input type="number" min={1} className="input text-sm py-1.5 text-center w-full" value={item.qty} onChange={e => setItem(i, { qty: Number(e.target.value) })}/></td>
                     <td className="px-3 py-2"><input type="number" min={0} step="0.01" className="input text-sm py-1.5 text-right font-mono w-full" value={item.unitPrice || ''} onChange={e => setItem(i, { unitPrice: Number(e.target.value) })} placeholder="0.00"/></td>
                     <td className="px-3 py-2 text-right font-mono text-sm font-medium">{fmt2(item.total)}</td>

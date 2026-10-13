@@ -242,7 +242,7 @@ export default function EditInvoicePage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="text-left px-3 py-2 text-xs font-medium text-gray-600">Description</th>
-                  <th className="text-center px-3 py-2 text-xs font-medium text-gray-600 w-16">Qty</th>
+                  <th className="text-center px-3 py-2 text-xs font-medium text-gray-600 w-24">Qty</th>
                   <th className="text-right px-3 py-2 text-xs font-medium text-gray-600 w-32">Unit Price</th>
                   <th className="text-right px-3 py-2 text-xs font-medium text-gray-600 w-32">Total</th>
                   <th className="w-8"/>
@@ -250,11 +250,15 @@ export default function EditInvoicePage() {
               </thead>
               <tbody>
                 {items.map((item, i) => (
-                  <tr key={i} className="border-t border-gray-100">
+                  <tr key={i} className="border-t border-gray-100 align-top">
                     <td className="px-3 py-2">
-                      <input className="input text-sm py-1.5 w-full" value={item.description}
+                      <textarea
+                        className="input text-sm py-1.5 w-full resize-y font-sans"
+                        rows={2}
+                        value={item.description}
                         onChange={e => setItem(i, { description: e.target.value })}
-                        placeholder="e.g. Safari Package"/>
+                        placeholder="e.g. Safari Package&#10;• Day 1: Arrival & briefing&#10;• Day 2: Game drive"
+                      />
                     </td>
                     <td className="px-3 py-2">
                       <input type="number" min={1} className="input text-sm py-1.5 text-center w-full"
