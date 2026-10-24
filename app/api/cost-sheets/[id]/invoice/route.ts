@@ -223,7 +223,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         totalAmount,
         amountPaid: 0,
         currency: costSheet.currency || 'USD',
-        paymentInstructions: body.paymentInstructions || 'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA',
+        paymentInstructions: body.paymentInstructions || 'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA\n Online transactions use: \n https://store.pesapal.com/jaetravelexpeditionsltd',
         notes: `Generated from Cost Sheet: ${costSheet.tourTitle}`,
         status: 'DRAFT',
       },

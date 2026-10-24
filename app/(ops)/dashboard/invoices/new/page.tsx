@@ -28,7 +28,7 @@ export default function NewInvoicePage() {
   const [depositPct, setDepositPct] = useState(0);
   const [taxRate, setTaxRate] = useState(0);
   const [paymentInstructions, setPaymentInstructions] = useState(
-    'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA'
+    'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA\n Online transactions use: \n https://store.pesapal.com/jaetravelexpeditionsltd'
   );
   const [notes, setNotes] = useState('');
   const [items, setItems] = useState<LineItem[]>([{ description: '', qty: 1, unitPrice: 0, total: 0 }]);
