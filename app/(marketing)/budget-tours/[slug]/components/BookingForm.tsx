@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
+import { InternationalPhoneInput } from "@/components/InternationalPhoneInput"
 
 interface BookingFormProps {
   tourTitle: string
@@ -45,7 +46,6 @@ export default function BookingForm({
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    countryCode: "+254",
     phone: "",
     country: "Kenya",
     travelers: "2",
@@ -71,7 +71,7 @@ export default function BookingForm({
           slug, // useful if you want to generate tour-specific links
           name: formData.name,
           email: formData.email,
-          phone: `${formData.countryCode} ${formData.phone}`,
+          phone: formData.phone,
           travelers: Number.parseInt(formData.travelers) || 1,
           startDate: formData.date,
           specialRequirements: formData.message,
@@ -273,128 +273,113 @@ export default function BookingForm({
         </p>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <Label htmlFor="name" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            <User className="h-4 w-4" />
-            Full Name *
-          </Label>
-          <Input
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="John Doe"
-            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
+      <div className="space-y-6">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="name" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              <User className="h-4 w-4" />
+              Full Name *
+            </Label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="John Doe"
+              className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              <Mail className="h-4 w-4" />
+              Email *
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="john@example.com"
+              className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
 
-        <div>
-          <Label htmlFor="email" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            <Mail className="h-4 w-4" />
-            Email *
-          </Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="john@example.com"
-            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="country" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              🌍 Country *
+            </Label>
+            <Input
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+              placeholder="e.g. Kenya, USA, UK, Germany"
+              className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="phone" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              <Phone className="h-4 w-4" />
+              Phone Number *
+            </Label>
+            <InternationalPhoneInput
+              value={formData.phone}
+              onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
 
-        <div>
-          <Label htmlFor="country" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            🌍 Country *
-          </Label>
-          <Input
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            required
-            placeholder="e.g. Kenya, USA, UK, Germany"
-            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
-        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="travelers" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              <Users className="h-4 w-4" />
+              {serviceType === "vehicle" ? "Days" : "Travelers"} *
+            </Label>
+            <Input
+              id="travelers"
+              name="travelers"
+              type="number"
+              min="1"
+              max={serviceType === "vehicle" ? "30" : "20"}
+              value={formData.travelers}
+              onChange={handleChange}
+              required
+              className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+              disabled={isSubmitting}
+            />
+          </div>
 
-        <div>
-          <Label htmlFor="countryCode" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            📞 Country Code *
-          </Label>
-          <Input
-            id="countryCode"
-            name="countryCode"
-            value={formData.countryCode}
-            onChange={handleChange}
-            required
-            placeholder="+254, +1, +44..."
-            className="font-mono border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
+          <div>
+            <Label htmlFor="date" className="flex items-center gap-2 mb-1.5 text-orange-700">
+              <Calendar className="h-4 w-4" />
+              Preferred Start Date *
+            </Label>
+            <Input
+              id="date"
+              name="date"
+              type="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+              min={new Date().toISOString().split("T")[0]}
+              className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+              disabled={isSubmitting}
+            />
+          </div>
         </div>
-
-        <div>
-          <Label htmlFor="phone" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            <Phone className="h-4 w-4" />
-            Phone Number *
-          </Label>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            placeholder="726485228"
-            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
-        </div>
-
-        <div>
-          <Label htmlFor="travelers" className="flex items-center gap-2 mb-1.5 text-orange-700">
-            <Users className="h-4 w-4" />
-            {serviceType === "vehicle" ? "Days" : "Travelers"} *
-          </Label>
-          <Input
-            id="travelers"
-            name="travelers"
-            type="number"
-            min="1"
-            max={serviceType === "vehicle" ? "30" : "20"}
-            value={formData.travelers}
-            onChange={handleChange}
-            required
-            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-            disabled={isSubmitting}
-          />
-        </div>
-      </div>
-
-      <div>
-        <Label htmlFor="date" className="flex items-center gap-2 mb-1.5 text-orange-700">
-          <Calendar className="h-4 w-4" />
-          Preferred Start Date *
-        </Label>
-        <Input
-          id="date"
-          name="date"
-          type="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-          min={new Date().toISOString().split("T")[0]}
-          className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
-          disabled={isSubmitting}
-        />
       </div>
 
       <div>

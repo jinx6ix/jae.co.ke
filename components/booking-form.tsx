@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle } from "lucide-react"
+import { Calendar, Users, Mail, Phone, User, MessageSquare, Download, Send, CheckCircle, Loader2 } from "lucide-react"
+import { InternationalPhoneInput } from "@/components/InternationalPhoneInput"
 
 interface BookingFormProps {
   tourTitle: string
@@ -41,7 +42,6 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    countryCode: "+254",
     phone: "",
     country: "Kenya",
     travelers: "2",
@@ -83,7 +83,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           lastName: formData.name.split(" ").slice(1).join(" ") || "",
           name: formData.name, // Keep full name for display
           email: formData.email,
-          phone: `${formData.countryCode} ${formData.phone}`,
+          phone: formData.phone,
           travelers: formData.travelers,
           startDate: formData.date, // API expects startDate
           specialRequirements: formData.message, // API expects specialRequirements
@@ -376,7 +376,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <Label htmlFor="country" className="flex items-center gap-2 mb-1">
               🌍 Country *
@@ -394,35 +394,14 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           </div>
 
           <div>
-            <Label htmlFor="countryCode" className="flex items-center gap-2 mb-1">
-              📞 Country Code *
-            </Label>
-            <Input
-              id="countryCode"
-              name="countryCode"
-              value={formData.countryCode}
-              onChange={handleChange}
-              required
-              placeholder="+254, +1, +44..."
-              className="h-11 font-mono"
-              disabled={isSubmitting}
-            />
-          </div>
-
-          <div>
             <Label htmlFor="phone" className="flex items-center gap-2 mb-1">
               <Phone className="h-4 w-4" />
               Phone Number *
             </Label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
+            <InternationalPhoneInput
               value={formData.phone}
-              onChange={handleChange}
+              onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
               required
-              placeholder="726485228"
-              className="h-11"
               disabled={isSubmitting}
             />
           </div>
