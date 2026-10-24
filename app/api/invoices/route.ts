@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
         totalAmount:         Number(body.totalAmount),
         amountPaid:          Number(body.amountPaid)   || 0,
         currency:            body.currency             || 'USD',
-        paymentInstructions: body.paymentInstructions  || null,
+        paymentInstructions: body.paymentInstructions  || 'Account Name: Jae Travel Expeditions Ltd\nAccount No.: 0730285271126\nBank Name: Equity Bank\nBranch: Ngong\nSwift: EQBLKENA\n\nOnline Payment Link:\nhttps://store.pesapal.com/jaetravelexpeditionsltd\n(Please note: All transactional charges are to be paid by the client).',
         notes:               body.notes                || null,
         status:              body.status               || 'DRAFT',
       },
