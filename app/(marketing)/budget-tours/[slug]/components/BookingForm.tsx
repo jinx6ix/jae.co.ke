@@ -45,7 +45,9 @@ export default function BookingForm({
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+254",
     phone: "",
+    country: "Kenya",
     travelers: "2",
     date: "",
     message: "",
@@ -69,13 +71,13 @@ export default function BookingForm({
           slug, // useful if you want to generate tour-specific links
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
+          phone: `${formData.countryCode} ${formData.phone}`,
           travelers: Number.parseInt(formData.travelers) || 1,
           startDate: formData.date,
           specialRequirements: formData.message,
           totalPrice: tourPrice * (Number.parseInt(formData.travelers) || 1),
           currency: "USD",
-          country: "Kenya",
+          country: formData.country,
           duration: tourDuration,
         }),
       })
@@ -308,9 +310,41 @@ export default function BookingForm({
         </div>
 
         <div>
+          <Label htmlFor="country" className="flex items-center gap-2 mb-1.5 text-orange-700">
+            🌍 Country *
+          </Label>
+          <Input
+            id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            required
+            placeholder="e.g. Kenya, USA, UK, Germany"
+            className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+            disabled={isSubmitting}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="countryCode" className="flex items-center gap-2 mb-1.5 text-orange-700">
+            📞 Country Code *
+          </Label>
+          <Input
+            id="countryCode"
+            name="countryCode"
+            value={formData.countryCode}
+            onChange={handleChange}
+            required
+            placeholder="+254, +1, +44..."
+            className="font-mono border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
+            disabled={isSubmitting}
+          />
+        </div>
+
+        <div>
           <Label htmlFor="phone" className="flex items-center gap-2 mb-1.5 text-orange-700">
             <Phone className="h-4 w-4" />
-            Phone *
+            Phone Number *
           </Label>
           <Input
             id="phone"
@@ -319,7 +353,7 @@ export default function BookingForm({
             value={formData.phone}
             onChange={handleChange}
             required
-            placeholder="+254 7xx xxx xxx"
+            placeholder="726485228"
             className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 text-black"
             disabled={isSubmitting}
           />

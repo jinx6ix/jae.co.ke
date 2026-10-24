@@ -41,7 +41,9 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+254",
     phone: "",
+    country: "Kenya",
     travelers: "2",
     date: "",
     message: "",
@@ -81,13 +83,13 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           lastName: formData.name.split(" ").slice(1).join(" ") || "",
           name: formData.name, // Keep full name for display
           email: formData.email,
-          phone: formData.phone,
+          phone: `${formData.countryCode} ${formData.phone}`,
           travelers: formData.travelers,
           startDate: formData.date, // API expects startDate
           specialRequirements: formData.message, // API expects specialRequirements
           totalPrice: tourPrice * Number.parseInt(formData.travelers || "1"),
           currency: "$",
-          country: "Kenya",
+          country: formData.country,
           duration: tourDuration,
         }),
       })
@@ -374,11 +376,43 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <Label htmlFor="country" className="flex items-center gap-2 mb-1">
+              🌍 Country *
+            </Label>
+            <Input
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+              placeholder="e.g. Kenya, USA, UK, Germany"
+              className="h-11"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="countryCode" className="flex items-center gap-2 mb-1">
+              📞 Country Code *
+            </Label>
+            <Input
+              id="countryCode"
+              name="countryCode"
+              value={formData.countryCode}
+              onChange={handleChange}
+              required
+              placeholder="+254, +1, +44..."
+              className="h-11 font-mono"
+              disabled={isSubmitting}
+            />
+          </div>
+
           <div>
             <Label htmlFor="phone" className="flex items-center gap-2 mb-1">
               <Phone className="h-4 w-4" />
-              Phone *
+              Phone Number *
             </Label>
             <Input
               id="phone"
@@ -387,30 +421,30 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               value={formData.phone}
               onChange={handleChange}
               required
-              placeholder="+254 7xx xxx xxx"
+              placeholder="726485228"
               className="h-11"
               disabled={isSubmitting}
             />
           </div>
+        </div>
 
-          <div>
-            <Label htmlFor="travelers" className="flex items-center gap-2 mb-1">
-              <Users className="h-4 w-4" />
-              {serviceType === "vehicle" ? "Days" : "Travelers"} *
-            </Label>
-            <Input
-              id="travelers"
-              name="travelers"
-              type="number"
-              min="1"
-              max={serviceType === "vehicle" ? "30" : "20"}
-              value={formData.travelers}
-              onChange={handleChange}
-              required
-              className="h-11"
-              disabled={isSubmitting}
-            />
-          </div>
+        <div>
+          <Label htmlFor="travelers" className="flex items-center gap-2 mb-1">
+            <Users className="h-4 w-4" />
+            {serviceType === "vehicle" ? "Days" : "Travelers"} *
+          </Label>
+          <Input
+            id="travelers"
+            name="travelers"
+            type="number"
+            min="1"
+            max={serviceType === "vehicle" ? "30" : "20"}
+            value={formData.travelers}
+            onChange={handleChange}
+            required
+            className="h-11"
+            disabled={isSubmitting}
+          />
         </div>
 
         <div>
