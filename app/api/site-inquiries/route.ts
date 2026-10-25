@@ -14,6 +14,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { sendBookingEmails } from '@/lib/email/booking-emails';
+import { prisma } from '@/lib/prisma';
+import { resolveTourPricing } from '@/lib/seasonal-pricing';
+import { generateBookingRef } from '@/lib/rates';
 
 export const runtime = 'nodejs';
 
@@ -36,6 +39,7 @@ export async function POST(request: NextRequest) {
     const phone = String(bookingData.phone || '').trim();
     const serviceName = String(bookingData.serviceName || '').trim();
     const startDate = String(bookingData.startDate || '').trim();
+    const country = String(bookingData.country || 'Kenya').trim();
 
     if (!email) {
       return NextResponse.json(
@@ -71,33 +75,91 @@ export async function POST(request: NextRequest) {
     }
 
     // ---------------------------------------------------------------
-    // 3. Generate booking ID
+    // 3. Server-side price verification using seasonal pricing
     // ---------------------------------------------------------------
+    const travelers = Number(bookingData.travelers) || 2;
+    const resolvedPricing = await resolveTourPricing(serviceName, startDate, travelers);
+    const totalPrice = resolvedPricing.totalPrice;
+
+    // ---------------------------------------------------------------
+    // 4. Generate booking reference & ID
+    // ---------------------------------------------------------------
+    const bookingRef = generateBookingRef();
     const bookingId = `BK${Date.now()}-${uuidv4()
       .slice(0, 8)
       .toUpperCase()}`;
 
-    console.log(`[site-inquiries] Processing ${bookingId} for ${email}`);
+    console.log(`[site-inquiries] Processing ${bookingRef} (${bookingId}) for ${email} — Season: ${resolvedPricing.season}, Total: $${totalPrice}`);
 
     // ---------------------------------------------------------------
-    // 4. Normalize booking values
+    // 5. Persist client and booking in Prisma (Immutable snapshot)
     // ---------------------------------------------------------------
-    const travelers = Number(bookingData.travelers) || 1;
-    const totalPrice = Number(bookingData.totalPrice) || 0;
+    try {
+      // Find or create client
+      let client = await prisma.client.findFirst({
+        where: { email },
+      });
+
+      if (!client) {
+        client = await prisma.client.create({
+          data: {
+            name,
+            email,
+            phone,
+            nationality: country,
+            address: country,
+          },
+        });
+      } else {
+        // Update phone or name if changed
+        client = await prisma.client.update({
+          where: { id: client.id },
+          data: { name, phone, nationality: country },
+        });
+      }
+
+      // Try to find matching tour package ID if available
+      const tourPkg = await prisma.tourPackage.findFirst({
+        where: { title: { contains: serviceName, mode: 'insensitive' } },
+      });
+
+      const parsedStartDate = startDate ? new Date(startDate) : new Date();
+      const endDate = new Date(parsedStartDate);
+      endDate.setDate(endDate.getDate() + 3); // default 3 days if duration not specified
+
+      await prisma.booking.create({
+        data: {
+          bookingRef,
+          clientId: client.id,
+          tourPackageId: tourPkg ? tourPkg.id : null,
+          status: 'ENQUIRY',
+          startDate: parsedStartDate,
+          endDate,
+          numAdults: travelers,
+          numChildren: 0,
+          totalAmount: totalPrice,
+          currency: resolvedPricing.currency || 'USD',
+          specialRequirements: bookingData.specialRequirements || null,
+          notes: `Booked via website public booking form. Season: ${resolvedPricing.season}. Rate Card ID: ${resolvedPricing.rateCardId || 'N/A'}`,
+        },
+      });
+      console.log(`[site-inquiries] Successfully persisted booking ${bookingRef} to database`);
+    } catch (dbError) {
+      console.error('[site-inquiries] Database persistence error (non-fatal):', dbError);
+    }
 
     // ---------------------------------------------------------------
-    // 5. Base URL
+    // 6. Base URL
     // ---------------------------------------------------------------
     const baseUrl =
       process.env.NEXT_PUBLIC_BASE_URL ||
       process.env.NEXT_PUBLIC_SITE_URL ||
       'http://localhost:3000';
 
-    // Remove trailing slash to avoid //api/...
     const normalizedBaseUrl = baseUrl.replace(/\/+$/, '');
 
     // ---------------------------------------------------------------
-    // 6. Customer PDF URL
+    // 7. Customer & Admin PDF URLs
     // ---------------------------------------------------------------
     const clientPdfParams = new URLSearchParams({
       name,
@@ -114,9 +176,6 @@ export async function POST(request: NextRequest) {
       `${normalizedBaseUrl}/api/bookings/${bookingId}/download?` +
       clientPdfParams.toString();
 
-    // ---------------------------------------------------------------
-    // 7. Admin PDF URL
-    // ---------------------------------------------------------------
     const adminPdfParams = new URLSearchParams({
       name,
       email,
@@ -186,6 +245,8 @@ export async function POST(request: NextRequest) {
           tourName: serviceName,
           dates: startDate,
           message: bookingData.specialRequirements || '',
+          totalPrice,
+          bookingRef,
         };
 
         await fetch(webhookUrl, {
@@ -201,88 +262,29 @@ export async function POST(request: NextRequest) {
       }
     } catch (n8nError) {
       console.error(`[site-inquiries] ${bookingId} n8n webhook forward failed:`, n8nError);
-      // Suppress error to avoid failing the booking
     }
 
     // ---------------------------------------------------------------
     // 10. Determine notification status
     // ---------------------------------------------------------------
     const customerEmailSent = emailStatus.client === 'sent';
-
-    const adminEmailSent =
-      emailStatus.info === 'sent' ||
-      emailStatus.it === 'sent';
-
+    const adminEmailSent = emailStatus.info === 'sent' || emailStatus.it === 'sent';
     const whatsappSent = emailStatus.whatsapp === 'sent';
+    const anyEmailSent = customerEmailSent || emailStatus.info === 'sent' || emailStatus.it === 'sent';
+    const allEmailFailed = emailStatus.client === 'failed' && emailStatus.info === 'failed' && emailStatus.it === 'failed';
 
-    const anyEmailSent =
-      customerEmailSent ||
-      emailStatus.info === 'sent' ||
-      emailStatus.it === 'sent';
-
-    const allEmailFailed =
-      emailStatus.client === 'failed' &&
-      emailStatus.info === 'failed' &&
-      emailStatus.it === 'failed';
-
-    // ---------------------------------------------------------------
-    // 11. Detailed server-side logging
-    // ---------------------------------------------------------------
-    console.log(
-      `[site-inquiries] ${bookingId} notification status: ` +
-        `client=${emailStatus.client} ` +
-        `info=${emailStatus.info} ` +
-        `it=${emailStatus.it} ` +
-        `whatsapp=${emailStatus.whatsapp}`,
-    );
-
-    if (emailStatus.errors) {
-      if (emailStatus.errors.client) {
-        console.error(
-          `[site-inquiries] ${bookingId} CLIENT SMTP ERROR:`,
-          JSON.stringify(emailStatus.errors.client),
-        );
-      }
-
-      if (emailStatus.errors.info) {
-        console.error(
-          `[site-inquiries] ${bookingId} INFO SMTP ERROR:`,
-          JSON.stringify(emailStatus.errors.info),
-        );
-      }
-
-      if (emailStatus.errors.it) {
-        console.error(
-          `[site-inquiries] ${bookingId} IT SMTP ERROR:`,
-          JSON.stringify(emailStatus.errors.it),
-        );
-      }
-    }
-
-    // ---------------------------------------------------------------
-    // 12. If every email failed, report an actual failure
-    // ---------------------------------------------------------------
     if (allEmailFailed) {
-      console.error(
-        `[site-inquiries] ${bookingId}: ALL EMAIL DELIVERIES FAILED`,
-      );
-
+      console.error(`[site-inquiries] ${bookingId}: ALL EMAIL DELIVERIES FAILED`);
       return NextResponse.json(
         {
           success: false,
           bookingId,
-
-          message:
-            'Your booking could not be confirmed because the email notification service is currently unavailable. Please contact us on WhatsApp.',
-
+          bookingRef,
+          message: 'Your booking could not be confirmed because the email notification service is currently unavailable. Please contact us on WhatsApp.',
           customerEmailSent,
           adminEmailSent,
           whatsappSent,
-
           emailStatus,
-
-          // Keep PDF/WhatsApp available so the customer can still
-          // contact the company even when SMTP is unavailable.
           pdfUrl: clientPdfUrl,
           whatsappLink: adminWhatsApp,
         },
@@ -290,54 +292,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ---------------------------------------------------------------
-    // 13. Partial email failure
-    // ---------------------------------------------------------------
-    if (!anyEmailSent && whatsappSent) {
-      return NextResponse.json({
-        success: true,
-        bookingId,
-
-        message:
-          'Your request was received. Please contact us on WhatsApp for confirmation.',
-
-        customerEmailSent,
-        adminEmailSent,
-        whatsappSent,
-
-        emailStatus,
-
-        pdfUrl: clientPdfUrl,
-        whatsappLink: adminWhatsApp,
-      });
-    }
-
-    // ---------------------------------------------------------------
-    // 14. Normal successful response
-    // ---------------------------------------------------------------
     return NextResponse.json({
       success: true,
       bookingId,
-
+      bookingRef,
+      totalPrice,
+      season: resolvedPricing.season,
       message: customerEmailSent
         ? 'Booking received. Please check your email for confirmation.'
         : adminEmailSent
           ? 'Booking received. Our team has been notified.'
           : 'Booking request received.',
-
       customerEmailSent,
       adminEmailSent,
       whatsappSent,
-
       emailStatus,
-
       pdfUrl: clientPdfUrl,
       whatsappLink: adminWhatsApp,
     });
   } catch (error: any) {
-    // ---------------------------------------------------------------
-    // 15. Unexpected server error
-    // ---------------------------------------------------------------
     console.error('[site-inquiries] FATAL ERROR:', {
       name: error?.name,
       code: error?.code,
@@ -348,8 +321,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message:
-          'Booking failed. Please contact JaeTravel Expeditions on WhatsApp.',
+        message: 'Booking failed. Please contact JaeTravel Expeditions on WhatsApp.',
       },
       { status: 500 },
     );
