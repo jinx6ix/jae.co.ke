@@ -5,6 +5,9 @@ import Script from "next/script";
 import { budgetTours, getTourBySlug } from "@/lib/budget-tours-data";
 import { getCmsBudgetTourBySlug } from "@/lib/cms-budget-tours";
 import { notFound } from "next/navigation";
+import { TourSeasonalPricing } from "@/components/TourSeasonalPricing";
+import { TourSectionNav } from "@/components/TourSectionNav";
+import { prisma } from "@/lib/prisma";
 
 // Server Components
 import TourHero from "./components/TourHero";
@@ -127,6 +130,22 @@ export default async function TourDetailPage(props: Props) {
   const tour = await loadTour(params.slug);
   
   if (!tour) notFound();
+
+  let rateCards: any[] = []
+  try {
+    const dbTourPackage = await prisma.tourPackage.findFirst({
+      where: {
+        OR: [
+          { slug: params.slug },
+          { title: { contains: tour.title, mode: 'insensitive' } },
+        ],
+      },
+      include: { rateCards: true },
+    })
+    rateCards = dbTourPackage?.rateCards || []
+  } catch (e) {
+    console.error('Failed to fetch rate cards:', e)
+  }
 
   const absoluteUrl = `https://www.jaetravel.co.ke${tour.url}`;
   const absoluteImageUrl = `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`;
@@ -294,7 +313,11 @@ export default async function TourDetailPage(props: Props) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section with optimized image */}
         <TourHero tour={tour} />
+      </main>
 
+      <TourSectionNav />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Content Sections - Responsive spacing */}
         <div className="space-y-8 md:space-y-12 lg:space-y-16">
           {/* Tour Overview - Full width on mobile, sticky sidebar on desktop */}
@@ -310,6 +333,11 @@ export default async function TourDetailPage(props: Props) {
                   <TourDescription tour={tour} />
                 </div>
 
+                {/* Seasonal Pricing & Group Rates */}
+                <div id="pricing" className="scroll-mt-32">
+                  <TourSeasonalPricing tourTitle={tour.title} rateCards={rateCards} />
+                </div>
+
                 {/* Tour Highlights */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
@@ -319,7 +347,7 @@ export default async function TourDetailPage(props: Props) {
                 </div>
 
                 {/* Detailed Itinerary - Enhanced for better readability */}
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <div id="itinerary" className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8 scroll-mt-32">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
                       Detailed Itinerary

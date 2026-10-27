@@ -52,8 +52,91 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   const [submitted, setSubmitted] = useState(false)
   const [bookingResult, setBookingResult] = useState<BookingResponse | null>(null)
 
+  const [pricingState, setPricingState] = useState({
+    success: true,
+    pricePerPerson: tourPrice,
+    totalPrice: tourPrice * 2,
+    season: "STANDARD",
+    currency: "USD",
+    isLoading: false,
+    error: null as string | null,
+  })
+
+  // Fetch pricing dynamically when date or travelers changes (with AbortController for race condition prevention)
+  useEffect(() => {
+    if (!formData.date) {
+      setPricingState({
+        success: true,
+        pricePerPerson: tourPrice,
+        totalPrice: tourPrice * (Number(formData.travelers) || 2),
+        season: "STANDARD",
+        currency: "USD",
+        isLoading: false,
+        error: null,
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let isCurrent = true
+
+    setPricingState(prev => ({ ...prev, isLoading: true, error: null }))
+
+    const fetchPricing = async () => {
+      try {
+        const res = await fetch(
+          `/api/tours/pricing?tour=${encodeURIComponent(tourTitle)}&date=${encodeURIComponent(formData.date)}&travelers=${encodeURIComponent(formData.travelers || "2")}`,
+          { signal: controller.signal }
+        )
+        const data = await res.json()
+
+        if (!isCurrent) return
+
+        if (data.success) {
+          setPricingState({
+            success: true,
+            pricePerPerson: data.pricePerPerson,
+            totalPrice: data.totalPrice,
+            season: data.season,
+            currency: data.currency || "USD",
+            isLoading: false,
+            error: null,
+          })
+        } else {
+          setPricingState(prev => ({
+            ...prev,
+            success: false,
+            isLoading: false,
+            error: data.message || "Pricing unavailable for selected date.",
+          }))
+        }
+      } catch (err: any) {
+        if (err.name === 'AbortError') return
+        if (!isCurrent) return
+        setPricingState(prev => ({
+          ...prev,
+          success: false,
+          isLoading: false,
+          error: "Failed to resolve pricing. Please select a valid date.",
+        }))
+      }
+    }
+
+    fetchPricing()
+
+    return () => {
+      isCurrent = false
+      controller.abort()
+    }
+  }, [tourTitle, formData.date, formData.travelers, tourPrice])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!pricingState.success || pricingState.isLoading) {
+      alert("Please wait for pricing to resolve or select a valid date.")
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitted(false)
 
@@ -64,8 +147,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       ;(window as any).gtag("event", "begin_checkout", {
         event_category: "Booking",
         event_label: tourTitle,
-        value: tourPrice,
-        currency: "USD",
+        value: pricingState.totalPrice,
+        currency: pricingState.currency || "USD",
       })
     }
 
@@ -87,8 +170,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           travelers: formData.travelers,
           startDate: formData.date, // API expects startDate
           specialRequirements: formData.message, // API expects specialRequirements
-          totalPrice: tourPrice * Number.parseInt(formData.travelers || "1"),
-          currency: "$",
+          totalPrice: pricingState.totalPrice,
+          currency: pricingState.currency || "USD",
           country: formData.country,
           duration: tourDuration,
         }),
@@ -104,8 +187,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           ;(window as any).gtag("event", "purchase", {
             event_category: "Booking",
             event_label: tourTitle,
-            value: tourPrice * Number.parseInt(formData.travelers || "1"),
-            currency: "USD",
+            value: pricingState.totalPrice,
+            currency: pricingState.currency || "USD",
             transaction_id: bookingId,
           })
         }
@@ -462,42 +545,68 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       </div>
 
       {/* Price Summary */}
-      <div className="rounded-xl bg-gradient-to-r from-primary/5 to-secondary/5 p-6 border border-primary/10">
+      <div className="rounded-xl bg-gradient-to-r from-orange-50/80 to-white p-6 border border-orange-200">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">
-              {tourTitle}
+            <span className="text-sm font-semibold text-orange-900 flex items-center gap-2">
+              <span>Season:</span>
+              <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                pricingState.season === 'HIGH' ? 'bg-red-100 text-red-700' :
+                pricingState.season === 'MID' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
+              }`}>
+                {pricingState.season}
+              </span>
             </span>
-            <span className="font-semibold">${tourPrice.toLocaleString()}</span>
-          </div>
-          <div className="flex items-center justify-between py-2 border-t border-primary/10">
-            <span className="text-sm text-muted-foreground">
-              {serviceType === "vehicle" ? "Days" : "Travelers"}: {formData.travelers}
+            <span className="text-xs text-muted-foreground">
+              {pricingState.currency} {pricingState.pricePerPerson.toLocaleString()} / person
             </span>
-            <span className="font-semibold">× ${tourPrice.toLocaleString()}</span>
           </div>
-          <div className="flex items-center justify-between pt-3 border-t-2 border-primary/20">
-            <span className="text-xl font-bold">Total Estimate</span>
-            <span className="text-3xl font-extrabold text-primary">
-              ${ (tourPrice * Number.parseInt(formData.travelers || "1")).toLocaleString() }
+
+          {pricingState.isLoading && (
+            <div className="flex items-center gap-2 text-sm text-orange-700 py-1">
+              <Loader2 className="h-4 w-4 animate-spin text-orange-600" />
+              <span>Resolving seasonal pricing...</span>
+            </div>
+          )}
+
+          {pricingState.error && (
+            <div className="p-3 bg-red-50 rounded-lg text-xs text-red-700 border border-red-200">
+              ⚠️ {pricingState.error}
+            </div>
+          )}
+
+          <div className="flex items-center justify-between pt-3 border-t-2 border-orange-200">
+            <div>
+              <span className="text-xl font-bold text-orange-950">Total Price</span>
+              <div className="text-xs text-muted-foreground">{formData.travelers || "2"} Travelers</div>
+            </div>
+            <span className="text-3xl font-extrabold text-orange-600">
+              {pricingState.currency} {pricingState.totalPrice.toLocaleString()}
             </span>
           </div>
         </div>
       </div>
 
-      <Button 
-        type="submit" 
-        size="lg" 
-        className="w-full h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer"
-        disabled={isSubmitting || !formData.name || !formData.email || !formData.phone || !formData.date}
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer bg-orange-600 hover:bg-orange-700 text-white"
+        disabled={isSubmitting || pricingState.isLoading || !pricingState.success || !formData.date || !formData.name || !formData.email || !formData.phone}
       >
         {isSubmitting ? (
           <>
-            <div className="mr-2 animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            <Loader2 className="mr-2 animate-spin h-5 w-5" />
             Processing Booking...
           </>
+        ) : pricingState.isLoading ? (
+          <>
+            <Loader2 className="mr-2 animate-spin h-5 w-5" />
+            Calculating Price...
+          </>
+        ) : !pricingState.success ? (
+          "Select Valid Date for Pricing"
         ) : (
-          `Confirm Booking - $${(tourPrice * Number.parseInt(formData.travelers || "1")).toLocaleString()}`
+          `Confirm Booking - ${pricingState.currency} ${pricingState.totalPrice.toLocaleString()}`
         )}
       </Button>
 

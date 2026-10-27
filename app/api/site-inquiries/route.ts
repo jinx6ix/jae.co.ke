@@ -79,6 +79,12 @@ export async function POST(request: NextRequest) {
     // ---------------------------------------------------------------
     const travelers = Number(bookingData.travelers) || 2;
     const resolvedPricing = await resolveTourPricing(serviceName, startDate, travelers);
+    if (!resolvedPricing.success) {
+      return NextResponse.json(
+        { success: false, message: resolvedPricing.error || 'Failed to resolve pricing for booking' },
+        { status: 400 }
+      );
+    }
     const totalPrice = resolvedPricing.totalPrice;
 
     // ---------------------------------------------------------------

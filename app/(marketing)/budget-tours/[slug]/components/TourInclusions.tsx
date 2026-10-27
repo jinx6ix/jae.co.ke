@@ -14,7 +14,7 @@ export default function TourInclusions({ tour }: TourInclusionsProps) {
       <div className="container mx-auto px-4">
         <div className="grid gap-12 lg:grid-cols-2">
           {/* What's Included */}
-          <div>
+          <div id="inclusions" className="scroll-mt-32">
             <div className="mb-8 text-center">
               <h2 className="font-serif text-3xl font-bold">What's Included</h2>
               <p className="mt-2 text-gray-600">Everything you need for your safari</p>
@@ -34,7 +34,7 @@ export default function TourInclusions({ tour }: TourInclusionsProps) {
           </div>
 
           {/* What's Excluded */}
-          <div>
+          <div id="exclusions" className="scroll-mt-32">
             <div className="mb-8 text-center">
               <h2 className="font-serif text-3xl font-bold">What's Excluded</h2>
               <p className="mt-2 text-gray-600">Additional costs to consider</p>

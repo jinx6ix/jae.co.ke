@@ -19,6 +19,13 @@ export async function GET(request: NextRequest) {
 
     const pricing = await resolveTourPricing(tour, date || new Date().toISOString(), travelers);
 
+    if (!pricing.success) {
+      return NextResponse.json(
+        { success: false, message: pricing.error || 'Failed to resolve pricing' },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       ...pricing,
