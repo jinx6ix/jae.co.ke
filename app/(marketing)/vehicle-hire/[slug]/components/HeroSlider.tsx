@@ -59,11 +59,12 @@ export function HeroSlider({ vehicle }: HeroSliderProps) {
         >
           <Image
             src={slide || "/placeholder.svg"}
-            alt={`${vehicle.name} - Slide ${index + 1}`}
+            alt={`${vehicle.name} - View ${index + 1}`}
             fill
             className="object-cover"
             priority={index === 0}
-            sizes="100vw"
+            loading={index === 0 ? "eager" : "lazy"}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"
           />
           
           {/* Gradient overlay */}
@@ -138,9 +139,9 @@ export function HeroSlider({ vehicle }: HeroSliderProps) {
 
       {/* Vehicle name overlay */}
       <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 text-center w-full px-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
           {vehicle.name}
-        </h1>
+        </h2>
         <p className="text-xl text-white/90">
           Premium Experience • Luxury Comfort
         </p>

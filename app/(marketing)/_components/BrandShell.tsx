@@ -50,37 +50,37 @@ const organizationSchema = {
       email: "info@jaetravel.co.ke",
       address: {
         "@type": "PostalAddress",
-        addressCountry: "KE",
+        streetAddress: "Karen Roundabout",
         addressLocality: "Nairobi",
         addressRegion: "Nairobi County",
+        postalCode: "00100",
+        addressCountry: "KE",
       },
       geo: { "@type": "GeoCoordinates", latitude: -1.286389, longitude: 36.817223 },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "07:00",
-        closes: "20:00",
-      },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "18:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Saturday"],
+          opens: "09:00",
+          closes: "14:00",
+        },
+      ],
       sameAs: [
         "https://www.facebook.com/JaeTravelExpeditions",
         "https://www.instagram.com/jaetravelexpeditions/",
         "https://www.tiktok.com/@jaetravelexpeditions",
         "https://wa.me/254726485228",
-        // YouTube channel — read from env if set, otherwise skip. The
-        // `?sub_confirmation=1` querystring converts the click into a
-        // one-tap subscribe confirmation on YouTube's side.
+        "https://www.safaribookings.com/p6888",
         process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL,
       ].filter(Boolean),
-      priceRange: "$$-$$$",
-      currenciesAccepted: "USD, EUR, GBP, KES",
+      priceRange: "$$$",
+      currenciesAccepted: "USD",
       paymentAccepted: "Cash, Credit Card, Bank Transfer, PayPal",
       areaServed: [
         "Kenya",
@@ -107,12 +107,6 @@ const organizationSchema = {
         "Chinese",
         "Swahili",
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        reviewCount: "723",
-      },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "East Africa Safari Tours",

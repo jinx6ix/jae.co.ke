@@ -46,12 +46,34 @@ export async function DynamicImage({
 
   // If we got a working URL, render it.
   if (resolved && (resolved.startsWith('http') || resolved.startsWith('/'))) {
-    return <Image src={resolved} alt={alt} width={width} height={height} className={className} {...imgProps} />
+    return (
+      <Image
+        src={resolved}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        loading={imgProps.priority ? 'eager' : 'lazy'}
+        decoding="async"
+        {...imgProps}
+      />
+    )
   }
 
   // If the caller supplied a hardcoded ultimate fallback, use it.
   if (ultimateFallback && (ultimateFallback.startsWith('http') || ultimateFallback.startsWith('/'))) {
-    return <Image src={ultimateFallback} alt={alt} width={width} height={height} className={className} {...imgProps} />
+    return (
+      <Image
+        src={ultimateFallback}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        loading={imgProps.priority ? 'eager' : 'lazy'}
+        decoding="async"
+        {...imgProps}
+      />
+    )
   }
 
   // Render a labelled placeholder so the layout is preserved and a human

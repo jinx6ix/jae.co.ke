@@ -128,7 +128,13 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 rounded-xl border border-orange-200 bg-orange-50/50 p-6 shadow-sm">
+    <form
+      id="vehicle-booking-form"
+      onSubmit={handleSubmit}
+      className="space-y-6 rounded-xl border border-orange-200 bg-orange-50/50 p-6 shadow-sm"
+      data-toolname="bookVehicle"
+      data-tooldescription="Submit safari vehicle rental booking or inquiry with travel dates and pickup location"
+    >
       <div>
         <h3 className="mb-2 text-2xl font-bold text-orange-800">Book {vehicleName}</h3>
         <p className="text-sm text-orange-700">
@@ -153,6 +159,8 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
           <Input
             id="name"
             name="name"
+            type="text"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -170,6 +178,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="email"
             name="email"
             type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             required
@@ -187,6 +196,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="phone"
             name="phone"
             type="tel"
+            autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
             required
@@ -237,6 +247,8 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
           <Input
             id="pickupLocation"
             name="pickupLocation"
+            type="text"
+            autoComplete="street-address"
             value={formData.pickupLocation}
             onChange={handleChange}
             required

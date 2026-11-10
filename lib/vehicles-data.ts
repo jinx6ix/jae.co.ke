@@ -115,10 +115,10 @@ export const vehicles: Vehicle[] = [
     pricePerDay: 200,
     priceCurrency: "USD",
     description:
-      "Experience the ultimate East African safari adventure with our rugged Toyota Landcruiser hire. This legendary 4WD vehicle rental combines exceptional off-road capabilities with proven reliability, making it the perfect choice for navigating Kenya's challenging terrain, Tanzania's vast savannas, Rwanda's volcanic hills, and Uganda's diverse landscapes. Specially equipped for safari vehicle rental with a pop-up roof for optimal wildlife viewing, this Landcruiser hire ensures you won't miss a single moment of your game drives. Our meticulously maintained fleet offers the perfect balance of durability and comfort for your East African expedition.",
-    metaTitle: "Toyota Landcruiser Hire Kenya | 4x4 Safari Vehicle Rental $200/day",
+      "Our custom-built Toyota Land Cruiser 4x4 safari vehicles feature pop-up roofs for 360-degree game viewing, heavy-duty suspension for rough park roads, and seating for up to seven passengers. Each vehicle includes high-frequency two-way radios, charging points for cameras, a cooler box, and full safety equipment. Available for self-drive or with an experienced Kenya safari driver-guide.",
+    metaTitle: "Toyota Land Cruiser Hire Kenya | 4x4 Safari Vehicle",
     metaDescription:
-      "Rent Toyota Landcruiser 4x4 safari vehicle with pop-up roof from $200/day. Perfect for game drives in Kenya, Tanzania, Uganda & Rwanda. 7-passenger capacity.",
+      "Hire a custom Toyota Land Cruiser 4x4 in Kenya from $200/day. Pop-up roof, 7 window seats, professional driver available. Book your safari transport.",
     keywords: [
       "Toyota Landcruiser rental",
       "4x4 safari vehicle",

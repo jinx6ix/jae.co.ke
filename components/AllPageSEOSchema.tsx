@@ -163,41 +163,9 @@ function today() {
   return new Date().toISOString().split("T")[0]
 }
 
-// ── Seller / Merchant identity (shared across all shopping schemas) ───────────
+// ── Seller / Merchant reference (stable @id reference to BrandShell organization) ───
 const MERCHANT = {
-  "@type": "TravelAgency",
   "@id": `${BASE}/#organization`,
-  name: "JaeTravel Expeditions",
-  url: BASE,
-  telephone: "+254726485228",
-  email: "info@jaetravel.co.ke",
-  logo: { "@type": "ImageObject", url: `${BASE}/logo.png`, width: 512, height: 512 },
-  // Cross-link the brand to its owned social properties. Google uses
-  // sameAs to confirm entity identity — listing the YouTube channel here
-  // is what makes the channel show up as a related property in the brand
-  // Knowledge Panel and unlocks YouTube subscriber attribution.
-  sameAs: [
-    YOUTUBE_CHANNEL_URL,
-    `${BASE}/facebook`,
-    `${BASE}/twitter`,
-    `${BASE}/tiktok`,
-    INSTAGRAM_HANDLE ? `https://www.instagram.com/${INSTAGRAM_HANDLE.replace(/^@/, '')}/` : `${BASE}/instagram`,
-  ].filter(Boolean),
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Nairobi CBD",
-    addressLocality: "Nairobi",
-    addressRegion: "Nairobi County",
-    postalCode: "00100",
-    addressCountry: "KE",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "723",
-    bestRating: "5",
-    worstRating: "1",
-  },
 }
 
 // ── RETURN POLICY (required for Merchant Listings) ───────────────────────────
@@ -317,23 +285,6 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
             ],
           } : {}),
         },
-
-        // ── REVIEW SNIPPETS ─────────────────────────────────────────────────
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: rating.toString(),
-          reviewCount: reviewCount.toString(),
-          bestRating: "5",
-          worstRating: "1",
-        },
-        review: reviews.map(r => ({
-          "@type": "Review",
-          reviewRating: { "@type": "Rating", ratingValue: r.rating.toString(), bestRating: "5" },
-          author: { "@type": "Person", name: r.name },
-          datePublished: r.date,
-          reviewBody: r.body,
-          publisher: { "@type": "Organization", name: "JaeTravel Expeditions" },
-        })),
       },
 
       // 2. ── TOURIST TRIP (TouristTrip with full itinerary) ───────────────────
@@ -561,17 +512,6 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
           shippingDetails: SHIPPING_DETAILS,
           hasMerchantReturnPolicy: RETURN_POLICY,
         },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "87",
-          bestRating: "5",
-          worstRating: "1",
-        },
-        review: [
-          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "James O." }, datePublished: "2025-09-10", reviewBody: `The ${vehicle.name} was perfect for our Masai Mara safari. Spacious, reliable, and the pop-up roof made wildlife photography incredible.` },
-          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "Anna P." }, datePublished: "2025-08-22", reviewBody: `Hired the ${vehicle.name} for a week across Kenya and Tanzania. Excellent condition, very comfortable, and great value.` },
-        ],
       },
 
       // IMAGE METADATA
@@ -584,8 +524,8 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
         name: `${vehicle.name} — Safari Vehicle Hire Kenya`,
         description: `${vehicle.name} available for hire in Kenya. ${vehicle.ideal}`,
         caption: `${vehicle.name} | JaeTravel Expeditions Vehicle Hire`,
-        author: { "@type": "Organization", name: "JaeTravel Expeditions" },
-        copyrightHolder: { "@type": "Organization", name: "JaeTravel Expeditions" },
+        author: { "@id": `${BASE}/#organization` },
+        copyrightHolder: { "@id": `${BASE}/#organization` },
         representativeOfPage: true,
       },
 
@@ -690,15 +630,10 @@ function buildBudgetTourSchema(tour: any, slug: string, videos?: VideoSchemaInpu
             ],
           } : {}),
         },
-        aggregateRating: { "@type": "AggregateRating", ratingValue: tour.rating.toString(), reviewCount: tour.reviewCount.toString(), bestRating: "5", worstRating: "1" },
-        review: [
-          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "Tom B." }, datePublished: "2025-07-18", reviewBody: `Amazing value! The ${tour.title} gave us everything we wanted — amazing wildlife, great food, and a brilliant guide. Highly recommend for budget travelers.` },
-          { "@type": "Review", reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" }, author: { "@type": "Person", name: "Lisa M." }, datePublished: "2025-08-30", reviewBody: `Best budget safari in Kenya! Saw lions, elephants, and the Big Five. Professional service at an incredible price point.` },
-        ],
       },
 
       // IMAGE METADATA
-      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${tour.title}`, caption: `${tour.title} | JaeTravel Expeditions`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true },
+      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${tour.title}`, caption: `${tour.title} | JaeTravel Expeditions`, author: { "@id": `${BASE}/#organization` }, representativeOfPage: true },
 
       // VIDEO
       ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${tour.title} — Safari Highlights`, description: `See what to expect on the ${tour.title}. Real footage from this Kenya budget safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/budget-safari-highlights.mp4`, uploadDate: "2024-04-01", duration: "PT3M00S", publisher: MERCHANT, isFamilyFriendly: true }),

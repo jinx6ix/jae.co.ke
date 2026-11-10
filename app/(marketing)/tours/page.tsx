@@ -7,28 +7,32 @@ import JsonLd from "@/components/JsonLd";
 import { CmsPage } from "@/app/(marketing)/_components/CmsPage";
 
 export const metadata: Metadata = {
-  title: "Safari Tours & Packages in East Africa",
+  title: "Safari Tours Kenya & East Africa | JaeTravel Packages",
   description:
-    "Explore wheelchair-accessible and classic safari tours in Kenya, Tanzania, Rwanda & Uganda. From Masai Mara to gorilla trekking adventures.",
+    "Book guided safari tours across Kenya, Tanzania, Rwanda and Uganda. Wheelchair-accessible 4x4 vehicles, Masai Mara Great Migration, and gorilla trekking adventures.",
   keywords: [
     "safari tours Kenya",
     "Tanzania safari packages",
     "Rwanda gorilla trekking",
     "Uganda safari",
-    "accessible safari tours",
-    "East Africa tours",
-    "Masai Mara safari",
+    "accessible safari tours Kenya",
+    "East Africa safari holidays",
+    "Masai Mara safari packages",
   ],
   openGraph: {
-    title: "Safari Tours & Packages | Jae Travel Expeditions",
+    title: "Safari Tours Kenya & East Africa | JaeTravel Packages",
     description:
-      "Curated safari experiences across East Africa. Wheelchair accessible options available.",
+      "Curated safari experiences across Kenya, Tanzania, Rwanda and Uganda. Accessible 4x4 safari vehicles and experienced local guides.",
+    url: "https://www.jaetravel.co.ke/tours",
+    siteName: "JaeTravel Expeditions",
+    type: "website",
+    locale: "en_KE",
     images: [
       {
-        url: "https://www.jaetravel.co.ke/images/tours-hero.jpg", // Replace with your actual hero image
+        url: "https://www.jaetravel.co.ke/images/tours-hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Jae Travel Expeditions Safari Tours in East Africa",
+        alt: "JaeTravel Expeditions Safari Tours in East Africa",
       },
     ],
   },
@@ -37,28 +41,19 @@ export const metadata: Metadata = {
   },
 };
 
-// Comprehensive Schema for Tours Page (triggers Product snippets, Reviews, Breadcrumbs, FAQ)
+// Clean Schema for Tours Page (CollectionPage, ItemList, Breadcrumbs, FAQPage)
 const toursPageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // Organization (consistent with contact page)
+    // WebPage / CollectionPage
     {
-      "@type": ["Organization", "LocalBusiness"],
-      "@id": "https://www.jaetravel.co.ke/#organization",
-      name: "Jae Travel Expeditions",
-      url: "https://www.jaetravel.co.ke",
-      logo: "https://www.jaetravel.co.ke/logo.png",
-      description: "East Africa’s leading wheelchair-accessible safari operator.",
-    },
-
-    // WebPage
-    {
-      "@type": "WebPage",
+      "@type": ["WebPage", "CollectionPage"],
       "@id": "https://www.jaetravel.co.ke/tours/#webpage",
       url: "https://www.jaetravel.co.ke/tours",
-      name: "Safari Tours & Packages | Jae Travel Expeditions",
+      name: "Safari Tours Kenya & East Africa | JaeTravel Packages",
       description:
         "Discover our range of safari tours across Kenya, Tanzania, Rwanda and Uganda.",
+      isPartOf: { "@id": "https://www.jaetravel.co.ke/#website" },
       primaryImageOfPage: {
         "@type": "ImageObject",
         url: "https://www.jaetravel.co.ke/images/tours-hero.jpg",
@@ -66,6 +61,11 @@ const toursPageSchema = {
         height: 630,
       },
       breadcrumb: { "@id": "https://www.jaetravel.co.ke/tours/#breadcrumb" },
+      dateModified: "2026-11-10",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", "#tours-answer-summary"],
+      },
     },
 
     // BreadcrumbList
@@ -78,24 +78,48 @@ const toursPageSchema = {
       ],
     },
 
+    // ItemList for tours collection
+    {
+      "@type": "ItemList",
+      "@id": "https://www.jaetravel.co.ke/tours/#list",
+      name: "East Africa Safari Tours",
+      description: "Complete list of safari tours and packages by JaeTravel Expeditions",
+      numberOfItems: tours.length,
+      itemListElement: tours.slice(0, 15).map((tour, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://www.jaetravel.co.ke/tours/${tour.slug || tour.id}`,
+        name: tour.title,
+      })),
+    },
+
     // FAQPage
     {
       "@type": "FAQPage",
+      "@id": "https://www.jaetravel.co.ke/tours/#faq",
       mainEntity: [
+        {
+          "@type": "Question",
+          name: "What safari tours does JaeTravel offer in East Africa?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "JaeTravel Expeditions offers classic wildlife safaris in the Masai Mara and Serengeti, gorilla trekking in Rwanda and Uganda, and specialized wheelchair-accessible safari tours with hydraulic lift vehicles.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is included in JaeTravel safari packages?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Packages include 4x4 safari transport with professional driver-guide, full-board accommodation, national park entry fees, bottled water on game drives, and airport transfers. International flights are excluded.",
+          },
+        },
         {
           "@type": "Question",
           name: "Do you offer wheelchair-accessible safari tours?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, we specialize in fully accessible safaris with modified vehicles and accessible accommodations.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "What is included in your safari packages?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Most packages include accommodation, meals, game drives, park fees, and professional guides. International flights are not included.",
+            text: "Yes, we operate custom-adapted 4x4 Land Cruisers with German hydraulic wheelchair lifts (400kg capacity) and partner with audited accessible lodges across Kenya and Tanzania.",
           },
         },
         {
@@ -103,42 +127,11 @@ const toursPageSchema = {
           name: "How far in advance should I book a safari?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We recommend booking 6–12 months in advance for peak seasons (July–October and December–March).",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Are your tours suitable for families or solo travelers?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes, we offer family-friendly and solo traveler options with flexible private or small-group departures.",
+            text: "We recommend booking 3 to 6 months in advance for standard dates, and 6 to 12 months ahead for Great Migration peak season (July to October) and gorilla trekking permits.",
           },
         },
       ],
     },
-
-    // Product / Offer items for each tour (helps trigger Product snippets)
-    ...tours.map((tour) => ({
-      "@type": "Product",
-      "@id": `https://www.jaetravel.co.ke/tours/${tour.id}`,
-      name: tour.title,
-      description: tour.description || `Experience the best of ${tour.country} on this incredible safari tour.`,
-      image: tour.image || "https://www.jaetravel.co.ke/images/default-tour.jpg",
-      brand: { "@type": "Brand", name: "Jae Travel Expeditions" },
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "USD",
-        price: tour.price,
-        priceValidUntil: "2027-12-31", // Update as needed
-        availability: "https://schema.org/InStock",
-        url: `https://www.jaetravel.co.ke/tours/${tour.id}`,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        reviewCount: "45", // Adjust per tour or global
-      },
-    })),
   ],
 };
 

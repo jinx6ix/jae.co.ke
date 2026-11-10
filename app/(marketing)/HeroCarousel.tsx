@@ -137,9 +137,9 @@ export default function HeroCarousel() {
               <MapPin className="h-4 w-4" />
               {slides[currentIndex].destination}
             </p>
-            <h1 className="mb-4 font-serif text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            <h2 className="mb-4 font-serif text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
               {slides[currentIndex].title}
-            </h1>
+            </h2>
             <p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
               {slides[currentIndex].subtitle}
             </p>

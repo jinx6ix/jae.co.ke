@@ -255,7 +255,13 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 rounded-lg border border-orange-200 bg-white p-6 shadow-sm">
+    <form
+      id="safari-booking-form"
+      onSubmit={handleSubmit}
+      className="space-y-6 rounded-lg border border-orange-200 bg-white p-6 shadow-sm"
+      data-toolname="bookSafariTour"
+      data-tooldescription="Submit safari tour booking request with contact info, traveler count, and travel dates"
+    >
       <div>
         <h3 className="mb-2 text-2xl font-bold text-orange-700">Book This {serviceType === "vehicle" ? "Vehicle" : "Tour"}</h3>
         <p className="text-sm text-orange-600">
@@ -273,6 +279,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             <Input
               id="name"
               name="name"
+              type="text"
+              autoComplete="name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -291,6 +299,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               id="email"
               name="email"
               type="email"
+              autoComplete="email"
               value={formData.email}
               onChange={handleChange}
               required

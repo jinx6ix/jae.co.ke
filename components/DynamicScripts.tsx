@@ -48,37 +48,7 @@ export default function DynamicScripts() {
         </>
       )}
 
-      {/* Merchant Widget - Always renders but with dynamic config */}
-      <Script
-        id="merchant-widget"
-        src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
-        strategy="lazyOnload"
-      />
-
-      <Script id="merchant-widget-init" strategy="lazyOnload">
-        {`
-          function initMerchantWidget() {
-            if (typeof merchantwidget !== 'undefined' && merchantwidget) {
-              merchantwidget.start({
-                merchant_id: 5694347760,
-                position: 'BOTTOM_RIGHT',
-                region: '${orderData?.delivery_country || "KE"}',
-              });
-            } else {
-              console.log('Merchant widget not yet loaded');
-            }
-          }
-
-          // Initialize when script loads
-          const widgetScript = document.getElementById('merchant-widget');
-          if (widgetScript) {
-            widgetScript.addEventListener('load', initMerchantWidget);
-          }
-
-          // Retry mechanism
-          setTimeout(initMerchantWidget, 3000);
-        `}
-      </Script>
+      {/* Google Merchant widget removed - was generating 16 gstatic images with no alt */}
     </>
   );
 }

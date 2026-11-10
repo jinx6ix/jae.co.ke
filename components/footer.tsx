@@ -34,19 +34,21 @@ export function Footer() {
                 href="https://www.facebook.com/JaeTravelExpeditions"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="JaeTravel Expeditions on Facebook"
                 title="Follow on Facebook"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-5 w-5" aria-hidden="true" />
               </a>
               <a
                 href="https://www.instagram.com/jaetravelexpeditions/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="JaeTravel Expeditions on Instagram"
                 title="Follow on Instagram"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-5 w-5" aria-hidden="true" />
               </a>
               <a
                 href={
@@ -55,19 +57,21 @@ export function Footer() {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="JaeTravel Expeditions on YouTube"
                 title="Subscribe on YouTube"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-5 w-5" aria-hidden="true" />
               </a>
               <a
                 href="https://www.tiktok.com/@jaetravelexpeditions"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="JaeTravel Expeditions on TikTok"
                 title="Follow on TikTok"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5" aria-hidden="true" />
               </a>
               <YouTubeSubscribe className="ml-1" />
             </div>
@@ -164,17 +168,26 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Google Merchant Widget */}
-        <Script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer />
-        <Script id="merchantWidgetInit" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-          merchantWidgetScript.addEventListener('load', function () {
-            merchantwidget.start({
-                 merchant_id: 5694347760,
-                 position: 'BOTTOM_LEFT'
-            });
-          });`
-        }} />
+        {/* Native Star Rating using verified data */}
+        <div className="flex justify-center my-8">
+          <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-lg bg-muted/50 border border-border">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-sm">SafariBookings:</span>
+              <div className="flex items-center gap-1">
+                <span className="font-bold">4.9/5</span>
+                <span className="text-xs text-muted-foreground">(7 reviews)</span>
+              </div>
+            </div>
+            <div className="hidden sm:block text-muted-foreground">|</div>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-sm">TripAdvisor:</span>
+              <div className="flex items-center gap-1">
+                <span className="font-bold">5.0/5</span>
+                <span className="text-xs text-muted-foreground">(4 reviews)</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Partner Logos */}
         <div className="mt-16">
@@ -260,6 +273,10 @@ export function Footer() {
         <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <p>&copy; {new Date().getFullYear()} JaeTravel Expeditions. All rights reserved.</p>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <Link href="/terms" className="transition-colors hover:text-primary">
+              Terms & Conditions
+            </Link>
             <span aria-hidden="true" className="hidden sm:inline">·</span>
             <Link href="/privacy" className="transition-colors hover:text-primary">
               Privacy policy

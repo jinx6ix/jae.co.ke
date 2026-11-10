@@ -97,7 +97,17 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      //required: true,
+      required: true,
+      validate: (val: any) => {
+        if (!val || val.trim().length === 0) {
+          return 'Alt text is required for accessibility and SEO'
+        }
+        // Block filename-like alt text
+        if (/\.(jpg|jpeg|png|webp|avif|gif)$/i.test(val)) {
+          return 'Alt text cannot be a filename. Please provide a descriptive text.'
+        }
+        return true
+      },
     },
     {
       name: 'caption',

@@ -26,7 +26,7 @@ export default function TourCard({ tour, showOriginalPrice = false }: TourCardPr
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 hover:scale-105"
-            priority={tour.isOnOffer}
+            loading="lazy"
           />
           {tour.isOnOffer && (
             <div className="absolute left-2 top-2 rounded-full bg-destructive px-2 py-1 text-xs font-medium text-white">

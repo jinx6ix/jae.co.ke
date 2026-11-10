@@ -10,6 +10,9 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnswerSummary } from "@/components/AnswerSummary";
+import { ComparisonTable } from "@/components/ComparisonTable";
+import { PageDate } from "@/components/PageDate";
 
 const TOURS_PER_PAGE = 12;
 
@@ -105,8 +108,12 @@ export default function ToursPageClient() {
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
-      <div className="mb-12 text-center">
+      <div className="mb-12 text-center max-w-4xl mx-auto">
         <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Explore Our Safari Tours</h1>
+        <PageDate updatedAt="2026-11-10" className="justify-center mb-4" />
+        <AnswerSummary id="tours-answer-summary" className="text-left">
+          JaeTravel Expeditions offers guided wildlife safaris and wheelchair-accessible tours across Kenya, Tanzania, Rwanda, and Uganda. Packages range from 3-day Masai Mara migrations to 12-day overland expeditions, featuring custom 4x4 vehicles with hydraulic lifts, professional safari guides, and vetted accessible lodges.
+        </AnswerSummary>
         <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
           Discover unforgettable safari experiences across East Africa. From the Great Migration in Masai Mara to gorilla trekking in Rwanda and Uganda.
         </p>
@@ -259,6 +266,99 @@ export default function ToursPageClient() {
           <Button onClick={clearFilters}>Clear All Filters</Button>
         </div>
       )}
+
+      {/* Safari Packages Comparison */}
+      <section className="mt-20">
+        <h2 className="mb-4 font-serif text-3xl font-bold text-center">
+          Compare Popular East Africa Safari Packages
+        </h2>
+        <p className="mx-auto mb-8 max-w-2xl text-center text-muted-foreground">
+          Compare durations, destinations, accessibility features, and indicative rates to choose your ideal expedition.
+        </p>
+        <ComparisonTable
+          caption="East Africa Safari Packages Overview (Destinations, Durations & Rates)"
+          columns={[
+            { key: "duration", header: "Duration" },
+            { key: "destination", header: "Primary Destinations" },
+            { key: "accessibility", header: "Accessibility" },
+            { key: "price", header: "Indicative Price (USD)" },
+          ]}
+          data={[
+            {
+              rowHeader: "Accessible Masai Mara Safari",
+              duration: "4 Days / 3 Nights",
+              destination: "Masai Mara National Reserve",
+              accessibility: "German hydraulic lift 4x4",
+              price: "From $1,450 / person",
+            },
+            {
+              rowHeader: "Kenya Disability Safari",
+              duration: "7 Days / 6 Nights",
+              destination: "Amboseli, Lake Nakuru, Mara",
+              accessibility: "Full barrier-free lodges",
+              price: "From $2,450 / person",
+            },
+            {
+              rowHeader: "Tanzania Accessible Safari",
+              duration: "8 Days / 7 Nights",
+              destination: "Serengeti, Ngorongoro Crater",
+              accessibility: "Adapted 4x4 & step-free rooms",
+              price: "From $2,950 / person",
+            },
+            {
+              rowHeader: "East Africa Overland Circuit",
+              duration: "12 Days / 11 Nights",
+              destination: "Kenya, Tanzania & Rwanda",
+              accessibility: "Customized upon request",
+              price: "From $5,800 / person",
+            },
+          ]}
+        />
+      </section>
+
+      {/* Visible Frequently Asked Questions (Matches FAQPage Schema) */}
+      <section className="mt-20 max-w-4xl mx-auto" id="faq">
+        <h2 className="mb-4 font-serif text-3xl font-bold text-center">
+          Frequently Asked Questions About JaeTravel Safaris
+        </h2>
+        <p className="mx-auto mb-10 max-w-2xl text-center text-muted-foreground">
+          Everything you need to know about booking, package inclusions, and accessible safaris in East Africa.
+        </p>
+        <div className="space-y-6">
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="text-lg font-bold mb-2">
+              What safari tours does JaeTravel offer in East Africa?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              JaeTravel Expeditions offers classic wildlife safaris in the Masai Mara and Serengeti, gorilla trekking in Rwanda and Uganda, and specialized wheelchair-accessible safari tours with hydraulic lift vehicles.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="text-lg font-bold mb-2">
+              What is included in JaeTravel safari packages?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Packages include 4x4 safari transport with professional driver-guide, full-board accommodation, national park entry fees, bottled water on game drives, and airport transfers. International flights are excluded.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="text-lg font-bold mb-2">
+              Do you offer wheelchair-accessible safari tours?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Yes, we operate custom-adapted 4x4 Land Cruisers with German hydraulic wheelchair lifts (400kg capacity) and partner with audited accessible lodges across Kenya and Tanzania.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="text-lg font-bold mb-2">
+              How far in advance should I book a safari?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              We recommend booking 3 to 6 months in advance for standard dates, and 6 to 12 months ahead for Great Migration peak season (July to October) and gorilla trekking permits.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <div className="mt-16 rounded-2xl bg-primary/10 p-8 text-center md:p-12">

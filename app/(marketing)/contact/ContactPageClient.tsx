@@ -99,12 +99,21 @@ export default function ContactPageClient() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                id="contact-inquiry-form"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                data-toolname="submitQuestion"
+                data-tooldescription="Submit a general inquiry or question about safari planning, accessibility, or pricing"
+              >
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <Label htmlFor="name" className="text-orange-800">Full Name *</Label>
                     <Input
                       id="name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
@@ -115,7 +124,9 @@ export default function ContactPageClient() {
                     <Label htmlFor="email" className="text-orange-800">Email Address *</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -129,7 +140,9 @@ export default function ContactPageClient() {
                     <Label htmlFor="phone" className="text-orange-800">Phone Number</Label>
                     <Input
                       id="phone"
+                      name="phone"
                       type="tel"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="mt-2 border-orange-300 focus:border-orange-500"

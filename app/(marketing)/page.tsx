@@ -12,126 +12,79 @@ import { destinations } from "@/lib/destinations-data"
 import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar, Users as UsersIcon, Globe, Heart, Zap } from "lucide-react"
 import { breadcrumbSchema } from "./breadcrumb-schema"
 import DestinationCard from "./destination/DestinationCard"
+import { AnswerSummary } from "@/components/AnswerSummary"
 
-// COMPLETE BULLET-PROOF HOMEPAGE SCHEMA — FULLY VALID + ENHANCED FOR ALL RICH RESULTS (Reviews, FAQ, Video, Breadcrumb)
+// COMPLETE BULLET-PROOF HOMEPAGE SCHEMA — CONNECTED TO ROOT GRAPH WITH REAL DATA
 const homepageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. Organization
+    // 1. LocalBusiness / Accessible Safari Specialist node
     {
-      "@type": "Organization",
-      "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "Jae Travel Expeditions",
-      "url": "https://www.jaetravel.co.ke",
-      "logo": "https://www.jaetravel.co.ke/logo.png",
-      "telephone": "+254726485228",
-      "sameAs": [
-        "https://www.facebook.com/JaeTravelExpeditions",
-        "https://www.instagram.com/JaeTravelExpeditions",
-        "https://wa.me/254726485228"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254726485228",
-        "contactType": "Customer Service",
-        "areaServed": ["KE", "TZ", "RW", "UG"],
-        "availableLanguage": ["English"]
-      }
-    },
-
-    // 2. LocalBusiness — heavily optimized for wheelchair accessible safari Kenya
-    {
-      "@type": "LocalBusiness",
+      "@type": ["TravelAgency", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#business",
-      "name": "Jae Travel Expeditions – Wheelchair Accessible Safari Kenya 2026",
-      "description": "East Africa's #1 wheelchair accessible safari operator in Kenya offering German hydraulic lift Land Cruisers (400kg capacity), disability-friendly lodges, Masai Mara Great Migration, and gorilla trekking. Private safari vehicle hire available.",
+      "name": "JaeTravel Expeditions – Wheelchair Accessible Safari Kenya",
+      "description": "East Africa's premier wheelchair-accessible safari operator offering custom-adapted 4x4 Land Cruisers with German hydraulic lifts (400kg capacity), disability-friendly lodges, Masai Mara Great Migration, and gorilla trekking.",
       "url": "https://www.jaetravel.co.ke",
       "telephone": "+254726485228",
+      "email": "info@jaetravel.co.ke",
       "image": "https://www.jaetravel.co.ke/accessible-safari-wheelchair.jpg",
+      "priceRange": "$$$",
+      "currenciesAccepted": "USD",
+      "parentOrganization": { "@id": "https://www.jaetravel.co.ke/#organization" },
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Karen Roundabout",
+        "addressLocality": "Nairobi",
+        "addressRegion": "Nairobi County",
+        "postalCode": "00100",
         "addressCountry": "KE"
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "08:00",
-        "closes": "18:00"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -1.286389,
+        "longitude": 36.817223
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "reviewCount": "723"
-      },
-      "review": [
+      "openingHoursSpecification": [
         {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "David Chen" },
-          "datePublished": "2025-08-20",
-          "reviewBody": "As a full-time wheelchair user, I never imagined seeing lions in the Masai Mara. The hydraulic lift vehicle was flawless — life-changing wheelchair accessible safari Kenya experience."
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
         },
         {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sarah Johnson" },
-          "datePublished": "2025-07-15",
-          "reviewBody": "Rented their accessible Land Cruiser for a private safari — best decision ever for wheelchair accessible tours in Kenya."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Michael Thompson" },
-          "datePublished": "2026-01-15",
-          "reviewBody": "The German hydraulic lift worked perfectly in the Mara. Stayed in my own wheelchair the entire game drive — first time ever possible on a wheelchair accessible safari Kenya."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Emma Williams" },
-          "datePublished": "2025-12-10",
-          "reviewBody": "Gorilla trekking with wheelchair accessible vehicle and adapted lodge was seamless. Best wheelchair accessible tours in Kenya operator."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "James Okoth" },
-          "datePublished": "2026-02-20",
-          "reviewBody": "2026 Masai Mara wheelchair accessible safari was perfect — 400kg lift, full medical kit, and expert guides."
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "09:00",
+          "closes": "14:00"
         }
       ],
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": "Wheelchair Accessible Safari Vehicle Hire Kenya 2026",
-          "description": "Rent fully adapted 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, medical facilities, and experienced drivers.",
+          "name": "Wheelchair Accessible Safari Vehicle Hire Kenya",
+          "description": "Rent fully adapted 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and experienced drivers.",
           "url": "https://www.jaetravel.co.ke/vehicle-hire",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "offeredBy": { "@id": "https://www.jaetravel.co.ke/#business" }
+          "offeredBy": { "@id": "https://www.jaetravel.co.ke/#organization" }
         }
       ]
     },
 
-    // 3. WebSite
-    {
-      "@type": "WebSite",
-      "@id": "https://www.jaetravel.co.ke/#website",
-      "url": "https://www.jaetravel.co.ke",
-      "name": "Jae Travel Expeditions",
-      "publisher": { "@id": "https://www.jaetravel.co.ke/#organization" }
-    },
-
-    // 4. WebPage + BreadcrumbList
+    // 2. WebPage + BreadcrumbList with Speakable
     {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/#webpage",
       "url": "https://www.jaetravel.co.ke",
-      "name": "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours",
-      "description": "Kenya's #1 wheelchair accessible safari operator. German hydraulic lift 4x4s, disability-friendly lodges, Masai Mara Great Migration 2026 dates. Real 5-star reviews.",
+      "name": "Wheelchair Accessible Safaris in Kenya | JaeTravel Expeditions",
+      "description": "Kenya's leading wheelchair accessible safari operator with German hydraulic lift 4x4s, disability-friendly lodges, and Masai Mara Great Migration tours.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
-      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.jaetravel.co.ke/#breadcrumb" },
+      "dateModified": "2026-11-10",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "#answer-summary", ".why-choose-us-content"]
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -261,14 +214,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke",
-      languages: {
-        'en': 'https://www.jaetravel.co.ke',
-        'en-US': 'https://www.jaetravel.co.ke',
-        'en-GB': 'https://www.jaetravel.co.ke',
-        'en-AU': 'https://www.jaetravel.co.ke',
-        'en-CA': 'https://www.jaetravel.co.ke',
-        'x-default': 'https://www.jaetravel.co.ke',
-      },
+      // hreflang handled globally in layout.tsx - no duplicates here
     },
     robots: {
       index: true,
@@ -306,27 +252,31 @@ export default function HomePage() {
       {/* Hero Carousel */}
       <HeroCarousel />
 
-      {/* Why Choose Us — keyword reinforced H1 + body */}
+      {/* Why Choose Us — single authoritative H1 + AnswerSummary */}
       <section className="border-b border-border bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <h1 className="mb-12 text-center font-serif text-4xl font-bold text-balance">
-            Wheelchair Accessible Safari Kenya 2026 - Premier Accessible Tours &amp; Wildlife Adventures
+          <div className="flex justify-center mb-3">
+            <time dateTime="2026-11-10" className="text-sm text-muted-foreground">
+              Last updated: November 10, 2026
+            </time>
+          </div>
+          <h1 className="mb-6 text-center font-serif text-4xl md:text-5xl font-bold text-balance">
+            Wheelchair Accessible Safaris in Kenya | JaeTravel Expeditions
           </h1>
-          
-          <div className="mb-12 max-w-5xl mx-auto text-center space-y-6">
+
+          <div className="max-w-4xl mx-auto mb-10">
+            <AnswerSummary id="answer-summary">
+              A wheelchair-accessible safari in Kenya is a guided wildlife expedition that uses custom 4x4 Land Cruisers equipped with German hydraulic lifts (400kg capacity) and step-free safari lodges. Travelers experience iconic reserves including the Masai Mara, Amboseli, and Serengeti with barrier-free game drives and trained support staff.
+            </AnswerSummary>
+          </div>
+
+          <div className="mb-12 max-w-4xl mx-auto text-center space-y-4">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to JaeTravel Expeditions — Kenya&apos;s #1 operator for <strong>wheelchair accessible safari Kenya</strong> and <strong>wheelchair accessible tours in Kenya</strong>. 
-              Our German hydraulic lift vehicles and disability-friendly lodges make the Masai Mara Great Migration, Serengeti, and gorilla trekking fully accessible.
+              JaeTravel Expeditions provides specialized inclusive travel across Kenya, Tanzania, Rwanda, and Uganda.
+              Our fleet features heavy-duty hydraulic lifts and Q&apos;Straint wheelchair restraint systems so you can remain safely in your own wheelchair throughout game drives.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Imagine witnessing the thunderous <strong>Great Migration safari</strong> in the Masai Mara, tracking endangered mountain gorillas 
-              through misty forests, or enjoying sunset <strong>game drives</strong> across the Serengeti - all from the comfort of our specially 
-              adapted <strong>wheelchair accessible safari vehicles</strong>. We&apos;ve partnered with the finest <strong>disability-friendly lodges</strong> 
-              across Kenya, Tanzania, Rwanda, and Uganda.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether you&apos;re seeking luxury <strong>African wildlife tours</strong> or intimate primate encounters, our expert team crafts personalized 
-              <strong>wheelchair accessible tours in Kenya</strong> and beyond.
+              From witnessing the Great Migration in the Masai Mara to tracking primates in Volcanoes National Park, every itinerary is paired with audited accessible camps offering roll-in showers, ramps, and spacious room layouts.
             </p>
           </div>
 

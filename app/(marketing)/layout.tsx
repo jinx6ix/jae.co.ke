@@ -41,6 +41,7 @@ import { CreateQuotationButton } from "@/components/create-quotation-button"
 import { CookieConsent } from "@/components/CookieConsent"
 import { BrandShell } from "./_components/BrandShell"
 import { Toaster } from "@/components/ui/sonner"
+import { WebMcpProvider } from "@/components/WebMcpProvider"
 import "./globals.css"
 
 export const viewport: Viewport = {
@@ -175,7 +176,7 @@ export default function MarketingLayout({
 
         <Script
           id="google-preferred-source"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://news.google.com/swg/js/v1/publisher.js"
           {...{
             "preferred-sources-control": "manual",
@@ -211,11 +212,19 @@ export default function MarketingLayout({
           id="swg-publisher"
           src="https://news.google.com/swg/js/v1/swg.js"
           data-preferred-sources-control="manual"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </head>
 
       <body className="font-sans antialiased bg-background text-foreground">
+        {/* Skip to main content for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
+
         <OrderProvider>
           <Suspense
             fallback={
@@ -227,7 +236,7 @@ export default function MarketingLayout({
             <div className="header-wrapper">
               <Header />
             </div>
-            <main className="min-h-screen flex justify-center">
+            <main id="main-content" className="min-h-screen flex justify-center">
               <div className="w-full max-w-7xl">{children}</div>
             </main>
             <Footer />
@@ -238,6 +247,7 @@ export default function MarketingLayout({
 
             {/* GooglePreferredSource now sits elsewhere or is handled differently */}
             <GooglePreferredSource />
+            <WebMcpProvider />
 
             <Toaster position="top-center" richColors />
           </Suspense>

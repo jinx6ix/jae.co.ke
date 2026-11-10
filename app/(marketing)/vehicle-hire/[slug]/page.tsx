@@ -8,7 +8,9 @@ import { vehicles } from "@/lib/vehicles-data";
 import { Check, ArrowLeft, Users, Luggage, Fuel, Settings, ChevronRight } from "lucide-react";
 import { VehicleBookingForm } from "@/components/vehicle-booking-form";
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
-import { VehicleStructuredData } from "@/components/vehicle-structured-data";
+import { AnswerSummary } from "@/components/AnswerSummary";
+import { ComparisonTable } from "@/components/ComparisonTable";
+import { PageDate } from "@/components/PageDate";
 import { HeroSlider } from "./components/HeroSlider";
 import { VehicleHighlightGallery } from "./components/VehicleHighlightGallery";
 import { VehicleTypeGallery } from "./components/VehicleGallery";
@@ -168,6 +170,12 @@ export default async function VehicleDetailPage({
                 {vehicle.name}
               </h1>
 
+              <PageDate updatedAt="2026-11-10" className="mb-4" />
+
+              <AnswerSummary id="vehicle-answer-summary">
+                The {vehicle.name} is a custom-adapted 4x4 safari vehicle for hire in Kenya from ${vehicle.pricePerDay} USD per day. It features a pop-up safari roof for wildlife viewing, seating for {vehicle.capacity}, heavy-duty suspension for national park tracks, and optional professional driver-guides.
+              </AnswerSummary>
+
               <p className="mb-8 text-lg md:text-xl leading-relaxed text-muted-foreground text-center md:text-left max-w-3xl">
                 {vehicle.description}
               </p>
@@ -291,6 +299,166 @@ export default async function VehicleDetailPage({
           </div>
         </section>
 
+        {/* Safari Vehicle Comparison Table */}
+        <section className="py-16 border-t border-border bg-background">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+              Safari Vehicle Fleet Comparison
+            </h2>
+            <p className="mb-6 text-muted-foreground text-center md:text-left">
+              Compare our Kenya safari vehicles to choose the best option for your group size, terrain requirements, and budget.
+            </p>
+            <ComparisonTable
+              caption="East Africa Safari Vehicles Comparison (Specifications & Rates)"
+              columns={[
+                { key: "landcruiser", header: "Toyota Land Cruiser 4x4" },
+                { key: "prado", header: "Toyota Prado TX" },
+                { key: "safariVan", header: "Toyota Safari Minivan" },
+              ]}
+              data={[
+                {
+                  rowHeader: "Passenger Capacity",
+                  landcruiser: "7 window seats",
+                  prado: "5 passengers",
+                  safariVan: "7-8 passengers",
+                },
+                {
+                  rowHeader: "Roof Type",
+                  landcruiser: "Full pop-up 360° roof",
+                  prado: "Sunroof / Standard",
+                  safariVan: "Pop-up viewing roof",
+                },
+                {
+                  rowHeader: "Off-Road Capability",
+                  landcruiser: "Extreme 4WD (All terrains)",
+                  prado: "Heavy-duty 4WD",
+                  safariVan: "Standard 4WD / 2WD",
+                },
+                {
+                  rowHeader: "Daily Hire Rate (USD)",
+                  landcruiser: "From $200/day",
+                  prado: "From $150/day",
+                  safariVan: "From $120/day",
+                },
+                {
+                  rowHeader: "Driver / Guide",
+                  landcruiser: "Included or Self-drive",
+                  prado: "Self-drive or with driver",
+                  safariVan: "Experienced safari driver",
+                },
+                {
+                  rowHeader: "Best Destination",
+                  landcruiser: "Masai Mara, Serengeti, Samburu",
+                  prado: "Amboseli, Nakuru, Naivasha",
+                  safariVan: "Paved parks, Budget circuits",
+                },
+              ]}
+            />
+          </div>
+        </section>
+
+        {/* How to Hire a Safari Vehicle in Kenya */}
+        <section className="py-16 border-t border-border bg-muted/20">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="mb-6 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+              How to Hire a Safari Vehicle in Kenya in 5 Steps
+            </h2>
+            <div className="grid gap-6 md:grid-cols-5 mt-8">
+              <div className="rounded-xl border border-border bg-card p-6 text-center">
+                <span className="flex h-10 w-10 mx-auto mb-4 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  1
+                </span>
+                <h3 className="font-bold mb-2">Select Vehicle</h3>
+                <p className="text-sm text-muted-foreground">Choose Land Cruiser, Prado, or Van based on your group size.</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6 text-center">
+                <span className="flex h-10 w-10 mx-auto mb-4 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  2
+                </span>
+                <h3 className="font-bold mb-2">Set Dates</h3>
+                <p className="text-sm text-muted-foreground">Select pickup and return dates in Nairobi or major airports.</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6 text-center">
+                <span className="flex h-10 w-10 mx-auto mb-4 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  3
+                </span>
+                <h3 className="font-bold mb-2">Driver Option</h3>
+                <p className="text-sm text-muted-foreground">Select an expert local guide or self-drive hire option.</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6 text-center">
+                <span className="flex h-10 w-10 mx-auto mb-4 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  4
+                </span>
+                <h3 className="font-bold mb-2">Get Quote</h3>
+                <p className="text-sm text-muted-foreground">Receive transparent pricing with no hidden charges in 24 hours.</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6 text-center">
+                <span className="flex h-10 w-10 mx-auto mb-4 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  5
+                </span>
+                <h3 className="font-bold mb-2">Confirm & Go</h3>
+                <p className="text-sm text-muted-foreground">Secure your vehicle with deposit and collect in Nairobi.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Visible Frequently Asked Questions (Matches FAQPage Schema) */}
+        <section className="py-16 border-t border-border bg-background" id="faq">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+              Frequently Asked Questions About {vehicle.name}
+            </h2>
+            <p className="mb-10 text-muted-foreground text-center md:text-left">
+              Common questions about hiring the {vehicle.name} for Kenya and East Africa safaris.
+            </p>
+            <div className="space-y-6">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="text-lg font-bold mb-2">
+                  How much does it cost to hire the {vehicle.name} in Kenya?
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  The {vehicle.name} hire starts from ${vehicle.pricePerDay} USD per day. This includes the vehicle, driver, and fuel for national park areas. Long-term rental discounts are available.
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="text-lg font-bold mb-2">
+                  Is the {vehicle.name} suitable for self-drive safaris in Kenya?
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Yes. We offer both self-drive and guided options for the {vehicle.name}. We recommend a driver-guide for game drives in national parks for the best wildlife experience.
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="text-lg font-bold mb-2">
+                  Can the {vehicle.name} access Masai Mara and Amboseli?
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Absolutely. The {vehicle.name} is fully equipped for all major Kenya safari destinations including Masai Mara, Amboseli, Tsavo, Samburu, and Lake Nakuru.
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="text-lg font-bold mb-2">
+                  Is the {vehicle.name} wheelchair accessible?
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {vehicle.slug === "wheelchair-accessible-vehicle"
+                    ? "Yes! This vehicle is specifically adapted with a German hydraulic lift (400kg capacity), pop-up roof, and medical-grade restraints for wheelchair safari users."
+                    : `This standard ${vehicle.name} is not adapted for wheelchair users. We have a dedicated wheelchair-accessible safari vehicle available — contact us for details.`}
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="text-lg font-bold mb-2">
+                  What documents are needed to hire a safari vehicle in Kenya?
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  For self-drive rentals, you need a valid international driving permit or domestic license, a valid passport, and to be at least 23 years old. For chauffeur-driven rentals, no driving documents are required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Fleet Section */}
         {vehicle.fleetGalleries && (
           <section className="py-20 bg-muted/10">
@@ -338,8 +506,10 @@ export default async function VehicleDetailPage({
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={v.image || "/placeholder.svg"}
-                        alt={v.name}
+                        alt={`${v.name} safari vehicle for hire in Kenya`}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                        loading="lazy"
                         className="object-cover transition-transform duration-500 hover:scale-110"
                       />
                     </div>

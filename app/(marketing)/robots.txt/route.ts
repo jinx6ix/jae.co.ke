@@ -33,6 +33,7 @@ Allow: /_next/static/
 # ── Block private/API paths ──
 Disallow: /api/
 Disallow: /admin/
+Disallow: /dashboard/
 Disallow: /private/
 Disallow: /draft/
 Disallow: /checkout/
