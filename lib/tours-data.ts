@@ -33,6 +33,10 @@ export interface Tour {
   isOnOffer?: boolean;
   originalPrice?: number;
   postId?: string;
+  /** ISO date the tour was first published — drives datePublished. */
+  publishedAt?: string;
+  /** ISO date the tour was last updated — drives dateModified. */
+  updatedAt?: string;
 }
 
 export const tours: Tour[] = [

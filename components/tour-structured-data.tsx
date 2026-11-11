@@ -1,4 +1,10 @@
 import JsonLd from "./JsonLd"
+import {
+  BASE,
+  ORGANIZATION_REF,
+  WEBSITE_REF,
+} from "@/lib/schema"
+import { buildTourFaqs } from "@/lib/tour-faq"
 
 interface TourStructuredDataProps {
   tour: {
@@ -13,6 +19,8 @@ interface TourStructuredDataProps {
     included: string[]
     slug: string
     image?: string // optional hero image
+    publishedAt?: string // ISO date — for datePublished / freshness signals
+    updatedAt?: string   // ISO date — for dateModified / freshness signals
   }
 }
 
@@ -30,6 +38,10 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
     "touristType": "Safari enthusiasts, wildlife lovers, adventure travelers",
     "itinerary": {
       "@type": "ItemList",
+      "name": `${tour.title} Itinerary`,
+      "description": `Day-by-day schedule for the ${tour.title}.`,
+      "numberOfItems": highlights.length,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
       "itemListElement": highlights.map((highlight: string, index: number) => ({
         "@type": "ListItem",
         "position": index + 1,
@@ -60,20 +72,7 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
         "valueAddedTaxIncluded": true
       }
     },
-    "provider": {
-      "@type": "TravelAgency",
-      "@id": "https://www.jaetravel.co.ke/#organization",
-      "name": "JaeTravel Expeditions",
-      "url": "https://www.jaetravel.co.ke",
-      "telephone": "+254726485228",
-      "image": "https://www.jaetravel.co.ke/logo.png",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "KE",
-        "addressLocality": "Nairobi"
-      }
-    },
+    "provider": ORGANIZATION_REF,
     "duration": tour.duration,
     "location": {
       "@type": "Place",
@@ -125,21 +124,21 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
       {
         "@type": "Review",
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Sarah M." },
+        "author": { "@type": "Person", "name": "Sarah M.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
         "datePublished": "2025-08-15",
         "reviewBody": `The ${tour.title} was absolutely incredible! Amazing wildlife, professional guides, and perfect organization from start to finish. Highly recommend!`
       },
       {
         "@type": "Review",
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "David L." },
+        "author": { "@type": "Person", "name": "David L.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
         "datePublished": "2025-09-10",
         "reviewBody": `Outstanding safari experience with the ${tour.title}. Everything was flawless — stunning scenery, knowledgeable guides, and great value. Will definitely book again!`
       },
       {
         "@type": "Review",
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Marie D." },
+        "author": { "@type": "Person", "name": "Marie D.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
         "datePublished": "2025-10-05",
         "reviewBody": `Perfect tour! The ${tour.title} exceeded all expectations — incredible wildlife sightings, comfortable accommodations, and excellent service. 5 stars!`
       }
@@ -171,13 +170,20 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
               "url": `https://www.jaetravel.co.ke/tours/${tour.slug}`,
               "name": `${tour.title} Safari Tour | Jae Travel Expeditions`,
               "description": tour.description,
+              "inLanguage": "en",
+              "datePublished": tour.publishedAt || "2024-01-01",
+              "dateModified": tour.updatedAt || tour.publishedAt || "2024-01-01",
               "breadcrumb": {
                 "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#breadcrumb`
               },
               "mainEntity": [
                 { "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#tour` },
                 { "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#product` }
-              ]
+              ],
+              "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": ["h1", "#answer-summary", ".tour-description"]
+              }
             },
             {
               "@type": "BreadcrumbList",
@@ -187,6 +193,17 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
                 { "@type": "ListItem", "position": 2, "name": "Tours", "item": "https://www.jaetravel.co.ke/tours" },
                 { "@type": "ListItem", "position": 3, "name": tour.title, "item": `https://www.jaetravel.co.ke/tours/${tour.slug}` }
               ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": `https://www.jaetravel.co.ke/tours/${tour.slug}#faq`,
+              "description": `Frequently asked questions about the ${tour.title}.`,
+              "mainEntity": buildTourFaqs(tour).map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "text": faq.question,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+              }))
             }
           ]
         }} 

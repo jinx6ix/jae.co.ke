@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, ReactNode } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface TourTabContainerProps {
   pricingContent: ReactNode;
@@ -29,18 +29,20 @@ export function TourTabContainer({
   defaultTab = "pricing",
 }: TourTabContainerProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const tabParam = searchParams.get("tab");
 
-  const [activeTab, setActiveTab] = useState(
-    tabParam && tabs.some((t) => t.id === tabParam) ? tabParam : defaultTab
-  );
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
+  // Read `?tab=` from the live URL rather than `useSearchParams()`.
+  // `useSearchParams` forces the enclosing Suspense boundary into
+  // client-side rendering, which stripped the server-rendered HTML
+  // for every page. A `useEffect` keeps the page statically rendered
+  // while still honouring deep links to a specific tab.
   useEffect(() => {
-    if (tabParam && tabs.some((t) => t.id === tabParam)) {
-      setActiveTab(tabParam);
+    const tab = new URLSearchParams(window.location.search).get("tab");
+    if (tab && tabs.some((t) => t.id === tab)) {
+      setActiveTab(tab);
     }
-  }, [tabParam]);
+  }, []);
 
   const handleTabClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();

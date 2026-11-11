@@ -27,7 +27,7 @@ export function AnswerSummary({
         >
           ✓
         </span>
-        <div className="answer-summary-text font-normal">{children}</div>
+        <p className="answer-summary-text font-normal">{children}</p>
       </div>
     </section>
   )

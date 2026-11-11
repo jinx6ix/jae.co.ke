@@ -15,6 +15,11 @@ import { TourSeasonalPricing } from "@/components/TourSeasonalPricing"
 import { TourTabContainer } from "@/components/TourTabContainer"
 import { prisma } from "@/lib/prisma"
 import { Star, MapPin, Clock, Users, Check, ArrowRight, ChevronRight } from "lucide-react"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { AnswerSummary } from "@/components/AnswerSummary"
+import { PageDate } from "@/components/PageDate"
+import { buildTitle, buildDescription, buildPageHreflang } from "@/lib/metadata"
+import { buildTourFaqs } from "@/lib/tour-faq"
 import path from "path"
 
 interface TourPageProps {
@@ -68,20 +73,37 @@ export async function generateMetadata({
       : `${baseUrl}${tour.image}`
     : `${baseUrl}/placeholder.svg?key=tour-${tour.id}`
 
+  const pagePath = `/tours/${tour.slug}`
+
   return {
-    title,
-    description,
+    // `absolute` stops the layout template appending a second
+    // "| JaeTravel Expeditions" suffix. The stored metaTitle already
+    // ends with "| Jae Travel Expeditions", so the template produced
+    // a 73-character title with the brand repeated twice.
+    title: { absolute: buildTitle(title) },
+    description: buildDescription(description),
     keywords: tour.keywords,
 
     alternates: {
-      canonical: `${baseUrl}/tours/${tour.slug}`,
+      canonical: `${baseUrl}${pagePath}`,
+      languages: buildPageHreflang(pagePath, {
+        availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
+        // Localized tour detail pages live at /<locale>/tour/<slug>,
+        // not /<locale>/tours/<slug>.
+        localePaths: Object.fromEntries(
+          ["fr", "de", "it", "hi", "ar", "zh"].map((l) => [
+            l,
+            `/tour/${tour.slug}`,
+          ]),
+        ),
+      }),
     },
 
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${baseUrl}/tours/${tour.slug}`,
+      url: `${baseUrl}${pagePath}`,
       images: [
         {
           url: image,
@@ -198,6 +220,10 @@ export default async function TourPage(props: TourPageProps) {
 
   const relatedTours = tours.filter((t) => t.country === tour.country && t.id !== tour.id).slice(0, 3)
 
+  // Single source of truth: the same array feeds the visible FAQ and
+  // the FAQPage JSON-LD so the two can never drift apart.
+  const faqs = buildTourFaqs(tour)
+
   let rateCards: any[] = []
   try {
     const dbTourPackage = await prisma.tourPackage.findFirst({
@@ -219,24 +245,18 @@ export default async function TourPage(props: TourPageProps) {
       <TourStructuredData tour={{ ...tour, duration: String(tour.duration || "Not specified") }} />
 
       <div className="pb-16">
-        {/* Breadcrumb */}
+        {/* Breadcrumb — <nav aria-label="Breadcrumb"> so crawlers and
+            screen readers can identify the hierarchy. The previous
+            plain <div> row was invisible to both. */}
         <section className="border-b border-border bg-muted/30 py-4">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Link href="/" className="hover:text-foreground">
-                Home
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <Link href="/tours" className="hover:text-foreground">
-                Tours
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <Link href={`/destinations/${tour.country.toLowerCase()}`} className="hover:text-foreground">
-                {tour.country}
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <span className="text-foreground">{tour.title}</span>
-            </div>
+            <Breadcrumbs
+              items={[
+                { name: "Tours", url: "/tours" },
+                { name: tour.country, url: `/destinations/${tour.country.toLowerCase()}` },
+                { name: tour.title, url: `/tours/${tour.slug}` },
+              ]}
+            />
           </div>
         </section>
 
@@ -278,7 +298,21 @@ export default async function TourPage(props: TourPageProps) {
               <div className="grid gap-8 lg:grid-cols-3">
                 <div className="lg:col-span-2 space-y-12">
                   <section className="mb-12">
-                    <h2 className="mb-4 font-serif text-3xl font-bold">Overview</h2>
+                    {/* AnswerSummary directly under the page H1: a
+                        40-60 word self-contained answer in the
+                        definition pattern. It is also the speakable
+                        target in the WebPage schema. */}
+                    <AnswerSummary id="answer-summary">
+                      The {tour.title} is a {duration.toLowerCase()} guided wildlife
+                      experience in {tour.country}, staying in {tour.country === "Kenya" ? "Kenyan" : tour.country}
+                      safari camps and lodges. It covers game drives, expert guiding,
+                      park entry fees, and all meals, with small group sizes and
+                      optional wheelchair-accessible vehicles available on request.
+                    </AnswerSummary>
+
+                    <PageDate publishedAt={tour.publishedAt} updatedAt={tour.updatedAt} className="mb-4" />
+
+                    <h2 id="overview" className="mb-4 font-serif text-3xl font-bold">Overview</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">{tour.description}</p>
                     <p className="mt-4 text-muted-foreground leading-relaxed">
                       Embark on an unforgettable journey through {tour.country}'s most spectacular landscapes and wildlife
@@ -328,7 +362,7 @@ export default async function TourPage(props: TourPageProps) {
                 <div className="lg:col-span-2 space-y-12">
                   {highlights.length > 0 && (
                     <section className="mb-12">
-                      <h2 className="mb-6 font-serif text-3xl font-bold">Tour Highlights</h2>
+                      <h2 id="tour-highlights" className="mb-6 font-serif text-3xl font-bold">Tour Highlights</h2>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {highlights.map((highlight: string, index: number) => (
                           <div key={index} className="flex items-start gap-3 rounded-lg bg-muted/30 p-4">
@@ -341,7 +375,7 @@ export default async function TourPage(props: TourPageProps) {
                   )}
                   {itineraryDays.length > 0 && (
                     <section className="mb-12">
-                      <h2 className="mb-6 font-serif text-3xl font-bold">Detailed Day-by-Day Itinerary</h2>
+                      <h2 id="itinerary" className="mb-6 font-serif text-3xl font-bold">Detailed Day-by-Day Itinerary</h2>
                       <p className="mb-6 text-muted-foreground leading-relaxed">
                         Experience every moment of your {duration} adventure with our comprehensive itinerary. Each day
                         is carefully planned to maximize wildlife viewing opportunities while ensuring comfort and cultural
@@ -378,12 +412,12 @@ export default async function TourPage(props: TourPageProps) {
                     </section>
                   )}
                   <section className="mb-12">
-                    <h2 className="mb-6 font-serif text-3xl font-bold">Important Information</h2>
+                    <h2 id="important-information" className="mb-6 font-serif text-3xl font-bold">Important Information</h2>
                     <Card>
                       <CardContent className="p-6">
                         <div className="space-y-4">
                           <div>
-                            <h4 className="mb-2 font-semibold">Travel Requirements</h4>
+                            <h3 id="travel-requirements" className="mb-2 font-semibold text-lg">Travel Requirements</h3>
                             <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                               <li>• Passport must be valid for at least 6 months from travel date</li>
                               <li>• Visa requirements vary by nationality - please check before booking</li>
@@ -392,7 +426,7 @@ export default async function TourPage(props: TourPageProps) {
                             </ul>
                           </div>
                           <div>
-                            <h4 className="mb-2 font-semibold">What to Bring</h4>
+                            <h3 id="what-to-bring" className="mb-2 font-semibold text-lg">What to Bring</h3>
                             <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                               <li>• Comfortable safari clothing in neutral colors (khaki, beige, olive)</li>
                               <li>• Wide-brimmed hat and sunglasses for sun protection</li>
@@ -411,7 +445,7 @@ export default async function TourPage(props: TourPageProps) {
                   <div className="sticky top-20 space-y-6">
                     <Card>
                       <CardContent className="p-6">
-                        <h3 className="mb-3 font-semibold">Need Help Planning?</h3>
+                        <h3 id="need-help" className="mb-3 font-semibold">Need Help Planning?</h3>
                         <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
                           Our safari experts are available 24/7 to help you customize this tour.
                         </p>
@@ -432,7 +466,7 @@ export default async function TourPage(props: TourPageProps) {
                   {included.length > 0 && (
                     <Card>
                       <CardContent className="p-6">
-                        <h3 className="mb-4 text-xl font-bold text-primary">What's Included</h3>
+                        <h3 id="whats-included" className="mb-4 text-xl font-bold text-primary">What's Included</h3>
                         <ul className="space-y-3">
                           {included.map((item: string, index: number) => (
                             <li key={index} className="flex items-start gap-3">
@@ -455,7 +489,7 @@ export default async function TourPage(props: TourPageProps) {
                   {excluded.length > 0 && (
                     <Card>
                       <CardContent className="p-6">
-                        <h3 className="mb-4 text-xl font-bold text-destructive">What's Not Included</h3>
+                        <h3 id="whats-not-included" className="mb-4 text-xl font-bold text-destructive">What's Not Included</h3>
                         <ul className="space-y-3">
                           {excluded.map((item: string, index: number) => (
                             <li key={index} className="flex items-start gap-3">
@@ -507,11 +541,36 @@ export default async function TourPage(props: TourPageProps) {
           }
         />
 
+        {/* Frequently Asked Questions — question-form headings with
+            40-60 word answers, so each can be lifted into a featured
+            snippet or a voice answer. */}
+        <section id="faq" className="border-t border-border bg-muted/10 py-16">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="mb-4 font-serif text-3xl md:text-4xl font-bold">
+                Frequently Asked Questions About the {tour.title}
+              </h2>
+              <p className="mb-10 text-muted-foreground">
+                Common questions about the {tour.title} in {tour.country}, including
+                price, duration, what is included, and how to book.
+              </p>
+              <div className="space-y-6">
+                {faqs.map((faq) => (
+                  <div key={faq.question} className="rounded-xl border border-border bg-card p-6">
+                    <h3 className="mb-2 text-lg font-bold">{faq.question}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Related Tours */}
         {relatedTours.length > 0 && (
           <div className="container mx-auto px-4 mt-16">
             <div className="mb-8 flex items-center justify-between">
-              <h2 className="font-serif text-3xl font-bold">More Tours in {tour.country}</h2>
+              <h2 id="more-tours" className="font-serif text-3xl font-bold">More Tours in {tour.country}</h2>
               <Button asChild variant="ghost">
                 <Link href={`/destinations/${tour.country.toLowerCase()}`}>
                   View All <ArrowRight className="ml-2 h-4 w-4" />

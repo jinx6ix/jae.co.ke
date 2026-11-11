@@ -13,51 +13,26 @@ import { ArrowRight, Shield, Users, Award, Accessibility, Star, MapPin, Calendar
 import { breadcrumbSchema } from "./breadcrumb-schema"
 import DestinationCard from "./destination/DestinationCard"
 import { AnswerSummary } from "@/components/AnswerSummary"
+import { buildTitle, buildDescription, buildPageHreflang } from "@/lib/metadata"
+import { SpecList } from "@/components/SpecList"
 
 // COMPLETE BULLET-PROOF HOMEPAGE SCHEMA — CONNECTED TO ROOT GRAPH WITH REAL DATA
 const homepageSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    // 1. LocalBusiness / Accessible Safari Specialist node
+    // 1. Business node
+    //
+    // This page previously declared its own LocalBusiness node at
+    // #business, duplicating the canonical Organization that
+    // BrandShell already emits at #organization. Two Organization
+    // entities on one page is exactly the "duplicate nodes" finding
+    // SAGE reported, so this now references the canonical node.
     {
       "@type": ["TravelAgency", "LocalBusiness"],
       "@id": "https://www.jaetravel.co.ke/#business",
       "name": "JaeTravel Expeditions – Wheelchair Accessible Safari Kenya",
-      "description": "East Africa's premier wheelchair-accessible safari operator offering custom-adapted 4x4 Land Cruisers with German hydraulic lifts (400kg capacity), disability-friendly lodges, Masai Mara Great Migration, and gorilla trekking.",
       "url": "https://www.jaetravel.co.ke",
-      "telephone": "+254726485228",
-      "email": "info@jaetravel.co.ke",
-      "image": "https://www.jaetravel.co.ke/accessible-safari-wheelchair.jpg",
-      "priceRange": "$$$",
-      "currenciesAccepted": "USD",
       "parentOrganization": { "@id": "https://www.jaetravel.co.ke/#organization" },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Karen Roundabout",
-        "addressLocality": "Nairobi",
-        "addressRegion": "Nairobi County",
-        "postalCode": "00100",
-        "addressCountry": "KE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -1.286389,
-        "longitude": 36.817223
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "08:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday"],
-          "opens": "09:00",
-          "closes": "14:00"
-        }
-      ],
       "makesOffer": [
         {
           "@type": "Offer",
@@ -76,10 +51,11 @@ const homepageSchema = {
       "@type": "WebPage",
       "@id": "https://www.jaetravel.co.ke/#webpage",
       "url": "https://www.jaetravel.co.ke",
-      "name": "Wheelchair Accessible Safaris in Kenya | JaeTravel Expeditions",
+      "name": "Wheelchair Accessible Safaris Kenya | 4x4 Safari Tours",
       "description": "Kenya's leading wheelchair accessible safari operator with German hydraulic lift 4x4s, disability-friendly lodges, and Masai Mara Great Migration tours.",
       "isPartOf": { "@id": "https://www.jaetravel.co.ke/#website" },
       "breadcrumb": { "@id": "https://www.jaetravel.co.ke/#breadcrumb" },
+      "datePublished": "2024-01-01",
       "dateModified": "2026-11-10",
       "speakable": {
         "@type": "SpeakableSpecification",
@@ -101,42 +77,42 @@ const homepageSchema = {
         {
           "@type": "Question",
           "name": "Do you offer wheelchair accessible safari vehicles?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we operate Kenya's only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade restraints for wheelchair accessible safari Kenya." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we operate Kenya's only fleet of custom 4x4 Land Cruisers with German hydraulic lifts, pop-up roofs, and medical-grade wheelchair securement rated to 400kg. Every vehicle carries climate control, panoramic windows, and an onboard medical kit, and our drivers are trained in wheelchair transfer and securement before every departure." }
         },
         {
           "@type": "Question",
           "name": "Can I rent a wheelchair accessible safari vehicle?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! We offer private hire of our fully adapted safari vehicles with experienced drivers — perfect for independent travelers or photographers on wheelchair accessible tours in Kenya." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer private hire of our fully adapted safari vehicles with experienced drivers, which works well for independent travellers or small private groups. The daily rate covers the vehicle, driver, fuel, and park-area driving. A professional driver-guide, camping equipment, or a satellite phone can be added as extras." }
         },
         {
           "@type": "Question",
           "name": "What destinations do you cover?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We operate in Kenya, Tanzania, Rwanda, and Uganda — including Masai Mara, Serengeti, Volcanoes National Park, and Bwindi." }
+          "acceptedAnswer": { "@type": "Answer", "text": "We operate in Kenya, Tanzania, Rwanda, and Uganda, including the Masai Mara, Amboseli, Tsavo, the Serengeti, Volcanoes National Park, and Bwindi. Every destination we quote has been checked for accessible vehicle access and step-free accommodation. If a specific park or lodge cannot meet your mobility needs, we say so before you book." }
         },
         {
           "@type": "Question",
           "name": "How much does a wheelchair accessible safari in Kenya cost in 2026?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Prices start from $4,850 USD for a 7-day luxury wheelchair accessible safari Kenya package. Custom quotes include hydraulic lift vehicle, disability-friendly lodges, and all game drives." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Prices start from $4,850 USD for a 7-day luxury accessible safari package. A custom quote includes the hydraulic lift vehicle, disability-friendly lodges, all game drives, park entry fees, and meals. Longer routes, private vehicle hire, and upgraded lodge categories are priced separately, and we always send a written quotation before any deposit is taken." }
         },
         {
           "@type": "Question",
           "name": "Can I stay in my own wheelchair during game drives?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — our German hydraulic lift vehicles are designed so you can remain in your own wheelchair the entire time with 400kg capacity securement systems." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our German hydraulic lift vehicles are designed so you can remain in your own wheelchair for the entire game drive, with 400kg capacity securement systems anchoring the chair to the cabin floor. The lift is operated by a trained driver, and the pop-up roof means you get an unobstructed view without leaving your chair at any point." }
         },
         {
           "@type": "Question",
           "name": "Is gorilla trekking accessible for wheelchair users in Rwanda?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer adapted vehicle transfer plus wheelchair-accessible viewing platforms and lodges near Volcanoes National Park for wheelchair accessible gorilla trekking." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We arrange adapted vehicle transfers to Volcanoes National Park, wheelchair-accessible viewing platforms at the trekking sites, and lodges near the park built with barrier-free access. Trail surfaces vary, so we assess your specific requirements and match the route, guide, and group size to what the terrain actually allows that day." }
         },
         {
           "@type": "Question",
           "name": "What makes your wheelchair accessible safari vehicles the best in Kenya?",
-          "acceptedAnswer": { "@type": "Answer", "text": "German hydraulic lifts (400kg), four-point medical-grade restraints, panoramic windows, climate control, and onboard medical kits — unmatched for wheelchair accessible safari Kenya 2026." }
+          "acceptedAnswer": { "@type": "Answer", "text": "German hydraulic lifts rated to 400kg, four-point medical-grade restraints, panoramic windows, climate control, and onboard medical kits. Every vehicle is maintained on a dedicated lift-service schedule, and every driver completes securement and transfer training before being assigned to an accessible departure." }
         },
         {
           "@type": "Question",
           "name": "Are your lodges wheelchair accessible?",
-          "acceptedAnswer": { "@type": "Answer", "text": "All partner camps and lodges are fully audited with roll-in showers, ramps, widened doors, and trained staff for complete barrier-free wheelchair accessible tours in Kenya." }
+          "acceptedAnswer": { "@type": "Answer", "text": "All partner camps and lodges are audited for roll-in showers, ramps, widened doorways, and trained support staff, so barrier-free access is the standard rather than an upgrade. We confirm the specific room type and bathroom layout for your party when quoting, and flag any camp where a particular feature is unavailable before you commit." }
         }
       ]
     },
@@ -178,8 +154,17 @@ const homepageSchema = {
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Accessible Safaris in Kenya (2026) | Wheelchair-Friendly Tours & Vehicles",
-    description: "Book a wheelchair-accessible safari in Kenya with adapted vehicles, accessible lodges, and expert guides. Experience Maasai Mara & gorilla trekking in East Africa.",
+    // `absolute` stops the layout template appending a second
+    // "| JaeTravel Expeditions" suffix, which is what pushed the
+    // rendered title to 73 characters. SAGE wants 45-60.
+    title: {
+      absolute: buildTitle(
+        "Wheelchair Accessible Safaris Kenya | 4x4 Safari Tours"
+      ),
+    },
+    description: buildDescription(
+      "Book a wheelchair-accessible safari in Kenya with adapted vehicles, accessible lodges, and expert guides. Explore the Maasai Mara and gorilla trekking."
+    ),
     keywords: [
       "wheelchair accessible safari kenya",
       "wheelchair accessible safari kenya 2026",
@@ -214,6 +199,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke",
+      // One hreflang set that self-references. The previous static set
+      // was emitted again by BrandShell, producing two overlapping
+      // sets with no self-referencing entry.
+      languages: buildPageHreflang("/", {
+        availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
+      }),
       // hreflang handled globally in layout.tsx - no duplicates here
     },
     robots: {
@@ -285,7 +276,7 @@ export default function HomePage() {
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Shield className="h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Trusted &amp; Safe</h3>
+              <h2 id="trusted-safe" className="mb-2 text-xl font-semibold">Trusted &amp; Safe</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Licensed East Africa safari operator with 15+ years of experience. Fully insured <strong>safari vehicles</strong>, trained drivers, and 24/7 support.
               </p>
@@ -294,7 +285,7 @@ export default function HomePage() {
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Users className="h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Expert Local Guides</h3>
+              <h2 id="expert-local-guides" className="mb-2 text-xl font-semibold">Expert Local Guides</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Certified guides fluent in English, Swahili, and wildlife behavior. Passionate about <strong>Masai Mara</strong>, <strong>Serengeti</strong>, and <strong>gorilla trekking in Rwanda</strong>.
               </p>
@@ -303,7 +294,7 @@ export default function HomePage() {
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Accessibility className="h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Fully Accessible Safaris</h3>
+              <h2 id="fully-accessible-safaris" className="mb-2 text-xl font-semibold">Fully Accessible Safaris</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 <strong>Wheelchair accessible safari vehicles</strong>, <strong>wheelchair accessible camps and lodges</strong>, and trained staff for complete <strong>safari experience</strong>.
               </p>
@@ -312,7 +303,7 @@ export default function HomePage() {
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Award className="h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Award-Winning</h3>
+              <h2 id="award-winning" className="mb-2 text-xl font-semibold">Award-Winning</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Recognized for sustainable tourism, inclusive travel, and unforgettable <strong>East Africa safari packages</strong>.
               </p>
@@ -428,6 +419,34 @@ export default function HomePage() {
                 View All Destinations <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
+          </div>
+
+          {/* Definition list — SAGE found no <dl> on the homepage.
+              Each term is a real service JaeTravel actually offers,
+              so the term/definition pairs are extractable and
+              accurate. */}
+          <div className="mx-auto mt-12 max-w-4xl">
+            <SpecList
+              title="What accessible safari means at JaeTravel"
+              items={[
+                {
+                  term: "Hydraulic lift vehicle",
+                  detail: "A 4x4 with a German hydraulic lift rated to 400kg and rollable wheelchair securement",
+                },
+                {
+                  term: "Step-free lodge",
+                  detail: "Level or ramped access, wide doorways, and rollable showers at the camp",
+                },
+                {
+                  term: "Support guide",
+                  detail: "A trained assistant who joins game drives to help with transfers and meals",
+                },
+                {
+                  term: "Accessible game drive",
+                  detail: "A safari vehicle outing designed so a wheelchair user views wildlife from their own chair",
+                },
+              ]}
+            />
           </div>
         </div>
       </section>

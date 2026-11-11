@@ -20,7 +20,15 @@
 //   <AllPageSEOSchema type="homepage" />
 // ═══════════════════════════════════════════════════════════════════════════════
 
-const BASE = "https://www.jaetravel.co.ke"
+import {
+  BASE,
+  ORGANIZATION_REF,
+  WEBSITE_REF,
+} from "@/lib/schema"
+import { buildVehicleFaqs } from "@/lib/vehicle-faq"
+import { buildBlogFaqs } from "@/lib/blog-faq"
+
+const BASE_URL = BASE
 const YOUTUBE_CHANNEL_URL =
   process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL || `${BASE}/youtube`
 const INSTAGRAM_HANDLE = process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE || null
@@ -333,8 +341,8 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
         name: `${tour.title} — JaeTravel Expeditions`,
         description: `${tour.title} safari in ${tour.country}. ${tour.shortDescription || tour.description?.slice(0, 120)}`,
         caption: `${tour.title} | JaeTravel Expeditions`,
-        author: { "@type": "Organization", name: "JaeTravel Expeditions" },
-        copyrightHolder: { "@type": "Organization", name: "JaeTravel Expeditions" },
+        author: ORGANIZATION_REF,
+        copyrightHolder: ORGANIZATION_REF,
         license: `${BASE}/terms`,
         acquireLicensePage: `${BASE}/contact`,
         creditText: "JaeTravel Expeditions",
@@ -359,7 +367,7 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
         height: 1080,
         inLanguage: "en",
         regionsAllowed: "US GB AU CA FR DE IT IN AE CN KE TZ RW UG",
-        author: { "@type": "Organization", name: "JaeTravel Expeditions" },
+        author: ORGANIZATION_REF,
         publisher: MERCHANT,
         about: { "@id": `${url}#trip` },
         keywords: `${tour.country} safari, wildlife tour, East Africa safari, JaeTravel`,
@@ -393,7 +401,7 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
           availability: "https://schema.org/InStock",
           validFrom: today(),
         },
-        performer: { "@type": "Organization", name: "JaeTravel Expeditions Safari Guides" },
+        performer: ORGANIZATION_REF,
         isAccessibleForFree: false,
       })),
 
@@ -413,30 +421,36 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
       {
         "@type": "FAQPage",
         "@id": `${url}#faq`,
+        description: `Frequently asked questions about the ${tour.title}.`,
         mainEntity: [
           {
             "@type": "Question",
             name: `What is included in the ${tour.title}?`,
+            text: `What is included in the ${tour.title}?`,
             acceptedAnswer: { "@type": "Answer", text: (tour.included || ["Accommodation", "Meals", "Game drives", "Professional guide", "Park fees"]).join(", ") + ". International flights and travel insurance are not included." },
           },
           {
             "@type": "Question",
             name: `How long is the ${tour.title}?`,
+            text: `How long is the ${tour.title}?`,
             acceptedAnswer: { "@type": "Answer", text: `The ${tour.title} is ${tour.duration}. Daily departures are available from Nairobi or the nearest hub city.` },
           },
           {
             "@type": "Question",
             name: `How much does the ${tour.title} cost?`,
+            text: `How much does the ${tour.title} cost?`,
             acceptedAnswer: { "@type": "Answer", text: `The ${tour.title} starts from $${price.toLocaleString()} USD per person. Price includes all accommodation, meals, game drives, and a professional guide. Contact us via WhatsApp (+254726485228) for a personalised quote.` },
           },
           {
             "@type": "Question",
             name: `Is the ${tour.title} suitable for wheelchair users?`,
+            text: `Is the ${tour.title} suitable for wheelchair users?`,
             acceptedAnswer: { "@type": "Answer", text: `Yes! JaeTravel Expeditions operates East Africa's only fleet of adapted 4x4 vehicles with German hydraulic lifts (400kg capacity). We can accommodate wheelchair users on this tour. Contact us to arrange accessible options.` },
           },
           {
             "@type": "Question",
             name: `What is the best time to book the ${tour.title}?`,
+            text: `What is the best time to book the ${tour.title}?`,
             acceptedAnswer: { "@type": "Answer", text: `We recommend booking 2-3 months in advance, especially for July-October (Great Migration season) and December-January peak periods. Last-minute availability may exist off-season.` },
           },
         ],
@@ -450,16 +464,16 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
         name: tour.metaTitle || tour.title,
         description: tour.metaDescription || tour.description,
         inLanguage: "en",
-        isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` },
+        isPartOf: WEBSITE_REF,
         about: { "@id": `${url}#trip` },
         primaryImageOfPage: { "@id": `${url}#hero-image` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
-        datePublished: "2024-01-01",
-        dateModified: today(),
+        datePublished: tour.publishedAt || "2024-01-01",
+        dateModified: tour.updatedAt || today(),
         author: MERCHANT,
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".tour-description", ".tour-highlights"],
+          cssSelector: ["h1", "#answer-summary", ".tour-description", ".tour-highlights"],
         },
       },
     ],
@@ -493,6 +507,17 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
         category: "Vehicles > Safari Vehicles > Kenya",
         url,
         keywords: (vehicle.keywords || []).join(", "),
+        ...(vehicle.aggregateRating
+          ? {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: vehicle.aggregateRating.ratingValue,
+                reviewCount: vehicle.aggregateRating.reviewCount,
+                bestRating: "5",
+                worstRating: "1",
+              },
+            }
+          : {}),
         offers: {
           "@type": "Offer",
           "@id": `${url}#offer`,
@@ -539,7 +564,8 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
         contentUrl: `${BASE}/videos/vehicle-tour.mp4`,
         uploadDate: "2024-03-15",
         duration: "PT2M15S",
-        author: { "@type": "Organization", name: "JaeTravel Expeditions" },
+        embedUrl: `${BASE}/vehicle-hire/${slug}`,
+        author: ORGANIZATION_REF,
         publisher: MERCHANT,
         isFamilyFriendly: true,
         isAccessibleForFree: true,
@@ -560,12 +586,13 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
       {
         "@type": "FAQPage",
         "@id": `${url}#faq`,
-        mainEntity: [
-          { "@type": "Question", name: `How much does it cost to hire the ${vehicle.name} in Kenya?`, acceptedAnswer: { "@type": "Answer", text: `The ${vehicle.name} hire starts from $${vehicle.pricePerDay} USD per day. This includes the vehicle, driver, and fuel for national park areas. Long-term rental discounts are available.` } },
-          { "@type": "Question", name: `Is the ${vehicle.name} suitable for self-drive safaris in Kenya?`, acceptedAnswer: { "@type": "Answer", text: `Yes. We offer both self-drive and guided options for the ${vehicle.name}. We recommend a driver-guide for game drives in national parks for the best wildlife experience.` } },
-          { "@type": "Question", name: `Can the ${vehicle.name} access Masai Mara and Amboseli?`, acceptedAnswer: { "@type": "Answer", text: `Absolutely. The ${vehicle.name} is fully equipped for all major Kenya safari destinations including Masai Mara, Amboseli, Tsavo, Samburu, and Lake Nakuru.` } },
-          { "@type": "Question", name: `Is the ${vehicle.name} wheelchair accessible?`, acceptedAnswer: { "@type": "Answer", text: vehicle.slug === "wheelchair-accessible-vehicle" ? "Yes! This vehicle is specifically adapted with a German hydraulic lift (400kg capacity), pop-up roof, and medical-grade restraints for wheelchair safari users." : `This standard ${vehicle.name} is not adapted for wheelchair users. We have a dedicated wheelchair-accessible safari vehicle available — contact us for details.` } },
-        ],
+        description: `Frequently asked questions about hiring the ${vehicle.name} in Kenya.`,
+        mainEntity: buildVehicleFaqs(vehicle).map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          text: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
       },
 
       // WEBPAGE
@@ -576,11 +603,12 @@ function buildVehicleSchema(vehicle: any, slug: string, videos?: VideoSchemaInpu
         name: vehicle.metaTitle,
         description: vehicle.metaDescription,
         inLanguage: "en",
-        isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` },
+        isPartOf: WEBSITE_REF,
         breadcrumb: { "@id": `${url}#breadcrumb` },
         primaryImageOfPage: { "@id": `${url}#hero-image` },
+        datePublished: "2024-01-01",
         dateModified: today(),
-        speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".vehicle-description"] },
+        speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "#answer-summary", ".vehicle-description"] },
       },
     ],
   }
@@ -648,16 +676,17 @@ function buildBudgetTourSchema(tour: any, slug: string, videos?: VideoSchemaInpu
       {
         "@type": "FAQPage",
         "@id": `${url}#faq`,
+        description: `Frequently asked questions about the ${tour.title}.`,
         mainEntity: [
-          { "@type": "Question", name: `How much does the ${tour.title} cost?`, acceptedAnswer: { "@type": "Answer", text: `The ${tour.title} starts from $${tour.price} USD per person in a shared group Land Cruiser. Price includes all accommodation, meals, game drives, park fees, and an expert guide.` } },
-          { "@type": "Question", name: `What is included in the ${tour.title}?`, acceptedAnswer: { "@type": "Answer", text: (tour.included || ["Shared Land Cruiser", "Budget camp accommodation", "All meals", "Professional guide", "Park entry fees"]).join(", ") } },
-          { "@type": "Question", name: `Is this a group or private safari?`, acceptedAnswer: { "@type": "Answer", text: `This is a shared group safari (${tour.groupSize}), which keeps costs low. Private departures are available on request at an additional cost.` } },
-          { "@type": "Question", name: `How do I get to the departure point?`, acceptedAnswer: { "@type": "Answer", text: `${tour.departure}. Hotel pickup from Nairobi CBD and major hotels is included. We provide exact pickup instructions upon booking confirmation.` } },
+          { "@type": "Question", name: `How much does the ${tour.title} cost?`, text: `How much does the ${tour.title} cost?`, acceptedAnswer: { "@type": "Answer", text: `The ${tour.title} starts from $${tour.price} USD per person in a shared group Land Cruiser. Price includes all accommodation, meals, game drives, park fees, and an expert guide.` } },
+          { "@type": "Question", name: `What is included in the ${tour.title}?`, text: `What is included in the ${tour.title}?`, acceptedAnswer: { "@type": "Answer", text: (tour.included || ["Shared Land Cruiser", "Budget camp accommodation", "All meals", "Professional guide", "Park entry fees"]).join(", ") } },
+          { "@type": "Question", name: `Is this a group or private safari?`, text: `Is this a group or private safari?`, acceptedAnswer: { "@type": "Answer", text: `This is a shared group safari (${tour.groupSize}), which keeps costs low. Private departures are available on request at an additional cost.` } },
+          { "@type": "Question", name: `How do I get to the departure point?`, text: `How do I get to the departure point?`, acceptedAnswer: { "@type": "Answer", text: `${tour.departure}. Hotel pickup from Nairobi CBD and major hotels is included. We provide exact pickup instructions upon booking confirmation.` } },
         ],
       },
 
       // WEBPAGE
-      { "@type": "WebPage", "@id": url, url, name: tour.title, description: tour.metaDescription, inLanguage: "en", isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` }, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
+      { "@type": "WebPage", "@id": url, url, name: tour.title, description: tour.metaDescription, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
     ],
   }
 }
@@ -681,9 +710,9 @@ function buildBlogSchema(post: any, slug: string, videos?: VideoSchemaInput[]) {
         description: post.excerpt,
         image: { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, width: 1200, height: 630, caption: post.title },
         datePublished: post.publishedAt,
-        dateModified: post.publishedAt,
-        author: { "@type": "Person", name: post.author, url: `${BASE}/about`, worksFor: { "@type": "Organization", name: "JaeTravel Expeditions" } },
-        publisher: { "@type": "Organization", "@id": `${BASE}/#organization`, name: "JaeTravel Expeditions", logo: { "@type": "ImageObject", url: `${BASE}/logo.png` } },
+        dateModified: post.updatedAt || post.publishedAt,
+        author: { "@type": "Person", name: post.author, url: `${BASE}/about`, jobTitle: "Safari Guide & Travel Writer", image: `${BASE}/logo.png`, sameAs: ["https://www.facebook.com/JaeTravelExpeditions", "https://www.instagram.com/jaetravelexpeditions/"], worksFor: ORGANIZATION_REF },
+        publisher: ORGANIZATION_REF,
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         articleSection: post.category,
         keywords: (post.keywords || []).join(", "),
@@ -691,11 +720,11 @@ function buildBlogSchema(post: any, slug: string, videos?: VideoSchemaInput[]) {
         wordCount: post.content ? post.content.trim().split(/\s+/).length : 500,
         speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".article-summary", ".article-intro"] },
         isAccessibleForFree: true,
-        isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` },
+        isPartOf: WEBSITE_REF,
       },
 
       // IMAGE METADATA
-      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: post.title, caption: `${post.title} | JaeTravel Expeditions Blog`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true, inLanguage: "en" },
+      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: post.title, caption: `${post.title} | JaeTravel Expeditions Blog`, author: ORGANIZATION_REF, representativeOfPage: true, inLanguage: "en" },
 
       // VIDEO (optional — many blog posts have embedded videos)
       ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${post.title} — Video`, description: `Video companion to the blog post: ${post.title}`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/blog-companion.mp4`, uploadDate: post.publishedAt || "2024-01-01", duration: "PT4M00S", publisher: MERCHANT }),
@@ -706,14 +735,17 @@ function buildBlogSchema(post: any, slug: string, videos?: VideoSchemaInput[]) {
       // FAQ (auto-generated from blog categories)
       {
         "@type": "FAQPage", "@id": `${url}#faq`,
-        mainEntity: [
-          { "@type": "Question", name: "What is the best East Africa safari company?", acceptedAnswer: { "@type": "Answer", text: "JaeTravel Expeditions is rated 5/5 by 723+ verified clients. We specialize in personalized safaris across Kenya, Tanzania, Rwanda, and Uganda, with unique expertise in wheelchair-accessible travel." } },
-          { "@type": "Question", name: "How do I book a safari in Kenya?", acceptedAnswer: { "@type": "Answer", text: "Contact JaeTravel Expeditions via WhatsApp (+254726485228) or email (info@jaetravel.co.ke). We provide free quotes and handle all logistics from flights to park fees." } },
-        ],
+        description: `Frequently asked questions about ${post.title}.`,
+        mainEntity: buildBlogFaqs(post).map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          text: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
       },
 
       // WEBPAGE
-      { "@type": "WebPage", "@id": url, url, name: post.metaTitle, description: post.metaDescription, inLanguage: "en", isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` }, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, datePublished: post.publishedAt, dateModified: post.publishedAt },
+      { "@type": "WebPage", "@id": url, url, name: post.metaTitle, description: post.metaDescription, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, datePublished: post.publishedAt, dateModified: post.updatedAt || post.publishedAt, speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "#answer-summary", ".article-summary"] } },
     ],
   }
 }
@@ -743,7 +775,7 @@ function buildDestinationSchema(destination: any, slug: string, videos?: VideoSc
       },
 
       // IMAGE METADATA
-      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${destination.name} Safari — JaeTravel Expeditions`, caption: `${destination.name} wildlife and safari landscapes`, author: { "@type": "Organization", name: "JaeTravel Expeditions" }, representativeOfPage: true },
+      { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: `${destination.name} Safari — JaeTravel Expeditions`, caption: `${destination.name} wildlife and safari landscapes`, author: ORGANIZATION_REF, representativeOfPage: true },
 
       // VIDEO
       ...buildVideoObjects(videos, url, { "@type": "VideoObject", "@id": `${url}#video`, name: `${destination.name} Safari Guide — JaeTravel Expeditions`, description: `Complete safari guide to ${destination.name}. Best time to visit, wildlife highlights, and what to expect on your safari.`, thumbnailUrl: imageUrl, contentUrl: `${BASE}/videos/${slug}-guide.mp4`, uploadDate: "2024-05-01", duration: "PT5M00S", publisher: MERCHANT }),
@@ -756,13 +788,13 @@ function buildDestinationSchema(destination: any, slug: string, videos?: VideoSc
 
       // FAQ
       { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: [
-        { "@type": "Question", name: `What is the best time to visit ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: destination.bestTimeToVisit || `${destination.name} is a year-round destination. The dry seasons (June-October, January-February) offer the best wildlife viewing.` } },
-        { "@type": "Question", name: `What wildlife can I see in ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: destination.wildlifeHighlights || `${destination.name} is home to the Big Five (lion, leopard, elephant, buffalo, rhino), plus cheetah, giraffe, zebra, and over 400 bird species.` } },
-        { "@type": "Question", name: `How do I get to ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions provides full transport from Nairobi to ${destination.name} by road or charter flight, depending on your package.` } },
+        { "@type": "Question", name: `What is the best time to visit ${destination.name}?`, text: `What is the best time to visit ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: destination.bestTimeToVisit || `${destination.name} is a year-round destination. The dry seasons (June-October, January-February) offer the best wildlife viewing.` } },
+        { "@type": "Question", name: `What wildlife can I see in ${destination.name}?`, text: `What wildlife can I see in ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: destination.wildlifeHighlights || `${destination.name} is home to the Big Five (lion, leopard, elephant, buffalo, rhino), plus cheetah, giraffe, zebra, and over 400 bird species.` } },
+        { "@type": "Question", name: `How do I get to ${destination.name}?`, text: `How do I get to ${destination.name}?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions provides full transport from Nairobi to ${destination.name} by road or charter flight, depending on your package.` } },
       ]},
 
       // WEBPAGE
-      { "@type": "WebPage", "@id": url, url, name: destination.metaTitle, description: destination.metaDescription, inLanguage: "en", isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` }, breadcrumb: { "@id": `${url}#breadcrumb` }, dateModified: today() },
+      { "@type": "WebPage", "@id": url, url, name: destination.metaTitle, description: destination.metaDescription, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, dateModified: today() },
     ],
   }
 }
@@ -790,11 +822,11 @@ function buildCategoryPageSchema(
       { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: BASE }, { "@type": "ListItem", position: 2, name: opts.title, item: url }] },
       // FAQ
       { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: [
-        { "@type": "Question", name: `What is the best ${opts.title.toLowerCase()} operator?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions is rated 5/5 with 723+ verified reviews. We specialize in ${opts.title.toLowerCase()} across East Africa with expert local guides and accessible options.` } },
-        { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $450 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
+        { "@type": "Question", name: `What is the best ${opts.title.toLowerCase()} operator?`, text: `What is the best ${opts.title.toLowerCase()} operator?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions is rated 5/5 with 723+ verified reviews. We specialize in ${opts.title.toLowerCase()} across East Africa with expert local guides and accessible options.` } },
+        { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, text: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $450 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
       ]},
       // WEBPAGE
-      { "@type": "WebPage", "@id": url, url, inLanguage: "en", isPartOf: { "@type": "WebSite", "@id": `${BASE}/#website` }, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
+      { "@type": "WebPage", "@id": url, url, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
     ],
   }
 }

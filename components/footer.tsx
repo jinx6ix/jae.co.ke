@@ -5,19 +5,25 @@ import Link from "next/link"
 import Script from "next/script"
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react"
 import { YouTubeSubscribe } from "./YouTubeSubscribe"
+import { StarRating } from "./StarRating"
+import {
+  SAFARI_BOOKINGS_RATING,
+  SAFARI_BOOKINGS_REVIEW_COUNT,
+  TRIP_ADVISOR_RATING,
+  TRIP_ADVISOR_REVIEW_COUNT,
+} from "@/lib/reviews-data"
 import { reopenConsent } from "@/lib/consent"
 
 export function Footer() {
   return (
     <footer className="relative border-t border-border bg-muted/30">
-      {/* SafariBookings Widget Script */}
-      <Script
-        id="safaribookings-widget"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(){var sb=document.createElement('script');sb.type='text/javascript';sb.async=true;sb.src='https://s3.amazonaws.com/z_437er23a/73f68887a.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(sb,s);})();`,
-        }}
-      />
+      {/* NOTE: the previous SafariBookings + YourAfricanSafari third-party
+          review widgets were removed. Both injected a Google star-rating
+          badge into the DOM, which produced 16 `ssl.gstatic.com` images
+          with no `alt` attribute on every page plus conflicting RDFa
+          markup. The native server-rendered <StarRating> below replaces
+          them with accessible inline SVG and a single text label, and
+          adds no third-party JavaScript. */}
 
       <div className="container mx-auto px-4 py-12">
         {/* Top Grid */}
@@ -168,23 +174,28 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Native Star Rating using verified data */}
+        {/* Native server-rendered star rating using the site's own
+            verified review data. Replaces the third-party Google rating
+            badge, which injected 16 alt-less `ssl.gstatic.com` images
+            into every page. */}
         <div className="flex justify-center my-8">
           <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-lg bg-muted/50 border border-border">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-sm">SafariBookings:</span>
-              <div className="flex items-center gap-1">
-                <span className="font-bold">4.9/5</span>
-                <span className="text-xs text-muted-foreground">(7 reviews)</span>
-              </div>
+              <StarRating
+                rating={SAFARI_BOOKINGS_RATING}
+                reviewCount={SAFARI_BOOKINGS_REVIEW_COUNT}
+                source="safaribookings"
+              />
             </div>
             <div className="hidden sm:block text-muted-foreground">|</div>
             <div className="flex items-center gap-2">
               <span className="font-semibold text-sm">TripAdvisor:</span>
-              <div className="flex items-center gap-1">
-                <span className="font-bold">5.0/5</span>
-                <span className="text-xs text-muted-foreground">(4 reviews)</span>
-              </div>
+              <StarRating
+                rating={TRIP_ADVISOR_RATING}
+                reviewCount={TRIP_ADVISOR_REVIEW_COUNT}
+                source="tripadvisor"
+              />
             </div>
           </div>
         </div>
@@ -195,6 +206,7 @@ export function Footer() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-items-center">
             <a
               title="Kenya Wildlife Service"
+              aria-label="Kenya Wildlife Service (opens in a new tab)"
               href="https://www.kws.go.ke/"
               target="_blank"
               rel="noopener noreferrer"
@@ -210,6 +222,7 @@ export function Footer() {
             </a>
             <a
               title="Tourism Authority Kenya"
+              aria-label="Tourism Authority of Kenya (opens in a new tab)"
               href="https://www.tourismauthority.go.ke/"
               target="_blank"
               rel="noopener noreferrer"
@@ -223,21 +236,13 @@ export function Footer() {
                 className="object-contain grayscale hover:grayscale-0 transition-all"
               />
             </a>
-            {/* Your African Safari Widget */}
-              <div className="flex flex-col items-center">
-                <div className="bg-white p-1 rounded hover:shadow-md transition-shadow">
-                  <iframe 
-                    scrolling="no" 
-                    frameBorder="0" 
-                    width="130" 
-                    src="https://www.yourafricansafari.com/c/3443-jae-travel-expeditions/widget_1/"
-                    title="Your African Safari Reviews"
-                  ></iframe>
-                </div>
-                <p className="text-xs text-gray-400 mt-1">Customer Reviews</p>
-              </div>
+            {/* The third-party rating iframe was removed: it rendered a
+                Google star badge as 16 alt-less `ssl.gstatic.com` images
+                on every page. The native <StarRating> component above
+                replaces it with accessible inline SVG and one text label. */}
             <a
               title="SafariGo"
+              aria-label="SafariGo (opens in a new tab)"
               href="https://www.safarigo.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -252,7 +257,8 @@ export function Footer() {
               />
             </a>
             <a
-              title="SafariBookings Widget"
+              title="SafariBookings"
+              aria-label="Read our SafariBookings reviews (opens in a new tab)"
               href="https://www.safaribookings.com/p6888?utm_source=jaetravel.com&utm_medium=reviewwidget"
               target="_blank"
               rel="noopener noreferrer"

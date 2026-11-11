@@ -376,6 +376,9 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
                 name: "",
                 email: "",
                 phone: "",
+                // `country` is part of the state type — omitting it
+                // broke the reset button with a TypeScript error.
+                country: "Kenya",
                 travelers: "2",
                 date: "",
                 message: "",
@@ -413,7 +416,13 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 rounded-lg border border-border bg-card p-6">
+    <form
+      onSubmit={handleSubmit}
+      id="tour-booking-form"
+      className="space-y-6 rounded-lg border border-border bg-card p-6"
+      data-toolname="bookTour"
+      data-tooldescription="Submit a safari tour booking or enquiry with travel dates, traveller count, and contact details"
+    >
       <div>
         <h3 className="mb-2 text-2xl font-bold">Book This {serviceType === "vehicle" ? "Vehicle" : "Tour"}</h3>
         <p className="text-sm text-muted-foreground">
@@ -431,6 +440,9 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             <Input
               id="name"
               name="name"
+              type="text"
+              autoComplete="name"
+              data-toolparamdescription="Full name of the lead traveller"
               value={formData.name}
               onChange={handleChange}
               required
@@ -449,6 +461,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               id="email"
               name="email"
               type="email"
+              autoComplete="email"
+              data-toolparamdescription="Email address used to send the booking confirmation"
               value={formData.email}
               onChange={handleChange}
               required
@@ -467,6 +481,9 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             <Input
               id="country"
               name="country"
+              type="text"
+              autoComplete="country-name"
+              data-toolparamdescription="Country of residence of the lead traveller"
               value={formData.country}
               onChange={handleChange}
               required
@@ -499,6 +516,8 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             id="travelers"
             name="travelers"
             type="number"
+            inputMode="numeric"
+            data-toolparamdescription="Number of travellers joining the safari"
             min="1"
             max={serviceType === "vehicle" ? "30" : "20"}
             value={formData.travelers}
@@ -518,6 +537,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             id="date"
             name="date"
             type="date"
+            data-toolparamdescription="Preferred safari start date in YYYY-MM-DD format"
             value={formData.date}
             onChange={handleChange}
             required
@@ -535,6 +555,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           <Textarea
             id="message"
             name="message"
+            data-toolparamdescription="Optional special requests such as accessibility needs or dietary requirements"
             value={formData.message}
             onChange={handleChange}
             placeholder="Dietary requirements, accessibility needs, room preferences..."

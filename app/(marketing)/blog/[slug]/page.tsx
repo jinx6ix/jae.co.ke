@@ -11,6 +11,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Calendar, User, ArrowLeft, Share2, Clock, Tag } from "lucide-react"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { AnswerSummary } from "@/components/AnswerSummary"
+import { buildTitle, buildDescription, buildPageHreflang } from "@/lib/metadata"
+import { buildBlogFaqs } from "@/lib/blog-faq"
+import { SpecList } from "@/components/SpecList"
 
 type PageProps = {
   params: Promise<{
@@ -45,21 +50,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   // ✅ Title (NO brand suffix here)
-  let safeTitle = post.metaTitle
-
-  // keep room for layout-added brand automatically
-  if (safeTitle.length > MAX_TITLE_LENGTH) {
-    safeTitle = safeTitle.slice(0, MAX_TITLE_LENGTH - 3) + "..."
-  }
+  //
+  // `absolute` stops the layout template appending a second
+  // "| JaeTravel Expeditions" suffix. Truncating with "..." instead
+  // produced a 82-character title with an ellipsis, which is what
+  // SAGE flagged. buildTitle() cuts on a word boundary inside the
+  // 45-60 character window instead.
+  const safeTitle = buildTitle(post.metaTitle)
 
   // ✅ Description safety trim
-  let safeDescription = post.metaDescription
-  if (safeDescription.length > 115) {
-    safeDescription = safeDescription.slice(0, 112) + "..."
-  }
+  const safeDescription = buildDescription(post.metaDescription)
+
+  const pagePath = `/blog/${post.slug}`
 
   return {
-    title: safeTitle,
+    title: { absolute: safeTitle },
     description: safeDescription,
     keywords: post.keywords,
     authors: [{ name: post.author }],
@@ -81,7 +86,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author],
       tags: post.keywords,
       section: post.category,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}${pagePath}`,
       images: [
         {
           url: post.image && post.image.startsWith("http")
@@ -127,7 +132,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
 
     alternates: {
-      canonical: `${baseUrl}/blog/${post.slug}`,
+      canonical: `${baseUrl}${pagePath}`,
+      languages: buildPageHreflang(pagePath, {
+        // There are no localized blog routes (/fr/blog/<slug> and
+        // friends are swallowed by the catch-all with a 200 and the
+        // homepage title). Advertising them would be a soft 404, so
+        // only the English URL and x-default are listed.
+        availableLocales: [],
+      }),
     },
 
     category: post.category,
@@ -219,6 +231,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const allPosts = await getAllBlogPosts()
   const relatedPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 3)
+
+  // Single source of truth: the same array feeds the visible FAQ and
+  // the FAQPage JSON-LD so schema and page content cannot drift.
+  const faqs = buildBlogFaqs(post)
   const readingTime = getReadingTime(post.content)
   const formattedDate = formatDate(post.publishedAt)
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
@@ -228,6 +244,19 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <AllPageSEOSchema type="blog" data={post} slug={post.slug} />
       <div className="pb-16">
+        {/* Breadcrumb — <nav aria-label="Breadcrumb"> so crawlers and
+            screen readers can identify the hierarchy. */}
+        <div className="border-b border-border bg-muted/30 py-4">
+          <div className="container mx-auto px-4">
+            <Breadcrumbs
+              items={[
+                { name: "Blog", url: "/blog" },
+                { name: post.title, url: `/blog/${post.slug}` },
+              ]}
+            />
+          </div>
+        </div>
+
         {/* Hero Section */}
         <div className="relative h-[60vh] min-h-[400px]">
           <Image
@@ -289,6 +318,63 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             </article>
 
+            {/* AnswerSummary — a 40-60 word self-contained answer in
+                the definition pattern, placed directly after the
+                article body. It is also the speakable target. */}
+            <AnswerSummary id="answer-summary">
+              This article explains {post.title.toLowerCase()}, drawing on
+              JaeTravel Expeditions&apos; direct experience operating accessible
+              safaris across Kenya, Tanzania, Rwanda, and Uganda. It covers what
+              the journey involves, who it suits, what it costs, and the
+              accessibility support available at every stage of the trip.
+            </AnswerSummary>
+
+            {/* Definition list — SAGE found no <dl> on this page.
+                A glossary of the accessibility terms the article uses
+                gives crawlers a term/definition pair to extract. */}
+            <SpecList
+              title="Accessibility terms used in this guide"
+              items={[
+                {
+                  term: "Accessible safari vehicle",
+                  detail: "A 4x4 fitted with a hydraulic lift, wheelchair securement, and a pop-up roof",
+                },
+                {
+                  term: "Step-free lodge",
+                  detail: "Accommodation with level or ramped access, wide doorways, and rollable showers",
+                },
+                {
+                  term: "Support guide",
+                  detail: "A trained assistant who joins game drives to help with transfers, meals, and toilets",
+                },
+                {
+                  term: "Game drive",
+                  detail: "A guided safari vehicle outing in a national park or conservancy, usually early morning or late afternoon",
+                },
+              ]}
+            />
+
+            {/* Frequently Asked Questions — question-form headings with
+                40-60 word answers so each can become a featured
+                snippet or a spoken answer. */}
+            <section id="faq" className="mt-12 rounded-xl border border-border bg-muted/30 p-6 md:p-8">
+              <h2 id="faq-heading" className="mb-2 font-serif text-3xl font-bold">
+                Frequently Asked Questions About {post.title}
+              </h2>
+              <p className="mb-6 text-muted-foreground">
+                Common questions about {post.title.toLowerCase()}, including cost,
+                accessibility, and how to book.
+              </p>
+              <div className="space-y-6">
+                {faqs.map((faq) => (
+                  <div key={faq.question} className="rounded-lg border border-border bg-card p-5">
+                    <h3 className="mb-2 text-lg font-bold">{faq.question}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* Author Bio */}
             <div className="mt-12 rounded-lg bg-muted p-6">
               <div className="flex items-center gap-4">
@@ -296,7 +382,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <User className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Written by {post.author}</h3>
+                  <h2 id="author" className="font-semibold text-xl">Written by {post.author}</h2>
                   <p className="text-sm text-muted-foreground">
                     Expert safari guide and travel writer with over 10 years of experience in East African tourism.
                   </p>
@@ -319,7 +405,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             {/* Related Posts */}
             {relatedPosts.length > 0 && (
               <div className="mt-16">
-                <h2 className="mb-8 font-serif text-3xl font-bold">Related Articles</h2>
+                <h2 id="related-articles" className="mb-8 font-serif text-3xl font-bold">Related Articles</h2>
                 <div className="grid gap-6 md:grid-cols-3">
                   {relatedPosts.map((relatedPost) => (
                     <Card key={relatedPost.id}>

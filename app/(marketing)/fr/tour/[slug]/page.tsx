@@ -19,12 +19,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const frData = getFrTourBySlug(slug)
   if (!tour) return { title: "Circuit non trouvé", robots: { index: false, follow: false } }
 
-  const title = frData?.metaTitle ?? `${frData?.title ?? tour.title} | JaeTravel Expéditions`
+  // The stored metaTitle already ends with the brand name, and the
+  // layout template appends it again — which produced titles like
+  // "Safari Masai Mara Luxe 2026 | JaeTravel Expéditions | JaeTravel
+  // Expéditions". Strip the duplicated suffix and let the template
+  // add it exactly once.
+  const rawTitle = frData?.metaTitle ?? frData?.title ?? tour.title
+  const title = `${rawTitle.replace(/\s*\|\s*JaeTravel Expéditions\s*$/, "")} | JaeTravel Expéditions`
   const description = frData?.metaDescription ?? tour.metaDescription ?? tour.description
   const imageUrl = tour.image?.startsWith("http") ? tour.image : `${BASE_URL}${tour.image}`
 
   return {
-    title,
+    // `absolute` prevents the layout template from appending the
+    // brand a second time.
+    title: { absolute: title },
     description,
     keywords: frData?.keywords ?? (Array.isArray(tour.keywords) ? tour.keywords : [tour.keywords ?? ""]),
     alternates: {
@@ -32,7 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: buildHreflangAlternates(`/tour/${slug}`),
     },
     openGraph: {
-      title, description,
+      title: { absolute: title },
+      description,
       url: `${BASE_URL}/fr/tour/${slug}`,
       locale: "fr_FR",
       type: "website",

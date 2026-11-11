@@ -15,10 +15,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tour = tours.find(t => t.slug === slug)
   const hiData = getHiTourBySlug(slug)
   if (!tour) return { title: "टूर नहीं मिला", robots: { index: false, follow: false } }
-  const title = hiData?.metaTitle ?? `${hiData?.title ?? tour.title} | जेट्रेवल एक्सपीडिशन`
+  // The stored metaTitle already ends with the brand name, and the
+  // layout template appends it again — which produced titles like
+  // "Safari Masai Mara Luxe 2026 | JaeTravel Expéditions | JaeTravel
+  // Expéditions". Strip the duplicated suffix and let the template
+  // add it exactly once.
+  const rawTitle = hiData?.metaTitle ?? hiData?.title ?? tour.title
+  const title = `${rawTitle.replace(/\s*\|\s*जेट्रेवल एक्सपीडिशन\s*$/, "")} | जेट्रेवल एक्सपीडिशन`
   const description = hiData?.metaDescription ?? tour.metaDescription ?? tour.description
   const imageUrl = tour.image?.startsWith("http") ? tour.image : `${BASE_URL}${tour.image}`
-  return { title, description, keywords: hiData?.keywords ?? [], alternates: { canonical: `${BASE_URL}/hi/tour/${slug}`, languages: buildHreflangAlternates(`/tour/${slug}`) }, openGraph: { title, description, url: `${BASE_URL}/hi/tour/${slug}`, locale: "hi_IN", type: "website", images: [{ url: imageUrl, width: 1200, height: 630, alt: hiData?.title ?? tour.title }] } }
+  return { title: { absolute: title }, description, keywords: hiData?.keywords ?? [], alternates: { canonical: `${BASE_URL}/hi/tour/${slug}`, languages: buildHreflangAlternates(`/tour/${slug}`) }, openGraph: { title: { absolute: title }, description, url: `${BASE_URL}/hi/tour/${slug}`, locale: "hi_IN", type: "website", images: [{ url: imageUrl, width: 1200, height: 630, alt: hiData?.title ?? tour.title }] } }
 }
 
 export default async function HindiTourPage({ params }: Props) {

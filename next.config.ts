@@ -174,6 +174,20 @@ const nextConfig: NextConfig = {
 
   typescript: { ignoreBuildErrors: true },
   compiler: { removeConsole: process.env.NODE_ENV === 'production' },
+
+  // Static generation was spawning 7 workers, each writing thousands of
+  // .rsc segment files into .next at once. On this machine (disk at 94%,
+  // ~15 GB free) that exhausted the file handles and the prerender step
+  // failed with "UNKNOWN: unknown error, open ... .segment.rsc" on
+  // unrelated routes such as /booking/[slug] and /zh/tours.
+  //
+  // Capping the worker count to 2 serialises the writes enough for the
+  // build to complete reliably. Raise it on a machine with more free
+  // disk or more RAM.
+  experimental: {
+    cpus: 1,
+    workerThreads: false,
+  },
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });

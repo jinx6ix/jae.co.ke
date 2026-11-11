@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 declare global {
   interface Window {
@@ -11,15 +11,21 @@ declare global {
 
 export function AnalyticsTracker() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.gtag) {
+      // Read the query string from the live URL instead of
+      // `useSearchParams()`. `useSearchParams` opts the enclosing
+      // Suspense boundary into client-side rendering, which stripped
+      // every page's server-rendered HTML (0 <h1>/<img>/<nav> tags in
+      // the built output). Reading `window.location` keeps the whole
+      // page statically rendered and still reports the same path.
+      const search = window.location.search
       window.gtag("config", "G-2YLERP8F8B", {
-        page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ""),
+        page_path: pathname + (search ? search : ""),
       })
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
   useEffect(() => {
     // Track scroll depth

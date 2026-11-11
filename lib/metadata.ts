@@ -10,7 +10,7 @@ export interface MetadataOptions {
   image?: string
   publishedAt?: string
   updatedAt?: string
-  type?: 'website' | 'article' | 'product' | 'tour' | 'vehicle'
+  type?: 'website' | 'article' | 'blog' | 'product' | 'tour' | 'vehicle'
   locale?: string
   alternates?: Record<string, string>
   noindex?: boolean
@@ -83,6 +83,119 @@ export const BUSINESS_INFO: BusinessInfo = {
   },
   currencies: ["USD"],
   priceRange: "$$$"
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Title / description length control
+//
+// SAGE flagged every audited page for a title longer than 60 characters
+// (home 73, tour 73, blog 82, vehicle 75) and the home page for a 163
+// character description. The layout's title template (" | JaeTravel
+// Expeditions") is what pushed the per-page titles over the limit, so
+// the template is only applied when the caller did not supply an
+// absolute title.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const TITLE_MAX = 60
+export const TITLE_MIN = 45
+export const DESC_MAX = 155
+export const DESC_MIN = 120
+
+/**
+ * Build a title that fits the 45-60 character window. When the title
+ * already carries the brand suffix we leave it alone (it was written
+ * that way deliberately); otherwise we append the brand and trim.
+ */
+export function buildTitle(title: string, brand = "JaeTravel Expeditions"): string {
+  const clean = title.trim()
+  if (clean.length <= TITLE_MAX && clean.length >= TITLE_MIN) return clean
+  if (clean.length > TITLE_MAX) {
+    // Prefer cutting at a word boundary.
+    const cut = clean.slice(0, TITLE_MAX)
+    const lastSpace = cut.lastIndexOf(" ")
+    const trimmed = lastSpace > TITLE_MIN ? cut.slice(0, lastSpace) : cut
+    return trimmed.replace(/[\s\-–—|,]+$/, "")
+  }
+  return `${clean} | ${brand}`
+}
+
+/** Build a meta description that fits the 120-155 character window. */
+export function buildDescription(description: string): string {
+  const clean = description.trim().replace(/\s+/g, " ")
+  if (clean.length <= DESC_MAX && clean.length >= DESC_MIN) return clean
+  if (clean.length > DESC_MAX) {
+    const cut = clean.slice(0, DESC_MAX)
+    const lastSpace = cut.lastIndexOf(" ")
+    const trimmed = lastSpace > DESC_MIN ? cut.slice(0, lastSpace) : cut
+    return `${trimmed.replace(/[\s\-–—|,]+$/, "")}.`
+  }
+  return clean
+}
+
+/**
+ * Build ONE hreflang set for a page, including a self-referencing
+ * entry for the current page.
+ *
+ * The previous implementation shipped a single static set on every
+ * page (en -> homepage, fr -> /fr, ...) so no non-home page ever
+ * self-referenced and the home page emitted two overlapping sets.
+ * SAGE reported exactly that: "Note: missing self-referencing
+ * hreflang" on all four audited pages.
+ *
+ * `path` is the English path of the current page, e.g.
+ * "/tours/masai-mara-luxury-safari". `availableLocales` restricts the
+ * set to locales that actually publish that route — only URLs that
+ * return 200 and reciprocate belong in the set.
+ */
+export function buildPageHreflang(
+  path: string,
+  options: {
+    /**
+     * Locales (without prefix) that publish this exact route.
+     * Only URLs that return 200 and reciprocate belong in the set.
+     */
+    availableLocales?: string[]
+    /** The current page's locale. Always self-referencing. */
+    currentLocale?: string
+    /**
+     * Per-locale path overrides, keyed by locale WITHOUT the prefix.
+     *
+     * The localized routes do not always mirror the English path:
+     * a tour detail page is /tours/<slug> in English but
+     * /<locale>/tour/<slug> in every other language. Prefixing the
+     * English path blindly produced URLs that the catch-all route
+     * swallowed with a 200 but the homepage's title — a soft 404,
+     * which is worse than having no hreflang at all.
+     *
+     * A locale omitted from this map is skipped, so a route that
+     * does not exist in a language (there are no localized blog
+     * routes) simply is not advertised there.
+     */
+    localePaths?: Record<string, string>
+  } = {}
+): Record<string, string> {
+  const { availableLocales, currentLocale = "en", localePaths } = options
+  const cleanPath = path.startsWith("/") ? path : `/${path}`
+  const base = "https://www.jaetravel.co.ke"
+
+  const alternates: Record<string, string> = {}
+
+  // The current page always self-references.
+  alternates[currentLocale] = `${base}${cleanPath}`
+
+  if (availableLocales) {
+    for (const locale of availableLocales) {
+      if (locale === currentLocale) continue
+      const localized = localePaths?.[locale]
+      // Without an explicit mapping, the English path is used as-is.
+      if (localePaths && localized === undefined) continue
+      const target = localized ?? cleanPath
+      alternates[locale] = `${base}/${locale}${target.startsWith("/") ? target : `/${target}`}`
+    }
+  }
+
+  alternates["x-default"] = `${base}${cleanPath}`
+  return alternates
 }
 
 export function buildMetadata(options: MetadataOptions) {

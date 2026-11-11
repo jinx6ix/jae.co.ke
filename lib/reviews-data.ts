@@ -1,3 +1,19 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Sitewide verified review totals
+//
+// These are the live ratings published on the JaeTravel SafariBookings and
+// TripAdvisor profiles (linked from the footer). They are kept in one place
+// so the footer, the Organization schema and the review components all
+// read the same numbers — previously the footer hard-coded "4.9/5 (7
+// reviews)" inline while the schema used different values.
+//
+// If a profile rating changes, update it here only.
+// ─────────────────────────────────────────────────────────────────────────────
+export const SAFARI_BOOKINGS_RATING = 4.9
+export const SAFARI_BOOKINGS_REVIEW_COUNT = 7
+export const TRIP_ADVISOR_RATING = 5.0
+export const TRIP_ADVISOR_REVIEW_COUNT = 4
+
 export interface Review {
   id: number
   tourId: number

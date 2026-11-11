@@ -160,6 +160,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="name"
             name="name"
             type="text"
+            data-toolparamdescription="Full name of the lead traveller"
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
@@ -178,6 +179,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="email"
             name="email"
             type="email"
+            data-toolparamdescription="Email address used to send the hire quotation"
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
@@ -196,6 +198,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="phone"
             name="phone"
             type="tel"
+            data-toolparamdescription="Contact phone number including country code"
             autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
@@ -215,6 +218,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
               id="pickupDate"
               name="pickupDate"
               type="date"
+              data-toolparamdescription="Vehicle pickup date in YYYY-MM-DD format"
               value={formData.pickupDate}
               onChange={handleChange}
               required
@@ -231,6 +235,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
               id="returnDate"
               name="returnDate"
               type="date"
+              data-toolparamdescription="Vehicle return date in YYYY-MM-DD format"
               value={formData.returnDate}
               onChange={handleChange}
               required
@@ -248,6 +253,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
             id="pickupLocation"
             name="pickupLocation"
             type="text"
+            data-toolparamdescription="Hotel, airport, or landmark where the vehicle is collected"
             autoComplete="street-address"
             value={formData.pickupLocation}
             onChange={handleChange}
@@ -265,6 +271,7 @@ export function VehicleBookingForm({ vehicleName, pricePerDay, vehicleId }: Vehi
           <Textarea
             id="message"
             name="message"
+            data-toolparamdescription="Optional requests such as a driver, child seat, or GPS"
             value={formData.message}
             onChange={handleChange}
             placeholder="Driver needed, child seat, GPS, etc."

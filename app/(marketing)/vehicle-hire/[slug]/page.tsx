@@ -15,6 +15,9 @@ import { HeroSlider } from "./components/HeroSlider";
 import { VehicleHighlightGallery } from "./components/VehicleHighlightGallery";
 import { VehicleTypeGallery } from "./components/VehicleGallery";
 import { FleetGallery } from "./components/FleetGallery";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { buildTitle, buildDescription, buildPageHreflang } from "@/lib/metadata";
+import { buildVehicleFaqs } from "@/lib/vehicle-faq";
 
 // Force only known slugs to be generated
 export const dynamicParams = false;
@@ -56,20 +59,28 @@ export async function generateMetadata({
       : `${baseUrl}${vehicle.image}`
     : `${baseUrl}/placeholder.svg?key=vehicle-${vehicle.slug}`
 
+  const pagePath = `/vehicle-hire/${vehicle.slug}`
+
   return {
-    title,
-    description,
+    // `absolute` stops the layout template appending a second
+    // "| JaeTravel Expeditions" — that duplication is what pushed
+    // the title to 75 characters.
+    title: { absolute: buildTitle(title) },
+    description: buildDescription(description),
     keywords: vehicle.keywords,
 
     alternates: {
-      canonical: `${baseUrl}/vehicle-hire/${vehicle.slug}`,
+      canonical: `${baseUrl}${pagePath}`,
+      languages: buildPageHreflang(pagePath, {
+        availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
+      }),
     },
 
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${baseUrl}/vehicle-hire/${vehicle.slug}`,
+      url: `${baseUrl}${pagePath}`,
       images: [
         {
           url: image,
@@ -128,25 +139,27 @@ export default async function VehicleDetailPage({
 
   const relatedVehicles = vehicles.filter((v) => v.id !== vehicle.id).slice(0, 3);
 
+  // Single source of truth: the same array feeds the visible FAQ and
+  // the FAQPage JSON-LD, so schema and page content can never drift.
+  const faqs = buildVehicleFaqs(vehicle);
+
   return (
     <>
       <AllPageSEOSchema type="vehicle" data={vehicle} slug={vehicle.slug} />
 
       <div className="min-h-screen bg-background pb-20">
-        {/* Breadcrumb */}
+        {/* Breadcrumb — <nav aria-label="Breadcrumb"> so crawlers and
+            screen readers can identify the hierarchy. The previous
+            plain <div> row was invisible to both, which is why SAGE
+            reported "No breadcrumb navigation detected". */}
         <section className="border-b border-border bg-muted/40 py-4 sticky top-0 z-10 backdrop-blur-sm">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Link href="/" className="hover:text-foreground transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <Link href="/vehicle-hire" className="hover:text-foreground transition-colors">
-                Vehicle Hire
-              </Link>
-              <ChevronRight className="h-4 w-4" />
-              <span className="font-medium text-foreground">{vehicle.name}</span>
-            </div>
+            <Breadcrumbs
+              items={[
+                { name: "Vehicle Hire", url: "/vehicle-hire" },
+                { name: vehicle.name, url: `/vehicle-hire/${vehicle.slug}` },
+              ]}
+            />
           </div>
         </section>
 
@@ -172,7 +185,7 @@ export default async function VehicleDetailPage({
 
               <PageDate updatedAt="2026-11-10" className="mb-4" />
 
-              <AnswerSummary id="vehicle-answer-summary">
+              <AnswerSummary id="answer-summary">
                 The {vehicle.name} is a custom-adapted 4x4 safari vehicle for hire in Kenya from ${vehicle.pricePerDay} USD per day. It features a pop-up safari roof for wildlife viewing, seating for {vehicle.capacity}, heavy-duty suspension for national park tracks, and optional professional driver-guides.
               </AnswerSummary>
 
@@ -233,7 +246,7 @@ export default async function VehicleDetailPage({
             <div className="grid gap-10 lg:grid-cols-2 max-w-6xl mx-auto">
               <Card className="border-none shadow-lg">
                 <CardContent className="p-8">
-                  <h2 className="mb-6 text-3xl font-bold">Features & Equipment</h2>
+                  <h2 id="features-equipment" className="mb-6 text-3xl font-bold">Features & Equipment</h2>
                   <ul className="space-y-4">
                     {vehicle.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-4 text-lg">
@@ -247,7 +260,7 @@ export default async function VehicleDetailPage({
 
               <Card className="border-none shadow-lg">
                 <CardContent className="p-8">
-                  <h2 className="mb-6 text-3xl font-bold">Technical Specifications</h2>
+                  <h2 id="technical-specifications" className="mb-6 text-3xl font-bold">Technical Specifications</h2>
                   <dl className="space-y-5 text-lg">
                     <div className="flex justify-between border-b pb-3">
                       <dt className="text-muted-foreground">Engine</dt>
@@ -279,7 +292,7 @@ export default async function VehicleDetailPage({
             {vehicle.extras && Object.keys(vehicle.extras).length > 0 && (
               <Card className="mt-12 border-none shadow-lg max-w-4xl mx-auto">
                 <CardContent className="p-8">
-                  <h2 className="mb-6 text-3xl font-bold">Optional Extras</h2>
+                  <h2 id="optional-extras" className="mb-6 text-3xl font-bold">Optional Extras</h2>
                   <ul className="space-y-4">
                     {Object.entries(vehicle.extras).map(([key, value]) => (
                       <li
@@ -302,7 +315,7 @@ export default async function VehicleDetailPage({
         {/* Safari Vehicle Comparison Table */}
         <section className="py-16 border-t border-border bg-background">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+            <h2 id="fleet-comparison" className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
               Safari Vehicle Fleet Comparison
             </h2>
             <p className="mb-6 text-muted-foreground text-center md:text-left">
@@ -360,7 +373,7 @@ export default async function VehicleDetailPage({
         {/* How to Hire a Safari Vehicle in Kenya */}
         <section className="py-16 border-t border-border bg-muted/20">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="mb-6 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+            <h2 id="how-to-hire" className="mb-6 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
               How to Hire a Safari Vehicle in Kenya in 5 Steps
             </h2>
             <div className="grid gap-6 md:grid-cols-5 mt-8">
@@ -406,55 +419,19 @@ export default async function VehicleDetailPage({
         {/* Visible Frequently Asked Questions (Matches FAQPage Schema) */}
         <section className="py-16 border-t border-border bg-background" id="faq">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
+            <h2 id="faq" className="mb-4 text-3xl md:text-4xl font-bold font-serif text-center md:text-left">
               Frequently Asked Questions About {vehicle.name}
             </h2>
             <p className="mb-10 text-muted-foreground text-center md:text-left">
               Common questions about hiring the {vehicle.name} for Kenya and East Africa safaris.
             </p>
             <div className="space-y-6">
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  How much does it cost to hire the {vehicle.name} in Kenya?
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  The {vehicle.name} hire starts from ${vehicle.pricePerDay} USD per day. This includes the vehicle, driver, and fuel for national park areas. Long-term rental discounts are available.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  Is the {vehicle.name} suitable for self-drive safaris in Kenya?
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Yes. We offer both self-drive and guided options for the {vehicle.name}. We recommend a driver-guide for game drives in national parks for the best wildlife experience.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  Can the {vehicle.name} access Masai Mara and Amboseli?
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Absolutely. The {vehicle.name} is fully equipped for all major Kenya safari destinations including Masai Mara, Amboseli, Tsavo, Samburu, and Lake Nakuru.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  Is the {vehicle.name} wheelchair accessible?
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {vehicle.slug === "wheelchair-accessible-vehicle"
-                    ? "Yes! This vehicle is specifically adapted with a German hydraulic lift (400kg capacity), pop-up roof, and medical-grade restraints for wheelchair safari users."
-                    : `This standard ${vehicle.name} is not adapted for wheelchair users. We have a dedicated wheelchair-accessible safari vehicle available — contact us for details.`}
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  What documents are needed to hire a safari vehicle in Kenya?
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  For self-drive rentals, you need a valid international driving permit or domestic license, a valid passport, and to be at least 23 years old. For chauffeur-driven rentals, no driving documents are required.
-                </p>
-              </div>
+              {faqs.map((faq) => (
+                <div key={faq.question} className="rounded-xl border border-border bg-card p-6">
+                  <h3 className="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

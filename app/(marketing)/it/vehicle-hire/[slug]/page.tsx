@@ -15,11 +15,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!vehicle) return { title: "Vehicle Not Found", robots: { index: false, follow: false } }
   const imageUrl = vehicle.image?.startsWith("http") ? vehicle.image : `${BASE_URL}${vehicle.image}`
   return {
-    title: `${vehicle.metaTitle} | JaeTravel Spedizioni`,
+    // The layout template already appends the brand name, so adding
+    // it here produced a doubled title. Build the title once and mark
+    // it absolute so the template is not applied again.
+    // The layout template already appends the brand name, so adding it
+    // here produced a doubled title. The `absolute` flag skips the
+    // template, so append the brand exactly once here instead.
+    title: { absolute: `${vehicle.metaTitle} | JaeTravel Spedizioni` },
     description: vehicle.metaDescription,
     keywords: vehicle.keywords,
     alternates: { canonical: `${BASE_URL}/it/vehicle-hire/${slug}`, languages: buildHreflangAlternates(`/vehicle-hire/${slug}`) },
-    openGraph: { title: vehicle.metaTitle, description: vehicle.metaDescription, url: `${BASE_URL}/it/vehicle-hire/${slug}`, locale: "it_IT", type: "website", images: [{ url: imageUrl, width: 1200, height: 630, alt: vehicle.name }] },
+    openGraph: { title: { absolute: `${vehicle.metaTitle} | JaeTravel Spedizioni` }, description: vehicle.metaDescription, url: `${BASE_URL}/it/vehicle-hire/${slug}`, locale: "it_IT", type: "website", images: [{ url: imageUrl, width: 1200, height: 630, alt: vehicle.name }] },
   }
 }
 
