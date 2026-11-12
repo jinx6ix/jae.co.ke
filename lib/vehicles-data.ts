@@ -190,7 +190,7 @@ export const vehicles: Vehicle[] = [
         "/cad4bd0d-d631-46f7-9d13-7dcc03862600.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 4.9, reviewCount: 187 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",
@@ -300,7 +300,7 @@ export const vehicles: Vehicle[] = [
         "/toyota-prado-vx-dashboard.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 4.8, reviewCount: 143 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",
@@ -410,7 +410,7 @@ export const vehicles: Vehicle[] = [
         "/roof-top-camping-3-night.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 4.9, reviewCount: 98 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",
@@ -520,7 +520,7 @@ export const vehicles: Vehicle[] = [
         "/photography-vehicle-3-photographer.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 5.0, reviewCount: 64 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",
@@ -642,7 +642,7 @@ export const vehicles: Vehicle[] = [
         "/c9e8dbd5-d16a-414c-a61a-e7bfa8014ab2.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 5.0, reviewCount: 47 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",
@@ -752,7 +752,7 @@ export const vehicles: Vehicle[] = [
         "/family-minivan-3-safari.jpg"
       ]
     },
-    aggregateRating: { ratingValue: 4.7, reviewCount: 211 },
+    aggregateRating: { ratingValue: 4.9, reviewCount: 21 },
     destinations: [
       "Masai Mara National Reserve",
       "Amboseli National Park",

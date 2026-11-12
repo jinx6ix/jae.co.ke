@@ -487,7 +487,7 @@ export default function GorillaTrekkingToursPage() {
                   description={tour.shortDescription || "Guaranteed permit, expert trackers, 1-hour with gorillas – luxury lodge & transfers."}
                   price={tour.price ?? 2200}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 150 + index * 25}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.location || "Uganda / Rwanda"}
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="Permits included"

@@ -39,7 +39,7 @@ const schema = {
       telephone: "+254726485228",
       email: "info@jaetravel.co.ke",
       address: { "@type": "PostalAddress", addressCountry: "KE", addressLocality: "Nairobi" },
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", bestRating: "5", reviewCount: "723" },
+      aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", bestRating: "5", reviewCount: "21" },
       knowsLanguage: ["Français","English","Deutsch","Italiano","हिंदी","العربية","中文"],
     },
     {
@@ -70,7 +70,7 @@ export default function FrenchHomePage() {
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-            <span>⭐ 5.0 · 723+ avis vérifiés</span>
+            <span>⭐ 5.0 · 21+ avis vérifiés</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
             Safaris Inoubliables<br className="hidden md:block" /> en Afrique de l'Est
@@ -94,7 +94,7 @@ export default function FrenchHomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { num: "723+", label: "Avis 5 étoiles" },
+              { num: "21+", label: "Avis 5 étoiles" },
               { num: "15+", label: "Ans d'expérience" },
               { num: "4 pays", label: "Afrique de l'Est" },
               { num: "24/7", label: "Support client" },

@@ -32,7 +32,7 @@ const vehicleHireSchema = {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
-        "reviewCount": "723"
+        "reviewCount": "21"
       },
       "review": [
         {
@@ -159,7 +159,7 @@ const vehicleHireSchema = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "723"
+        "reviewCount": "21"
       }
     },
     {
@@ -184,7 +184,7 @@ const vehicleHireSchema = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "723"
+        "reviewCount": "21"
       }
     },
     {
@@ -208,7 +208,7 @@ const vehicleHireSchema = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "723"
+        "reviewCount": "21"
       }
     },
     {
@@ -232,7 +232,7 @@ const vehicleHireSchema = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "723"
+        "reviewCount": "21"
       }
     },
 

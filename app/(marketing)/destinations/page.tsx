@@ -262,7 +262,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // Server Component: Page
 // ————————————————————————
-export default function DestinationsPage() {
+export default async function DestinationsPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA — WITH IMAGEOBJECT! */}
@@ -272,9 +272,9 @@ export default function DestinationsPage() {
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            ...buildReviewsArraySchema("https://www.jaetravel.co.ke/destinations"),
-            ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations")
-              ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations")!]
+            ...(await buildReviewsArraySchema("https://www.jaetravel.co.ke/destinations")),
+            ...((await buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations"))
+              ? [(await buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations"))!]
               : []),
           ],
         }}

@@ -55,9 +55,9 @@ export default async function GalleryPage() {
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            ...buildReviewsArraySchema("https://www.jaetravel.co.ke/blog/blog-gallery"),
-            ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/blog/blog-gallery")
-              ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/blog/blog-gallery")!]
+            ...(await buildReviewsArraySchema("https://www.jaetravel.co.ke/blog/blog-gallery")),
+            ...((await buildAggregateRatingSchema("https://www.jaetravel.co.ke/blog/blog-gallery"))
+              ? [(await buildAggregateRatingSchema("https://www.jaetravel.co.ke/blog/blog-gallery"))!]
               : []),
           ],
         }}

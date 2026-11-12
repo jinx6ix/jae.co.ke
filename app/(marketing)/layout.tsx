@@ -40,6 +40,7 @@ import { GooglePreferredSource } from "@/components/GooglePreferredSource"
 import { CreateQuotationButton } from "@/components/create-quotation-button"
 import { CookieConsent } from "@/components/CookieConsent"
 import { BrandShell } from "./_components/BrandShell"
+import { getLiveSourceRatings } from "@/lib/reviews-live"
 import { Toaster } from "@/components/ui/sonner"
 import { WebMcpProvider } from "@/components/WebMcpProvider"
 import "./globals.css"
@@ -154,9 +155,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function MarketingLayout({
+export default async function MarketingLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Live per-platform rating badges for the footer. The footer is a
+  // client component, so the server layout fetches these and passes
+  // them down. Reads the Google Business Profile live when
+  // GOOGLE_PLACES_API_KEY is set; falls back to the static figures
+  // otherwise.
+  const sourceRatings = await getLiveSourceRatings()
+
   return (
     <html
       lang="en"
@@ -239,7 +247,7 @@ export default function MarketingLayout({
             <main id="main-content" className="min-h-screen flex justify-center">
               <div className="w-full max-w-7xl">{children}</div>
             </main>
-            <Footer />
+            <Footer sourceRatings={sourceRatings} />
             <AnalyticsTracker />
             <Analytics />
             <DynamicScripts />

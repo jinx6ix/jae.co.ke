@@ -26,7 +26,7 @@ export default function HindiHomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="मसाई मारा महान प्रवास केन्या सफारी" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ सत्यापित समीक्षाएं</span></div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 21+ सत्यापित समीक्षाएं</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">पूर्वी अफ्रीका में<br className="hidden md:block" /> अविस्मरणीय सफारी 2026</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">विशेषज्ञ गाइड के साथ केन्या, तंजानिया, रवांडा और युगांडा की खोज करें। व्हीलचेयर सुलभ सफारी के विशेषज्ञ।</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

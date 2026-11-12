@@ -8,6 +8,7 @@ import { ArrowRight, Phone, Mail } from "lucide-react"
 import PradoHero from "./PradoHero"
 import PradoSpecs from "./PradoSpecs"
 import { faqSchema } from "./faq-schema"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 
 // ————————————————————————
 // Metadata + JSON-LD
@@ -199,28 +200,11 @@ export default function ToyotaPradoPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-center font-serif text-4xl font-bold">
-          Avis de Nos Clients
-        </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { name: "Sarah M.", location: "Nairobi → Maasai Mara", rating: 5, text: "Le Prado a franchi toutes les pistes boueuses sans problème. Le self-drive était un rêve !" },
-            { name: "John & Lisa", location: "Arusha → Serengeti", rating: 5, text: "Le toit pop-up nous a offert les meilleures vues sur la faune. Fortement recommandé !" },
-            { name: "David K.", location: "Kampala → Bwindi", rating: 5, text: "Le chauffeur était très compétent et la voiture impeccable. Parfait pour le trekking gorilles." }
-          ].map((t, i) => (
-            <div key={i} className="rounded-xl bg-muted/50 p-6">
-              <div className="mb-3 flex text-amber-500">
-                {[...Array(t.rating)].map((_, j) => <span key={j} className="h-5 w-5 fill-current">★</span>)}
-              </div>
-              <p className="mb-3 italic text-muted-foreground">"{t.text}"</p>
-              <p className="text-sm font-semibold">{t.name}</p>
-              <p className="text-xs text-muted-foreground">{t.location}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Avis — avis voyageurs réels publiés */}
+      <ReviewsSlider
+        title="Avis de Nos Clients"
+        subtitle="Avis vérifiés de voyageurs ayant réservé avec Jae Travel."
+      />
 
       {/* FAQ */}
       <section className="mb-16">

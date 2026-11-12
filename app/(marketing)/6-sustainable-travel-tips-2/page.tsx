@@ -82,7 +82,7 @@ const sustainableTravelSchema = {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
-        "reviewCount": "723"
+        "reviewCount": "21"
       }
     },
 

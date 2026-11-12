@@ -489,7 +489,7 @@ export default function NgorongoroSafarisPage() {
                   description={tour.shortDescription || "Private descent into Ngorongoro Crater – black rhinos, Big Five, rim lodge luxury."}
                   price={tour.price ?? 950}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 140 + index * 25}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Ngorongoro Crater, Tanzania"
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

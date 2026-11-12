@@ -668,7 +668,7 @@ export default function AmboseliSafarisPage() {
                   description={tour.shortDescription || "Private safari from Nairobi – baby elephants, Kilimanjaro views, expert guiding."}
                   price={tour.price ?? 1150}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 150 + index * 25}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Amboseli, Kenya"
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

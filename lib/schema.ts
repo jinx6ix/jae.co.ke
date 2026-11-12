@@ -33,7 +33,20 @@ export const ORGANIZATION_ID = `${BASE}/#organization`
 export const WEBSITE_ID = `${BASE}/#website`
 
 /** Canonical Organization / TravelAgency node. */
-export function buildOrganizationNode(logoUrl: string, ogImageUrl: string) {
+export function buildOrganizationNode(
+  logoUrl: string,
+  ogImageUrl: string,
+  /**
+   * The published review data. Passed in from the server component
+   * that fetched it, because this module is imported by client
+   * components and must not fetch anything itself.
+   */
+  reviews?: {
+    rating: number
+    reviewCount: number
+    samples: { author: string; date: string; body: string; rating: number }[]
+  },
+) {
   return {
     "@type": ["TravelAgency", "LocalBusiness", "Organization"],
     "@id": ORGANIZATION_ID,
@@ -83,44 +96,30 @@ export function buildOrganizationNode(logoUrl: string, ogImageUrl: string) {
       "https://www.tripadvisor.com/JaeTravelExpeditions",
       process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_URL,
     ].filter(Boolean),
-    // The real, published ratings across all three platforms. The
-    // previous value was 5.0 from "723" reviews, which did not match
-    // any profile: SafariBookings publishes 4.9/5 from 7 reviews,
-    // TripAdvisor 5.0/5 from 4, and Google Reviews 5.0. See
-    // lib/reviews.ts for the provenance of each figure.
+    // The real, published ratings across all three platforms, passed
+    // in by the caller from lib/reviews-live.ts so this node cannot
+    // drift from the visible slider. The previous value was 5.0 from
+    // "723" reviews, which matched no profile at all: SafariBookings
+    // publishes 4.9/5 from 7 reviews, TripAdvisor 5.0/5 from 4, and
+    // the Google Business Profile publishes 5.0 across 10 ratings.
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: 4.9,
-      reviewCount: 15,
+      ratingValue: reviews?.rating ?? 4.9,
+      reviewCount: reviews?.reviewCount ?? 15,
       bestRating: 5,
       worstRating: 1,
     },
-    review: [
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Arturs" },
-        datePublished: "2026-02-23",
-        reviewBody:
-          "We had 1 day safari. Even tho, that it seems to be quite expensive excursion, this company offered one of the cheapest solution for budget tourists like we were. We did not felt the difference with other groups (from other companies) as all the stops and program is the same - everyone is looking for the same animals, doing stop at the same spots.",
-        reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+    review: (reviews?.samples ?? []).map((review) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: review.author },
+      datePublished: review.date,
+      reviewBody: review.body,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating,
+        bestRating: 5,
       },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Indeep" },
-        datePublished: "2025-12-16",
-        reviewBody:
-          "Grateful what a lovely experience with Anthony nothing was too much trouble.. Very happy. Very friendly service. Anthony was an absolute legend and the accessible safari van was a game changer. Looking forward to next time.",
-        reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Diogo" },
-        datePublished: "2025-11-28",
-        reviewBody:
-          "The tour was great. The day before, we were told everything, including pick up times, and the punctuality was sharp. We embarked on a 4h journey and our guide explained everything and made sure we’d get to see all of the animals. The service was excellent, highly recommend.",
-        reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
-      },
-    ],
+    })),
     priceRange: "$$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Cash, Credit Card, Bank Transfer, PayPal",

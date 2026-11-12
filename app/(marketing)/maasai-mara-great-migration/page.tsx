@@ -40,6 +40,7 @@ import GreatMigrationVehicleCard from "./GreatMigrationVehicleCard";
 // Import your tours data
 import { tours } from "@/lib/tours-data";
 import JsonLd from "@/components/JsonLd";
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 
 // Helper function to safely convert itinerary to array
 const getItineraryArray = (itinerary: string | string[] | undefined) => {
@@ -181,7 +182,7 @@ const pageSchema = {
         "@type": "AggregateRating",
         ratingValue: "5.0",
         bestRating: "5",
-        reviewCount: "723"
+        reviewCount: "21"
       }
     },
     {
@@ -224,7 +225,7 @@ const pageSchema = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: avgRating,
-        reviewCount: "723",
+        reviewCount: "21",
         bestRating: "5",
       },
       category: "Accessible Safari Tours",
@@ -483,7 +484,7 @@ export default function MaasaiMaraGreatMigrationPage() {
               <div className="text-gray-600">Accessible Packages</div>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-2xl">
-              <div className="text-4xl font-bold text-green-700 mb-2">723+</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">21+</div>
               <div className="text-gray-600">Happy Guests</div>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-2xl">
@@ -638,34 +639,12 @@ export default function MaasaiMaraGreatMigrationPage() {
           </div>
         </section>
 
-        {/* ========== TESTIMONIALS SECTION ========== */}
+        {/* ========== REVIEWS SECTION ========== */}
         <section className="mb-32 bg-gray-50 rounded-3xl p-12 md:p-20">
-          <h2 className="text-center font-serif text-4xl md:text-5xl font-bold mb-6">
-            Real Experiences from Our Guests
-          </h2>
-          <h3 className="text-center text-xl text-gray-600 mb-16 max-w-3xl mx-auto">
-            Travelers who witnessed the Great Migration with our accessible packages
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "Sarah M.", location: "United Kingdom", text: "The luxury Masai Mara packages from Jae Travel exceeded all expectations. As a paraplegic for 25 years, I had resigned myself to watching wildlife documentaries from my living room. Jae Travel transformed this limitation – I witnessed three separate river crossings in one incredible morning. The hydraulic lift worked flawlessly on steep riverbanks.", rating: 5 },
-              { name: "James K.", location: "Australia", text: "Twelve years in a wheelchair hadn't dimmed my childhood dream of seeing the Great Migration. When the first wildebeest leaped into the Mara River, tears streamed down my face – not just from the spectacle, but from the realization that their Masai Mara packages had made the impossible accessible.", rating: 5 },
-              { name: "Maria R.", location: "Canada", text: "Traveling with multiple sclerosis requires careful planning, but the Masai Mara packages from Jae Travel anticipated every need. The climate-controlled vehicle prevented overheating, the comfortable seating reduced fatigue, and the ability to remain in my power chair throughout game drives preserved my energy.", rating: 5 }
-            ].map((testimonial, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-md">
-                <div className="flex mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, idx) => (
-                    <Star key={idx} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-6 italic line-clamp-6">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-bold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">{testimonial.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewsSlider
+            title="Real Experiences from Our Guests"
+            subtitle="Verified reviews from travellers who booked with Jae Travel."
+          />
         </section>
 
         {/* ========== FAQ SECTION ========== */}

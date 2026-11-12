@@ -393,7 +393,7 @@ export default function TanzaniaCircuitSafarisPage() {
                   description={tour.shortDescription || "Multi-park Tanzania safari including Serengeti and Ngorongoro."}
                   price={tour.price ?? 950}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 120 + index * 20}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Tanzania"
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

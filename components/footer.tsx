@@ -5,11 +5,21 @@ import Link from "next/link"
 import Script from "next/script"
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react"
 import { YouTubeSubscribe } from "./YouTubeSubscribe"
-import { StarRating } from "./StarRating"
-import { SOURCE_RATINGS } from "@/lib/reviews"
+import { StarRating } from "@/components/StarRating"
+import type { SourceRating } from "@/lib/reviews"
 import { reopenConsent } from "@/lib/consent"
 
-export function Footer() {
+interface FooterProps {
+  /**
+   * The platform rating badges. Passed in by the server layout
+   * because this component is a client component and cannot fetch
+   * the live Google Business Profile itself. Falls back to nothing
+   * until the layout supplies it.
+   */
+  sourceRatings?: SourceRating[]
+}
+
+export function Footer({ sourceRatings = [] }: FooterProps) {
   return (
     <footer className="relative border-t border-border bg-muted/30">
       {/* NOTE: the previous SafariBookings + YourAfricanSafari third-party
@@ -175,7 +185,7 @@ export function Footer() {
             into every page. */}
         <div className="flex justify-center my-8">
           <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-lg bg-muted/50 border border-border">
-            {SOURCE_RATINGS.map((source, index) => (
+            {sourceRatings.map((source, index) => (
               <div key={source.source} className="flex items-center gap-2">
                 {index > 0 && (
                   <div className="hidden sm:block text-muted-foreground">|</div>

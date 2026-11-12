@@ -5,6 +5,7 @@ import {
   WEBSITE_REF,
 } from "@/lib/schema"
 import { buildTourFaqs } from "@/lib/tour-faq"
+import { getLiveReviews } from "@/lib/reviews-live"
 
 interface TourStructuredDataProps {
   tour: {
@@ -24,9 +25,13 @@ interface TourStructuredDataProps {
   }
 }
 
-export function TourStructuredData({ tour }: TourStructuredDataProps) {
+export async function TourStructuredData({ tour }: TourStructuredDataProps) {
   const highlights = tour.highlights || []
   const included = tour.included || []
+
+  // The published aggregate, read live (the Google Business Profile
+  // when GOOGLE_PLACES_API_KEY is set).
+  const { overall } = await getLiveReviews()
 
   // 1. Main TouristTrip (detailed tour info + itinerary)
   const touristTripData = {
@@ -112,37 +117,19 @@ export function TourStructuredData({ tour }: TourStructuredDataProps) {
         "@id": "https://www.jaetravel.co.ke/#organization"
       }
     },
-    "aggregateRating": tour.reviewCount > 0 ? {
+    // The aggregate rating comes from the reviews the site actually
+    // publishes (SafariBookings + Google), not from a per-tour
+    // count. The previous figures were per-tour constants
+    // (128/95/97/64) that matched no published profile, and the
+    // invented Review nodes below were fabricated testimonials.
+    "aggregateRating": overall.reviewCount > 0 ? {
       "@type": "AggregateRating",
-      "ratingValue": tour.rating.toFixed(1),
-      "reviewCount": tour.reviewCount.toString(),
+      "ratingValue": overall.rating.toFixed(1),
+      "reviewCount": overall.reviewCount.toString(),
       "bestRating": "5",
       "worstRating": "1"
     } : undefined,
-    // Add 3 real-looking reviews to increase chances of rich review snippets
-    "review": tour.reviewCount > 0 ? [
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Sarah M.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
-        "datePublished": "2025-08-15",
-        "reviewBody": `The ${tour.title} was absolutely incredible! Amazing wildlife, professional guides, and perfect organization from start to finish. Highly recommend!`
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "David L.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
-        "datePublished": "2025-09-10",
-        "reviewBody": `Outstanding safari experience with the ${tour.title}. Everything was flawless — stunning scenery, knowledgeable guides, and great value. Will definitely book again!`
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Marie D.", "url": `${BASE}/about`, "jobTitle": "Safari Specialist", "image": `${BASE}/logo.png`, "sameAs": [`${BASE}/about`] },
-        "datePublished": "2025-10-05",
-        "reviewBody": `Perfect tour! The ${tour.title} exceeded all expectations — incredible wildlife sightings, comfortable accommodations, and excellent service. 5 stars!`
-      }
-    ] : undefined
+
   }
 
   // Clean undefined fields from productData

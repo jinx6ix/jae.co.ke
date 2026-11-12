@@ -67,7 +67,7 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
           "bestRating": "5",
-          "reviewCount": "723"
+          "reviewCount": "21"
         },
         // 3 avis individuels – Google peut les afficher en rich snippets
         "review": [

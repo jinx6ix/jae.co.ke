@@ -396,7 +396,7 @@ export default function KenyaCircuitSafarisPage() {
                   description={tour.shortDescription || "Multi-park Kenya safari including Masai Mara, Amboseli, and more."}
                   price={tour.price ?? 750}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 130 + index * 20}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Kenya"
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

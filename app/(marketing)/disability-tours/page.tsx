@@ -873,7 +873,7 @@ const disabilityAccommodations = [
 // ──────────────────────────────────────────────────────────────────────────────
 // MAIN PAGE COMPONENT
 // ──────────────────────────────────────────────────────────────────────────────
-export default function DisabilityToursPage() {
+export default async function DisabilityToursPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -894,9 +894,9 @@ export default function DisabilityToursPage() {
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            ...buildReviewsArraySchema("https://www.jaetravel.co.ke/disability-tours"),
-            ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours")
-              ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours")!]
+            ...(await buildReviewsArraySchema("https://www.jaetravel.co.ke/disability-tours")),
+            ...((await buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours"))
+              ? [(await buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours"))!]
               : []),
           ],
         }}

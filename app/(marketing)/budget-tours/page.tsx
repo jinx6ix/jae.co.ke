@@ -324,7 +324,7 @@ const schema = {
 // ============================================
 // MAIN PAGE COMPONENT
 // ============================================
-export default function BudgetToursPage() {
+export default async function BudgetToursPage() {
   return (
     <div className="pb-16">
       {/* Structured Data - Now includes real tour cards */}
@@ -342,9 +342,9 @@ export default function BudgetToursPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
-              ...buildReviewsArraySchema("https://www.jaetravel.co.ke/budget-tours"),
-              ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours")
-                ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours")!]
+              ...(await buildReviewsArraySchema("https://www.jaetravel.co.ke/budget-tours")),
+              ...((await buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours"))
+                ? [(await buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours"))!]
                 : []),
             ],
           }).replace(/</g, "\\u003c"),

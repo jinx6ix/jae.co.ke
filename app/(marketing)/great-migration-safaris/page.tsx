@@ -515,7 +515,7 @@ export default function GreatMigrationSafarisPage() {
                   description={tour.shortDescription || "Private guided safari tracking the Great Migration – river crossings, calving, predators."}
                   price={tour.price ?? 1200}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 160 + index * 30}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Masai Mara / Serengeti"
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

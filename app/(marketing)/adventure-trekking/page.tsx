@@ -436,8 +436,8 @@ export default function AdventureTrekkingPage() {
                   title={tour.title}
                   description={tour.shortDescription || "Guided trekking adventure in East Africa's mountains."}
                   price={tour.price ?? 1100}
-                  rating={tour.rating ?? 4.8}
-                  reviewCount={tour.reviewCount ?? 80 + index * 15}
+                  rating={tour.rating ?? 4.9}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.country || "East Africa"}
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

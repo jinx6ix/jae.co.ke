@@ -603,7 +603,7 @@ export default function SerengetiSafarisPage() {
                   description={tour.shortDescription || "Private guided safari tracking the Great Migration."}
                   price={tour.price ?? 1800}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 160 + index * 30}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Serengeti National Park, Tanzania"
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

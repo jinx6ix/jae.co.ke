@@ -390,7 +390,7 @@ export default function UgandaCircuitSafarisPage() {
                   description={tour.shortDescription || "Multi-park Uganda safari including gorillas, chimps, and wildlife."}
                   price={tour.price ?? 750}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 100 + index * 15}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Uganda"
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

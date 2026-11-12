@@ -28,10 +28,16 @@
 //     aggregate rating and a link to the profile. Inventing review text
 //     would be worse than omitting it.
 //   * Google Reviews — the Google Business Profile for JaeTravel Expeditions
-//     (Karen, Nairobi) is rated 5.0 on Google. Fetching individual Google
-//     reviews requires the Google Places API with a key, which this project
-//     does not have, so again only the verified aggregate rating and a link
-//     are shown.
+//     publishes 5.0 across 10 ratings. Both the aggregate AND the review
+//     text are read live from the Places API (New) via
+//     lib/google-reviews.ts, which requires GOOGLE_PLACES_API_KEY.
+//     Google review text additionally requires the Place Details
+//     Enterprise + Atmosphere SKU; without it the aggregate still loads
+//     but no review bodies are published.
+//
+// The constants below are the FALLBACK, used only when no API key is
+// configured. When a key IS configured, lib/reviews-live.ts replaces
+// them with the live figures.
 //
 // The aggregate ratings below are the numbers published by each platform.
 // The review bodies come only from SafariBookings, whose review page is
@@ -81,8 +87,13 @@ export const SAFARI_BOOKINGS_RATING = 4.9
 export const SAFARI_BOOKINGS_REVIEW_COUNT = 7
 export const TRIP_ADVISOR_RATING = 5.0
 export const TRIP_ADVISOR_REVIEW_COUNT = 4
+// Google Business Profile, read live via the Places API (New) — see
+// lib/google-reviews.ts. The profile publishes 5.0 across 10
+// ratings. The previous value (4) was an unverified placeholder.
+// These constants are the FALLBACK, used only when no API key is
+// configured; lib/reviews-live.ts overrides them with live figures.
 export const GOOGLE_RATING = 5.0
-export const GOOGLE_REVIEW_COUNT = 4
+export const GOOGLE_REVIEW_COUNT = 10
 
 export const SOURCE_RATINGS: SourceRating[] = [
   {

@@ -678,7 +678,7 @@ export default function BirdwatchingSafarisPage() {
                   description={tour.shortDescription || "Expert-guided birding – flamingos, migrants, shoebills & photography in prime hotspots."}
                   price={tour.price ?? 450}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 120 + index * 20}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.location || "East Africa"}
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

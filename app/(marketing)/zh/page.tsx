@@ -26,7 +26,7 @@ export default function ChineseHomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="马赛马拉大迁徙肯尼亚野生动物园" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+条已验证评价</span></div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 21+条已验证评价</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">东非难忘的<br className="hidden md:block" />野生动物园之旅2026</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">在经验丰富的导游陪伴下，探索肯尼亚、坦桑尼亚、卢旺达和乌干达。无障碍轮椅野生动物园专家。</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -346,9 +346,9 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         data={{
           "@context": "https://schema.org",
           "@graph": [
-            ...buildReviewsArraySchema(`https://www.jaetravel.co.ke/destinations/${country}`),
-            ...(buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`)
-              ? [buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`)!]
+            ...(await buildReviewsArraySchema(`https://www.jaetravel.co.ke/destinations/${country}`)),
+            ...((await buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`))
+              ? [(await buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`))!]
               : []),
           ],
         }}

@@ -51,7 +51,7 @@ function buildBlogPageSchema(posts: { slug: string; title: string; image: string
           "@type": "AggregateRating",
           "ratingValue": "5.0",
           "bestRating": "5",
-          "reviewCount": "723"
+          "reviewCount": "21"
         }
       },
 

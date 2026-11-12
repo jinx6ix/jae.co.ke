@@ -26,7 +26,7 @@ export default function ArabicHomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900" dir="rtl">
         <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="الهجرة الكبرى ماساي مارا كينيا سفاري" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · أكثر من 723 تقييم موثق</span></div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · أكثر من 21 تقييم موثق</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">سفاري لا تُنسى<br className="hidden md:block" /> في شرق أفريقيا 2026</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">اكتشف كينيا وتنزانيا ورواندا وأوغندا مع مرشدين خبراء. متخصصون في سفاري مستخدمي كراسي المتحركين.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -56,7 +56,7 @@ const transportSchema = {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
-        "reviewCount": "723"
+        "reviewCount": "21"
       },
       // 3 individual reviews – Google can show stars + review snippets
       "review": [

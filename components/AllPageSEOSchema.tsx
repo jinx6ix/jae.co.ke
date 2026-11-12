@@ -228,13 +228,6 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
   const rating = tour.rating ?? 4.9
   const reviewCount = tour.reviewCount ?? 50
 
-  // ── Real reviews sourced from reviews-data (use actual ones from lib) ──
-  const reviews = [
-    { name: "Sarah Johnson", date: "2025-08-20", body: `The ${tour.title} was absolutely life-changing. Expert guides, incredible wildlife, and flawless logistics. Worth every penny.`, rating: 5 },
-    { name: "David Chen", date: "2025-09-15", body: `Outstanding experience on the ${tour.title}. Saw the Big Five on day one. Professional team, beautiful lodges.`, rating: 5 },
-    { name: "Emma Williams", date: "2025-10-05", body: `Best decision I ever made. The ${tour.title} exceeded every expectation. Perfect organization start to finish.`, rating: 5 },
-  ]
-
   // ── Great Migration dates for Event schema ──
   const migrationEvents = [
     { name: "Wildebeest River Crossing — Masai Mara", start: `${new Date().getFullYear()}-07-01`, end: `${new Date().getFullYear()}-10-31`, location: "Masai Mara National Reserve, Kenya" },
@@ -822,7 +815,7 @@ function buildCategoryPageSchema(
       { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: BASE }, { "@type": "ListItem", position: 2, name: opts.title, item: url }] },
       // FAQ
       { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: [
-        { "@type": "Question", name: `What is the best ${opts.title.toLowerCase()} operator?`, text: `What is the best ${opts.title.toLowerCase()} operator?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions is rated 5/5 with 723+ verified reviews. We specialize in ${opts.title.toLowerCase()} across East Africa with expert local guides and accessible options.` } },
+        { "@type": "Question", name: `What is the best ${opts.title.toLowerCase()} operator?`, text: `What is the best ${opts.title.toLowerCase()} operator?`, acceptedAnswer: { "@type": "Answer", text: `JaeTravel Expeditions is rated 4.9/5 across the traveller reviews published on Google, TripAdvisor and SafariBookings. We specialize in ${opts.title.toLowerCase()} across East Africa with expert local guides and accessible options.` } },
         { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, text: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $450 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
       ]},
       // WEBPAGE

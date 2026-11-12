@@ -342,7 +342,7 @@ export default function FlamingoSafariToursPage() {
                   description={tour.shortDescription || "Private safari from Nairobi – flamingo flocks, rhinos, 450+ bird species at Lake Nakuru."}
                   price={tour.price ?? 450}
                   rating={tour.rating ?? 4.9}
-                  reviewCount={tour.reviewCount ?? 150 + index * 25}
+                  reviewCount={tour.reviewCount ?? 21}
                   location="Lake Nakuru, Kenya"
                   imageUrl={tour.image ? `https://www.jaetravel.co.ke${tour.image}` : fallbackImages[index % fallbackImages.length]}
                   checkInText="All park fees included"

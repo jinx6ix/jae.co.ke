@@ -26,7 +26,7 @@ export default function ItalianHomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="Grande Migrazione Masai Mara Kenya" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ recensioni verificate</span></div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 21+ recensioni verificate</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Safari Indimenticabili<br className="hidden md:block" /> in Africa Orientale 2026</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">Scopri Kenya, Tanzania, Ruanda e Uganda con guide esperte. Specialisti safari accessibili in sedia a rotelle.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

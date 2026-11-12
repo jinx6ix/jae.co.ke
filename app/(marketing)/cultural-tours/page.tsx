@@ -402,8 +402,8 @@ export default function CulturalToursPage() {
                   title={tour.title}
                   description={tour.shortDescription || "Authentic cultural experience with local guides."}
                   price={tour.price ?? 80}
-                  rating={tour.rating ?? 4.7}
-                  reviewCount={tour.reviewCount ?? 60 + index * 10}
+                  rating={tour.rating ?? 4.9}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.country || "East Africa"}
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="All fees included"

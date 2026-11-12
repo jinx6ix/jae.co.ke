@@ -28,7 +28,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-serif font-bold mb-4">Notre Mission</h2>
           <p className="text-gray-700 leading-relaxed mb-6">Rendre les expériences safari africaines accessibles à tous, quel que soit le niveau de mobilité.</p>
           <div className="grid grid-cols-2 gap-4">
-            {[{num:"15+",label:"Years"},{num:"723+",label:"Reviews"},{num:"4",label:"Countries"},{num:"100%",label:"Satisfaction"}].map((s)=>(
+            {[{num:"15+",label:"Years"},{num: "21+",label:"Reviews"},{num:"4",label:"Countries"},{num:"100%",label:"Satisfaction"}].map((s)=>(
               <div key={s.label} className="bg-orange-50 rounded-xl p-4 text-center">
                 <p className="text-2xl font-bold text-orange-500">{s.num}</p>
                 <p className="text-gray-600 text-sm">{s.label}</p>

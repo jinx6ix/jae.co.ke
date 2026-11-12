@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { TourCard } from "@/components/tour-card"
 import { TourReviews } from "@/components/tour-reviews"
+import { getLiveReviews } from "@/lib/reviews-live"
 import fs from "fs/promises"
 import { BookingForm } from "@/components/booking-form"
 import { TourStructuredData } from "@/components/tour-structured-data"
@@ -137,6 +138,11 @@ export default async function TourPage(props: TourPageProps) {
   const { slug } = await props.params
   const staticTour = tours.find((t) => t.slug === slug)
   const cmsTour = await getCmsTourBySlug(slug)
+
+  // The published traveller reviews — SafariBookings (verbatim) plus
+  // the Google Business Profile (live). Read on the server and passed
+  // to the client component, which cannot fetch it itself.
+  const { reviews } = await getLiveReviews()
 
   if (!staticTour && !cmsTour) {
     notFound()
@@ -425,7 +431,7 @@ export default async function TourPage(props: TourPageProps) {
               </section>
 
               {/* Reviews Section */}
-              <TourReviews tourId={Number(tour.id)} tourTitle={tour.title} />
+              <TourReviews reviews={reviews} />
             </div>
 
             {/* Sidebar */}

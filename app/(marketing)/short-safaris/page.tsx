@@ -399,8 +399,8 @@ export default function ShortSafarisPage() {
                   title={tour.title}
                   description={tour.shortDescription || "Private guided short safari from Nairobi."}
                   price={tour.price ?? 150}
-                  rating={tour.rating ?? 4.8}
-                  reviewCount={tour.reviewCount ?? 100 + index * 15}
+                  rating={tour.rating ?? 4.9}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.country || "Kenya"}
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText={`${tour.duration || "1-3 days"} • All fees included`}

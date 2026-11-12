@@ -27,24 +27,28 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { StarRating } from "@/components/StarRating"
-import {
-  getAllReviews,
-  getOverallRating,
-  SOURCE_RATINGS,
-  type SiteReview,
-} from "@/lib/reviews"
+import { getLiveReviews } from "@/lib/reviews-live"
+import type { SiteReview, SourceRating } from "@/lib/reviews"
 
 interface ReviewsSliderProps {
   /** Optional heading override. */
   title?: string
+  /** Optional supporting line under the heading. */
+  subtitle?: string
   /** Limit how many reviews are shown. */
   limit?: number
   /** Render only these sources' badges. */
   className?: string
 }
 
-function ReviewCard({ review }: { review: SiteReview }) {
-  const source = SOURCE_RATINGS.find((s) => s.source === review.source)
+function ReviewCard({
+  review,
+  sourceRatings,
+}: {
+  review: SiteReview
+  sourceRatings: SourceRating[]
+}) {
+  const source = sourceRatings.find((s) => s.source === review.source)
   return (
     <li className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-[calc(33.333%-1rem)]">
       <article className="flex h-full flex-col rounded-xl border border-border bg-card p-6 shadow-sm">
@@ -86,19 +90,31 @@ function ReviewCard({ review }: { review: SiteReview }) {
               })}
             </time>
           </p>
+          {/* Source attribution — required when publishing a platform's
+              review content. */}
+          {review.source === "google" && (
+            <p className="mt-1 text-xs text-muted-foreground">
+              Posted on Google
+            </p>
+          )}
         </footer>
       </article>
     </li>
   )
 }
 
-export function ReviewsSlider({
+export async function ReviewsSlider({
   title = "What our travellers say",
+  subtitle,
   limit = 9,
   className = "",
 }: ReviewsSliderProps) {
-  const reviews = getAllReviews().slice(0, limit)
-  const overall = getOverallRating()
+  // Live data: SafariBookings review text plus the Google Business
+  // Profile (rating, count, and — when the Atmosphere SKU is enabled
+  // — the review text itself). Falls back to the static figures when
+  // no API key is configured.
+  const { reviews: allReviews, sourceRatings, overall } = await getLiveReviews()
+  const reviews = allReviews.slice(0, limit)
 
   if (reviews.length === 0) return null
 
@@ -117,6 +133,11 @@ export function ReviewsSlider({
             >
               {title}
             </h2>
+            {subtitle && (
+              <p className="mx-auto mb-6 max-w-2xl text-sm text-muted-foreground">
+                {subtitle}
+              </p>
+            )}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold">Overall:</span>
@@ -127,7 +148,7 @@ export function ReviewsSlider({
                   size="sm"
                 />
               </div>
-              {SOURCE_RATINGS.map((source) => (
+              {sourceRatings.map((source) => (
                 <div key={source.source} className="flex items-center gap-2">
                   <a
                     href={source.profileUrl}
@@ -156,7 +177,11 @@ export function ReviewsSlider({
             style={{ scrollbarWidth: "thin" }}
           >
             {reviews.map((review) => (
-              <ReviewCard key={review.id} review={review} />
+              <ReviewCard
+                key={review.id}
+                review={review}
+                sourceRatings={sourceRatings}
+              />
             ))}
           </ul>
 

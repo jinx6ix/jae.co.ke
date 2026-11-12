@@ -7,6 +7,7 @@ import CruiserHero from "./CruiserHero"
 import CruiserFeatures from "./CruiserFeatures"
 import CruiserSpecs from "./CruiserSpecs"
 import { faqSchema } from "./faq-schema"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 
 // ————————————————————————
 // Metadata + JSON-LD
@@ -197,25 +198,11 @@ export default function ToyotaLandCruiserPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-center font-serif text-4xl font-bold">
-          What Travelers Say
-        </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { name: "Michael T.", location: "Nairobi → Tsavo", text: "The Land Cruiser never missed a beat. Perfect for long safaris." },
-            { name: "Emma & Family", location: "Arusha → Ngorongoro", text: "7 seats + pop-up roof = best family safari ever!" },
-            { name: "Alex P.", location: "Entebbe → Queen Elizabeth", text: "Driver knew every animal track. Worth every penny." }
-          ].map((t, i) => (
-            <div key={i} className="rounded-xl bg-muted/50 p-6">
-              <p className="mb-3 italic text-muted-foreground">"{t.text}"</p>
-              <p className="text-sm font-semibold">{t.name}</p>
-              <p className="text-xs text-muted-foreground">{t.location}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Reviews — real published traveller reviews */}
+      <ReviewsSlider
+        title="What Travelers Say"
+        subtitle="Verified reviews from travellers who booked with Jae Travel."
+      />
 
       {/* FAQ */}
       <section className="mb-16">

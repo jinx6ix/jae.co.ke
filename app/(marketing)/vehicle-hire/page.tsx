@@ -50,7 +50,7 @@ export const metadata: Metadata = buildPageMetadata({
 })
 
 // ── Structured Data ────────────────────────────────────────────────────────────
-function StructuredData() {
+async function StructuredData() {
   // 1. AutoRental (LocalBusiness)
   const autoRentalSchema = {
     "@context": "https://schema.org",
@@ -134,7 +134,7 @@ function StructuredData() {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 4.9,
-      reviewCount: 750,
+      reviewCount: 21,
       bestRating: 5,
     },
     sameAs: [
@@ -195,8 +195,8 @@ function StructuredData() {
 
   // Real reviews, from the same builder the visible slider uses, so the
   // schema and the page cannot drift.
-  const reviewSchema = buildReviewsArraySchema(`${BASE_URL}/vehicle-hire`)
-  const aggregateRatingSchema = buildAggregateRatingSchema(`${BASE_URL}/vehicle-hire`)
+  const reviewSchema = await buildReviewsArraySchema(`${BASE_URL}/vehicle-hire`)
+  const aggregateRatingSchema = await buildAggregateRatingSchema(`${BASE_URL}/vehicle-hire`)
 
   const schemas = [
     autoRentalSchema,

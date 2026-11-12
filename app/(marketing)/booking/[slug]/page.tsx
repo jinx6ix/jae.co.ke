@@ -33,7 +33,7 @@ function generateTourSchema(tour: typeof tours[0]) {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
           "bestRating": "5",
-          "reviewCount": "723"
+          "reviewCount": "21"
         }
       },
 
@@ -121,7 +121,7 @@ function generateTourSchema(tour: typeof tours[0]) {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
           "bestRating": "5",
-          "reviewCount": "723"
+          "reviewCount": "21"
         }
       },
 

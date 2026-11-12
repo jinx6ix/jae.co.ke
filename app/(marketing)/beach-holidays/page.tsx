@@ -483,8 +483,8 @@ export default function BeachHolidaysPage() {
                   title={tour.title}
                   description={tour.shortDescription || "Relax on East Africa's pristine beaches with luxury accommodations."}
                   price={tour.price ?? 350}
-                  rating={tour.rating ?? 4.8}
-                  reviewCount={tour.reviewCount ?? 70 + index * 15}
+                  rating={tour.rating ?? 4.9}
+                  reviewCount={tour.reviewCount ?? 21}
                   location={tour.country || "East Africa"}
                   imageUrl={tour.image || fallbackImages[index % fallbackImages.length]}
                   checkInText="Beachfront resort"

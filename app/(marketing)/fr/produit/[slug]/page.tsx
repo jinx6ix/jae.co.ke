@@ -91,7 +91,7 @@ export default function FrenchProductPage({ params }: Props) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": product.rating?.toString() || "5.0",
-      "reviewCount": product.reviewCount?.toString() || "723",
+      "reviewCount": product.reviewCount?.toString() || "21",
       "bestRating": "5",
       "worstRating": "1"
     },

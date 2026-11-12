@@ -5,22 +5,25 @@
 // The Organization node previously carried an `aggregateRating` of 5.0 from
 // 723 reviews and three invented review bodies ("David Chen", "Sarah
 // Johnson", "Michael Thompson"). Those numbers and quotes did not match any
-// published profile — the real figures are 4.9/5 from 7 reviews on
-// SafariBookings, 5.0/5 from 4 reviews on TripAdvisor, and 5.0 on Google
-// Reviews.
+// published profile.
+//
+// The real, published figures are:
+//   SafariBookings  4.9/5 from  7 reviews  (review text published)
+//   TripAdvisor     5.0/5 from  4 reviews  (text blocked by a bot wall)
+//   Google          5.0/5 from 10 ratings  (read live via Places API)
+//                             ------------
+//                             21 reviews, weighted 4.97
 //
 // Schema.org requires that a Review's `reviewBody` actually be a review on
-// the page, so only reviews with published text (the SafariBookings ones)
-// are emitted as `Review` nodes. The other two platforms contribute to the
-// site-wide aggregate through their own profile links.
+// the page, so only reviews with published text (SafariBookings, plus
+// Google once the Atmosphere SKU is enabled) are emitted as `Review` nodes.
+// TripAdvisor contributes to the site-wide aggregate through its profile
+// link.
 //
-// One builder, so the schema and the visible slider cannot drift.
+// One builder — lib/reviews-live.ts — so the schema and the visible slider
+// read the same live data and cannot drift.
 
-import {
-  getAllReviews,
-  getOverallRating,
-  SOURCE_RATINGS,
-} from "@/lib/reviews"
+import { getLiveReviews } from "@/lib/reviews-live"
 
 const BASE = "https://www.jaetravel.co.ke"
 
@@ -28,8 +31,8 @@ const BASE = "https://www.jaetravel.co.ke"
  * A Review node for the site's own reviews. Emitted on every page that
  * shows the review slider.
  */
-export function buildReviewSchema(url: string) {
-  const reviews = getAllReviews()
+export async function buildReviewSchema(url: string) {
+  const { reviews } = await getLiveReviews()
   if (reviews.length === 0) return null
 
   return {
@@ -61,8 +64,8 @@ export function buildReviewSchema(url: string) {
  * The site-wide aggregate rating across all three platforms, as an
  * `AggregateRating` node referencing the canonical Organization.
  */
-export function buildAggregateRatingSchema(url: string) {
-  const overall = getOverallRating()
+export async function buildAggregateRatingSchema(url: string) {
+  const { overall } = await getLiveReviews()
   if (!overall.reviewCount) return null
 
   return {
@@ -85,8 +88,9 @@ export function buildAggregateRatingSchema(url: string) {
  * Every review with published text, as `Review` nodes. Use this on pages
  * that show the full slider.
  */
-export function buildReviewsArraySchema(url: string) {
-  return getAllReviews().map((review, index) => ({
+export async function buildReviewsArraySchema(url: string) {
+  const { reviews } = await getLiveReviews()
+  return reviews.map((review, index) => ({
     "@type": "Review",
     "@id": `${url}#review-${review.id}`,
     itemReviewed: {
@@ -107,16 +111,21 @@ export function buildReviewsArraySchema(url: string) {
     name: review.title,
     url: `${url}#reviews`,
     position: index + 1,
+    // Attribution to the platform the review was published on.
+    ...(review.source === "google"
+      ? { publisher: { "@type": "Organization", name: "Google Reviews" } }
+      : { publisher: { "@type": "Organization", name: "SafariBookings" } }),
   }))
 }
 
 /** The platform badges, for a `ItemList` of review sources. */
-export function buildReviewSourcesSchema(url: string) {
+export async function buildReviewSourcesSchema(url: string) {
+  const { sourceRatings } = await getLiveReviews()
   return {
     "@type": "ItemList",
     "@id": `${url}#review-sources`,
     name: "Where our traveller reviews come from",
-    itemListElement: SOURCE_RATINGS.map((source, index) => ({
+    itemListElement: sourceRatings.map((source, index) => ({
       "@type": "ListItem",
       position: index + 1,
       item: {

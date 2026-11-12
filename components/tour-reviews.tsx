@@ -1,26 +1,48 @@
+// components/tour-reviews.tsx
+//
+// Renders the traveller reviews on a tour page.
+//
+// This used to read a hardcoded array from lib/reviews-data.ts — six
+// invented reviews ("Sarah Johnson", "Michael Chen", "Emma Williams",
+// "David Martinez", "Lisa Anderson", "James Wilson") with fabricated
+// testimonial bodies and dates. None of that came from any published
+// profile, and it was rendered to visitors as if it were real.
+//
+// The component now renders ONLY reviews that the site actually
+// publishes: SafariBookings (verbatim, via lib/reviews.ts) and the
+// Google Business Profile (live, via lib/google-reviews.ts). Because
+// those live in a server-only module, the server page fetches them
+// and passes them down as props.
+//
+// It stays a client component because "Show all reviews" is an
+// interaction, but the data is real and server-supplied.
+
 "use client"
 
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Star, ThumbsUp, CheckCircle } from "lucide-react"
-import { reviews } from "@/lib/reviews-data"
+import { Star, CheckCircle } from "lucide-react"
+import type { SiteReview } from "@/lib/reviews"
 
 interface TourReviewsProps {
-  tourId: number
-  tourTitle: string
+  /** The real published reviews. Supplied by the server page. */
+  reviews: SiteReview[]
 }
 
-export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
+export function TourReviews({ reviews }: TourReviewsProps) {
   const [showAll, setShowAll] = useState(false)
 
-  // Get reviews for this tour, or show sample reviews
-  const tourReviews = reviews.filter((r) => r.tourId === tourId)
-  const displayReviews = tourReviews.length > 0 ? tourReviews : reviews.slice(0, 3)
+  if (reviews.length === 0) return null
+
+  const displayReviews = reviews
   const visibleReviews = showAll ? displayReviews : displayReviews.slice(0, 3)
 
-  const averageRating = displayReviews.reduce((acc, r) => acc + r.rating, 0) / displayReviews.length
-  const ratingCounts = [5, 4, 3, 2, 1].map((rating) => displayReviews.filter((r) => r.rating === rating).length)
+  const averageRating =
+    displayReviews.reduce((acc, r) => acc + r.rating, 0) / displayReviews.length
+  const ratingCounts = [5, 4, 3, 2, 1].map(
+    (rating) => displayReviews.filter((r) => r.rating === rating).length
+  )
 
   return (
     <section className="mb-12">
@@ -37,12 +59,16 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
                   <Star
                     key={i}
                     className={`h-5 w-5 ${
-                      i < Math.round(averageRating) ? "fill-yellow-400 text-yellow-400" : "fill-muted text-muted"
+                      i < Math.round(averageRating)
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "fill-muted text-muted"
                     }`}
                   />
                 ))}
               </div>
-              <div className="text-sm text-muted-foreground">Based on {displayReviews.length} reviews</div>
+              <div className="text-sm text-muted-foreground">
+                Based on {displayReviews.length} reviews
+              </div>
             </div>
 
             <div className="space-y-2">
@@ -60,7 +86,9 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
                       }}
                     />
                   </div>
-                  <div className="w-8 text-right text-sm text-muted-foreground">{ratingCounts[index]}</div>
+                  <div className="w-8 text-right text-sm text-muted-foreground">
+                    {ratingCounts[index]}
+                  </div>
                 </div>
               ))}
             </div>
@@ -92,7 +120,9 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
                       <Star
                         key={i}
                         className={`h-4 w-4 ${
-                          i < review.rating ? "fill-yellow-400 text-yellow-400" : "fill-muted text-muted"
+                          i < review.rating
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "fill-muted text-muted"
                         }`}
                       />
                     ))}
@@ -107,12 +137,15 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
               </div>
 
               <h4 className="mb-2 font-semibold">{review.title}</h4>
-              <p className="mb-4 text-muted-foreground leading-relaxed">{review.content}</p>
+              <p className="mb-4 text-muted-foreground leading-relaxed">{review.body}</p>
 
-              <button className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary">
-                <ThumbsUp className="h-4 w-4" />
-                Helpful ({review.helpful})
-              </button>
+              {/* Source attribution — required when publishing a
+                  platform's review content. */}
+              <p className="text-xs text-muted-foreground">
+                {review.source === "google"
+                  ? "Posted on Google"
+                  : "Posted on SafariBookings"}
+              </p>
             </CardContent>
           </Card>
         ))}
@@ -121,7 +154,9 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
       {displayReviews.length > 3 && (
         <div className="mt-6 text-center">
           <Button variant="outline" onClick={() => setShowAll(!showAll)}>
-            {showAll ? "Show Less Reviews" : `Show All ${displayReviews.length} Reviews`}
+            {showAll
+              ? "Show Less Reviews"
+              : `Show All ${displayReviews.length} Reviews`}
           </Button>
         </div>
       )}
@@ -129,7 +164,9 @@ export function TourReviews({ tourId, tourTitle }: TourReviewsProps) {
       {/* Write Review CTA */}
       <Card className="mt-6 bg-primary/5">
         <CardContent className="p-6 text-center">
-          <h3 className="mb-2 font-semibold">Have you experienced this tour?</h3>
+          <h3 className="mb-2 font-semibold">
+            Have you experienced this tour?
+          </h3>
           <p className="mb-4 text-sm text-muted-foreground">
             Share your experience to help other travelers make informed decisions.
           </p>

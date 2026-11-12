@@ -31,7 +31,7 @@ export default function GermanHomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0"><Image src="/masai-mara-migration.jpg" alt="Große Migration Masai Mara Kenia" fill className="object-cover opacity-60" priority /></div>
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 723+ verifizierte Bewertungen</span></div>
+          <div className="inline-flex items-center gap-2 bg-orange-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6"><span>⭐ 5.0 · 21+ verifizierte Bewertungen</span></div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Unvergessliche Ostafrika<br className="hidden md:block" /> Safari 2026</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">Erleben Sie Kenia, Tansania, Ruanda und Uganda mit Expertenführern. Spezialisten für barrierefreie Safaris mit Rollstuhl.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -44,7 +44,7 @@ export default function GermanHomePage() {
       <section className="bg-white border-b py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[{num:"723+",label:"5-Sterne-Bewertungen"},{num:"15+",label:"Jahre Erfahrung"},{num:"4 Länder",label:"Ostafrika"},{num:"24/7",label:"Kundensupport"}].map(({num,label})=>(
+            {[{num: "21+",label:"5-Sterne-Bewertungen"},{num:"15+",label:"Jahre Erfahrung"},{num:"4 Länder",label:"Ostafrika"},{num:"24/7",label:"Kundensupport"}].map(({num,label})=>(
               <div key={label} className="flex flex-col items-center"><span className="text-3xl font-bold text-orange-500">{num}</span><span className="text-gray-600 text-sm mt-1">{label}</span></div>
             ))}
           </div>
