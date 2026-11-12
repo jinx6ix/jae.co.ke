@@ -37,7 +37,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
     openGraph: {
       title: "East Africa Destinations | Kenya, Tanzania, Rwanda, Uganda",
       description: "Discover the best safari destinations in East Africa. From Masai Mara to Serengeti, gorilla trekking to Zanzibar beaches.",
-      images: ["/og-east-africa-destinations.jpg"],
+      images: [
+        "/api/og?title=East%20Africa%20Safari%20Destinations&subtitle=Kenya%2C%20Tanzania%2C%20Rwanda%20and%20Uganda%20%E2%80%94%20wildlife%2C%20culture%20and%20accessible%20adventures",
+      ],
     },
     alternates: {
       canonical: "https://www.jaetravel.co.ke/destination",

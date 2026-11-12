@@ -191,7 +191,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours",
       description: "East Africa's leading wheelchair accessible safari operator with German hydraulic lifts, disability-friendly lodges, and Masai Mara Great Migration 2026 packages.",
       images: [
-        "/og-masai-mara-migration.jpg",
+        // The static /og-masai-mara-migration.jpg does not exist in
+        // /public, so this preview rendered broken. The dynamic OG
+        // route generates a real card instead.
+        "/api/og?title=Wheelchair%20Accessible%20Safaris%20Kenya&subtitle=Adapted%204x4%20Land%20Cruisers%2C%20barrier-free%20lodges%20and%20Masai%20Mara%20Great%20Migration%20tours",
         "/accessible-safari-wheelchair.jpg"
       ],
       type: "website",

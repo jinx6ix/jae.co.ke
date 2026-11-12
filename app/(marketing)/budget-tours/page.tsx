@@ -1,3 +1,7 @@
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
+import { buildPageMetadata } from "@/lib/page-seo"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/budget-tours/page.tsx
 import type { Metadata } from "next";
@@ -32,9 +36,14 @@ const maxPrice = totalTours > 0
 // ============================================
 // METADATA - Title: 60 chars | Description: 115 chars
 // ============================================
-export const metadata: Metadata = {
-  title: "Budget Safaris Kenya 2026 | Cheap Tours from $450",
-  description: "Discover the best budget safaris in Kenya 2026. Masai Mara, Nakuru, Naivasha & Amboseli. Affordable group & private safaris starting from $450. Book now!",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Budget Safaris Kenya 2026 | Affordable Tours from $450",
+  description: "Discover the best budget safaris in Kenya 2026 across Masai Mara, Nakuru, Naivasha and Amboseli. Affordable group and private safaris from $450.",
+  path: "/budget-tours",
+  image:
+    "/api/og?title=Budget%20Safaris%20Kenya%202026&subtitle=Affordable%20group%20and%20private%20safaris%20to%20Masai%20Mara%2C%20Nakuru%20and%20Amboseli%20from%20%24450",
+  imageAlt: "Budget safari tented camp in Masai Mara, Kenya at sunset",
+  availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
   keywords: [
     "budget safaris Kenya 2026", "private safaris Kenya", "tented camps Masai Mara",
     "wildebeest migration safari", "budget safaris Masai Mara", "Masai Mara National Reserve tours",
@@ -48,60 +57,17 @@ export const metadata: Metadata = {
     "Lake Nakuru affordable safaris", "Tsavo budget wildlife tours", "Big Five budget viewing",
     "overland safaris Kenya", "shared safari tours"
   ].join(", "),
-  authors: [{ name: "JaeTravel Expeditions", url: "https://www.jaetravel.co.ke" }],
-  creator: "JaeTravel Expeditions",
-  publisher: "JaeTravel Expeditions",
-  metadataBase: new URL("https://www.jaetravel.co.ke"),
-  alternates: {
-    canonical: "https://www.jaetravel.co.ke/budget-tours",
-    languages: {
-      'en': 'https://www.jaetravel.co.ke/budget-tours',
-      'en-US': 'https://www.jaetravel.co.ke/budget-tours',
-      'en-GB': 'https://www.jaetravel.co.ke/budget-tours',
-      'x-default': 'https://www.jaetravel.co.ke/budget-tours',
+  extra: {
+    authors: [{ name: "JaeTravel Expeditions", url: "https://www.jaetravel.co.ke" }],
+    creator: "JaeTravel Expeditions",
+    publisher: "JaeTravel Expeditions",
+    metadataBase: new URL("https://www.jaetravel.co.ke"),
+    other: {
+      "og:price:amount": "450",
+      "og:price:currency": "USD",
     },
   },
-  openGraph: {
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
-    description: "Experience the Great Wildebeest Migration on affordable budget safaris. Group & private safaris in Masai Mara, Nakuru, Naivasha & Amboseli. Book now!",
-    url: "https://www.jaetravel.co.ke/budget-tours",
-    siteName: "JaeTravel Expeditions",
-    images: [
-      {
-        url: "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Wildebeest migration in Masai Mara National Reserve - budget safaris Kenya, cheap safaris in Kenya",
-        type: "image/jpeg",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Budget Safaris Kenya 2026 | Cheap Masai Mara Tours from $450",
-    description: "Join our group safaris or private safaris to witness the Great Migration. Affordable tented camp stays with unforgettable experiences.",
-    images: ["https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg"],
-    site: "@jaetravel",
-    creator: "@jaetravel",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  other: {
-    "og:price:amount": "450",
-    "og:price:currency": "USD",
-  },
-};
+})
 
 const absoluteUrl = "https://www.jaetravel.co.ke/budget-tours";
 const heroImage = "https://www.jaetravel.co.ke/fantasticafrica-20240806-0001.jpg";
@@ -166,33 +132,10 @@ const schema = {
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5.0",
+        "ratingValue": "4.9",
         "bestRating": "5",
-        "reviewCount": "723"
+        "reviewCount": 15
       },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "David Chen" },
-          "datePublished": "2025-08-20",
-          "reviewBody": "JaeTravel made our budget Masai Mara safari unforgettable! Excellent guides, comfortable camps, and incredible wildlife sightings — especially the wildebeest migration."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sarah Johnson" },
-          "datePublished": "2025-07-15",
-          "reviewBody": "Perfect group safari with JaeTravel! Affordable price, great tented camp, and our guide spotted lions, leopards, and the Big Five."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Michael Thompson" },
-          "datePublished": "2025-09-05",
-          "reviewBody": "Best budget safari experience in Kenya! JaeTravel delivered amazing value — professional team, comfortable transport, and breathtaking views."
-        }
-      ]
     },
 
     // 3. WebSite
@@ -255,7 +198,7 @@ const schema = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": avgRating,
-        "reviewCount": "723",
+        "reviewCount": 15,
         "bestRating": "5",
       },
       "category": "Budget Safari Tours"
@@ -391,6 +334,23 @@ export default function BudgetToursPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
+      {/* Real reviews, from the same builder the visible slider uses. */}
+      <Script
+        id="budget-tours-reviews-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              ...buildReviewsArraySchema("https://www.jaetravel.co.ke/budget-tours"),
+              ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours")
+                ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/budget-tours")!]
+                : []),
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* ========== HERO SECTION ========== */}
       <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -451,6 +411,17 @@ export default function BudgetToursPage() {
           </div>
         </div>
       </section>
+      {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+          screen readers can identify the hierarchy. The page already
+          publishes a BreadcrumbList in its own JSON-LD graph. */}
+      <div className="border-b border-border bg-muted/30 py-4">
+        <div className="container mx-auto px-4">
+          <Breadcrumbs
+            schema={false}
+            items={[{ name: "Budget Tours", url: "/budget-tours" }]}
+          />
+        </div>
+      </div>
 
       {/* ========== STATS SECTION ========== */}
       <section className="py-12 bg-gray-50">
@@ -461,7 +432,7 @@ export default function BudgetToursPage() {
               <div className="text-gray-600">Budget Safari Packages</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-green-700 mb-2">723+</div>
+              <div className="text-4xl font-bold text-green-700 mb-2">15</div>
               <div className="text-gray-600">Happy Travelers</div>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm">
@@ -759,33 +730,6 @@ export default function BudgetToursPage() {
         </div>
       </section>
 
-      {/* ========== TESTIMONIALS SECTION ========== */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-serif text-4xl font-bold">
-            What Our Guests Say About <strong>Budget Safaris in Kenya</strong>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "David Chen", location: "Singapore", text: "JaeTravel made our budget Masai Mara safari unforgettable! Excellent guides, comfortable camps, and incredible wildlife sightings — especially the wildebeest migration.", rating: 5 },
-              { name: "Sarah Johnson", location: "United Kingdom", text: "Perfect group safari with JaeTravel! Affordable price, great tented camp, and our guide spotted lions, leopards, and the Big Five.", rating: 5 },
-              { name: "Michael Thompson", location: "Australia", text: "Best budget safari experience in Kenya! JaeTravel delivered amazing value — professional team, comfortable transport, and breathtaking views.", rating: 5 }
-            ].map((review, i) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-2xl shadow-md">
-                <div className="flex mb-4">
-                  {Array.from({ length: review.rating }).map((_, idx) => (
-                    <Star key={idx} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4 italic">"{review.text}"</p>
-                <p className="font-bold text-gray-900">{review.name}</p>
-                <p className="text-sm text-gray-500">{review.location}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ========== FAQ SECTION ========== */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -844,6 +788,10 @@ export default function BudgetToursPage() {
           </h6>
         </div>
       </section>
+
+      {/* Real reviews from SafariBookings, TripAdvisor and Google. */}
+      <ReviewsSlider title="Traveller reviews of our budget safaris" />
+
     </div>
   );
 }

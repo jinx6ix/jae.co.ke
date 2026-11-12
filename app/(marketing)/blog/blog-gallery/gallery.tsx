@@ -1,5 +1,6 @@
 "use client"
 
+import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { useState, useMemo } from "react"
 import Image from "next/image"
 import { galleryItems, galleryCategories, galleryCountries, GalleryItem } from "@/lib/gallery-data"
@@ -48,6 +49,19 @@ export default function GalleryP({ extraItems = [] }: { extraItems?: GalleryItem
 
   return (
     <>
+      {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+          screen readers can identify the hierarchy. */}
+      <div className="border-b border-border bg-muted/30 py-4">
+        <div className="container mx-auto px-4">
+          <Breadcrumbs
+            items={[
+              { name: "Blog", url: "/blog" },
+              { name: "Gallery", url: "/blog/blog-gallery" },
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-muted/30">
         <div className="absolute inset-0 z-0">

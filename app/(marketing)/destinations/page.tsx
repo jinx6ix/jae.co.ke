@@ -1,3 +1,7 @@
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
+import { buildPageMetadata } from "@/lib/page-seo"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import { CmsPage } from "@/app/(marketing)/_components/CmsPage";
 // app/destinations/page.tsx
@@ -33,9 +37,9 @@ const destinationsSchema = {
       "description": "East Africa’s leading operator of wheelchair-accessible, sustainable safaris in Kenya, Tanzania, Rwanda, and Uganda.",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5.0",
+        "ratingValue": "4.9",
         "bestRating": "5",
-        "reviewCount": "723"
+        "reviewCount": 15
       },
       // Individual reviews – Google can display these as rich snippets + star ratings
       "review": [
@@ -218,10 +222,15 @@ const destinationsSchema = {
 // Metadata + JSON-LD
 // ————————————————————————
 export const generateMetadata = async (): Promise<Metadata> => {
-  return {
-    title: "Top East Africa Safari Destinations ",
+  return buildPageMetadata({
+    title: "East Africa Safari Destinations | Kenya, Tanzania, Rwanda",
     description:
-      "Explore East Africa’s top safari destinations including Kenya, Tanzania, Rwanda & Uganda. Discover wildlife, culture, and accessible adventures.",    
+      "Explore East Africa's top safari destinations across Kenya, Tanzania, Rwanda and Uganda. Discover wildlife, culture, and accessible adventures.",
+    path: "/destinations",
+    image:
+      "/api/og?title=East%20Africa%20Safari%20Destinations&subtitle=Kenya%2C%20Tanzania%2C%20Rwanda%20and%20Uganda%20%E2%80%94%20wildlife%2C%20culture%20and%20accessible%20adventures",
+    imageAlt: "East Africa safari destinations across Kenya, Tanzania, Rwanda and Uganda",
+    availableLocales: [],
     keywords: [
       "East Africa Destinations",
       "Kenya Travel",
@@ -242,26 +251,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "Best Places to Visit in East Africa",
       "Kenya Tanzania Rwanda Uganda Tours",
     ],
-    openGraph: {
-      title: "East Africa Destinations | Kenya, Tanzania, Rwanda, Uganda",
-      description: "Discover the best safari destinations in East Africa. From Masai Mara to Serengeti, gorilla trekking to Zanzibar beaches.",
-      images: ["/og-east-africa-destinations.jpg"],
-    },
-    alternates: {
-      canonical: "https://www.jaetravel.co.ke/destinations",
-      languages: {
-        'en': "https://www.jaetravel.co.ke/destinations",           // Main English/global
-        'en-US': "https://www.jaetravel.co.ke/destinations",       // US
-        'en-GB': "https://www.jaetravel.co.ke/destinations",        // UK (optional)
-        'en-AU': "https://www.jaetravel.co.ke/destinations",        // Australia (optional)
-        'en-CA': "https://www.jaetravel.co.ke/destinations",        // Canada (optional)
-        'x-default': "https://www.jaetravel.co.ke/destinations",    // Fallback
+    extra: {
+      other: {
+        "script:ld+json": JSON.stringify(faqSchema),
       },
     },
-    other: {
-      "script:ld+json": JSON.stringify(faqSchema),
-    },
-  }
+  })
 }
 
 // ————————————————————————
@@ -272,6 +267,18 @@ export default function DestinationsPage() {
     <>
       {/* FULL RICH RESULTS SCHEMA — WITH IMAGEOBJECT! */}
       <JsonLd id="destinations-schema" data={destinationsSchema} />
+      <JsonLd
+        id="destinations-reviews-schema"
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            ...buildReviewsArraySchema("https://www.jaetravel.co.ke/destinations"),
+            ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations")
+              ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/destinations")!]
+              : []),
+          ],
+        }}
+      />
       <CmsPage slug="destinations" fallback={
         <div className="container mx-auto px-4 py-16">
 
@@ -284,6 +291,16 @@ export default function DestinationsPage() {
             From the endless plains of <strong>Masai Mara</strong> and <strong>Serengeti</strong> to the misty mountains of <strong>Volcanoes National Park</strong> and <strong>Bwindi</strong>, 
             discover the best of <strong>Kenya, Tanzania, Rwanda, and Uganda</strong> with expert-guided safari tours, cultural experiences, and accessible travel options.
           </p>
+          {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+              screen readers can identify the hierarchy. The page already
+              publishes a BreadcrumbList in its own JSON-LD graph, so the
+              component's schema is suppressed. */}
+          <div className="mt-4">
+            <Breadcrumbs
+              schema={false}
+              items={[{ name: "Destinations", url: "/destinations" }]}
+            />
+          </div>
         </header>
 
         {/* Introduction Paragraphs */}
@@ -402,6 +419,9 @@ export default function DestinationsPage() {
             </Button>
           </div>
         </section>
+
+        {/* Real reviews from SafariBookings, TripAdvisor and Google. */}
+        <ReviewsSlider title="Traveller reviews of our East Africa safaris" />
       </div>
       } />
     </>

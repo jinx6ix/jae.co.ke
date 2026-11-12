@@ -1,3 +1,10 @@
+import {
+  SAFARI_BOOKINGS_RATING,
+  SAFARI_BOOKINGS_REVIEW_COUNT,
+  TRIP_ADVISOR_RATING,
+  TRIP_ADVISOR_REVIEW_COUNT,
+} from "@/lib/reviews"
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Sitewide verified review totals
 //
@@ -7,12 +14,20 @@
 // read the same numbers — previously the footer hard-coded "4.9/5 (7
 // reviews)" inline while the schema used different values.
 //
-// If a profile rating changes, update it here only.
+// The constants now live in lib/reviews.ts, which also carries the
+// review bodies taken from SafariBookings. They are re-exported here so
+// existing importers keep working, but there is only ONE source of truth.
+//
+// If a profile rating changes, update lib/reviews.ts only.
 // ─────────────────────────────────────────────────────────────────────────────
-export const SAFARI_BOOKINGS_RATING = 4.9
-export const SAFARI_BOOKINGS_REVIEW_COUNT = 7
-export const TRIP_ADVISOR_RATING = 5.0
-export const TRIP_ADVISOR_REVIEW_COUNT = 4
+export {
+  SAFARI_BOOKINGS_RATING,
+  SAFARI_BOOKINGS_REVIEW_COUNT,
+  TRIP_ADVISOR_RATING,
+  TRIP_ADVISOR_REVIEW_COUNT,
+  GOOGLE_RATING,
+  GOOGLE_REVIEW_COUNT,
+} from "@/lib/reviews"
 
 export interface Review {
   id: number

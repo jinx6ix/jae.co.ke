@@ -1,3 +1,8 @@
+import { AnswerSummary } from "@/components/AnswerSummary"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
+import { buildPageMetadata } from "@/lib/page-seo"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -80,9 +85,9 @@ function generateDestinationSchema(destination: typeof destinations[0]) {
         "description": "East Africa’s leading operator of wheelchair-accessible, sustainable safaris in Kenya, Tanzania, Rwanda, and Uganda.",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "5.0",
+          "ratingValue": "4.9",
           "bestRating": "5",
-          "reviewCount": "723"
+          "reviewCount": 15
         },
         // Individual reviews – Google can display rich stars + review snippets
         "review": [
@@ -308,57 +313,17 @@ export async function generateMetadata({
     }
   }
 
-  return {
+  return buildPageMetadata({
     title: destination.metaTitle,
     description: destination.metaDescription,
+    path: `/destinations/${country}`,
+    image: destination.heroImage.startsWith("http")
+      ? destination.heroImage
+      : `${baseUrl}${destination.heroImage}`,
+    imageAlt: destination.metaTitle,
     keywords: destination.keywords,
-
-    alternates: {
-      canonical: `${baseUrl}/destinations/${country}`,
-    },
-
-    openGraph: {
-      title: destination.metaTitle,
-      description: destination.metaDescription,
-      type: "website",
-      url: `${baseUrl}/destinations/${country}`,
-      images: [
-        {
-          url: destination.heroImage.startsWith("http")
-            ? destination.heroImage
-            : `${baseUrl}${destination.heroImage}`,
-          width: 1200,
-          height: 630,
-          alt: destination.metaTitle,
-        },
-      ],
-      siteName: "JaeTravel Expeditions",
-      locale: "en_KE",
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: destination.metaTitle,
-      description: destination.metaDescription,
-      images: [
-        destination.heroImage.startsWith("http")
-          ? destination.heroImage
-          : `${baseUrl}${destination.heroImage}`,
-      ],
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  }
+    availableLocales: [],
+  })
 }
 
 export default async function DestinationPage({ params }: DestinationPageProps) {
@@ -376,6 +341,18 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
     <>
       <AllPageSEOSchema type="destination" data={destination} slug={country} />
       {/* DYNAMIC RICH RESULTS SCHEMA */}
+      <JsonLd
+        id="destination-reviews-schema"
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            ...buildReviewsArraySchema(`https://www.jaetravel.co.ke/destinations/${country}`),
+            ...(buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`)
+              ? [buildAggregateRatingSchema(`https://www.jaetravel.co.ke/destinations/${country}`)!]
+              : []),
+          ],
+        }}
+      />
       <JsonLd 
         id="destination-schema" 
         data={generateDestinationSchema(destination)} 
@@ -392,12 +369,17 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="container absolute bottom-0 left-0 right-0 mx-auto px-4 pb-16">
-            <div className="mb-3 flex items-center gap-2 text-sm text-white/90">
-              <Link href="/destinations" className="hover:underline">
-                Destinations
-              </Link>
-              <span>/</span>
-              <span>{destination.name}</span>
+            {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+                screen readers can identify the hierarchy. The previous
+                plain <div> row was invisible to both. */}
+            <div className="mb-3 text-white/90">
+              <Breadcrumbs schema={false}
+                variant="overlay"
+                items={[
+                  { name: "Destinations", url: "/destinations" },
+                  { name: destination.name, url: `/destinations/${country}` },
+                ]}
+              />
             </div>
             <h1 className="mb-4 font-serif text-5xl font-bold text-white md:text-6xl lg:text-7xl text-balance">
               Discover {destination.name}
@@ -613,6 +595,10 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           </section>
         </div>
       </div>
+
+      {/* Real reviews from SafariBookings, TripAdvisor and Google. */}
+      <ReviewsSlider title="Traveller reviews of our safaris" />
+
     </>
   )
 }

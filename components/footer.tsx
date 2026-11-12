@@ -6,12 +6,7 @@ import Script from "next/script"
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react"
 import { YouTubeSubscribe } from "./YouTubeSubscribe"
 import { StarRating } from "./StarRating"
-import {
-  SAFARI_BOOKINGS_RATING,
-  SAFARI_BOOKINGS_REVIEW_COUNT,
-  TRIP_ADVISOR_RATING,
-  TRIP_ADVISOR_REVIEW_COUNT,
-} from "@/lib/reviews-data"
+import { SOURCE_RATINGS } from "@/lib/reviews"
 import { reopenConsent } from "@/lib/consent"
 
 export function Footer() {
@@ -180,23 +175,26 @@ export function Footer() {
             into every page. */}
         <div className="flex justify-center my-8">
           <div className="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-lg bg-muted/50 border border-border">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm">SafariBookings:</span>
-              <StarRating
-                rating={SAFARI_BOOKINGS_RATING}
-                reviewCount={SAFARI_BOOKINGS_REVIEW_COUNT}
-                source="safaribookings"
-              />
-            </div>
-            <div className="hidden sm:block text-muted-foreground">|</div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm">TripAdvisor:</span>
-              <StarRating
-                rating={TRIP_ADVISOR_RATING}
-                reviewCount={TRIP_ADVISOR_REVIEW_COUNT}
-                source="tripadvisor"
-              />
-            </div>
+            {SOURCE_RATINGS.map((source, index) => (
+              <div key={source.source} className="flex items-center gap-2">
+                {index > 0 && (
+                  <div className="hidden sm:block text-muted-foreground">|</div>
+                )}
+                <a
+                  href={source.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-sm underline-offset-2 hover:underline"
+                >
+                  {source.label}:
+                </a>
+                <StarRating
+                  rating={source.rating}
+                  reviewCount={source.reviewCount}
+                  source={source.source}
+                />
+              </div>
+            ))}
           </div>
         </div>
 

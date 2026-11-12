@@ -5,6 +5,11 @@
 // Keywords: safari vehicle hire Kenya, 4x4 rental, land cruiser hire
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
+import { AnswerSummary } from "@/components/AnswerSummary"
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
+import { buildPageMetadata } from "@/lib/page-seo"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { vehicles } from "@/lib/vehicles-data"
@@ -19,11 +24,16 @@ import { Button } from "@/components/ui/button"
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
-export const metadata: Metadata = {
-  title: "Safari Vehicle Hire Kenya | Tour Van Rental Nairobi",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Safari Vehicle Hire Kenya | 4x4 Safari Vehicle Rental",
   description:
-  "Hire safari vehicles in Kenya from $80/day. 4x4 Land Cruisers & vans for Masai Mara, Amboseli & Tsavo.",
-    keywords: [
+    "Hire safari vehicles in Kenya from $80 per day. 4x4 Land Cruisers and tour vans for Masai Mara, Amboseli and Tsavo, with driver or self-drive.",
+  path: "/vehicle-hire",
+  image:
+    "/api/og?title=Safari%20Vehicle%20Hire%20Kenya&subtitle=4x4%20Land%20Cruisers%20and%20tour%20vans%20for%20Masai%20Mara%2C%20Amboseli%20and%20Tsavo%20with%20driver%20or%20self-drive",
+  imageAlt: "Safari vehicle hire Kenya — 4x4 Land Cruiser fleet ready for a safari",
+  availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
+  keywords: [
     "safari vehicle hire kenya",
     "4x4 safari land cruiser rental kenya",
     "tour van hire nairobi",
@@ -37,57 +47,7 @@ export const metadata: Metadata = {
     "how much does it cost to hire a safari vehicle in kenya",
     "best safari vehicle kenya",
   ],
-  alternates: {
-    canonical: `${BASE_URL}/vehicle-hire`,
-    languages: {
-      "en": `${BASE_URL}/vehicle-hire`,
-      "fr": `${BASE_URL}/fr/vehicle-hire`,
-      "de": `${BASE_URL}/de/vehicle-hire`,
-      "it": `${BASE_URL}/it/vehicle-hire`,
-      "hi": `${BASE_URL}/hi/vehicle-hire`,
-      "ar": `${BASE_URL}/ar/vehicle-hire`,
-      "zh": `${BASE_URL}/zh/vehicle-hire`,
-      "x-default": `${BASE_URL}/vehicle-hire`,
-    },
-  },
-  openGraph: {
-    title: "Safari Vehicle Hire Kenya | 4x4 Land Cruiser & Tour Van Rental",
-    description:
-      "Hire safari vehicles in Kenya from $80/day. Fleet of 4x4 Land Cruisers and tour vans for Masai Mara, Amboseli & Tsavo — with driver or self-drive.",
-    type: "website",
-    url: `${BASE_URL}/vehicle-hire`,
-    images: [
-      {
-        url: `${BASE_URL}/og-vehicle-hire.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Safari vehicle hire Kenya — 4x4 Land Cruiser fleet",
-      },
-    ],
-    siteName: "Jae Travel Expeditions",
-    locale: "en_KE",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Safari Vehicle Hire Kenya | 4x4 Land Cruiser Rental from $80/day",
-    description:
-      "Fleet of 4x4 Land Cruisers and safari vans. Masai Mara, Amboseli, Tsavo. With driver or self-drive. Fully insured.",
-    images: [`${BASE_URL}/og-vehicle-hire.jpg`],
-    creator: "@jaetravel",
-    site: "@jaetravel",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-}
+})
 
 // ── Structured Data ────────────────────────────────────────────────────────────
 function StructuredData() {
@@ -106,7 +66,10 @@ function StructuredData() {
       width: 300,
       height: 100,
     },
-    image: `${BASE_URL}/og-vehicle-hire.jpg`,
+    // The static /og-vehicle-hire.jpg does not exist in /public, so
+    // this preview rendered broken. The dynamic OG route generates a
+    // real 1200x630 card instead.
+    image: `${BASE_URL}/api/og?title=Safari%20Vehicle%20Hire%20Kenya&subtitle=4x4%20Land%20Cruisers%20and%20tour%20vans%20with%20driver%20or%20self-drive`,
     telephone: "+254-XXX-XXX-XXX",
     email: "info@jaetravel.co.ke",
     address: {
@@ -230,7 +193,20 @@ function StructuredData() {
     dateModified: new Date().toISOString(),
   }
 
-  const schemas = [autoRentalSchema, itemListSchema, breadcrumbSchema, webPageSchema, faqSchema]
+  // Real reviews, from the same builder the visible slider uses, so the
+  // schema and the page cannot drift.
+  const reviewSchema = buildReviewsArraySchema(`${BASE_URL}/vehicle-hire`)
+  const aggregateRatingSchema = buildAggregateRatingSchema(`${BASE_URL}/vehicle-hire`)
+
+  const schemas = [
+    autoRentalSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    webPageSchema,
+    faqSchema,
+    ...(aggregateRatingSchema ? [aggregateRatingSchema] : []),
+    ...reviewSchema,
+  ]
 
   return (
     <>
@@ -365,6 +341,14 @@ export default function VehicleHirePage() {
           </div>
         </div>
       </section>
+        {/* Breadcrumb — <nav aria-label="Breadcrumb"> so crawlers and
+            screen readers can identify the hierarchy. */}
+        <div className="border-b border-border bg-muted/30 py-4">
+          <div className="container mx-auto px-4">
+            <Breadcrumbs schema={false} items={[{ name: "Vehicle Hire", url: "/vehicle-hire" }]} />
+          </div>
+        </div>
+
 
       {/* ── SEO INTRO TEXT ─────────────────────────────────────────────────── */}
       <section className="py-14 bg-background" aria-labelledby="intro-heading">
@@ -645,6 +629,10 @@ export default function VehicleHirePage() {
           </div>
         </div>
       </section>
+
+      {/* Real reviews from SafariBookings, TripAdvisor and Google —
+          rendered server-side with no third-party JavaScript. */}
+      <ReviewsSlider title="Traveller reviews of our safari vehicles" />
     </>
   )
 }

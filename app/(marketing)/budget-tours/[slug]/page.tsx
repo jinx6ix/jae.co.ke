@@ -1,3 +1,6 @@
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildPageMetadata } from "@/lib/page-seo"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/budget-tours/[slug]/page.tsx
 import type { Metadata, ResolvingMetadata } from "next";
@@ -74,49 +77,21 @@ export async function generateMetadata(
 
   const absoluteImageUrl = `https://www.jaetravel.co.ke${tour.image.startsWith('/') ? tour.image : `/${tour.image}`}`;
 
-  return {
+  return buildPageMetadata({
     title: tour.title,
     description: tour.metaDescription,
+    path: tour.url ?? `/budget-tours/${params.slug}`,
+    image: absoluteImageUrl,
+    imageAlt: tour.title,
     keywords: tour.keywords.join(", "),
-    alternates: {
-      canonical: `https://www.jaetravel.co.ke${tour.url}`,
-      languages: {
-        en: `https://www.jaetravel.co.ke${tour.url}`,
-        "en-US": `https://www.jaetravel.co.ke${tour.url}`,
-        "en-GB": `https://www.jaetravel.co.ke${tour.url}`,
-        "en-AU": `https://www.jaetravel.co.ke${tour.url}`,
-        "en-CA": `https://www.jaetravel.co.ke${tour.url}`,
-        "x-default": `https://www.jaetravel.co.ke${tour.url}`,
+    availableLocales: [],
+    extra: {
+      twitter: {
+        card: "summary_large_image",
+        creator: "@jaetravelke",
       },
     },
-    openGraph: {
-      title: tour.title,
-      description: tour.metaDescription,
-      url: `https://www.jaetravel.co.ke${tour.url}`,
-      siteName: "JaeTravel Expeditions",
-      images: [
-        {
-          url: absoluteImageUrl,
-          width: 1200,
-          height: 630,
-          alt: tour.title,
-        },
-      ],
-      locale: "en_US",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: tour.title,
-      description: tour.metaDescription,
-      images: [absoluteImageUrl],
-      creator: "@jaetravelke",
-    },
-    other: {
-      "og:price:amount": tour.price.toString(),
-      "og:price:currency": "USD",
-    },
-  };
+  })
 }
 
 export async function generateStaticParams() {
@@ -313,6 +288,19 @@ export default async function TourDetailPage(props: Props) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section with optimized image */}
         <TourHero tour={tour} />
+
+        {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+            screen readers can identify the hierarchy. The page already
+            publishes a BreadcrumbList in its own JSON-LD graph. */}
+        <div className="mt-4">
+          <Breadcrumbs
+            schema={false}
+            items={[
+              { name: "Budget Tours", url: "/budget-tours" },
+              { name: tour.title, url: tour.url ?? `/budget-tours/${params.slug}` },
+            ]}
+          />
+        </div>
       </main>
 
       <TourSectionNav />
@@ -508,6 +496,10 @@ export default async function TourDetailPage(props: Props) {
 
       {/* Add padding to bottom to account for sticky CTA */}
       <div className="h-20 lg:h-24" />
+
+      {/* Real reviews from SafariBookings, TripAdvisor and Google. */}
+      <ReviewsSlider title="Traveller reviews of this safari" />
+
     </div>
   );
 }

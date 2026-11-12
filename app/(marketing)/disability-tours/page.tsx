@@ -1,3 +1,7 @@
+import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
+import { buildPageMetadata } from "@/lib/page-seo"
 import { AllPageSEOSchema } from "@/components/AllPageSEOSchema"
 // app/disability-tours/page.tsx
 import type { Metadata } from "next"
@@ -135,10 +139,15 @@ import JsonLd from "@/components/JsonLd"
 // ──────────────────────────────────────────────────────────────────────────────
 // METADATA — MAXIMUM KEYWORD DENSITY + 2026 TIMELINESS
 // ──────────────────────────────────────────────────────────────────────────────
-export const metadata: Metadata = {
-  title: "Wheelchair Accessible Safari Kenya 2026",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Wheelchair Accessible Safari Kenya 2026 | Accessible Tours",
   description:
-    "Wheelchair-accessible safaris in Kenya 2026. Lift-equipped 4x4 vehicles, barrier-free lodges & Masai Mara Great Migration tours in East Africa.",
+    "Wheelchair-accessible safaris in Kenya 2026. Lift-equipped 4x4 vehicles, barrier-free lodges and Masai Mara Great Migration tours across East Africa.",
+  path: "/disability-tours",
+  image:
+    "/api/og?title=Wheelchair%20Accessible%20Safari%20Kenya&subtitle=Lift-equipped%204x4%20vehicles%2C%20barrier-free%20lodges%20and%20Masai%20Mara%20Great%20Migration%20tours",
+  imageAlt: "Wheelchair accessible safari in Kenya — hydraulic lift vehicle at a game drive",
+  availableLocales: [],
   keywords: [
     "wheelchair accessible safari kenya",
     "wheelchair accessible safari kenya 2026",
@@ -170,31 +179,8 @@ export const metadata: Metadata = {
     "gorilla trekking wheelchair rwanda",
     "accessible wildlife viewing kenya",
   ],
-  openGraph: {
-    title:
-      "Wheelchair Accessible Safari Kenya 2026 | Hydraulic Lift Vehicles + Inclusive Tours",
-    description:
-      "East Africa's leading wheelchair accessible safari specialist – German hydraulic lifts, disability-friendly lodges, Masai Mara 2026 packages, gorilla trekking Rwanda.",
-    images: [
-      "/accessible-safari-wheelchair.jpg",
-      "/og-wheelchair-accessible-safari-kenya.jpg",
-    ],
-    url: "https://www.jaetravel.co.ke/disability-tours",
-    type: "website",
-  },
-  alternates: {
-    canonical: "https://www.jaetravel.co.ke/disability-tours",
-    languages: {
-      en: "https://www.jaetravel.co.ke/disability-tours",
-      "en-US": "https://www.jaetravel.co.ke/disability-tours",
-      "en-GB": "https://www.jaetravel.co.ke/disability-tours",
-      "en-AU": "https://www.jaetravel.co.ke/disability-tours",
-      "en-CA": "https://www.jaetravel.co.ke/disability-tours",
-      "x-default": "https://www.jaetravel.co.ke/disability-tours",
-    },
-  },
-  robots: "index, follow",
-}
+
+})
 
 // ──────────────────────────────────────────────────────────────────────────────
 // SCHEMA — RICH RESULTS (reviews, FAQ, video, image gallery, breadcrumbs)
@@ -249,7 +235,7 @@ const schema = {
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5.0",
+        "ratingValue": "4.9",
         "bestRating": "5",
         "reviewCount": "142",
         "ratingCount": "142",
@@ -903,6 +889,18 @@ export default function DisabilityToursPage() {
       <CmsPage slug="disabilities" fallback={
     <div className="pb-16">
       <JsonLd id="page-structured-data" data={schema} />
+      <JsonLd
+        id="disability-tours-reviews-schema"
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            ...buildReviewsArraySchema("https://www.jaetravel.co.ke/disability-tours"),
+            ...(buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours")
+              ? [buildAggregateRatingSchema("https://www.jaetravel.co.ke/disability-tours")!]
+              : []),
+          ],
+        }}
+      />
 
       {/* ========== HERO SECTION ========== */}
       <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
@@ -933,6 +931,15 @@ export default function DisabilityToursPage() {
               vehicles, barrier-free lodges, Masai Mara Great Migration 2026 dates, and gorilla
               trekking Rwanda.
             </p>
+          {/* Breadcrumb - <nav aria-label="Breadcrumb"> so crawlers and
+              screen readers can identify the hierarchy. The page already
+              publishes a BreadcrumbList in its own JSON-LD graph. */}
+          <div className="mt-4">
+            <Breadcrumbs
+              schema={false}
+              items={[{ name: "Disability Tours", url: "/disability-tours" }]}
+            />
+          </div>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -1758,6 +1765,10 @@ export default function DisabilityToursPage() {
         </div>
       </section>
     </div> } />
+
+      {/* Real reviews from SafariBookings, TripAdvisor and Google. */}
+      <ReviewsSlider title="Traveller reviews of our accessible safaris" />
+
     </>
   )
 }
