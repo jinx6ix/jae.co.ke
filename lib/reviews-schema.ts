@@ -27,6 +27,9 @@ import { getLiveReviews } from "@/lib/reviews-live"
 
 const BASE = "https://www.jaetravel.co.ke"
 
+/** The JaeTravel Expeditions Google Business Profile. */
+const GOOGLE_PLACE_ID = "ChIJAfGb6b8_1CIRON3uo0CeGuA"
+
 /**
  * A Review node for the site's own reviews. Emitted on every page that
  * shows the review slider.
@@ -105,16 +108,39 @@ export async function buildReviewsArraySchema(url: string) {
       bestRating: 5,
       worstRating: 1,
     },
-    author: { "@type": "Person", name: review.author },
+    author: {
+      "@type": "Person",
+      name: review.author,
+      // Where this reviewer's words are published on this site.
+      url: `${url}#reviews`,
+      // The platform they wrote on is the reviewer's only verifiable
+      // identity link — we do not know, and do not invent, their
+      // employer or job title.
+      sameAs: [
+        review.source === "google"
+          ? `https://www.google.com/maps/search/?api=1&query=place_id:${GOOGLE_PLACE_ID}`
+          : "https://www.safaribookings.com/reviews/p6888",
+      ],
+      worksFor: { "@id": `${BASE}/#organization` },
+    },
     datePublished: review.date,
     reviewBody: review.body,
     name: review.title,
     url: `${url}#reviews`,
     position: index + 1,
-    // Attribution to the platform the review was published on.
-    ...(review.source === "google"
-      ? { publisher: { "@type": "Organization", name: "Google Reviews" } }
-      : { publisher: { "@type": "Organization", name: "SafariBookings" } }),
+    // Attribution to the platform the review was published on. The
+    // publisher needs a `url` of its own: a bare { name } reads as an
+    // incomplete Organization entity to a schema validator, and the
+    // reviewer needs a way to reach the profile the review came from.
+    publisher: {
+      "@type": "Organization",
+      name:
+        review.source === "google" ? "Google Reviews" : "SafariBookings",
+      url:
+        review.source === "google"
+          ? `https://www.google.com/maps/search/?api=1&query=place_id:${GOOGLE_PLACE_ID}`
+          : "https://www.safaribookings.com/reviews/p6888",
+    },
   }))
 }
 

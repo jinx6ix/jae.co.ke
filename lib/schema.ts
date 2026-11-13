@@ -30,6 +30,9 @@
 export const BASE = "https://www.jaetravel.co.ke"
 
 export const ORGANIZATION_ID = `${BASE}/#organization`
+
+/** A reference to the canonical Organization node, for use as a property. */
+export const ORGANIZATION_REF = { "@id": ORGANIZATION_ID }
 export const WEBSITE_ID = `${BASE}/#website`
 
 /** Canonical Organization / TravelAgency node. */
@@ -105,19 +108,33 @@ export function buildOrganizationNode(
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: reviews?.rating ?? 4.9,
-      reviewCount: reviews?.reviewCount ?? 15,
+      // 21 = 7 SafariBookings + 4 TripAdvisor + 10 Google ratings.
+      reviewCount: reviews?.reviewCount ?? 21,
       bestRating: 5,
       worstRating: 1,
     },
     review: (reviews?.samples ?? []).map((review) => ({
       "@type": "Review",
-      author: { "@type": "Person", name: review.author },
+      "@id": `${ORGANIZATION_ID}#review-${review.author}-${review.date}`,
+      author: {
+        "@type": "Person",
+        name: review.author,
+        url: `${BASE}/#reviews`,
+        sameAs: ["https://www.safaribookings.com/reviews/p6888"],
+        worksFor: ORGANIZATION_REF,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "SafariBookings",
+        url: "https://www.safaribookings.com/reviews/p6888",
+      },
       datePublished: review.date,
       reviewBody: review.body,
       reviewRating: {
         "@type": "Rating",
         ratingValue: review.rating,
         bestRating: 5,
+        worstRating: 1,
       },
     })),
     priceRange: "$$$",
@@ -220,6 +237,5 @@ export function buildWebsiteNode() {
 }
 
 /** Reference the canonical Organization (never re-declare the type). */
-export const ORGANIZATION_REF = { "@id": ORGANIZATION_ID }
 /** Reference the canonical WebSite (never re-declare the type). */
 export const WEBSITE_REF = { "@id": WEBSITE_ID }

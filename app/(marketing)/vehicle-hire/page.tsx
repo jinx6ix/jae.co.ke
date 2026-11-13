@@ -8,13 +8,14 @@
 import { buildReviewsArraySchema, buildAggregateRatingSchema } from "@/lib/reviews-schema"
 import { AnswerSummary } from "@/components/AnswerSummary"
 import { Breadcrumbs } from "@/components/Breadcrumbs"
+import { buildVehicleHireMetadata } from "./faq"
 import { ReviewsSlider } from "@/components/ReviewsSlider"
 import { buildPageMetadata } from "@/lib/page-seo"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { vehicles } from "@/lib/vehicles-data"
 import VehicleCard from "./VehicleCard"
-import { faqSchema } from "./faq-schema"
+import { vehicleHireFAQs, buildFAQSchema } from "./faq"
 import {
   MapPin, Shield, Clock, PhoneCall, Star, CheckCircle,
   ChevronRight, ArrowRight,
@@ -24,30 +25,7 @@ import { Button } from "@/components/ui/button"
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.jaetravel.co.ke"
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
-export const metadata: Metadata = buildPageMetadata({
-  title: "Safari Vehicle Hire Kenya | 4x4 Safari Vehicle Rental",
-  description:
-    "Hire safari vehicles in Kenya from $80 per day. 4x4 Land Cruisers and tour vans for Masai Mara, Amboseli and Tsavo, with driver or self-drive.",
-  path: "/vehicle-hire",
-  image:
-    "/api/og?title=Safari%20Vehicle%20Hire%20Kenya&subtitle=4x4%20Land%20Cruisers%20and%20tour%20vans%20for%20Masai%20Mara%2C%20Amboseli%20and%20Tsavo%20with%20driver%20or%20self-drive",
-  imageAlt: "Safari vehicle hire Kenya — 4x4 Land Cruiser fleet ready for a safari",
-  availableLocales: ["fr", "de", "it", "hi", "ar", "zh"],
-  keywords: [
-    "safari vehicle hire kenya",
-    "4x4 safari land cruiser rental kenya",
-    "tour van hire nairobi",
-    "safari jeep rental kenya",
-    "land cruiser hire with driver kenya",
-    "self drive safari car hire kenya",
-    "safari vehicle hire masai mara",
-    "safari vehicle rental prices kenya",
-    "hire safari van pop up roof nairobi",
-    "4x4 land cruiser rental with driver kenya",
-    "how much does it cost to hire a safari vehicle in kenya",
-    "best safari vehicle kenya",
-  ],
-})
+export const metadata: Metadata = buildVehicleHireMetadata()
 
 // ── Structured Data ────────────────────────────────────────────────────────────
 async function StructuredData() {
@@ -145,13 +123,28 @@ async function StructuredData() {
     ],
   }
 
-  // 2. ItemList of vehicles
+  
+  // 5. Person
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    url: BASE_URL,
+    sameAs: [
+      "https://www.facebook.com/jaetravel",
+      "https://www.instagram.com/jaetravel",
+      "https://twitter.com/jaetravel",
+      "https://www.tripadvisor.com/jaetravel",
+    ],
+    jobTitle: "Safari Vehicle Hire Company",
+    image: `${BASE_URL}/logo.png`,
+  }// 2. ItemList of vehicles
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Safari Vehicles for Hire in Kenya",
     description:
       "Full fleet of 4x4 safari Land Cruisers and tour vans available for hire across Kenya, Tanzania, and Uganda.",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
     numberOfItems: vehicles.length,
     itemListElement: vehicles.map((v, i) => ({
       "@type": "ListItem",
@@ -190,13 +183,19 @@ async function StructuredData() {
     inLanguage: "en",
     isPartOf: { "@id": `${BASE_URL}#website` },
     about: { "@id": `${BASE_URL}#organization` },
+    datePublished: "2024-01-01",
     dateModified: new Date().toISOString(),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: "#vehicle-hire-answer-summary",
+    },
   }
 
   // Real reviews, from the same builder the visible slider uses, so the
   // schema and the page cannot drift.
   const reviewSchema = await buildReviewsArraySchema(`${BASE_URL}/vehicle-hire`)
   const aggregateRatingSchema = await buildAggregateRatingSchema(`${BASE_URL}/vehicle-hire`)
+  const faqSchema = buildFAQSchema()
 
   const schemas = [
     autoRentalSchema,
@@ -239,33 +238,8 @@ const destinations = [
   { name: "Serengeti — Tanzania", href: "/destinations/serengeti" },
 ]
 
-// ── FAQ items (visible on page — mirrors faq-schema.ts for consistency) ───────
-const faqItems = [
-  {
-    q: "How much does it cost to hire a safari vehicle in Kenya?",
-    a: "Safari vehicle hire in Kenya starts from $80/day for a Toyota Hiace Safari Van (7 passengers) up to $180/day for a Range Rover Sport luxury 4x4. Our 4x4 Land Cruisers range from $95–$120/day. All rates include comprehensive insurance and 24/7 roadside assistance.",
-  },
-  {
-    q: "Can I hire a safari vehicle with a driver in Kenya?",
-    a: "Yes. All vehicles in our fleet are available with a professional, English-speaking safari driver/guide at an additional $50–$80/day depending on the vehicle. Our drivers are Kenya Professional Safari Guides Association (KPSGA) certified with 5–20 years' experience.",
-  },
-  {
-    q: "What is the best safari vehicle for the Masai Mara?",
-    a: "The Toyota Land Cruiser Prado TX or 78 Series are the top choices for Masai Mara. Both feature pop-up roofs for 360° wildlife viewing, heavy-duty 4x4 systems for black-cotton soil and river crossings, and high ground clearance. For self-drive camping, our 4x4 Rooftop Tent Land Cruiser is ideal.",
-  },
-  {
-    q: "Is fuel included in the safari vehicle hire price?",
-    a: "Fuel is not included in the daily rate — vehicles are supplied with a full tank and must be returned full. Diesel is widely available across Kenya; we provide a refuelling map for remote areas. Our self-drive rooftop tent package includes a 130L long-range tank and spare jerry cans.",
-  },
-  {
-    q: "Can I take the vehicle across the border to Tanzania or Uganda?",
-    a: "Yes. All our vehicles are permitted for cross-border travel throughout East Africa. We handle COMESA insurance extensions, cross-border permits, and customs documentation. An additional cross-border fee applies; contact us for exact pricing for your itinerary.",
-  },
-  {
-    q: "Do you offer wheelchair-accessible safari vehicles?",
-    a: "Yes. Our Wheelchair Accessible Safari Van is certified with a hydraulic folding ramp (500 kg SWL), 4-point wheelchair tie-down system, pop-up roof, and an accessibility-trained driver — ensuring fully inclusive game drives in Masai Mara, Amboseli, and Nairobi National Park.",
-  },
-]
+// ── FAQ items — single source of truth from ./faq.ts ───────
+const faqItems = vehicleHireFAQs
 
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE COMPONENT
@@ -276,38 +250,25 @@ export default function VehicleHirePage() {
       <StructuredData />
 
       {/* ── Breadcrumb nav ─────────────────────────────────────────────────── */}
-      <nav
-        aria-label="Breadcrumb"
-        className="border-b border-border bg-muted/40 py-3 text-sm"
-      >
-        <div className="container mx-auto px-4">
-          <ol className="flex items-center gap-1 text-muted-foreground">
-            <li>
-              <Link href="/" className="hover:text-foreground transition-colors">
-                Home
-              </Link>
-            </li>
-            <li><ChevronRight className="h-3 w-3" /></li>
-            <li className="font-medium text-foreground">Safari Vehicle Hire Kenya</li>
-          </ol>
-        </div>
-      </nav>
-
       {/* ── HERO ───────────────────────────────────────────────────────────── */}
       <header className="bg-gradient-to-br from-primary/10 via-background to-muted/30 py-20 md:py-28 text-center">
         <div className="container mx-auto px-4 max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
             Kenya's #1 Safari Vehicle Hire
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Hire Safari Vehicles in Kenya
-            <span className="block text-primary mt-2">Land Cruisers & Tour Vans</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Reliable 4x4 safari vehicles for tour companies, private guides, and independent
-            travellers. Masai Mara, Amboseli, Tsavo — with driver or self-drive. From{" "}
-            <strong className="text-foreground">$80/day</strong>, fully insured.
-          </p>
+          <h1 id="vehicle-hire-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                      Hire Safari Vehicles in Kenya
+                      <span className="block text-primary mt-2">Land Cruisers & Tour Vans</span>
+                    </h1>
+                    <AnswerSummary id="vehicle-hire-answer-summary">
+                      Reliable 4x4 safari vehicles for tour companies, private guides, and independent travellers across Masai Mara, Amboseli, and Tsavo — with driver or self-drive. From $80/day, fully insured with 24/7 roadside assistance. Choose from Land Cruisers, tour vans, and rooftop tent vehicles for Kenya, Tanzania, and Uganda.
+                    </AnswerSummary>
+
+                    {/* Definition pattern for answer targeting */}
+
+                    <p className="text-muted-foreground text-sm mb-8">
+                      Safari vehicle hire is the practice of renting 4x4 vehicles specifically equipped for wildlife safaris in East Africa. Vehicles typically feature pop-up roofs for game viewing, comprehensive insurance coverage, and are available with professional driver/guides or for self-drive adventurers with proper permits.
+                    </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-base px-8" asChild>
               <Link href="#fleet">
@@ -485,7 +446,7 @@ export default function VehicleHirePage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* With Driver */}
             <div className="rounded-2xl border-2 border-primary/20 bg-card p-8 shadow-sm">
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 id="with-driver-heading" className="text-2xl font-bold mb-4">
                 🧭 Hire with Professional Driver/Guide
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -516,7 +477,7 @@ export default function VehicleHirePage() {
               id="self-drive"
               className="rounded-2xl border-2 border-muted bg-card p-8 shadow-sm"
             >
-              <h3 className="text-2xl font-bold mb-4">🚗 Self-Drive Safari Vehicle</h3>
+              <h3 id="self-drive-heading" className="text-2xl font-bold mb-4">🚗 Self-Drive Safari Vehicle</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Maximum flexibility — drive at your own pace, stop wherever you like, and camp
                 inside national parks. Requires a valid international driving permit and prior
@@ -589,7 +550,7 @@ export default function VehicleHirePage() {
                 key={q}
                 className="rounded-xl border border-border bg-card p-6 shadow-sm"
               >
-                <h3 className="font-semibold text-lg mb-3">{q}</h3>
+                <h3 id="faq-heading" className="font-semibold text-lg mb-3">{q}</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">{a}</p>
               </div>
             ))}
@@ -600,7 +561,7 @@ export default function VehicleHirePage() {
       {/* ── CTA STRIP ──────────────────────────────────────────────────────── */}
       <section className="py-20 bg-primary text-primary-foreground text-center" aria-label="Book now">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Hire a Safari Vehicle in Kenya?
           </h2>
           <p className="text-primary-foreground/80 mb-8 text-lg">
