@@ -1,12 +1,11 @@
 // lib/reviews-schema.ts
-//
 // JSON-LD for the site's real reviews.
-//
+
 // The Organization node previously carried an `aggregateRating` of 5.0 from
 // 723 reviews and three invented review bodies ("David Chen", "Sarah
 // Johnson", "Michael Thompson"). Those numbers and quotes did not match any
 // published profile.
-//
+
 // The real, published figures are:
 //   SafariBookings  4.9/5 from  7 reviews  (review text published)
 //   TripAdvisor     5.0/5 from  4 reviews  (text blocked by a bot wall)
@@ -14,21 +13,22 @@
 //                             ------------
 //                             21 reviews, weighted 4.97
 //
+
 // Schema.org requires that a Review's `reviewBody` actually be a review on
 // the page, so only reviews with published text (SafariBookings, plus
 // Google once the Atmosphere SKU is enabled) are emitted as `Review` nodes.
 // TripAdvisor contributes to the site-wide aggregate through its profile
 // link.
-//
+
 // One builder — lib/reviews-live.ts — so the schema and the visible slider
 // read the same live data and cannot drift.
 
-import { getLiveReviews } from "@/lib/reviews-live"
+import { getLiveReviews } from "@/lib/reviews-live";
 
-const BASE = "https://www.jaetravel.co.ke"
+const BASE = "https://www.jaetravel.co.ke";
 
 /** The JaeTravel Expeditions Google Business Profile. */
-const GOOGLE_PLACE_ID = "ChIJAfGb6b8_1CIRON3uo0CeGuA"
+const GOOGLE_PLACE_ID = "ChIJAfGb6b8_1CIRON3uo0CeGuA";
 
 /**
  * A Review node for the site's own reviews. Emitted on every page that
@@ -63,8 +63,7 @@ export async function buildReviewSchema(url: string) {
   }
 }
 
-/**
- * The site-wide aggregate rating across all three platforms, as an
+/** The site-wide aggregate rating across all three platforms, as an
  * `AggregateRating` node referencing the canonical Organization.
  */
 export async function buildAggregateRatingSchema(url: string) {
@@ -87,8 +86,7 @@ export async function buildAggregateRatingSchema(url: string) {
   }
 }
 
-/**
- * Every review with published text, as `Review` nodes. Use this on pages
+/** Every review with published text, as `Review` nodes. Use this on pages
  * that show the full slider.
  */
 export async function buildReviewsArraySchema(url: string) {
@@ -121,26 +119,12 @@ export async function buildReviewsArraySchema(url: string) {
           ? `https://www.google.com/maps/search/?api=1&query=place_id:${GOOGLE_PLACE_ID}`
           : "https://www.safaribookings.com/reviews/p6888",
       ],
-      worksFor: { "@id": `${BASE}/#organization` },
     },
     datePublished: review.date,
     reviewBody: review.body,
     name: review.title,
     url: `${url}#reviews`,
     position: index + 1,
-    // Attribution to the platform the review was published on. The
-    // publisher needs a `url` of its own: a bare { name } reads as an
-    // incomplete Organization entity to a schema validator, and the
-    // reviewer needs a way to reach the profile the review came from.
-    publisher: {
-      "@type": "Organization",
-      name:
-        review.source === "google" ? "Google Reviews" : "SafariBookings",
-      url:
-        review.source === "google"
-          ? `https://www.google.com/maps/search/?api=1&query=place_id:${GOOGLE_PLACE_ID}`
-          : "https://www.safaribookings.com/reviews/p6888",
-    },
   }))
 }
 
