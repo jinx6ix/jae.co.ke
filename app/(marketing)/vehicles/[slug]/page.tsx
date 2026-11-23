@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+/***import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -219,7 +219,7 @@ const vehicles: Vehicles = {
 
    /* -----------------------------------------------------------
      NEW VEHICLE 1 — Safari Land Cruiser (Wheelchair Accessible)
-     ----------------------------------------------------------- */
+     ----------------------------------------------------------- 
      "safari-land-cruiser": {
       name: "Safari Wheelchair Accessible Land Cruiser – Kenya's #1",
       type: "Premium Safari Land Cruiser",
@@ -305,7 +305,7 @@ const vehicles: Vehicles = {
   
     /* -----------------------------------------------------------
        NEW VEHICLE 2 — Premium Dual Wheelchair Land Cruiser
-       ----------------------------------------------------------- */
+       ----------------------------------------------------------- 
     "premium-land-cruiser": {
       name: "Premium Accessible Land Cruiser – Dual Wheelchair",
       type: "Luxury Safari Land Cruiser",
@@ -472,7 +472,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Comprehensive Structured Data */}
+      {/* Comprehensive Structured Data 
       <JsonLd 
         id="structured-data" 
         data={{
@@ -524,7 +524,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
       />
 
       <div className="container mx-auto px-4 py-12 md:py-20">
-        {/* Enhanced Back Link */}
+        {/* Enhanced Back Link 
         <Button asChild variant="ghost" className="mb-8 group">
           <Link href="/vehicle-hire" className="flex items-center gap-2">
             <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
@@ -533,7 +533,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
         </Button>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Enhanced Image & Content Section */}
+          {/* Enhanced Image & Content Section
           <div className="space-y-8">
             <div className="relative">
               <Image
@@ -549,7 +549,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Technical Specifications */}
+            {/* Technical Specifications
             <div className="bg-white rounded-2xl border p-6 space-y-4">
               <h2 className="text-2xl font-bold text-primary flex items-center gap-2">
                 <Award className="h-6 w-6" />
@@ -565,7 +565,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
                 ))}
               </dl>
 
-              {/* Certifications */}
+              {/* Certifications 
               {vehicle.certifications && (
                 <div className="pt-4">
                   <h3 className="font-bold mb-3">Certifications & Awards</h3>
@@ -581,7 +581,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               )}
             </div>
 
-            {/* Comprehensive SEO Content */}
+            {/* Comprehensive SEO Content 
             <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 space-y-6">
               <h2 className="text-3xl font-bold text-primary">Why We're Kenya's #1 Choice for Accessible Safaris</h2>
               
@@ -604,7 +604,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
                 </ul>
               </div>
 
-              {/* Safari Destinations with Details */}
+              {/* Safari Destinations with Details 
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">Premium Safari Destinations</h3>
                 <div className="grid gap-4">
@@ -622,9 +622,9 @@ export default function VehicleDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Main Content Column */}
+          {/* Main Content Column 
           <div className="space-y-8">
-            {/* Header Section */}
+            {/* Header Section 
             <div className="space-y-6">
               <div className="flex flex-wrap gap-2">
                 <span className="inline-block rounded-full bg-green-600 text-white px-4 py-2 text-sm font-semibold">
@@ -643,7 +643,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
                 {vehicle.description}
               </p>
 
-              {/* Enhanced Pricing */}
+              {/* Enhanced Pricing 
               <div className="bg-primary/5 rounded-2xl p-6">
                 <div className="flex items-baseline gap-4">
                   <div className="text-3xl md:text-4xl font-bold text-primary">{vehicle.price}</div>
@@ -659,7 +659,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Enhanced Specs Grid */}
+            {/* Enhanced Specs Grid 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="rounded-2xl border bg-card p-6">
                 <Users className="h-10 w-10 text-primary mb-4" />
@@ -694,7 +694,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Enhanced Features */}
+            {/* Enhanced Features 
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <Heart className="h-8 w-8 text-red-500" />
@@ -711,7 +711,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* What's Included */}
+            {/* What's Included 
             <div className="bg-blue-50 rounded-2xl p-6">
               <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
                 <CheckCircle className="h-6 w-6 text-blue-600" />
@@ -727,7 +727,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Enhanced CTA Section */}
+            {/* Enhanced CTA Section 
             <div className="space-y-6">
               <div className="text-center bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-2xl p-8">
                 <h3 className="text-2xl font-bold mb-3">Ready for Your Life-Changing Safari?</h3>
@@ -765,7 +765,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Comprehensive FAQ Section */}
+        {/* Comprehensive FAQ Section 
         <section className="mt-20 max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4">Accessible Safari Kenya: Your Questions Answered</h2>
           <p className="text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -819,7 +819,7 @@ export default function VehicleDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Final Trust Building Section */}
+        {/* Final Trust Building Section 
         <div className="text-center py-16 bg-gradient-to-br from-green-50 to-blue-100 rounded-3xl mt-20">
           <div className="max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold mb-6">Join Thousands of Satisfied Travelers</h3>
@@ -853,3 +853,4 @@ export default function VehicleDetailPage({ params }: PageProps) {
     </>
   )
 }
+  */
