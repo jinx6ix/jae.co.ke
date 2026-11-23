@@ -54,16 +54,16 @@ const CONFIG = {
 const pageTours = tours.filter(CONFIG.filterFn).slice(0, 8)
 
 const fallbackImages = [
-  "/images/flamingos-nakuru-1.webp",
-  "/images/flamingos-nakuru-2.webp",
-  "/images/flamingos-nakuru-3.webp",
-  "/images/flamingos-nakuru-4.webp",
+  "/media/WhatsApp Image 2026-11-23 at 12.58.46 PM.webp",
+  "/media/WhatsApp Image 2026-11-23 at 12.59.05 PM.webp",
+  "/media/WhatsApp Image 2026-11-23 at 12.59.28 PM.webp",
+  "/media/WhatsApp Image 2026-11-23 at 1.01.52 PM.webp",
 ]
 
 // Optimized hero images
 const heroImages = {
-  desktop: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
-  mobile: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+  desktop: "/media/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+  mobile: "/media/lake-nakuru-flamingos-in-red-sunset-590x390-300x198.webp",
   alt: "Thousands of pink flamingos wading in Lake Nakuru, Kenya - Jae Travel Expeditions flamingo safari tour"
 }
 
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     description: "Witness thousands of flamingos at Lake Nakuru. Pink horizons, rhino sanctuary, 450+ bird species. Short safaris from Nairobi. Kenya-based operator since 2015.",
     images: [
       {
-        url: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+        url: "/media/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
         width: 590,
         height: 390,
         alt: "Thousands of pink flamingos wading in Lake Nakuru, Kenya - Jae Travel Expeditions flamingo safari tour",
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya",
     description: "Witness thousands of flamingos at Lake Nakuru. Book your 2026 safari from Nairobi.",
-    images: ["/lake-nakuru-flamingos-in-red-sunset-590x390.webp"],
+    images: ["/media/lake-nakuru-flamingos-in-red-sunset-590x390-500x500.webp"],
     creator: "@jaetravel",
   },
   robots: {
@@ -176,7 +176,13 @@ const jsonLd = {
       "@id": "https://www.jaetravel.co.ke/flamingo-safari-tours#product",
       name: "Flamingo Safari Packages 2026",
       description: "Private guided safaris to Lake Nakuru for flamingo viewing, rhino sanctuary, and birdwatching. Includes park fees, 4x4 transport, and expert guide.",
-      image: "https://www.jaetravel.co.ke/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+      image: [
+        { "@type": "ImageObject", url: "https://www.jaetravel.co.ke/media/lake-nakuru-flamingos-in-red-sunset-590x390.webp", width: 590, height: 390, caption: "Flamingos at Lake Nakuru", name: "Flamingos at Lake Nakuru" },
+        { "@type": "ImageObject", url: "https://www.jaetravel.co.ke/media/WhatsApp Image 2026-11-23 at 12.58.46 PM.webp", width: 1067, height: 1600, caption: "Lake Nakuru flamingo safari", name: "Lake Nakuru flamingo safari" },
+        { "@type": "ImageObject", url: "https://www.jaetravel.co.ke/media/WhatsApp Image 2026-11-23 at 12.59.05 PM.webp", width: 1067, height: 1600, caption: "Pink flamingos Lake Nakuru", name: "Pink flamingos Lake Nakuru" },
+        { "@type": "ImageObject", url: "https://www.jaetravel.co.ke/media/WhatsApp Image 2026-11-23 at 12.59.28 PM.webp", width: 1067, height: 1600, caption: "Flamingo safari tour Kenya", name: "Flamingo safari tour Kenya" },
+        { "@type": "ImageObject", url: "https://www.jaetravel.co.ke/media/WhatsApp Image 2026-11-23 at 1.01.52 PM.webp", width: 1067, height: 1600, caption: "Lake Nakuru flamingo viewing", name: "Lake Nakuru flamingo viewing" },
+      ],
       brand: {
         "@type": "Brand",
         name: "Jae Travel Expeditions",
@@ -306,7 +312,7 @@ export default function FlamingoSafariToursPage() {
         categoryOpts={{
           title: "Flamingo Safari Tours Kenya — Lake Nakuru & Bogoria",
           description: "See millions of flamingos on Kenya's Rift Valley lakes. Lake Nakuru, Lake Bogoria safari tours.",
-          image: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+          image: "/media/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("flamingo") || t.title?.toLowerCase().includes("flamingo") || t.description?.toLowerCase().includes("flamingo")) : [],
         }}
       />
