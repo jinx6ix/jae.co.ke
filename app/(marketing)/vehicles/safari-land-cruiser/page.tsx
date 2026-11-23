@@ -205,8 +205,11 @@ export default function SafariLandCruiserPage() {
           image: "/media/landcruiser-pop-up-roof-open-1200x630.jpg",
           description:
             "Toyota Land Cruiser safari vehicle for hire in Kenya. Pop-up roof, 4x4 capability, fully insured from $95/day. Masai Mara, Amboseli, Tsavo.",
+          slug: "safari-land-cruiser",
           pricePerDay: "95",
           priceCurrency: "USD",
+          capacity: "7 passengers",
+          specifications: { fuelType: "Diesel" },
           keywords: [
             "safari land cruiser hire kenya",
             "safari land cruiser rental kenya",
@@ -218,6 +221,10 @@ export default function SafariLandCruiserPage() {
             "/media/landcruiser-luggage-space-1200x630.jpg",
           ],
           ideal: "ideal for Masai Mara, Amboseli, Tsavo and East Africa safaris",
+          metaTitle:
+            "Safari Land Cruiser Hire Kenya | Toyota 4x4 Safari Vehicle Rental",
+          metaDescription:
+            "Hire a Toyota Land Cruiser safari vehicle in Kenya for Masai Mara, Amboseli, Tsavo and beyond. Pop-up roof, 4x4 capability, fully insured, with driver or self-drive from $95/day.",
         }}
         slug="safari-land-cruiser"
       />
