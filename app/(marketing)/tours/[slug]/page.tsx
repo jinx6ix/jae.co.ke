@@ -271,7 +271,6 @@ export default async function TourPage(props: TourPageProps) {
     const dbTourPackage = await prisma.tourPackage.findFirst({
       where: {
         OR: [
-          { slug: slug },
           { title: { contains: tour.title, mode: 'insensitive' } },
         ],
       },

@@ -97,7 +97,6 @@ export async function resolveTourPricing(
       OR: [
         { id: tourIdentifier },
         { title: { contains: tourIdentifier, mode: 'insensitive' } },
-        { slug: tourIdentifier },
       ],
     },
     include: {
