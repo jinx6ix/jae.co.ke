@@ -197,13 +197,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "8",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "350",
-        bestRating: "5",
-        worstRating: "1",
-      },
     },
     {
       "@type": "TouristTrip",
