@@ -308,6 +308,7 @@ function buildTourSchema(tour: any, slug: string, videos?: VideoSchemaInput[]) {
         itinerary: tour.itinerary ? {
           "@type": "ItemList",
           name: `${tour.title} Itinerary`,
+          itemListOrder: "Ascending",
           numberOfItems: typeof tour.itinerary === "string"
             ? tour.itinerary.split(".").filter((s: string) => s.trim()).length
             : (tour.itinerary?.length || 1),
@@ -806,7 +807,7 @@ function buildCategoryPageSchema(
     "@context": "https://schema.org",
     "@graph": [
       // ITEM LIST (Merchant Opportunities)
-      { "@type": "ItemList", "@id": `${url}#list`, name: opts.title, description: opts.description, url, numberOfItems: opts.tours.length, itemListElement: opts.tours.slice(0, 10).map((t, i) => ({ "@type": "ListItem", position: i + 1, url: `${BASE}/tour/${t.slug}`, name: t.title, image: abs(t.image) })) },
+      { "@type": "ItemList", "@id": `${url}#list`, name: opts.title, description: opts.description, url, numberOfItems: opts.tours.length, itemListOrder: "Ascending", itemListElement: opts.tours.slice(0, 10).map((t, i) => ({ "@type": "ListItem", position: i + 1, url: `${BASE}/tour/${t.slug}`, name: t.title, image: abs(t.image) })) },
       // IMAGE
       { "@type": "ImageObject", "@id": `${url}#hero-image`, url: imageUrl, contentUrl: imageUrl, width: 1200, height: 630, name: opts.title, caption: `${opts.title} | JaeTravel Expeditions`, representativeOfPage: true },
       // VIDEO

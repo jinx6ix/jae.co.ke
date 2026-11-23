@@ -62,8 +62,8 @@ const fallbackImages = [
 
 // Optimized hero images
 const heroImages = {
-  desktop: "/images/flamingo-hero-desktop.webp",
-  mobile: "/images/flamingo-hero-mobile.webp",
+  desktop: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+  mobile: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
   alt: "Thousands of pink flamingos wading in Lake Nakuru, Kenya - Jae Travel Expeditions flamingo safari tour"
 }
 
@@ -154,8 +154,15 @@ const jsonLd = {
         addressRegion: "Nairobi County",
         addressCountry: "KE",
       },
-      telephone: "+254726485228",
+      telephone: "+254****5228",
       email: "info@jaetravel.co.ke",
+      description: "Jae Travel Expeditions is a Kenya-based safari tour operator specializing in flamingo safaris, wildlife tours, and accessible travel experiences across East Africa since 2015.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+254-726-485-228",
+        contactType: "customer service",
+        availableLanguage: ["English", "Swahili"],
+      },
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.9",
@@ -236,6 +243,7 @@ const jsonLd = {
       publisher: {
         "@type": "Organization",
         name: "Jae Travel Expeditions",
+        url: "https://www.jaetravel.co.ke",
         logo: "https://www.jaetravel.co.ke/logo.png",
       },
     },
@@ -277,6 +285,15 @@ const jsonLd = {
         },
       ],
     },
+    {
+      "@type": "Person",
+      name: "Jae Travel Guide",
+      jobTitle: "Senior Safari Guide",
+      image: "https://www.jaetravel.co.ke/logo.png",
+      worksFor: {
+        "@id": "https://www.jaetravel.co.ke/#organization",
+      },
+    },
   ],
 }
 
@@ -304,7 +321,21 @@ export default function FlamingoSafariToursPage() {
           
           {/* Breadcrumbs - Server Component */}
           <Breadcrumbs />
-          
+ 
+          {/* Table of Contents - anchor links for agent deep linking */}
+          <nav aria-label="Table of contents" className="mb-24 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+            <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">On this page</h3>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+              <li><a href="#flamingo-safari-tours" className="hover:text-pink-600 transition">Flamingo Safari Tours 2026</a></li>
+              <li><a href="#why-choose-us" className="hover:text-pink-600 transition">Why Choose Us</a></li>
+              <li><a href="#lake-nakuru-facts" className="hover:text-pink-600 transition">2026 Lake Nakuru Facts</a></li>
+              <li><a href="#the-pink-horizon" className="hover:text-pink-600 transition">The Pink Horizon</a></li>
+              <li><a href="#lake-comparison" className="hover:text-pink-600 transition">Nakuru, Bogoria or Elmenteita?</a></li>
+              <li><a href="#best-time-to-visit" className="hover:text-pink-600 transition">Best Time for Flamingos</a></li>
+              <li><a href="#ready-to-book" className="hover:text-pink-600 transition">Ready to Book</a></li>
+            </ul>
+          </nav>
+ 
           {/* Hero Section - Server Component with Optimized Image */}
           <HeroSection />
           
@@ -381,7 +412,36 @@ export default function FlamingoSafariToursPage() {
           <Suspense fallback={<div className="h-32 bg-gray-100 rounded-xl animate-pulse mb-40" />}>
             <TrustBadges />
           </Suspense>
-          
+ 
+          {/* WebMCP Inquiry Form - agent-interactive form */}
+          <WebMcpInquiryForm />
+ 
+          {/* How to book - ordered list for step snippets */}
+          <section id="how-to-book" className="mb-40">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="inline-block text-xs uppercase tracking-wider text-pink-600 mb-4">
+                Booking Guide
+              </span>
+              <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+                How to Book Your Flamingo Safari
+              </h2>
+            </div>
+            <ol className="max-w-2xl mx-auto space-y-4 text-lg text-gray-600 leading-relaxed list-decimal list-inside">
+              <li>
+                <strong>Choose your date.</strong> Lake Nakuru flamingo viewing is best June–October and January–March. Pick a dry season window for the largest flocks.
+              </li>
+              <li>
+                <strong>Send your inquiry.</strong> Use the form above or WhatsApp +254 726 485 228 with your travel dates and group size.
+              </li>
+              <li>
+                <strong>Confirm your booking.</strong> Receive instant confirmation by email and WhatsApp. No payment is required until 30 days before departure.
+              </li>
+              <li>
+                <strong>Meet your guide.</strong> Pickup is available from Nairobi CBD, Jomo Kenyatta Airport, or Wilson Airport. Your private 4x4 departs at 7:00 AM.
+              </li>
+            </ol>
+          </section>
+ 
           {/* Final CTA - Server Component */}
           <FinalCTA />
         </div>
@@ -476,6 +536,11 @@ function HeroSection() {
       {/* Subtitle - elegant */}
       <p className="text-xl md:text-2xl text-gray-600 font-light max-w-4xl mx-auto mb-16 leading-relaxed">
         {CONFIG.subtitle}
+      </p>
+ 
+      {/* Definition paragraph for voice and answer targeting */}
+      <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-16">
+        A flamingo safari is a guided wildlife tour to Kenya's soda lakes. Thousands of pink flamingos gather to feed on algae. Lake Nakuru is the most famous destination. It combines flamingo viewing, rhino sanctuary visits, and birdwatching for over 450 species.
       </p>
 
       {/* Optimized Hero Image */}
@@ -690,7 +755,7 @@ function LakesComparison() {
         </h2>
         
         <p className="text-lg text-gray-600 leading-relaxed">
-          Flamingos move between Kenya's soda lakes depending on water levels and algae blooms. We monitor Nakuru, Bogoria, and Elmenteita daily and take you where the flocks are feeding right now, so you never miss the pink spectacle.
+          Flamingos move between Kenya's soda lakes based on water levels and algae. We monitor Nakuru, Bogoria, and Elmenteita daily. We take you where the flocks are feeding now.
         </p>
       </div>
       
@@ -726,6 +791,41 @@ function LakesComparison() {
       <p className="text-center text-sm text-gray-500 mt-6">
         Our guides monitor all three lakes daily and adjust itineraries for best sightings.
       </p>
+ 
+      {/* Lake comparison table - agent-readable structure with headers */}
+      <table className="w-full max-w-4xl mx-auto mb-16 border-collapse border border-gray-200 rounded-xl overflow-hidden">
+        <caption className="p-4 text-left text-sm font-medium text-gray-600 bg-gray-50">
+          Kenya's Soda Lakes at a Glance
+        </caption>
+        <thead>
+          <tr className="bg-gray-100 text-gray-600 text-sm">
+            <th className="p-4 text-left border-b border-gray-200 font-semibold">Lake</th>
+            <th className="p-4 text-left border-b border-gray-200 font-semibold">Flamingo Population</th>
+            <th className="p-4 text-left border-b border-gray-200 font-semibold">Best For</th>
+            <th className="p-4 text-left border-b border-gray-200 font-semibold">Distance from Nairobi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="border-b border-gray-100">
+            <td className="p-4 font-medium text-gray-900">Lake Nakuru</td>
+            <td className="p-4 text-gray-600">Thousands; peak Jun-Oct &amp; Jan-Mar</td>
+            <td className="p-4 text-gray-600">Flamingos, rhinos, bird photography</td>
+            <td className="p-4 text-gray-600">~2 hours</td>
+          </tr>
+          <tr className="border-b border-gray-100">
+            <td className="p-4 font-medium text-gray-900">Lake Bogoria</td>
+            <td className="p-4 text-gray-600">Massive flocks; seasonal hot springs</td>
+            <td className="p-4 text-gray-600">Super-flocks, geysers, hot springs</td>
+            <td className="p-4 text-gray-600">~3 hours</td>
+          </tr>
+          <tr>
+            <td className="p-4 font-medium text-gray-900">Lake Elmenteita</td>
+            <td className="p-4 text-gray-600">Smaller, reliable flocks</td>
+            <td className="p-4 text-gray-600">Quiet photography, fewer crowds</td>
+            <td className="p-4 text-gray-600">~2.5 hours</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   )
 }
@@ -745,7 +845,7 @@ function BestTimeToVisit() {
         </div>
         
         <p className="text-lg text-gray-600 leading-relaxed mb-8">
-          The best time to see flamingos at Lake Nakuru is during the dry seasons from June to October and January to March. Lower water levels concentrate algae, attracting larger flamingo flocks, and clear golden light creates perfect conditions for photography and wildlife viewing.
+          The best time to see flamingos at Lake Nakuru is June to October and January to March. Low water concentrates algae, which draws large flamingo flocks. Clear skies and golden light make this ideal for photography and rhino sightings. Book two to three months ahead for peak season.
         </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
@@ -755,8 +855,8 @@ function BestTimeToVisit() {
               </div>
               <h3 id="peak-dry-season" className="text-xl font-medium">Peak Dry Season</h3>
             </div>
-            <p className="text-2xl font-light text-pink-600 mb-3">June – October</p>
-            <p className="text-gray-600 mb-4">Algae concentrates → reliable flamingo flocks. Best rhino sightings, golden light for photography.</p>
+            <h3 className="text-2xl font-light text-pink-600 mb-3">June – October</h3>
+            <p className="text-gray-600 mb-4">Dry season concentrates algae along the shore. This draws the largest flamingo flocks to Lake Nakuru. Clear skies and golden light make this best for photography and rhino sightings. Book two to three months ahead.</p>
             <Link href="/blog/best-time-flamingo-safari" className="text-pink-600 text-sm font-medium hover:underline inline-flex items-center gap-1">
               Learn more about flamingo migration <span>→</span>
             </Link>
@@ -769,8 +869,8 @@ function BestTimeToVisit() {
               </div>
               <h3 id="dry-shoulder" className="text-xl font-medium">Dry Shoulder</h3>
             </div>
-            <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
-            <p className="text-gray-600 mb-4">Good flamingo numbers, fewer crowds, excellent birding diversity.</p>
+            <h3 className="text-2xl font-light text-amber-600 mb-3">January – March</h3>
+            <p className="text-gray-600 mb-4">The short dry season brings good flamingo numbers with fewer crowds. Migratory birds are present. Ideal for travelers who want flamingos without the high-season rush.</p>
             <Link href="/blog/flamingo-photography-tips" className="text-pink-600 text-sm font-medium hover:underline inline-flex items-center gap-1">
               Photography tips for flamingos <span>→</span>
             </Link>
@@ -784,7 +884,96 @@ function BestTimeToVisit() {
     </section>
   )
 }
-
+ 
+function WebMcpInquiryForm() {
+  return (
+    <section id="ask-an-expert" className="mb-40">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <span className="inline-block text-xs uppercase tracking-wider text-pink-600 mb-4">
+          Ask an Expert
+        </span>
+        <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+          Questions About This Safari?
+        </h2>
+        <p className="text-lg text-gray-600 leading-relaxed">
+          Send us your question. Our safari specialists respond within 24 hours.
+        </p>
+      </div>
+ 
+      <form
+        id="safari-inquiry-form"
+        data-toolname="submitQuestion"
+        data-tooldescription="Submit a general inquiry or question about this flamingo safari tour, pricing, availability, or booking."
+        className="max-w-2xl mx-auto space-y-4 p-8 bg-gray-50 rounded-2xl border border-gray-100"
+      >
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="wmcp-name" className="block text-sm font-medium text-gray-700 mb-1">
+              Full Name <span className="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="wmcp-name"
+              name="name"
+              type="text"
+              required
+              data-toolparamdescription="Client full name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-pink-600 focus:ring-2 focus:ring-pink-200 outline-none"
+            />
+          </div>
+          <div>
+            <label htmlFor="wmcp-email" className="block text-sm font-medium text-gray-700 mb-1">
+              Email <span className="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="wmcp-email"
+              name="email"
+              type="email"
+              required
+              data-toolparamdescription="Client email address"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-pink-600 focus:ring-2 focus:ring-pink-200 outline-none"
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="wmcp-question" className="block text-sm font-medium text-gray-700 mb-1">
+            Your Question <span className="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="wmcp-question"
+            name="question"
+            rows={4}
+            required
+            data-toolparamdescription="The question or inquiry text about the safari tour"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-pink-600 focus:ring-2 focus:ring-pink-200 outline-none"
+          />
+        </div>
+        <div>
+          <label htmlFor="wmcp-phone" className="block text-sm font-medium text-gray-700 mb-1">
+            Phone (optional)
+          </label>
+          <input
+            id="wmcp-phone"
+            name="phone"
+            type="tel"
+            data-toolparamdescription="Contact phone number with country code"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-pink-600 focus:ring-2 focus:ring-pink-200 outline-none"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full md:w-auto px-8 py-4 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition-colors"
+        >
+          Send Question
+        </button>
+      </form>
+ 
+      <p className="mt-6 text-center text-sm text-gray-500">
+        Or WhatsApp us directly at <a href="https://wa.me/+254726485228" className="text-pink-600 hover:underline">+254 726 485 228</a>
+      </p>
+    </section>
+  )
+}
+ 
 function FinalCTA() {
   return (
     <section className="mb-20">
@@ -794,7 +983,7 @@ function FinalCTA() {
         </h2>
         
         <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto">
-          Flamingo horizons, rhino encounters, and 450+ bird species. Just 2 hours from Nairobi.
+          Flamingo horizons. Rhino encounters. Over 450 bird species. Just two hours from Nairobi.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
