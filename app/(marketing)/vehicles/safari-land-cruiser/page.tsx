@@ -200,13 +200,26 @@ export default function SafariLandCruiserPage() {
 
       <AllPageSEOSchema
         type="vehicle"
-        slug="safari-land-cruiser"
-        categoryOpts={{
-          title: "Safari Land Cruiser Hire Kenya | 4x4 Toyota Rental",
-          description:
-            "Hire a Toyota Land Cruiser safari vehicle in Kenya. Pop-up roof, 4x4, fully insured from $95/day. Masai Mara, Amboseli, Tsavo.",
+        data={{
+          name: "Safari Land Cruiser Hire Kenya",
           image: "/media/landcruiser-pop-up-roof-open-1200x630.jpg",
+          description:
+            "Toyota Land Cruiser safari vehicle for hire in Kenya. Pop-up roof, 4x4 capability, fully insured from $95/day. Masai Mara, Amboseli, Tsavo.",
+          pricePerDay: "95",
+          priceCurrency: "USD",
+          keywords: [
+            "safari land cruiser hire kenya",
+            "safari land cruiser rental kenya",
+            "toyota land cruiser safari kenya",
+          ],
+          gallery: [
+            "/media/landcruiser-pop-up-roof-open-1200x630.jpg",
+            "/media/landcruiser-interior-dashboard-1200x630.jpg",
+            "/media/landcruiser-luggage-space-1200x630.jpg",
+          ],
+          ideal: "ideal for Masai Mara, Amboseli, Tsavo and East Africa safaris",
         }}
+        slug="safari-land-cruiser"
       />
 
       <div className="container mx-auto px-4 py-16">
