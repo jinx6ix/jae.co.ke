@@ -227,7 +227,17 @@ const sustainableTravelSchema = {
   ]
 };
 
-export default function SustainableTravelTips() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function SustainableTravelTips() {
   const faqs = [
     {
       question: "What is sustainable travel in East Africa?",
@@ -331,7 +341,9 @@ export default function SustainableTravelTips() {
         </p>
 
         <div className="bg-gradient-to-r from-green-50 to-blue-50 p-10 rounded-3xl my-16 border">
-          <h3 className="text-2xl font-bold mb-4">Why Sustainable Travel Matters in East Africa</h3>
+          <h3  className="text-2xl font-bold mb-4" id="why-sustainable-travel-matters-in-east-africa">Why Sustainable Travel Matters in East Africa</h3>
+
+
           <p className="text-lg">
             The <strong>wildlife and ecosystems of East Africa</strong> face numerous challenges from climate change, 
             habitat loss, and human-wildlife conflict. By choosing <strong>sustainable travel practices</strong>, 
@@ -342,7 +354,7 @@ export default function SustainableTravelTips() {
 
         {/* FAQ Section */}
         <section className="mt-20 border-t pt-12">
-          <h2 className="text-3xl font-bold mb-10">Frequently Asked Questions</h2>
+          <h2  className="text-3xl font-bold mb-10" id="frequently-asked-questions">Frequently Asked Questions</h2>
           {faqs.map((faq, index) => (
             <div key={index} className="mb-8 p-6 bg-muted/30 rounded-2xl hover:bg-muted/50 transition">
               <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
@@ -353,7 +365,9 @@ export default function SustainableTravelTips() {
 
         {/* Final CTA */}
         <div className="mt-20 p-12 bg-primary text-primary-foreground rounded-3xl text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready for a Truly Sustainable Safari?</h2>
+          <h2  className="text-4xl font-bold mb-6" id="ready-for-a-truly-sustainable-safari">Ready for a Truly Sustainable Safari?</h2>
+
+
           <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
             Let us design an eco-friendly, community-supporting safari across Kenya, Tanzania, Rwanda, and Uganda — 
             with zero compromise on comfort or adventure.

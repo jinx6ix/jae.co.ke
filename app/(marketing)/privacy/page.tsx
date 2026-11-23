@@ -41,13 +41,23 @@ const webPageSchema = {
   publisher: { "@id": "https://www.jaetravel.co.ke/#organization" },
 }
 
-export default function PrivacyPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function PrivacyPage() {
   return (
     <>
       <JsonLd id="privacy-webpage-schema" data={webPageSchema} />
       <div className="mx-auto w-full max-w-4xl px-4 py-12 md:py-16">
         <header className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Privacy Policy</h1>
+          <h1  className="text-3xl md:text-4xl font-bold tracking-tight" id="privacy-policy">Privacy Policy</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Last updated: {lastUpdated}
           </p>
@@ -55,7 +65,7 @@ export default function PrivacyPage() {
 
         <div className="prose prose-neutral max-w-none space-y-8 text-foreground/90 leading-relaxed">
           <section>
-            <h2 className="text-xl font-semibold mb-2">1. Who we are</h2>
+            <h2  className="text-xl font-semibold mb-2" id="1-who-we-are">1. Who we are</h2>
             <p>
               JaeTravel Expeditions (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a safari tour
               operator registered in Kenya. Our website is operated from
@@ -69,7 +79,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">2. What data we collect</h2>
+            <h2  className="text-xl font-semibold mb-2" id="2-what-data-we-collect">2. What data we collect</h2>
             <p>We collect personal data in three ways:</p>
             <ul className="list-disc pl-6 space-y-1">
               <li>
@@ -95,7 +105,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">3. How we use your data</h2>
+            <h2  className="text-xl font-semibold mb-2" id="3-how-we-use-your-data">3. How we use your data</h2>
             <p>We use the data above to:</p>
             <ul className="list-disc pl-6 space-y-1">
               <li>Respond to enquiries and prepare quotations.</li>
@@ -112,7 +122,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">4. Cookies and consent</h2>
+            <h2  className="text-xl font-semibold mb-2" id="4-cookies-and-consent">4. Cookies and consent</h2>
             <p>
               The site uses cookies and local storage. On your first visit, a
               banner asks for your consent. You can change your choice at any
@@ -165,7 +175,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">5. Third-party services</h2>
+            <h2  className="text-xl font-semibold mb-2" id="5-third-party-services">5. Third-party services</h2>
             <p>
               In addition to the analytics providers above, the following
               services process data on our behalf:
@@ -213,7 +223,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">6. How long we keep your data</h2>
+            <h2  className="text-xl font-semibold mb-2" id="6-how-long-we-keep-your-data">6. How long we keep your data</h2>
             <ul className="list-disc pl-6 space-y-1">
               <li>Enquiry and quotation records: 3 years from last contact.</li>
               <li>Booking records: 7 years (tax and accounting law).</li>
@@ -223,7 +233,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">7. Your rights</h2>
+            <h2  className="text-xl font-semibold mb-2" id="7-your-rights">7. Your rights</h2>
             <p>
               Depending on where you live, you may have the right to:
               access the personal data we hold about you; correct inaccurate
@@ -241,7 +251,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">8. Children</h2>
+            <h2  className="text-xl font-semibold mb-2" id="8-children">8. Children</h2>
             <p>
               The site is not directed at children under 16. We do not
               knowingly collect personal data from children. If you believe a
@@ -251,7 +261,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">9. International transfers</h2>
+            <h2  className="text-xl font-semibold mb-2" id="9-international-transfers">9. International transfers</h2>
             <p>
               Some of our processors (Google, Vercel, MongoDB) are based
               outside Kenya. Where your data is transferred internationally,
@@ -261,7 +271,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">10. Changes to this policy</h2>
+            <h2  className="text-xl font-semibold mb-2" id="10-changes-to-this-policy">10. Changes to this policy</h2>
             <p>
               We may update this policy from time to time. The &ldquo;Last
               updated&rdquo; date at the top will always reflect when the most
@@ -271,7 +281,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2">11. Contact</h2>
+            <h2  className="text-xl font-semibold mb-2" id="11-contact">11. Contact</h2>
             <p>
               JaeTravel Expeditions
               <br />

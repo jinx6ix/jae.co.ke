@@ -160,16 +160,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: ugandaTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "420",
-      },
     },
   ],
 }
 
-export default function UgandaCircuitSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function UgandaCircuitSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -334,32 +339,32 @@ export default function UgandaCircuitSafarisPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Bwindi Impenetrable</h3>
+                <h3  className="font-bold text-lg mb-1" id="bwindi-impenetrable">Bwindi Impenetrable</h3>
                 <p className="text-xs text-emerald-600 mb-2">Gorilla Trekking</p>
                 <p className="text-sm text-gray-600">Half the world's mountain gorillas. 20+ habituated families.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Kibale Forest</h3>
+                <h3  className="font-bold text-lg mb-1" id="kibale-forest">Kibale Forest</h3>
                 <p className="text-xs text-emerald-600 mb-2">Chimpanzee Tracking</p>
                 <p className="text-sm text-gray-600">13 primate species. Chimpanzee habituation experience.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Queen Elizabeth</h3>
+                <h3  className="font-bold text-lg mb-1" id="queen-elizabeth">Queen Elizabeth</h3>
                 <p className="text-xs text-emerald-600 mb-2">Savanna Wildlife</p>
                 <p className="text-sm text-gray-600">Tree-climbing lions, Kazinga Channel boat cruise.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Murchison Falls</h3>
+                <h3  className="font-bold text-lg mb-1" id="murchison-falls">Murchison Falls</h3>
                 <p className="text-xs text-emerald-600 mb-2">Waterfall Safari</p>
                 <p className="text-sm text-gray-600">Nile River, powerful falls, boat safaris, rhino tracking.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Lake Mburo</h3>
+                <h3  className="font-bold text-lg mb-1" id="lake-mburo">Lake Mburo</h3>
                 <p className="text-xs text-emerald-600 mb-2">Compact Wildlife</p>
                 <p className="text-sm text-gray-600">Zebras, impalas, boat safaris, walking safaris.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Rwenzori Mountains</h3>
+                <h3  className="font-bold text-lg mb-1" id="rwenzori-mountains">Rwenzori Mountains</h3>
                 <p className="text-xs text-emerald-600 mb-2">Trekking</p>
                 <p className="text-sm text-gray-600">Mountains of the Moon. Unique alpine vegetation.</p>
               </div>
@@ -433,7 +438,7 @@ export default function UgandaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-emerald-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-emerald-600 mb-3">June – September</p>
                   <p className="text-gray-600 mb-4">Best for gorilla trekking (easier trails), wildlife viewing, and clear skies.</p>
@@ -444,7 +449,7 @@ export default function UgandaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Short Dry</h3>
+                    <h3  className="text-xl font-medium" id="short-dry">Short Dry</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">December – February</p>
                   <p className="text-gray-600 mb-4">Good conditions, fewer crowds, excellent for primate tracking.</p>

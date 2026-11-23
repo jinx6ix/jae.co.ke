@@ -168,11 +168,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "12",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "650",
-      },
     },
     {
       "@type": "TouristTrip",
@@ -194,7 +189,17 @@ const jsonLd = {
   ],
 }
 
-export default function NgorongoroSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function NgorongoroSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -534,7 +539,7 @@ export default function NgorongoroSafarisPage() {
                       <CheckCircle className="h-4 w-4 text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">Black Rhino Guarantee</h3>
+                      <h3  className="font-medium text-gray-900" id="black-rhino-guarantee">Black Rhino Guarantee</h3>
                       <p className="text-sm text-gray-500">Best odds in Africa for endangered black rhino sightings</p>
                     </div>
                   </div>
@@ -544,7 +549,7 @@ export default function NgorongoroSafarisPage() {
                       <CheckCircle className="h-4 w-4 text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">Big Five in One Day</h3>
+                      <h3  className="font-medium text-gray-900" id="big-five-in-one-day">Big Five in One Day</h3>
                       <p className="text-sm text-gray-500">All five in a single descent – lion, leopard, elephant, buffalo, rhino</p>
                     </div>
                   </div>
@@ -554,7 +559,7 @@ export default function NgorongoroSafarisPage() {
                       <CheckCircle className="h-4 w-4 text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">UNESCO World Heritage</h3>
+                      <h3  className="font-medium text-gray-900" id="unesco-world-heritage">UNESCO World Heritage</h3>
                       <p className="text-sm text-gray-500">One of Africa's most protected and pristine ecosystems</p>
                     </div>
                   </div>
@@ -605,7 +610,7 @@ export default function NgorongoroSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-emerald-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-emerald-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Peak wildlife viewing. Short grass, animals concentrate around water sources.</p>
@@ -620,7 +625,7 @@ export default function NgorongoroSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                       <Droplets className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Green Season</h3>
+                    <h3  className="text-xl font-medium" id="green-season">Green Season</h3>
                   </div>
                   <p className="text-2xl font-light text-green-600 mb-3">November – May</p>
                   <p className="text-gray-600 mb-4">Lush scenery, fewer crowds, newborn animals, migratory birds.</p>

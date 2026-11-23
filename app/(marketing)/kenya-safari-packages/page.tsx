@@ -277,12 +277,6 @@ const generateSchemaMarkup = () => {
         "name": "Kenya Safari Packages 2026",
         "description": "Premium Kenya safari experiences with expert guides, game drives, and comfortable accommodations.",
         "brand": { "@type": "Brand", "name": "Jae Travel Expeditions" },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": avgRating,
-          "reviewCount": totalReviews,
-          "bestRating": "5"
-        },
         "offers": {
           "@type": "AggregateOffer",
           "lowPrice": minPrice,
@@ -290,7 +284,7 @@ const generateSchemaMarkup = () => {
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "offerCount": totalPackages
-        }
+        },
       },
       {
         "@type": "FAQPage",
@@ -321,7 +315,17 @@ const generateSchemaMarkup = () => {
 // ============================================
 // MAIN SERVER COMPONENT
 // ============================================
-export default function KenyaSafariPackagesPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function KenyaSafariPackagesPage() {
   return (
     <>
       <JsonLd id="schema-markup" data={generateSchemaMarkup()} />
@@ -618,22 +622,22 @@ export default function KenyaSafariPackagesPage() {
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-5xl mb-4">🦁</div>
-                <h3 className="font-bold mb-2">Expert Local Guides</h3>
+                <h3  className="font-bold mb-2" id="expert-local-guides">Expert Local Guides</h3>
                 <p className="text-gray-600">Knowledgeable guides with 10+ years experience</p>
               </div>
               <div>
                 <div className="text-5xl mb-4">✓</div>
-                <h3 className="font-bold mb-2">Best Price Guarantee</h3>
+                <h3  className="font-bold mb-2" id="best-price-guarantee">Best Price Guarantee</h3>
                 <p className="text-gray-600">Direct operator rates with no middlemen</p>
               </div>
               <div>
                 <div className="text-5xl mb-4">📞</div>
-                <h3 className="font-bold mb-2">24/7 Support</h3>
+                <h3  className="font-bold mb-2" id="247-support">24/7 Support</h3>
                 <p className="text-gray-600">Assistance throughout your safari journey</p>
               </div>
               <div>
                 <div className="text-5xl mb-4">🌟</div>
-                <h3 className="font-bold mb-2">{avgRating}/5 Reviews</h3>
+                <h3  className="font-bold mb-2" id="5-reviews">{avgRating}/5 Reviews</h3>
                 <p className="text-gray-600">Trusted by {totalReviews}+ happy travelers</p>
               </div>
             </div>

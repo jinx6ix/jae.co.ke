@@ -296,7 +296,17 @@ const jsonLd = {
   ],
 }
 
-export default function FlamingoSafariToursPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function FlamingoSafariToursPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -323,7 +333,7 @@ export default function FlamingoSafariToursPage() {
  
           {/* Table of Contents - anchor links for agent deep linking */}
           <nav aria-label="Table of contents" className="mb-24 p-6 bg-gray-50 rounded-2xl border border-gray-100">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">On this page</h3>
+            <h3  className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider" id="on-this-page">On this page</h3>
             <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
               <li><a href="#flamingo-safari-tours" className="hover:text-pink-600 transition">Flamingo Safari Tours 2026</a></li>
               <li><a href="#why-choose-us" className="hover:text-pink-600 transition">Why Choose Us</a></li>
@@ -854,7 +864,7 @@ function BestTimeToVisit() {
               </div>
               <h3 id="peak-dry-season" className="text-xl font-medium">Peak Dry Season</h3>
             </div>
-            <h3 className="text-2xl font-light text-pink-600 mb-3">June – October</h3>
+            <h3  className="text-2xl font-light text-pink-600 mb-3" id="june-october">June – October</h3>
             <p className="text-gray-600 mb-4">Dry season concentrates algae along the shore. This draws the largest flamingo flocks to Lake Nakuru. Clear skies and golden light make this best for photography and rhino sightings. Book two to three months ahead.</p>
             <Link href="/blog/best-time-flamingo-safari" className="text-pink-600 text-sm font-medium hover:underline inline-flex items-center gap-1">
               Learn more about flamingo migration <span>→</span>
@@ -868,7 +878,7 @@ function BestTimeToVisit() {
               </div>
               <h3 id="dry-shoulder" className="text-xl font-medium">Dry Shoulder</h3>
             </div>
-            <h3 className="text-2xl font-light text-amber-600 mb-3">January – March</h3>
+            <h3  className="text-2xl font-light text-amber-600 mb-3" id="january-march">January – March</h3>
             <p className="text-gray-600 mb-4">The short dry season brings good flamingo numbers with fewer crowds. Migratory birds are present. Ideal for travelers who want flamingos without the high-season rush.</p>
             <Link href="/blog/flamingo-photography-tips" className="text-pink-600 text-sm font-medium hover:underline inline-flex items-center gap-1">
               Photography tips for flamingos <span>→</span>

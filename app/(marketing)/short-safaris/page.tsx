@@ -161,16 +161,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: shortTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        reviewCount: "650",
-      },
     },
   ],
 }
 
-export default function ShortSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function ShortSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -351,7 +356,7 @@ export default function ShortSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Lake Nakuru</h3>
+                <h3  className="text-xl font-medium mb-2" id="lake-nakuru">Lake Nakuru</h3>
                 <p className="text-sm text-gray-600 mb-3">2-3 hours • 1-2 days</p>
                 <p className="text-sm">Flamingos, rhinos, 450+ bird species</p>
               </div>
@@ -360,7 +365,7 @@ export default function ShortSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Amboseli</h3>
+                <h3  className="text-xl font-medium mb-2" id="amboseli">Amboseli</h3>
                 <p className="text-sm text-gray-600 mb-3">3-4 hours • 2-3 days</p>
                 <p className="text-sm">Elephants, Kilimanjaro views</p>
               </div>
@@ -369,7 +374,7 @@ export default function ShortSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Masai Mara</h3>
+                <h3  className="text-xl font-medium mb-2" id="masai-mara">Masai Mara</h3>
                 <p className="text-sm text-gray-600 mb-3">5-6 hours • 1-3 days</p>
                 <p className="text-sm">Big Five, Great Migration (seasonal)</p>
               </div>
@@ -438,7 +443,7 @@ export default function ShortSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
                     <Clock className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Perfect for Layovers</h3>
+                  <h3  className="font-medium mb-2" id="perfect-for-layovers">Perfect for Layovers</h3>
                   <p className="text-sm text-gray-600">24-48 hour stopover? Experience Kenya's wildlife without a long commitment.</p>
                 </div>
                 
@@ -446,7 +451,7 @@ export default function ShortSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Budget-Friendly</h3>
+                  <h3  className="font-medium mb-2" id="budget-friendly">Budget-Friendly</h3>
                   <p className="text-sm text-gray-600">Experience world-class safari at a fraction of the cost of longer trips.</p>
                 </div>
                 
@@ -454,7 +459,7 @@ export default function ShortSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
                     <Calendar className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Flexible Scheduling</h3>
+                  <h3  className="font-medium mb-2" id="flexible-scheduling">Flexible Scheduling</h3>
                   <p className="text-sm text-gray-600">Daily departures. Add to any itinerary or enjoy as a standalone experience.</p>
                 </div>
               </div>

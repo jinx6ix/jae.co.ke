@@ -156,11 +156,6 @@ const vehicleHireSchema = {
         "availability": "https://schema.org/InStock",
         "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "21"
-      }
     },
     {
       "@type": "Product",
@@ -181,11 +176,6 @@ const vehicleHireSchema = {
         "availability": "https://schema.org/InStock",
         "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "21"
-      }
     },
     {
       "@type": "Product",
@@ -205,11 +195,6 @@ const vehicleHireSchema = {
         "availability": "https://schema.org/InStock",
         "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "21"
-      }
     },
     {
       "@type": "Product",
@@ -229,11 +214,6 @@ const vehicleHireSchema = {
         "availability": "https://schema.org/InStock",
         "seller": { "@id": "https://www.jaetravel.co.ke/#organization" }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "21"
-      }
     },
 
     // 7. FAQPage
@@ -292,7 +272,17 @@ export const metadata: Metadata = {
   keywords: 'vehicle rental, airport transfer, private driver, East Africa transport, luxury cars, Nairobi transfers',
 };
 
-export default function BookNowPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function BookNowPage() {
   const services = [
     {
       title: 'Airport Transfers',
@@ -361,7 +351,7 @@ export default function BookNowPage() {
             {/* Services Grid */}
             <div className="space-y-8">
               <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100/50">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Transportation Services</h2>
+                <h2  className="text-3xl font-bold text-gray-900 mb-6" id="our-transportation-services">Our Transportation Services</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   Need reliable transportation? We offer luxury vehicles with professional drivers for airport transfers, 
                   private tours, corporate events, and long-distance travel across Kenya, Tanzania, and Uganda.
@@ -386,7 +376,7 @@ export default function BookNowPage() {
               <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl p-8 text-white shadow-xl">
                 <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold mb-4">Get Your Free Quote</h3>
+                    <h3  className="text-2xl font-bold mb-4" id="get-your-free-quote">Get Your Free Quote</h3>
                     <p className="text-purple-100 mb-6">Response within 15 minutes</p>
                     <div className="space-y-3 text-purple-100">
                       <div className="flex items-center gap-3">
@@ -438,7 +428,7 @@ export default function BookNowPage() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white">
                       <div className="text-8xl mb-6">🚙</div>
-                      <h2 className="text-4xl font-bold mb-4">Luxury Fleet</h2>
+                      <h2  className="text-4xl font-bold mb-4" id="luxury-fleet">Luxury Fleet</h2>
                       <p className="text-xl opacity-90">Mercedes, Toyota Land Cruiser, Toyota Hiace</p>
                     </div>
                   </div>

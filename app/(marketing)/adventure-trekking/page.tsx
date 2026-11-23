@@ -107,9 +107,7 @@ export const metadata: Metadata = {
     title: "Adventure & Trekking 2026 | Kilimanjaro, Mount Kenya & Rwenzori",
     description: "Challenge yourself with East Africa's greatest treks. Expert guides, safety protocols, unforgettable summits.",
     images: [{
-      url: "/og/adventure-2026.jpg",
-      width: 1200,
-      height: 630,
+      url: "/media/Chimp-Group-Mahale-Mountain-JEP_8612-1200x630.webp", width: 1200, height: 630,
       alt: "Kilimanjaro Climbing Adventure",
     }],
     locale: "en_US",
@@ -120,7 +118,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Adventure & Trekking 2026 | Kilimanjaro & Mount Kenya",
     description: "Conquer Africa's highest peaks with expert guides.",
-    images: ["/twitter/adventure-2026.jpg"],
+    images: ["/media/adventure-trekking-twitter.webp"],
     creator: "@jaetravel",
   },
 }
@@ -166,16 +164,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: adventureTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        reviewCount: "380",
-      },
     },
   ],
 }
 
-export default function AdventureTrekkingPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function AdventureTrekkingPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -184,7 +187,7 @@ export default function AdventureTrekkingPage() {
         categoryOpts={{
           title: "Adventure Trekking Tours East Africa",
           description: "Mountain trekking, hiking, and adventure tours in East Africa. Kilimanjaro, Mount Kenya, and more.",
-          image: "/kilimanjaro-moutain-climbing.jpg",
+          image: "/media/Chimp-Group-Mahale-Mountain-JEP_8612-1200x630.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("trek") || t.title?.toLowerCase().includes("trek") || t.description?.toLowerCase().includes("trek")) : [],
         }}
       />
@@ -342,7 +345,7 @@ export default function AdventureTrekkingPage() {
                 <div className="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center mb-6">
                   <Mountain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Mount Kilimanjaro</h3>
+                <h3  className="text-2xl font-medium mb-2" id="mount-kilimanjaro">Mount Kilimanjaro</h3>
                 <p className="text-3xl font-light text-orange-600 mb-4">5,895m</p>
                 <p className="text-gray-700 mb-4">Africa's highest peak. Multiple routes: Machame, Marangu, Lemosho, Rongai.</p>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -356,7 +359,7 @@ export default function AdventureTrekkingPage() {
                 <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center mb-6">
                   <Mountain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Mount Kenya</h3>
+                <h3  className="text-2xl font-medium mb-2" id="mount-kenya">Mount Kenya</h3>
                 <p className="text-3xl font-light text-green-600 mb-4">4,985m</p>
                 <p className="text-gray-700 mb-4">Africa's second highest. Scenic routes through alpine zones.</p>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -370,7 +373,7 @@ export default function AdventureTrekkingPage() {
                 <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mb-6">
                   <Mountain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Rwenzori Mountains</h3>
+                <h3  className="text-2xl font-medium mb-2" id="rwenzori-mountains">Rwenzori Mountains</h3>
                 <p className="text-3xl font-light text-blue-600 mb-4">5,109m</p>
                 <p className="text-gray-700 mb-4">Mountains of the Moon. Unique alpine vegetation, glaciers.</p>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -397,17 +400,17 @@ export default function AdventureTrekkingPage() {
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🚴</div>
-                <h3 className="font-bold text-lg mb-2">Hell's Gate Cycling</h3>
+                <h3  className="font-bold text-lg mb-2" id="hells-gate-cycling">Hell's Gate Cycling</h3>
                 <p className="text-sm text-gray-600">Bike through dramatic gorges with zebras and giraffes.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🌊</div>
-                <h3 className="font-bold text-lg mb-2">White Water Rafting</h3>
+                <h3  className="font-bold text-lg mb-2" id="white-water-rafting">White Water Rafting</h3>
                 <p className="text-sm text-gray-600">Grade 5 rapids on the Nile River in Jinja, Uganda.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🥾</div>
-                <h3 className="font-bold text-lg mb-2">Walking Safaris</h3>
+                <h3  className="font-bold text-lg mb-2" id="walking-safaris">Walking Safaris</h3>
                 <p className="text-sm text-gray-600">Guided nature walks in Laikipia, Samburu, and more.</p>
               </div>
             </div>
@@ -480,7 +483,7 @@ export default function AdventureTrekkingPage() {
                     <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-orange-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-orange-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Best conditions for all mountains. Clear skies, stable weather.</p>
@@ -491,7 +494,7 @@ export default function AdventureTrekkingPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Short Dry</h3>
+                    <h3  className="text-xl font-medium" id="short-dry">Short Dry</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
                   <p className="text-gray-600 mb-4">Good conditions, fewer climbers, excellent visibility.</p>

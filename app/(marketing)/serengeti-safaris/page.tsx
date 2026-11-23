@@ -197,13 +197,6 @@ const jsonLd = {
           url: `https://www.jaetravel.co.ke/tours/${tour.slug}`,
         })),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "850",
-        bestRating: "5",
-        worstRating: "1",
-      },
     },
     {
       "@type": "TouristTrip",
@@ -278,7 +271,17 @@ const jsonLd = {
   ],
 }
 
-export default function SerengetiSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function SerengetiSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -643,7 +646,7 @@ export default function SerengetiSafarisPage() {
                   <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                     <Globe className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Global Bookings</h3>
+                  <h3  className="font-medium mb-2" id="global-bookings">Global Bookings</h3>
                   <p className="text-sm text-gray-500">USA, UK, Australia, Europe</p>
                 </div>
                 
@@ -651,7 +654,7 @@ export default function SerengetiSafarisPage() {
                   <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                     <Clock className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">24/7 Support</h3>
+                  <h3  className="font-medium mb-2" id="247-support">24/7 Support</h3>
                   <p className="text-sm text-gray-500">WhatsApp available</p>
                 </div>
                 
@@ -659,7 +662,7 @@ export default function SerengetiSafarisPage() {
                   <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                     <CreditCard className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Secure Payment</h3>
+                  <h3  className="font-medium mb-2" id="secure-payment">Secure Payment</h3>
                   <p className="text-sm text-gray-500">Credit card, bank transfer, crypto</p>
                 </div>
               </div>

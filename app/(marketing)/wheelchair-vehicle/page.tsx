@@ -205,7 +205,17 @@ const testimonials = [
 // ————————————————————————
 // Main Page Component - Kenya Focused SEO
 // ————————————————————————
-export default function WheelchairVehiclePage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function WheelchairVehiclePage() {
   return (
     <>
       {/* FAQ Schema */}
@@ -272,7 +282,7 @@ export default function WheelchairVehiclePage() {
         {/* Vehicle Categories Overview */}
         <section className="mb-20">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Kenya Accessible Land Cruiser Categories</h2>
+            <h2  className="font-serif text-4xl md:text-5xl font-bold mb-6" id="kenya-accessible-land-cruiser-categories">Kenya Accessible Land Cruiser Categories</h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Comprehensive solutions for wheelchair accessible transport across Kenya's national parks and cities
             </p>
@@ -295,7 +305,7 @@ export default function WheelchairVehiclePage() {
         {/* Customer Testimonials */}
         <section className="mb-20">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Real Kenya Experiences</h2>
+            <h2  className="font-serif text-4xl md:text-5xl font-bold mb-6" id="real-kenya-experiences">Real Kenya Experiences</h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Hear from wheelchair users who've experienced Kenya with our accessible Land Cruisers
             </p>
@@ -325,7 +335,9 @@ export default function WheelchairVehiclePage() {
         {/* Industry-Leading Features */}
         <section className="mb-20">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Why We're Kenya's #1 Choice</h2>
+            <h2  className="font-serif text-4xl md:text-5xl font-bold mb-6" id="why-were-kenyas-1-choice">Why We're Kenya's #1 Choice</h2>
+
+
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Unmatched accessibility features, Kenya-specific safety standards, and service quality
             </p>

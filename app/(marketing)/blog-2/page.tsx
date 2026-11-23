@@ -280,7 +280,17 @@ const faqs = [
   }
 ]
 
-export default function BlogPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function BlogPage() {
   return (
     <>
       {/* FULL RICH RESULTS SCHEMA */}

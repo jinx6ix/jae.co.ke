@@ -177,11 +177,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "15",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "380",
-      },
     },
     {
       "@type": "TouristTrip",
@@ -208,7 +203,17 @@ const jsonLd = {
   ],
 }
 
-export default function BirdwatchingSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function BirdwatchingSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -500,7 +505,7 @@ export default function BirdwatchingSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Kenya</h3>
+                <h3  className="text-xl font-medium mb-2" id="kenya">Kenya</h3>
                 <p className="text-sm text-gray-600 mb-3">Rift Valley Lakes</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">• Lake Nakuru – flamingos, pelicans</li>
@@ -513,7 +518,7 @@ export default function BirdwatchingSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Tanzania</h3>
+                <h3  className="text-xl font-medium mb-2" id="tanzania">Tanzania</h3>
                 <p className="text-sm text-gray-600 mb-3">Savanna & Highlands</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">• Serengeti – rollers, raptors</li>
@@ -526,7 +531,7 @@ export default function BirdwatchingSafarisPage() {
                 <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-medium mb-2">Uganda</h3>
+                <h3  className="text-xl font-medium mb-2" id="uganda">Uganda</h3>
                 <p className="text-sm text-gray-600 mb-3">Forests & Swamps</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">• Mabamba Swamp – shoebill</li>
@@ -552,22 +557,22 @@ export default function BirdwatchingSafarisPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦩</div>
-                <h3 className="font-medium">Lesser Flamingo</h3>
+                <h3  className="font-medium" id="lesser-flamingo">Lesser Flamingo</h3>
                 <p className="text-xs text-gray-500 mt-1">Lake Nakuru, Bogoria</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦜</div>
-                <h3 className="font-medium">Shoebill</h3>
+                <h3  className="font-medium" id="shoebill">Shoebill</h3>
                 <p className="text-xs text-gray-500 mt-1">Mabamba Swamp, Uganda</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦅</div>
-                <h3 className="font-medium">Lilac-breasted Roller</h3>
+                <h3  className="font-medium" id="lilac-breasted-roller">Lilac-breasted Roller</h3>
                 <p className="text-xs text-gray-500 mt-1">Serengeti, Masai Mara</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦃</div>
-                <h3 className="font-medium">Secretary Bird</h3>
+                <h3  className="font-medium" id="secretary-bird">Secretary Bird</h3>
                 <p className="text-xs text-gray-500 mt-1">Savanna grasslands</p>
               </div>
             </div>
@@ -592,7 +597,7 @@ export default function BirdwatchingSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
                       <Cloud className="h-5 w-5 text-emerald-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Peak Migratory</h3>
+                    <h3  className="text-xl font-medium" id="peak-migratory">Peak Migratory</h3>
                   </div>
                   <p className="text-2xl font-light text-emerald-600 mb-3">November – April</p>
                   <p className="text-gray-600 mb-4">Millions of Palearctic migrants arrive. Highest species diversity, breeding plumage, lush landscapes.</p>
@@ -603,7 +608,7 @@ export default function BirdwatchingSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Birds concentrate at waterholes. Easier spotting, excellent for savanna and raptor photography.</p>
@@ -631,7 +636,7 @@ export default function BirdwatchingSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
                     <Binoculars className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Gear Essentials</h3>
+                  <h3  className="font-medium mb-2" id="gear-essentials">Gear Essentials</h3>
                   <p className="text-sm text-gray-600">Binoculars 8x42+, spotting scope, 300-600mm lens, weatherproof notebook, eBird app.</p>
                 </div>
                 
@@ -639,7 +644,7 @@ export default function BirdwatchingSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
                     <Calendar className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Timing Wins</h3>
+                  <h3  className="font-medium mb-2" id="timing-wins">Timing Wins</h3>
                   <p className="text-sm text-gray-600">Dawn/dusk for activity. Nov-Apr for migrants, dry season for waterhole concentrations.</p>
                 </div>
                 
@@ -647,7 +652,7 @@ export default function BirdwatchingSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
                     <Globe className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Multi-Country</h3>
+                  <h3  className="font-medium mb-2" id="multi-country">Multi-Country</h3>
                   <p className="text-sm text-gray-600">Combine Kenya lakes + Uganda shoebill + Tanzania savanna for ultimate list.</p>
                 </div>
               </div>

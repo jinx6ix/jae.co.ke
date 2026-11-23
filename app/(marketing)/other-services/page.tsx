@@ -400,7 +400,17 @@ const destinations = [
   },
 ]
 
-export default function OtherServicesPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function OtherServicesPage() {
   return (
     <>
       {/* ENHANCED RICH RESULTS SCHEMA */}
@@ -409,7 +419,7 @@ export default function OtherServicesPage() {
         <div className="container mx-auto px-4 py-16">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Transportation Services Across East Africa</h1>
+          <h1  className="mb-4 font-serif text-5xl font-bold text-balance" id="transportation-services-across-east-africa">Transportation Services Across East Africa</h1>
           <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed text-pretty">
             Your reliable transportation partner across East Africa. From self-drive car rentals to comprehensive tour 
             transport solutions, we ensure safe and comfortable journeys to all major destinations in Kenya, Tanzania, Rwanda, and Uganda.
@@ -465,7 +475,7 @@ export default function OtherServicesPage() {
 
         {/* Services Grid */}
         <section className="mb-16">
-          <h2 className="mb-8 text-center font-serif text-4xl font-bold">Our Transportation Services</h2>
+          <h2  className="mb-8 text-center font-serif text-4xl font-bold" id="our-transportation-services">Our Transportation Services</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
@@ -481,7 +491,7 @@ export default function OtherServicesPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Transport</h3>
+                <h3  className="text-xl font-bold mb-4" id="kenya-tanzania-transport">Kenya & Tanzania Transport</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   From <strong>self drive car hire Nairobi</strong> to <strong>Kigali airport transfers</strong>, 
                   we cover all major East African destinations. Our <strong>safari transportation Kenya</strong> 
@@ -491,7 +501,7 @@ export default function OtherServicesPage() {
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Rwanda & Uganda Services</h3>
+                <h3  className="text-xl font-bold mb-4" id="rwanda-uganda-services">Rwanda & Uganda Services</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Our <strong>tour transport Rwanda</strong> network connects Kigali with Volcanoes National Park 
                   and Nyungwe Forest, while <strong>Uganda gorilla trekking transport</strong> services provide 
@@ -507,7 +517,7 @@ export default function OtherServicesPage() {
         {/* Popular Destinations */}
         <section className="mb-16">
           <div className="mb-8 text-center">
-            <h2 className="font-serif text-4xl font-bold">Popular Destinations</h2>
+            <h2  className="font-serif text-4xl font-bold" id="popular-destinations">Popular Destinations</h2>
             <p className="mt-2 text-muted-foreground">We provide transportation to all major tourist destinations across East Africa</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -535,7 +545,11 @@ export default function OtherServicesPage() {
 
         {/* How It Works */}
         <div className="mb-16 rounded-2xl bg-muted/50 p-8 md:p-12">
-          <h2 className="mb-8 text-center font-serif text-3xl font-bold">How Our Service Works</h2>
+          <h2  className="mb-8 text-center font-serif text-3xl font-bold" id="how-our-service-works">How Our Service Works</h2>
+
+      <p className="text-lg text-gray-600 leading-relaxed mb-4">
+        Contact our safari specialists for detailed information. We'll help you plan the perfect East Africa adventure tailored to your interests, budget, and accessibility needs.
+      </p>
           <div className="grid gap-8 md:grid-cols-3">
             {[
               {
@@ -564,7 +578,9 @@ export default function OtherServicesPage() {
 
         {/* CTA Section */}
         <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground md:p-12">
-          <h2 className="mb-4 font-serif text-3xl font-bold text-balance">Ready to Explore East Africa?</h2>
+          <h2  className="mb-4 font-serif text-3xl font-bold text-balance" id="ready-to-explore-east-africa">Ready to Explore East Africa?</h2>
+
+
           <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-pretty text-primary-foreground/90">
             Book your transportation today and experience seamless travel across Kenya, Tanzania, Rwanda, and Uganda. 
             We offer competitive rates and reliable service for all your travel needs, from <strong>car hire Kenya</strong> 

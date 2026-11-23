@@ -61,7 +61,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // Server Component: Page
 // ————————————————————————
-export default function DestinationsPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function DestinationsPage() {
   return (
     <div className="container mx-auto px-4 py-16">
 

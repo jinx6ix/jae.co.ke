@@ -65,7 +65,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // Server Component: Main Page
 // ————————————————————————
-export default function ToyotaLandCruiserPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function ToyotaLandCruiserPage() {
   return (
     <div className="container mx-auto px-4 py-16">
       {/* Hero – Client */}
@@ -132,7 +142,7 @@ export default function ToyotaLandCruiserPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Routes</h3>
+              <h3  className="text-xl font-bold mb-4" id="kenya-tanzania-safari-routes">Kenya & Tanzania Safari Routes</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Perfect for <strong>Land Cruiser safari Maasai Mara</strong> adventures and 
                 <strong>Serengeti tour transport</strong>. Our vehicles are specially equipped for 
@@ -146,7 +156,7 @@ export default function ToyotaLandCruiserPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Uganda & Rwanda Primate Adventures</h3>
+              <h3  className="text-xl font-bold mb-4" id="uganda-rwanda-primate-adventures">Uganda & Rwanda Primate Adventures</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Essential for <strong>Uganda gorilla trekking vehicle</strong> requirements and 
                 <strong>Rwanda safari car hire</strong> needs. The Land Cruiser's robust suspension 
@@ -170,7 +180,7 @@ export default function ToyotaLandCruiserPage() {
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">Self-Drive</h3>
+            <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="self-drive">Self-Drive</h3>
             <p className="mb-4 text-3xl font-bold">$120 <span className="text-lg text-muted-foreground">/ day</span></p>
             <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">Check Unlimited mileage</li>
@@ -183,7 +193,7 @@ export default function ToyotaLandCruiserPage() {
             </Button>
           </div>
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">With Driver-Guide</h3>
+            <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="with-driver-guide">With Driver-Guide</h3>
             <p className="mb-4 text-3xl font-bold">$180 <span className="text-lg text-muted-foreground">/ day</span></p>
             <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">Check Expert local guide</li>

@@ -165,16 +165,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: kenyaTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "920",
-      },
     },
   ],
 }
 
-export default function KenyaCircuitSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function KenyaCircuitSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -340,32 +345,32 @@ export default function KenyaCircuitSafarisPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Masai Mara</h3>
+                <h3  className="font-bold text-lg mb-1" id="masai-mara">Masai Mara</h3>
                 <p className="text-xs text-green-600 mb-2">Great Migration</p>
                 <p className="text-sm text-gray-600">Kenya's lion capital. River crossings July-October. Big Five guaranteed.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Amboseli</h3>
+                <h3  className="font-bold text-lg mb-1" id="amboseli">Amboseli</h3>
                 <p className="text-xs text-green-600 mb-2">Elephant Paradise</p>
                 <p className="text-sm text-gray-600">Iconic Kilimanjaro views. Large elephant herds. 2025-26 baby boom.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Tsavo East & West</h3>
+                <h3  className="font-bold text-lg mb-1" id="tsavo-east-west">Tsavo East & West</h3>
                 <p className="text-xs text-green-600 mb-2">Red Elephants</p>
                 <p className="text-sm text-gray-600">Kenya's largest park. Mzima Springs, red elephants, maneless lions.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Lake Nakuru</h3>
+                <h3  className="font-bold text-lg mb-1" id="lake-nakuru">Lake Nakuru</h3>
                 <p className="text-xs text-green-600 mb-2">Rhino Sanctuary</p>
                 <p className="text-sm text-gray-600">Flamingos, black/white rhinos, 450+ bird species.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Samburu</h3>
+                <h3  className="font-bold text-lg mb-1" id="samburu">Samburu</h3>
                 <p className="text-xs text-green-600 mb-2">Special Five</p>
                 <p className="text-sm text-gray-600">Grevy's zebra, reticulated giraffe, Somali ostrich. Northern Kenya.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Laikipia</h3>
+                <h3  className="font-bold text-lg mb-1" id="laikipia">Laikipia</h3>
                 <p className="text-xs text-green-600 mb-2">Conservancies</p>
                 <p className="text-sm text-gray-600">Private wildlife conservancies. Wild dog, rhino, community tourism.</p>
               </div>
@@ -439,7 +444,7 @@ export default function KenyaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-green-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Peak migration in Masai Mara. Best wildlife viewing, clear skies.</p>
@@ -450,7 +455,7 @@ export default function KenyaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Calving Season</h3>
+                    <h3  className="text-xl font-medium" id="calving-season">Calving Season</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
                   <p className="text-gray-600 mb-4">Excellent for Amboseli. Lush landscapes, fewer crowds.</p>

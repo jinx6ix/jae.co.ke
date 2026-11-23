@@ -186,7 +186,7 @@ const pageSchema = {
       }
     },
     {
-      "@type": "WebPage",
+      "@type": "WebPage", "name": " Webpage",
       "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#webpage",
       url: "https://www.jaetravel.co.ke/maasai-mara-great-migration",
       name: "Masai Mara Great Migration 2026 | Wheelchair Accessible Safari Packages",
@@ -218,15 +218,8 @@ const pageSchema = {
         priceCurrency: "USD",
         lowPrice: minPrice.toString(),
         highPrice: maxPrice.toString(),
-        offerCount: totalTours,
         availability: "https://schema.org/InStock",
         priceValidUntil: "2026-12-31",
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: avgRating,
-        reviewCount: "21",
-        bestRating: "5",
       },
       category: "Accessible Safari Tours",
       audience: {
@@ -239,7 +232,8 @@ const pageSchema = {
       "@id": "https://www.jaetravel.co.ke/maasai-mara-great-migration/#tours",
       name: "2026 Masai Mara Accessible Safari Tours & Packages",
       description: "Curated collection of accessible Masai Mara Great Migration safari packages",
-      numberOfItems: totalTours,
+      itemListOrder: "Ascending",
+        numberOfItems: totalTours,
       itemListElement: masaiMaraTours.map((tour, idx) => {
         const itineraryArray = getItineraryArray(tour.itinerary);
         
@@ -261,7 +255,8 @@ const pageSchema = {
             ...(itineraryArray.length > 0 && {
               itinerary: {
                 "@type": "ItemList",
-                itemListElement: itineraryArray.map((item, i) => ({
+                itemListOrder: "Ascending",
+        itemListElement: itineraryArray.map((item, i) => ({
                   "@type": "ListItem",
                   position: i + 1,
                   name: typeof item === 'string' ? item.trim() : String(item)
@@ -376,7 +371,17 @@ const renderContent = (content: string) => {
 // ============================================
 // MAIN PAGE COMPONENT
 // ============================================
-export default function MaasaiMaraGreatMigrationPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -467,7 +472,11 @@ export default function MaasaiMaraGreatMigrationPage() {
           </div>
 
           {/* H3 - Trust Signals */}
-          <h3 className="sr-only">Why Choose Jae Travel for Accessible Masai Mara Safari</h3>
+          <h3  className="sr-only" id="why-choose-jae-travel-for-accessible-masai-mara-safari">Why Choose Jae Travel for Accessible Masai Mara Safari</h3>
+
+      <p className="text-lg text-gray-600 leading-relaxed mb-4">
+        Yes, we operate wheelchair-accessible safaris with German hydraulic lift vehicles (400kg capacity), barrier-free lodges, and disability-trained guides. All accessibility features are included at no extra cost.
+      </p>
           <div className="mt-10 flex flex-wrap justify-center gap-8 text-sm text-gray-500">
             <span className="flex items-center gap-2"><CreditCard size={14} /> Secure Booking</span>
             <span className="flex items-center gap-2"><Phone size={14} /> 24/7 Support</span>

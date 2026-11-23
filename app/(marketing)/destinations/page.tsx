@@ -358,10 +358,10 @@ export default async function DestinationsPage() {
         {/* Regional Highlights */}
         <section className="mb-16 py-12 bg-muted/30 rounded-2xl">
           <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-3xl font-serif font-bold text-center mb-8">East Africa Regional Highlights</h2>
+            <h2  className="text-3xl font-serif font-bold text-center mb-8" id="east-africa-regional-highlights">East Africa Regional Highlights</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Circuits</h3>
+                <h3  className="text-xl font-bold mb-4" id="kenya-tanzania-safari-circuits">Kenya & Tanzania Safari Circuits</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Experience the classic <strong>East Africa Safari Destinations</strong> including the Masai Mara-Serengeti ecosystem, 
                   Amboseli's elephant herds, and the Ngorongoro Conservation Area. These <strong>African Destinations</strong> offer 
@@ -369,7 +369,7 @@ export default async function DestinationsPage() {
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Rwanda & Uganda Primate Adventures</h3>
+                <h3  className="text-xl font-bold mb-4" id="rwanda-uganda-primate-adventures">Rwanda & Uganda Primate Adventures</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Venture into the forests of <strong>Volcanoes National Park</strong> and <strong>Bwindi Impenetrable Forest</strong> 
                   for intimate gorilla encounters. These <strong>Rwanda Gorillas</strong> and <strong>Uganda Safari</strong> experiences 

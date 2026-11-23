@@ -26,14 +26,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TermsAndConditionsPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function TermsAndConditionsPage() {
   return (
     <>
       <CmsPage slug="terms" fallback={
         <div className="container mx-auto px-4 py-16 max-w-4xl">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Terms and Conditions</h1>
+          <h1  className="mb-4 font-serif text-5xl font-bold text-balance" id="terms-and-conditions">Terms and Conditions</h1>
           <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed">
             Please read these terms and conditions carefully before booking any services with Jae Travel Expeditions.
             Last updated: January 09, 2026
@@ -43,7 +53,7 @@ export default function TermsAndConditionsPage() {
         {/* Content Sections */}
         <div className="prose prose-lg mx-auto text-muted-foreground space-y-12">
           <section>
-            <h2 className="text-3xl font-bold mb-4">1. Introduction</h2>
+            <h2  className="text-3xl font-bold mb-4" id="1-introduction">1. Introduction</h2>
             <p>
               These Terms and Conditions govern the provision of transportation services, vehicle hire, airport transfers, safari tours, and related travel services offered by Jae Travel Expeditions ("we", "us", "our"), a company based in Nairobi, Kenya.
             </p>
@@ -56,7 +66,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">2. Bookings and Payments</h2>
+            <h2  className="text-3xl font-bold mb-4" id="2-bookings-and-payments">2. Bookings and Payments</h2>
             <p>
               A booking is confirmed upon receipt of a deposit (typically 30-50% of the total amount, depending on the service) and written confirmation from us.
             </p>
@@ -72,7 +82,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">3. Cancellations and Refunds</h2>
+            <h2  className="text-3xl font-bold mb-4" id="3-cancellations-and-refunds">3. Cancellations and Refunds</h2>
             <p>
               Cancellations must be made in writing. Cancellation fees apply as follows:
             </p>
@@ -91,7 +101,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">4. Vehicle Hire and Transportation Services</h2>
+            <h2  className="text-3xl font-bold mb-4" id="4-vehicle-hire-and-transportation-services">4. Vehicle Hire and Transportation Services</h2>
             <p>
               Vehicles are provided with or without a driver/guide, as specified in the booking.
             </p>
@@ -113,7 +123,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">5. Safari Tours and Transfers</h2>
+            <h2  className="text-3xl font-bold mb-4" id="5-safari-tours-and-transfers">5. Safari Tours and Transfers</h2>
             <p>
               Itineraries are subject to change due to weather, road conditions, park regulations, or safety concerns.
             </p>
@@ -126,7 +136,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">6. Liability and Responsibility</h2>
+            <h2  className="text-3xl font-bold mb-4" id="6-liability-and-responsibility">6. Liability and Responsibility</h2>
             <p>
               We take all reasonable care to provide safe and reliable services but are not liable for loss, damage, injury, delay, or inconvenience caused by force majeure events (e.g., weather, strikes, political unrest, pandemics).
             </p>
@@ -139,7 +149,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">7. Complaints and Disputes</h2>
+            <h2  className="text-3xl font-bold mb-4" id="7-complaints-and-disputes">7. Complaints and Disputes</h2>
             <p>
               Any complaints should be reported immediately to allow us to resolve them. Formal complaints must be submitted in writing within 14 days of service end.
             </p>
@@ -149,7 +159,7 @@ export default function TermsAndConditionsPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">8. Contact Information</h2>
+            <h2  className="text-3xl font-bold mb-4" id="8-contact-information">8. Contact Information</h2>
             <p>
               For questions about these Terms and Conditions, please contact us:
             </p>

@@ -244,7 +244,17 @@ const faqItems = vehicleHireFAQs
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE COMPONENT
 // ═════════════════════════════════════════════════════════════════════════════
-export default function VehicleHirePage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function VehicleHirePage() {
   return (
     <>
       <StructuredData />

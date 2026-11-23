@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gorilla Trekking Tours 2026 | Rwanda & Uganda | Jae Travel Expeditions",
     description: "Trek endangered mountain gorillas in Rwanda's Volcanoes NP & Uganda's Bwindi. Guaranteed permits, expert trackers. Kenya-based operator since 2015.",
-    images: [{ url: "https://www.jaetravel.co.ke/gorilla-trekking-2026.jpg", width: 1200, height: 630, alt: "Mountain Gorilla Trekking in Uganda" }],
+    images: [{ url: "/media/gorilla-trekking-difficulty-1200x630.webp", width: 1200, height: 630, alt: "Mountain Gorilla Trekking in Uganda" }],
     locale: "en_US",
     type: "website",
     siteName: "Jae Travel Expeditions",
@@ -146,11 +146,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "12"
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "450"
-      }
     },
 
     // 4. TouristTrip (Main Experience)
@@ -206,7 +201,17 @@ const jsonLd = {
   ]
 };
 
-export default function GorillaTrekkingToursPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function GorillaTrekkingToursPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -215,7 +220,7 @@ export default function GorillaTrekkingToursPage() {
         categoryOpts={{
           title: "Gorilla Trekking Tours Rwanda & Uganda 2026",
           description: "Mountain gorilla trekking in Rwanda's Volcanoes NP and Uganda's Bwindi Forest. Expert guides, permits included.",
-          image: "/mountain-gorilla-trekking.jpg",
+          image: "/media/gorilla-trekking-difficulty-1200x630.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("gorilla") || t.title?.toLowerCase().includes("gorilla") || t.description?.toLowerCase().includes("gorilla")) : [],
         }}
       />
@@ -390,7 +395,7 @@ export default function GorillaTrekkingToursPage() {
                 <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center mb-6">
                   <MapPin className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Uganda</h3>
+                <h3  className="text-2xl font-medium mb-2" id="uganda">Uganda</h3>
                 <p className="text-green-600 font-light text-xl mb-4">Bwindi Impenetrable Forest</p>
                 <p className="text-gray-700 mb-6">
                   Home to nearly half the world's mountain gorillas. More affordable permits, multiple habituated families, and the chance to combine with other wildlife.
@@ -406,7 +411,7 @@ export default function GorillaTrekkingToursPage() {
                 <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mb-6">
                   <Mountain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Rwanda</h3>
+                <h3  className="text-2xl font-medium mb-2" id="rwanda">Rwanda</h3>
                 <p className="text-blue-600 font-light text-xl mb-4">Volcanoes National Park</p>
                 <p className="text-gray-700 mb-6">
                   Easier access from Kigali, well-organized trekking, and the legacy of Dian Fossey. Higher cost but exceptional experience and luxury accommodations.
@@ -439,7 +444,7 @@ export default function GorillaTrekkingToursPage() {
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-green-600 mb-3">June – September</p>
                   <p className="text-gray-600 mb-4">Firm trails, minimal rain, clearer forest views. Peak season - book 12-18 months ahead.</p>
@@ -450,7 +455,7 @@ export default function GorillaTrekkingToursPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Shoulder Season</h3>
+                    <h3  className="text-xl font-medium" id="shoulder-season">Shoulder Season</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">December – February</p>
                   <p className="text-gray-600 mb-4">Good weather, fewer crowds, excellent photography. Still popular - book early.</p>

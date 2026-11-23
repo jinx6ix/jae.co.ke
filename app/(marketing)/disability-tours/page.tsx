@@ -1026,7 +1026,7 @@ export default async function DisabilityToursPage() {
                 className="w-full rounded-lg mb-6"
                 quality={90}
               />
-              <h3 className="font-semibold text-xl mb-3">German Hydraulic Lift System</h3>
+              <h3  className="font-semibold text-xl mb-3" id="german-hydraulic-lift-system">German Hydraulic Lift System</h3>
               <p className="text-muted-foreground">
                 400kg capacity – enter and exit without leaving your wheelchair.
               </p>
@@ -1041,7 +1041,7 @@ export default async function DisabilityToursPage() {
                 className="w-full rounded-lg mb-6"
                 quality={90}
               />
-              <h3 className="font-semibold text-xl mb-3">Four-Point Medical-Grade Securement</h3>
+              <h3  className="font-semibold text-xl mb-3" id="four-point-medical-grade-securement">Four-Point Medical-Grade Securement</h3>
               <p className="text-muted-foreground">
                 ISO-certified restraints for rough African terrain.
               </p>
@@ -1056,7 +1056,7 @@ export default async function DisabilityToursPage() {
                 className="w-full rounded-lg mb-6"
                 quality={90}
               />
-              <h3 className="font-semibold text-xl mb-3">Panoramic & Spacious Interior</h3>
+              <h3  className="font-semibold text-xl mb-3" id="panoramic-spacious-interior">Panoramic & Spacious Interior</h3>
               <p className="text-muted-foreground">
                 Climate control and wide doors for comfortable{" "}
                 <strong>wheelchair accessible tours in Kenya</strong>.
@@ -1072,7 +1072,7 @@ export default async function DisabilityToursPage() {
                 className="w-full rounded-lg mb-6"
                 quality={90}
               />
-              <h3 className="font-semibold text-xl mb-3">Onboard Medical & Safety Kit</h3>
+              <h3  className="font-semibold text-xl mb-3" id="onboard-medical-safety-kit">Onboard Medical & Safety Kit</h3>
               <p className="text-muted-foreground">
                 Full medical supplies for complete peace of mind.
               </p>

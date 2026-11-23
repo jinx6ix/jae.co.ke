@@ -103,7 +103,17 @@ function newId(): string {
   return Math.random().toString(36).slice(2, 9);
 }
 
-export default function ItineraryBuilderPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function ItineraryBuilderPage() {
   const [step, setStep] = useState<Step>("trip");
 
   // Step 1: trip basics
@@ -560,7 +570,7 @@ export default function ItineraryBuilderPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-3xl font-semibold tracking-tight mb-1">Build your own safari</h1>
+      <h1  className="text-3xl font-semibold tracking-tight mb-1" id="build-your-own-safari">Build your own safari</h1>
       <p className="text-muted-foreground mb-8">
         Plan a multi-stop itinerary, choose hotels and room types, and we&apos;ll send back a real per-person quote.
       </p>

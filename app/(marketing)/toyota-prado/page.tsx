@@ -66,7 +66,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // Server Component: Main Page
 // ————————————————————————
-export default function ToyotaPradoPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function ToyotaPradoPage() {
   const product = products.find((p) => p.slug === "toyota-prado")
   if (!product) notFound()
 
@@ -151,7 +161,7 @@ export default function ToyotaPradoPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Kenya & Tanzania Safari Circuits</h3>
+              <h3  className="text-xl font-bold mb-4" id="kenya-tanzania-safari-circuits">Kenya & Tanzania Safari Circuits</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Perfect for <strong>Prado hire Maasai Mara</strong> adventures and 
                 <strong>self drive safari Kenya</strong> expeditions. Our vehicles are 
@@ -167,7 +177,7 @@ export default function ToyotaPradoPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Uganda & Rwanda Adventures</h3>
+              <h3  className="text-xl font-bold mb-4" id="uganda-rwanda-adventures">Uganda & Rwanda Adventures</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Essential for <strong>Toyota Prado Uganda rental</strong> needs and 
                 <strong>Rwanda car hire 4x4</strong> requirements. The Prado's comfortable 
@@ -197,7 +207,7 @@ export default function ToyotaPradoPage() {
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">Self-Drive</h3>
+            <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="self-drive">Self-Drive</h3>
             <p className="mb-4 text-3xl font-bold">$95 <span className="text-lg text-muted-foreground">/ day</span></p>
             <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2"><span className="text-green-500">Check</span> Unlimited mileage</li>
@@ -210,7 +220,7 @@ export default function ToyotaPradoPage() {
             </Button>
           </div>
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="mb-3 font-serif text-2xl font-bold text-primary">With Driver</h3>
+            <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="with-driver">With Driver</h3>
             <p className="mb-4 text-3xl font-bold">$140 <span className="text-lg text-muted-foreground">/ day</span></p>
             <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2"><span className="text-green-500">Check</span> Professional guide</li>

@@ -195,12 +195,6 @@ const schema = {
         "availability": "https://schema.org/InStock",
         "priceValidUntil": "2026-12-31",
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": avgRating,
-        "reviewCount": 15,
-        "bestRating": "5",
-      },
       "category": "Budget Safari Tours"
     },
 
@@ -594,7 +588,7 @@ export default async function BudgetToursPage() {
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h3 className="mb-6 text-2xl font-bold">Experience the Real Africa on Cheap Tours</h3>
+              <h3  className="mb-6 text-2xl font-bold" id="experience-the-real-africa-on-cheap-tours">Experience the Real Africa on Cheap Tours</h3>
               <div className="pl-60 mb-6">
                 <p className="text-lg leading-relaxed">
                   Our carefully selected <strong>tented camps</strong> offer the perfect blend of adventure and comfort. Wake up to the sounds of the African bush and enjoy:
@@ -617,7 +611,7 @@ export default async function BudgetToursPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-6 text-2xl font-bold">Perfect for All Safari Styles</h3>
+              <h3  className="mb-6 text-2xl font-bold" id="perfect-for-all-safari-styles">Perfect for All Safari Styles</h3>
               <div className="pl-60 mb-6">
                 <p className="text-lg leading-relaxed">
                   Whether you&apos;re on <strong>private safaris</strong> or joining our popular <strong>group safaris</strong>, our <strong>tented camps</strong> provide:
@@ -710,7 +704,7 @@ export default async function BudgetToursPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="mb-3 text-xl font-bold">Best Viewing Times</h3>
+                  <h3  className="mb-3 text-xl font-bold" id="best-viewing-times">Best Viewing Times</h3>
                   <ul className="space-y-2">
                     <li><strong>July-October:</strong> River crossings in Masai Mara</li>
                     <li><strong>November-December:</strong> Southern migration begins</li>
@@ -721,7 +715,7 @@ export default async function BudgetToursPage() {
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="mb-3 text-xl font-bold">Predator Action</h3>
+                  <h3  className="mb-3 text-xl font-bold" id="predator-action">Predator Action</h3>
                   <p>During the migration, you&apos;ll witness incredible predator-prey interactions. Our <strong>game viewing</strong> drives focus on areas where <strong>lions, leopards</strong>, cheetahs, and hyenas are most active.</p>
                 </CardContent>
               </Card>

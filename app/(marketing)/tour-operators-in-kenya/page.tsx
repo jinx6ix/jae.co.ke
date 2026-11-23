@@ -40,7 +40,9 @@ export default async function TourOperatorsPage() {
             {/* Content Sections */}
             <div className="prose prose-lg mx-auto text-muted-foreground space-y-12">
               <section>
-                <h2 className="text-3xl font-bold mb-4">What Makes a Top-Tier Tour Operator in Kenya?</h2>
+                <h2  className="text-3xl font-bold mb-4" id="what-makes-a-top-tier-tour-operator-in-kenya">What Makes a Top-Tier Tour Operator in Kenya?</h2>
+
+
                 <p>
                   With so many safari companies in Kenya, navigating the options can feel overwhelming. A professional, licensed operator ensures not just a remarkable experience, but your safety and comfort throughout your journey. When comparing safari companies, look for:
                 </p>
@@ -53,7 +55,9 @@ export default async function TourOperatorsPage() {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-4">Why Choose JaeTravel Expeditions?</h2>
+                <h2  className="text-3xl font-bold mb-4" id="why-choose-jaetravel-expeditions">Why Choose JaeTravel Expeditions?</h2>
+
+
                 <p>
                   JaeTravel Expeditions stands out among Kenyan tour operators for our commitment to inclusivity, sustainability, and authentic wildlife encounters. Whether you are seeking a luxury wilderness retreat, an intense budget-friendly safari, or an accessible adventure for all mobility needs, we deliver.
                 </p>
@@ -92,7 +96,7 @@ export default async function TourOperatorsPage() {
               </div>
 
               <section>
-                <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+                <h2  className="text-3xl font-bold mb-4" id="our-services">Our Services</h2>
                 <p>Explore what we offer and find the perfect match for your adventure:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li><Link href="/tours" className="text-primary hover:underline">Comprehensive Safari Tours</Link></li>
@@ -102,7 +106,7 @@ export default async function TourOperatorsPage() {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                <h2  className="text-3xl font-bold mb-4" id="frequently-asked-questions">Frequently Asked Questions</h2>
                 <div className="space-y-4">
                   <details className="border-b pb-2">
                     <summary className="font-bold cursor-pointer underline">How far in advance should I book my safari?</summary>

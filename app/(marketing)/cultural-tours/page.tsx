@@ -109,9 +109,7 @@ export const metadata: Metadata = {
     title: "Cultural & City Tours 2026 | Maasai, Stone Town & Kigali",
     description: "Immerse yourself in East Africa's rich cultures. Village visits, historic sites, and local traditions.",
     images: [{
-      url: "/og/cultural-2026.jpg",
-      width: 1200,
-      height: 630,
+      url: "/media/safari-guides-with-tourists-in-africa.webp", width: 1024, height: 1024,
       alt: "Maasai Cultural Experience",
     }],
     locale: "en_US",
@@ -168,16 +166,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: culturalTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.7",
-        reviewCount: "320",
-      },
     },
   ],
 }
 
-export default function CulturalToursPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function CulturalToursPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -186,7 +189,7 @@ export default function CulturalToursPage() {
         categoryOpts={{
           title: "Cultural Tours East Africa — Maasai, Swahili & More",
           description: "Authentic cultural experiences in East Africa. Maasai village visits, Swahili heritage, and local immersion.",
-          image: "/safari-guides-with-tourists-in-africa.jpg",
+          image: "/media/safari-guides-with-tourists-in-africa.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("cultural") || t.title?.toLowerCase().includes("cultural") || t.description?.toLowerCase().includes("cultural")) : [],
         }}
       />
@@ -341,7 +344,7 @@ export default function CulturalToursPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 shadow-md">
-                <h3 className="font-bold text-lg mb-3">🇰🇪 Kenya</h3>
+                <h3  className="font-bold text-lg mb-3" id="kenya">🇰🇪 Kenya</h3>
                 <ul className="space-y-2 text-sm">
                   <li>• Maasai village visits</li>
                   <li>• Carnivore Restaurant</li>
@@ -350,7 +353,7 @@ export default function CulturalToursPage() {
                 </ul>
               </div>
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 shadow-md">
-                <h3 className="font-bold text-lg mb-3">🇹🇿 Tanzania</h3>
+                <h3  className="font-bold text-lg mb-3" id="tanzania">🇹🇿 Tanzania</h3>
                 <ul className="space-y-2 text-sm">
                   <li>• Stone Town UNESCO</li>
                   <li>• Spice tours Zanzibar</li>
@@ -359,7 +362,7 @@ export default function CulturalToursPage() {
                 </ul>
               </div>
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 shadow-md">
-                <h3 className="font-bold text-lg mb-3">🇷🇼 Rwanda</h3>
+                <h3  className="font-bold text-lg mb-3" id="rwanda">🇷🇼 Rwanda</h3>
                 <ul className="space-y-2 text-sm">
                   <li>• Kigali city tour</li>
                   <li>• Genocide Memorial</li>
@@ -368,7 +371,7 @@ export default function CulturalToursPage() {
                 </ul>
               </div>
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 shadow-md">
-                <h3 className="font-bold text-lg mb-3">🇺🇬 Uganda</h3>
+                <h3  className="font-bold text-lg mb-3" id="uganda">🇺🇬 Uganda</h3>
                 <ul className="space-y-2 text-sm">
                   <li>• Kampala city tour</li>
                   <li>• Buganda heritage</li>

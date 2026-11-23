@@ -179,7 +179,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 <Award className="h-8 w-8 text-orange-600" />
 </div>
 <div>
-<h3 class="text-xl font-bold text-orange-900">Pioneers in Accessible Safari Technology</h3>
+<h3  class="text-xl font-bold text-orange-900" id="pioneers-in-accessible-safari-technology">Pioneers in Accessible Safari Technology</h3>
 </div>
 </div>
 <p class="text-orange-800">JaeTravel Expeditions introduced East Africa's first fully <a href="/wheelchair-vehicle" class="text-orange-900 underline font-semibold">wheelchair-accessible safari vehicles</a> in 2018. Our continuous innovation in <a href="/wheelchair-accessible-safari-landcruiser" class="text-orange-900 underline font-semibold">adaptive safari Land Cruiser technology</a> ensures that we maintain the highest standards of accessibility, safety, and comfort for all our clients experiencing the Maasai Mara Great Migration.</p>
@@ -191,7 +191,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 <Users className="h-8 w-8 text-amber-600" />
 </div>
 <div>
-<h3 class="text-xl font-bold text-amber-900">720+ Wheelchair Users Served</h3>
+<h3  class="text-xl font-bold text-amber-900" id="720-wheelchair-users-served">720+ Wheelchair Users Served</h3>
 </div>
 </div>
 <p class="text-amber-800">Since our founding, JaeTravel Expeditions has successfully hosted over 720 wheelchair users on life-changing safari experiences. Our proven track record and extensive experience with various mobility conditions make us the most trusted name in accessible Kenya travel and disability-friendly African safaris.</p>
@@ -203,7 +203,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 <Shield className="h-8 w-8 text-orange-700" />
 </div>
 <div>
-<h3 class="text-xl font-bold text-orange-900">Comprehensive Medical Safety Systems</h3>
+<h3  class="text-xl font-bold text-orange-900" id="comprehensive-medical-safety-systems">Comprehensive Medical Safety Systems</h3>
 </div>
 </div>
 <p class="text-orange-800">JaeTravel Expeditions vehicles feature advanced medical support systems including 3kW pure sine wave inverters for medical equipment, 45L medical refrigerators, and hospital-grade HEPA filtration. Our commitment to health and safety is unmatched in the accessible travel industry.</p>
@@ -215,7 +215,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 <Heart className="h-8 w-8 text-amber-700" />
 </div>
 <div>
-<h3 class="text-xl font-bold text-amber-900">100-Hour Specialist Training</h3>
+<h3  class="text-xl font-bold text-amber-900" id="100-hour-specialist-training">100-Hour Specialist Training</h3>
 </div>
 </div>
 <p class="text-amber-800">Every JaeTravel Expeditions guide completes our intensive 100-hour disability specialist training program. This comprehensive education covers wheelchair securement, emergency procedures, inclusive guiding techniques, and medical response in remote wilderness settings.</p>
@@ -223,7 +223,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 </div>
 
 <div class="bg-gradient-to-br from-orange-100 to-amber-200 p-6 rounded-2xl border border-orange-400 my-8">
-<h3 class="text-2xl font-bold text-orange-900 mb-4 text-center">JaeTravel Expeditions: More Than a Safari - A Movement</h3>
+<h3  class="text-2xl font-bold text-orange-900 mb-4 text-center" id="jaetravel-expeditions-more-than-a-safari-a-movement">JaeTravel Expeditions: More Than a Safari - A Movement</h3>
 <p class="text-orange-800 text-center">We're not just providing accessible safaris; we're championing a movement toward inclusive travel in Africa. JaeTravel Expeditions actively advocates for improved accessibility standards across the tourism industry, shares our engineering innovations with other operators, and works with communities to create lasting positive change. When you choose JaeTravel Expeditions, you're supporting a vision of Africa—which you can explore more of on our <a href="/" class="text-orange-900 underline font-semibold">homepage</a>—where everyone can experience its wonders, regardless of mobility challenges.</p>
 </div>`
   },
@@ -232,7 +232,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
     content: `JaeTravel Expeditions has carefully selected and partnered with the finest accessible accommodation providers throughout the Maasai Mara region. Our network of disability-friendly lodges and camps ensures seamless accessibility from arrival to departure:
 
 <div class="bg-white border border-orange-200 rounded-2xl p-6 my-6 shadow-sm">
-<h3 class="text-2xl font-bold text-orange-800 mb-4">Mara Serena Safari Lodge - Premier Accessible Accommodation</h3>
+<h3  class="text-2xl font-bold text-orange-800 mb-4" id="mara-serena-safari-lodge-premier-accessible-accommodation">Mara Serena Safari Lodge - Premier Accessible Accommodation</h3>
 <p class="text-gray-700 mb-4">JaeTravel Expeditions' flagship partner featuring fully accessible rooms with roll-in showers, widened doorways, and accessible common areas. Located strategically near prime river crossing points, the Mara Serena offers:</p>
 <ul class="grid md:grid-cols-2 gap-3 text-gray-700">
 <li class="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-orange-600" /> Roll-in showers with grab bars</li>
@@ -245,7 +245,7 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 </div>
 
 <div class="bg-white border border-amber-200 rounded-2xl p-6 my-6 shadow-sm">
-<h3 class="text-2xl font-bold text-amber-800 mb-4">Fig Tree Camp - Authentic Accessible Experience</h3>
+<h3  class="text-2xl font-bold text-amber-800 mb-4" id="fig-tree-camp-authentic-accessible-experience">Fig Tree Camp - Authentic Accessible Experience</h3>
 <p class="text-gray-700 mb-4">For travelers seeking a more intimate safari experience, JaeTravel Expeditions partners with Fig Tree Camp featuring specially adapted tented accommodations that maintain authentic safari charm while providing full accessibility:</p>
 <ul class="grid md:grid-cols-2 gap-3 text-gray-700">
 <li class="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-amber-600" /> Adapted tented suites with wooden floors</li>
@@ -258,13 +258,23 @@ For real-time migration updates and detailed seasonal analysis from JaeTravel Ex
 </div>
 
 <div class="bg-gradient-to-r from-orange-50 to-amber-50 p-6 rounded-2xl border border-orange-300 my-6">
-<h3 class="text-xl font-bold text-orange-900 mb-3">JaeTravel Expeditions Accessibility Guarantee</h3>
+<h3  class="text-xl font-bold text-orange-900 mb-3" id="jaetravel-expeditions-accessibility-guarantee">JaeTravel Expeditions Accessibility Guarantee</h3>
 <p class="text-orange-800">Every accommodation partner in our network undergoes rigorous accessibility auditing by JaeTravel Expeditions' accessibility team. We personally verify each property to ensure they meet our strict standards for wheelchair accessibility, safety, and comfort. Our commitment extends beyond basic compliance to create truly welcoming and barrier-free environments for all our guests experiencing the Great Migration with JaeTravel Expeditions.</p>
 </div>`
   }
 ]
 
-export default function MaasaiMaraGreatMigrationPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function MaasaiMaraGreatMigrationPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -337,7 +347,7 @@ export default function MaasaiMaraGreatMigrationPage() {
           </h2>
           <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
             <div className="border-2 border-orange-200 rounded-3xl p-12 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 transform hover:-translate-y-2">
-              <h3 className="text-4xl font-bold mb-8 bg-gradient-to-br from-orange-800 to-amber-700 bg-clip-text text-transparent">JaeTravel Luxury Accessible Migration Safari</h3>
+              <h3  className="text-4xl font-bold mb-8 bg-gradient-to-br from-orange-800 to-amber-700 bg-clip-text text-transparent" id="jaetravel-luxury-accessible-migration-safari">JaeTravel Luxury Accessible Migration Safari</h3>
               <ul className="space-y-6 text-lg mb-10">
                 <li className="flex gap-4 items-start">
                   <CheckCircle className="h-8 w-8 text-orange-600 flex-shrink-0 mt-1" />
@@ -366,7 +376,7 @@ export default function MaasaiMaraGreatMigrationPage() {
             </div>
 
             <div className="border-2 border-amber-200 rounded-3xl p-12 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 transform hover:-translate-y-2">
-              <h3 className="text-4xl font-bold mb-8 bg-gradient-to-br from-amber-800 to-orange-700 bg-clip-text text-transparent">JaeTravel Safari Adventure (Accessible Group Tour)</h3>
+              <h3  className="text-4xl font-bold mb-8 bg-gradient-to-br from-amber-800 to-orange-700 bg-clip-text text-transparent" id="jaetravel-safari-adventure-accessible-group-tour">JaeTravel Safari Adventure (Accessible Group Tour)</h3>
               <ul className="space-y-6 text-lg mb-10">
                 <li className="flex gap-4 items-start">
                   <CheckCircle className="h-8 w-8 text-amber-600 flex-shrink-0 mt-1" />

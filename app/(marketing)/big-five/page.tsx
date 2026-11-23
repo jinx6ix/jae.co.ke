@@ -208,7 +208,17 @@ function BigFiveCard({
   )
 }
 
-export default function BigFivePage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function BigFivePage() {
   // Mock featured Big Five tours - filter from tours data or hardcode
   const featuredBigFiveTours = tours.filter(t => t.tags?.includes('big-five')).slice(0, 3) || [
     { id: 'big-five-mara', title: '7-Day Big Five Masai Mara', price: 2850, duration: '7 days', image: '/Big-5.jpg' },
@@ -300,22 +310,22 @@ export default function BigFivePage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center text-center">
               <Shield className="h-12 w-12 text-primary mb-4" />
-              <h3 className="mb-2 text-xl font-semibold">Expert Tracking</h3>
+              <h3  className="mb-2 text-xl font-semibold" id="expert-tracking">Expert Tracking</h3>
               <p className="text-sm text-muted-foreground">Certified guides with 15+ years spotting Big Five animals in Kenya's reserves.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <Accessibility className="h-12 w-12 text-primary mb-4" />
-              <h3 className="mb-2 text-xl font-semibold">Full Accessibility</h3>
+              <h3  className="mb-2 text-xl font-semibold" id="full-accessibility">Full Accessibility</h3>
               <p className="text-sm text-muted-foreground">Adapted vehicles and lodges for <strong>wheelchair accessible Big Five safaris</strong>.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <Leaf className="h-12 w-12 text-primary mb-4" />
-              <h3 className="mb-2 text-xl font-semibold">Conservation Focus</h3>
+              <h3  className="mb-2 text-xl font-semibold" id="conservation-focus">Conservation Focus</h3>
               <p className="text-sm text-muted-foreground">Support rhino protection and anti-poaching through our sustainable tours.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <Award className="h-12 w-12 text-primary mb-4" />
-              <h3 className="mb-2 text-xl font-semibold">Guaranteed Sightings</h3>
+              <h3  className="mb-2 text-xl font-semibold" id="guaranteed-sightings">Guaranteed Sightings</h3>
               <p className="text-sm text-muted-foreground">High success rates for all Big Five on multi-park itineraries.</p>
             </div>
           </div>

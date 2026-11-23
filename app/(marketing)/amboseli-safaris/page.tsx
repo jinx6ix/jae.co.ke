@@ -100,9 +100,7 @@ export const metadata: Metadata = {
     title: "Amboseli Safaris 2026 | Elephant Baby Boom & Kilimanjaro | Jae Travel Expeditions",
     description: "Witness 220+ new elephant calves against Mount Kilimanjaro. Private safaris from Nairobi. Kenya-based operator since 2015.",
     images: [{
-      url: "/og/amboseli-2026.jpg",
-      width: 1200,
-      height: 630,
+      url: "/media/Amboseli-National-Park-1200x630.webp", width: 1200, height: 630,
       alt: "Elephants with Mount Kilimanjaro Amboseli Kenya",
     }],
     locale: "en_US",
@@ -170,11 +168,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "10",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "420",
-      },
     },
     {
       "@type": "TouristTrip",
@@ -196,7 +189,17 @@ const jsonLd = {
   ],
 }
 
-export default function AmboseliSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function AmboseliSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -205,7 +208,7 @@ export default function AmboseliSafarisPage() {
         categoryOpts={{
           title: "Amboseli National Park Safaris Kenya",
           description: "Amboseli safari with Kilimanjaro views. Elephant herds, Big Five, and luxury lodges.",
-          image: "/Amboseli-National-Park-Elephantsssss.jpg",
+          image: "/media/Amboseli-National-Park-1200x630.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("amboseli") || t.title?.toLowerCase().includes("amboseli") || t.description?.toLowerCase().includes("amboseli")) : [],
         }}
       />
@@ -536,7 +539,7 @@ export default function AmboseliSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Peak Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="peak-dry-season">Peak Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-green-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Best Kilimanjaro visibility, wildlife gathers at swamps, clear skies for photography.</p>
@@ -547,7 +550,7 @@ export default function AmboseliSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Value Season</h3>
+                    <h3  className="text-xl font-medium" id="value-season">Value Season</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
                   <p className="text-gray-600 mb-4">Good visibility, fewer crowds, lush landscapes, excellent for young animals.</p>
@@ -575,32 +578,32 @@ export default function AmboseliSafarisPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🐘</div>
-                <h3 className="font-medium mb-2">Elephant Families</h3>
+                <h3  className="font-medium mb-2" id="elephant-families">Elephant Families</h3>
                 <p className="text-sm text-gray-600">Huge herds with playful calves</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🏔️</div>
-                <h3 className="font-medium mb-2">Kilimanjaro</h3>
+                <h3  className="font-medium mb-2" id="kilimanjaro">Kilimanjaro</h3>
                 <p className="text-sm text-gray-600">Snow-capped peak at sunrise</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦁</div>
-                <h3 className="font-medium mb-2">Big Cats</h3>
+                <h3  className="font-medium mb-2" id="big-cats">Big Cats</h3>
                 <p className="text-sm text-gray-600">Lions, cheetahs on the plains</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦒</div>
-                <h3 className="font-medium mb-2">Plains Game</h3>
+                <h3  className="font-medium mb-2" id="plains-game">Plains Game</h3>
                 <p className="text-sm text-gray-600">Giraffe, zebra, buffalo</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">🦅</div>
-                <h3 className="font-medium mb-2">Birdlife</h3>
+                <h3  className="font-medium mb-2" id="birdlife">Birdlife</h3>
                 <p className="text-sm text-gray-600">400+ species, flamingos</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md text-center">
                 <div className="text-5xl mb-3">👥</div>
-                <h3 className="font-medium mb-2">Maasai Culture</h3>
+                <h3  className="font-medium mb-2" id="maasai-culture">Maasai Culture</h3>
                 <p className="text-sm text-gray-600">Optional village visits</p>
               </div>
             </div>
@@ -621,7 +624,7 @@ export default function AmboseliSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                     <Camera className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Gear Essentials</h3>
+                  <h3  className="font-medium mb-2" id="gear-essentials">Gear Essentials</h3>
                   <p className="text-sm text-gray-600">200-600mm lens, binoculars, dust scarf, light layers for early mornings.</p>
                 </div>
                 
@@ -629,7 +632,7 @@ export default function AmboseliSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                     <Clock className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Best Light</h3>
+                  <h3  className="font-medium mb-2" id="best-light">Best Light</h3>
                   <p className="text-sm text-gray-600">Dawn game drives for Kilimanjaro sunrise with elephants in foreground.</p>
                 </div>
                 
@@ -637,7 +640,7 @@ export default function AmboseliSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                     <MapPin className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Combine Parks</h3>
+                  <h3  className="font-medium mb-2" id="combine-parks">Combine Parks</h3>
                   <p className="text-sm text-gray-600">Add Tsavo or Masai Mara for 7-10 day custom itineraries.</p>
                 </div>
               </div>

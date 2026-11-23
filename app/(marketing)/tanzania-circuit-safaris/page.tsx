@@ -162,16 +162,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: tanzaniaTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "680",
-      },
     },
   ],
 }
 
-export default function TanzaniaCircuitSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function TanzaniaCircuitSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -337,32 +342,32 @@ export default function TanzaniaCircuitSafarisPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Serengeti</h3>
+                <h3  className="font-bold text-lg mb-1" id="serengeti">Serengeti</h3>
                 <p className="text-xs text-amber-600 mb-2">Great Migration</p>
                 <p className="text-sm text-gray-600">Endless plains, 1.5M wildebeest, river crossings, predator action.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Ngorongoro Crater</h3>
+                <h3  className="font-bold text-lg mb-1" id="ngorongoro-crater">Ngorongoro Crater</h3>
                 <p className="text-xs text-amber-600 mb-2">UNESCO World Heritage</p>
                 <p className="text-sm text-gray-600">Highest Big Five density. Black rhinos, lions, elephants in one caldera.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Kilimanjaro</h3>
+                <h3  className="font-bold text-lg mb-1" id="kilimanjaro">Kilimanjaro</h3>
                 <p className="text-xs text-amber-600 mb-2">Africa's Highest Peak</p>
                 <p className="text-sm text-gray-600">Climb to Uhuru Peak (5,895m). Multiple routes for all skill levels.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Tarangire</h3>
+                <h3  className="font-bold text-lg mb-1" id="tarangire">Tarangire</h3>
                 <p className="text-xs text-amber-600 mb-2">Elephant Paradise</p>
                 <p className="text-sm text-gray-600">Large elephant herds, ancient baobabs, birding paradise.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Lake Manyara</h3>
+                <h3  className="font-bold text-lg mb-1" id="lake-manyara">Lake Manyara</h3>
                 <p className="text-xs text-amber-600 mb-2">Tree-Climbing Lions</p>
                 <p className="text-sm text-gray-600">Flamingos, tree-climbing lions, groundwater forest.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-                <h3 className="font-bold text-lg mb-1">Zanzibar</h3>
+                <h3  className="font-bold text-lg mb-1" id="zanzibar">Zanzibar</h3>
                 <p className="text-xs text-amber-600 mb-2">Spice Island</p>
                 <p className="text-sm text-gray-600">Perfect beach extension. Stone Town, spice tours, coral reefs.</p>
               </div>
@@ -436,7 +441,7 @@ export default function TanzaniaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Peak migration river crossings. Best wildlife viewing, clear skies.</p>
@@ -447,7 +452,7 @@ export default function TanzaniaCircuitSafarisPage() {
                     <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Calving Season</h3>
+                    <h3  className="text-xl font-medium" id="calving-season">Calving Season</h3>
                   </div>
                   <p className="text-2xl font-light text-green-600 mb-3">January – March</p>
                   <p className="text-gray-600 mb-4">Thousands of newborns. Predator action. Lush landscapes.</p>

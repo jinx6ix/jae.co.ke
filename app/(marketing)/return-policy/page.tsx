@@ -16,14 +16,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ReturnPolicyPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function ReturnPolicyPage() {
   return (
     <>
       <CmsPage slug="return-policy" fallback={
         <div className="container mx-auto px-4 py-16 max-w-4xl">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h1 className="mb-4 font-serif text-5xl font-bold text-balance">Return and Refund Policy</h1>
+          <h1  className="mb-4 font-serif text-5xl font-bold text-balance" id="return-and-refund-policy">Return and Refund Policy</h1>
           <p className="mx-auto max-w-3xl text-lg text-muted-foreground leading-relaxed">
             At Jae Travel Expeditions, we aim for transparency in all our booking processes.
             Last updated: September 27, 2026
@@ -33,7 +43,7 @@ export default function ReturnPolicyPage() {
         {/* Content Sections */}
         <div className="prose prose-lg mx-auto text-muted-foreground space-y-12">
           <section>
-            <h2 className="text-3xl font-bold mb-4">1. Booking Cancellations</h2>
+            <h2  className="text-3xl font-bold mb-4" id="1-booking-cancellations">1. Booking Cancellations</h2>
             <p>
               Cancellations for tours, transportation services, or vehicle rentals must be made in writing via email to info@jaetravel.co.ke.
               The date of cancellation is the date we receive your written request.
@@ -41,7 +51,7 @@ export default function ReturnPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">2. Refund Structure</h2>
+            <h2  className="text-3xl font-bold mb-4" id="2-refund-structure">2. Refund Structure</h2>
             <p>
               Refunds are processed based on the timeframe between your cancellation notice and the scheduled service start date:
             </p>
@@ -54,7 +64,7 @@ export default function ReturnPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">3. Non-Refundable Situations</h2>
+            <h2  className="text-3xl font-bold mb-4" id="3-non-refundable-situations">3. Non-Refundable Situations</h2>
             <p>
               Please note that the following circumstances are generally non-refundable:
             </p>
@@ -67,21 +77,21 @@ export default function ReturnPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">4. Processing Refunds</h2>
+            <h2  className="text-3xl font-bold mb-4" id="4-processing-refunds">4. Processing Refunds</h2>
             <p>
               Approved refunds will be processed back to the original method of payment whenever possible. Please allow 14–21 business days for the refund to reflect in your account, depending on your bank or payment provider.
             </p>
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">5. Travel Insurance</h2>
+            <h2  className="text-3xl font-bold mb-4" id="5-travel-insurance">5. Travel Insurance</h2>
             <p>
               Given the nature of travel in East Africa, we strongly recommend that all clients purchase comprehensive travel insurance at the time of booking. This insurance should cover trip cancellations, medical emergencies, and other unforeseen events to protect your investment.
             </p>
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4">6. Contact Us</h2>
+            <h2  className="text-3xl font-bold mb-4" id="6-contact-us">6. Contact Us</h2>
             <p>
               If you have any questions regarding our refund policy, please contact us directly:
             </p>

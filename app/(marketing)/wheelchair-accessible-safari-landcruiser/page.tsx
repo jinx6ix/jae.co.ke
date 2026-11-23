@@ -199,7 +199,17 @@ const vehicleCategories = [
 // ————————————————————————
 // MAIN PAGE COMPONENT - OPTIMIZED FOR "WHEELCHAIR ACCESSIBLE CRUISER KENYA"
 // ————————————————————————
-export default function WheelchairVehiclePage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function WheelchairVehiclePage() {
   return (
     <>
       <AllPageSEOSchema
@@ -276,7 +286,7 @@ export default function WheelchairVehiclePage() {
         {/* VEHICLE CATEGORIES OVERVIEW - LAND CRUISER FOCUS */}
         <section className="mb-20">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Kenya's Largest Accessible Land Cruiser Fleet</h2>
+            <h2  className="font-serif text-4xl md:text-5xl font-bold mb-6" id="kenyas-largest-accessible-land-cruiser-fleet">Kenya's Largest Accessible Land Cruiser Fleet</h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Comprehensive wheelchair accessible Land Cruiser solutions specifically designed for Kenyan safari conditions and urban transport
             </p>
@@ -299,7 +309,9 @@ export default function WheelchairVehiclePage() {
         {/* INDUSTRY-LEADING FEATURES - LAND CRUISER SPECIFIC */}
         <section className="mb-20">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Why Our Land Cruiser is Kenya's #1 Choice</h2>
+            <h2  className="font-serif text-4xl md:text-5xl font-bold mb-6" id="why-our-land-cruiser-is-kenyas-1-choice">Why Our Land Cruiser is Kenya's #1 Choice</h2>
+
+
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Unmatched Land Cruiser accessibility features, safari capabilities, and safety standards that competitors cannot match in Kenya
             </p>

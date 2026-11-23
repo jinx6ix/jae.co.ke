@@ -366,7 +366,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
 // ————————————————————————
 // Server Component: Main Page
 // ————————————————————————
-export default function LuxuryCampingPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function LuxuryCampingPage() {
   const product = products.find((p) => p.slug === "luxury-roof-top-camping")
   if (!product) notFound()
 
@@ -497,7 +507,7 @@ export default function LuxuryCampingPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Maasai Mara & Southern Kenya</h3>
+                <h3  className="text-xl font-bold mb-4" id="maasai-mara-southern-kenya">Maasai Mara & Southern Kenya</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Experience the ultimate <strong>Maasai Mara glamping</strong> adventure during the Great Migration 
                   (July-October) or enjoy year-round wildlife viewing in private conservancies. Our 
@@ -507,7 +517,7 @@ export default function LuxuryCampingPage() {
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Amboseli & Northern Tanzania</h3>
+                <h3  className="text-xl font-bold mb-4" id="amboseli-northern-tanzania">Amboseli & Northern Tanzania</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Discover the magic of <strong>Amboseli luxury camping</strong> with unparalleled views of 
                   Mount Kilimanjaro and massive elephant herds. This region is perfect for 
@@ -527,7 +537,7 @@ export default function LuxuryCampingPage() {
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-xl border bg-card p-6">
-              <h3 className="mb-3 font-serif text-2xl font-bold text-primary">Self-Drive Camping</h3>
+              <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="self-drive-camping">Self-Drive Camping</h3>
               <p className="mb-4 text-3xl font-bold">$180 <span className="text-lg text-muted-foreground">/ day</span></p>
               <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">Check 4x4 with roof-top tent</li>
@@ -540,7 +550,7 @@ export default function LuxuryCampingPage() {
               </Button>
             </div>
             <div className="rounded-xl border bg-card p-6">
-              <h3 className="mb-3 font-serif text-2xl font-bold text-primary">Guided Glamping</h3>
+              <h3  className="mb-3 font-serif text-2xl font-bold text-primary" id="guided-glamping">Guided Glamping</h3>
               <p className="mb-4 text-3xl font-bold">$320 <span className="text-lg text-muted-foreground">/ day</span></p>
               <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">Check Private driver-guide</li>

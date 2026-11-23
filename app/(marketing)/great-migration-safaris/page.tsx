@@ -100,9 +100,7 @@ export const metadata: Metadata = {
     title: "Great Migration Safaris 2026 | Masai Mara & Serengeti | Jae Travel Expeditions",
     description: "Witness the greatest wildlife spectacle on earth. Mara River crossings, calving season, predator action. Kenya-based expert operators since 2015.",
     images: [{
-      url: "/og/great-migration-2026.jpg",
-      width: 1200,
-      height: 630,
+      url: "/media/1-day-maasai-mara-1200x630.webp", width: 1200, height: 630,
       alt: "Great Migration Wildebeest Crossing Mara River",
     }],
     locale: "en_US",
@@ -170,11 +168,6 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: "18",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "750",
-      },
     },
     {
       "@type": "TouristTrip",
@@ -201,7 +194,17 @@ const jsonLd = {
   ],
 }
 
-export default function GreatMigrationSafarisPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function GreatMigrationSafarisPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -210,7 +213,7 @@ export default function GreatMigrationSafarisPage() {
         categoryOpts={{
           title: "Great Migration Safaris East Africa 2026",
           description: "Witness the greatest wildlife spectacle on Earth. Masai Mara and Serengeti packages.",
-          image: "/masai-mara-migration.jpg",
+          image: "/media/1-day-maasai-mara-1200x630.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("migration") || t.title?.toLowerCase().includes("migration") || t.description?.toLowerCase().includes("migration")) : [],
         }}
       />
@@ -559,7 +562,7 @@ export default function GreatMigrationSafarisPage() {
                 <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mb-6">
                   <Waves className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Mara River Crossings</h3>
+                <h3  className="text-2xl font-medium mb-2" id="mara-river-crossings">Mara River Crossings</h3>
                 <p className="text-amber-600 font-light text-xl mb-4">July – October</p>
                 <p className="text-gray-700 mb-6">
                   The ultimate wildlife drama. Thousands plunge into crocodile-infested waters. Heart-stopping action.
@@ -575,7 +578,7 @@ export default function GreatMigrationSafarisPage() {
                 <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center mb-6">
                   <Sunrise className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Calving Season</h3>
+                <h3  className="text-2xl font-medium mb-2" id="calving-season">Calving Season</h3>
                 <p className="text-green-600 font-light text-xl mb-4">January – March</p>
                 <p className="text-gray-700 mb-6">
                   8,000+ newborns daily. Lush green plains. Intense predator action as lions and cheetahs hunt the vulnerable.
@@ -604,7 +607,7 @@ export default function GreatMigrationSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
                     <Camera className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Gear Essentials</h3>
+                  <h3  className="font-medium mb-2" id="gear-essentials">Gear Essentials</h3>
                   <p className="text-sm text-gray-600">300-600mm zoom, bean bag, dust cover, 50+ SPF. Dawn and dusk for best light.</p>
                 </div>
                 
@@ -612,7 +615,7 @@ export default function GreatMigrationSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
                     <Calendar className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Timing Wins</h3>
+                  <h3  className="font-medium mb-2" id="timing-wins">Timing Wins</h3>
                   <p className="text-sm text-gray-600">7+ days recommended. Crossings unpredictable - longer stays increase odds.</p>
                 </div>
                 
@@ -620,7 +623,7 @@ export default function GreatMigrationSafarisPage() {
                   <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
                     <Globe className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="font-medium mb-2">Cross-Border</h3>
+                  <h3  className="font-medium mb-2" id="cross-border">Cross-Border</h3>
                   <p className="text-sm text-gray-600">Combine Masai Mara + Serengeti for the complete migration experience.</p>
                 </div>
               </div>

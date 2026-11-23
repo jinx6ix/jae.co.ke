@@ -115,9 +115,7 @@ export const metadata: Metadata = {
     title: "Beach & Island Holidays 2026 | Zanzibar, Diani & Mombasa",
     description: "Relax on East Africa's pristine beaches. White sands, turquoise waters, and luxury resorts.",
     images: [{
-      url: "/og/beach-2026.jpg",
-      width: 1200,
-      height: 630,
+      url: "/media/Mombasa-beach-2-1960x800-1200x630.webp", width: 1200, height: 630,
       alt: "Zanzibar Beach Paradise",
     }],
     locale: "en_US",
@@ -174,16 +172,21 @@ const jsonLd = {
         validThrough: "2026-12-31",
         offerCount: beachTours.length.toString(),
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        reviewCount: "450",
-      },
     },
   ],
 }
 
-export default function BeachHolidaysPage() {
+
+    // Speakable Schema for Voice Readiness
+    const speakableSchema = {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3", "#answer-summary", ".answer-text"]
+      }]
+    };
+    
+    export default function BeachHolidaysPage() {
   return (
     <>
       <AllPageSEOSchema
@@ -192,7 +195,7 @@ export default function BeachHolidaysPage() {
         categoryOpts={{
           title: "East Africa Beach Holidays — Zanzibar & Diani",
           description: "Combine safari and beach on Kenya and Tanzania's Indian Ocean coast. Zanzibar, Diani Beach packages.",
-          image: "/zanzibar-stone-town-view-min-800x600.jpg",
+          image: "/media/Mombasa-beach-2-1960x800-1200x630.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("beach") || t.title?.toLowerCase().includes("beach") || t.description?.toLowerCase().includes("beach")) : [],
         }}
       />
@@ -348,25 +351,25 @@ export default function BeachHolidaysPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 max-w-6xl mx-auto">
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇹🇿</div>
-                <h3 className="font-bold text-lg mb-2">Zanzibar</h3>
+                <h3  className="font-bold text-lg mb-2" id="zanzibar">Zanzibar</h3>
                 <p className="text-sm text-gray-600 mb-3">Tanzania</p>
                 <p className="text-xs">Nungwi, Kendwa, Paje. Spice tours, Stone Town, diving.</p>
               </div>
               <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇰🇪</div>
-                <h3 className="font-bold text-lg mb-2">Diani Beach</h3>
+                <h3  className="font-bold text-lg mb-2" id="diani-beach">Diani Beach</h3>
                 <p className="text-sm text-gray-600 mb-3">Kenya</p>
                 <p className="text-xs">White sands, coral reefs, water sports, beach resorts.</p>
               </div>
               <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇹🇿</div>
-                <h3 className="font-bold text-lg mb-2">Pemba Island</h3>
+                <h3  className="font-bold text-lg mb-2" id="pemba-island">Pemba Island</h3>
                 <p className="text-sm text-gray-600 mb-3">Tanzania</p>
                 <p className="text-xs">World-class diving, untouched beaches, clove plantations.</p>
               </div>
               <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇰🇪</div>
-                <h3 className="font-bold text-lg mb-2">Mombasa</h3>
+                <h3  className="font-bold text-lg mb-2" id="mombasa">Mombasa</h3>
                 <p className="text-sm text-gray-600 mb-3">Kenya</p>
                 <p className="text-xs">Coastal culture, Fort Jesus, Nyali Beach, local cuisine.</p>
               </div>
@@ -375,19 +378,19 @@ export default function BeachHolidaysPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-6">
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇺🇬</div>
-                <h3 className="font-bold text-lg mb-2">Ssese Islands</h3>
+                <h3  className="font-bold text-lg mb-2" id="ssese-islands">Ssese Islands</h3>
                 <p className="text-sm text-gray-600 mb-3">Uganda</p>
                 <p className="text-xs">Lake Victoria beaches, island hopping, relaxation.</p>
               </div>
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇺🇬</div>
-                <h3 className="font-bold text-lg mb-2">Lake Bunyonyi</h3>
+                <h3  className="font-bold text-lg mb-2" id="lake-bunyonyi">Lake Bunyonyi</h3>
                 <p className="text-sm text-gray-600 mb-3">Uganda</p>
                 <p className="text-xs">Africa's second deepest lake. Canoeing, birding, relaxation.</p>
               </div>
               <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl p-6 shadow-md">
                 <div className="text-4xl mb-3">🇷🇼</div>
-                <h3 className="font-bold text-lg mb-2">Lake Kivu</h3>
+                <h3  className="font-bold text-lg mb-2" id="lake-kivu">Lake Kivu</h3>
                 <p className="text-sm text-gray-600 mb-3">Rwanda</p>
                 <p className="text-xs">Beautiful lake beaches, island tours, coffee culture.</p>
               </div>
@@ -409,17 +412,17 @@ export default function BeachHolidaysPage() {
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🤿</div>
-                <h3 className="font-bold text-lg mb-2">Scuba Diving</h3>
+                <h3  className="font-bold text-lg mb-2" id="scuba-diving">Scuba Diving</h3>
                 <p className="text-sm text-gray-600">Pemba, Zanzibar, Diani. Coral reefs, shipwrecks, marine life.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🏄</div>
-                <h3 className="font-bold text-lg mb-2">Water Sports</h3>
+                <h3  className="font-bold text-lg mb-2" id="water-sports">Water Sports</h3>
                 <p className="text-sm text-gray-600">Kitesurfing, snorkeling, kayaking, paddleboarding.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 text-center">
                 <div className="text-4xl mb-3">🛶</div>
-                <h3 className="font-bold text-lg mb-2">Boat Excursions</h3>
+                <h3  className="font-bold text-lg mb-2" id="boat-excursions">Boat Excursions</h3>
                 <p className="text-sm text-gray-600">Sunset cruises, island hopping, fishing trips.</p>
               </div>
             </div>
@@ -439,7 +442,7 @@ export default function BeachHolidaysPage() {
               
               <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4">Kenya Safari + Diani Beach</h3>
+                  <h3  className="text-xl font-bold mb-4" id="kenya-safari-diani-beach">Kenya Safari + Diani Beach</h3>
                   <p className="text-gray-600 mb-4">7-10 days: Masai Mara/Amboseli + Diani Beach relaxation</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">• Big Five safari in Masai Mara</li>
@@ -448,7 +451,7 @@ export default function BeachHolidaysPage() {
                   </ul>
                 </div>
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-xl font-bold mb-4">Tanzania Safari + Zanzibar</h3>
+                  <h3  className="text-xl font-bold mb-4" id="tanzania-safari-zanzibar">Tanzania Safari + Zanzibar</h3>
                   <p className="text-gray-600 mb-4">10-14 days: Northern Circuit + Zanzibar beach escape</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2">• Serengeti & Ngorongoro safari</li>
@@ -527,7 +530,7 @@ export default function BeachHolidaysPage() {
                     <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
                       <Sunrise className="h-5 w-5 text-blue-400" />
                     </div>
-                    <h3 className="text-xl font-medium">Dry Season</h3>
+                    <h3  className="text-xl font-medium" id="dry-season">Dry Season</h3>
                   </div>
                   <p className="text-2xl font-light text-blue-400 mb-3">June – October</p>
                   <p className="text-gray-600 mb-4">Perfect beach weather. Sunny days, calm seas, excellent for water sports.</p>
@@ -538,7 +541,7 @@ export default function BeachHolidaysPage() {
                     <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                       <Sunset className="h-5 w-5 text-amber-600" />
                     </div>
-                    <h3 className="text-xl font-medium">Short Rains</h3>
+                    <h3  className="text-xl font-medium" id="short-rains">Short Rains</h3>
                   </div>
                   <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
                   <p className="text-gray-600 mb-4">Warm weather, fewer crowds, good value. Brief afternoon showers.</p>
