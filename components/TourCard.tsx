@@ -37,6 +37,9 @@ const TourCard = ({
         <img 
           src={imageUrl} 
           alt={title}
+          loading="lazy"
+          width={800}
+          height={600}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
         {badge && (

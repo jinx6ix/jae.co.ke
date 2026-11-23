@@ -105,9 +105,9 @@ export const metadata: Metadata = {
       "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
     images: [
       {
-        url: `${BASE}/og-image.jpg`,
-        width: 1200,
-        height: 630,
+        url: `${BASE}/og-image.webp`,
+        width: 2991,
+        height: 2756,
         alt: "JaeTravel Expeditions - East Africa Safari Tours",
       },
     ],
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     title: "JaeTravel Expeditions | East Africa Safari Tours",
     description:
       "Discover unforgettable safari experiences across Kenya, Tanzania, Rwanda, and Uganda.",
-    images: [`${BASE}/og-image.jpg`],
+    images: [`${BASE}/og-image.webp`],
   },
   robots: {
     index: true,

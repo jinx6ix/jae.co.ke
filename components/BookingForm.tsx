@@ -285,6 +285,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               onChange={handleChange}
               required
               placeholder="John Doe"
+              data-toolparamdescription="Client full name"
               className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
               disabled={isSubmitting}
             />
@@ -304,6 +305,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               onChange={handleChange}
               required
               placeholder="john@example.com"
+              data-toolparamdescription="Client email address"
               className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
               disabled={isSubmitting}
             />
@@ -356,6 +358,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
               onChange={handleChange}
               required
               placeholder="726485228"
+              data-toolparamdescription="Contact phone number with country code"
               className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
               disabled={isSubmitting}
             />
@@ -376,6 +379,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             value={formData.travelers}
             onChange={handleChange}
             required
+            data-toolparamdescription="Number of travelers or days for vehicle hire"
             className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
             disabled={isSubmitting}
           />
@@ -393,6 +397,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             value={formData.date}
             onChange={handleChange}
             required
+            data-toolparamdescription="Preferred start date for the tour or vehicle hire"
             className="h-11 border-orange-300 focus:border-orange-500 focus:ring-orange-500"
             disabled={isSubmitting}
             min={new Date().toISOString().split("T")[0]}
@@ -410,6 +415,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
             value={formData.message}
             onChange={handleChange}
             placeholder="Dietary requirements, accessibility needs, room preferences..."
+            data-toolparamdescription="Special requests, dietary needs, accessibility requirements, or room preferences"
             className="min-h-[100px] border-orange-300 focus:border-orange-500 focus:ring-orange-500"
             disabled={isSubmitting}
           />

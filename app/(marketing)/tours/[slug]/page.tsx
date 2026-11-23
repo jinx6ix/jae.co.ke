@@ -45,6 +45,38 @@ async function getTourData(slug: string): Promise<Tour | undefined> {
     return undefined;
   }
 }
+// Dimensions of a /public image, read straight from the JPEG header so
+// Open Graph width/height stay truthful for every tour's hero image.
+// Returns undefined when the file can't be read — width/height are
+// optional in Open Graph, so the tag degrades gracefully.
+async function imageDimensions(
+  relativePath: string
+): Promise<{ width: number; height: number } | undefined> {
+  if (!relativePath || relativePath.startsWith("http")) return undefined
+  const filePath = path.join(process.cwd(), "public", relativePath.replace(/^\//, ""))
+  let buf: Buffer
+  try {
+    buf = await fs.readFile(filePath)
+  } catch {
+    return undefined
+  }
+  if (buf.length < 24 || buf[0] !== 0xff || buf[1] !== 0xd8) return undefined
+  let i = 2
+  while (i < buf.length - 8) {
+    if (
+      buf[i] === 0xff &&
+      buf[i + 1] >= 0xc0 &&
+      buf[i + 1] <= 0xcf &&
+      ![0xc4, 0xc8, 0xcc].includes(buf[i + 1])
+    ) {
+      return { width: buf.readUInt16BE(i + 5), height: buf.readUInt16BE(i + 7) }
+    }
+    const segmentLen = buf.readUInt16BE(i + 2)
+    if (segmentLen <= 2) return undefined
+    i += 2 + segmentLen
+  }
+  return undefined
+}
 
 export async function generateMetadata({
   params,
@@ -75,6 +107,11 @@ export async function generateMetadata({
     : `${baseUrl}/placeholder.svg?key=tour-${tour.id}`
 
   const pagePath = `/tours/${tour.slug}`
+
+  // Real dimensions of the hero image so og:image never claims a size the
+  // file doesn't have (the Nakuru hero is 590x390, not 1200x630 — SAGE
+  // flagged this exact URL as "missing width/height").
+  const imageDims = await imageDimensions(tour.image)
 
   return {
     // `absolute` stops the layout template appending a second
@@ -108,8 +145,7 @@ export async function generateMetadata({
       images: [
         {
           url: image,
-          width: 1200,
-          height: 630,
+          ...(imageDims ? { width: imageDims.width, height: imageDims.height } : {}),
           alt: title,
         },
       ],

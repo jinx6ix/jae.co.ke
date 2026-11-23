@@ -819,7 +819,7 @@ function buildCategoryPageSchema(
         { "@type": "Question", name: `How much does ${opts.title.toLowerCase()} cost?`, text: `How much does ${opts.title.toLowerCase()} cost?`, acceptedAnswer: { "@type": "Answer", text: `${opts.title} prices range from $450 (budget group) to $8,000+ (luxury private) depending on duration, accommodation, and group size. Contact us for a free personalised quote.` } },
       ]},
       // WEBPAGE
-      { "@type": "WebPage", "@id": url, url, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
+      { "@type": "WebPage", "@id": url, url, name: opts.title, inLanguage: "en", isPartOf: WEBSITE_REF, breadcrumb: { "@id": `${url}#breadcrumb` }, primaryImageOfPage: { "@id": `${url}#hero-image` }, dateModified: today() },
     ],
   }
 }

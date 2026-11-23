@@ -36,7 +36,7 @@ import {
 
 const CONFIG = {
   slug: "flamingo-safari-tours",
-  title: "Flamingo Safari Tours 2026 | Lake Nakuru & Rhinos Kenya",
+  title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya",
   description:
     "See Lake Nakuru flamingos, rhinos & 450+ bird species. Short safaris from Nairobi from $450. Private 4x4 tours.",
   h1: "Flamingo Safari",
@@ -100,12 +100,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya | Jae Travel Expeditions",
     description: "Witness thousands of flamingos at Lake Nakuru. Pink horizons, rhino sanctuary, 450+ bird species. Short safaris from Nairobi. Kenya-based operator since 2015.",
-    images: [{
-      url: "/og/flamingo-safari-2026.jpg",
-      width: 1200,
-      height: 630,
-      alt: "Flamingos at Lake Nakuru Kenya",
-    }],
+    images: [
+      {
+        url: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
+        width: 590,
+        height: 390,
+        alt: "Thousands of pink flamingos wading in Lake Nakuru, Kenya - Jae Travel Expeditions flamingo safari tour",
+      },
+    ],
     locale: "en_US",
     type: "website",
     siteName: "Jae Travel Expeditions",
@@ -114,7 +116,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Flamingo Safari Tours 2026 | Lake Nakuru Kenya",
     description: "Witness thousands of flamingos at Lake Nakuru. Book your 2026 safari from Nairobi.",
-    images: ["/twitter/flamingo-safari.jpg"],
+    images: ["/lake-nakuru-flamingos-in-red-sunset-590x390.webp"],
     creator: "@jaetravel",
   },
   robots: {
@@ -167,6 +169,7 @@ const jsonLd = {
       "@id": "https://www.jaetravel.co.ke/flamingo-safari-tours#product",
       name: "Flamingo Safari Packages 2026",
       description: "Private guided safaris to Lake Nakuru for flamingo viewing, rhino sanctuary, and birdwatching. Includes park fees, 4x4 transport, and expert guide.",
+      image: "https://www.jaetravel.co.ke/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
       brand: {
         "@type": "Brand",
         name: "Jae Travel Expeditions",
@@ -193,6 +196,10 @@ const jsonLd = {
       "@type": "TouristTrip",
       name: "Flamingo Safari - Lake Nakuru",
       description: "Witness thousands of flamingos and rhinos at Kenya's most famous soda lake. Private 4x4 safari from Nairobi.",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#flamingo-safari-tours", "#best-time-to-visit", "#lake-comparison", "#why-choose-us"]
+      },
       itinerary: [
         {
           "@type": "TouristDestination",
@@ -282,7 +289,7 @@ export default function FlamingoSafariToursPage() {
         categoryOpts={{
           title: "Flamingo Safari Tours Kenya — Lake Nakuru & Bogoria",
           description: "See millions of flamingos on Kenya's Rift Valley lakes. Lake Nakuru, Lake Bogoria safari tours.",
-          image: "/lake-nakuru-flamingos-in-red-sunset-590x390.jpg",
+          image: "/lake-nakuru-flamingos-in-red-sunset-590x390.webp",
           tours: tours.filter ? tours.filter((t: any) => t.slug?.includes("flamingo") || t.title?.toLowerCase().includes("flamingo") || t.description?.toLowerCase().includes("flamingo")) : [],
         }}
       />
@@ -325,7 +332,7 @@ export default function FlamingoSafariToursPage() {
                 Choose Your Adventure
               </span>
               
-              <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+              <h2 id="flamingo-safari-packages" className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
                 {CONFIG.featuredToursTitle}
               </h2>
               
@@ -459,7 +466,7 @@ function HeroSection() {
       </div>
 
       {/* Main heading - elegant split */}
-      <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-none mb-8 text-gray-900 tracking-tight">
+      <h1 id="flamingo-safari-tours" className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-none mb-8 text-gray-900 tracking-tight">
         {CONFIG.h1}
         <span className="block text-pink-600 text-4xl sm:text-5xl md:text-6xl mt-4 font-medium">
           {CONFIG.h1Sub}
@@ -574,7 +581,7 @@ function WhyKenyaOperator() {
               Why Choose Us
             </span>
             
-            <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 leading-tight">
+            <h2 id="why-choose-us" className="font-serif text-4xl md:text-5xl font-light mb-8 leading-tight">
               Your Flamingo Safari
               <span className="block text-pink-300 mt-2">Starts in Nairobi</span>
             </h2>
@@ -599,29 +606,29 @@ function WhyKenyaOperator() {
           
           {/* Right column - Quick facts */}
           <div className="bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10">
-            <h3 className="text-2xl font-medium mb-6 flex items-center gap-3">
+            <h3 id="lake-nakuru-facts" className="text-2xl font-medium mb-6 flex items-center gap-3">
               <Info className="h-5 w-5 text-pink-300" />
               2026 Lake Nakuru Facts
             </h3>
             
-            <div className="space-y-4">
+            <dl className="space-y-4">
               <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                <span className="text-gray-300">Distance from Nairobi</span>
-                <span className="text-white font-medium">2 hours</span>
+                <dt className="text-gray-300">Distance from Nairobi</dt>
+                <dd className="text-white font-medium">2 hours</dd>
               </div>
               <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                <span className="text-gray-300">Park fee</span>
-                <span className="text-white font-medium">$90/adult</span>
+                <dt className="text-gray-300">Park fee</dt>
+                <dd className="text-white font-medium">$90/adult</dd>
               </div>
               <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                <span className="text-gray-300">Rhino population</span>
-                <span className="text-white font-medium">~50 black rhinos</span>
+                <dt className="text-gray-300">Rhino population</dt>
+                <dd className="text-white font-medium">~50 black rhinos</dd>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-300">Best months</span>
-                <span className="text-white font-medium">Jun-Oct, Jan-Mar</span>
+                <dt className="text-gray-300">Best months</dt>
+                <dd className="text-white font-medium">Jun-Oct, Jan-Mar</dd>
               </div>
-            </div>
+            </dl>
             
             <div className="mt-6 pt-6 border-t border-white/10">
               <p className="text-sm text-pink-300">
@@ -645,7 +652,7 @@ function VideoHighlights() {
           Experience It
         </span>
         
-        <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+        <h2 id="the-pink-horizon" className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
           The Pink Horizon
         </h2>
         
@@ -678,12 +685,12 @@ function LakesComparison() {
           Choose Your Lake
         </span>
         
-        <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+        <h2 id="lake-comparison" className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
           Nakuru, Bogoria or Elmenteita?
         </h2>
         
         <p className="text-lg text-gray-600 leading-relaxed">
-          Flamingos move between Kenya's soda lakes. We'll take you where the flocks are.
+          Flamingos move between Kenya's soda lakes depending on water levels and algae blooms. We monitor Nakuru, Bogoria, and Elmenteita daily and take you where the flocks are feeding right now, so you never miss the pink spectacle.
         </p>
       </div>
       
@@ -692,7 +699,7 @@ function LakesComparison() {
           <div className="w-12 h-12 rounded-full bg-pink-600 flex items-center justify-center mb-4">
             <MapPin className="h-6 w-6 text-white" />
           </div>
-          <h3 className="text-xl font-medium mb-2">Lake Nakuru</h3>
+          <h3 id="lake-nakuru" className="text-xl font-medium mb-2">Lake Nakuru</h3>
           <p className="text-pink-600 font-light text-sm mb-3">Main Destination</p>
           <p className="text-sm text-gray-600">Famous flamingo lake with rhino sanctuary, 450+ bird species, easy access from Nairobi.</p>
         </div>
@@ -701,7 +708,7 @@ function LakesComparison() {
           <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mb-4">
             <MapPin className="h-6 w-6 text-white" />
           </div>
-          <h3 className="text-xl font-medium mb-2">Lake Bogoria</h3>
+          <h3 id="lake-bogoria" className="text-xl font-medium mb-2">Lake Bogoria</h3>
           <p className="text-blue-600 font-light text-sm mb-3">Alternative Hotspot</p>
           <p className="text-sm text-gray-600">Often has massive flamingo flocks, plus hot springs and geysers. Combine with Nakuru.</p>
         </div>
@@ -710,7 +717,7 @@ function LakesComparison() {
           <div className="w-12 h-12 rounded-full bg-teal-600 flex items-center justify-center mb-4">
             <MapPin className="h-6 w-6 text-white" />
           </div>
-          <h3 className="text-xl font-medium mb-2">Lake Elmenteita</h3>
+          <h3 id="lake-elementeita" className="text-xl font-medium mb-2">Lake Elmenteita</h3>
           <p className="text-teal-600 font-light text-sm mb-3">Less Crowded</p>
           <p className="text-sm text-gray-600">Smaller but reliable flocks, often overlooked. Great for photography.</p>
         </div>
@@ -732,18 +739,21 @@ function BestTimeToVisit() {
             Plan Your Visit
           </span>
           
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
+          <h2 id="best-time-to-visit" className="font-serif text-4xl md:text-5xl font-light text-gray-900 mb-6">
             Best Time for Flamingos
           </h2>
         </div>
         
+        <p className="text-lg text-gray-600 leading-relaxed mb-8">
+          The best time to see flamingos at Lake Nakuru is during the dry seasons from June to October and January to March. Lower water levels concentrate algae, attracting larger flamingo flocks, and clear golden light creates perfect conditions for photography and wildlife viewing.
+        </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
                 <Sunrise className="h-5 w-5 text-pink-600" />
               </div>
-              <h3 className="text-xl font-medium">Peak Dry Season</h3>
+              <h3 id="peak-dry-season" className="text-xl font-medium">Peak Dry Season</h3>
             </div>
             <p className="text-2xl font-light text-pink-600 mb-3">June – October</p>
             <p className="text-gray-600 mb-4">Algae concentrates → reliable flamingo flocks. Best rhino sightings, golden light for photography.</p>
@@ -757,7 +767,7 @@ function BestTimeToVisit() {
               <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                 <Sunset className="h-5 w-5 text-amber-600" />
               </div>
-              <h3 className="text-xl font-medium">Dry Shoulder</h3>
+              <h3 id="dry-shoulder" className="text-xl font-medium">Dry Shoulder</h3>
             </div>
             <p className="text-2xl font-light text-amber-600 mb-3">January – March</p>
             <p className="text-gray-600 mb-4">Good flamingo numbers, fewer crowds, excellent birding diversity.</p>
@@ -779,7 +789,7 @@ function FinalCTA() {
   return (
     <section className="mb-20">
       <div className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-3xl p-16 md:p-20 text-center text-white">
-        <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight">
+        <h2 id="ready-to-book" className="text-4xl md:text-5xl font-light mb-6 leading-tight">
           Ready for the Pink Spectacle?
         </h2>
         
