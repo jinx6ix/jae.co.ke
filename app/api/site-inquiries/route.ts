@@ -78,7 +78,9 @@ export async function POST(request: NextRequest) {
     // 3. Server-side price verification using seasonal pricing
     // ---------------------------------------------------------------
     const travelers = Number(bookingData.travelers) || 2;
-    const tourPrice = Number(bookingData.tourPrice || 0);
+    // The client already sends totalPrice as the computed total (pricePerPerson × travelers).
+    // Use it directly as the fallback total to avoid double-multiplying.
+    const totalPriceFromClient = Number(bookingData.totalPrice || 0);
     let resolvedPricing;
     try {
       resolvedPricing = await resolveTourPricing(serviceName, startDate, travelers);
@@ -87,15 +89,15 @@ export async function POST(request: NextRequest) {
       resolvedPricing = { success: true, fallback: true, season: 'STANDARD', currency: 'USD', pricePerPerson: 0, totalPrice: 0 };
     }
     if (!resolvedPricing || !resolvedPricing.success || (resolvedPricing.fallback && resolvedPricing.totalPrice === 0)) {
-      // Last-resort static fallback: base price from request × travelers
-      const totalPrice = tourPrice * travelers || 0;
+      // Last-resort static fallback: use the client-computed total directly
+      // (client already computed pricePerPerson × travelers).
       resolvedPricing = {
         success: true,
         fallback: true,
         season: 'STANDARD',
         currency: 'USD',
-        pricePerPerson: tourPrice || 0,
-        totalPrice,
+        pricePerPerson: totalPriceFromClient / travelers || 0,
+        totalPrice: totalPriceFromClient || 0,
         rateCardId: undefined,
         matchedRateCard: undefined,
       };

@@ -591,13 +591,6 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       {/* Price Summary */}
       <div className="rounded-xl bg-gradient-to-r from-orange-50/80 to-white p-6 border border-orange-200">
         <div className="space-y-3">
-          {pricingState.isLoading && (
-            <div className="flex items-center gap-2 text-sm text-orange-700 py-1">
-              <Loader2 className="h-4 w-4 animate-spin text-orange-600" />
-              <span>Calculating price...</span>
-            </div>
-          )}
-
           {pricingState.error && (
             <div className="p-3 bg-red-50 rounded-lg text-xs text-red-700 border border-red-200">
               ⚠️ {pricingState.error}
