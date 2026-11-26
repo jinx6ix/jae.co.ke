@@ -93,15 +93,31 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
         if (!isCurrent) return
 
         if (data.success) {
-          setPricingState({
-            success: true,
-            pricePerPerson: data.pricePerPerson,
-            totalPrice: data.totalPrice,
-            season: data.season,
-            currency: data.currency || "USD",
-            isLoading: false,
-            error: null,
-          })
+          // If the API returned fallback pricing (totalPrice === 0 because DB
+          // was unreachable), use static pricing from props instead.
+          if (data.totalPrice === 0) {
+            const pax = Number(formData.travelers || "2")
+            const staticTotal = (tourPrice || 0) * pax
+            setPricingState({
+              success: true,
+              pricePerPerson: tourPrice || 0,
+              totalPrice: staticTotal,
+              season: data.season || "STANDARD",
+              currency: data.currency || "USD",
+              isLoading: false,
+              error: null,
+            })
+          } else {
+            setPricingState({
+              success: true,
+              pricePerPerson: data.pricePerPerson,
+              totalPrice: data.totalPrice,
+              season: data.season,
+              currency: data.currency || "USD",
+              isLoading: false,
+              error: null,
+            })
+          }
         } else {
           setPricingState(prev => ({
             ...prev,
@@ -575,25 +591,10 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       {/* Price Summary */}
       <div className="rounded-xl bg-gradient-to-r from-orange-50/80 to-white p-6 border border-orange-200">
         <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-orange-900 flex items-center gap-2">
-              <span>Season:</span>
-              <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                pricingState.season === 'HIGH' ? 'bg-red-100 text-red-700' :
-                pricingState.season === 'MID' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
-              }`}>
-                {pricingState.season}
-              </span>
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {pricingState.currency} {pricingState.pricePerPerson.toLocaleString()} / person
-            </span>
-          </div>
-
           {pricingState.isLoading && (
             <div className="flex items-center gap-2 text-sm text-orange-700 py-1">
               <Loader2 className="h-4 w-4 animate-spin text-orange-600" />
-              <span>Resolving seasonal pricing...</span>
+              <span>Calculating price...</span>
             </div>
           )}
 
@@ -605,7 +606,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
 
           <div className="flex items-center justify-between pt-3 border-t-2 border-orange-200">
             <div>
-              <span className="text-xl font-bold text-orange-950">Total Price</span>
+              <span className="text-lg font-bold text-orange-950">Total Price</span>
               <div className="text-xs text-muted-foreground">{formData.travelers || "2"} Travelers</div>
             </div>
             <span className="text-3xl font-extrabold text-orange-600">
