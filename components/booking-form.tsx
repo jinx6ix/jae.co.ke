@@ -113,11 +113,18 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
       } catch (err: any) {
         if (err.name === 'AbortError') return
         if (!isCurrent) return
+        // Static fallback: use the tour price from props if API is unreachable
+        const pax = Number(formData.travelers || "2")
+        const staticTotal = (tourPrice || 0) * pax
         setPricingState(prev => ({
           ...prev,
-          success: false,
+          success: true,
           isLoading: false,
-          error: "Failed to resolve pricing. Please select a valid date.",
+          error: null,
+          pricePerPerson: tourPrice || 0,
+          totalPrice: staticTotal,
+          season: "STANDARD",
+          currency: "USD",
         }))
       }
     }
