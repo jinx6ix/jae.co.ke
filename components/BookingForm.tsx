@@ -13,6 +13,7 @@ interface BookingFormProps {
   tourPrice: number
   tourDuration: string
   serviceType?: string
+  sourceUrl?: string
 }
 
 interface EmailStatus {
@@ -35,7 +36,21 @@ interface BookingResponse {
   downloadUrl?: string
 }
 
-export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour" }: BookingFormProps) {
+export default function BookingForm({
+  tourTitle,
+  tourPrice,
+  tourDuration,
+  serviceType = "tour",
+  sourceUrl: sourceUrlProp,
+}: BookingFormProps) {
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSourceUrl(sourceUrlProp ?? window.location.href)
+    }
+  }, [sourceUrlProp])
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -74,6 +89,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           currency: "$",
           country: formData.country,
           duration: tourDuration,
+          sourceUrl: sourceUrl ?? window.location.href,
         }),
       })
 

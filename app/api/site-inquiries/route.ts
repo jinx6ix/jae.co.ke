@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
     const serviceName = String(bookingData.serviceName || '').trim();
     const startDate = String(bookingData.startDate || '').trim();
     const country = String(bookingData.country || 'Kenya').trim();
+    const sourceUrl = String(bookingData.sourceUrl || '').trim();
 
     if (!email) {
       return NextResponse.json(
@@ -253,6 +254,8 @@ export async function POST(request: NextRequest) {
 
       customerWhatsApp,
       adminWhatsApp,
+
+      sourceUrl,
     });
 
     // ---------------------------------------------------------------

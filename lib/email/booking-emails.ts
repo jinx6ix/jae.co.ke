@@ -79,6 +79,9 @@ export interface BookingEmailInput {
   adminWhatsApp: string;
 
   companyWhatsAppNumber?: string;
+
+  /** Full URL of the page the client booked from (for email links) */
+  sourceUrl?: string;
 }
 
 const INFO_ADDRESS = 'info@jaetravel.co.ke';
@@ -236,6 +239,7 @@ function buildCustomerHtml(
     transfer,
     pdfUrl,
     adminWhatsApp,
+    sourceUrl,
   } = input;
 
   const transferBlock =
@@ -528,6 +532,26 @@ function buildCustomerHtml(
                   </td>
                 </tr>
 
+                ${
+                  sourceUrl
+                    ? `
+                  <tr>
+                    <td class="label">Booked From:</td>
+                    <td class="value">
+                      <a
+                        href="${escapeHtml(sourceUrl)}"
+                        style="color:#f97316; text-decoration:underline;"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        ${escapeHtml(sourceUrl)}
+                      </a>
+                    </td>
+                  </tr>
+                  `
+                    : ''
+                }
+
                 ${transferBlock}
 
                 <tr>
@@ -666,6 +690,7 @@ function buildAdminHtml(
     transfer,
     adminPdfUrl,
     customerWhatsApp,
+    sourceUrl,
   } = input;
 
   const transferBlock =
@@ -1022,6 +1047,31 @@ function buildAdminHtml(
                   </td>
 
                 </tr>
+
+                ${
+                  sourceUrl
+                    ? `
+                  <tr>
+
+                    <td class="label">
+                      Booked From:
+                    </td>
+
+                    <td class="value">
+                      <a
+                        href="${escapeHtml(sourceUrl)}"
+                        style="color:#059669; text-decoration:underline;"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        ${escapeHtml(sourceUrl)}
+                      </a>
+                    </td>
+
+                  </tr>
+                  `
+                    : ''
+                }
 
                 <tr>
 
@@ -1485,6 +1535,7 @@ export async function sendBookingEmails(
       `Total: $${Number(
         input.service.totalPrice,
       ).toLocaleString()}`,
+      input.sourceUrl ? `Page: ${input.sourceUrl}` : '',
       '',
       'JaeTravel Expeditions',
       '+254 726 485 228',

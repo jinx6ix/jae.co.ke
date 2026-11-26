@@ -15,6 +15,7 @@ interface BookingFormProps {
   tourPrice: number
   tourDuration: string
   serviceType?: string
+  sourceUrl?: string
 }
 
 // ✅ FIXED: Proper API response typing
@@ -38,7 +39,22 @@ interface BookingResponse {
   downloadUrl?: string // Legacy field for backward compatibility
 }
 
-export default function BookingForm({ tourTitle, tourPrice, tourDuration, serviceType = "tour" }: BookingFormProps) {
+export default function BookingForm({
+  tourTitle,
+  tourPrice,
+  tourDuration,
+  serviceType = "tour",
+  sourceUrl: sourceUrlProp,
+}: BookingFormProps) {
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null)
+
+  // Capture the current page URL on mount so emails can link back to the
+  // exact page the client booked from.
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSourceUrl(sourceUrlProp ?? window.location.href)
+    }
+  }, [sourceUrlProp])
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -197,6 +213,7 @@ export default function BookingForm({ tourTitle, tourPrice, tourDuration, servic
           currency: pricingState.currency || "USD",
           country: formData.country,
           duration: tourDuration,
+          sourceUrl: sourceUrl ?? window.location.href,
         }),
       })
 
