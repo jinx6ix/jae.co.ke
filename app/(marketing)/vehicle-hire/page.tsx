@@ -331,8 +331,14 @@ const faqItems = vehicleHireFAQs
             <p>
               Looking to hire a safari vehicle in Kenya? Jae Travel Expeditions provides a fully
               equipped fleet of <strong className="text-foreground">4x4 safari Land Cruisers</strong>{" "}
-              and <strong className="text-foreground">pop-up roof tour vans</strong> purpose-built for
-              East Africa's toughest terrains. Whether you need a vehicle for the{" "}
+              and <strong className="text-foreground">pop-up roof tour vans</strong>, and{" "}
+              <Link
+                href="/wheelchair-vehicle"
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                wheelchair-accessible safari vehicles
+              </Link>{" "}
+              purpose-built for East Africa's toughest terrains. Whether you need a vehicle for the{" "}
               <Link href="/destinations/masai-mara" className="text-primary underline-offset-4 hover:underline">
                 Masai Mara National Reserve
               </Link>
@@ -353,7 +359,14 @@ const faqItems = vehicleHireFAQs
               the heavy-duty{" "}
               <strong className="text-foreground">Land Cruiser 78 Series</strong> for groups (from
               $120/day), or our budget-friendly{" "}
-              <strong className="text-foreground">Toyota Hiace Safari Van</strong> (from $80/day). All
+              <strong className="text-foreground">Toyota Hiace Safari Van</strong> (from $80/day), or our{" "}
+              <Link
+                href="/wheelchair-vehicle"
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                wheelchair accessible van
+              </Link>{" "}
+              for travelers with mobility needs. All
               vehicles are available{" "}
               <Link href="#with-driver" className="text-primary underline-offset-4 hover:underline">
                 with a professional driver/guide

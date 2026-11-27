@@ -592,7 +592,7 @@ const destinations = [
               <Link href="/contact">Book Transportation</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground">
-              <Link href="/wheelchair-vehicles">View Accessible Vehicles</Link>
+              <Link href="/wheelchair-vehicle">View Accessible Vehicles</Link>
             </Button>
           </div>
         </div>

@@ -251,7 +251,7 @@ const vehicleCategories = [
             <strong>KENYA'S PREMIER WHEELCHAIR ACCESSIBLE CRUISER FLEET:</strong> 18 specially modified Toyota Land Cruisers featuring 
             <strong> German hydraulic lifts, pop-up roofs for wheelchair-level game viewing, and medical-grade restraint systems</strong>. 
             Experience the <strong>Masai Mara, Amboseli, and Tsavo</strong> in our certified accessible Land Cruisers -
-            <strong> the ultimate <Link href="/" className="text-primary underline font-semibold">wheelchair-accessible safari transport</Link> vehicle in Kenya</strong>.
+            <strong> the ultimate <Link href="/wheelchair-vehicle" className="text-primary underline font-semibold">wheelchair-accessible safari transport</Link> vehicle in Kenya</strong>.
           </p>
 
           {/* ULTIMATE TRUST METRICS - LAND CRUISER SPECIFIC */}
